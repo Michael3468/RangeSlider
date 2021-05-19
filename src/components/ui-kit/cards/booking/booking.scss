@@ -1,0 +1,73 @@
+@import '../../../../assets/scss/utils/vars.scss';
+@import '../../../../assets/scss/utils/mixins.scss';
+
+.booking {
+  display: flex;
+  flex-direction: column;
+
+  &__date-dropdown-margin {
+    margin-bottom: rem(21);
+  }
+
+  &__options-block,
+  &__options-item_block {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__options-block {
+    justify-content: space-between;
+    margin-top: rem(20);
+  }
+
+  &__options-item_block {
+    display: flex;
+    justify-content: space-between;
+    width: rem(239);
+  }
+
+  &__options-info-icon {
+    width: rem(20);
+    height: rem(20);
+    border: rem(1) solid $DarkShade25;
+    border-radius: rem(10);
+    cursor: pointer;
+
+    &::before {
+      position: relative;
+      left: rem(7);
+      color: $DarkShade25;
+      font-size: rem(14);
+      font-family: $secondFont;
+      content: 'i';
+    }
+  }
+
+  &__options-result {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: rem(12);
+    margin-bottom: rem(22);
+    font: bold rem(19) $secondFont;
+
+    &_line {
+      width: 100%;
+      margin: 0 rem(3) rem(7);
+      border-bottom: rem(1) dashed $DarkShade25;
+    }
+
+    &_text,
+    &_sum {
+      color: $DarkShade100;
+      font: bold rem(19) $secondFont;
+    }
+  }
+
+  &__options-item_text {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: rem(14);
+    line-height: rem(20);
+  }
+}

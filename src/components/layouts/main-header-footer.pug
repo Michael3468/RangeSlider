@@ -1,0 +1,21 @@
+block variables
+
+doctype html
+html(lang='ru')
+  head
+    include ./head-block.pug
+    +head-block()
+
+  body(class=pageClass)
+
+    .wrapper
+
+      include ../ui-kit/headers-and-footers/headers/headers
+      +header()
+
+      block content
+
+      include ../ui-kit/headers-and-footers/footers/footers
+      +footer()
+
+      block script

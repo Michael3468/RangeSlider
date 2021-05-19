@@ -1,0 +1,14 @@
+block variables
+
+doctype html
+html(lang='ru')
+  head
+    include ./head-block.pug
+    +head-block()
+
+  body(class=pageClass)
+
+    .wrapper
+      block content
+
+    block script

@@ -1,0 +1,44 @@
+@import '../../../../assets/scss/utils/vars.scss';
+@import '../../../../assets/scss/utils/mixins.scss';
+
+.registration {
+  &__caption {
+    margin-bottom: rem(17);
+    font-family: $secondFont;
+  }
+
+  &__radio-buttons_position {
+    margin-top: rem(-8);
+    margin-bottom: rem(23);
+  }
+
+  &__toggle_position {
+    margin-top: rem(-7);
+    margin-bottom: rem(23);
+  }
+
+  &__enter-button-block {
+    display: flex;
+    flex-shrink: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &_position {
+      margin-top: rem(30);
+    }
+  }
+
+  &__text-field {
+    &_position {
+      margin-bottom: rem(4);
+    }
+
+    &_block-position {
+      margin-top: rem(20);
+    }
+
+    &_block-margin-between {
+      margin-top: rem(4);
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@import '../../../assets/scss/utils/vars.scss';
+@import '../../../assets/scss/utils/mixins.scss';
+
+.landing-page {
+  &__background {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  &__room-search {
+    &_block-width {
+      width: rem(380);
+    }
+
+    &_position {
+      margin-top: rem(68);
+
+      @media screen and (max-width: $phoneWidth) {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__img-text {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    text-align: right;
+
+    &_position {
+      margin-top: 22vw;
+      margin-bottom: rem(20);
+    }
+  }
+}
+
+//- background animation
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.landing-page__fade-in {
+  animation-name: fade;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 10s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 20s;
+  }
+}
+//- background animation end

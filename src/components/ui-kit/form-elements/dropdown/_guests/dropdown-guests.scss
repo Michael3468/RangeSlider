@@ -1,0 +1,32 @@
+@import '../../../../../assets/scss/utils/vars.scss';
+@import '../../../../../assets/scss/utils/mixins.scss';
+
+.dropdown-guests {
+  // dropdown-guests--buttons.scss
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: rem(19) rem(0) rem(5) rem(5);
+  }
+
+  &__button_clean,
+  &__button_apply {
+    color: $purple;
+    font-weight: bold;
+    font-size: rem(12);
+    font-family: $secondFont;
+    text-transform: uppercase;
+    background: $default-color;
+    cursor: pointer;
+  }
+
+  &__button_clean {
+    visibility: hidden;
+
+    &_show {
+      visibility: visible;
+    }
+  }
+  // dropdown-guests--buttons.scss
+}

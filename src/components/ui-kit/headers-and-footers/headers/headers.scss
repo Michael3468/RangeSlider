@@ -1,0 +1,223 @@
+@import '../../../../assets/scss/utils/vars.scss';
+@import '../../../../assets/scss/utils/mixins.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  height: rem(72);
+  background-color: $default-color;
+
+  // nav
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+
+    &-link {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      color: $DarkShade50;
+      font-weight: normal;
+      font-family: $secondFont;
+      line-height: rem(25);
+      cursor: pointer;
+
+      &_active,
+      &:hover {
+        color: $DarkShade75;
+        font-weight: bold;
+      }
+    }
+
+    &-ul {
+      display: flex;
+      justify-content: space-between;
+      width: rem(446);
+      line-height: rem(17);
+    }
+
+    &-li:hover {
+      color: $DarkShade75;
+      font-weight: bold;
+    }
+  }
+  // nav end
+
+  // authorization
+  &__authorized {
+    display: flex;
+    justify-content: flex-end;
+    width: rem(120);
+    margin-left: rem(21);
+    color: $DarkShade50;
+    font-family: $secondFont;
+    border-left: rem(1) solid #f4f3f6;
+  }
+
+  &__notAuthorized {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: rem(21);
+  }
+
+  &__auth-buttons-padding:last-child {
+    margin-left: rem(21);
+  }
+  // authorization end
+
+  /* header dropdown */
+  &__nav-dropdown {
+    position: relative;
+    display: inline-block;
+
+    &-content {
+      position: absolute;
+      display: none;
+      font-weight: bold;
+      background: $menu-hover-color;
+      background-color: $default-color;
+    }
+
+    &:hover .header__nav-dropdown-content {
+      display: block;
+    }
+  }
+
+  &__dropdown-link {
+    display: inline-block;
+    justify-content: center;
+    width: 20vw;
+    padding: 0 rem(20);
+    color: $DarkShade75;
+    font-weight: normal;
+    background: $default-color;
+
+    &:hover {
+      font-weight: bold;
+      background: $menu-hover-color;
+    }
+  } /* header dropdown end */
+}
+
+.header__expand-menu {
+  display: -webkit-box;
+  flex-direction: row;
+}
+
+#header__menu-checkbox {
+  display: none;
+}
+
+/* adaptive header */
+.header__container {
+  z-index: 30;
+  height: rem(40);
+}
+
+.header__burger {
+  display: none;
+  color: $DarkShade50;
+  font-size: rem(40);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    &__authorized {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-self: flex-start;
+      margin-left: 0;
+    }
+
+    &__notAuthorized {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0;
+    }
+
+    &__authorized,
+    &__notAuthorized {
+      align-items: center;
+      width: 100vw;
+    }
+
+    &__shadow {
+      box-shadow: rem(0) rem(8) rem(7) rem(0) rgba(0, 0, 0, 0.2);
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__dropdown-link {
+      width: 100%;
+    }
+
+    &__auth-buttons-padding {
+      padding: rem(10) 0;
+
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+
+    // nav
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100vw;
+      margin-left: -$desktopWidthPadding;
+
+      &-ul {
+        width: 100%;
+      }
+
+      &-li {
+        width: 100%;
+        padding: rem(15) 0;
+        text-align: center;
+
+        &:hover {
+          background: $menu-hover-color;
+        }
+      }
+
+      &-dropdown-content {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    // nav end
+
+    // expand menu
+    &__expand-menu {
+      display: none;
+      background: $default-color;
+    }
+
+    &__burger {
+      display: block;
+      justify-content: flex-end;
+
+      &-logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    // expand menu end
+  }
+
+  #header__menu-checkbox:checked + nav[role='navigation'] .header__expand-menu {
+    display: block;
+  }
+} //- end @media screen and (max-width: 1024px)
+
+/* adaptive header end */

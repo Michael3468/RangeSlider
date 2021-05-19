@@ -1,0 +1,9 @@
+{
+  "cSpell.language": "en,ru",
+
+  "scss.validate": false,
+  "css.validate": false,
+  "less.validate": false,
+
+  "files.eol": "\n",
+}

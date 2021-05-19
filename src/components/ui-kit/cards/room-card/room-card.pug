@@ -1,0 +1,37 @@
+mixin room-card(params)
+  .room-card(id=`room-card-${params.id}`)
+    .room-card__picture-container
+      include ./slick-carousel/slick-carousel
+      +slick-carousel({photoName : params.photoName})
+
+    include ../booking/__caption/booking__caption
+    .room-card__number-price
+      +booking-caption({  roomNumber:    params.number,
+                          roomStatus:    params.status,
+                          roomPrice:     params.price,
+                          fontSize:     'number-price_font-size',
+                          marginBottom: 'number-price_m-bottom',
+                      })
+
+    .room-card__feedback-block
+      include ../../form-elements/rate-button/rate-button
+      +rate-button({rateBtnName: `rateBtnName-${params.number}`,
+                    rateBtnId:   `rateBtnId-${params.number}-`,
+                    starsCount:  params.starsRate})
+
+      include __feedbacks/__feedbacks
+      +feedbacks({
+                  number: params.feedbacks,
+                  text:   'Отзывов',
+                })
+
+
+//- example
+//- +room-card({  id:         index+1,
+//-               number:     room.number,
+//-               status:     room.luxStatus,
+//-               price:      `${room.price}₽`,
+//-               photoName:  `room-card-${room.number}.jpg`,
+//-               starsRate:  room.starsRate,
+//-               feedbacks:  room.feedbacks,
+//-           })
