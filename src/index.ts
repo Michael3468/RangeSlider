@@ -2,10 +2,6 @@ import './components/ui-kit/index/index';
 import './assets/js/common';
 import './components/ui-kit/logo/logo';
 import './assets/scss/main.scss';
-// test babel
-import './babel-test';
-// test ts
-import './typescript-test.ts';
 
 // Bootstrap (example)
 // import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css'
