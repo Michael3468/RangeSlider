@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
@@ -24,6 +25,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
+// eslint-disable-next-line no-unused-vars
 module.exports = new Promise((resolve, reject) => {
   resolve(devWebpackConfig);
 });
