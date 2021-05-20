@@ -2,7 +2,7 @@
 ```bash
 # Download repository:
 
-$ git clone https://github.com/WhiteDevilMan/webpack5_template
+$ git clone https://github.com/WhiteDevilMan/slider
 
 # Go to the folder:
 $ cd FSD
