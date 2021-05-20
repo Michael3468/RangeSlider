@@ -1,5 +1,5 @@
 import './components/ui-kit/index/index';
-// import './assets/js/common';
+import './assets/js/common';
 import './components/ui-kit/logo/logo';
 import './assets/scss/main.scss';
 // test babel
