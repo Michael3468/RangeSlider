@@ -8,6 +8,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist',
   target: 'web',
   devtool: 'eval-cheap-module-source-map',
+  stats: {
+    children: true,
+  },
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     // hot: true,
