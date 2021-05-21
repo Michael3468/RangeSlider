@@ -30,8 +30,8 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    'app': `${PATHS.src}/index.ts`,
-    'index'              : `${PATHS.ui_kit}/index/index.js`,
+    'app': `${PATHS.src}/app.ts`,
+    'index' : `${PATHS.ui_kit}/index/index.ts`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
