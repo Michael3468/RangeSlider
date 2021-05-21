@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable key-spacing */
 /* eslint-disable quote-props */
 const path = require('path');
@@ -30,16 +31,6 @@ module.exports = {
   },
   entry: {
     'app': `${PATHS.src}/index.ts`,
-    'landing-page': `${PATHS.site_pages}/landing-page/landing-page.js`,
-    'registration': `${PATHS.site_pages}/registration/registration.js`,
-    'room-details': `${PATHS.site_pages}/room-details/room-details.js`,
-    'search-room' : `${PATHS.site_pages}/search-room/search-room.js`,
-    'sign-in'     : `${PATHS.site_pages}/sign-in/sign-in.js`,
-
-    'cards'              : `${PATHS.ui_kit}/cards/cards.js`,
-    'colors-and-types'   : `${PATHS.ui_kit}/colors-and-types/colors-and-types.js`,
-    'form-elements'      : `${PATHS.ui_kit}/form-elements/form-elements.js`,
-    'headers-and-footers': `${PATHS.ui_kit}/headers-and-footers/headers-and-footers/headers-and-footers.js`,
     'index'              : `${PATHS.ui_kit}/index/index.js`,
   },
   output: {
