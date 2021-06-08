@@ -1,8 +1,12 @@
 extends ../components/layouts/main
 
 block variables
-  - var title = 'FSD Navigation Menu';
-  - var description = 'FSD education project | navigation page';
-  - var pageClass = 'navigation-page';
+  - var title = 'MetaLamp Slider';
+  - var description = 'MetaLamp Slider project demo page';
+  - var pageClass = 'slider-demo-page';
 
 block content
+
+  .slider__block
+    include ../components/ui-kit/slider/slider
+    +slider()
