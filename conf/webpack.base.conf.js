@@ -123,6 +123,7 @@ module.exports = {
     alias: {
       '~': 'src',
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new webpack.ProvidePlugin({
