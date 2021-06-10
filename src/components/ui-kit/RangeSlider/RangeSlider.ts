@@ -1,11 +1,11 @@
 import './RangeSlider.scss';
 import { Observer } from './Observer';
 
-const slider = document.querySelector('#slider');
+const slider = document.querySelector('#range-slider');
 let thumb: HTMLElement | null;
 
 if (slider) {
-  thumb = slider.querySelector('.thumb');
+  thumb = slider.querySelector('.range-slider__thumb');
   if (thumb) {
     thumb.onpointerdown = beginSliding;
     thumb.onpointerup = stopSliding;
