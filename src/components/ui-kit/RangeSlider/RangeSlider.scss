@@ -3,7 +3,7 @@ $slider-border-color: rgb(133, 133, 133);
 $slider-thumb-color: #fff;
 $slider-bg-color: #71ff84;
 
-.slider {
+.range-slider {
   width: 100% - calc(15 * 2);
   height: 6px;
   margin: $slider-margin;
@@ -14,7 +14,7 @@ $slider-bg-color: #71ff84;
 
 $thumb_position: 30%;
 
-.thumb {
+.range-slider__thumb {
   position: relative;
   top: -8px;
   left: $thumb_position;

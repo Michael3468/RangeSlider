@@ -1,3 +1,3 @@
 import './index.scss';
 
-import '../slider/slider.ts';
+import '../RangeSlider/RangeSlider.ts';
