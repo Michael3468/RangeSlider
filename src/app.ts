@@ -1,4 +1,4 @@
-import './components/ui-kit/index/index.ts';
+import './components/site-pages/index/index';
 import './assets/js/common';
 import './assets/scss/main.scss';
 

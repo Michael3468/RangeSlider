@@ -31,7 +31,7 @@ module.exports = {
   },
   entry: {
     'app': `${PATHS.src}/app.ts`,
-    'index' : `${PATHS.ui_kit}/index/index.ts`,
+    'index' : `${PATHS.site_pages}/index/index.ts`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
