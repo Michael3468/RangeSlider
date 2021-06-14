@@ -1,6 +1,18 @@
 import './RangeSlider.scss';
 
-import {View} from './View';
+import { Model } from './Model';
+import { View } from './View';
+import { Presenter } from './Presenter';
+
+
+const model: Model  = new Model();
+const view: View = new View('#range-slider');
+const presenter: Presenter = new Presenter(model, view);
+
+presenter.init();
+
+
+
 
 // const slider = document.querySelector('#range-slider');
 // let thumb_from: HTMLElement | null;
@@ -53,5 +65,3 @@ import {View} from './View';
 //   }
 // }
 
-const view: View = new View('#range-slider');
-view.createRangeSlider();
