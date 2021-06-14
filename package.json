@@ -54,12 +54,6 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "air-datepicker": "^2.2.3",
-    "d3": "^6.5.0",
-    "inputmask": "^5.0.5",
-    "ion-rangeslider": "^2.3.1",
-    "jquery": "^3.6.0",
-    "paginationjs": "^2.1.5",
-    "slick-carousel": "^1.8.1"
+    "jquery": "^3.6.0"
   }
 }
