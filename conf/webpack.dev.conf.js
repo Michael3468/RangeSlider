@@ -15,6 +15,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     contentBase: baseWebpackConfig.externals.paths.dist,
     // hot: true,
     port: 8081,
+    public: 'localhost:8081',
     overlay: {
       warnings: true,
       errors: true,
