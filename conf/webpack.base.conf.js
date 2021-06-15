@@ -15,7 +15,6 @@ const PATHS = {
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, '../dist'),
   site_pages: path.join(__dirname, '../src/components/site-pages'),
-  ui_kit: path.join(__dirname, '../src/components/ui-kit'),
   assets: 'assets/',
 };
 
@@ -31,7 +30,6 @@ module.exports = {
   },
   entry: {
     'app': `${PATHS.src}/app.ts`,
-    'index' : `${PATHS.site_pages}/index/index.ts`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
