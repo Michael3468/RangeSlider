@@ -1,41 +1,45 @@
 interface IOptions {
-  twoRunners: boolean
-};
+  twoRunners: boolean;
+}
 
 export class View {
-  slider: HTMLElement | null;
+  slider!: HTMLElement | null;
 
-  options:IOptions = {
+  options: IOptions = {
     twoRunners: true,
   };
 
-  constructor(id: string) {
-    this.slider = document.querySelector(id);
-    // this.thumb_from = this.slider.querySelector('.range-slider__thumb_from');
-    // this.thumb_to   = this.slider.querySelector('.range-slider__thumb_to');
+  constructor(id: string | null) {
+    id ? (this.slider = document.querySelector(id)) : null;
   }
 
   public createRangeSlider(options?: IOptions) {
-    console.log('RangeSlider created!'); // test
-    console.log("options: " + options);
 
-    // ЕСЛИ options.range === true (options.range получить из Model)
+    this.slider!.className = 'range-slider';
+
     if (options && options.twoRunners === true) {
-      console.log('twoRunners === true'); // test
-      // создаём двойной слайдер
-      let RangeSlider = 
-      `
-      <div class = "range-slider" id = "range-slider">
-        <div class="range-slider__between">
-          <div class = "range-slider__thumb_from"></div>
-          <div class = "range-slider__thumb_to"></div>
-        </div>
+      // двойной слайдер
+      let twoRunnersSlider: string = `
+      <div class="range-slider__between">
+        <div class ="range-slider__thumb_from"></div>
+        <div class ="range-slider__thumb_to"></div>
       </div>
       `;
-      this.slider?.append(RangeSlider);
+      this.slider?.insertAdjacentHTML('beforeend', twoRunnersSlider);
+      // добавить стили для range-slider__between (длина)
+      // добавить местоположение thumb_from
+      // добавить местоположение thumb_to
     } else {
-      // создаём одиночный слайдер
-      
+      // одиночный слайдер
+      let oneRunnerSlider: string = `
+      <div class="range-slider__between">
+        <div class ="range-slider__thumb_to"></div>
+      </div>
+      `;
+      this.slider?.insertAdjacentHTML('beforeend', oneRunnerSlider);
+      // добавить стили для range-slider__between (длина)
+      // добавить местоположение thumb_from
+      // добавить местоположение thumb_to
     }
-  };
+  }
 }
