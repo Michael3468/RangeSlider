@@ -4,12 +4,31 @@ import { Model } from './Model';
 import { View } from './View';
 import { Presenter } from './Presenter';
 
+declare global {
+  interface JQuery {
+    RangeSlider(arg?: any): JQuery;
+  }
+};
 
-const model: Model  = new Model();
-const view: View = new View('#range-slider');
-const presenter: Presenter = new Presenter(model, view);
+(function($){
 
-presenter.init();
+  $.fn.RangeSlider = function():any {
+
+    let elementId: string|null = this[0] ? `#${this[0].id}` : null ;
+
+    const model: Model  = new Model();
+    const view: View = new View(elementId);
+    const presenter: Presenter = new Presenter(model, view);
+
+    presenter.initRangeSlider();
+
+    return this;
+  };
+
+})(jQuery);
+
+
+
 
 
 
