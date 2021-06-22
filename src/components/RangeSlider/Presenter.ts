@@ -10,8 +10,7 @@ export class Presenter {
     this.view = View;
   }
 
-  init() {
-    console.log(this.view);
-    console.log(this.model.getOptions());
+  public initRangeSlider() {
+    this.view.createRangeSlider(this.model.getOptions());
   }
 }
