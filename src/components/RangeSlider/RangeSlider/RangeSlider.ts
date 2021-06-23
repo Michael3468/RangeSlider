@@ -29,8 +29,6 @@ export interface ISettings {
 
   $.fn.RangeSlider = function (userOptions): any {
     let mergedSettings = $.extend({}, defaultSettings, userOptions);
-
-    // get element id of the element
     let elementId: string | null = this[0] ? `#${this[0].id}` : null;
 
     const model: Model = new Model(mergedSettings);
