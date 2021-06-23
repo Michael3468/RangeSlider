@@ -8,15 +8,32 @@ declare global {
   interface JQuery {
     RangeSlider(arg?: any): JQuery;
   }
-};
+}
 
-(function($){
+export interface ISettings {
+  min: number;
+  max: number;
+  isTwoRunners: boolean;
+  thumb_from_value: number;
+  thumb_to_value: number;
+}
 
-  $.fn.RangeSlider = function():any {
+(function ($) {
+  let defaultSettings: ISettings = {
+    min: 0,
+    max: 100,
+    isTwoRunners: true,
+    thumb_from_value: 30,
+    thumb_to_value: 70,
+  };
 
-    let elementId: string|null = this[0] ? `#${this[0].id}` : null ;
+  $.fn.RangeSlider = function (userOptions): any {
+    let mergedSettings = $.extend({}, defaultSettings, userOptions);
 
-    const model: Model  = new Model();
+    // get element id of the element
+    let elementId: string | null = this[0] ? `#${this[0].id}` : null;
+
+    const model: Model = new Model(mergedSettings);
     const view: View = new View(elementId);
     const presenter: Presenter = new Presenter(model, view);
 
@@ -24,14 +41,7 @@ declare global {
 
     return this;
   };
-
 })(jQuery);
-
-
-
-
-
-
 
 // const slider = document.querySelector('#range-slider');
 // let thumb_from: HTMLElement | null;
@@ -83,4 +93,3 @@ declare global {
 //     thumb_from.releasePointerCapture(event.pointerId);
 //   }
 // }
-
