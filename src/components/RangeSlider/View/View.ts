@@ -1,4 +1,4 @@
-import { ISettings } from './RangeSlider';
+import { ISettings } from '../RangeSlider/RangeSlider';
 
 export class View {
   slider!: HTMLElement | null;

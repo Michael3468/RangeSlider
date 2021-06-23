@@ -1,5 +1,5 @@
 import './index.scss';
-import '../../RangeSlider/RangeSlider';
+import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
   min: 20,

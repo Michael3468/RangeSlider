@@ -1,4 +1,4 @@
-import { ISettings } from './RangeSlider';
+import { ISettings } from '../RangeSlider/RangeSlider';
 
 export class Model {
   minValue: number;

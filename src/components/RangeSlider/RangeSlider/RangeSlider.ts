@@ -1,8 +1,8 @@
 import './RangeSlider.scss';
 
-import { Model } from './Model';
-import { View } from './View';
-import { Presenter } from './Presenter';
+import { Model } from '../Model/Model';
+import { View } from '../View/View';
+import { Presenter } from '../Presenter/Presenter';
 
 declare global {
   interface JQuery {
