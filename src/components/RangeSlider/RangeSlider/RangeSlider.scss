@@ -6,8 +6,8 @@ $slider-between-bg-color: #71ff84;
 
 $slider-height: 6;
 .range-slider {
-  width: 100% - calc(15 * 2);
-  height: $slider-height + 'px';
+  width: auto;
+  height: $slider-height + px;
   margin: $slider-margin;
   background: $slider-bg-color;
   border: 1px solid $slider-border-color;
