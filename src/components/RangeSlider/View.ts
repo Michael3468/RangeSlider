@@ -1,23 +1,17 @@
-interface IOptions {
-  twoRunners: boolean;
-}
+import { ISettings } from './RangeSlider';
 
 export class View {
   slider!: HTMLElement | null;
 
-  options: IOptions = {
-    twoRunners: true,
-  };
-
   constructor(id: string | null) {
-    id ? (this.slider = document.querySelector(id)) : null;
+    this.slider = id ? document.querySelector(id) : null;
   }
 
-  public createRangeSlider(options?: IOptions) {
+  createRangeSlider(settings?: ISettings) {
 
     this.slider!.className = 'range-slider';
 
-    if (options && options.twoRunners === true) {
+    if (settings && settings.isTwoRunners === true) {
       // двойной слайдер
       let twoRunnersSlider: string = `
       <div class="range-slider__between">
