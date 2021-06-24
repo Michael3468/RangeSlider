@@ -3,14 +3,15 @@ import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
   min: 20,
-  max: 50,
-  thumb_from_value: 10,
-  thumb_to_value: 80
+  max: 150,
+  thumb_from_value: 30,
+  thumb_to_value: 75
 });
 
 $('#range-slider2').RangeSlider({
   min: 22,
-  max: 55,
+  max: 150,
   thumb_from_value: 35,
-  thumb_to_value: 70
+  thumb_to_value: 50,
+  isTwoRunners: false
 });
