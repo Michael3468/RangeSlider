@@ -14,12 +14,16 @@ export class View {
     // create element range-slider__between
     const rsBetween: HTMLElement = document.createElement('div');
     rsBetween.className = 'range-slider__between';
-    // set margin-left и margin-right (from settings)
-    rsBetween.style.marginLeft = settings.thumb_from_value + '%';
-    rsBetween.style.marginRight = 100 - settings.thumb_to_value + '%';
+
+    // set margin-right for slider
+    const percent = settings.max / 100;
+    rsBetween.style.marginRight = (settings.max - settings.thumb_to_value) / percent + '%';
 
     // if slider with two runners
     if (settings.isTwoRunners === true) {
+      // set margin-left for twoRunners slider
+      rsBetween.style.marginLeft = (settings.thumb_from_value - settings.min) + '%';
+
       // create element range-slider__thumb_from
       const rsThumbFrom: HTMLElement = document.createElement('div');
       rsThumbFrom.className = 'range-slider__thumb_from';
@@ -33,8 +37,8 @@ export class View {
 
     // add elements to this.slider
     this.slider?.insertAdjacentElement('beforeend', rsBetween);
-
-    // create scale
-    // add scale to slider 'afterend'
   }
+
+  // function createScale() {}
+  // add scale to slider 'afterend'
 }
