@@ -7,13 +7,39 @@ export class Model {
   thumb_from_value: number;
   thumb_to_value: number;
 
-  constructor(settings?: ISettings) {
+  constructor(settings: ISettings) {
     // default options
-    this.minValue = settings?.min || 0;
-    this.maxValue = settings?.max || 100;
-    this.isTwoRunners = settings?.isTwoRunners || true;
-    this.thumb_from_value = settings?.thumb_from_value || 30,
-    this.thumb_to_value = settings?.thumb_to_value || 70
+    this.minValue = settings.min;
+    this.maxValue = settings.max; // TODO setMaxValue()
+    this.isTwoRunners = settings.isTwoRunners;
+
+    if (settings.isTwoRunners === true) {
+      this.thumb_from_value = this.getThumbFromValue(settings);
+    } else {
+      this.thumb_from_value = this.minValue; // test it
+    }
+
+    this.thumb_to_value = this.getThumbToValue(settings);
+  }
+
+  private getThumbFromValue(settings: ISettings): number {
+    if (this.minValue > settings.thumb_from_value) {
+      return this.minValue;
+    } else if (this.maxValue < settings.thumb_from_value) {
+      return this.maxValue;
+    } else {
+      return settings.thumb_from_value;
+    }
+  };
+
+  private getThumbToValue(settings: ISettings): number {
+    if(this.maxValue < settings.thumb_to_value) {
+      return this.maxValue;
+    } else if (this.minValue > settings.thumb_to_value) {
+      return this.minValue;
+    } else {
+      return settings.thumb_to_value;
+    }
   }
 
   getOptions() {
