@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "ES2015",
-    "module": "commonjs",
+    "module": "ES2015",
     "moduleResolution": "node",
     "allowJs": true,
     "removeComments": true,
