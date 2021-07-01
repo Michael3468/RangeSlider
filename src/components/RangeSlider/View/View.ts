@@ -20,7 +20,7 @@ export class View {
   }
 
   createRangeSlider(settings: ISettings) {
-    this.slider!.className = 'range-slider'; // TODO wrap in slider__block || range-slider_block
+    this.slider!.className = 'range-slider';
     // create element range-slider__between
     const rsBetween: HTMLElement = document.createElement('div');
     rsBetween.className = 'range-slider__between';
