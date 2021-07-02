@@ -1,6 +1,8 @@
 import { Model } from '../Model/Model';
 import { View } from '../View/View';
 
+import { ISliderElements } from '../View/View';
+
 export class Presenter {
   model: Model;
   view: View;
@@ -11,7 +13,9 @@ export class Presenter {
   }
 
   public initRangeSlider() {
-    console.log(this.model.getOptions()); // test
-    this.view.createRangeSlider(this.model.getOptions());
+    let sliderElements: ISliderElements;
+    sliderElements = this.view.createRangeSlider(this.model.getSettings());
+
+    this.model.updateSettings(sliderElements);
   }
 }
