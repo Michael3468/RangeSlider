@@ -6,43 +6,42 @@ export interface ISliderElements {
   slider: TSliderElement;
   from: TSliderElement;
   to: TSliderElement;
-  rsBetween: TSliderElement;
+  range: TSliderElement;
 }
 
 export class View {
   slider!: HTMLElement | null;
   from: TSliderElement;
   to: TSliderElement;
-  rsBetween: TSliderElement;
+  range: TSliderElement;
   percent: number;
 
   constructor(id: string | null) {
     this.slider = id ? document.querySelector(id) : null;
     this.from;
     this.to;
-    this.rsBetween;
+    this.range;
     this.percent = 0;
   }
 
   createRangeSlider(settings: ISettings): ISliderElements {
     this.slider!.className = 'range-slider';
     // create element range-slider__between
-    const rsBetween: HTMLElement = document.createElement('div');
-    rsBetween.className = 'range-slider__between';
+    const range: HTMLElement = document.createElement('div');
+    range.className = 'range-slider__between';
 
-    // set margin-right for rsBetween
+    // set margin-right for range
     this.percent = settings.max / 100; // TODO add to Model
-    rsBetween.style.marginRight =
+    range.style.marginRight =
       (settings.max - settings.thumb_to_value) / this.percent + '%';
 
     // if slider with two runners
     if (settings.isTwoRunners === true) {
       // set margin-left for twoRunners slider
-      rsBetween.style.marginLeft =
-        settings.thumb_from_value - settings.min + '%';
+      range.style.marginLeft = settings.thumb_from_value - settings.min + '%';
     }
-    this.rsBetween = rsBetween;
-    this.slider?.appendChild(rsBetween);
+    this.range = range;
+    this.slider?.appendChild(range);
 
     // create thumbs
     if (settings.isTwoRunners === true) {
@@ -66,7 +65,7 @@ export class View {
       slider: this.slider,
       from: this.from,
       to: this.to,
-      rsBetween: this.rsBetween,
+      range: this.range,
     };
     return sliderElements;
   }

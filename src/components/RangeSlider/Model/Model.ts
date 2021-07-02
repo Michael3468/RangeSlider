@@ -12,7 +12,7 @@ export class Model {
   slider: TSliderElement;
   from: TSliderElement;
   to: TSliderElement;
-  rsBetween: TSliderElement;
+  range: TSliderElement;
 
   constructor(settings: ISettings) {
     // default options
@@ -32,7 +32,7 @@ export class Model {
     this.slider;
     this.from;
     this.to;
-    this.rsBetween;
+    this.range;
 
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
@@ -81,7 +81,7 @@ export class Model {
     this.slider = sliderElements.slider;
     this.from = sliderElements.from;
     this.to = sliderElements.to;
-    this.rsBetween = sliderElements.rsBetween;
+    this.range = sliderElements.range;
 
     this.addListenersToThumbs();
   }
@@ -112,11 +112,9 @@ export class Model {
     let newPosition: number;
     let fromX: number;
     let newPercentPosition: number;
-    let betweenLeftPosition: number = parseFloat(
-      this.rsBetween!.style.marginLeft
-    );
+    let betweenLeftPosition: number = parseFloat(this.range!.style.marginLeft);
     let betweenRightPosition: number = parseFloat(
-      this.rsBetween!.style.marginRight
+      this.range!.style.marginRight
     );
 
     event.target.onpointermove = (event: any) => {
@@ -135,14 +133,14 @@ export class Model {
       if (event.target.className === 'range-slider__thumb_from') {
         event.target.style.marginLeft =
           betweenLeftPosition + newPercentPosition + '%';
-        this.rsBetween!.style.marginLeft =
+        this.range!.style.marginLeft =
           betweenLeftPosition + newPercentPosition + '%';
         return;
       }
       if (event.target.className === 'range-slider__thumb_to') {
         event.target.style.marginLeft =
           100 - betweenRightPosition + newPercentPosition + '%';
-        this.rsBetween!.style.marginRight =
+        this.range!.style.marginRight =
           betweenRightPosition - newPercentPosition + '%';
         return;
       }
