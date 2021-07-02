@@ -1,6 +1,13 @@
 import { ISettings } from '../RangeSlider/RangeSlider';
 
-type TSliderElement = HTMLElement | null | undefined;
+export type TSliderElement = HTMLElement | null | undefined;
+
+export interface ISliderElements {
+  slider: TSliderElement;
+  from: TSliderElement;
+  to: TSliderElement;
+  rsBetween: TSliderElement;
+}
 
 export class View {
   slider!: HTMLElement | null;
@@ -15,11 +22,9 @@ export class View {
     this.to;
     this.rsBetween;
     this.percent = 0;
-    this.beginSliding = this.beginSliding.bind(this);
-    this.stopSliding = this.stopSliding.bind(this);
   }
 
-  createRangeSlider(settings: ISettings) {
+  createRangeSlider(settings: ISettings): ISliderElements {
     this.slider!.className = 'range-slider';
     // create element range-slider__between
     const rsBetween: HTMLElement = document.createElement('div');
@@ -44,7 +49,8 @@ export class View {
       // create element range-slider__thumb_from
       const thumbFrom: HTMLElement = document.createElement('div');
       thumbFrom.className = 'range-slider__thumb_from';
-      thumbFrom.style.marginLeft = settings.thumb_from_value - settings.min + '%';
+      thumbFrom.style.marginLeft =
+        settings.thumb_from_value - settings.min + '%';
       this.from = thumbFrom;
       this.slider?.appendChild(thumbFrom);
     }
@@ -56,66 +62,12 @@ export class View {
     this.to = thumbTo;
     this.slider?.appendChild(thumbTo);
 
-    this.addListenersToThumbs();
-  }
-
-  private addListenersToThumbs() {
-    if (typeof this.from !== 'undefined') {
-      this.from!.addEventListener('pointerdown', this.beginSliding);
-      this.from!.addEventListener('pointerup', this.stopSliding);
-    }
-
-    if (typeof this.to !== 'undefined') {
-      this.to!.addEventListener('pointerdown', this.beginSliding);
-      this.to!.addEventListener('pointerup', this.stopSliding);
-    }
-  }
-
-  // TODO event type?
-  private beginSliding(event: any): void {
-    event.preventDefault();
-    event.target.setPointerCapture(event?.pointerId);
-
-    let startX = event.clientX;
-    let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
-    let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
-    let sliderWidth: number = this.slider!.getBoundingClientRect().width;
-    let ThumbHalfWidth: number = event.target.offsetWidth / 2;
-    let newPosition: number;
-    let fromX: number;
-    let newPercentPosition: number;
-    let betweenLeftPosition: number = parseFloat(this.rsBetween!.style.marginLeft);
-    let betweenRightPosition: number = parseFloat(this.rsBetween!.style.marginRight);
-
-    event.target.onpointermove = (event: any) => {
-      fromX = event.clientX;
-
-      if (fromX < sliderEdgeLeft) {
-        fromX = sliderEdgeLeft;
-      }
-      if (fromX > sliderEdgeRight) {
-        fromX = sliderEdgeRight;
-      }
-
-      newPosition = fromX - startX - ThumbHalfWidth;
-      newPercentPosition = (newPosition + ThumbHalfWidth) / (sliderWidth / 100)
-
-      if (event.target.className === 'range-slider__thumb_from') {
-        event.target.style.marginLeft = betweenLeftPosition + newPercentPosition + '%';
-        this.rsBetween!.style.marginLeft = betweenLeftPosition + newPercentPosition + '%';
-        return;
-      }
-      if (event.target.className === 'range-slider__thumb_to') {
-        event.target.style.marginLeft = 100 - betweenRightPosition + newPercentPosition + '%';
-        this.rsBetween!.style.marginRight = betweenRightPosition - newPercentPosition + '%';
-        return;
-      }
+    let sliderElements: ISliderElements = {
+      slider: this.slider,
+      from: this.from,
+      to: this.to,
+      rsBetween: this.rsBetween,
     };
+    return sliderElements;
   }
-
-  private stopSliding(event: any): void {
-    event.target.onpointermove = null;
-    event.target.releasePointerCapture(event.pointerId);
-  }
-
 }

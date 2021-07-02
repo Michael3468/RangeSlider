@@ -1,4 +1,6 @@
 import { ISettings } from '../RangeSlider/RangeSlider';
+import { ISliderElements } from '../View/View';
+import { TSliderElement } from '../View/View';
 
 export class Model {
   minValue: number;
@@ -6,6 +8,11 @@ export class Model {
   isTwoRunners: boolean;
   thumb_from_value: number;
   thumb_to_value: number;
+
+  slider: TSliderElement;
+  from: TSliderElement;
+  to: TSliderElement;
+  rsBetween: TSliderElement;
 
   constructor(settings: ISettings) {
     // default options
@@ -20,6 +27,15 @@ export class Model {
     }
 
     this.thumb_to_value = this.getThumbToValue(settings);
+
+    // sliderElements
+    this.slider;
+    this.from;
+    this.to;
+    this.rsBetween;
+
+    this.beginSliding = this.beginSliding.bind(this);
+    this.stopSliding = this.stopSliding.bind(this);
   }
 
   private getThumbFromValue(settings: ISettings): number {
@@ -51,7 +67,7 @@ export class Model {
     }
   }
 
-  getOptions() {
+  public getSettings() {
     return {
       min: this.minValue,
       max: this.maxValue,
@@ -59,5 +75,82 @@ export class Model {
       thumb_from_value: this.thumb_from_value,
       thumb_to_value: this.thumb_to_value,
     };
+  }
+
+  public updateSettings(sliderElements: ISliderElements) {
+    this.slider = sliderElements.slider;
+    this.from = sliderElements.from;
+    this.to = sliderElements.to;
+    this.rsBetween = sliderElements.rsBetween;
+
+    this.addListenersToThumbs();
+  }
+
+  private addListenersToThumbs() {
+    if (typeof this.from !== 'undefined') {
+      this.from!.addEventListener('pointerdown', this.beginSliding);
+      this.from!.addEventListener('pointerup', this.stopSliding);
+    }
+
+    if (typeof this.to !== 'undefined') {
+      this.to!.addEventListener('pointerdown', this.beginSliding);
+      this.to!.addEventListener('pointerup', this.stopSliding);
+    }
+  }
+
+  // TODO event type?
+  private beginSliding(event: any) {
+    event.preventDefault();
+    event.target.setPointerCapture(event?.pointerId);
+
+    // console.log(this);
+    let startX = event.clientX;
+    let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
+    let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
+    let sliderWidth: number = this.slider!.getBoundingClientRect().width;
+    let ThumbHalfWidth: number = event.target.offsetWidth / 2;
+    let newPosition: number;
+    let fromX: number;
+    let newPercentPosition: number;
+    let betweenLeftPosition: number = parseFloat(
+      this.rsBetween!.style.marginLeft
+    );
+    let betweenRightPosition: number = parseFloat(
+      this.rsBetween!.style.marginRight
+    );
+
+    event.target.onpointermove = (event: any) => {
+      fromX = event.clientX;
+
+      if (fromX < sliderEdgeLeft) {
+        fromX = sliderEdgeLeft;
+      }
+      if (fromX > sliderEdgeRight) {
+        fromX = sliderEdgeRight;
+      }
+
+      newPosition = fromX - startX - ThumbHalfWidth;
+      newPercentPosition = (newPosition + ThumbHalfWidth) / (sliderWidth / 100);
+
+      if (event.target.className === 'range-slider__thumb_from') {
+        event.target.style.marginLeft =
+          betweenLeftPosition + newPercentPosition + '%';
+        this.rsBetween!.style.marginLeft =
+          betweenLeftPosition + newPercentPosition + '%';
+        return;
+      }
+      if (event.target.className === 'range-slider__thumb_to') {
+        event.target.style.marginLeft =
+          100 - betweenRightPosition + newPercentPosition + '%';
+        this.rsBetween!.style.marginRight =
+          betweenRightPosition - newPercentPosition + '%';
+        return;
+      }
+    };
+  }
+
+  private stopSliding(event: any): void {
+    event.target.onpointermove = null;
+    event.target.releasePointerCapture(event.pointerId);
   }
 }
