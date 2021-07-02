@@ -104,7 +104,7 @@ export class Model {
     event.target.setPointerCapture(event?.pointerId);
 
     // console.log(this);
-    let startX = event.clientX;
+    let startX: number = event.clientX;
     let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
     let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
     let sliderWidth: number = this.slider!.getBoundingClientRect().width;
