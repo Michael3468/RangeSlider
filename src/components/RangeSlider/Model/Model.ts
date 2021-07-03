@@ -81,7 +81,7 @@ export class Model {
     this.slider = sliderElements.slider;
     this.from = sliderElements.from;
     this.to = sliderElements.to;
-    this.range = sliderElements.range;
+    this.range = sliderElements.range.element;
 
     this.addListenersToThumbs();
   }
