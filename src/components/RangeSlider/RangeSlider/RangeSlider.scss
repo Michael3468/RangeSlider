@@ -6,36 +6,38 @@ $slider-between-bg-color: #71ff84;
 
 $slider-height: 7;
 $slider-range-border: 1;
+
 .range-slider {
   position: relative;
   width: auto;
   height: $slider-height + px;
   margin: $slider-margin;
   background: $slider-bg-color;
-  border: $slider-range-border +px solid $slider-border-color;
+  border: $slider-range-border + px solid $slider-border-color;
   border-radius: calc(#{$slider-height} / 2) + 'px';
 }
 
-.range-slider__between {
-  display: flex;
+.range-slider__range {
   position: relative;
+  display: flex;
   box-sizing: border-box;
+  height: $slider-height - $slider-range-border * 2 + px;
   background: $slider-between-bg-color;
-  height: $slider-height - $slider-range-border*2 +px;
-  border-radius: $slider-height/2 +px;
+  border-radius: $slider-height/2 + px;
 }
 
 $thumb-size: 20;
+
 .range-slider__thumb_from,
 .range-slider__thumb_to {
   position: absolute;
+  top: -8px;
+  left: calc(#{$thumb-size} / -2) + 'px';
+  z-index: 5;
   width: $thumb-size + px;
   height: $thumb-size + px;
-  top: -8px;
   background: $slider-thumb-color;
   border: 1px solid $slider-border-color;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 5;
-  left: calc(#{$thumb-size} / -2) + 'px';
 }
