@@ -26,7 +26,27 @@ export class View {
     this.range = new Range();
   }
 
-  createRangeSlider(settings: ISettings): ISliderElements {
+  public createRangeSlider(settings: ISettings): ISliderElements {
+
+    if (settings.isTwoRunners === true) {
+      this.slider.element!.appendChild(this.from.element);
+    }
+    this.slider.element!.appendChild(this.to.element);
+    this.slider.element!.appendChild(this.range.element);
+
+    this.updateRangeSlider(settings);
+
+    let sliderElements: ISliderElements = {
+      slider: this.slider,
+      from: this.from,
+      to: this.to,
+      range: this.range,
+    };
+
+    return sliderElements;
+  }
+
+  private updateRangeSlider(settings: ISettings) {
 
     let rangeLength = settings.max - settings.min; // TODO add to Model
     let rangePercent = rangeLength / 100; // TODO add to Model
@@ -36,30 +56,13 @@ export class View {
     let thumbFromMargin = rangeLeftMargin; // TODO add to Model
     let thumbToMargin = 100 - rangeRightMargin; // TODO add to Model
 
-
-    this.range.setMarginRight(rangeRightMargin); // TODO to updateRangeSlider
-
+    this.range.setMarginRight(rangeRightMargin);
     if (settings.isTwoRunners === true) {
-      this.range.setMarginLeft(rangeLeftMargin); // TODO to updateRangeSlider
-
-      this.from.setMarginLeft(thumbFromMargin);  // TODO to updateRangeSlider
-      this.slider.element!.appendChild(this.from.element);
+      this.range.setMarginLeft(rangeLeftMargin);
+      this.from.setMarginLeft(thumbFromMargin);
     }
-    this.slider.element!.appendChild(this.range.element);
-
-    this.to.setMarginLeft(thumbToMargin);
-    this.slider.element!.appendChild(this.to.element);
-
-
-    let sliderElements: ISliderElements = {
-      slider: this.slider,
-      from: this.from,
-      to: this.to,
-      range: this.range,
-    };
-    return sliderElements;
+    this.to.setMarginLeft(thumbToMargin); 
   }
-
   // private getSettings(): ISettings {
   //   return this.presenter.getSettings();
   // }
