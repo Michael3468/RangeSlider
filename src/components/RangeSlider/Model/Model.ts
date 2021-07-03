@@ -78,7 +78,7 @@ export class Model {
   }
 
   public updateSettings(sliderElements: ISliderElements) {
-    this.slider = sliderElements.slider;
+    this.slider = sliderElements.slider.element;
     this.from = sliderElements.from.element;
     this.to = sliderElements.to.element;
     this.range = sliderElements.range.element;

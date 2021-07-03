@@ -1,26 +1,26 @@
 import { ISettings } from '../RangeSlider/RangeSlider';
-import { Range } from './Range';
+
+import { Slider } from './Slider';
 import { Thumb } from './Thumb';
+import { Range } from './Range';
 
 export type TSliderElement = HTMLElement | null | undefined;
 
 export interface ISliderElements {
-  slider: TSliderElement;
+  slider: Slider;
   from: Thumb;
   to: Thumb;
   range: Range;
 }
 
 export class View {
-  slider!: HTMLElement | null;
+  slider: Slider;
   from: Thumb;
   to: Thumb;
   range: Range;
 
-  constructor(id: string | null) {
-    this.slider = id ? document.querySelector(id) : null;
-    this.slider!.className = 'range-slider';
-
+  constructor(id: string) {
+    this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
     this.range = new Range();
@@ -43,12 +43,12 @@ export class View {
       this.range.setMarginLeft(rangeLeftMargin); // TODO to updateRangeSlider
 
       this.from.setMarginLeft(thumbFromMargin);  // TODO to updateRangeSlider
-      this.slider!.appendChild(this.from.element);
+      this.slider.element!.appendChild(this.from.element);
     }
-    this.slider!.appendChild(this.range.element);
+    this.slider.element!.appendChild(this.range.element);
 
     this.to.setMarginLeft(thumbToMargin);
-    this.slider!.appendChild(this.to.element);
+    this.slider.element!.appendChild(this.to.element);
 
 
     let sliderElements: ISliderElements = {
