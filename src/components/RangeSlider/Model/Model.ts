@@ -110,12 +110,10 @@ export class Model {
     event.preventDefault();
     event.target.setPointerCapture(event?.pointerId);
 
-    // console.log(this);
     let startX: number = event.clientX;
     let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
     let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
     let sliderWidth: number = this.slider!.getBoundingClientRect().width;
-    let ThumbHalfWidth: number = event.target.offsetWidth / 2; // static
     let newPosition: number;
     let fromX: number;
     let newPercentPosition: number;
@@ -131,8 +129,8 @@ export class Model {
         fromX = sliderEdgeRight;
       }
 
-      newPosition = fromX - startX - ThumbHalfWidth;
-      newPercentPosition = (newPosition + ThumbHalfWidth) / (sliderWidth / 100);
+      newPosition = fromX - startX;
+      newPercentPosition = newPosition / (sliderWidth / 100);
 
       if (event.target.className === 'range-slider__thumb_from') {
         event.target.style.marginLeft =
