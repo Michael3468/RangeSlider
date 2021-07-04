@@ -115,14 +115,12 @@ export class Model {
     let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
     let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
     let sliderWidth: number = this.slider!.getBoundingClientRect().width;
-    let ThumbHalfWidth: number = event.target.offsetWidth / 2;
+    let ThumbHalfWidth: number = event.target.offsetWidth / 2; // static
     let newPosition: number;
     let fromX: number;
     let newPercentPosition: number;
-    let betweenLeftPosition: number = parseFloat(this.range!.style.marginLeft);
-    let betweenRightPosition: number = parseFloat(
-      this.range!.style.marginRight
-    );
+    let rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
+    let rangeMarginRight: number = parseFloat(this.range!.style.marginRight);
 
     event.target.onpointermove = (event: any) => {
       fromX = event.clientX;
@@ -138,16 +136,16 @@ export class Model {
 
       if (event.target.className === 'range-slider__thumb_from') {
         event.target.style.marginLeft =
-          betweenLeftPosition + newPercentPosition + '%';
+          rangeMarginLeft + newPercentPosition + '%';
         this.range!.style.marginLeft =
-          betweenLeftPosition + newPercentPosition + '%';
+          rangeMarginLeft + newPercentPosition + '%';
         return;
       }
       if (event.target.className === 'range-slider__thumb_to') {
         event.target.style.marginLeft =
-          100 - betweenRightPosition + newPercentPosition + '%';
+          100 - rangeMarginRight + newPercentPosition + '%';
         this.range!.style.marginRight =
-          betweenRightPosition - newPercentPosition + '%';
+          rangeMarginRight - newPercentPosition + '%';
         return;
       }
 
