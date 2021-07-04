@@ -110,40 +110,25 @@ export class Model {
     event.preventDefault();
     event.target.setPointerCapture(event?.pointerId);
 
-    let startX: number = event.clientX;
-    let sliderEdgeLeft: number = this.slider!.getBoundingClientRect().left;
-    let sliderEdgeRight: number = this.slider!.getBoundingClientRect().right;
-    let sliderWidth: number = this.slider!.getBoundingClientRect().width;
+    let startCursorPosition: number = event.clientX;
+    let percent: number = this.slider!.getBoundingClientRect().width / 100;
     let newPosition: number;
-    let fromX: number;
     let newPercentPosition: number;
     let rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
     let rangeMarginRight: number = parseFloat(this.range!.style.marginRight);
 
     event.target.onpointermove = (event: any) => {
-      fromX = event.clientX;
-
-      if (fromX < sliderEdgeLeft) {
-        fromX = sliderEdgeLeft;
-      } else if (fromX > sliderEdgeRight) {
-        fromX = sliderEdgeRight;
-      }
-
-      newPosition = fromX - startX;
-      newPercentPosition = newPosition / (sliderWidth / 100);
+      newPosition = this.currentCursorPosition(event) - startCursorPosition;
+      newPercentPosition = newPosition / percent;
 
       if (event.target.className === 'range-slider__thumb_from') {
-        event.target.style.marginLeft =
-          rangeMarginLeft + newPercentPosition + '%';
-        this.range!.style.marginLeft =
-          rangeMarginLeft + newPercentPosition + '%';
+        event.target.style.marginLeft = rangeMarginLeft + newPercentPosition + '%';
+        this.range!.style.marginLeft = rangeMarginLeft + newPercentPosition + '%';
         return;
       }
       if (event.target.className === 'range-slider__thumb_to') {
-        event.target.style.marginLeft =
-          100 - rangeMarginRight + newPercentPosition + '%';
-        this.range!.style.marginRight =
-          rangeMarginRight - newPercentPosition + '%';
+        event.target.style.marginLeft = 100 - rangeMarginRight + newPercentPosition + '%';
+        this.range!.style.marginRight = rangeMarginRight - newPercentPosition + '%';
         return;
       }
 
@@ -181,5 +166,20 @@ export class Model {
   private stopSliding(event: any): void {
     event.target.onpointermove = null;
     event.target.releasePointerCapture(event.pointerId);
+  }
+
+  private currentCursorPosition(event: any): number {
+    let currentPos: number = event.clientX;
+
+    let sliderEdgeLeft: number = this.slider?.getBoundingClientRect().left || 0;
+    let sliderEdgeRight: number = this.slider?.getBoundingClientRect().right || 0;
+
+    if (currentPos < sliderEdgeLeft) {
+      currentPos = sliderEdgeLeft;
+    } else if (currentPos > sliderEdgeRight) {
+      currentPos = sliderEdgeRight;
+    }
+
+    return currentPos;
   }
 }
