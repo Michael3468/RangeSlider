@@ -1,6 +1,8 @@
 import { ISettings } from '../RangeSlider/RangeSlider';
 import { ISliderElements } from '../View/View';
-import { TSliderElement } from '../View/View';
+// import { TSliderElement } from '../View/View';
+
+type TSliderElement = HTMLElement | null | undefined;
 
 export class Model {
   minValue: number;

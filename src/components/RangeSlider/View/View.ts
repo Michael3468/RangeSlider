@@ -4,8 +4,6 @@ import { Slider } from './Slider';
 import { Thumb } from './Thumb';
 import { Range } from './Range';
 
-export type TSliderElement = HTMLElement | null | undefined;
-
 export interface ISliderElements {
   slider: Slider;
   from: Thumb;
@@ -46,7 +44,7 @@ export class View {
     return sliderElements;
   }
 
-  private updateRangeSlider(settings: ISettings) {
+  public updateRangeSlider(settings: ISettings) {
 
     let rangeLength = settings.max - settings.min; // TODO add to Model
     let rangePercent = rangeLength / 100; // TODO add to Model
