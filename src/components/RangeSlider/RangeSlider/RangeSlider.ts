@@ -14,8 +14,8 @@ export interface ISettings {
   min: number;
   max: number;
   isTwoRunners: boolean;
-  thumb_from_value: number;
-  thumb_to_value: number;
+  from_value: number;
+  to_value: number;
 }
 
 (function ($) {
@@ -23,8 +23,8 @@ export interface ISettings {
     min: 0,
     max: 100,
     isTwoRunners: true,
-    thumb_from_value: 30,
-    thumb_to_value: 70,
+    from_value: 30,
+    to_value: 70,
   };
 
   $.fn.RangeSlider = function (userOptions): any {

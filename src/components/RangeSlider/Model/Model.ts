@@ -8,13 +8,15 @@ export class Model {
   minValue: number;
   maxValue: number;
   isTwoRunners: boolean;
-  thumb_from_value: number;
-  thumb_to_value: number;
+  from_value: number;
+  to_value: number;
 
   slider: TSliderElement;
   from: TSliderElement;
   to: TSliderElement;
   range: TSliderElement;
+
+  settings: ISettings;
 
   constructor(settings: ISettings) {
     // default options
@@ -23,12 +25,12 @@ export class Model {
     this.isTwoRunners = settings.isTwoRunners;
 
     if (settings.isTwoRunners === true) {
-      this.thumb_from_value = this.getThumbFromValue(settings);
+      this.from_value = this.getThumbFromValue(settings);
     } else {
-      this.thumb_from_value = this.minValue;
+      this.from_value = this.minValue;
     }
 
-    this.thumb_to_value = this.getThumbToValue(settings);
+    this.to_value = this.getThumbToValue(settings);
 
     // sliderElements
     this.slider;
@@ -38,25 +40,28 @@ export class Model {
 
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
+
+    // margins
+    this.settings = settings;
   }
 
   private getThumbFromValue(settings: ISettings): number {
-    if (this.minValue > settings.thumb_from_value) {
+    if (this.minValue > settings.from_value) {
       return this.minValue;
-    } else if (this.maxValue < settings.thumb_from_value) {
+    } else if (this.maxValue < settings.from_value) {
       return this.maxValue;
     } else {
-      return settings.thumb_from_value;
+      return settings.from_value;
     }
   }
 
   private getThumbToValue(settings: ISettings): number {
-    if (this.maxValue < settings.thumb_to_value) {
+    if (this.maxValue < settings.to_value) {
       return this.maxValue;
-    } else if (this.minValue > settings.thumb_to_value) {
+    } else if (this.minValue > settings.to_value) {
       return this.minValue;
     } else {
-      return settings.thumb_to_value;
+      return settings.to_value;
     }
   }
 
@@ -74,8 +79,8 @@ export class Model {
       min: this.minValue,
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
-      thumb_from_value: this.thumb_from_value,
-      thumb_to_value: this.thumb_to_value,
+      from_value: this.from_value,
+      to_value: this.to_value,
     };
   }
 
@@ -124,8 +129,7 @@ export class Model {
 
       if (fromX < sliderEdgeLeft) {
         fromX = sliderEdgeLeft;
-      }
-      if (fromX > sliderEdgeRight) {
+      } else if (fromX > sliderEdgeRight) {
         fromX = sliderEdgeRight;
       }
 
@@ -146,6 +150,35 @@ export class Model {
           betweenRightPosition - newPercentPosition + '%';
         return;
       }
+
+      // ///////////////////////////
+      // let rangeLength = this.settings.max - this.settings.min; // TODO add to Model
+      // let rangePercent = rangeLength / 100; // TODO add to Model
+
+      // let rangeRightMargin = (this.settings.max - this.settings.to_value) / rangePercent; // TODO add to Model
+      // let rangeLeftMargin = (this.settings.from_value - this.settings.min) / rangePercent; // TODO add to Model
+      // let thumbFromMargin = rangeLeftMargin; // TODO add to Model
+      // let thumbToMargin = 100 - rangeRightMargin; // TODO add to Model
+      // ///////////////////////////
+
+      // console.log('rr: ' + rangeRightMargin);
+      // console.log('rl: ' + rangeLeftMargin);
+      // console.log('f: ' + thumbFromMargin);
+      // console.log('t: ' + thumbToMargin);
+      // console.log('-------');
+
+      // if (event.target.className === 'range-slider__thumb_from') {
+      //   console.log('from');
+      //   console.log(event.target);
+      //   event.target.style.marginLeft = thumbFromMargin + '%';
+      //   this.range!.style.marginLeft = rangeLeftMargin + '%';
+      //   return;
+      // }
+      // if (event.target.className === 'range-slider__thumb_to') {
+      //   event.target.style.marginLeft = thumbToMargin + '%';
+      //   this.range!.style.marginRight = rangeRightMargin + '%';
+      //   return;
+      // }
     };
   }
 

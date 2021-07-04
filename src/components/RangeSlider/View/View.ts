@@ -25,7 +25,6 @@ export class View {
   }
 
   public createRangeSlider(settings: ISettings): ISliderElements {
-
     if (settings.isTwoRunners === true) {
       this.slider.element!.appendChild(this.from.element);
     }
@@ -45,12 +44,11 @@ export class View {
   }
 
   public updateRangeSlider(settings: ISettings) {
-
     let rangeLength = settings.max - settings.min; // TODO add to Model
     let rangePercent = rangeLength / 100; // TODO add to Model
 
-    let rangeRightMargin = (settings.max - settings.thumb_to_value) / rangePercent; // TODO add to Model
-    let rangeLeftMargin = (settings.thumb_from_value - settings.min) / rangePercent; // TODO add to Model
+    let rangeRightMargin = (settings.max - settings.to_value) / rangePercent; // TODO add to Model
+    let rangeLeftMargin = (settings.from_value - settings.min) / rangePercent; // TODO add to Model
     let thumbFromMargin = rangeLeftMargin; // TODO add to Model
     let thumbToMargin = 100 - rangeRightMargin; // TODO add to Model
 
@@ -59,7 +57,7 @@ export class View {
       this.range.setMarginLeft(rangeLeftMargin);
       this.from.setMarginLeft(thumbFromMargin);
     }
-    this.to.setMarginLeft(thumbToMargin); 
+    this.to.setMarginLeft(thumbToMargin);
   }
   // private getSettings(): ISettings {
   //   return this.presenter.getSettings();
