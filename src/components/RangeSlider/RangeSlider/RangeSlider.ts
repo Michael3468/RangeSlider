@@ -16,6 +16,11 @@ export interface ISettings {
   isTwoRunners: boolean;
   from_value: number;
   to_value: number;
+
+  rangeRightMargin?: number;
+  rangeLeftMargin?: number;
+  thumbFromMargin?: number;
+  thumbToMargin?: number;
 }
 
 (function ($) {

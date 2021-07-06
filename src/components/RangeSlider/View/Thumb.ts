@@ -14,7 +14,8 @@ export class Thumb {
     return thumb;
   }
 
-  setMarginLeft(margin: number): void {
+  setMarginLeft(margin: number | undefined): void {
+    if (margin === undefined) return;
     this.element.style.marginLeft = margin + '%';
   }
 
