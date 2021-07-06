@@ -31,7 +31,7 @@ export class View {
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
-    this.updateRangeSlider(settings);
+    this.updateRangeSliderMargins(settings);
 
     let sliderElements: ISliderElements = {
       slider: this.slider,
@@ -43,23 +43,13 @@ export class View {
     return sliderElements;
   }
 
-  public updateRangeSlider(settings: ISettings) {
-    let rangeLength = settings.max - settings.min; // TODO add to Model
-    let rangePercent = rangeLength / 100; // TODO add to Model
+  public updateRangeSliderMargins(settings: ISettings) {
 
-    let rangeRightMargin = (settings.max - settings.to_value) / rangePercent; // TODO add to Model
-    let rangeLeftMargin = (settings.from_value - settings.min) / rangePercent; // TODO add to Model
-    let thumbFromMargin = rangeLeftMargin; // TODO add to Model
-    let thumbToMargin = 100 - rangeRightMargin; // TODO add to Model
-
-    this.range.setMarginRight(rangeRightMargin);
+    this.range.setMarginRight(settings.rangeRightMargin);
     if (settings.isTwoRunners === true) {
-      this.range.setMarginLeft(rangeLeftMargin);
-      this.from.setMarginLeft(thumbFromMargin);
+      this.range.setMarginLeft(settings.rangeLeftMargin);
+      this.from.setMarginLeft(settings.thumbFromMargin);
     }
-    this.to.setMarginLeft(thumbToMargin);
+    this.to.setMarginLeft(settings.thumbToMargin);
   }
-  // private getSettings(): ISettings {
-  //   return this.presenter.getSettings();
-  // }
 }

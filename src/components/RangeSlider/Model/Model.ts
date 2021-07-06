@@ -140,25 +140,17 @@ export class Model {
       newPosition = this.currentCursorPosition(event) - startCursorPosition;
       newPercentPosition = newPosition / percent;
 
-      /**
-       * count values and update settings
-       *
-       * rangeRightMargin
-       * rangeLeftMargin
-       * thumbFromMargin
-       * thumbToMargin
-       */
-
       if (event.target.className === 'range-slider__thumb_from') {
-        event.target.style.marginLeft = rangeMarginLeft + newPercentPosition + '%';
-        this.range!.style.marginLeft = rangeMarginLeft + newPercentPosition + '%';
+        this.thumbFromMargin = rangeMarginLeft + newPercentPosition;
+        this.rangeLeftMargin = rangeMarginLeft + newPercentPosition;
         return;
       }
       if (event.target.className === 'range-slider__thumb_to') {
-        event.target.style.marginLeft = 100 - rangeMarginRight + newPercentPosition + '%';
-        this.range!.style.marginRight = rangeMarginRight - newPercentPosition + '%';
+        this.thumbToMargin = 100 - rangeMarginRight + newPercentPosition;
+        this.rangeRightMargin = rangeMarginRight - newPercentPosition;
         return;
       }
+      
     };
   }
 
