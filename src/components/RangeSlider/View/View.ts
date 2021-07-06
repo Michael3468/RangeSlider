@@ -17,7 +17,7 @@ export class View {
   to: Thumb;
   range: Range;
 
-  constructor(id: string) {
+  constructor(id: string | null) {
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
