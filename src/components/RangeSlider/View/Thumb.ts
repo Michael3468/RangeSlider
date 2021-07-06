@@ -1,4 +1,4 @@
-type ThumbName = 'from' | 'to';
+export type ThumbName = 'from' | 'to';
 
 export class Thumb {
   element: HTMLElement;
