@@ -41,3 +41,17 @@ $thumb-size: 20;
   border-radius: 50%;
   cursor: pointer;
 }
+
+$slider-tooltip-width: 40;
+.range-slider__tooltip_from,
+.range-slider__tooltip_to {
+  position: relative;
+  display: flex;
+  align-items: center;
+  top: -30px;
+  left: -($slider-tooltip-width/2)+($thumb-size/2) + px;
+  border: 1px solid $slider-border-color;
+  border-radius: 4px;
+  justify-content: center;
+  width: $slider-tooltip-width + px;
+}

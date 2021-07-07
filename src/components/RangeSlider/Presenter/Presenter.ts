@@ -14,7 +14,7 @@ export class Presenter {
 
     this.initRangeSlider();
     this.sliderElements;
-    this.updateRangeSliderMargins();
+    this.updateRangeSliderValues();
   }
 
   public initRangeSlider(): void {
@@ -22,17 +22,13 @@ export class Presenter {
     this.model.updateSettings(this.sliderElements);
   }
 
-  private updateRangeSliderMargins() {
-    this.sliderElements?.from.element.addEventListener('pointermove', 
-      () => {
-        this.view.updateRangeSliderMargins(this.model.getSettings());
-      }
-    );
+  private updateRangeSliderValues() {
+    this.sliderElements?.from.element.addEventListener('pointermove', () => {
+      this.view.updateRangeSliderValues(this.model.getSettings());
+    });
 
-    this.sliderElements?.to.element.addEventListener('pointermove', 
-      () => {
-        this.view.updateRangeSliderMargins(this.model.getSettings());
-      }
-    );
+    this.sliderElements?.to.element.addEventListener('pointermove', () => {
+      this.view.updateRangeSliderValues(this.model.getSettings());
+    });
   }
 }

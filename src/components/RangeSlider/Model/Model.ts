@@ -21,6 +21,9 @@ export class Model {
   thumbFromMargin: number;
   thumbToMargin: number;
 
+  thumbFromTooltip: number;
+  thumbToTooltip: number;
+
   settings: ISettings;
 
   constructor(settings: ISettings) {
@@ -53,6 +56,10 @@ export class Model {
     this.thumbFromMargin = 0;
     this.thumbToMargin = 0;
 
+    // tooltips values
+    this.thumbFromTooltip = 0;
+    this.thumbToTooltip = 0;
+
     this.initRangeSliderMargins();
   }
 
@@ -84,6 +91,10 @@ export class Model {
     this.rangeLeftMargin = (this.settings.from_value - this.settings.min) / rangePercent;
     this.thumbFromMargin = this.rangeLeftMargin;
     this.thumbToMargin = 100 - this.rangeRightMargin;
+
+    // this
+    this.thumbFromTooltip = this.thumbFromMargin * rangePercent + this.settings.min;
+    this.thumbToTooltip = this.thumbToMargin * rangePercent + this.settings.min;
   }
 
   public getSettings(): ISettings {
@@ -100,6 +111,10 @@ export class Model {
       rangeLeftMargin: this.rangeLeftMargin,
       thumbFromMargin: this.thumbFromMargin,
       thumbToMargin: this.thumbToMargin,
+
+      // tooltips
+      thumbFromTooltip: this.thumbFromTooltip,
+      thumbToTooltip: this.thumbToTooltip,
     };
   }
 
@@ -130,7 +145,8 @@ export class Model {
     event.target.setPointerCapture(event?.pointerId);
 
     let startCursorPosition: number = event.clientX;
-    let percent: number = this.slider!.getBoundingClientRect().width / 100;
+    let percentPx: number = this.slider!.getBoundingClientRect().width / 100;
+    let rangePercent: number = (this.settings.max - this.settings.min)/100; // TODO double in initRangeSliderMargins
     let newPosition: number;
     let newPercentPosition: number;
     let rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
@@ -138,16 +154,18 @@ export class Model {
 
     event.target.onpointermove = (event: any) => {
       newPosition = this.currentCursorPosition(event) - startCursorPosition;
-      newPercentPosition = newPosition / percent;
+      newPercentPosition = newPosition / percentPx;
 
       if (event.target.className === 'range-slider__thumb_from') {
         this.thumbFromMargin = rangeMarginLeft + newPercentPosition;
         this.rangeLeftMargin = rangeMarginLeft + newPercentPosition;
+        this.thumbFromTooltip = this.thumbFromMargin * rangePercent + this.settings.min;
         return;
       }
       if (event.target.className === 'range-slider__thumb_to') {
         this.thumbToMargin = 100 - rangeMarginRight + newPercentPosition;
         this.rangeRightMargin = rangeMarginRight - newPercentPosition;
+        this.thumbToTooltip = this.thumbToMargin * rangePercent + this.settings.min;
         return;
       }
       

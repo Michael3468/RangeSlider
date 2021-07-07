@@ -31,7 +31,7 @@ export class View {
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
-    this.updateRangeSliderMargins(settings);
+    this.updateRangeSliderValues(settings);
 
     let sliderElements: ISliderElements = {
       slider: this.slider,
@@ -43,13 +43,15 @@ export class View {
     return sliderElements;
   }
 
-  public updateRangeSliderMargins(settings: ISettings) {
-
+  public updateRangeSliderValues(settings: ISettings) {
     this.range.setMarginRight(settings.rangeRightMargin);
     if (settings.isTwoRunners === true) {
       this.range.setMarginLeft(settings.rangeLeftMargin);
       this.from.setMarginLeft(settings.thumbFromMargin);
     }
     this.to.setMarginLeft(settings.thumbToMargin);
+
+    this.from.tooltip.setTooltipText(Math.round(settings.thumbFromTooltip!));
+    this.to.tooltip.setTooltipText(Math.round(settings.thumbToTooltip!));
   }
 }

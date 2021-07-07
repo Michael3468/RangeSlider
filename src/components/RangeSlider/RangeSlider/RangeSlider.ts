@@ -21,6 +21,9 @@ export interface ISettings {
   rangeLeftMargin?: number;
   thumbFromMargin?: number;
   thumbToMargin?: number;
+
+  thumbFromTooltip?: number;
+  thumbToTooltip?: number;
 }
 
 (function ($) {
@@ -39,8 +42,6 @@ export interface ISettings {
     const model: Model = new Model(mergedSettings);
     const view: View = new View(elementId);
     const presenter: Presenter = new Presenter(model, view);
-
-    presenter.initRangeSlider();
 
     return this;
   };
