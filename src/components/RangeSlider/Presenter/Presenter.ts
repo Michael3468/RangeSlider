@@ -1,19 +1,23 @@
+/* eslint-disable lines-between-class-members */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import { Model } from '../Model/Model';
-import { View } from '../View/View';
+import { View, ISliderElements } from '../View/View';
 
-import { ISliderElements } from '../View/View';
+// import { ISliderElements } from '../View/View';
 
-export class Presenter {
+export default class Presenter {
   model: Model;
   view: View;
   sliderElements: ISliderElements | undefined;
 
-  constructor(Model: Model, View: View) {
-    this.model = Model;
-    this.view = View;
+  constructor(model: Model, view: View) {
+    this.model = model;
+    this.view = view;
 
-    this.initRangeSlider();
+    // eslint-disable-next-line no-unused-expressions
     this.sliderElements;
+    this.initRangeSlider();
     this.updateRangeSliderValues();
   }
 

@@ -1,16 +1,17 @@
 type TooltipName = 'from' | 'to';
 
-export class Tooltip {
+export default class Tooltip {
   element: HTMLElement;
 
-  constructor(private _name: TooltipName) {
+  constructor(private name: TooltipName) {
     this.element = this.createTooltip();
+    this.name = name;
   }
 
   createTooltip(): HTMLElement {
-    let className = `range-slider__tooltip_${this._name}`;
+    const className = `range-slider__tooltip_${this.name}`;
 
-    let tooltip: HTMLElement = document.createElement('div');
+    const tooltip: HTMLElement = document.createElement('div');
     tooltip.className = className;
 
     return tooltip;

@@ -1,8 +1,11 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable lines-between-class-members */
 import { ISettings } from '../RangeSlider/RangeSlider';
 
-import { Slider } from './Slider';
+import Slider from './Slider';
 import { Thumb } from './Thumb';
-import { Range } from './Range';
+import Range from './Range';
 
 export interface ISliderElements {
   slider: Slider;
@@ -33,7 +36,7 @@ export class View {
 
     this.updateRangeSliderValues(settings);
 
-    let sliderElements: ISliderElements = {
+    const sliderElements: ISliderElements = {
       slider: this.slider,
       from: this.from,
       to: this.to,

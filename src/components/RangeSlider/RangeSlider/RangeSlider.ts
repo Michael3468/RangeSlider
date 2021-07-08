@@ -2,7 +2,7 @@ import './RangeSlider.scss';
 
 import { Model } from '../Model/Model';
 import { View } from '../View/View';
-import { Presenter } from '../Presenter/Presenter';
+import Presenter from '../Presenter/Presenter';
 
 declare global {
   interface JQuery {
@@ -14,8 +14,8 @@ export interface ISettings {
   min: number;
   max: number;
   isTwoRunners: boolean;
-  from_value: number;
-  to_value: number;
+  fromValue: number;
+  toValue: number;
 
   rangeRightMargin?: number;
   rangeLeftMargin?: number;
@@ -31,8 +31,8 @@ export interface ISettings {
     min: 0,
     max: 100,
     isTwoRunners: true,
-    from_value: 30,
-    to_value: 70,
+    fromValue: 30,
+    toValue: 70,
   };
 
   $.fn.RangeSlider = function (userOptions): any {

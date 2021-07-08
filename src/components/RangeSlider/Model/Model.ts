@@ -1,3 +1,8 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable lines-between-class-members */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import { ISettings } from '../RangeSlider/RangeSlider';
 import { ISliderElements } from '../View/View';
 import { ThumbName } from '../View/Thumb';
@@ -8,8 +13,8 @@ export class Model {
   minValue: number;
   maxValue: number;
   isTwoRunners: boolean;
-  from_value: number;
-  to_value: number;
+  fromValue: number;
+  toValue: number;
 
   slider: TSliderElement;
   from: TSliderElement;
@@ -33,11 +38,11 @@ export class Model {
     this.isTwoRunners = settings.isTwoRunners;
 
     if (settings.isTwoRunners === true) {
-      this.from_value = this.getThumbValue(settings, 'from');
+      this.fromValue = this.getThumbValue(settings, 'from');
     } else {
-      this.from_value = this.minValue;
+      this.fromValue = this.minValue;
     }
-    this.to_value = this.getThumbValue(settings, 'to');
+    this.toValue = this.getThumbValue(settings, 'to');
 
     // sliderElements
     this.slider;
@@ -64,15 +69,15 @@ export class Model {
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    let value = thumbName === 'from' ? settings.from_value : settings.to_value;
+    const value = thumbName === 'from' ? settings.fromValue : settings.toValue;
 
     if (this.minValue > value) {
       return this.minValue;
-    } else if (this.maxValue < value) {
-      return this.maxValue;
-    } else {
-      return value;
     }
+    if (this.maxValue < value) {
+      return this.maxValue;
+    }
+    return value;
   }
 
   private getMaxValue(settings: ISettings): number {
@@ -84,11 +89,11 @@ export class Model {
   }
 
   private initRangeSliderMargins(): void {
-    let rangeLength = this.settings.max - this.settings.min;
-    let rangePercent = rangeLength / 100;
+    const rangeLength = this.settings.max - this.settings.min;
+    const rangePercent = rangeLength / 100;
 
-    this.rangeRightMargin = (this.settings.max - this.settings.to_value) / rangePercent;
-    this.rangeLeftMargin = (this.settings.from_value - this.settings.min) / rangePercent;
+    this.rangeRightMargin = (this.settings.max - this.settings.toValue) / rangePercent;
+    this.rangeLeftMargin = (this.settings.fromValue - this.settings.min) / rangePercent;
     this.thumbFromMargin = this.rangeLeftMargin;
     this.thumbToMargin = 100 - this.rangeRightMargin;
 
@@ -103,8 +108,8 @@ export class Model {
       min: this.minValue,
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
-      from_value: this.from_value,
-      to_value: this.to_value,
+      fromValue: this.fromValue,
+      toValue: this.toValue,
 
       // margins
       rangeRightMargin: this.rangeRightMargin,
@@ -141,47 +146,48 @@ export class Model {
 
   // TODO event type?
   private beginSliding(event: any) {
+    const { target, pointerId } = event;
     event.preventDefault();
-    event.target.setPointerCapture(event?.pointerId);
+    target.setPointerCapture(pointerId);
 
-    let startCursorPosition: number = event.clientX;
-    let percentPx: number = this.slider!.getBoundingClientRect().width / 100;
-    let rangePercent: number = (this.settings.max - this.settings.min)/100; // TODO double in initRangeSliderMargins
+    const startCursorPosition: number = event.clientX;
+    const percentPx: number = this.slider!.getBoundingClientRect().width / 100;
+    // TODO double in initRangeSliderMargins
+    const rangePercent: number = (this.settings.max - this.settings.min) / 100;
     let newPosition: number;
     let newPercentPosition: number;
-    let rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
-    let rangeMarginRight: number = parseFloat(this.range!.style.marginRight);
+    const rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
+    const rangeMarginRight: number = parseFloat(this.range!.style.marginRight);
 
-    event.target.onpointermove = (event: any) => {
-      newPosition = this.currentCursorPosition(event) - startCursorPosition;
+    target.onpointermove = (e: any) => {
+      newPosition = this.currentCursorPosition(e) - startCursorPosition;
       newPercentPosition = newPosition / percentPx;
 
-      if (event.target.className === 'range-slider__thumb_from') {
+      if (target.className === 'range-slider__thumb_from') {
         this.thumbFromMargin = rangeMarginLeft + newPercentPosition;
         this.rangeLeftMargin = rangeMarginLeft + newPercentPosition;
         this.thumbFromTooltip = this.thumbFromMargin * rangePercent + this.settings.min;
-        return;
       }
-      if (event.target.className === 'range-slider__thumb_to') {
+      if (target.className === 'range-slider__thumb_to') {
         this.thumbToMargin = 100 - rangeMarginRight + newPercentPosition;
         this.rangeRightMargin = rangeMarginRight - newPercentPosition;
         this.thumbToTooltip = this.thumbToMargin * rangePercent + this.settings.min;
-        return;
       }
-      
     };
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private stopSliding(event: any): void {
-    event.target.onpointermove = null;
-    event.target.releasePointerCapture(event.pointerId);
+    const { target, pointerId } = event;
+    target.onpointermove = null;
+    target.releasePointerCapture(pointerId);
   }
 
   private currentCursorPosition(event: any): number {
     let currentPos: number = event.clientX;
 
-    let sliderEdgeLeft: number = this.slider?.getBoundingClientRect().left || 0;
-    let sliderEdgeRight: number = this.slider?.getBoundingClientRect().right || 0;
+    const sliderEdgeLeft: number = this.slider?.getBoundingClientRect().left || 0;
+    const sliderEdgeRight: number = this.slider?.getBoundingClientRect().right || 0;
 
     if (currentPos < sliderEdgeLeft) {
       currentPos = sliderEdgeLeft;

@@ -1,12 +1,13 @@
-export class Range {
+export default class Range {
   element: HTMLElement;
 
   constructor() {
     this.element = this.createRange();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   createRange(): HTMLElement {
-    let range: HTMLElement = document.createElement('div');
+    const range: HTMLElement = document.createElement('div');
     range.className = 'range-slider__range';
 
     return range;
@@ -14,11 +15,11 @@ export class Range {
 
   setMarginLeft(margin: number | undefined): void {
     if (margin === undefined) return;
-    this.element.style.marginLeft = margin + '%';
+    this.element.style.marginLeft = `${margin}%`;
   }
 
   setMarginRight(margin: number | undefined): void {
     if (margin === undefined) return;
-    this.element.style.marginRight = margin + '%';
+    this.element.style.marginRight = `${margin}%`;
   }
 }

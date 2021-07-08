@@ -1,19 +1,23 @@
-import { Tooltip } from './Tooltip';
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import Tooltip from './Tooltip';
 
 export type ThumbName = 'from' | 'to';
 
 export class Thumb {
   element: HTMLElement;
+
   tooltip: Tooltip;
 
-  constructor(private _name: ThumbName) {
-    this.tooltip = new Tooltip(this._name);
+  constructor(private name: ThumbName) {
+    this.name = name;
+    this.tooltip = new Tooltip(this.name);
     this.element = this.createThumb();
   }
 
   createThumb(): HTMLElement {
-    let thumb: HTMLElement = document.createElement('div');
-    thumb.className = `range-slider__thumb_${this._name}`;
+    const thumb: HTMLElement = document.createElement('div');
+    thumb.className = `range-slider__thumb_${this.name}`;
 
     thumb.appendChild(this.tooltip.element);
 
@@ -22,7 +26,6 @@ export class Thumb {
 
   setMarginLeft(margin: number | undefined): void {
     if (margin === undefined) return;
-    this.element.style.marginLeft = margin + '%';
+    this.element.style.marginLeft = `${margin}%`;
   }
-
 }
