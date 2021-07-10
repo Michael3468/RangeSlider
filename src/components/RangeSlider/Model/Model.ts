@@ -13,6 +13,7 @@ export class Model {
   minValue: number;
   maxValue: number;
   isTwoRunners: boolean;
+  isScale: boolean;
   fromValue: number;
   toValue: number;
 
@@ -36,6 +37,7 @@ export class Model {
     this.minValue = settings.min;
     this.maxValue = this.getMaxValue(settings);
     this.isTwoRunners = settings.isTwoRunners;
+    this.isScale = settings.isScale;
 
     if (settings.isTwoRunners === true) {
       this.fromValue = this.getThumbValue(settings, 'from');
@@ -108,6 +110,7 @@ export class Model {
       min: this.minValue,
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
+      isScale: this.isScale,
       fromValue: this.fromValue,
       toValue: this.toValue,
 

@@ -9,6 +9,7 @@ $('#range-slider').RangeSlider({
   max: 150,
   fromValue: 40,
   toValue: 75,
+  isScale: true,
 });
 
 $('#range-slider2').RangeSlider({

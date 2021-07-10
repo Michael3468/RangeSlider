@@ -36,8 +36,11 @@ export class View {
     }
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
-    this.slider.element!.appendChild(this.scale.element);
-    this.scale.createScaleMarks(settings);
+
+    if (settings.isScale === true) {
+      this.slider.element!.appendChild(this.scale.element);
+      this.scale.createScaleMarks(settings);
+    }
 
     this.updateRangeSliderValues(settings);
 
