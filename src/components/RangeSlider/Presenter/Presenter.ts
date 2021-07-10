@@ -4,8 +4,6 @@
 import { Model } from '../Model/Model';
 import { View, ISliderElements } from '../View/View';
 
-// import { ISliderElements } from '../View/View';
-
 export default class Presenter {
   model: Model;
   view: View;
