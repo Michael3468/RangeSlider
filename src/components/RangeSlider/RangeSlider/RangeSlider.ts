@@ -1,3 +1,6 @@
+/* eslint-disable func-names */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import './RangeSlider.scss';
 
 import { Model } from '../Model/Model';
@@ -27,7 +30,7 @@ export interface ISettings {
 }
 
 (function ($) {
-  let defaultSettings: ISettings = {
+  const defaultSettings: ISettings = {
     min: 0,
     max: 100,
     isTwoRunners: true,
@@ -36,13 +39,14 @@ export interface ISettings {
   };
 
   $.fn.RangeSlider = function (userOptions): any {
-    let mergedSettings = $.extend({}, defaultSettings, userOptions);
-    let elementId: string | null = this[0] ? `#${this[0].id}` : null;
+    const mergedSettings = $.extend({}, defaultSettings, userOptions);
+    const elementId: string | null = this[0] ? `#${this[0].id}` : null;
 
     const model: Model = new Model(mergedSettings);
     const view: View = new View(elementId);
+    // eslint-disable-next-line no-unused-vars
     const presenter: Presenter = new Presenter(model, view);
 
     return this;
   };
-})(jQuery);
+}(jQuery));
