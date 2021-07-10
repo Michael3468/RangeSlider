@@ -6,6 +6,7 @@ import { ISettings } from '../RangeSlider/RangeSlider';
 import Slider from './Slider';
 import { Thumb } from './Thumb';
 import Range from './Range';
+import Scale from './Scale';
 
 export interface ISliderElements {
   slider: Slider;
@@ -19,12 +20,14 @@ export class View {
   from: Thumb;
   to: Thumb;
   range: Range;
+  scale: Scale;
 
   constructor(id: string | null) {
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
     this.range = new Range();
+    this.scale = new Scale();
   }
 
   public createRangeSlider(settings: ISettings): ISliderElements {
@@ -33,6 +36,8 @@ export class View {
     }
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
+    this.slider.element!.appendChild(this.scale.element);
+    this.scale.createScaleMarks(settings);
 
     this.updateRangeSliderValues(settings);
 

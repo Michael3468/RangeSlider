@@ -43,15 +43,34 @@ $thumb-size: 20;
 }
 
 $slider-tooltip-width: 40;
+
 .range-slider__tooltip_from,
 .range-slider__tooltip_to {
   position: relative;
-  display: flex;
-  align-items: center;
   top: -30px;
   left: -($slider-tooltip-width/2)+($thumb-size/2) + px;
-  border: 1px solid $slider-border-color;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: $slider-tooltip-width + px;
+  border: 1px solid $slider-border-color;
+  border-radius: 4px;
+}
+
+.range-slider__scale-mark {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 10px;
+  background: $slider-border-color;
+
+  &:first-child {
+    left: -1px;
+  }
+
+  &-value {
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);
+  }
 }
