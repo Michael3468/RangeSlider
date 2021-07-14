@@ -10,6 +10,8 @@ import { ThumbName } from '../View/Thumb';
 type TSliderElement = HTMLElement | null | undefined;
 
 export class Model {
+  settings: ISettings;
+
   minValue: number;
   maxValue: number;
   isTwoRunners: boolean;
@@ -30,8 +32,6 @@ export class Model {
 
   thumbFromTooltip: number | undefined;
   thumbToTooltip: number | undefined;
-
-  settings: ISettings;
 
   constructor(settings: ISettings) {
     this.settings = settings;
