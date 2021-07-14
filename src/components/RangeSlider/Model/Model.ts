@@ -99,8 +99,16 @@ export class Model {
     this.thumbFromMargin = this.rangeLeftMargin;
     this.thumbToMargin = 100 - this.rangeRightMargin;
 
-    this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
-    this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
+    this.thumbFromTooltip = this.getTooltipValue('from');
+    this.thumbToTooltip = this.getTooltipValue('to');
+  }
+
+  private getTooltipValue(thumbName: ThumbName) {
+    const tName = thumbName;
+    if (tName === 'from') {
+      return this.thumbFromMargin! * this.rangePercent + this.settings.min;
+    }
+    return this.thumbToMargin! * this.rangePercent + this.settings.min;
   }
 
   public getSettings(): ISettings {
@@ -160,14 +168,14 @@ export class Model {
         if (fromCurrentDiff < toCurrentDiff) {
           this.thumbFromMargin = currentPosInPercents;
           this.rangeLeftMargin = currentPosInPercents;
-          this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
+          this.thumbFromTooltip = this.getTooltipValue('from');
           // move to view
           this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
           this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
         } else {
           this.thumbToMargin = currentPosInPercents;
           this.rangeRightMargin = 100 - currentPosInPercents;
-          this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
+          this.thumbToTooltip = this.getTooltipValue('to');
           // move to view
           this.to!.style.marginLeft = `${this.thumbToMargin}%`;
           this.range!.style.marginRight = `${this.rangeRightMargin}%`;
@@ -176,7 +184,7 @@ export class Model {
       if (fromPos === undefined) {
         this.thumbToMargin = currentPosInPercents;
         this.rangeRightMargin = 100 - currentPosInPercents;
-        this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
+        this.thumbToTooltip = this.getTooltipValue('to');
         // move to view
         this.to!.style.marginLeft = `${this.thumbToMargin}%`;
         this.range!.style.marginRight = `${this.rangeRightMargin}%`;
