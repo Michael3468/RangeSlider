@@ -51,8 +51,10 @@ export class Model {
     this.to;
     this.range;
 
+    // bindings
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
+    this.moveClosestThumb = this.moveClosestThumb.bind(this);
 
     // margins
     this.rangeRightMargin;
@@ -153,43 +155,7 @@ export class Model {
       this.to!.addEventListener('pointerup', this.stopSliding);
     }
 
-    // TODO slider onpointerdown
-    this.slider?.addEventListener('pointerdown', (e) => {
-      const currentPosInPx = this.currentCursorPosition(e);
-      const currentPosInPercents = this.getMarginLeft(currentPosInPx);
-      const { fromPos, toPos } = this.getThumbsPosition(this.settings);
-      const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos!.toString()));
-
-      // if from, check which is closest to the cursor position
-      if (fromPos !== undefined) {
-        const fromCurrentDiff = Math.abs(currentPosInPercents - parseFloat(fromPos.toString()));
-
-        // move closet thumb to currentPos
-        if (fromCurrentDiff < toCurrentDiff) {
-          this.thumbFromMargin = currentPosInPercents;
-          this.rangeLeftMargin = currentPosInPercents;
-          this.thumbFromTooltip = this.getTooltipValue('from');
-          // move to view
-          this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
-          this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
-        } else {
-          this.thumbToMargin = currentPosInPercents;
-          this.rangeRightMargin = 100 - currentPosInPercents;
-          this.thumbToTooltip = this.getTooltipValue('to');
-          // move to view
-          this.to!.style.marginLeft = `${this.thumbToMargin}%`;
-          this.range!.style.marginRight = `${this.rangeRightMargin}%`;
-        }
-      }
-      if (fromPos === undefined) {
-        this.thumbToMargin = currentPosInPercents;
-        this.rangeRightMargin = 100 - currentPosInPercents;
-        this.thumbToTooltip = this.getTooltipValue('to');
-        // move to view
-        this.to!.style.marginLeft = `${this.thumbToMargin}%`;
-        this.range!.style.marginRight = `${this.rangeRightMargin}%`;
-      }
-    });
+    this.slider?.addEventListener('pointerdown', this.moveClosestThumb);
   }
 
   // TODO event type?
@@ -228,6 +194,44 @@ export class Model {
     const { target, pointerId } = event;
     target.onpointermove = null;
     target.releasePointerCapture(pointerId);
+  }
+
+  private moveClosestThumb(e: any) {
+    const currentPosInPx = this.currentCursorPosition(e);
+    const currentPosInPercents = this.getMarginLeft(currentPosInPx);
+    const { fromPos, toPos } = this.getThumbsPosition(this.settings);
+    const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos!.toString()));
+
+    // if from, check which is closest to the cursor position
+    if (fromPos !== undefined) {
+      const fromCurrentDiff = Math.abs(currentPosInPercents - parseFloat(fromPos.toString()));
+
+      // move closet thumb to currentPos
+      if (fromCurrentDiff < toCurrentDiff) {
+        this.thumbFromMargin = currentPosInPercents;
+        this.rangeLeftMargin = currentPosInPercents;
+        this.thumbFromTooltip = this.getTooltipValue('from');
+        // move to view
+        this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
+        this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
+      } else {
+        this.thumbToMargin = currentPosInPercents;
+        this.rangeRightMargin = 100 - currentPosInPercents;
+        this.thumbToTooltip = this.getTooltipValue('to');
+        // move to view
+        this.to!.style.marginLeft = `${this.thumbToMargin}%`;
+        this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+      }
+    }
+    // move closet thumb to currentPos (for one runner slider)
+    if (fromPos === undefined) {
+      this.thumbToMargin = currentPosInPercents;
+      this.rangeRightMargin = 100 - currentPosInPercents;
+      this.thumbToTooltip = this.getTooltipValue('to');
+      // move to view
+      this.to!.style.marginLeft = `${this.thumbToMargin}%`;
+      this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+    }
   }
 
   private currentCursorPosition(event: any): number {
