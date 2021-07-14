@@ -160,12 +160,14 @@ export class Model {
         if (fromCurrentDiff < toCurrentDiff) {
           this.thumbFromMargin = currentPosInPercents;
           this.rangeLeftMargin = currentPosInPercents;
+          this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
           // move to view
           this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
           this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
         } else {
           this.thumbToMargin = currentPosInPercents;
           this.rangeRightMargin = 100 - currentPosInPercents;
+          this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
           // move to view
           this.to!.style.marginLeft = `${this.thumbToMargin}%`;
           this.range!.style.marginRight = `${this.rangeRightMargin}%`;
@@ -174,6 +176,7 @@ export class Model {
       if (fromPos === undefined) {
         this.thumbToMargin = currentPosInPercents;
         this.rangeRightMargin = 100 - currentPosInPercents;
+        this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
         // move to view
         this.to!.style.marginLeft = `${this.thumbToMargin}%`;
         this.range!.style.marginRight = `${this.rangeRightMargin}%`;
