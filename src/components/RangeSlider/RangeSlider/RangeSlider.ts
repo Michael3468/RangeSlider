@@ -17,7 +17,7 @@ export interface ISettings {
   min: number;
   max: number;
   isTwoRunners: boolean;
-  isScale: boolean;
+  isScaleVisible: boolean;
   fromValue: number;
   toValue: number;
 
@@ -35,7 +35,7 @@ export interface ISettings {
     min: 0,
     max: 100,
     isTwoRunners: true,
-    isScale: false,
+    isScaleVisible: false,
     fromValue: 30,
     toValue: 70,
   };

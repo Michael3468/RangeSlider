@@ -13,7 +13,7 @@ export class Model {
   minValue: number;
   maxValue: number;
   isTwoRunners: boolean;
-  isScale: boolean;
+  isScaleVisible: boolean;
   fromValue: number;
   toValue: number;
 
@@ -37,7 +37,7 @@ export class Model {
     this.minValue = settings.min;
     this.maxValue = this.getMaxValue(settings);
     this.isTwoRunners = settings.isTwoRunners;
-    this.isScale = settings.isScale;
+    this.isScaleVisible = settings.isScaleVisible;
 
     if (settings.isTwoRunners === true) {
       this.fromValue = this.getThumbValue(settings, 'from');
@@ -110,7 +110,7 @@ export class Model {
       min: this.minValue,
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
-      isScale: this.isScale,
+      isScaleVisible: this.isScaleVisible,
       fromValue: this.fromValue,
       toValue: this.toValue,
 
@@ -145,6 +145,41 @@ export class Model {
       this.to!.addEventListener('pointerdown', this.beginSliding);
       this.to!.addEventListener('pointerup', this.stopSliding);
     }
+
+    // TODO slider onpointerdown
+    this.slider?.addEventListener('pointerdown', (e) => {
+      const currentPosInPx = this.currentCursorPosition(e);
+      const currentPosInPercents = this.getMarginLeft(currentPosInPx);
+      const { fromPos, toPos } = this.getThumbsPosition(this.settings);
+      const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos.toString()));
+
+      // if from, check which is closest to the cursor position
+      if (fromPos !== undefined) {
+        const fromCurrentDiff = Math.abs(currentPosInPercents - parseFloat(fromPos.toString()));
+
+        // move closet thumb to currentPos
+        if (fromCurrentDiff < toCurrentDiff) {
+          this.thumbFromMargin = currentPosInPercents;
+          this.rangeLeftMargin = currentPosInPercents;
+          // move to view
+          this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
+          this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
+        } else {
+          this.thumbToMargin = currentPosInPercents;
+          this.rangeRightMargin = 100 - currentPosInPercents;
+          // move to view
+          this.to!.style.marginLeft = `${this.thumbToMargin}%`;
+          this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+        }
+      }
+      if (fromPos === undefined) {
+        this.thumbToMargin = currentPosInPercents;
+        this.rangeRightMargin = 100 - currentPosInPercents;
+        // move to view
+        this.to!.style.marginLeft = `${this.thumbToMargin}%`;
+        this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+      }
+    });
   }
 
   // TODO event type?
@@ -198,5 +233,25 @@ export class Model {
       currentPos = sliderEdgeRight;
     }
     return currentPos;
+  }
+
+  private getThumbsPosition(settings: ISettings) {
+    if (settings.isTwoRunners === true) {
+      return {
+        fromPos: this.thumbFromMargin,
+        toPos: this.thumbToMargin,
+      };
+    }
+    return {
+      toPos: this.thumbToMargin,
+    };
+  }
+
+  private getMarginLeft(currentPos: number): number {
+    const scalePercentInPx = this.slider!.getBoundingClientRect().width / 100;
+    const posOnScale = currentPos - this.slider!.getBoundingClientRect().left;
+    const currentPosInPercents = posOnScale / scalePercentInPx;
+
+    return currentPosInPercents;
   }
 }

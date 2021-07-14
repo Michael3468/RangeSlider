@@ -15,6 +15,7 @@ $slider-range-border: 1;
   background: $slider-bg-color;
   border: $slider-range-border + px solid $slider-border-color;
   border-radius: calc(#{$slider-height} / 2) + 'px';
+  cursor: pointer;
 }
 
 .range-slider__range {

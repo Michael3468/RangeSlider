@@ -37,7 +37,7 @@ export class View {
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
-    if (settings.isScale === true) {
+    if (settings.isScaleVisible === true) {
       this.slider.element!.appendChild(this.scale.element);
       this.scale.createScaleMarks(settings);
     }
