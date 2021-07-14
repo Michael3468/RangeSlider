@@ -42,11 +42,7 @@ export class Model {
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
 
-    if (settings.isTwoRunners === true) {
-      this.fromValue = this.getThumbValue(settings, 'from');
-    } else {
-      this.fromValue = this.minValue;
-    }
+    this.fromValue = this.getThumbValue(settings, 'from');
     this.toValue = this.getThumbValue(settings, 'to');
 
     // sliderElements
@@ -57,7 +53,6 @@ export class Model {
 
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
-
 
     // margins
     this.rangeRightMargin;
@@ -74,15 +69,20 @@ export class Model {
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    const value = thumbName === 'from' ? settings.fromValue : settings.toValue;
+    const thumbValue = thumbName === 'from' ? settings.fromValue : settings.toValue;
 
-    if (this.minValue > value) {
+    // validate default values
+    if (this.minValue > thumbValue) {
       return this.minValue;
     }
-    if (this.maxValue < value) {
+    if (this.maxValue < thumbValue) {
       return this.maxValue;
     }
-    return value;
+
+    if (settings.isTwoRunners === true || thumbName === 'to') {
+      return thumbValue;
+    }
+    return this.minValue;
   }
 
   private getMaxValue(settings: ISettings): number {
