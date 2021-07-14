@@ -22,17 +22,20 @@ export class Model {
   to: TSliderElement;
   range: TSliderElement;
 
-  rangeRightMargin: number;
-  rangeLeftMargin: number;
-  thumbFromMargin: number;
-  thumbToMargin: number;
+  rangeRightMargin: number | undefined;
+  rangeLeftMargin: number | undefined;
+  thumbFromMargin: number | undefined;
+  thumbToMargin: number | undefined;
+  rangePercent: number;
 
-  thumbFromTooltip: number;
-  thumbToTooltip: number;
+  thumbFromTooltip: number | undefined;
+  thumbToTooltip: number | undefined;
 
   settings: ISettings;
 
   constructor(settings: ISettings) {
+    this.settings = settings;
+
     // default options
     this.minValue = settings.min;
     this.maxValue = this.getMaxValue(settings);
@@ -55,17 +58,17 @@ export class Model {
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
 
-    this.settings = settings;
 
     // margins
-    this.rangeRightMargin = 0;
-    this.rangeLeftMargin = 0;
-    this.thumbFromMargin = 0;
-    this.thumbToMargin = 0;
+    this.rangeRightMargin;
+    this.rangeLeftMargin;
+    this.thumbFromMargin;
+    this.thumbToMargin;
+    this.rangePercent = (settings.max - settings.min) / 100;
 
     // tooltips values
-    this.thumbFromTooltip = 0;
-    this.thumbToTooltip = 0;
+    this.thumbFromTooltip;
+    this.thumbToTooltip;
 
     this.initRangeSliderMargins();
   }
@@ -91,17 +94,13 @@ export class Model {
   }
 
   private initRangeSliderMargins(): void {
-    const rangeLength = this.settings.max - this.settings.min;
-    const rangePercent = rangeLength / 100;
-
-    this.rangeRightMargin = (this.settings.max - this.settings.toValue) / rangePercent;
-    this.rangeLeftMargin = (this.settings.fromValue - this.settings.min) / rangePercent;
+    this.rangeRightMargin = (this.settings.max - this.settings.toValue) / this.rangePercent;
+    this.rangeLeftMargin = (this.settings.fromValue - this.settings.min) / this.rangePercent;
     this.thumbFromMargin = this.rangeLeftMargin;
     this.thumbToMargin = 100 - this.rangeRightMargin;
 
-    // this
-    this.thumbFromTooltip = this.thumbFromMargin * rangePercent + this.settings.min;
-    this.thumbToTooltip = this.thumbToMargin * rangePercent + this.settings.min;
+    this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
+    this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
   }
 
   public getSettings(): ISettings {
@@ -151,7 +150,7 @@ export class Model {
       const currentPosInPx = this.currentCursorPosition(e);
       const currentPosInPercents = this.getMarginLeft(currentPosInPx);
       const { fromPos, toPos } = this.getThumbsPosition(this.settings);
-      const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos.toString()));
+      const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos!.toString()));
 
       // if from, check which is closest to the cursor position
       if (fromPos !== undefined) {
@@ -191,7 +190,6 @@ export class Model {
     const startCursorPosition: number = event.clientX;
     const percentPx: number = this.slider!.getBoundingClientRect().width / 100;
     // TODO double in initRangeSliderMargins
-    const rangePercent: number = (this.settings.max - this.settings.min) / 100;
     let newPosition: number;
     let newPercentPosition: number;
     const rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
@@ -204,12 +202,12 @@ export class Model {
       if (target.className === 'range-slider__thumb_from') {
         this.thumbFromMargin = rangeMarginLeft + newPercentPosition;
         this.rangeLeftMargin = rangeMarginLeft + newPercentPosition;
-        this.thumbFromTooltip = this.thumbFromMargin * rangePercent + this.settings.min;
+        this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
       }
       if (target.className === 'range-slider__thumb_to') {
         this.thumbToMargin = 100 - rangeMarginRight + newPercentPosition;
         this.rangeRightMargin = rangeMarginRight - newPercentPosition;
-        this.thumbToTooltip = this.thumbToMargin * rangePercent + this.settings.min;
+        this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
       }
     };
   }
