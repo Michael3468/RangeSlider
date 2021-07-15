@@ -55,6 +55,7 @@ export class Model {
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
+    this.setMargins = this.setMargins.bind(this);
 
     // margins
     this.rangeRightMargin;
@@ -164,16 +165,12 @@ export class Model {
     target.setPointerCapture(pointerId);
 
     target.onpointermove = (e: any) => {
-      const currentMargin = this.getMarginLeft(this.currentCursorPosition(e));
+      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
       if (target.className === 'range-slider__thumb_from') {
-        this.thumbFromMargin = currentMargin;
-        this.rangeLeftMargin = currentMargin;
-        this.thumbFromTooltip = this.getTooltipValue('from');
+        this.setMargins('from', currentPosInPercents);
       }
       if (target.className === 'range-slider__thumb_to') {
-        this.thumbToMargin = currentMargin;
-        this.rangeRightMargin = 100 - currentMargin;
-        this.thumbToTooltip = this.getTooltipValue('to');
+        this.setMargins('to', currentPosInPercents);
       }
     };
   }
@@ -186,8 +183,7 @@ export class Model {
   }
 
   private moveClosestThumb(e: any) {
-    const currentPosInPx = this.currentCursorPosition(e);
-    const currentPosInPercents = this.getMarginLeft(currentPosInPx);
+    const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
     const { fromPos, toPos } = this.getThumbsPosition(this.settings);
     const toCurrentDiff = Math.abs(currentPosInPercents - parseFloat(toPos!.toString()));
 
@@ -197,16 +193,12 @@ export class Model {
 
       // move closest thumb to currentPos
       if (fromCurrentDiff < toCurrentDiff) {
-        this.thumbFromMargin = currentPosInPercents;
-        this.rangeLeftMargin = currentPosInPercents;
-        this.thumbFromTooltip = this.getTooltipValue('from');
+        this.setMargins('from', currentPosInPercents);
         // move to view
         this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
         this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
       } else {
-        this.thumbToMargin = currentPosInPercents;
-        this.rangeRightMargin = 100 - currentPosInPercents;
-        this.thumbToTooltip = this.getTooltipValue('to');
+        this.setMargins('to', currentPosInPercents);
         // move to view
         this.to!.style.marginLeft = `${this.thumbToMargin}%`;
         this.range!.style.marginRight = `${this.rangeRightMargin}%`;
@@ -214,12 +206,23 @@ export class Model {
     }
     // move closest thumb to currentPos (for one runner slider)
     if (fromPos === undefined) {
-      this.thumbToMargin = currentPosInPercents;
-      this.rangeRightMargin = 100 - currentPosInPercents;
-      this.thumbToTooltip = this.getTooltipValue('to');
+      this.setMargins('to', currentPosInPercents);
       // move to view
       this.to!.style.marginLeft = `${this.thumbToMargin}%`;
       this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+    }
+  }
+
+  private setMargins(thumbName: ThumbName, currentPosInPercents: number) {
+    if (thumbName === 'from') {
+      this.thumbFromMargin = currentPosInPercents;
+      this.rangeLeftMargin = currentPosInPercents;
+      this.thumbFromTooltip = this.getTooltipValue(thumbName);
+    }
+    if (thumbName === 'to') {
+      this.thumbToMargin = currentPosInPercents;
+      this.rangeRightMargin = 100 - currentPosInPercents;
+      this.thumbToTooltip = this.getTooltipValue(thumbName);
     }
   }
 
