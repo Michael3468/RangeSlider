@@ -135,12 +135,14 @@ export class Model {
     this.thumbToTooltip = this.getTooltipValue('to');
   }
 
-  private getTooltipValue(thumbName: ThumbName) {
-    const tName = thumbName; // TODO needless var tName
-    if (tName === 'from') {
+  private getTooltipValue(thumbName: ThumbName): number {
+    if (thumbName === 'from') {
       return this.thumbFromMargin! * this.rangePercent + this.settings.min;
     }
-    return this.thumbToMargin! * this.rangePercent + this.settings.min;
+    if (thumbName === 'to') {
+      return this.thumbToMargin! * this.rangePercent + this.settings.min;
+    }
+    return 0;
   }
 
   public getSettings(): ISettings {
