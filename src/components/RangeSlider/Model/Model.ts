@@ -38,7 +38,7 @@ export class Model {
 
     // default options
     this.minValue = settings.min;
-    this.maxValue = this.getMaxValue(settings);
+    this.maxValue = this.setMaxValue(settings);
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
 
@@ -88,9 +88,9 @@ export class Model {
     return this.minValue;
   }
 
-  private getMaxValue(settings: ISettings): number {
+  private setMaxValue(settings: ISettings): number {
     if (this.minValue > settings.max) {
-      this.maxValue = this.minValue + 1; // TODO ???
+      this.maxValue = this.minValue + 1;
       return this.maxValue;
     }
     return settings.max;
