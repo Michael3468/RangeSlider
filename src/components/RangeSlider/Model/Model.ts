@@ -34,10 +34,11 @@ export class Model {
   thumbToTooltip: number | undefined;
 
   constructor(settings: ISettings) {
+    this.validateSettings(settings);
     this.settings = settings;
 
     // default options
-    this.minValue = settings.min;
+    this.minValue = this.setMinValue(settings);
     this.maxValue = this.setMaxValue(settings);
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
@@ -68,19 +69,36 @@ export class Model {
     this.thumbFromTooltip;
     this.thumbToTooltip;
 
-    this.initRangeSliderMargins();
+    this.initRangeSliderMargins(); // TODO rename to setRangeSliderMargins
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private validateSettings(settings: ISettings) {
+    if (settings.min >= settings.max) {
+      throw new Error('\'max\' must be greater than \'min\'');
+    }
+    if (settings.fromValue < settings.min) {
+      throw new Error('\'fromValue\' must be greater than \'min\'');
+    }
+    if (settings.fromValue > settings.toValue) {
+      throw new Error('\'fromValue\' must be less than \'toValue\'');
+    }
+    if (settings.toValue > settings.max) {
+      throw new Error('\'toValue\' must be less than \'max\'');
+    }
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
     const thumbValue = thumbName === 'from' ? settings.fromValue : settings.toValue;
 
-    // validate default values
+    // validate default values // TODO check this block
     if (this.minValue > thumbValue) {
       return this.minValue;
     }
     if (this.maxValue < thumbValue) {
       return this.maxValue;
     }
+    // end block
 
     if (settings.isTwoRunners === true || thumbName === 'to') {
       return thumbValue;
@@ -88,10 +106,21 @@ export class Model {
     return this.minValue;
   }
 
+  private setMinValue(settings: ISettings): number {
+    if (settings.min > settings.max) {
+      this.minValue = settings.max - 1; // TODO change '1' to this.step
+      return this.minValue;
+    }
+    return settings.min;
+  }
+
   private setMaxValue(settings: ISettings): number {
     if (this.minValue > settings.max) {
-      this.maxValue = this.minValue + 1;
+      this.maxValue = this.minValue;
       return this.maxValue;
+    }
+    if (this.minValue === settings.max) {
+      this.maxValue = this.minValue + 1; // TODO change '1' to this.step
     }
     return settings.max;
   }
@@ -107,7 +136,7 @@ export class Model {
   }
 
   private getTooltipValue(thumbName: ThumbName) {
-    const tName = thumbName;
+    const tName = thumbName; // TODO needless var tName
     if (tName === 'from') {
       return this.thumbFromMargin! * this.rangePercent + this.settings.min;
     }

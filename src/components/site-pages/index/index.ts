@@ -5,10 +5,10 @@ import './index.scss';
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
-  min: 20,
+  min: 148,
   max: 150,
-  fromValue: 40,
-  toValue: 75,
+  fromValue: 148,
+  toValue: 149,
   isScaleVisible: true,
 });
 
