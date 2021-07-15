@@ -158,33 +158,22 @@ export class Model {
     this.slider?.addEventListener('pointerdown', this.moveClosestThumb);
   }
 
-  // TODO event type?
   private beginSliding(event: any) {
     const { target, pointerId } = event;
     event.preventDefault();
     target.setPointerCapture(pointerId);
 
-    const startCursorPosition: number = event.clientX;
-    const percentPx: number = this.slider!.getBoundingClientRect().width / 100;
-    // TODO double in initRangeSliderMargins
-    let newPosition: number;
-    let newPercentPosition: number;
-    const rangeMarginLeft: number = parseFloat(this.range!.style.marginLeft);
-    const rangeMarginRight: number = parseFloat(this.range!.style.marginRight);
-
     target.onpointermove = (e: any) => {
-      newPosition = this.currentCursorPosition(e) - startCursorPosition;
-      newPercentPosition = newPosition / percentPx;
-
+      const currentMargin = this.getMarginLeft(this.currentCursorPosition(e));
       if (target.className === 'range-slider__thumb_from') {
-        this.thumbFromMargin = rangeMarginLeft + newPercentPosition;
-        this.rangeLeftMargin = rangeMarginLeft + newPercentPosition;
-        this.thumbFromTooltip = this.thumbFromMargin * this.rangePercent + this.settings.min;
+        this.thumbFromMargin = currentMargin;
+        this.rangeLeftMargin = currentMargin;
+        this.thumbFromTooltip = this.getTooltipValue('from');
       }
       if (target.className === 'range-slider__thumb_to') {
-        this.thumbToMargin = 100 - rangeMarginRight + newPercentPosition;
-        this.rangeRightMargin = rangeMarginRight - newPercentPosition;
-        this.thumbToTooltip = this.thumbToMargin * this.rangePercent + this.settings.min;
+        this.thumbToMargin = currentMargin;
+        this.rangeRightMargin = 100 - currentMargin;
+        this.thumbToTooltip = this.getTooltipValue('to');
       }
     };
   }
@@ -206,7 +195,7 @@ export class Model {
     if (fromPos !== undefined) {
       const fromCurrentDiff = Math.abs(currentPosInPercents - parseFloat(fromPos.toString()));
 
-      // move closet thumb to currentPos
+      // move closest thumb to currentPos
       if (fromCurrentDiff < toCurrentDiff) {
         this.thumbFromMargin = currentPosInPercents;
         this.rangeLeftMargin = currentPosInPercents;
@@ -223,7 +212,7 @@ export class Model {
         this.range!.style.marginRight = `${this.rangeRightMargin}%`;
       }
     }
-    // move closet thumb to currentPos (for one runner slider)
+    // move closest thumb to currentPos (for one runner slider)
     if (fromPos === undefined) {
       this.thumbToMargin = currentPosInPercents;
       this.rangeRightMargin = 100 - currentPosInPercents;
