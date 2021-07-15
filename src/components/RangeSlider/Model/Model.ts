@@ -93,14 +93,11 @@ export class Model {
   }
 
   private initRangeSliderMargins(): void {
-    // TODO assign with setMargins()
-    this.rangeRightMargin = (this.settings.max - this.settings.toValue) / this.rangePercent;
-    this.rangeLeftMargin = (this.settings.fromValue - this.settings.min) / this.rangePercent;
-    this.thumbFromMargin = this.rangeLeftMargin;
-    this.thumbToMargin = 100 - this.rangeRightMargin;
+    const marginFrom = (this.settings.fromValue - this.settings.min) / this.rangePercent;
+    const marginTo = (this.settings.toValue - this.settings.min) / this.rangePercent;
 
-    this.thumbFromTooltip = this.getTooltipValue('from');
-    this.thumbToTooltip = this.getTooltipValue('to');
+    this.setMargins('from', marginFrom);
+    this.setMargins('to', marginTo);
   }
 
   private getTooltipValue(thumbName: ThumbName): number {
@@ -230,7 +227,6 @@ export class Model {
     const sliderEdgeLeft: number = this.slider?.getBoundingClientRect().left || 0;
     const sliderEdgeRight: number = this.slider?.getBoundingClientRect().right || 0;
 
-    // TODO check this block
     if (currentPos < sliderEdgeLeft) {
       currentPos = sliderEdgeLeft;
     } else if (currentPos > sliderEdgeRight) {
@@ -254,7 +250,7 @@ export class Model {
   private getMarginLeft(currentPos: number): number {
     const scalePercentInPx = this.slider!.getBoundingClientRect().width / 100;
     const posOnScale = currentPos - this.slider!.getBoundingClientRect().left;
-    const currentPosInPercents = posOnScale / scalePercentInPx; // TODO return it
+    const currentPosInPercents = posOnScale / scalePercentInPx;
 
     return currentPosInPercents;
   }
