@@ -17,22 +17,22 @@ export class Model {
   maxValue: number;
   isTwoRunners: boolean;
   isScaleVisible: boolean;
-  fromValue: number;
-  toValue: number;
+  valueFrom: number;
+  valueTo: number;
 
   slider: TSliderElement;
   from: TSliderElement;
   to: TSliderElement;
   range: TSliderElement;
 
-  rangeRightMargin: number | undefined;
-  rangeLeftMargin: number | undefined;
-  thumbFromMargin: number | undefined;
-  thumbToMargin: number | undefined;
+  rangeMarginTo: number | undefined;
+  rangeMarginFrom: number | undefined;
+  thumbMarginFrom: number | undefined;
+  thumbMarginTo: number | undefined;
   rangePercent: number;
 
-  thumbFromTooltip: number | undefined;
-  thumbToTooltip: number | undefined;
+  thumbTooltipFrom: number | undefined;
+  thumbTooltipTo: number | undefined;
 
   constructor(settings: ISettings) {
     this.validateSettings(settings);
@@ -44,8 +44,8 @@ export class Model {
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
 
-    this.fromValue = this.getThumbValue(settings, 'from');
-    this.toValue = this.getThumbValue(settings, 'to');
+    this.valueFrom = this.getThumbValue(settings, 'from');
+    this.valueTo = this.getThumbValue(settings, 'to');
 
     // sliderElements
     this.slider;
@@ -60,41 +60,41 @@ export class Model {
     this.setMargins = this.setMargins.bind(this);
 
     // margins
-    this.rangeRightMargin;
-    this.rangeLeftMargin;
-    this.thumbFromMargin;
-    this.thumbToMargin;
+    this.rangeMarginTo;
+    this.rangeMarginFrom;
+    this.thumbMarginFrom;
+    this.thumbMarginTo;
     this.rangePercent = (settings.max - settings.min) / 100;
 
     // tooltips values
-    this.thumbFromTooltip;
-    this.thumbToTooltip;
+    this.thumbTooltipFrom;
+    this.thumbTooltipTo;
 
     this.initRangeSliderMargins(); // TODO rename to setRangeSliderMargins
   }
 
   private validateSettings(settings: ISettings) {
     if (settings.min >= settings.max) {
-      throw new Error('\'max\' must be greater than \'min\'');
+      throw new Error("'max' must be greater than 'min'");
     }
-    if (settings.fromValue < settings.min) {
-      throw new Error('\'fromValue\' must be greater than \'min\'');
+    if (settings.valueFrom < settings.min) {
+      throw new Error("'valueFrom' must be greater than 'min'");
     }
-    if (settings.fromValue > settings.toValue) {
-      throw new Error('\'fromValue\' must be less than \'toValue\'');
+    if (settings.valueFrom > settings.valueTo) {
+      throw new Error("'valueFrom' must be less than 'valueTo'");
     }
-    if (settings.toValue > settings.max) {
-      throw new Error('\'toValue\' must be less than \'max\'');
+    if (settings.valueTo > settings.max) {
+      throw new Error("'valueTo' must be less than 'max'");
     }
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    return thumbName === 'from' ? settings.fromValue : settings.toValue;
+    return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
   }
 
   private initRangeSliderMargins(): void {
-    const marginFrom = (this.settings.fromValue - this.settings.min) / this.rangePercent;
-    const marginTo = (this.settings.toValue - this.settings.min) / this.rangePercent;
+    const marginFrom = (this.settings.valueFrom - this.settings.min) / this.rangePercent;
+    const marginTo = (this.settings.valueTo - this.settings.min) / this.rangePercent;
 
     this.setMargins('from', marginFrom);
     this.setMargins('to', marginTo);
@@ -102,10 +102,10 @@ export class Model {
 
   private getTooltipValue(thumbName: ThumbName): number {
     if (thumbName === 'from') {
-      return this.thumbFromMargin! * this.rangePercent + this.settings.min;
+      return this.thumbMarginFrom! * this.rangePercent + this.settings.min;
     }
     if (thumbName === 'to') {
-      return this.thumbToMargin! * this.rangePercent + this.settings.min;
+      return this.thumbMarginTo! * this.rangePercent + this.settings.min;
     }
     return 0;
   }
@@ -117,18 +117,18 @@ export class Model {
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
       isScaleVisible: this.isScaleVisible,
-      fromValue: this.fromValue,
-      toValue: this.toValue,
+      valueFrom: this.valueFrom,
+      valueTo: this.valueTo,
 
       // margins
-      rangeRightMargin: this.rangeRightMargin,
-      rangeLeftMargin: this.rangeLeftMargin,
-      thumbFromMargin: this.thumbFromMargin,
-      thumbToMargin: this.thumbToMargin,
+      rangeMarginTo: this.rangeMarginTo,
+      rangeMarginFrom: this.rangeMarginFrom,
+      thumbMarginFrom: this.thumbMarginFrom,
+      thumbMarginTo: this.thumbMarginTo,
 
       // tooltips
-      thumbFromTooltip: this.thumbFromTooltip,
-      thumbToTooltip: this.thumbToTooltip,
+      thumbTooltipFrom: this.thumbTooltipFrom,
+      thumbTooltipTo: this.thumbTooltipTo,
     };
   }
 
@@ -190,34 +190,34 @@ export class Model {
       if (fromCurrentDiff < toCurrentDiff) {
         this.setMargins('from', currentPosInPercents);
         // move to view
-        this.from!.style.marginLeft = `${this.thumbFromMargin}%`;
-        this.range!.style.marginLeft = `${this.rangeLeftMargin}%`;
+        this.from!.style.marginLeft = `${this.thumbMarginFrom}%`;
+        this.range!.style.marginLeft = `${this.rangeMarginFrom}%`;
       } else {
         this.setMargins('to', currentPosInPercents);
         // move to view
-        this.to!.style.marginLeft = `${this.thumbToMargin}%`;
-        this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+        this.to!.style.marginLeft = `${this.thumbMarginTo}%`;
+        this.range!.style.marginRight = `${this.rangeMarginTo}%`;
       }
     }
     // move closest thumb to currentPos (for one runner slider)
     if (fromPos === undefined) {
       this.setMargins('to', currentPosInPercents);
       // move to view
-      this.to!.style.marginLeft = `${this.thumbToMargin}%`;
-      this.range!.style.marginRight = `${this.rangeRightMargin}%`;
+      this.to!.style.marginLeft = `${this.thumbMarginTo}%`;
+      this.range!.style.marginRight = `${this.rangeMarginTo}%`;
     }
   }
 
   private setMargins(thumbName: ThumbName, currentPosInPercents: number): void {
     if (thumbName === 'from') {
-      this.thumbFromMargin = currentPosInPercents;
-      this.rangeLeftMargin = currentPosInPercents;
-      this.thumbFromTooltip = this.getTooltipValue(thumbName);
+      this.thumbMarginFrom = currentPosInPercents;
+      this.rangeMarginFrom = currentPosInPercents;
+      this.thumbTooltipFrom = this.getTooltipValue(thumbName);
     }
     if (thumbName === 'to') {
-      this.thumbToMargin = currentPosInPercents;
-      this.rangeRightMargin = 100 - currentPosInPercents;
-      this.thumbToTooltip = this.getTooltipValue(thumbName);
+      this.thumbMarginTo = currentPosInPercents;
+      this.rangeMarginTo = 100 - currentPosInPercents;
+      this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
   }
 
@@ -238,12 +238,12 @@ export class Model {
   private getThumbsPosition(settings: ISettings) {
     if (settings.isTwoRunners === true) {
       return {
-        fromPos: this.thumbFromMargin,
-        toPos: this.thumbToMargin,
+        fromPos: this.thumbMarginFrom,
+        toPos: this.thumbMarginTo,
       };
     }
     return {
-      toPos: this.thumbToMargin,
+      toPos: this.thumbMarginTo,
     };
   }
 

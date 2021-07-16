@@ -18,16 +18,16 @@ export interface ISettings {
   max: number;
   isTwoRunners: boolean;
   isScaleVisible: boolean;
-  fromValue: number;
-  toValue: number;
+  valueFrom: number;
+  valueTo: number;
 
-  rangeRightMargin?: number;
-  rangeLeftMargin?: number;
-  thumbFromMargin?: number;
-  thumbToMargin?: number;
+  rangeMarginFrom?: number;
+  rangeMarginTo?: number;
+  thumbMarginFrom?: number;
+  thumbMarginTo?: number;
 
-  thumbFromTooltip?: number;
-  thumbToTooltip?: number;
+  thumbTooltipFrom?: number;
+  thumbTooltipTo?: number;
 }
 
 (function ($) {
@@ -36,8 +36,8 @@ export interface ISettings {
     max: 100,
     isTwoRunners: true,
     isScaleVisible: false,
-    fromValue: 30,
-    toValue: 70,
+    valueFrom: 30,
+    valueTo: 70,
   };
 
   $.fn.RangeSlider = function (userOptions): any {
@@ -51,4 +51,4 @@ export interface ISettings {
 
     return this;
   };
-}(jQuery));
+})(jQuery);
