@@ -19,6 +19,7 @@ export class Model {
   isScaleVisible: boolean;
   valueFrom: number;
   valueTo: number;
+  step: number | undefined;
 
   slider: TSliderElement;
   from: TSliderElement;
@@ -47,6 +48,8 @@ export class Model {
     this.valueFrom = this.getThumbValue(settings, 'from');
     this.valueTo = this.getThumbValue(settings, 'to');
 
+    this.step = settings.step;
+
     // sliderElements
     this.slider;
     this.from;
@@ -58,6 +61,8 @@ export class Model {
     this.stopSliding = this.stopSliding.bind(this);
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
+    this.isMarginFromBiggerThanTo = this.isMarginFromBiggerThanTo.bind(this);
+    this.getStepInPercents = this.getStepInPercents.bind(this);
 
     // margins
     this.rangeMarginTo;
@@ -162,6 +167,8 @@ export class Model {
 
     target.onpointermove = (e: any) => {
       const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
+      if (this.isMarginFromBiggerThanTo()) { return; }
+
       if (target.className === 'range-slider__thumb_from') {
         this.setMargins('from', currentPosInPercents);
       }
@@ -209,16 +216,53 @@ export class Model {
   }
 
   private setMargins(thumbName: ThumbName, currentPosInPercents: number): void {
+    const currentPosWithStep = this.getCurrentPosWithStep(currentPosInPercents);
+
     if (thumbName === 'from') {
-      this.thumbMarginFrom = currentPosInPercents;
-      this.rangeMarginFrom = currentPosInPercents;
+      this.thumbMarginFrom = currentPosWithStep;
+      this.rangeMarginFrom = currentPosWithStep;
       this.thumbTooltipFrom = this.getTooltipValue(thumbName);
     }
     if (thumbName === 'to') {
-      this.thumbMarginTo = currentPosInPercents;
-      this.rangeMarginTo = 100 - currentPosInPercents;
+      this.thumbMarginTo = currentPosWithStep;
+      this.rangeMarginTo = 100 - currentPosWithStep;
       this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
+  }
+
+  private getCurrentPosWithStep(currentPosInPercents: number) {
+    const step = this.getStepInPercents(this.step);
+    const remains = currentPosInPercents % step!;
+
+    let currentPos: number;
+    if (remains >= (step! / 2)) {
+      currentPos = currentPosInPercents - remains + step!;
+    } else {
+      currentPos = currentPosInPercents - remains;
+    }
+    if (currentPos > 100) return 100;
+    if (currentPos < 0) return 0;
+    return currentPos;
+  }
+
+  private isMarginFromBiggerThanTo() {
+    if (this.settings.isTwoRunners === false) { return false; }
+    const step = this.getStepInPercents(this.step);
+
+    return (
+      this.thumbMarginFrom !== 0
+      && this.thumbMarginTo
+      && this.thumbMarginFrom! > (this.thumbMarginTo - step!)
+    );
+  }
+
+  private getStepInPercents(step: number | undefined): number | undefined {
+    if (step === undefined) return 0;
+
+    const SLIDER_LENGTH_IN_PERCENTS = 100;
+    const totalSteps = this.settings.max - this.settings.min;
+    const stepInPercents = SLIDER_LENGTH_IN_PERCENTS / totalSteps;
+    return stepInPercents * step;
   }
 
   private currentCursorPosition(event: any): number {

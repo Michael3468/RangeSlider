@@ -20,6 +20,7 @@ export interface ISettings {
   isScaleVisible: boolean;
   valueFrom: number;
   valueTo: number;
+  step?: number;
 
   rangeMarginFrom?: number;
   rangeMarginTo?: number;
@@ -38,6 +39,7 @@ export interface ISettings {
     isScaleVisible: false,
     valueFrom: 30,
     valueTo: 70,
+    step: 4,
   };
 
   $.fn.RangeSlider = function (userOptions): any {
@@ -51,4 +53,4 @@ export interface ISettings {
 
     return this;
   };
-})(jQuery);
+}(jQuery));

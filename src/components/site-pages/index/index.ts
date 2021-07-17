@@ -5,9 +5,9 @@ import './index.scss';
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
-  min: 148,
+  min: 100,
   max: 150,
-  valueFrom: 148,
+  valueFrom: 140,
   valueTo: 149,
   isScaleVisible: true,
 });
