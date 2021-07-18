@@ -48,7 +48,7 @@ export class Model {
     this.valueFrom = this.getThumbValue(settings, 'from');
     this.valueTo = this.getThumbValue(settings, 'to');
 
-    this.step = settings.step;
+    this.step = this.getStepInPercents(settings.step);
 
     // sliderElements
     this.slider;
@@ -61,8 +61,8 @@ export class Model {
     this.stopSliding = this.stopSliding.bind(this);
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
-    this.isMarginFromBiggerThanTo = this.isMarginFromBiggerThanTo.bind(this);
     this.getStepInPercents = this.getStepInPercents.bind(this);
+    this.convertToPx = this.convertToPx.bind(this);
 
     // margins
     this.rangeMarginTo;
@@ -75,7 +75,7 @@ export class Model {
     this.thumbTooltipFrom;
     this.thumbTooltipTo;
 
-    this.initRangeSliderMargins(); // TODO rename to setRangeSliderMargins
+    this.initRangeSliderMargins();
   }
 
   private validateSettings(settings: ISettings) {
@@ -167,7 +167,6 @@ export class Model {
 
     target.onpointermove = (e: any) => {
       const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
-      if (this.isMarginFromBiggerThanTo()) { return; }
 
       if (target.className === 'range-slider__thumb_from') {
         this.setMargins('from', currentPosInPercents);
@@ -231,29 +230,17 @@ export class Model {
   }
 
   private getCurrentPosWithStep(currentPosInPercents: number) {
-    const step = this.getStepInPercents(this.step);
-    const remains = currentPosInPercents % step!;
+    const remains = currentPosInPercents % this.step!;
 
     let currentPos: number;
-    if (remains >= (step! / 2)) {
-      currentPos = currentPosInPercents - remains + step!;
+    if (remains >= (this.step! / 2)) {
+      currentPos = currentPosInPercents - remains + this.step!;
     } else {
       currentPos = currentPosInPercents - remains;
     }
     if (currentPos > 100) return 100;
     if (currentPos < 0) return 0;
     return currentPos;
-  }
-
-  private isMarginFromBiggerThanTo() {
-    if (this.settings.isTwoRunners === false) { return false; }
-    const step = this.getStepInPercents(this.step);
-
-    return (
-      this.thumbMarginFrom !== 0
-      && this.thumbMarginTo
-      && this.thumbMarginFrom! > (this.thumbMarginTo - step!)
-    );
   }
 
   private getStepInPercents(step: number | undefined): number | undefined {
@@ -268,15 +255,35 @@ export class Model {
   private currentCursorPosition(event: any): number {
     let currentPos: number = event.clientX;
 
-    const sliderEdgeLeft: number = this.slider?.getBoundingClientRect().left || 0;
-    const sliderEdgeRight: number = this.slider?.getBoundingClientRect().right || 0;
+    let min: number = this.slider?.getBoundingClientRect().left || 0;
+    let max: number = this.slider?.getBoundingClientRect().right || 0;
 
-    if (currentPos < sliderEdgeLeft) {
-      currentPos = sliderEdgeLeft;
-    } else if (currentPos > sliderEdgeRight) {
-      currentPos = sliderEdgeRight;
+    // set Edges to thumbs for twoRunners slider
+    const targetClassName: string = event.target.className;
+    if (this.settings.isTwoRunners === true) {
+      if (targetClassName === 'range-slider__thumb_from') {
+        max = this.convertToPx(this.thumbMarginTo! - this.step!)
+          + min;
+      }
+      if (targetClassName === 'range-slider__thumb_to') {
+        min += this.convertToPx(this.thumbMarginFrom! + this.step!);
+      }
     }
+    // set Edges to thumbs for twoRunners slider end
+
+    // validate currentPos
+    if (currentPos < min) {
+      currentPos = min;
+    } else if (currentPos > max) {
+      currentPos = max;
+    }
+    //  validate currentPos end
     return currentPos;
+  }
+
+  private convertToPx(percents: number) {
+    const percentsInPx = this.slider!.getBoundingClientRect().width / 100;
+    return percents * percentsInPx;
   }
 
   private getThumbsPosition(settings: ISettings) {
