@@ -259,8 +259,9 @@ export class Model {
     let max: number = this.slider?.getBoundingClientRect().right || 0;
 
     // set Edges to thumbs for twoRunners slider
-    const targetClassName: string = event.target.className;
     if (this.settings.isTwoRunners === true) {
+      const targetClassName: string = event.target.className;
+
       if (targetClassName === 'range-slider__thumb_from') {
         max = this.convertToPx(this.thumbMarginTo! - this.step!)
           + min;
