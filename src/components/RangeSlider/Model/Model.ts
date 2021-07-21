@@ -256,10 +256,19 @@ export class Model {
   }
 
   private currentCursorPosition(event: any): number {
-    let currentPos: number = event.clientX;
+    let currentPos: number;
+    let min: number;
+    let max: number;
 
-    let min: number = this.slider?.getBoundingClientRect().left || 0;
-    let max: number = this.slider?.getBoundingClientRect().right || 0;
+    if (this.settings.isVertical === false) {
+      currentPos = event.clientX;
+      min = this.slider?.getBoundingClientRect().left || 0;
+      max = this.slider?.getBoundingClientRect().right || 0;
+    } else {
+      currentPos = event.clientY;
+      min = this.slider?.getBoundingClientRect().top || 0;
+      max = this.slider?.getBoundingClientRect().bottom || 0;
+    }
 
     // set Edges to thumbs for twoRunners slider
     if (this.settings.isTwoRunners === true) {
@@ -285,8 +294,14 @@ export class Model {
     return currentPos;
   }
 
-  private convertToPx(percents: number) {
-    const percentsInPx = this.slider!.getBoundingClientRect().width / 100;
+  private convertToPx(percents: number): number {
+    let percentsInPx: number;
+
+    if (this.settings.isVertical === false) {
+      percentsInPx = this.slider!.getBoundingClientRect().width / 100;
+    } else {
+      percentsInPx = this.slider!.getBoundingClientRect().height / 100;
+    }
     return percents * percentsInPx;
   }
 
@@ -303,8 +318,16 @@ export class Model {
   }
 
   private getMarginLeft(currentPos: number): number {
-    const scalePercentInPx = this.slider!.getBoundingClientRect().width / 100;
-    const posOnScale = currentPos - this.slider!.getBoundingClientRect().left;
+    let scalePercentInPx: number;
+    let posOnScale: number;
+
+    if (this.settings.isVertical === false) {
+      scalePercentInPx = this.slider!.getBoundingClientRect().width / 100;
+      posOnScale = currentPos - this.slider!.getBoundingClientRect().left;
+    } else {
+      scalePercentInPx = this.slider!.getBoundingClientRect().height / 100;
+      posOnScale = currentPos - this.slider!.getBoundingClientRect().top;
+    }
     const currentPosInPercents = posOnScale / scalePercentInPx;
 
     return currentPosInPercents;
