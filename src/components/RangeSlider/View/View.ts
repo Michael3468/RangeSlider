@@ -42,6 +42,12 @@ export class View {
       this.scale.createScaleMarks(settings);
     }
 
+    if (settings.isVertical === true) {
+      this.slider.element!.className += ' range-slider_vertical';
+      this.from.tooltip.element!.className += ' range-slider__tooltip_vertical';
+      this.to.tooltip.element!.className += ' range-slider__tooltip_vertical';
+    }
+
     this.updateRangeSliderValues(settings);
 
     const sliderElements: ISliderElements = {

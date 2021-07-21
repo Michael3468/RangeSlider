@@ -10,6 +10,7 @@ $('#range-slider').RangeSlider({
   valueFrom: 140,
   valueTo: 149,
   isScaleVisible: true,
+  isVertical: true,
 });
 
 $('#range-slider2').RangeSlider({

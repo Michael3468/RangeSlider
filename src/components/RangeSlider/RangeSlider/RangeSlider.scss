@@ -7,6 +7,11 @@ $slider-between-bg-color: #71ff84;
 $slider-height: 7;
 $slider-range-border: 1;
 
+.range-slider_block {
+  height: 310px;
+  margin: 20px 0;
+}
+
 .range-slider {
   position: relative;
   width: auto;
@@ -79,3 +84,20 @@ $slider-tooltip-width: 40;
     }
   }
 }
+
+/* vertical */
+.range-slider_vertical {
+  max-width: 300px;
+  margin: auto auto;
+  transform: rotate(90deg) translateX(50%);
+}
+
+.range-slider__tooltip_vertical {
+  transform: rotate(-90deg) translateX(20%);
+}
+
+.range-slider__scale-mark-value_vertical {
+  transform: rotate(-90deg) translateX(-40%) translateY(-50%);
+}
+
+/* vertical end */

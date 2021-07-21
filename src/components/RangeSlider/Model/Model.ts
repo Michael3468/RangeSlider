@@ -17,6 +17,7 @@ export class Model {
   maxValue: number;
   isTwoRunners: boolean;
   isScaleVisible: boolean;
+  isVertical: boolean;
   valueFrom: number;
   valueTo: number;
   step: number | undefined;
@@ -44,6 +45,7 @@ export class Model {
     this.maxValue = settings.max;
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
+    this.isVertical = settings.isVertical;
 
     this.valueFrom = this.getThumbValue(settings, 'from');
     this.valueTo = this.getThumbValue(settings, 'to');
@@ -122,6 +124,7 @@ export class Model {
       max: this.maxValue,
       isTwoRunners: this.isTwoRunners,
       isScaleVisible: this.isScaleVisible,
+      isVertical: this.isVertical,
       valueFrom: this.valueFrom,
       valueTo: this.valueTo,
 

@@ -6,8 +6,11 @@ import { ISettings } from '../RangeSlider/RangeSlider';
 export default class Scale {
   element: HTMLElement;
 
+  settings: ISettings | undefined;
+
   constructor() {
     this.element = this.createScale();
+    this.settings = undefined;
   }
 
   private createScale(): HTMLElement {
@@ -28,6 +31,9 @@ export default class Scale {
   private createMarkValue(value: number, marginLeft: number): HTMLElement {
     const markValue = document.createElement('span');
     markValue.className = 'range-slider__scale-mark-value';
+    if (this.settings && this.settings.isVertical === true) {
+      markValue.className += ' range-slider__scale-mark-value_vertical';
+    }
     markValue.style.marginLeft = `${marginLeft}%`;
     markValue.innerText = value.toString();
 
@@ -39,6 +45,7 @@ export default class Scale {
   }
 
   public createScaleMarks(settings: ISettings) {
+    this.settings = settings;
     const scaleWidthInPx: number = this.element.getBoundingClientRect().width;
     const scaleWidthPercent: number = scaleWidthInPx / 100;
     const scaleLengthInPoints: number = settings.max - settings.min;
