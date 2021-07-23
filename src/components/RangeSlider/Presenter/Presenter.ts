@@ -15,7 +15,6 @@ export default class Presenter {
 
     this.sliderElements = undefined;
     this.initRangeSlider();
-    // this.addListeners();
 
     this.updateRangeSlider = this.updateRangeSlider.bind(this);
     this.model.changeMarginsTooltipsObserver.addObserver(this.updateRangeSlider);
@@ -25,13 +24,6 @@ export default class Presenter {
     this.sliderElements = this.view.createRangeSlider(this.model.getSettings());
     this.model.updateSettings(this.sliderElements);
   }
-
-  // private addListeners() {
-  //   if (!this.sliderElements?.slider.element) return;
-  //   this.sliderElements.slider.element.addEventListener('changeMarginsEvent', () => {
-  //     this.view.updateRangeSliderValues(this.model.getSettings());
-  //   });
-  // }
 
   private updateRangeSlider(): void {
     this.view.updateRangeSliderValues(this.model.getSettings());
