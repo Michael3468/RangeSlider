@@ -16,7 +16,7 @@ export default class Presenter {
     // eslint-disable-next-line no-unused-expressions
     this.sliderElements;
     this.initRangeSlider();
-    this.updateRangeSliderValues();
+    this.addListeners();
   }
 
   public initRangeSlider(): void {
@@ -24,12 +24,9 @@ export default class Presenter {
     this.model.updateSettings(this.sliderElements);
   }
 
-  private updateRangeSliderValues() {
-    this.sliderElements?.from.element.addEventListener('pointermove', () => {
-      this.view.updateRangeSliderValues(this.model.getSettings());
-    });
-
-    this.sliderElements?.to.element.addEventListener('pointermove', () => {
+  private addListeners() {
+    if (!this.sliderElements?.slider.element) return;
+    this.sliderElements.slider.element.addEventListener('changeMarginsEvent', () => {
       this.view.updateRangeSliderValues(this.model.getSettings());
     });
   }

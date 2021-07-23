@@ -173,9 +173,11 @@ export class Model {
 
       if (target.className === 'range-slider__thumb_from') {
         this.setMargins('from', currentPosInPercents);
+        this.changeMarginsEvent();
       }
       if (target.className === 'range-slider__thumb_to') {
         this.setMargins('to', currentPosInPercents);
+        this.changeMarginsEvent();
       }
     };
   }
@@ -198,22 +200,16 @@ export class Model {
       // move closest thumb to currentPos
       if (fromCurrentDiff < toCurrentDiff) {
         this.setMargins('from', currentPosInPercents);
-        // move to view
-        this.from!.style.marginLeft = `${this.thumbMarginFrom}%`;
-        this.range!.style.marginLeft = `${this.rangeMarginFrom}%`;
+        this.changeMarginsEvent();
       } else {
         this.setMargins('to', currentPosInPercents);
-        // move to view
-        this.to!.style.marginLeft = `${this.thumbMarginTo}%`;
-        this.range!.style.marginRight = `${this.rangeMarginTo}%`;
+        this.changeMarginsEvent();
       }
     }
     // move closest thumb to currentPos (for one runner slider)
     if (fromPos === undefined) {
       this.setMargins('to', currentPosInPercents);
-      // move to view
-      this.to!.style.marginLeft = `${this.thumbMarginTo}%`;
-      this.range!.style.marginRight = `${this.rangeMarginTo}%`;
+      this.changeMarginsEvent();
     }
   }
 
@@ -230,6 +226,11 @@ export class Model {
       this.rangeMarginTo = 100 - currentPosWithStep;
       this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
+  }
+
+  private changeMarginsEvent() {
+    const changeMarginsEvent = new CustomEvent('changeMarginsEvent', { bubbles: true });
+    this.slider?.dispatchEvent(changeMarginsEvent);
   }
 
   private getCurrentPosWithStep(currentPosInPercents: number) {
