@@ -1,4 +1,6 @@
-import { ThumbName } from "./Thumb";
+/* eslint-disable import/extensions */
+// eslint-disable-next-line import/no-unresolved
+import { ThumbName } from './Thumb';
 
 export default class Tooltip {
   element: HTMLElement;
@@ -17,7 +19,8 @@ export default class Tooltip {
     return tooltip;
   }
 
-  setTooltipText(text: string | number) {
-    this.element.innerText = text.toString();
+  setTooltipText(value: number) {
+    const roundedValue = Math.round(value);
+    this.element.innerText = roundedValue.toString();
   }
 }

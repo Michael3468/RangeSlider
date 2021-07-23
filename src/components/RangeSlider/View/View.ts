@@ -61,14 +61,15 @@ export class View {
   }
 
   public updateRangeSliderValues(settings: ISettings) {
-    this.range.setMarginRight(settings.rangeMarginTo);
     if (settings.isTwoRunners === true) {
       this.range.setMarginLeft(settings.rangeMarginFrom);
       this.from.setMarginLeft(settings.thumbMarginFrom);
+
+      this.from.tooltip.setTooltipText(settings.thumbTooltipFrom!);
     }
+    this.range.setMarginRight(settings.rangeMarginTo);
     this.to.setMarginLeft(settings.thumbMarginTo);
 
-    this.from.tooltip.setTooltipText(Math.round(settings.thumbTooltipFrom!));
-    this.to.tooltip.setTooltipText(Math.round(settings.thumbTooltipTo!));
+    this.to.tooltip.setTooltipText(settings.thumbTooltipTo!);
   }
 }
