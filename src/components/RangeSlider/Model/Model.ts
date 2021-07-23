@@ -8,6 +8,8 @@ import { ISettings } from '../RangeSlider/RangeSlider';
 import { ISliderElements } from '../View/View';
 import { ThumbName } from '../View/Thumb';
 
+import Observer from '../Observer/Observer';
+
 type TSliderElement = HTMLElement | null | undefined;
 
 export class Model {
@@ -35,6 +37,8 @@ export class Model {
 
   thumbTooltipFrom: number | undefined;
   thumbTooltipTo: number | undefined;
+
+  changeMarginsTooltipsObserver: Observer;
 
   constructor(settings: ISettings) {
     this.validateSettings(settings);
@@ -76,6 +80,8 @@ export class Model {
     // tooltips values
     this.thumbTooltipFrom;
     this.thumbTooltipTo;
+
+    this.changeMarginsTooltipsObserver = new Observer();
 
     this.initRangeSliderMargins();
   }
@@ -173,11 +179,11 @@ export class Model {
 
       if (target.className === 'range-slider__thumb_from') {
         this.setMargins('from', currentPosInPercents);
-        this.changeMarginsEvent();
+        this.changeMarginsTooltipsObserver.notifyObservers();
       }
       if (target.className === 'range-slider__thumb_to') {
         this.setMargins('to', currentPosInPercents);
-        this.changeMarginsEvent();
+        this.changeMarginsTooltipsObserver.notifyObservers();
       }
     };
   }
@@ -200,16 +206,16 @@ export class Model {
       // move closest thumb to currentPos
       if (fromCurrentDiff < toCurrentDiff) {
         this.setMargins('from', currentPosInPercents);
-        this.changeMarginsEvent();
+        this.changeMarginsTooltipsObserver.notifyObservers();
       } else {
         this.setMargins('to', currentPosInPercents);
-        this.changeMarginsEvent();
+        this.changeMarginsTooltipsObserver.notifyObservers();
       }
     }
     // move closest thumb to currentPos (for one runner slider)
     if (fromPos === undefined) {
       this.setMargins('to', currentPosInPercents);
-      this.changeMarginsEvent();
+      this.changeMarginsTooltipsObserver.notifyObservers();
     }
   }
 
@@ -226,11 +232,6 @@ export class Model {
       this.rangeMarginTo = 100 - currentPosWithStep;
       this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
-  }
-
-  private changeMarginsEvent() {
-    const changeMarginsEvent = new CustomEvent('changeMarginsEvent', { bubbles: true });
-    this.slider?.dispatchEvent(changeMarginsEvent);
   }
 
   private getCurrentPosWithStep(currentPosInPercents: number) {

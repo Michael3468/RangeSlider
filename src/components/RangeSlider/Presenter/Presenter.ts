@@ -5,29 +5,35 @@ import { Model } from '../Model/Model';
 import { View, ISliderElements } from '../View/View';
 
 export default class Presenter {
-  model: Model;
-  view: View;
-  sliderElements: ISliderElements | undefined;
+  private model: Model;
+  private view: View;
+  private sliderElements: ISliderElements | undefined;
 
   constructor(model: Model, view: View) {
     this.model = model;
     this.view = view;
 
-    // eslint-disable-next-line no-unused-expressions
-    this.sliderElements;
+    this.sliderElements = undefined;
     this.initRangeSlider();
-    this.addListeners();
+    // this.addListeners();
+
+    this.updateRangeSlider = this.updateRangeSlider.bind(this);
+    this.model.changeMarginsTooltipsObserver.addObserver(this.updateRangeSlider);
   }
 
-  public initRangeSlider(): void {
+  private initRangeSlider(): void {
     this.sliderElements = this.view.createRangeSlider(this.model.getSettings());
     this.model.updateSettings(this.sliderElements);
   }
 
-  private addListeners() {
-    if (!this.sliderElements?.slider.element) return;
-    this.sliderElements.slider.element.addEventListener('changeMarginsEvent', () => {
-      this.view.updateRangeSliderValues(this.model.getSettings());
-    });
+  // private addListeners() {
+  //   if (!this.sliderElements?.slider.element) return;
+  //   this.sliderElements.slider.element.addEventListener('changeMarginsEvent', () => {
+  //     this.view.updateRangeSliderValues(this.model.getSettings());
+  //   });
+  // }
+
+  private updateRangeSlider(): void {
+    this.view.updateRangeSliderValues(this.model.getSettings());
   }
 }
