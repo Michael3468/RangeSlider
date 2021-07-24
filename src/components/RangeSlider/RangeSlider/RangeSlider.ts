@@ -41,7 +41,7 @@ export interface ISettings {
     isVertical: false,
     valueFrom: 30,
     valueTo: 70,
-    step: 4,
+    step: 1,
   };
 
   $.fn.RangeSlider = function (userOptions): any {
