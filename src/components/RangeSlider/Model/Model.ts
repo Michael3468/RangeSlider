@@ -99,6 +99,9 @@ export class Model {
     if (settings.valueTo > settings.max) {
       throw new Error("'valueTo' must be less than 'max'");
     }
+    if (settings.step && (settings.max - settings.min) < settings.step) {
+      throw new Error(`'step' must be less than ${settings.max - settings.min}`);
+    }
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
@@ -242,6 +245,9 @@ export class Model {
       currentPos = currentPosInPercents - remains + this.step!;
     } else {
       currentPos = currentPosInPercents - remains;
+    }
+    if (currentPos === this.thumbMarginFrom) {
+      currentPos += this.step!;
     }
     if (currentPos > 100) return 100;
     if (currentPos < 0) return 0;
