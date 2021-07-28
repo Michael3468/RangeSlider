@@ -42,8 +42,8 @@ export class Model {
   changeMarginsTooltipsObserver: Observer;
 
   constructor(settings: ISettings) {
-    this.validateSettings(settings);
     this.settings = settings;
+    this.validateSettings(settings);
 
     // default options
     this.minValue = settings.min;
@@ -101,8 +101,20 @@ export class Model {
     if (settings.valueTo > settings.max) {
       throw new Error("'valueTo' must be less than 'max'");
     }
-    if (settings.step && (settings.max - settings.min) < settings.step) {
+    if (settings.step && settings.max - settings.min < settings.step) {
       throw new Error(`'step' must be less than ${settings.max - settings.min}`);
+    }
+    if (settings.step && settings.valueTo - settings.valueFrom < settings.step) {
+      if (settings.valueFrom + settings.step > settings.max) {
+        if (settings.valueTo - settings.step < settings.min) {
+          this.settings.valueFrom = settings.min;
+          this.settings.valueTo = this.settings.valueFrom + settings.step;
+        } else {
+          this.settings.valueFrom = settings.valueTo - settings.step;
+        }
+      } else {
+        this.settings.valueTo = settings.valueFrom + settings.step;
+      }
     }
   }
 
@@ -248,9 +260,6 @@ export class Model {
       currentPos = currentPosInPercents - remains + this.step!;
     } else {
       currentPos = currentPosInPercents - remains;
-    }
-    if (currentPos === this.thumbMarginFrom) {
-      currentPos += this.step!;
     }
     if (currentPos > 100) return 100;
     if (currentPos < 0) return 0;

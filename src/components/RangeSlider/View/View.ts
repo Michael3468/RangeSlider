@@ -46,8 +46,8 @@ export class View {
       this.slider.element!.className += ' range-slider_vertical';
 
       if (settings.isTooltipsVisible === true) {
-        this.from.tooltip.element!.className += ' range-slider__tooltip_vertical';
-        this.to.tooltip.element!.className += ' range-slider__tooltip_vertical';
+        this.from.tooltip.element.className += ' range-slider__tooltip_vertical';
+        this.to.tooltip.element.className += ' range-slider__tooltip_vertical';
       }
     }
 

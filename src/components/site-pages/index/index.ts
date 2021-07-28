@@ -30,5 +30,5 @@ $('#range-slider3').RangeSlider({
   isScaleVisible: true,
   isVertical: false,
   isTooltipsVisible: false,
-  step: 25,
+  step: 27,
 });
