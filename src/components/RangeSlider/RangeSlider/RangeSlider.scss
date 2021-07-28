@@ -63,6 +63,10 @@ $slider-tooltip-width: 40;
   border-radius: 4px;
 }
 
+.range-slider__tooltip_hidden {
+  display: none;
+}
+
 .range-slider__scale {
   height: 25px;
 
@@ -99,5 +103,4 @@ $slider-tooltip-width: 40;
 .range-slider__scale-mark-value_vertical {
   transform: rotate(-90deg) translateX(-40%) translateY(-50%);
 }
-
 /* vertical end */

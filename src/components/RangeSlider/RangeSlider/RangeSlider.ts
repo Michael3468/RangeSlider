@@ -19,6 +19,7 @@ export interface ISettings {
   isTwoRunners: boolean;
   isScaleVisible: boolean;
   isVertical: boolean;
+  isTooltipsVisible: boolean;
   valueFrom: number;
   valueTo: number;
   step?: number;
@@ -38,6 +39,7 @@ export interface ISettings {
     max: 100,
     isTwoRunners: true,
     isScaleVisible: false,
+    isTooltipsVisible: true,
     isVertical: false,
     valueFrom: 30,
     valueTo: 70,

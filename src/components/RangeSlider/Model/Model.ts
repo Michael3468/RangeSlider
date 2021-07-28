@@ -20,6 +20,7 @@ export class Model {
   isTwoRunners: boolean;
   isScaleVisible: boolean;
   isVertical: boolean;
+  isTooltipsVisible: boolean;
   valueFrom: number;
   valueTo: number;
   step: number | undefined;
@@ -50,6 +51,7 @@ export class Model {
     this.isTwoRunners = settings.isTwoRunners;
     this.isScaleVisible = settings.isScaleVisible;
     this.isVertical = settings.isVertical;
+    this.isTooltipsVisible = settings.isTooltipsVisible;
 
     this.valueFrom = this.getThumbValue(settings, 'from');
     this.valueTo = this.getThumbValue(settings, 'to');
@@ -134,6 +136,7 @@ export class Model {
       isTwoRunners: this.isTwoRunners,
       isScaleVisible: this.isScaleVisible,
       isVertical: this.isVertical,
+      isTooltipsVisible: this.isTooltipsVisible,
       valueFrom: this.valueFrom,
       valueTo: this.valueTo,
 
@@ -241,7 +244,7 @@ export class Model {
     const remains = currentPosInPercents % this.step!;
 
     let currentPos: number;
-    if (remains >= (this.step! / 2)) {
+    if (remains >= this.step! / 2) {
       currentPos = currentPosInPercents - remains + this.step!;
     } else {
       currentPos = currentPosInPercents - remains;
@@ -283,8 +286,7 @@ export class Model {
       const targetClassName: string = event.target.className;
 
       if (targetClassName === 'range-slider__thumb_from') {
-        max = this.convertToPx(this.thumbMarginTo! - this.step!)
-          + min;
+        max = this.convertToPx(this.thumbMarginTo! - this.step!) + min;
       }
       if (targetClassName === 'range-slider__thumb_to') {
         min += this.convertToPx(this.thumbMarginFrom! + this.step!);

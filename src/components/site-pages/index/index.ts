@@ -21,3 +21,14 @@ $('#range-slider2').RangeSlider({
   valueTo: 50,
   isTwoRunners: false,
 });
+
+$('#range-slider3').RangeSlider({
+  min: 100,
+  max: 150,
+  valueFrom: 120,
+  valueTo: 149,
+  isScaleVisible: true,
+  isVertical: false,
+  isTooltipsVisible: false,
+  step: 25,
+});
