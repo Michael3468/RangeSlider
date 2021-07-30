@@ -10,7 +10,6 @@ $('#range-slider').RangeSlider({
   valueFrom: 140,
   valueTo: 149,
   isScaleVisible: true,
-  isVertical: false,
   step: 10,
 });
 
@@ -20,7 +19,7 @@ $('#range-slider2').RangeSlider({
   valueFrom: 35,
   valueTo: 50,
   isTwoRunners: false,
-  step: 10,
+  step: 7,
 });
 
 $('#range-slider3').RangeSlider({
@@ -29,7 +28,7 @@ $('#range-slider3').RangeSlider({
   valueFrom: 120,
   valueTo: 149,
   isScaleVisible: true,
-  isVertical: false,
+  isVertical: true,
   isTooltipsVisible: false,
   step: 27,
 });
