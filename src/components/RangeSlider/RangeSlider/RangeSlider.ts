@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable func-names */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import './RangeSlider.scss';
 
 import { Model } from '../Model/Model';
-import { View } from '../View/View';
+import View from '../View/View';
 import Presenter from '../Presenter/Presenter';
 
 declare global {
@@ -22,7 +23,7 @@ export interface ISettings {
   isTooltipsVisible: boolean;
   valueFrom: number;
   valueTo: number;
-  step?: number;
+  step: number;
 
   rangeMarginFrom?: number;
   rangeMarginTo?: number;
@@ -31,6 +32,8 @@ export interface ISettings {
 
   thumbTooltipFrom?: number;
   thumbTooltipTo?: number;
+
+  rangePercent?: number;
 }
 
 (function ($) {
@@ -46,7 +49,8 @@ export interface ISettings {
     step: 1,
   };
 
-  $.fn.RangeSlider = function (userOptions): any {
+  // eslint-disable-next-line no-param-reassign
+  $.fn.RangeSlider = function (userOptions): JQuery {
     const mergedSettings = $.extend({}, defaultSettings, userOptions);
     const elementId: string | null = this[0] ? `#${this[0].id}` : null;
 
