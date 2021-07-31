@@ -5,10 +5,10 @@ import './index.scss';
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
-  min: 100,
-  max: 150,
-  valueFrom: 140,
-  valueTo: 149,
+  min: 0,
+  max: 1500,
+  valueFrom: 1000,
+  valueTo: 1490,
   isScaleVisible: true,
   step: 10,
 });
@@ -23,12 +23,11 @@ $('#range-slider2').RangeSlider({
 });
 
 $('#range-slider3').RangeSlider({
-  min: 100,
-  max: 150,
-  valueFrom: 120,
-  valueTo: 149,
+  min: 10000,
+  max: 15000,
+  valueFrom: 12000,
+  valueTo: 14900,
   isScaleVisible: true,
   isVertical: true,
-  isTooltipsVisible: false,
   step: 27,
 });
