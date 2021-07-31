@@ -2,7 +2,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import { Model } from '../Model/Model';
-// import { View, ISliderElements } from '../View/View';
 import View from '../View/View';
 
 export default class Presenter {
