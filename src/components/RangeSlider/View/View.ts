@@ -17,6 +17,15 @@ export default class View {
 
   settings: ISettings | undefined;
 
+  rangeMarginTo: number | undefined;
+  rangeMarginFrom: number | undefined;
+  thumbMarginFrom: number | undefined;
+  thumbMarginTo: number | undefined;
+  // rangePercent: number;
+
+  thumbTooltipFrom: number | undefined;
+  thumbTooltipTo: number | undefined;
+
   constructor(id: string | null) {
     this.slider = new Slider(id);
     this.from = new Thumb('from');
@@ -25,6 +34,11 @@ export default class View {
     this.scale = new Scale();
 
     this.settings = undefined;
+
+    this.rangeMarginTo = undefined;
+    this.rangeMarginFrom = undefined;
+    this.thumbMarginFrom = undefined;
+    this.thumbMarginTo = undefined;
 
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
@@ -80,13 +94,13 @@ export default class View {
 
   public updateRangeSliderValues(settings: ISettings): void {
     if (settings.isTwoRunners === true) {
-      this.range.setMarginLeft(settings.rangeMarginFrom);
-      this.from.setMarginLeft(settings.thumbMarginFrom);
-      this.from.tooltip.setTooltipText(settings.thumbTooltipFrom!);
+      this.range.setMarginLeft(this.rangeMarginFrom);
+      this.from.setMarginLeft(this.thumbMarginFrom);
+      this.from.tooltip.setTooltipText(this.thumbTooltipFrom!);
     }
-    this.range.setMarginRight(settings.rangeMarginTo);
-    this.to.setMarginLeft(settings.thumbMarginTo);
-    this.to.tooltip.setTooltipText(settings.thumbTooltipTo!);
+    this.range.setMarginRight(this.rangeMarginTo);
+    this.to.setMarginLeft(this.thumbMarginTo);
+    this.to.tooltip.setTooltipText(this.thumbTooltipTo!);
   }
 
   private addListenersToThumbs(): void {
@@ -132,8 +146,8 @@ export default class View {
     if (!this.settings) return;
 
     const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
-    const fromPos: number | undefined = this.settings.thumbMarginFrom;
-    const toPos: number | undefined = this.settings.thumbMarginTo;
+    const fromPos: number | undefined = this.thumbMarginFrom;
+    const toPos: number | undefined = this.thumbMarginTo;
     const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
 
     // if from, check which is closest to the cursor position
@@ -200,9 +214,9 @@ export default class View {
       const targetClassName: string = event.target.className;
 
       if (targetClassName === 'range-slider__thumb_from') {
-        max = this.convertToPx(this.settings.thumbMarginTo! - this.settings.step) + min;
+        max = this.convertToPx(this.thumbMarginTo! - this.settings.step) + min;
       } else if (targetClassName === 'range-slider__thumb_to') {
-        min += this.convertToPx(this.settings.thumbMarginFrom! + this.settings.step);
+        min += this.convertToPx(this.thumbMarginFrom! + this.settings.step);
       }
     }
     // set Edges to thumbs for twoRunners slider end
@@ -234,14 +248,14 @@ export default class View {
     if (!this.settings) return;
 
     if (thumbName === 'from' && this.settings.isTwoRunners) {
-      this.settings.thumbMarginFrom = currentPosWithStep;
-      this.settings.rangeMarginFrom = currentPosWithStep;
-      this.settings.thumbTooltipFrom = this.getTooltipValue(thumbName);
+      this.thumbMarginFrom = currentPosWithStep;
+      this.rangeMarginFrom = currentPosWithStep;
+      this.thumbTooltipFrom = this.getTooltipValue(thumbName);
     }
     if (thumbName === 'to') {
-      this.settings.thumbMarginTo = currentPosWithStep;
-      this.settings.rangeMarginTo = 100 - currentPosWithStep;
-      this.settings.thumbTooltipTo = this.getTooltipValue(thumbName);
+      this.thumbMarginTo = currentPosWithStep;
+      this.rangeMarginTo = 100 - currentPosWithStep;
+      this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
   }
 
@@ -265,10 +279,10 @@ export default class View {
     if (!this.settings) return 0;
 
     if (thumbName === 'from') {
-      return this.settings.thumbMarginFrom! * this.settings.rangePercent! + this.settings.min;
+      return this.thumbMarginFrom! * this.settings.rangePercent! + this.settings.min;
     }
     if (thumbName === 'to') {
-      return this.settings.thumbMarginTo! * this.settings.rangePercent! + this.settings.min;
+      return this.thumbMarginTo! * this.settings.rangePercent! + this.settings.min;
     }
     return 0;
   }

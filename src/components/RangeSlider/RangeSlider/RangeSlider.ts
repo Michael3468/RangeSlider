@@ -24,15 +24,6 @@ export interface ISettings {
   valueFrom: number;
   valueTo: number;
   step: number;
-
-  rangeMarginFrom?: number;
-  rangeMarginTo?: number;
-  thumbMarginFrom?: number;
-  thumbMarginTo?: number;
-
-  thumbTooltipFrom?: number;
-  thumbTooltipTo?: number;
-
   rangePercent?: number;
 }
 

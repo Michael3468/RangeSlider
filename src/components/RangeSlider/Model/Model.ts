@@ -19,15 +19,7 @@ export class Model {
   valueFrom: number;
   valueTo: number;
   step: number;
-
-  rangeMarginTo: number | undefined;
-  rangeMarginFrom: number | undefined;
-  thumbMarginFrom: number | undefined;
-  thumbMarginTo: number | undefined;
   rangePercent: number;
-
-  thumbTooltipFrom: number | undefined;
-  thumbTooltipTo: number | undefined;
 
   constructor(settings: ISettings) {
     this.settings = settings;
@@ -45,19 +37,9 @@ export class Model {
     this.valueTo = this.getThumbValue(settings, 'to');
 
     this.step = this.getStepInPercents(settings.step);
-
-    this.getStepInPercents = this.getStepInPercents.bind(this);
-
-    // margins
-    this.rangeMarginTo;
-    this.rangeMarginFrom;
-    this.thumbMarginFrom;
-    this.thumbMarginTo;
     this.rangePercent = (settings.max - settings.min) / 100;
 
-    // tooltips values
-    this.thumbTooltipFrom;
-    this.thumbTooltipTo;
+    this.getStepInPercents = this.getStepInPercents.bind(this);
   }
 
   private validateSettings(settings: ISettings) {
@@ -106,19 +88,8 @@ export class Model {
       isTooltipsVisible: this.isTooltipsVisible,
       valueFrom: this.valueFrom,
       valueTo: this.valueTo,
-
-      // margins
-      rangeMarginTo: this.rangeMarginTo,
-      rangeMarginFrom: this.rangeMarginFrom,
-      thumbMarginFrom: this.thumbMarginFrom,
-      thumbMarginTo: this.thumbMarginTo,
-
-      // tooltips
-      thumbTooltipFrom: this.thumbTooltipFrom,
-      thumbTooltipTo: this.thumbTooltipTo,
-
-      rangePercent: this.rangePercent,
       step: this.step,
+      rangePercent: this.rangePercent,
     };
   }
 
