@@ -23,7 +23,7 @@ export interface ISettings {
 
 declare global {
   interface JQuery {
-    RangeSlider(arg: ISettings): JQuery;
+    RangeSlider(arg?: any): JQuery;
   }
 }
 

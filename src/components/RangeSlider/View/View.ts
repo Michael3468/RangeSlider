@@ -45,6 +45,7 @@ export default class View {
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
     this.convertToPx = this.convertToPx.bind(this);
+    this.isThumbsCollision = this.isThumbsCollision.bind(this);
   }
 
   public createRangeSlider(settings: ISettings): void {
@@ -132,6 +133,8 @@ export default class View {
         this.setMargins('to', currentPosInPercents);
         this.updateRangeSliderValues(this.settings);
       }
+
+      this.setDistanceBetweenTooltips();
     };
   }
 
@@ -163,7 +166,7 @@ export default class View {
         this.updateRangeSliderValues(this.settings);
       }
     } else {
-      // move thumb 'to' to/ currentPos (for one runner slider)
+      // move thumb 'to' to currentPos (for one runner slider)
       this.setMargins('to', currentPosInPercents);
       this.updateRangeSliderValues(this.settings);
     }
@@ -172,7 +175,8 @@ export default class View {
   // eslint-disable-next-line class-methods-use-this
   private getDifferenceBetween(
     currentPosInPercents: number | undefined,
-    thumbMargin: number | undefined,
+    // eslint-disable-next-line comma-dangle
+    thumbMargin: number | undefined
   ): number {
     if (currentPosInPercents === undefined || thumbMargin === undefined) return 0;
     return Math.abs(currentPosInPercents - parseFloat(thumbMargin!.toString()));
@@ -295,5 +299,46 @@ export default class View {
 
     this.setMargins('from', marginFrom);
     this.setMargins('to', marginTo);
+  }
+
+  private isThumbsCollision(): boolean {
+    let fromEdge: number;
+    let toEdge: number;
+    let thumbSize: number;
+
+    if (this.settings?.isVertical === false) {
+      // for horizontal slider
+      thumbSize = this.to.tooltip.element.getBoundingClientRect().width;
+      fromEdge = this.from.element.getBoundingClientRect().right;
+      toEdge = this.to.element.getBoundingClientRect().right;
+    } else {
+      // for vertical slider
+      thumbSize = this.to.tooltip.element.getBoundingClientRect().height;
+      fromEdge = this.from.element.getBoundingClientRect().top;
+      toEdge = this.to.element.getBoundingClientRect().top;
+    }
+    return toEdge - fromEdge <= thumbSize;
+  }
+
+  private setDistanceBetweenTooltips() {
+    const from = this.from.tooltip.element;
+    const to = this.to.tooltip.element;
+
+    if (this.isThumbsCollision() === false) {
+      from.style.left = `${-50}%`;
+      to.style.left = `${-50}%`;
+    } else {
+      // if collision === true)
+      // eslint-disable-next-line no-lonely-if
+      if (this.settings?.isVertical === false) {
+        // for horizontal slider
+        from.style.left = `${-100}%`;
+        to.style.left = `${0}%`;
+      } else {
+        // for vertical slider
+        from.style.left = `${-75}%`;
+        to.style.left = `${-25}%`;
+      }
+    }
   }
 }
