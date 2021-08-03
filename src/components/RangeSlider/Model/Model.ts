@@ -22,22 +22,22 @@ export class Model {
   rangePercent: number;
 
   constructor(settings: ISettings) {
-    this.settings = settings;
     this.validateSettings(settings);
+    this.settings = settings;
 
     // default options
-    this.minValue = settings.min;
-    this.maxValue = settings.max;
-    this.isTwoRunners = settings.isTwoRunners;
-    this.isScaleVisible = settings.isScaleVisible;
-    this.isVertical = settings.isVertical;
-    this.isTooltipsVisible = settings.isTooltipsVisible;
+    this.minValue = this.settings.min;
+    this.maxValue = this.settings.max;
+    this.isTwoRunners = this.settings.isTwoRunners;
+    this.isScaleVisible = this.settings.isScaleVisible;
+    this.isVertical = this.settings.isVertical;
+    this.isTooltipsVisible = this.settings.isTooltipsVisible;
 
-    this.valueFrom = this.getThumbValue(settings, 'from');
-    this.valueTo = this.getThumbValue(settings, 'to');
+    this.valueFrom = this.getThumbValue(this.settings, 'from');
+    this.valueTo = this.getThumbValue(this.settings, 'to');
 
-    this.step = this.getStepInPercents(settings.step);
-    this.rangePercent = (settings.max - settings.min) / 100;
+    this.step = this.getStepInPercents(this.settings.step);
+    this.rangePercent = (this.settings.max - this.settings.min) / 100;
 
     this.getStepInPercents = this.getStepInPercents.bind(this);
   }
