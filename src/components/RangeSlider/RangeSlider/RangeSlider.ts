@@ -8,12 +8,6 @@ import { Model } from '../Model/Model';
 import View from '../View/View';
 import Presenter from '../Presenter/Presenter';
 
-declare global {
-  interface JQuery {
-    RangeSlider(arg?: any): JQuery;
-  }
-}
-
 export interface ISettings {
   min: number;
   max: number;
@@ -25,6 +19,12 @@ export interface ISettings {
   valueTo: number;
   step: number;
   rangePercent?: number;
+}
+
+declare global {
+  interface JQuery {
+    RangeSlider(arg: ISettings): JQuery;
+  }
 }
 
 (function ($) {
