@@ -125,11 +125,11 @@ export default class View {
 
       if (!this.settings) return;
 
-      if (target.className === 'range-slider__thumb_from') {
+      if (target.classList.contains('range-slider__thumb_from')) {
         this.setMargins('from', currentPosInPercents);
         this.updateRangeSliderValues(this.settings);
       }
-      if (target.className === 'range-slider__thumb_to') {
+      if (target.classList.contains('range-slider__thumb_to')) {
         this.setMargins('to', currentPosInPercents);
         this.updateRangeSliderValues(this.settings);
       }
@@ -161,9 +161,11 @@ export default class View {
       if (fromAndCurrentDiff < toAndCurrentDiff) {
         this.setMargins('from', currentPosInPercents);
         this.updateRangeSliderValues(this.settings);
+        this.setZindexTop('from');
       } else {
         this.setMargins('to', currentPosInPercents);
         this.updateRangeSliderValues(this.settings);
+        this.setZindexTop('to');
       }
     } else {
       // move thumb 'to' to currentPos (for one runner slider)
@@ -215,11 +217,11 @@ export default class View {
 
     // set Edges to thumbs for twoRunners slider
     if (this.settings && this.settings.isTwoRunners === true) {
-      const targetClassName: string = event.target.className;
+      const { target } = event;
 
-      if (targetClassName === 'range-slider__thumb_from') {
+      if (target.classList.contains('range-slider__thumb_from')) {
         max = this.convertToPx(this.thumbMarginTo! - this.settings.step) + min;
-      } else if (targetClassName === 'range-slider__thumb_to') {
+      } else if (target.classList.contains('range-slider__thumb_to')) {
         min += this.convertToPx(this.thumbMarginFrom! + this.settings.step);
       }
     }
@@ -339,6 +341,19 @@ export default class View {
         from.style.left = `${-70}%`;
         to.style.left = `${-30}%`;
       }
+    }
+  }
+
+  private setZindexTop(thumb: ThumbName) {
+    const from = this.from.element;
+    const to = this.to.element;
+
+    if (thumb === 'from') {
+      from.classList.add('range-slider__z-index_top');
+      to.classList.remove('range-slider__z-index_top');
+    } else if (thumb === 'to') {
+      from.classList.remove('range-slider__z-index_top');
+      to.classList.add('range-slider__z-index_top');
     }
   }
 }
