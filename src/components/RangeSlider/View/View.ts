@@ -336,8 +336,8 @@ export default class View {
         to.style.left = `${0}%`;
       } else {
         // for vertical slider
-        from.style.left = `${-75}%`;
-        to.style.left = `${-25}%`;
+        from.style.left = `${-70}%`;
+        to.style.left = `${-30}%`;
       }
     }
   }
