@@ -51,28 +51,28 @@ export default class View {
   public createRangeSlider(settings: ISettings): void {
     this.settings = settings;
 
-    if (settings.isTwoRunners === true) {
+    if (settings.isTwoRunners) {
       this.slider.element!.appendChild(this.from.element);
     }
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
-    if (settings.isScaleVisible === true) {
+    if (settings.isScaleVisible) {
       this.slider.element!.appendChild(this.scale.element);
       this.scale.createScaleMarks(settings);
     }
 
-    if (settings.isVertical === true) {
+    if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
       this.scale.element.style.height = '40px';
 
-      if (settings.isTooltipsVisible === true) {
+      if (settings.isTooltipsVisible) {
         this.from.tooltip.element.className += ' range-slider__tooltip_vertical';
         this.to.tooltip.element.className += ' range-slider__tooltip_vertical';
       }
     }
 
-    if (settings.isTooltipsVisible === false) {
+    if (!settings.isTooltipsVisible) {
       this.from.tooltip.element.className += ' range-slider__tooltip_hidden';
       this.to.tooltip.element.className += ' range-slider__tooltip_hidden';
     }
@@ -81,7 +81,7 @@ export default class View {
     if (this.slider.element) {
       const wrapper = document.createElement('div');
       wrapper.className = 'range-slider_block';
-      if (settings.isVertical === true) {
+      if (settings.isVertical) {
         wrapper.style.height = '310px';
       }
       this.slider.element.parentElement!.replaceChild(wrapper, this.slider.element);
@@ -94,7 +94,7 @@ export default class View {
   }
 
   public updateRangeSliderValues(settings: ISettings): void {
-    if (settings.isTwoRunners === true) {
+    if (settings.isTwoRunners) {
       this.range.setMarginLeft(this.rangeMarginFrom);
       this.from.setMarginLeft(this.thumbMarginFrom);
       this.from.tooltip.setTooltipText(this.thumbTooltipFrom!);
@@ -148,7 +148,7 @@ export default class View {
   private moveClosestThumb(e: any): void {
     if (!this.settings) return;
 
-    const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
+    const currentPosInPercents: number = this.getMarginLeft(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
     let thumbName: ThumbName = 'to';
@@ -164,9 +164,11 @@ export default class View {
     this.setMargins(thumbName, currentPosInPercents);
     this.updateRangeSliderValues(this.settings);
 
-    if (this.settings.isTwoRunners === true) {
+    if (this.settings.isTwoRunners) {
       this.setZindexTop(thumbName);
     }
+
+    this.setDistanceBetweenTooltips();
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -183,12 +185,12 @@ export default class View {
     let scalePercentInPx: number;
     let posOnScale: number;
 
-    if (this.settings && this.settings.isVertical === false) {
-      scalePercentInPx = this.slider.element!.getBoundingClientRect().width / 100;
-      posOnScale = currentPos - this.slider.element!.getBoundingClientRect().left;
-    } else {
+    if (this.settings && this.settings.isVertical) {
       scalePercentInPx = this.slider.element!.getBoundingClientRect().height / 100;
       posOnScale = currentPos - this.slider.element!.getBoundingClientRect().top;
+    } else {
+      scalePercentInPx = this.slider.element!.getBoundingClientRect().width / 100;
+      posOnScale = currentPos - this.slider.element!.getBoundingClientRect().left;
     }
     const currentPosInPercents = posOnScale / scalePercentInPx;
 
@@ -200,18 +202,18 @@ export default class View {
     let min: number;
     let max: number;
 
-    if (this.settings && this.settings.isVertical === false) {
-      currentPos = event.clientX;
-      min = this.slider.element!.getBoundingClientRect().left || 0;
-      max = this.slider.element!.getBoundingClientRect().right || 0;
-    } else {
+    if (this.settings && this.settings.isVertical) {
       currentPos = event.clientY;
       min = this.slider.element!.getBoundingClientRect().top || 0;
       max = this.slider.element!.getBoundingClientRect().bottom || 0;
+    } else {
+      currentPos = event.clientX;
+      min = this.slider.element!.getBoundingClientRect().left || 0;
+      max = this.slider.element!.getBoundingClientRect().right || 0;
     }
 
     // set Edges to thumbs for twoRunners slider
-    if (this.settings && this.settings.isTwoRunners === true) {
+    if (this.settings && this.settings.isTwoRunners) {
       const { target } = event;
 
       if (target.classList.contains('range-slider__thumb_from')) {
@@ -234,11 +236,10 @@ export default class View {
 
   private convertToPx(percents: number): number {
     let percentInPx: number;
-
-    if (this.settings && this.settings.isVertical === false) {
-      percentInPx = this.slider.element!.getBoundingClientRect().width / 100;
-    } else {
+    if (this.settings && this.settings.isVertical) {
       percentInPx = this.slider.element!.getBoundingClientRect().height / 100;
+    } else {
+      percentInPx = this.slider.element!.getBoundingClientRect().width / 100;
     }
     return percents * percentInPx;
   }
@@ -303,39 +304,33 @@ export default class View {
     let toEdge: number;
     let thumbSize: number;
 
-    if (this.settings?.isVertical === false) {
-      // for horizontal slider
-      thumbSize = this.to.tooltip.element.getBoundingClientRect().width;
-      fromEdge = this.from.element.getBoundingClientRect().right;
-      toEdge = this.to.element.getBoundingClientRect().right;
-    } else {
-      // for vertical slider
+    if (this.settings?.isVertical) {
       thumbSize = this.to.tooltip.element.getBoundingClientRect().height;
       fromEdge = this.from.element.getBoundingClientRect().top;
       toEdge = this.to.element.getBoundingClientRect().top;
+    } else {
+      thumbSize = this.to.tooltip.element.getBoundingClientRect().width;
+      fromEdge = this.from.element.getBoundingClientRect().right;
+      toEdge = this.to.element.getBoundingClientRect().right;
     }
     return toEdge - fromEdge <= thumbSize;
   }
 
-  private setDistanceBetweenTooltips() {
-    const from = this.from.tooltip.element;
-    const to = this.to.tooltip.element;
+  private setDistanceBetweenTooltips(): void {
+    const from = this.from.tooltip.element.style;
+    const to = this.to.tooltip.element.style;
 
-    if (this.isThumbsCollision() === false) {
-      from.style.left = `${-50}%`;
-      to.style.left = `${-50}%`;
-    } else {
-      // if collision === true)
-      // eslint-disable-next-line no-lonely-if
-      if (this.settings?.isVertical === false) {
-        // for horizontal slider
-        from.style.left = `${-100}%`;
-        to.style.left = `${0}%`;
+    if (this.isThumbsCollision()) {
+      if (this.settings?.isVertical) {
+        from.left = `${-70}%`;
+        to.left = `${-30}%`;
       } else {
-        // for vertical slider
-        from.style.left = `${-70}%`;
-        to.style.left = `${-30}%`;
+        from.left = `${-100}%`;
+        to.left = `${0}%`;
       }
+    } else {
+      from.left = `${-50}%`;
+      to.left = `${-50}%`;
     }
   }
 
