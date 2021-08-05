@@ -121,19 +121,19 @@ export default class View {
     target.setPointerCapture(pointerId);
 
     target.onpointermove = (e: any) => {
-      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
-
       if (!this.settings) return;
 
+      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
+      let thumbName: ThumbName = 'to';
+
       if (target.classList.contains('range-slider__thumb_from')) {
-        this.setMargins('from', currentPosInPercents);
-        this.updateRangeSliderValues(this.settings);
-      }
-      if (target.classList.contains('range-slider__thumb_to')) {
-        this.setMargins('to', currentPosInPercents);
-        this.updateRangeSliderValues(this.settings);
+        thumbName = 'from';
+      } else if (target.classList.contains('range-slider__thumb_to')) {
+        thumbName = 'to';
       }
 
+      this.setMargins(thumbName, currentPosInPercents);
+      this.updateRangeSliderValues(this.settings);
       this.setDistanceBetweenTooltips();
     };
   }
@@ -151,26 +151,21 @@ export default class View {
     const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
-    const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
+    let thumbName: ThumbName = 'to';
 
-    // if from, check which is closest to the cursor position
+    // check which thumb is closest to the cursor position
     if (fromPos !== undefined) {
       const fromAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, fromPos);
+      const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
 
-      // move closest thumb to currentPos
-      if (fromAndCurrentDiff < toAndCurrentDiff) {
-        this.setMargins('from', currentPosInPercents);
-        this.updateRangeSliderValues(this.settings);
-        this.setZindexTop('from');
-      } else {
-        this.setMargins('to', currentPosInPercents);
-        this.updateRangeSliderValues(this.settings);
-        this.setZindexTop('to');
-      }
-    } else {
-      // move thumb 'to' to currentPos (for one runner slider)
-      this.setMargins('to', currentPosInPercents);
-      this.updateRangeSliderValues(this.settings);
+      thumbName = (fromAndCurrentDiff < toAndCurrentDiff) ? 'from' : 'to';
+    }
+
+    this.setMargins(thumbName, currentPosInPercents);
+    this.updateRangeSliderValues(this.settings);
+
+    if (this.settings.isTwoRunners === true) {
+      this.setZindexTop(thumbName);
     }
   }
 
@@ -284,6 +279,7 @@ export default class View {
   private getTooltipValue(thumbName: ThumbName): number {
     if (!this.settings) return 0;
 
+    // TODO ternar and last return
     if (thumbName === 'from') {
       return this.thumbMarginFrom! * this.settings.rangePercent! + this.settings.min;
     }
