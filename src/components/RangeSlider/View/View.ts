@@ -158,7 +158,7 @@ export default class View {
       const fromAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, fromPos);
       const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
 
-      thumbName = (fromAndCurrentDiff < toAndCurrentDiff) ? 'from' : 'to';
+      thumbName = fromAndCurrentDiff < toAndCurrentDiff ? 'from' : 'to';
     }
 
     this.setMargins(thumbName, currentPosInPercents);
@@ -277,20 +277,19 @@ export default class View {
   }
 
   private getTooltipValue(thumbName: ThumbName): number {
-    if (!this.settings) return 0;
+    if (!this.settings) {
+      throw new Error(`'this.settings' is undefined !`);
+    }
 
-    // TODO ternar and last return
-    if (thumbName === 'from') {
-      return this.thumbMarginFrom! * this.settings.rangePercent! + this.settings.min;
-    }
-    if (thumbName === 'to') {
-      return this.thumbMarginTo! * this.settings.rangePercent! + this.settings.min;
-    }
-    return 0;
+    const thumbMargin: number = thumbName === 'from' ? this.thumbMarginFrom! : this.thumbMarginTo!;
+
+    return thumbMargin * this.settings.rangePercent! + this.settings.min;
   }
 
   private initRangeSliderMargins(): void {
-    if (!this.settings) return;
+    if (!this.settings) {
+      throw new Error(`'this.settings' is undefined !`);
+    }
 
     const marginFrom = (this.settings.valueFrom - this.settings.min) / this.settings.rangePercent!;
     const marginTo = (this.settings.valueTo - this.settings.min) / this.settings.rangePercent!;
