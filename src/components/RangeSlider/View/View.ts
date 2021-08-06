@@ -56,11 +56,6 @@ export default class View {
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
-    if (settings.isScaleVisible) {
-      this.slider.element!.appendChild(this.scale.element);
-      this.scale.createScaleMarks(settings);
-    }
-
     if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
       this.scale.element.style.height = '40px';
@@ -74,6 +69,11 @@ export default class View {
     if (!settings.isTooltipsVisible) {
       this.from.tooltip.element.className += ' range-slider__tooltip_hidden';
       this.to.tooltip.element.className += ' range-slider__tooltip_hidden';
+    }
+
+    if (settings.isScaleVisible) {
+      this.slider.element!.appendChild(this.scale.element);
+      this.scale.createScaleMarks(settings);
     }
 
     // wrap element in div block
