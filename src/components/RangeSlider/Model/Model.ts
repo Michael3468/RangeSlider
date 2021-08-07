@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable lines-between-class-members */
@@ -55,20 +56,20 @@ export class Model {
     if (settings.valueTo > settings.max) {
       throw new Error("'valueTo' must be less than 'max'");
     }
-    if (settings.step && settings.max - settings.min < settings.step) {
+    if (settings.max - settings.min < settings.step) {
       throw new Error(`'step' must be less than ${settings.max - settings.min}`);
     }
     // validate step between thumbs
-    if (settings.step && settings.valueTo - settings.valueFrom < settings.step) {
+    if (settings.valueTo - settings.valueFrom < settings.step) {
       if (settings.valueFrom + settings.step > settings.max) {
         if (settings.valueTo - settings.step < settings.min) {
-          this.settings.valueFrom = settings.min;
-          this.settings.valueTo = this.settings.valueFrom + settings.step;
+          settings.valueFrom = settings.min;
+          settings.valueTo = settings.valueFrom + settings.step;
         } else {
-          this.settings.valueFrom = settings.valueTo - settings.step;
+          settings.valueFrom = settings.valueTo - settings.step;
         }
       } else {
-        this.settings.valueTo = settings.valueFrom + settings.step;
+        settings.valueTo = settings.valueFrom + settings.step;
       }
     }
   }
