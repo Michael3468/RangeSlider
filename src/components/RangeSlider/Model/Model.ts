@@ -72,6 +72,7 @@ export class Model {
         settings.valueTo = settings.valueFrom + settings.step;
       }
     }
+    // validate step between thumbs end
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
