@@ -294,8 +294,8 @@ export default class View {
     } else {
       currentPos = currentPosInPercents - remains;
     }
-    if (currentPos > 100) return 100;
-    if (currentPos < 0) return 0;
+    if (currentPos > 100 || currentPosInPercents >= 100) return 100;
+    if (currentPos < 0 || currentPosInPercents <= 0) return 0;
     return currentPos;
   }
 
