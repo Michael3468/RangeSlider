@@ -5,8 +5,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import { ISettings } from '../RangeSlider/RangeSlider';
-import { ThumbName } from '../View/Thumb';
+import { ISettings, ThumbName } from '../RangeSlider/types';
 
 export class Model {
   settings: ISettings;

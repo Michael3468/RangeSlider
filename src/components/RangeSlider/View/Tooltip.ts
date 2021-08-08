@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 // eslint-disable-next-line import/no-unresolved
-import { ThumbName } from './Thumb';
+import { ThumbName } from '../RangeSlider/types';
 
 export default class Tooltip {
   element: HTMLElement;

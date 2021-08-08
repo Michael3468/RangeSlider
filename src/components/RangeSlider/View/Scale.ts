@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
-import { ISettings } from '../RangeSlider/RangeSlider';
+import { ISettings } from '../RangeSlider/types';
 
 export default class Scale {
   element: HTMLElement;
@@ -76,6 +76,7 @@ export default class Scale {
 
     while (markPos < settings.max) {
       const roundedMarkValue: number = this.roundToCeil10(markPos);
+      // eslint-disable-next-line operator-linebreak
       const marginInPercents: number =
         ((roundedMarkValue - settings.min) * onePointInPx) / scaleWidthPercent;
 

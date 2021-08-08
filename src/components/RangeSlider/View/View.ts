@@ -1,10 +1,10 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
-import { ISettings } from '../RangeSlider/RangeSlider';
+import { ISettings, ThumbName } from '../RangeSlider/types';
 
 import Slider from './Slider';
-import { Thumb, ThumbName } from './Thumb';
+import Thumb from './Thumb';
 import Range from './Range';
 import Scale from './Scale';
 

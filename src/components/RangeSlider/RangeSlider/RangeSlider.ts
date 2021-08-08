@@ -2,30 +2,12 @@
 /* eslint-disable func-names */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
+import { ISettings } from './types';
 import './RangeSlider.scss';
 
 import { Model } from '../Model/Model';
 import View from '../View/View';
 import Presenter from '../Presenter/Presenter';
-
-export interface ISettings {
-  min: number;
-  max: number;
-  isTwoRunners: boolean;
-  isScaleVisible: boolean;
-  isVertical: boolean;
-  isTooltipsVisible: boolean;
-  valueFrom: number;
-  valueTo: number;
-  step: number;
-  rangePercent?: number;
-}
-
-declare global {
-  interface JQuery {
-    RangeSlider(arg?: any): JQuery;
-  }
-}
 
 (function ($) {
   const defaultSettings: ISettings = {

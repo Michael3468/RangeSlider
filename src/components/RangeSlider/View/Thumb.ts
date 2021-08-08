@@ -1,10 +1,9 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import Tooltip from './Tooltip';
+import { ThumbName } from '../RangeSlider/types';
 
-export type ThumbName = 'from' | 'to';
-
-export class Thumb {
+export default class Thumb {
   element: HTMLElement;
 
   tooltip: Tooltip;
