@@ -5,7 +5,7 @@
 $ git clone https://github.com/WhiteDevilMan/slider
 
 # Go to the folder:
-$ cd FSD
+$ cd slider
 
 # Install dependencies from package.json:
 $ npm install
