@@ -22,7 +22,7 @@ export class Model {
   rangePercent: number;
 
   constructor(settings: ISettings) {
-    this.validateSettings(settings);
+    Model.validateSettings(settings);
     this.settings = settings;
 
     // default options
@@ -42,7 +42,7 @@ export class Model {
     this.getStepInPercents = this.getStepInPercents.bind(this);
   }
 
-  private validateSettings(settings: ISettings) {
+  private static validateSettings(settings: ISettings): void {
     if (settings.min >= settings.max) {
       throw new Error("'max' must be greater than 'min'");
     }
@@ -58,20 +58,9 @@ export class Model {
     if (settings.max - settings.min < settings.step) {
       throw new Error(`'step' must be less than ${settings.max - settings.min}`);
     }
-    // validate step between thumbs
     if (settings.valueTo - settings.valueFrom < settings.step) {
-      if (settings.valueFrom + settings.step > settings.max) {
-        if (settings.valueTo - settings.step < settings.min) {
-          settings.valueFrom = settings.min;
-          settings.valueTo = settings.valueFrom + settings.step;
-        } else {
-          settings.valueFrom = settings.valueTo - settings.step;
-        }
-      } else {
-        settings.valueTo = settings.valueFrom + settings.step;
-      }
+      throw new Error('distanse between thumbs must be equal or greater than step');
     }
-    // validate step between thumbs end
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
