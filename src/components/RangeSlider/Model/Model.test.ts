@@ -1,33 +1,40 @@
+/* eslint-disable no-shadow */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
-import { ISettings } from '../RangeSlider/types';
+import { ISettings, ThumbName } from '../RangeSlider/types';
 import { Model } from './Model';
 
 let settings: ISettings;
 
-// eslint-disable-next-line no-shadow
 function getPrivateStaticMethod(methodName: string, settings: ISettings) {
   const modelProto = Model.prototype as any;
   const instance = Object.create(modelProto);
   return () => modelProto.constructor[methodName].call(instance, settings);
 }
 
-describe('function validateSettings: ', () => {
-  beforeEach(() => {
-    settings = {
-      min: 0,
-      max: 1500,
-      valueFrom: 1000,
-      valueTo: 1490,
-      isScaleVisible: true,
-      isTwoRunners: true,
-      isVertical: false,
-      isTooltipsVisible: true,
-      step: 10,
-    };
-  });
+function getPrivateMethod(methodName: string, settings: ISettings, thumbName: ThumbName) {
+  const model = new Model(settings);
+  const modelProto = Object.getPrototypeOf(model);
+  const result = modelProto[methodName](settings, thumbName);
+  return result;
+}
 
+beforeEach(() => {
+  settings = {
+    min: 0,
+    max: 1500,
+    valueFrom: 1000,
+    valueTo: 1490,
+    isScaleVisible: true,
+    isTwoRunners: true,
+    isVertical: false,
+    isTooltipsVisible: true,
+    step: 10,
+  };
+});
+
+describe('function validateSettings: ', () => {
   test('"settings.min >= settings.max" should throw Error', () => {
     settings.min = 2000;
     settings.max = 1500;
@@ -94,5 +101,19 @@ describe('function validateSettings: ', () => {
     settings.valueFrom = 1000;
     settings.step = 300;
     expect(getPrivateStaticMethod('validateSettings', settings)).not.toThrow();
+  });
+});
+
+describe('function getThumbValue:', () => {
+  test('if thumbName == "from" should return settings.valueFrom', () => {
+    const thumbName: ThumbName = 'from';
+    const result = settings.valueFrom;
+    expect(getPrivateMethod('getThumbValue', settings, thumbName)).toBe(result);
+  });
+
+  test('if thumbName == "to" should return settings.valueTo', () => {
+    const thumbName: ThumbName = 'to';
+    const result = settings.valueTo;
+    expect(getPrivateMethod('getThumbValue', settings, thumbName)).toBe(result);
   });
 });
