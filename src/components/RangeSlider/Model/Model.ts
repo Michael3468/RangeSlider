@@ -85,8 +85,8 @@ export class Model {
 
   private getStepInPercents(step: number): number {
     const SLIDER_LENGTH_IN_PERCENTS = 100;
-    const totalSteps = this.settings.max - this.settings.min;
-    const stepInPercents = SLIDER_LENGTH_IN_PERCENTS / totalSteps;
-    return stepInPercents * step;
+    const totalScaleSteps = this.settings.max - this.settings.min;
+    const scaleStepInPercents = SLIDER_LENGTH_IN_PERCENTS / totalScaleSteps;
+    return scaleStepInPercents * step;
   }
 }
