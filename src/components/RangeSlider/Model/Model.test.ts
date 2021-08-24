@@ -136,6 +136,7 @@ describe('function getSettings:', () => {
 
 describe('function getStepInPercents:', () => {
   test('check returned value', () => {
+    settings.step = 10;
     const expectedStep = 0.6666666666666666;
     const step = getStepInPercentsTest(settings);
     expect(step).toBe(expectedStep);
