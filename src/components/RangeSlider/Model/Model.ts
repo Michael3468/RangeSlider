@@ -36,7 +36,7 @@ export class Model {
     this.valueFrom = this.getThumbValue(this.settings, 'from');
     this.valueTo = this.getThumbValue(this.settings, 'to');
 
-    this.step = this.getStepInPercents(this.settings.step);
+    this.step = this.getStepInPercents(this.settings);
     this.rangePercent = (this.settings.max - this.settings.min) / 100;
 
     this.getStepInPercents = this.getStepInPercents.bind(this);
@@ -83,10 +83,10 @@ export class Model {
     };
   }
 
-  private getStepInPercents(step: number): number {
+  private getStepInPercents(settings: ISettings): number {
     const SLIDER_LENGTH_IN_PERCENTS = 100;
-    const totalScaleSteps = this.settings.max - this.settings.min;
+    const totalScaleSteps = settings.max - settings.min;
     const scaleStepInPercents = SLIDER_LENGTH_IN_PERCENTS / totalScaleSteps;
-    return scaleStepInPercents * step;
+    return scaleStepInPercents * settings.step;
   }
 }

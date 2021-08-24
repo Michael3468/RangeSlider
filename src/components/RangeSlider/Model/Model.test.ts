@@ -7,32 +7,25 @@ import { Model } from './Model';
 
 let settings: ISettings;
 
+beforeEach(() => {
+  settings = {
+    min: 0,
+    max: 1500,
+    isTwoRunners: true,
+    isScaleVisible: true,
+    isVertical: false,
+    isTooltipsVisible: true,
+    valueFrom: 1000,
+    valueTo: 1490,
+    step: 10,
+  };
+});
+
 function getPrivateStaticMethod(methodName: string, settings: ISettings) {
   const modelProto = Model.prototype as any;
   const instance = Object.create(modelProto);
   return () => modelProto.constructor[methodName].call(instance, settings);
 }
-
-function getPrivateMethod(methodName: string, settings: ISettings, thumbName: ThumbName) {
-  const model = new Model(settings);
-  const modelProto = Object.getPrototypeOf(model);
-  const result = modelProto[methodName](settings, thumbName);
-  return result;
-}
-
-beforeEach(() => {
-  settings = {
-    min: 0,
-    max: 1500,
-    valueFrom: 1000,
-    valueTo: 1490,
-    isScaleVisible: true,
-    isTwoRunners: true,
-    isVertical: false,
-    isTooltipsVisible: true,
-    step: 10,
-  };
-});
 
 describe('function validateSettings: ', () => {
   test('"settings.min >= settings.max" should throw Error', () => {
@@ -104,6 +97,12 @@ describe('function validateSettings: ', () => {
   });
 });
 
+function getPrivateMethod(methodName: string, settings: ISettings, thumbName: ThumbName) {
+  const modelProto = Model.prototype as any;
+  const instance = Object.create(modelProto);
+  return modelProto[methodName].call(instance, settings, thumbName);
+}
+
 describe('function getThumbValue:', () => {
   test('if thumbName == "from" should return settings.valueFrom', () => {
     const thumbName: ThumbName = 'from';
@@ -115,5 +114,30 @@ describe('function getThumbValue:', () => {
     const thumbName: ThumbName = 'to';
     const result = settings.valueTo;
     expect(getPrivateMethod('getThumbValue', settings, thumbName)).toBe(result);
+  });
+});
+
+function getStepInPercentsTest(settings: ISettings) {
+  const modelProto = Model.prototype as any;
+  const instance = Object.create(modelProto);
+  return modelProto.getStepInPercents.call(instance, settings);
+}
+
+describe('function getSettings:', () => {
+  test('check returned object', () => {
+    const model = new Model(settings);
+    const changedSettings = settings;
+    changedSettings.rangePercent = (settings.max - settings.min) / 100;
+    changedSettings.step = getStepInPercentsTest(settings);
+
+    expect(model.getSettings()).toStrictEqual(changedSettings);
+  });
+});
+
+describe('function getStepInPercents:', () => {
+  test('check returned value', () => {
+    const expectedStep = 0.6666666666666666;
+    const step = getStepInPercentsTest(settings);
+    expect(step).toBe(expectedStep);
   });
 });
