@@ -45,6 +45,7 @@ export default class View {
     this.setMargins = this.setMargins.bind(this);
     this.convertToPx = this.convertToPx.bind(this);
     this.isThumbsCollision = this.isThumbsCollision.bind(this);
+    this.getStepInPx = this.getStepInPx.bind(this);
   }
 
   public createRangeSlider(settings: ISettings): void {
@@ -61,14 +62,23 @@ export default class View {
       this.scale.element.style.height = '40px';
 
       if (settings.isTooltipsVisible) {
-        this.from.tooltip.element.className += ' range-slider__tooltip_vertical';
-        this.to.tooltip.element.className += ' range-slider__tooltip_vertical';
+        const TOOLTIP_VERTICAL = 'range-slider__tooltip_vertical';
+        this.from.tooltip.element.className += ` ${TOOLTIP_VERTICAL}`;
+        this.to.tooltip.element.className += ` ${TOOLTIP_VERTICAL}`;
       }
+
+      // add class for vertical thumbs
+      const THUMB_VERTICAL = 'range-slider__thumb_vertical';
+      if (settings.isTwoRunners) {
+        this.from.element.className += ` ${THUMB_VERTICAL}`;
+      }
+      this.to.element.className += ` ${THUMB_VERTICAL}`;
     }
 
     if (!settings.isTooltipsVisible) {
-      this.from.tooltip.element.className += ' range-slider__tooltip_hidden';
-      this.to.tooltip.element.className += ' range-slider__tooltip_hidden';
+      const TOOLTIP_HIDDEN = 'range-slider__tooltip_hidden';
+      this.from.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
+      this.to.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
     }
 
     if (settings.isScaleVisible) {
@@ -76,30 +86,36 @@ export default class View {
       this.scale.createScaleMarks(settings);
     }
 
-    // wrap element in div block
+    // TODO del block (wrap element in div block)
     if (this.slider.element) {
       const wrapper = document.createElement('div');
       wrapper.className = 'range-slider_block';
       if (settings.isVertical) {
-        wrapper.style.height = '310px';
+        wrapper.style.height = '300px';
       }
       this.slider.element.parentElement!.replaceChild(wrapper, this.slider.element);
       wrapper.appendChild(this.slider.element);
     }
 
-    this.initRangeSliderMargins();
+    this.initRangeSliderMargins(this.settings, this.slider);
     this.updateRangeSliderValues(this.settings);
     this.addListenersToThumbs();
   }
 
   public updateRangeSliderValues(settings: ISettings): void {
+    if (!settings) {
+      throw new Error('\'settings\' is undefined !');
+    }
+
+    const isVertical = this.settings?.isVertical as boolean;
+
     if (settings.isTwoRunners) {
-      this.range.setMarginLeft(this.rangeMarginFrom);
-      this.from.setMarginLeft(this.thumbMarginFrom);
+      this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
+      this.from.setMargin(this.thumbMarginFrom, settings);
       this.from.tooltip.setTooltipText(this.thumbTooltipFrom!);
     }
-    this.range.setMarginRight(this.rangeMarginTo);
-    this.to.setMarginLeft(this.thumbMarginTo);
+    this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
+    this.to.setMargin(this.thumbMarginTo, settings);
     this.to.tooltip.setTooltipText(this.thumbTooltipTo!);
   }
 
@@ -112,6 +128,11 @@ export default class View {
     this.to.element.addEventListener('pointerup', this.stopSliding);
 
     this.slider.element!.addEventListener('pointerdown', this.moveClosestThumb);
+
+    window.addEventListener('resize', () => {
+      this.initRangeSliderMargins(this.settings!, this.slider!);
+      this.updateRangeSliderValues(this.settings!);
+    });
   }
 
   private beginSliding(event: any): void {
@@ -124,7 +145,6 @@ export default class View {
         throw new Error('\'this.settings\' is undefined !');
       }
 
-      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
       let thumbName: ThumbName = 'to';
 
       if (target.classList.contains('range-slider__thumb_from')) {
@@ -133,7 +153,9 @@ export default class View {
         thumbName = 'to';
       }
 
-      this.setMargins(thumbName, currentPosInPercents);
+      // TODO margin in px
+      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
+      this.setMargins(this.settings, thumbName, currentPosInPercents);
       this.updateRangeSliderValues(this.settings);
       this.setDistanceBetweenTooltips();
     };
@@ -151,6 +173,7 @@ export default class View {
       throw new Error('\'this.settings\' is undefined !');
     }
 
+    // TODO margin in px
     const currentPosInPercents: number = this.getMarginLeft(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
@@ -158,13 +181,15 @@ export default class View {
 
     // check which thumb is closest to the cursor position
     if (fromPos !== undefined) {
+      // TODO margin in px
       const fromAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, fromPos);
       const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
 
       thumbName = fromAndCurrentDiff < toAndCurrentDiff ? 'from' : 'to';
     }
 
-    this.setMargins(thumbName, currentPosInPercents);
+    // TODO margin in px
+    this.setMargins(this.settings, thumbName, currentPosInPercents);
     this.updateRangeSliderValues(this.settings);
 
     if (this.settings.isTwoRunners) {
@@ -263,62 +288,136 @@ export default class View {
     return percents * percentInPx;
   }
 
-  private setMargins(thumbName: ThumbName, currentPosInPercents: number): void {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
+  private setMargins(settings: ISettings, thumbName: ThumbName, currentPos: number): void {
+    if (!settings) {
+      throw new Error('\'settings\' is undefined !');
     }
 
-    const currentPosWithStep = this.getCurrentPosWithStep(currentPosInPercents);
+    const currentPosWithStep = this.getCurrentPosWithStep(this.settings!, this.slider, currentPos);
 
-    if (thumbName === 'from' && this.settings.isTwoRunners) {
+    if (thumbName === 'from' && settings.isTwoRunners) {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
       this.thumbTooltipFrom = this.getTooltipValue(thumbName);
     } else if (thumbName === 'to') {
+      const { min, max } = this.getMinMaxSliderEdgesInPx(settings, this.slider);
+      const sliderLengthInPx: number = max! - min!;
+
       this.thumbMarginTo = currentPosWithStep;
-      this.rangeMarginTo = 100 - currentPosWithStep;
+      this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
       this.thumbTooltipTo = this.getTooltipValue(thumbName);
     }
   }
 
-  private getCurrentPosWithStep(currentPosInPercents: number): number {
-    if (!this.settings) {
+  private getCurrentPosWithStep(
+    settings: ISettings,
+    slider: Slider,
+    currentPosInPx: number,
+  ): number {
+    if (!settings) {
+      throw new Error('\'settings\' is undefined !');
+    }
+
+    const stepInPx = this.getStepInPx(settings, slider);
+
+    // currentPosInPxWidthStep - марджин относительно слайдера
+    const currentPosInPxWidthStep: number = Math.round(currentPosInPx / stepInPx) * stepInPx;
+
+    // min, max - значения относительно вернего левого угла экрана
+    const { min, max } = this.getMinMaxSliderEdgesInPx(settings, slider);
+
+    const absolutePosInPxWithStep = min! + currentPosInPxWidthStep;
+    const absolutePosInPx = min! + currentPosInPx;
+
+    if (absolutePosInPxWithStep > max! || absolutePosInPx >= max!) return max!;
+    if (absolutePosInPxWithStep < min! || absolutePosInPx <= min!) return min!;
+
+    return currentPosInPxWidthStep;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private getMinMaxSliderEdgesInPx(settings: ISettings, slider: Slider) {
+    if (!settings) {
       throw new Error('\'this.settings\' is undefined !');
     }
-
-    const remains = currentPosInPercents % this.settings.step;
-
-    let currentPos: number;
-    if (remains >= this.settings.step / 2) {
-      currentPos = currentPosInPercents - remains + this.settings.step;
-    } else {
-      currentPos = currentPosInPercents - remains;
+    if (!slider) {
+      throw new Error('\'this.slider\' is undefined !');
     }
-    if (currentPos > 100 || currentPosInPercents >= 100) return 100;
-    if (currentPos < 0 || currentPosInPercents <= 0) return 0;
-    return currentPos;
+
+    const sliderRect = slider.element?.getBoundingClientRect();
+
+    if (settings.isVertical) {
+      return {
+        min: sliderRect!.top,
+        max: sliderRect!.bottom,
+      };
+    }
+    return {
+      min: sliderRect!.left,
+      max: sliderRect!.right,
+    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  public getStepInPx(settings: ISettings, slider: Slider) {
+    const sliderLengthInPx: number = settings.isVertical
+      ? slider.element?.getBoundingClientRect().height as number
+      : slider.element?.getBoundingClientRect().width as number;
+
+    return (sliderLengthInPx / (settings.max - settings.min)) * settings.step;
   }
 
   private getTooltipValue(thumbName: ThumbName): number {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
+    const thumbMargin: number = thumbName === 'from'
+      ? this.thumbMarginFrom!
+      : this.thumbMarginTo!;
 
-    const thumbMargin: number = thumbName === 'from' ? this.thumbMarginFrom! : this.thumbMarginTo!;
+    const valueInMargin = thumbMargin / this.getOnePointInPx(this.settings!, this.slider);
+    const totalValue = valueInMargin + this.settings!.min;
 
-    return thumbMargin * this.settings.rangePercent! + this.settings.min;
+    return totalValue;
   }
 
-  private initRangeSliderMargins(): void {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
+  private initRangeSliderMargins(settings: ISettings, slider: Slider): void {
+    if (!settings) {
+      throw new Error('\'settings\' is undefined !');
+    }
+    if (!slider) {
+      throw new Error('\'slider\' is undefined !');
     }
 
-    const marginFrom = (this.settings.valueFrom - this.settings.min) / this.settings.rangePercent!;
-    const marginTo = (this.settings.valueTo - this.settings.min) / this.settings.rangePercent!;
+    const onePointInPx = this.getOnePointInPx(settings, slider);
 
-    this.setMargins('from', marginFrom);
-    this.setMargins('to', marginTo);
+    /**
+     * получаем относительные значения марджинов в пикселах от начала слайдера
+     * и устанавливаем марджины
+     *  */
+    if (settings.isTwoRunners) {
+      const marginFrom = (settings.valueFrom - settings.min) * onePointInPx;
+      this.setMargins(settings, 'from', marginFrom);
+    }
+    const marginTo = (settings.valueTo - settings.min) * onePointInPx;
+    this.setMargins(settings, 'to', marginTo);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private getOnePointInPx(settings: ISettings, slider: Slider): number {
+    if (!settings) {
+      throw new Error('\'settings\' is undefined !');
+    }
+    if (!slider) {
+      throw new Error('\'slider\' is undefined !');
+    }
+
+    /**
+     * получаем длину слайдера в зависимости
+     * от вертикального / горизонтального положения
+     */
+    const sliderLengthInPx: number = settings.isVertical
+      ? slider.element?.getBoundingClientRect().height as number
+      : slider.element?.getBoundingClientRect().width as number;
+
+    return sliderLengthInPx / (settings.max - settings.min);
   }
 
   private isThumbsCollision(): boolean {
@@ -372,12 +471,17 @@ export default class View {
     const from = this.from.element;
     const to = this.to.element;
 
+    const zIndexClass = 'range-slider__tooltip_z-index-top';
+
+    /**
+     * меняем z-index бегунков в зависимости от выбранного бегунка
+     */
     if (thumb === 'from') {
-      from.classList.add('range-slider__z-index_top');
-      to.classList.remove('range-slider__z-index_top');
+      from.classList.add(zIndexClass);
+      to.classList.remove(zIndexClass);
     } else if (thumb === 'to') {
-      from.classList.remove('range-slider__z-index_top');
-      to.classList.add('range-slider__z-index_top');
+      from.classList.remove(zIndexClass);
+      to.classList.add(zIndexClass);
     }
   }
 }
