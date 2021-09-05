@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import Tooltip from './Tooltip';
-import { ThumbName } from '../RangeSlider/types';
+import { ThumbName, ISettings } from '../RangeSlider/types';
 
 export default class Thumb {
   element: HTMLElement;
@@ -23,8 +23,13 @@ export default class Thumb {
     return thumb;
   }
 
-  setMarginLeft(margin: number | undefined): void {
+  setMargin(margin: number | undefined, settings: ISettings): void {
     if (margin === undefined) return;
-    this.element.style.marginLeft = `${margin}%`;
+
+    if (settings.isVertical) {
+      this.element.style.marginTop = `${margin}px`;
+    } else {
+      this.element.style.marginLeft = `${margin}px`;
+    }
   }
 }
