@@ -13,13 +13,23 @@ export default class Range {
     return range;
   }
 
-  setMarginLeft(margin: number | undefined): void {
+  setMarginFromBegin(margin: number | undefined, isVertical: boolean): void {
     if (margin === undefined) return;
-    this.element.style.marginLeft = `${margin}%`;
+
+    if (isVertical) {
+      this.element.style.marginTop = `${margin}px`;
+    } else {
+      this.element.style.marginLeft = `${margin}px`;
+    }
   }
 
-  setMarginRight(margin: number | undefined): void {
+  setMarginFromEnd(margin: number | undefined, isVertical: boolean): void {
     if (margin === undefined) return;
-    this.element.style.marginRight = `${margin}%`;
+
+    if (isVertical) {
+      this.element.style.marginBottom = `${margin}px`;
+    } else {
+      this.element.style.marginRight = `${margin}px`;
+    }
   }
 }
