@@ -92,10 +92,13 @@ $slider-tooltip-width: 40;
 }
 
 .range-slider__range {
-  position: relative;
-  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   box-sizing: border-box;
-  height: $slider-thickness - $slider-range-border * 2 + px;
+  height: auto;
   background: $slider-between-bg-color;
   border-radius: $slider-thickness/2 + px;
 }
