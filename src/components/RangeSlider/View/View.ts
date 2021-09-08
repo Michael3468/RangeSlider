@@ -43,7 +43,6 @@ export default class View {
     this.stopSliding = this.stopSliding.bind(this);
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
-    this.convertToPx = this.convertToPx.bind(this);
     this.isThumbsCollision = this.isThumbsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
   }
@@ -153,9 +152,8 @@ export default class View {
         thumbName = 'to';
       }
 
-      // TODO margin in px
-      const currentPosInPercents = this.getMarginLeft(this.currentCursorPosition(e));
-      this.setMargins(this.settings, thumbName, currentPosInPercents);
+      const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
+      this.setMargins(this.settings, thumbName, currentPos);
       this.updateRangeSliderValues(this.settings);
       this.setDistanceBetweenTooltips();
     };
@@ -168,28 +166,25 @@ export default class View {
     target.releasePointerCapture(pointerId);
   }
 
-  private moveClosestThumb(e: any): void {
+  private moveClosestThumb(e: PointerEvent): void {
     if (!this.settings) {
       throw new Error('\'this.settings\' is undefined !');
     }
 
-    // TODO margin in px
-    const currentPosInPercents: number = this.getMarginLeft(this.currentCursorPosition(e));
+    const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
     // check which thumb is closest to the cursor position
     if (fromPos !== undefined) {
-      // TODO margin in px
-      const fromAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, fromPos);
-      const toAndCurrentDiff = this.getDifferenceBetween(currentPosInPercents, toPos);
+      const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
+      const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
-      thumbName = fromAndCurrentDiff < toAndCurrentDiff ? 'from' : 'to';
+      thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
 
-    // TODO margin in px
-    this.setMargins(this.settings, thumbName, currentPosInPercents);
+    this.setMargins(this.settings, thumbName, currentPos);
     this.updateRangeSliderValues(this.settings);
 
     if (this.settings.isTwoRunners) {
@@ -201,66 +196,49 @@ export default class View {
 
   // eslint-disable-next-line class-methods-use-this
   private getDifferenceBetween(
-    currentPosInPercents: number | undefined,
-    // eslint-disable-next-line comma-dangle
-    thumbMargin: number | undefined
+    currentPos: number | undefined,
+    thumbMargin: number | undefined,
   ): number {
-    if (currentPosInPercents === undefined || thumbMargin === undefined) return 0;
-    return Math.abs(currentPosInPercents - parseFloat(thumbMargin!.toString()));
+    if (currentPos === undefined || thumbMargin === undefined) return 0;
+    return Math.abs(currentPos - thumbMargin);
   }
 
-  private getMarginLeft(currentPos: number): number {
+  private getPosOnScale(currentPos: number): number {
     if (!this.settings) {
       throw new Error('\'this.settings\' is undefined !');
     }
 
-    let scalePercentInPx: number;
-    let posOnScale: number;
     const sliderRect = this.slider.element!.getBoundingClientRect();
 
-    if (this.settings.isVertical) {
-      scalePercentInPx = sliderRect.height / 100;
-      posOnScale = currentPos - sliderRect.top;
-    } else {
-      scalePercentInPx = sliderRect.width / 100;
-      posOnScale = currentPos - sliderRect.left;
-    }
-    const currentPosInPercents = posOnScale / scalePercentInPx;
-
-    return currentPosInPercents;
+    return this.settings.isVertical
+      ? currentPos - sliderRect.top
+      : currentPos - sliderRect.left;
   }
 
+  // TODO event: any
   private currentCursorPosition(event: any): number {
     if (!this.settings) {
       throw new Error('\'this.settings\' is undefined !');
     }
 
-    let currentPos: number;
-    let min: number;
-    let max: number;
-    const sliderRect = this.slider.element!.getBoundingClientRect();
+    let currentPos: number = this.settings.isVertical
+      ? event.clientY
+      : event.clientX;
 
-    if (this.settings.isVertical) {
-      currentPos = event.clientY;
-      min = sliderRect.top || 0;
-      max = sliderRect.bottom || 0;
-    } else {
-      currentPos = event.clientX;
-      min = sliderRect.left || 0;
-      max = sliderRect.right || 0;
-    }
+    let { min, max } = this.getMinMaxSliderEdgesInPx(this.settings, this.slider);
 
-    // set Edges to thumbs for twoRunners slider
+    // set Edge values to thumbs for twoRunners slider
     if (this.settings.isTwoRunners) {
       const { target } = event;
+      const stepInPx = this.getStepInPx(this.settings, this.slider);
 
       if (target.classList.contains('range-slider__thumb_from')) {
-        max = this.convertToPx(this.thumbMarginTo! - this.settings.step) + min;
+        max = this.thumbMarginTo! - stepInPx + min;
       } else if (target.classList.contains('range-slider__thumb_to')) {
-        min += this.convertToPx(this.thumbMarginFrom! + this.settings.step);
+        min = this.thumbMarginFrom! + stepInPx + min;
       }
     }
-    // set Edges to thumbs for twoRunners slider end
+    // set Edge values to thumbs for twoRunners slider end
 
     // validate currentPos
     if (currentPos < min) {
@@ -272,28 +250,12 @@ export default class View {
     return currentPos;
   }
 
-  private convertToPx(percents: number): number {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
-    let percentInPx: number;
-    const sliderRect = this.slider.element!.getBoundingClientRect();
-
-    if (this.settings.isVertical) {
-      percentInPx = sliderRect.height / 100;
-    } else {
-      percentInPx = sliderRect.width / 100;
-    }
-    return percents * percentInPx;
-  }
-
   private setMargins(settings: ISettings, thumbName: ThumbName, currentPos: number): void {
     if (!settings) {
       throw new Error('\'settings\' is undefined !');
     }
 
-    const currentPosWithStep = this.getCurrentPosWithStep(this.settings!, this.slider, currentPos);
+    const currentPosWithStep = this.getCurrentPosWithStep(settings, this.slider, currentPos);
 
     if (thumbName === 'from' && settings.isTwoRunners) {
       this.thumbMarginFrom = currentPosWithStep;
@@ -312,27 +274,28 @@ export default class View {
   private getCurrentPosWithStep(
     settings: ISettings,
     slider: Slider,
-    currentPosInPx: number,
+    currentPos: number,
   ): number {
     if (!settings) {
       throw new Error('\'settings\' is undefined !');
     }
 
     const stepInPx = this.getStepInPx(settings, slider);
-
-    // currentPosInPxWidthStep - марджин относительно слайдера
-    const currentPosInPxWidthStep: number = Math.round(currentPosInPx / stepInPx) * stepInPx;
-
-    // min, max - значения относительно вернего левого угла экрана
+    const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
     const { min, max } = this.getMinMaxSliderEdgesInPx(settings, slider);
 
-    const absolutePosInPxWithStep = min! + currentPosInPxWidthStep;
-    const absolutePosInPx = min! + currentPosInPx;
+    const absolutePosWithStep = min! + currentPosWidthStep;
+    const absolutePos = min! + currentPos;
+    const sliderMaxPos = max! - min!;
+    const sliderMinPos = 0; // min - min
 
-    if (absolutePosInPxWithStep > max! || absolutePosInPx >= max!) return max!;
-    if (absolutePosInPxWithStep < min! || absolutePosInPx <= min!) return min!;
+    const isCursorPosGreaterThanMax = absolutePosWithStep > max! || absolutePos >= max!;
+    const isCursorPosLessThanMin = absolutePosWithStep < min! || absolutePos <= min!;
 
-    return currentPosInPxWidthStep;
+    if (isCursorPosGreaterThanMax) return sliderMaxPos;
+    if (isCursorPosLessThanMin) return sliderMinPos;
+
+    return currentPosWidthStep;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -409,10 +372,6 @@ export default class View {
       throw new Error('\'slider\' is undefined !');
     }
 
-    /**
-     * получаем длину слайдера в зависимости
-     * от вертикального / горизонтального положения
-     */
     const sliderLengthInPx: number = settings.isVertical
       ? slider.element?.getBoundingClientRect().height as number
       : slider.element?.getBoundingClientRect().width as number;
@@ -473,9 +432,6 @@ export default class View {
 
     const zIndexClass = 'range-slider__tooltip_z-index-top';
 
-    /**
-     * меняем z-index бегунков в зависимости от выбранного бегунка
-     */
     if (thumb === 'from') {
       from.classList.add(zIndexClass);
       to.classList.remove(zIndexClass);
