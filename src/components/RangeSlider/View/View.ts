@@ -58,7 +58,7 @@ export default class View {
 
     if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
-      this.scale.element.style.height = '40px';
+      this.scale.element.style.height = '40px'; // TODO fix vertical height
 
       if (settings.isTooltipsVisible) {
         const TOOLTIP_VERTICAL = 'range-slider__tooltip_vertical';
@@ -238,7 +238,6 @@ export default class View {
         min = this.thumbMarginFrom! + stepInPx + min;
       }
     }
-    // set Edge values to thumbs for twoRunners slider end
 
     // validate currentPos
     if (currentPos < min) {
@@ -246,7 +245,6 @@ export default class View {
     } else if (currentPos > max) {
       currentPos = max;
     }
-    //  validate currentPos end
     return currentPos;
   }
 
@@ -354,7 +352,7 @@ export default class View {
     /**
      * получаем относительные значения марджинов в пикселах от начала слайдера
      * и устанавливаем марджины
-     *  */
+     * */
     if (settings.isTwoRunners) {
       const marginFrom = (settings.valueFrom - settings.min) * onePointInPx;
       this.setMargins(settings, 'from', marginFrom);
@@ -414,12 +412,15 @@ export default class View {
 
     if (this.isThumbsCollision()) {
       if (this.settings.isVertical) {
-        from.left = `${-70}%`;
-        to.left = `${-30}%`;
+        from.top = `${-55}%`;
+        to.top = `${55}%`;
       } else {
         from.left = `${-100}%`;
         to.left = `${0}%`;
       }
+    } else if (this.settings.isVertical) {
+      from.top = `${0}%`;
+      to.top = `${0}%`;
     } else {
       from.left = `${-50}%`;
       to.left = `${-50}%`;
