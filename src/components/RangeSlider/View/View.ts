@@ -85,17 +85,6 @@ export default class View {
       this.scale.createScaleMarks(settings);
     }
 
-    // TODO del block (wrap element in div block)
-    if (this.slider.element) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'range-slider_block';
-      if (settings.isVertical) {
-        wrapper.style.height = '300px';
-      }
-      this.slider.element.parentElement!.replaceChild(wrapper, this.slider.element);
-      wrapper.appendChild(this.slider.element);
-    }
-
     this.initRangeSliderMargins(this.settings, this.slider);
     this.updateRangeSliderValues(this.settings);
     this.addListenersToThumbs();
