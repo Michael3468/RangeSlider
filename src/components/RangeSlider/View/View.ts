@@ -416,8 +416,8 @@ export default class View {
         from.top = `${-55}%`;
         to.top = `${55}%`;
       } else {
-        from.left = `${-100}%`;
-        to.left = `${0}%`;
+        from.left = `${-105}%`;
+        to.left = `${5}%`;
       }
     } else if (this.settings.isVertical) {
       from.top = `${0}%`;
