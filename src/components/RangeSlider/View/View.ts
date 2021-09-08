@@ -134,12 +134,13 @@ export default class View {
     });
   }
 
-  private beginSliding(event: any): void {
-    const { target, pointerId } = event;
+  private beginSliding(event: PointerEvent): void {
+    const { pointerId } = event;
+    const target = event.target as HTMLElement;
     event.preventDefault();
     target.setPointerCapture(pointerId);
 
-    target.onpointermove = (e: any) => {
+    target.onpointermove = (e: PointerEvent) => {
       if (!this.settings) {
         throw new Error('\'this.settings\' is undefined !');
       }
@@ -160,8 +161,9 @@ export default class View {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private stopSliding(event: any): void {
-    const { target, pointerId } = event;
+  private stopSliding(event: PointerEvent): void {
+    const { pointerId } = event;
+    const target = event.target as HTMLElement;
     target.onpointermove = null;
     target.releasePointerCapture(pointerId);
   }
@@ -215,8 +217,7 @@ export default class View {
       : currentPos - sliderRect.left;
   }
 
-  // TODO event: any
-  private currentCursorPosition(event: any): number {
+  private currentCursorPosition(event: PointerEvent): number {
     if (!this.settings) {
       throw new Error('\'this.settings\' is undefined !');
     }
@@ -229,7 +230,7 @@ export default class View {
 
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.isTwoRunners) {
-      const { target } = event;
+      const target = event.target as Element;
       const stepInPx = this.getStepInPx(this.settings, this.slider);
 
       if (target.classList.contains('range-slider__thumb_from')) {
