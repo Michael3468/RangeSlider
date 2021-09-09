@@ -1,7 +1,9 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 import { ISettings } from '../RangeSlider/types';
+import getMinMaxElementEdgesInPx from '../lib/common';
 
 export default class Scale {
   element: HTMLElement;
@@ -20,15 +22,15 @@ export default class Scale {
     return scale;
   }
 
-  private createMark(marginLeft: number): HTMLElement {
+  private createMark(marginFromBegin: number): HTMLElement {
     const mark = document.createElement('span');
     mark.className = 'range-slider__scale-mark';
-    mark.style.marginLeft = `${marginLeft}%`;
+    mark.style.marginLeft = `${marginFromBegin}px`;
 
     return mark;
   }
 
-  private createMarkValue(value: number, marginLeft: number): HTMLElement {
+  private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
     if (!this.settings) {
       throw new Error("'this.settings' is undefined !");
     }
@@ -38,58 +40,63 @@ export default class Scale {
     if (this.settings.isVertical) {
       markValue.className += ' range-slider__scale-mark-value_vertical';
     }
-    markValue.style.marginLeft = `${marginLeft}%`;
+    markValue.style.marginLeft = `${marginFromBegin}px`;
     markValue.innerText = value.toString();
 
     return markValue;
   }
 
-  private roundToCeil10(n: number): number {
-    return Math.ceil(n / 10) * 10;
+  private roundToCeil(n: number, ceilTo: number): number {
+    return Math.ceil(n / ceilTo) * ceilTo;
   }
 
   public createScaleMarks(settings: ISettings) {
     this.settings = settings;
-    const scaleSizeInPx: number = this.settings.isVertical
+
+    const scaleLengthInPx: number = this.settings.isVertical
       ? this.element.getBoundingClientRect().height
       : this.element.getBoundingClientRect().width;
-    const scaleWidthPercent: number = scaleSizeInPx / 100;
-    const scaleLengthInPoints: number = settings.max - settings.min;
-    const onePointInPx: number = scaleSizeInPx / scaleLengthInPoints;
 
-    let markPos: number = settings.min;
+    const scaleLengthInPoints: number = settings.max - settings.min;
+    const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
+    // const scalePercentInPx: number = scaleLengthInPx / 100;
+
+    // add first and last marks
+    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
+    const scaleMaxPos = max - min;
+    let markPos: number = 0;
     // add first mark
     this.element.appendChild(this.createMark(0));
     this.element.appendChild(this.createMarkValue(markPos, 0));
-
     // add last mark
-    this.element.appendChild(this.createMark(100));
-    const lastMarkValue = this.element.appendChild(this.createMarkValue(settings.max, 100));
-    const lastMarkValueRect = lastMarkValue.getBoundingClientRect();
+    this.element.appendChild(this.createMark(scaleMaxPos));
+    const lastMarkValue: HTMLElement =
+      this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    const lastMarkValueSize = settings.isVertical
-      ? lastMarkValueRect.height
-      : lastMarkValueRect.width;
+    // step between marks
+    const lastMarkValueSize: number = settings.isVertical
+      ? lastMarkValue.getBoundingClientRect().height
+      : lastMarkValue.getBoundingClientRect().width;
 
-    // lastMarkValueSize in scale points
-    const stepBetweenMarks: number = this.roundToCeil10(lastMarkValueSize / onePointInPx);
+    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
+    const ROUND_TO: number = 10;
+    const stepBetweenMarksInPoints: number = this.roundToCeil(lastMarkValueSizeInPoints, ROUND_TO);
+    const stepBetweenMarksInPx = stepBetweenMarksInPoints * onePointInPx;
 
-    while (markPos < settings.max) {
-      const roundedMarkValue: number = this.roundToCeil10(markPos);
-      // eslint-disable-next-line operator-linebreak
-      const marginInPercents: number =
-        ((roundedMarkValue - settings.min) * onePointInPx) / scaleWidthPercent;
+    // create marks on scale
+    while (markPos < scaleMaxPos) {
+      const lastMarkPos = markPos + stepBetweenMarksInPx;
 
-      if (marginInPercents > 0 && marginInPercents < 100) {
-        this.element.appendChild(this.createMark(marginInPercents));
+      if (markPos > 0 && lastMarkPos < scaleMaxPos) {
+        this.element.appendChild(this.createMark(markPos));
 
-        // add markValue when it fits
-        if (roundedMarkValue + stepBetweenMarks <= settings.max) {
-          this.element.appendChild(this.createMarkValue(roundedMarkValue, marginInPercents));
+        // add last mark value if it fits
+        if (lastMarkPos <= settings.max) {
+          const value = this.roundToCeil(markPos / onePointInPx, ROUND_TO);
+          this.element.appendChild(this.createMarkValue(value, markPos));
         }
       }
-
-      markPos += stepBetweenMarks;
+      markPos += stepBetweenMarksInPx;
     }
   }
 }
