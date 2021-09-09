@@ -107,6 +107,7 @@ $slider-tooltip-width: 40;
     display: block;
     width: 1px;
     height: 10px;
+    top: 5px;
     background: $slider-border-color;
 
     &:first-child {
