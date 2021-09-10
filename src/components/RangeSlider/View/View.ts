@@ -60,7 +60,7 @@ export default class View {
 
     if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
-      this.scale.element.style.height = '100%';
+      this.scale.element.className += ' range-slider__scale_vertical';
 
       if (settings.isTooltipsVisible) {
         const TOOLTIP_VERTICAL = 'range-slider__tooltip_vertical';
