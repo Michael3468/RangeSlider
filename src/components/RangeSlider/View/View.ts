@@ -58,7 +58,7 @@ export default class View {
 
     if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
-      this.scale.element.style.height = '40px'; // TODO fix vertical height
+      this.scale.element.style.height = '100%';
 
       if (settings.isTooltipsVisible) {
         const TOOLTIP_VERTICAL = 'range-slider__tooltip_vertical';
@@ -120,6 +120,13 @@ export default class View {
     window.addEventListener('resize', () => {
       this.initRangeSliderMargins(this.settings!, this.slider!);
       this.updateRangeSliderValues(this.settings!);
+
+      if (!this.settings?.isVertical) {
+        this.scale.element.replaceChildren();
+        this.scale.createScaleMarks(this.settings!);
+      }
+
+      this.setDistanceBetweenTooltips();
     });
   }
 

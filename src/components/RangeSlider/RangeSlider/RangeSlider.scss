@@ -114,10 +114,31 @@ $slider-tooltip-width: 40;
       left: -1px;
     }
 
+    &_vertical {
+      width: 10px;
+      height: 1px;
+      left: -10px !important; 
+      top: 0px;
+
+      &:first-child {
+        top: -1px;
+      }
+    }
+
     &-value {
       position: absolute;
       top: 12px;
       transform: translateX(-50%);
+
+      &:hover {
+        background-color: $slider-bg-color;
+      }
+
+      &_vertical {
+        top: -10px;
+        left: -15px;
+        transform: translateX(-100%);
+      }
     }
   }
 }

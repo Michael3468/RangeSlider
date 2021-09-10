@@ -24,8 +24,17 @@ export default class Scale {
 
   private createMark(marginFromBegin: number): HTMLElement {
     const mark = document.createElement('span');
+
     mark.className = 'range-slider__scale-mark';
-    mark.style.marginLeft = `${marginFromBegin}px`;
+    if (this.settings?.isVertical) {
+      mark.className += ' range-slider__scale-mark_vertical';
+    }
+
+    if (this.settings?.isVertical) {
+      mark.style.marginTop = `${marginFromBegin}px`;
+    } else {
+      mark.style.marginLeft = `${marginFromBegin}px`;
+    }
 
     return mark;
   }
@@ -36,11 +45,17 @@ export default class Scale {
     }
 
     const markValue = document.createElement('span');
+
     markValue.className = 'range-slider__scale-mark-value';
     if (this.settings.isVertical) {
       markValue.className += ' range-slider__scale-mark-value_vertical';
     }
-    markValue.style.marginLeft = `${marginFromBegin}px`;
+
+    if (this.settings.isVertical) {
+      markValue.style.marginTop = `${marginFromBegin}px`;
+    } else {
+      markValue.style.marginLeft = `${marginFromBegin}px`;
+    }
     markValue.innerText = value.toString();
 
     return markValue;
@@ -59,7 +74,6 @@ export default class Scale {
 
     const scaleLengthInPoints: number = settings.max - settings.min;
     const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
-    // const scalePercentInPx: number = scaleLengthInPx / 100;
 
     // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
@@ -86,12 +100,12 @@ export default class Scale {
     // create marks on scale
     while (markPos < scaleMaxPos) {
       const lastMarkPos = markPos + stepBetweenMarksInPx;
+      const isMarkValueFits = lastMarkPos < scaleMaxPos && lastMarkPos <= settings.max;
 
-      if (markPos > 0 && lastMarkPos < scaleMaxPos) {
+      if (markPos > 0) {
         this.element.appendChild(this.createMark(markPos));
 
-        // add last mark value if it fits
-        if (lastMarkPos <= settings.max) {
+        if (isMarkValueFits) {
           const value = this.roundToCeil(markPos / onePointInPx, ROUND_TO);
           this.element.appendChild(this.createMarkValue(value, markPos));
         }
