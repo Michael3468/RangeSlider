@@ -12,3 +12,7 @@ export interface ISettings {
 }
 
 export type ThumbName = 'from' | 'to';
+
+export interface ISliderElement {
+  element: HTMLElement
+}

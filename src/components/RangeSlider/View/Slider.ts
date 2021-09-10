@@ -1,13 +1,17 @@
-export default class Slider {
-  element: HTMLElement | null;
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import { ISliderElement } from '../RangeSlider/types';
 
-  constructor(id: string | null) {
-    this.element = this.createSlider(id) as HTMLElement;
+export default class Slider implements ISliderElement {
+  element: HTMLElement;
+
+  constructor(id: string) {
+    this.element = this.createSlider(id);
   }
 
   // eslint-disable-next-line class-methods-use-this
-  createSlider(id: string | null) {
-    const slider = id ? document.querySelector(id) : null;
+  createSlider(id: string): HTMLElement {
+    const slider = document.querySelector(id) as HTMLElement;
     slider!.className = 'range-slider';
 
     return slider;

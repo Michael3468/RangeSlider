@@ -8,6 +8,8 @@ import Thumb from './Thumb';
 import Range from './Range';
 import Scale from './Scale';
 
+import getMinMaxElementEdgesInPx from '../lib/common';
+
 export default class View {
   slider: Slider;
   from: Thumb;
@@ -25,7 +27,7 @@ export default class View {
   thumbTooltipFrom: number | undefined;
   thumbTooltipTo: number | undefined;
 
-  constructor(id: string | null) {
+  constructor(id: string) {
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
@@ -222,7 +224,7 @@ export default class View {
       ? event.clientY
       : event.clientX;
 
-    let { min, max } = this.getMinMaxSliderEdgesInPx(this.settings, this.slider);
+    let { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
 
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.isTwoRunners) {
@@ -257,7 +259,7 @@ export default class View {
       this.rangeMarginFrom = currentPosWithStep;
       this.thumbTooltipFrom = this.getTooltipValue(thumbName);
     } else if (thumbName === 'to') {
-      const { min, max } = this.getMinMaxSliderEdgesInPx(settings, this.slider);
+      const { min, max } = getMinMaxElementEdgesInPx(settings, this.slider);
       const sliderLengthInPx: number = max! - min!;
 
       this.thumbMarginTo = currentPosWithStep;
@@ -277,7 +279,7 @@ export default class View {
 
     const stepInPx = this.getStepInPx(settings, slider);
     const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
-    const { min, max } = this.getMinMaxSliderEdgesInPx(settings, slider);
+    const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
 
     const absolutePosWithStep = min! + currentPosWidthStep;
     const absolutePos = min! + currentPos;
@@ -291,29 +293,6 @@ export default class View {
     if (isCursorPosLessThanMin) return sliderMinPos;
 
     return currentPosWidthStep;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  private getMinMaxSliderEdgesInPx(settings: ISettings, slider: Slider) {
-    if (!settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-    if (!slider) {
-      throw new Error('\'this.slider\' is undefined !');
-    }
-
-    const sliderRect = slider.element?.getBoundingClientRect();
-
-    if (settings.isVertical) {
-      return {
-        min: sliderRect!.top,
-        max: sliderRect!.bottom,
-      };
-    }
-    return {
-      min: sliderRect!.left,
-      max: sliderRect!.right,
-    };
   }
 
   // eslint-disable-next-line class-methods-use-this

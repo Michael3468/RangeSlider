@@ -2,10 +2,10 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
-import { ISettings } from '../RangeSlider/types';
+import { ISettings, ISliderElement } from '../RangeSlider/types';
 import getMinMaxElementEdgesInPx from '../lib/common';
 
-export default class Scale {
+export default class Scale implements ISliderElement {
   element: HTMLElement;
 
   settings: ISettings | undefined;
