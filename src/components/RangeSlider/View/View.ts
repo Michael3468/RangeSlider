@@ -3,6 +3,7 @@
 /* eslint-disable lines-between-class-members */
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
+import Observer from '../Observer/Observer';
 import Slider from './Slider';
 import Thumb from './Thumb';
 import Range from './Range';
@@ -10,7 +11,7 @@ import Scale from './Scale';
 
 import getMinMaxElementEdgesInPx from '../lib/common';
 
-export default class View {
+export default class View extends Observer {
   slider: Slider;
   from: Thumb;
   to: Thumb;
@@ -24,7 +25,10 @@ export default class View {
   thumbMarginFrom: number | undefined;
   thumbMarginTo: number | undefined;
 
+  changeSettingsObserver: Observer;
+
   constructor(id: string, mergedSettings: ISettings) {
+    super();
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
@@ -44,6 +48,8 @@ export default class View {
     this.setMargins = this.setMargins.bind(this);
     this.isThumbsCollision = this.isThumbsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
+
+    this.changeSettingsObserver = new Observer();
   }
 
   public createRangeSlider(settings: ISettings): void {
@@ -111,6 +117,9 @@ export default class View {
     this.to.element.addEventListener('pointerup', this.stopSliding);
 
     this.slider.element!.addEventListener('pointerdown', this.moveClosestThumb);
+    this.slider.element!.addEventListener('pointerup', () => {
+      this.changeSettingsObserver.notifyObservers(this.settings);
+    });
 
     window.addEventListener('resize', () => {
       this.initRangeSliderMargins(this.settings!, this.slider!);
@@ -239,8 +248,6 @@ export default class View {
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
       this.settings!.valueTo = this.getThumbValue(thumbName);
     }
-
-    // TODO send valueFrom and valueTo to update model
   }
 
   private getCurrentPosWithStep(

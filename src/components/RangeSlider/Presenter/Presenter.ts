@@ -1,6 +1,8 @@
 /* eslint-disable lines-between-class-members */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
+import { ISettings } from '../RangeSlider/types';
+
 import { Model } from '../Model/Model';
 import View from '../View/View';
 
@@ -17,5 +19,9 @@ export default class Presenter {
 
   private initRangeSlider(): void {
     this.view.createRangeSlider(this.model.getSettings());
+
+    this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
+      this.model.updateSettings(settings);
+    });
   }
 }

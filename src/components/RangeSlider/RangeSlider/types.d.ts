@@ -8,7 +8,6 @@ export interface ISettings {
   valueFrom: number;
   valueTo: number;
   step: number;
-  rangePercent?: number;
 }
 
 export type ThumbName = 'from' | 'to';

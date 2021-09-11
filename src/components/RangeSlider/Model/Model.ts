@@ -19,7 +19,6 @@ export class Model {
   valueFrom: number;
   valueTo: number;
   step: number;
-  rangePercent: number;
 
   constructor(settings: ISettings) {
     Model.validateSettings(settings);
@@ -36,10 +35,7 @@ export class Model {
     this.valueFrom = this.getThumbValue(this.settings, 'from');
     this.valueTo = this.getThumbValue(this.settings, 'to');
 
-    this.step = this.getStepInPercents(this.settings);
-    this.rangePercent = (this.settings.max - this.settings.min) / 100;
-
-    this.getStepInPercents = this.getStepInPercents.bind(this);
+    this.step = settings.step;
   }
 
   private static validateSettings(settings: ISettings): void {
@@ -79,14 +75,10 @@ export class Model {
       valueFrom: this.valueFrom,
       valueTo: this.valueTo,
       step: this.step,
-      rangePercent: this.rangePercent,
     };
   }
 
-  private getStepInPercents(settings: ISettings): number {
-    const SLIDER_LENGTH_IN_PERCENTS = 100;
-    const totalScaleSteps = settings.max - settings.min;
-    const scaleStepInPercents = SLIDER_LENGTH_IN_PERCENTS / totalScaleSteps;
-    return scaleStepInPercents * settings.step;
+  public updateSettings(settings: ISettings) {
+    this.settings = settings;
   }
 }
