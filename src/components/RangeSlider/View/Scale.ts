@@ -3,7 +3,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 import { ISettings, ISliderElement } from '../RangeSlider/types';
-import getMinMaxElementEdgesInPx from '../lib/common';
+import { getMinMaxElementEdgesInPx, getElementLengthInPx } from '../lib/common';
 
 export default class Scale implements ISliderElement {
   element: HTMLElement;
@@ -61,6 +61,7 @@ export default class Scale implements ISliderElement {
     return markValue;
   }
 
+  // TODO rename roundToCeil to roundTo
   private roundToCeil(n: number, ceilTo: number): number {
     return Math.ceil(n / ceilTo) * ceilTo;
   }
@@ -68,10 +69,7 @@ export default class Scale implements ISliderElement {
   public createScaleMarks(settings: ISettings) {
     this.settings = settings;
 
-    const scaleLengthInPx: number = this.settings.isVertical
-      ? this.element.getBoundingClientRect().height
-      : this.element.getBoundingClientRect().width;
-
+    const scaleLengthInPx: number = getElementLengthInPx(this.settings, this.element);
     const scaleLengthInPoints: number = settings.max - settings.min;
     const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
 
@@ -88,13 +86,9 @@ export default class Scale implements ISliderElement {
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
     // step between marks
-    const lastMarkValueSize: number = settings.isVertical
-      ? lastMarkValue.getBoundingClientRect().height
-      : lastMarkValue.getBoundingClientRect().width;
-
+    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValue);
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const ROUND_TO: number = 10;
-    const stepBetweenMarksInPoints: number = this.roundToCeil(lastMarkValueSizeInPoints, ROUND_TO);
+    const stepBetweenMarksInPoints: number = this.roundToCeil(lastMarkValueSizeInPoints, 10);
     const stepBetweenMarksInPx = stepBetweenMarksInPoints * onePointInPx;
     const minPosInPx = settings.min * onePointInPx;
     // create marks on scale

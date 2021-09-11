@@ -2,7 +2,8 @@
 /* eslint-disable import/no-unresolved */
 import { ISettings, ISliderElement } from '../RangeSlider/types';
 
-export default function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement) {
+// TODO add IMinMax interface / del settings guard
+export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement) {
   if (!settings) {
     throw new Error('\'settings\' is undefined !');
   }
@@ -19,4 +20,10 @@ export default function getMinMaxElementEdgesInPx(settings: ISettings, el: ISlid
     min: elementRect!.left,
     max: elementRect!.right,
   };
+}
+
+export function getElementLengthInPx(settings: ISettings, el: HTMLElement): number {
+  return settings.isVertical
+    ? el.getBoundingClientRect().height
+    : el.getBoundingClientRect().width;
 }

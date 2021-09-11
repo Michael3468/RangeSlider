@@ -9,7 +9,7 @@ import Thumb from './Thumb';
 import Range from './Range';
 import Scale from './Scale';
 
-import getMinMaxElementEdgesInPx from '../lib/common';
+import { getElementLengthInPx, getMinMaxElementEdgesInPx } from '../lib/common';
 
 export default class View extends Observer {
   slider: Slider;
@@ -274,12 +274,12 @@ export default class View extends Observer {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  public getStepInPx(settings: ISettings, slider: Slider) {
-    const sliderLengthInPx: number = settings.isVertical
-      ? slider.element?.getBoundingClientRect().height as number
-      : slider.element?.getBoundingClientRect().width as number;
+  public getStepInPx(settings: ISettings, slider: Slider): number {
+    const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
+    // TODO getOnePointInPx ??
+    const onePointInPx: number = sliderLengthInPx / (settings.max - settings.min);
 
-    return (sliderLengthInPx / (settings.max - settings.min)) * settings.step;
+    return onePointInPx * settings.step;
   }
 
   private getThumbValue(thumbName: ThumbName): number {
@@ -314,14 +314,14 @@ export default class View extends Observer {
 
   // eslint-disable-next-line class-methods-use-this
   private getOnePointInPx(settings: ISettings, slider: Slider): number {
+    // TODO del guard
     if (!slider) {
       throw new Error('\'slider\' is undefined !');
     }
 
-    const sliderLengthInPx: number = settings.isVertical
-      ? slider.element?.getBoundingClientRect().height as number
-      : slider.element?.getBoundingClientRect().width as number;
+    const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
 
+    // TODO const sliderLengthInPoints = () => {}; move to common / constructor
     return sliderLengthInPx / (settings.max - settings.min);
   }
 
