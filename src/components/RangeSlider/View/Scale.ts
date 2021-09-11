@@ -26,6 +26,7 @@ export default class Scale implements ISliderElement {
     const mark = document.createElement('span');
 
     mark.className = 'range-slider__scale-mark';
+    // TODO make one block - isVertical
     if (this.settings?.isVertical) {
       mark.className += ' range-slider__scale-mark_vertical';
     }
@@ -39,6 +40,7 @@ export default class Scale implements ISliderElement {
     return mark;
   }
 
+  // TODO del settings guard
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
     if (!this.settings) {
       throw new Error("'this.settings' is undefined !");
@@ -47,6 +49,8 @@ export default class Scale implements ISliderElement {
     const markValue = document.createElement('span');
 
     markValue.className = 'range-slider__scale-mark-value';
+
+    // TODO move to one block - isVertical
     if (this.settings.isVertical) {
       markValue.className += ' range-slider__scale-mark-value_vertical';
     }
@@ -61,9 +65,8 @@ export default class Scale implements ISliderElement {
     return markValue;
   }
 
-  // TODO rename roundToCeil to roundTo
-  private roundToCeil(n: number, ceilTo: number): number {
-    return Math.ceil(n / ceilTo) * ceilTo;
+  private roundValueTo(num: number, ceilToNumber: number): number {
+    return Math.ceil(num / ceilToNumber) * ceilToNumber;
   }
 
   public createScaleMarks(settings: ISettings) {
@@ -76,22 +79,26 @@ export default class Scale implements ISliderElement {
     // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
     const scaleMaxPos = max - min;
-    let markPos: number = 0;
+
     // add first mark
     this.element.appendChild(this.createMark(0));
-    this.element.appendChild(this.createMarkValue(settings.min, markPos));
+    this.element.appendChild(this.createMarkValue(settings.min, 0));
     // add last mark
     this.element.appendChild(this.createMark(scaleMaxPos));
     const lastMarkValue: HTMLElement =
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
+    // TODO move to separate function
     // step between marks
     const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValue);
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = this.roundToCeil(lastMarkValueSizeInPoints, 10);
+    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
     const stepBetweenMarksInPx = stepBetweenMarksInPoints * onePointInPx;
-    const minPosInPx = settings.min * onePointInPx;
+
     // create marks on scale
+    let markPos: number = 0;
+    const minPosInPx = settings.min * onePointInPx;
+
     while (markPos < scaleMaxPos) {
       const lastMarkPos = markPos + stepBetweenMarksInPx;
       const isMarkValueFits = lastMarkPos < scaleMaxPos && lastMarkPos <= settings.max;
@@ -100,7 +107,9 @@ export default class Scale implements ISliderElement {
         this.element.appendChild(this.createMark(markPos));
 
         if (isMarkValueFits) {
-          const value = this.roundToCeil((minPosInPx + markPos) / onePointInPx, 1);
+          const currentValueInPoints = (minPosInPx + markPos) / onePointInPx;
+          const value = this.roundValueTo(currentValueInPoints, 1);
+
           this.element.appendChild(this.createMarkValue(value, markPos));
         }
       }
