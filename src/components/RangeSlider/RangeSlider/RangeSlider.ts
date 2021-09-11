@@ -25,10 +25,10 @@ import Presenter from '../Presenter/Presenter';
   // eslint-disable-next-line no-param-reassign
   $.fn.RangeSlider = function (userOptions): JQuery {
     const mergedSettings = $.extend({}, defaultSettings, userOptions);
-    const elementId: string | null = this[0] ? `#${this[0].id}` : null;
+    const elementId = `#${this[0]?.id}`;
 
     const model: Model = new Model(mergedSettings);
-    const view: View = new View(elementId);
+    const view: View = new View(elementId, mergedSettings);
     // eslint-disable-next-line no-unused-vars
     const presenter: Presenter = new Presenter(model, view);
 

@@ -17,24 +17,21 @@ export default class View {
   range: Range;
   scale: Scale;
 
-  settings: ISettings | undefined;
+  settings: ISettings;
 
   rangeMarginTo: number | undefined;
   rangeMarginFrom: number | undefined;
   thumbMarginFrom: number | undefined;
   thumbMarginTo: number | undefined;
 
-  thumbTooltipFrom: number | undefined;
-  thumbTooltipTo: number | undefined;
-
-  constructor(id: string) {
+  constructor(id: string, mergedSettings: ISettings) {
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
     this.range = new Range();
     this.scale = new Scale();
 
-    this.settings = undefined;
+    this.settings = mergedSettings;
 
     this.rangeMarginTo = undefined;
     this.rangeMarginFrom = undefined;
@@ -93,20 +90,16 @@ export default class View {
   }
 
   public updateRangeSliderValues(settings: ISettings): void {
-    if (!settings) {
-      throw new Error('\'settings\' is undefined !');
-    }
-
     const isVertical = this.settings?.isVertical as boolean;
 
     if (settings.isTwoRunners) {
       this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
       this.from.setMargin(this.thumbMarginFrom, settings);
-      this.from.tooltip.setTooltipText(this.thumbTooltipFrom!);
+      this.from.tooltip.setTooltipText(this.settings!.valueFrom);
     }
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
     this.to.setMargin(this.thumbMarginTo, settings);
-    this.to.tooltip.setTooltipText(this.thumbTooltipTo!);
+    this.to.tooltip.setTooltipText(this.settings!.valueTo);
   }
 
   private addListenersToThumbs(): void {
@@ -139,10 +132,6 @@ export default class View {
     target.setPointerCapture(pointerId);
 
     target.onpointermove = (e: PointerEvent) => {
-      if (!this.settings) {
-        throw new Error('\'this.settings\' is undefined !');
-      }
-
       let thumbName: ThumbName = 'to';
 
       if (target.classList.contains('range-slider__thumb_from')) {
@@ -167,10 +156,6 @@ export default class View {
   }
 
   private moveClosestThumb(e: PointerEvent): void {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
     const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
@@ -204,10 +189,6 @@ export default class View {
   }
 
   private getPosOnScale(currentPos: number): number {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
     const sliderRect = this.slider.element!.getBoundingClientRect();
 
     return this.settings.isVertical
@@ -216,10 +197,6 @@ export default class View {
   }
 
   private currentCursorPosition(event: PointerEvent): number {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
     let currentPos: number = this.settings.isVertical
       ? event.clientY
       : event.clientX;
@@ -248,24 +225,22 @@ export default class View {
   }
 
   private setMargins(settings: ISettings, thumbName: ThumbName, currentPos: number): void {
-    if (!settings) {
-      throw new Error('\'settings\' is undefined !');
-    }
-
     const currentPosWithStep = this.getCurrentPosWithStep(settings, this.slider, currentPos);
 
     if (thumbName === 'from' && settings.isTwoRunners) {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      this.thumbTooltipFrom = this.getTooltipValue(thumbName);
+      this.settings!.valueFrom = this.getThumbValue(thumbName);
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(settings, this.slider);
       const sliderLengthInPx: number = max! - min!;
 
       this.thumbMarginTo = currentPosWithStep;
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
-      this.thumbTooltipTo = this.getTooltipValue(thumbName);
+      this.settings!.valueTo = this.getThumbValue(thumbName);
     }
+
+    // TODO send valueFrom and valueTo to update model
   }
 
   private getCurrentPosWithStep(
@@ -273,10 +248,6 @@ export default class View {
     slider: Slider,
     currentPos: number,
   ): number {
-    if (!settings) {
-      throw new Error('\'settings\' is undefined !');
-    }
-
     const stepInPx = this.getStepInPx(settings, slider);
     const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
     const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
@@ -304,21 +275,18 @@ export default class View {
     return (sliderLengthInPx / (settings.max - settings.min)) * settings.step;
   }
 
-  private getTooltipValue(thumbName: ThumbName): number {
+  private getThumbValue(thumbName: ThumbName): number {
     const thumbMargin: number = thumbName === 'from'
       ? this.thumbMarginFrom!
       : this.thumbMarginTo!;
 
-    const valueInMargin = thumbMargin / this.getOnePointInPx(this.settings!, this.slider);
-    const totalValue = valueInMargin + this.settings!.min;
+    const valueInPoints = thumbMargin / this.getOnePointInPx(this.settings!, this.slider);
+    const totalValue = valueInPoints + this.settings!.min;
 
     return totalValue;
   }
 
   private initRangeSliderMargins(settings: ISettings, slider: Slider): void {
-    if (!settings) {
-      throw new Error('\'settings\' is undefined !');
-    }
     if (!slider) {
       throw new Error('\'slider\' is undefined !');
     }
@@ -339,9 +307,6 @@ export default class View {
 
   // eslint-disable-next-line class-methods-use-this
   private getOnePointInPx(settings: ISettings, slider: Slider): number {
-    if (!settings) {
-      throw new Error('\'settings\' is undefined !');
-    }
     if (!slider) {
       throw new Error('\'slider\' is undefined !');
     }
@@ -354,10 +319,6 @@ export default class View {
   }
 
   private isThumbsCollision(): boolean {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
     let fromEdge: number;
     let toEdge: number;
     let tooltipSize: number;
@@ -379,10 +340,6 @@ export default class View {
   }
 
   private setDistanceBetweenTooltips(): void {
-    if (!this.settings) {
-      throw new Error('\'this.settings\' is undefined !');
-    }
-
     const from = this.from.tooltip.element.style;
     const to = this.to.tooltip.element.style;
 
