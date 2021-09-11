@@ -2,6 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import Tooltip from './Tooltip';
 import { ThumbName, ISettings } from '../RangeSlider/types';
+import { createElement } from '../lib/common';
 
 export default class Thumb {
   element: HTMLElement;
@@ -11,16 +12,12 @@ export default class Thumb {
   constructor(private name: ThumbName) {
     this.name = name;
     this.tooltip = new Tooltip(this.name);
-    this.element = this.createThumb();
-  }
 
-  createThumb(): HTMLElement {
-    const thumb: HTMLElement = document.createElement('div');
-    thumb.className = `range-slider__thumb_${this.name}`;
-
-    thumb.appendChild(this.tooltip.element);
-
-    return thumb;
+    this.element = createElement(
+      'div',
+      `range-slider__thumb_${this.name}`,
+      this.tooltip.element,
+    );
   }
 
   setMargin(margin: number | undefined, settings: ISettings): void {

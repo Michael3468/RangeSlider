@@ -1,16 +1,12 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import { createElement } from '../lib/common';
+
 export default class Range {
   element: HTMLElement;
 
   constructor() {
-    this.element = this.createRange();
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  createRange(): HTMLElement {
-    const range: HTMLElement = document.createElement('div');
-    range.className = 'range-slider__range';
-
-    return range;
+    this.element = createElement('div', 'range-slider__range');
   }
 
   setMarginFromBegin(margin: number | undefined, isVertical: boolean): void {

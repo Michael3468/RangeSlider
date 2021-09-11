@@ -3,7 +3,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 import { ISettings, ISliderElement } from '../RangeSlider/types';
-import { getMinMaxElementEdgesInPx, getElementLengthInPx } from '../lib/common';
+import { getMinMaxElementEdgesInPx, getElementLengthInPx, createElement } from '../lib/common';
 
 export default class Scale implements ISliderElement {
   element: HTMLElement;
@@ -11,27 +11,15 @@ export default class Scale implements ISliderElement {
   settings: ISettings | undefined;
 
   constructor() {
-    this.element = this.createScale();
+    this.element = createElement('div', 'range-slider__scale');
     this.settings = undefined;
   }
 
-  private createScale(): HTMLElement {
-    const scale = document.createElement('div');
-    scale.className = 'range-slider__scale';
-
-    return scale;
-  }
-
   private createMark(marginFromBegin: number): HTMLElement {
-    const mark = document.createElement('span');
+    const mark = createElement('span', 'range-slider__scale-mark');
 
-    mark.className = 'range-slider__scale-mark';
-    // TODO make one block - isVertical
     if (this.settings?.isVertical) {
       mark.className += ' range-slider__scale-mark_vertical';
-    }
-
-    if (this.settings?.isVertical) {
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
       mark.style.marginLeft = `${marginFromBegin}px`;
@@ -46,16 +34,10 @@ export default class Scale implements ISliderElement {
       throw new Error("'this.settings' is undefined !");
     }
 
-    const markValue = document.createElement('span');
+    const markValue = createElement('div', 'range-slider__scale-mark-value');
 
-    markValue.className = 'range-slider__scale-mark-value';
-
-    // TODO move to one block - isVertical
     if (this.settings.isVertical) {
       markValue.className += ' range-slider__scale-mark-value_vertical';
-    }
-
-    if (this.settings.isVertical) {
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
       markValue.style.marginLeft = `${marginFromBegin}px`;

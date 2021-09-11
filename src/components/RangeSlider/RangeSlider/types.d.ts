@@ -10,8 +10,10 @@ export interface ISettings {
   step: number;
 }
 
-export type ThumbName = 'from' | 'to';
-
 export interface ISliderElement {
   element: HTMLElement
 }
+
+export type ThumbName = 'from' | 'to';
+
+export type INodeName = 'div' | 'span';

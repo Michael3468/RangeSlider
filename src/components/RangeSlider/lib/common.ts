@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import { ISettings, ISliderElement } from '../RangeSlider/types';
+import { ISettings, ISliderElement, INodeName } from '../RangeSlider/types';
 
 // TODO add IMinMax interface / del settings guard
 export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement) {
@@ -26,4 +26,18 @@ export function getElementLengthInPx(settings: ISettings, el: HTMLElement): numb
   return settings.isVertical
     ? el.getBoundingClientRect().height
     : el.getBoundingClientRect().width;
+}
+
+export function createElement(
+  tag: INodeName,
+  tagClassName: string,
+  el?: HTMLElement,
+): HTMLElement {
+  const element = document.createElement(tag);
+  element.className = tagClassName;
+
+  if (el) {
+    element.appendChild(el);
+  }
+  return element;
 }
