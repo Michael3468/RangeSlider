@@ -1,3 +1,5 @@
+/* eslint-disable lines-between-class-members */
+/* eslint-disable no-unused-vars */
 export interface ISettings {
   min: number;
   max: number;
@@ -12,6 +14,11 @@ export interface ISettings {
 
 export interface ISliderElement {
   element: HTMLElement
+}
+
+export interface IMinMax {
+  min: number,
+  max: number,
 }
 
 export type ThumbName = 'from' | 'to';

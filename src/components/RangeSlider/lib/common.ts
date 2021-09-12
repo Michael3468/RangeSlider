@@ -1,9 +1,10 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import { ISettings, ISliderElement, INodeName } from '../RangeSlider/types';
+import {
+  ISettings, ISliderElement, INodeName, IMinMax,
+} from '../RangeSlider/types';
 
-// TODO add IMinMax interface
-export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement) {
+export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMinMax {
   const elementRect = el.element.getBoundingClientRect();
 
   if (settings.isVertical) {
