@@ -28,15 +28,10 @@ export default class Scale implements ISliderElement {
     return mark;
   }
 
-  // TODO del settings guard
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
-    if (!this.settings) {
-      throw new Error("'this.settings' is undefined !");
-    }
-
     const markValue = createElement('div', 'range-slider__scale-mark-value');
 
-    if (this.settings.isVertical) {
+    if (this.settings?.isVertical) {
       markValue.className += ' range-slider__scale-mark-value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {

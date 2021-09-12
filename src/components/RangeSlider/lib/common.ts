@@ -2,12 +2,8 @@
 /* eslint-disable import/no-unresolved */
 import { ISettings, ISliderElement, INodeName } from '../RangeSlider/types';
 
-// TODO add IMinMax interface / del settings guard
+// TODO add IMinMax interface
 export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement) {
-  if (!settings) {
-    throw new Error('\'settings\' is undefined !');
-  }
-
   const elementRect = el.element.getBoundingClientRect();
 
   if (settings.isVertical) {
