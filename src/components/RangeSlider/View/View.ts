@@ -29,13 +29,13 @@ export default class View extends Observer {
 
   constructor(id: string, mergedSettings: ISettings) {
     super();
+    this.settings = mergedSettings;
+
     this.slider = new Slider(id);
     this.from = new Thumb('from');
     this.to = new Thumb('to');
     this.range = new Range();
     this.scale = new Scale();
-
-    this.settings = mergedSettings;
 
     this.rangeMarginTo = undefined;
     this.rangeMarginFrom = undefined;

@@ -54,10 +54,6 @@ export default class Scale implements ISliderElement {
   public createScaleMarks(settings: ISettings) {
     this.settings = settings;
 
-    const scaleLengthInPx: number = getElementLengthInPx(this.settings, this.element);
-    const scaleLengthInPoints: number = settings.max - settings.min;
-    const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
-
     // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
     const scaleMaxPos = max - min;
@@ -72,6 +68,9 @@ export default class Scale implements ISliderElement {
 
     // TODO move to separate function
     // step between marks
+    const scaleLengthInPx: number = getElementLengthInPx(this.settings, this.element);
+    const scaleLengthInPoints: number = settings.max - settings.min;
+    const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
     const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValue);
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
     const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
