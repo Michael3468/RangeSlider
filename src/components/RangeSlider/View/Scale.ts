@@ -13,6 +13,7 @@ export default class Scale implements ISliderElement {
   constructor() {
     this.element = createElement('div', 'range-slider__scale');
     this.settings = undefined;
+    this.roundValueTo = this.roundValueTo.bind(this);
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
@@ -58,18 +59,12 @@ export default class Scale implements ISliderElement {
     this.element.appendChild(this.createMarkValue(settings.min, 0));
     // add last mark
     this.element.appendChild(this.createMark(scaleMaxPos));
-    const lastMarkValue: HTMLElement =
+    const lastMarkValueElement: HTMLElement =
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    // TODO move to separate function
-    // step between marks
-    const scaleLengthInPx: number = getElementLengthInPx(this.settings, this.element);
-    const scaleLengthInPoints: number = settings.max - settings.min;
-    const onePointInPx: number = scaleLengthInPx / scaleLengthInPoints;
-    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValue);
-    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
-    const stepBetweenMarksInPx = stepBetweenMarksInPoints * onePointInPx;
+    const onePointInPx = this.getOnePointInPx(this.settings, this.element);
+    const stepBetweenMarksInPx =
+      this.getStepBetweenMarksInPx(this.settings, lastMarkValueElement, onePointInPx);
 
     // create marks on scale
     let markPos: number = 0;
@@ -91,5 +86,22 @@ export default class Scale implements ISliderElement {
       }
       markPos += stepBetweenMarksInPx;
     }
+  }
+
+  private getOnePointInPx(settings: ISettings, element: HTMLElement) {
+    const scaleLengthInPx: number = getElementLengthInPx(settings, element);
+    const scaleLengthInPoints: number = settings.max - settings.min;
+    return scaleLengthInPx / scaleLengthInPoints;
+  }
+
+  private getStepBetweenMarksInPx(
+    settings: ISettings,
+    lastMarkValueElement: HTMLElement,
+    onePointInPx: number,
+  ): number {
+    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValueElement);
+    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
+    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
+    return stepBetweenMarksInPoints * onePointInPx;
   }
 }
