@@ -276,7 +276,6 @@ export default class View extends Observer {
   // eslint-disable-next-line class-methods-use-this
   public getStepInPx(settings: ISettings, slider: Slider): number {
     const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
-    // TODO getOnePointInPx ??
     const onePointInPx: number = sliderLengthInPx / (settings.max - settings.min);
 
     return onePointInPx * settings.step;
@@ -316,7 +315,6 @@ export default class View extends Observer {
   private getOnePointInPx(settings: ISettings, slider: Slider): number {
     const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
 
-    // TODO const sliderLengthInPoints = () => {}; move to common / constructor
     return sliderLengthInPx / (settings.max - settings.min);
   }
 
