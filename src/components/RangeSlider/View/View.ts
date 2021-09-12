@@ -314,11 +314,6 @@ export default class View extends Observer {
 
   // eslint-disable-next-line class-methods-use-this
   private getOnePointInPx(settings: ISettings, slider: Slider): number {
-    // TODO del guard
-    if (!slider) {
-      throw new Error('\'slider\' is undefined !');
-    }
-
     const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
 
     // TODO const sliderLengthInPoints = () => {}; move to common / constructor
