@@ -78,7 +78,8 @@ export class Model {
     };
   }
 
-  public updateSettings(settings: ISettings) {
+  public updateSettings(settings: ISettings): ISettings {
     this.settings = settings;
+    return this.settings;
   }
 }
