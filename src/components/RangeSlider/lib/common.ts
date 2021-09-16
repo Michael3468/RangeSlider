@@ -38,3 +38,9 @@ export function createElement(
   }
   return element;
 }
+
+export function getOnePointInPx(settings: ISettings, element: HTMLElement) {
+  const elementLengthInPx: number = getElementLengthInPx(settings, element);
+  const elementLengthInPoints: number = settings.max - settings.min;
+  return elementLengthInPx / elementLengthInPoints;
+}

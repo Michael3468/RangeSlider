@@ -2,11 +2,18 @@
  * @jest-environment jsdom
  */
 
+/* eslint-disable dot-notation */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import { IMinMax, INodeName, ISettings } from '../RangeSlider/types';
-import { createElement, getElementLengthInPx, getMinMaxElementEdgesInPx } from './common';
+import {
+  createElement,
+  getElementLengthInPx,
+  getMinMaxElementEdgesInPx,
+  getOnePointInPx,
+} from './common';
 import Tooltip from '../View/Tooltip';
 import Scale from '../View/Scale';
 
@@ -103,5 +110,18 @@ describe('function getElementLengthInPx', () => {
     const result = getElementLengthInPx(settings, scale.element);
 
     expect(result).toBe(10);
+  });
+});
+
+describe('function getOnePointInPx', () => {
+  test('should return one point length in px (number)', () => {
+    const scale = new Scale();
+    settings.min = 0;
+    settings.max = 100;
+    settings.isVertical = false;
+    // Element.prototype.getBoundingClientRect = width: 300
+    const result = getOnePointInPx(settings, scale.element); // width / (max - min) = 3
+
+    expect(result).toBe(3);
   });
 });

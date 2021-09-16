@@ -3,7 +3,12 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 import { ISettings, ISliderElement } from '../RangeSlider/types';
-import { getMinMaxElementEdgesInPx, getElementLengthInPx, createElement } from '../lib/common';
+import {
+  getMinMaxElementEdgesInPx,
+  getElementLengthInPx,
+  createElement,
+  getOnePointInPx,
+} from '../lib/common';
 
 export default class Scale implements ISliderElement {
   element: HTMLElement;
@@ -47,6 +52,17 @@ export default class Scale implements ISliderElement {
     return Math.ceil(num / ceilToNumber) * ceilToNumber;
   }
 
+  private getStepBetweenMarksInPx(
+    settings: ISettings,
+    lastMarkValueElement: HTMLElement,
+    onePointInPx: number,
+  ): number {
+    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValueElement);
+    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
+    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
+    return stepBetweenMarksInPoints * onePointInPx;
+  }
+
   public createScaleMarks(settings: ISettings) {
     this.settings = settings;
 
@@ -62,7 +78,7 @@ export default class Scale implements ISliderElement {
     const lastMarkValueElement: HTMLElement =
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    const onePointInPx = this.getOnePointInPx(this.settings, this.element);
+    const onePointInPx = getOnePointInPx(settings, this.element);
     const stepBetweenMarksInPx =
       this.getStepBetweenMarksInPx(this.settings, lastMarkValueElement, onePointInPx);
 
@@ -86,22 +102,5 @@ export default class Scale implements ISliderElement {
       }
       markPos += stepBetweenMarksInPx;
     }
-  }
-
-  private getOnePointInPx(settings: ISettings, element: HTMLElement) {
-    const scaleLengthInPx: number = getElementLengthInPx(settings, element);
-    const scaleLengthInPoints: number = settings.max - settings.min;
-    return scaleLengthInPx / scaleLengthInPoints;
-  }
-
-  private getStepBetweenMarksInPx(
-    settings: ISettings,
-    lastMarkValueElement: HTMLElement,
-    onePointInPx: number,
-  ): number {
-    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValueElement);
-    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
-    return stepBetweenMarksInPoints * onePointInPx;
   }
 }
