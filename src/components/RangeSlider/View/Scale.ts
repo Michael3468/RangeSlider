@@ -53,11 +53,10 @@ export default class Scale implements ISliderElement {
   }
 
   private getStepBetweenMarksInPx(
-    settings: ISettings,
     lastMarkValueElement: HTMLElement,
     onePointInPx: number,
   ): number {
-    const lastMarkValueSize: number = getElementLengthInPx(settings, lastMarkValueElement);
+    const lastMarkValueSize: number = getElementLengthInPx(this.settings!, lastMarkValueElement);
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
     const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
     return stepBetweenMarksInPoints * onePointInPx;
@@ -65,7 +64,6 @@ export default class Scale implements ISliderElement {
 
   public createScaleMarks(settings: ISettings) {
     this.settings = settings;
-
     // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
     const scaleMaxPos = max - min;
@@ -80,27 +78,27 @@ export default class Scale implements ISliderElement {
 
     const onePointInPx = getOnePointInPx(settings, this.element);
     const stepBetweenMarksInPx =
-      this.getStepBetweenMarksInPx(this.settings, lastMarkValueElement, onePointInPx);
-
+      this.getStepBetweenMarksInPx(lastMarkValueElement, onePointInPx);
     // create marks on scale
     let markPos: number = 0;
     const minPosInPx = settings.min * onePointInPx;
 
     while (markPos < scaleMaxPos) {
       const lastMarkPos = markPos + stepBetweenMarksInPx;
-      const isMarkValueFits = lastMarkPos < scaleMaxPos && lastMarkPos <= settings.max;
+      const isMarkValueFits = Math.round(lastMarkPos) <= scaleMaxPos;
 
       if (markPos > 0) {
         this.element.appendChild(this.createMark(markPos));
 
         if (isMarkValueFits) {
           const currentValueInPoints = (minPosInPx + markPos) / onePointInPx;
-          const value = this.roundValueTo(currentValueInPoints, 1);
+          const value = Math.round(currentValueInPoints);
 
           this.element.appendChild(this.createMarkValue(value, markPos));
         }
       }
       markPos += stepBetweenMarksInPx;
     }
+    return this;
   }
 }
