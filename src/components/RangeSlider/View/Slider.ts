@@ -10,7 +10,7 @@ export default class Slider implements ISliderElement {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  createSlider(id: string): HTMLElement {
+  private createSlider(id: string): HTMLElement {
     const slider = document.querySelector(id) as HTMLElement;
     slider!.className = 'range-slider';
 
