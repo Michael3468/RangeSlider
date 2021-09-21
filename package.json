@@ -17,6 +17,13 @@
     "> 1%",
     "not dead"
   ],
+  "keywords": [
+    "typescript",
+    "jquery",
+    "plugin",
+    "jest",
+    "pug"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
