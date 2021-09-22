@@ -1,3 +1,4 @@
+/* eslint-disable lines-between-class-members */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import Tooltip from './Tooltip';
@@ -6,7 +7,6 @@ import { createElement } from '../lib/common';
 
 export default class Thumb {
   element: HTMLElement;
-
   tooltip: Tooltip;
 
   constructor(private name: ThumbName) {
@@ -20,13 +20,12 @@ export default class Thumb {
     );
   }
 
-  setMargin(margin: number | undefined, settings: ISettings): void {
-    if (margin === undefined) return;
-
+  setMargin(margin: number, settings: ISettings): Thumb {
     if (settings.isVertical) {
       this.element.style.marginTop = `${margin}px`;
     } else {
       this.element.style.marginLeft = `${margin}px`;
     }
+    return this;
   }
 }
