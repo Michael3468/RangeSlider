@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-shadow */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
@@ -21,123 +22,107 @@ beforeEach(() => {
   };
 });
 
-function getPrivateStaticMethod(methodName: string, settings: ISettings) {
-  const modelProto = Model.prototype as any;
-  const instance = Object.create(modelProto);
-  return () => modelProto.constructor[methodName].call(instance, settings);
-}
-
-describe('function validateSettings: ', () => {
+describe('private static validateSettings', () => {
   test('"settings.min >= settings.max" should throw Error', () => {
     settings.min = 2000;
     settings.max = 1500;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow("'max' must be greater than 'min'");
+
+    const throwMessage = "'max' must be greater than 'min'";
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     // eslint-disable-next-line no-multi-assign
     settings.min = settings.max = 1000;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow("'max' must be greater than 'min'");
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.min = 1000;
     settings.max = 1500;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow("'max' must be greater than 'min'");
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
   test('"settings.valueFrom < settings.min" should throw Error', () => {
     settings.valueFrom = 700;
     settings.min = 1000;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow("'valueFrom' must be greater than 'min'");
+    const throwMessage = "'valueFrom' must be greater than 'min'";
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.valueFrom = 1300;
     settings.min = 1000;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow("'valueFrom' must be greater than 'min'");
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
   test('"settings.valueFrom > settings.valueTo" should throw Error', () => {
     settings.valueFrom = 1200;
     settings.valueTo = 1100;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow("'valueFrom' must be less than 'valueTo'");
+    const throwMessage = "'valueFrom' must be less than 'valueTo'";
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.valueFrom = 1000;
     settings.valueTo = 1100;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow("'valueFrom' must be less than 'valueTo'");
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
   test('"settings.valueTo > settings.max" should throw Error', () => {
     settings.valueTo = 1200;
     settings.max = 1100;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow("'valueTo' must be less than 'max'");
+    const throwMessage = "'valueTo' must be less than 'max'";
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.valueTo = 1200;
     settings.max = 1300;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow("'valueTo' must be less than 'max'");
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
   test('"settings.max - settings.min < settings.step" should throw Error', () => {
     settings.max = 1500;
     settings.min = 1000;
     settings.step = 600;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow(`'step' must be less than ${settings.max - settings.min}`);
+    const throwMessage = `'step' must be less than ${settings.max - settings.min}`;
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.max = 1500;
     settings.min = 1000;
     settings.step = 400;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow(`'step' must be less than ${settings.max - settings.min}`);
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
   test('"settings.valueTo - settings.valueFrom < settings.step" should throw Error', () => {
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 500;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .toThrow('distanse between thumbs must be equal or greater than step');
+    const throwMessage = 'distanse between thumbs must be equal or greater than step';
+    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 300;
-    expect(getPrivateStaticMethod('validateSettings', settings))
-      .not.toThrow('distanse between thumbs must be equal or greater than step');
+    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 });
-
-function getPrivateMethod(methodName: string, settings: ISettings, thumbName: ThumbName) {
-  const modelProto = Model.prototype as any;
-  const instance = Object.create(modelProto);
-  return modelProto[methodName].call(instance, settings, thumbName);
-}
 
 describe('function getThumbValue:', () => {
   test('if thumbName == "from" should return settings.valueFrom', () => {
     const thumbName: ThumbName = 'from';
     const result = settings.valueFrom;
-    expect(getPrivateMethod('getThumbValue', settings, thumbName)).toBe(result);
+    const model = new Model(settings);
+    expect(model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 
   test('if thumbName == "to" should return settings.valueTo', () => {
     const thumbName: ThumbName = 'to';
     const result = settings.valueTo;
-    expect(getPrivateMethod('getThumbValue', settings, thumbName)).toBe(result);
+    const model = new Model(settings);
+    expect(model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 });
 
-describe('function getSettings:', () => {
+describe('public getSettings', () => {
   test('check returned object', () => {
     const model = new Model(settings);
     expect(model.getSettings()).toStrictEqual(settings);
   });
 });
 
-describe('function updateSettings:', () => {
+describe('public updateSettings', () => {
   test('should return the passed values', () => {
     const model = new Model(settings);
     expect(model.updateSettings(settings)).toStrictEqual(settings);
