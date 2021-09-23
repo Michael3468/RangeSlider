@@ -8,7 +8,6 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import { ISettings } from '../RangeSlider/types';
-import Scale from './Scale';
 import View from './View';
 
 let settings: ISettings;
@@ -27,16 +26,6 @@ beforeEach(() => {
   };
 });
 
-// public createRangeSlider(settings: ISettings): View {
-//   this.settings = settings;
-
-
-//   this.initRangeSliderMargins(this.settings, this.slider);
-//   this.updateRangeSliderValues(this.settings);
-//   this.addListenersToThumbs();
-
-//   return this;
-// }
 function createRS(settings: ISettings) {
   const view = new View('range-slider', settings);
   return view.createRangeSlider(settings);
