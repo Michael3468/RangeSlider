@@ -202,4 +202,18 @@ describe('public createRangeSlider', () => {
     settings.isTwoRunners = false;
     expect(isHasScale(settings)).toBeFalsy();
   });
+
+  test('if (settings.isScaleVisible) "createScaleMarks" should have been called ', () => {
+    settings.isScaleVisible = true;
+    let view = new View('range-slider', settings);
+    let createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+    view.createRangeSlider(settings);
+    expect(createScaleMarksSpy).toHaveBeenCalled();
+
+    settings.isScaleVisible = false;
+    view = new View('range-slider', settings);
+    createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+    view.createRangeSlider(settings);
+    expect(createScaleMarksSpy).not.toHaveBeenCalled();
+  });
 });
