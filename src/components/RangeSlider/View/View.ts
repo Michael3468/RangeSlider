@@ -9,7 +9,7 @@ import Thumb from './Thumb';
 import Range from './Range';
 import Scale from './Scale';
 
-import { getElementLengthInPx, getMinMaxElementEdgesInPx } from '../lib/common';
+import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
 
 export default class View extends Observer {
   slider: Slider;
@@ -20,10 +20,10 @@ export default class View extends Observer {
 
   settings: ISettings;
 
-  rangeMarginTo: number | undefined;
-  rangeMarginFrom: number | undefined;
-  thumbMarginFrom: number | undefined;
-  thumbMarginTo: number | undefined;
+  rangeMarginTo: number;
+  rangeMarginFrom: number;
+  thumbMarginFrom: number;
+  thumbMarginTo: number;
 
   changeSettingsObserver: Observer;
 
@@ -37,10 +37,10 @@ export default class View extends Observer {
     this.range = new Range();
     this.scale = new Scale();
 
-    this.rangeMarginTo = undefined;
-    this.rangeMarginFrom = undefined;
-    this.thumbMarginFrom = undefined;
-    this.thumbMarginTo = undefined;
+    this.rangeMarginTo = 0;
+    this.rangeMarginFrom = 0;
+    this.thumbMarginFrom = 0;
+    this.thumbMarginTo = 0;
 
     this.beginSliding = this.beginSliding.bind(this);
     this.stopSliding = this.stopSliding.bind(this);
@@ -52,7 +52,7 @@ export default class View extends Observer {
     this.changeSettingsObserver = new Observer();
   }
 
-  public createRangeSlider(settings: ISettings): void {
+  public createRangeSlider(settings: ISettings): View {
     this.settings = settings;
 
     if (settings.isTwoRunners) {
@@ -93,6 +93,8 @@ export default class View extends Observer {
     this.initRangeSliderMargins(this.settings, this.slider);
     this.updateRangeSliderValues(this.settings);
     this.addListenersToThumbs();
+
+    return this;
   }
 
   public updateRangeSliderValues(settings: ISettings): void {
@@ -286,7 +288,7 @@ export default class View extends Observer {
       ? this.thumbMarginFrom!
       : this.thumbMarginTo!;
 
-    const valueInPoints = thumbMargin / this.getOnePointInPx(this.settings!, this.slider);
+    const valueInPoints = thumbMargin / getOnePointInPx(this.settings!, this.slider.element);
     const totalValue = valueInPoints + this.settings!.min;
 
     return totalValue;
@@ -297,7 +299,7 @@ export default class View extends Observer {
       throw new Error('\'slider\' is undefined !');
     }
 
-    const onePointInPx = this.getOnePointInPx(settings, slider);
+    const onePointInPx = getOnePointInPx(settings, slider.element);
 
     /**
      * получаем относительные значения марджинов в пикселах от начала слайдера
@@ -309,13 +311,6 @@ export default class View extends Observer {
     }
     const marginTo = (settings.valueTo - settings.min) * onePointInPx;
     this.setMargins(settings, 'to', marginTo);
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  private getOnePointInPx(settings: ISettings, slider: Slider): number {
-    const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
-
-    return sliderLengthInPx / (settings.max - settings.min);
   }
 
   private isThumbsCollision(): boolean {
