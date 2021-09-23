@@ -62,7 +62,7 @@ export default class Scale implements ISliderElement {
     return stepBetweenMarksInPoints * onePointInPx;
   }
 
-  public createScaleMarks(settings: ISettings) {
+  public createScaleMarks(settings: ISettings): Scale {
     this.settings = settings;
     // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
