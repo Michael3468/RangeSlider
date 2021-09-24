@@ -217,3 +217,123 @@ describe('public createRangeSlider', () => {
     expect(createScaleMarksSpy).not.toHaveBeenCalled();
   });
 });
+
+describe('private isThumbsCollision', () => {
+  test('check settings.isVertical - true', () => {
+    settings.isVertical = true;
+    const view = new View('range-slider', settings);
+
+    view.from.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100, // value to check
+      left: 100,
+      bottom: 120,
+      right: 120,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view.to.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100, // value to check
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view.to.tooltip.element.getBoundingClientRect = jest.fn(() => ({
+      width: 40,
+      height: 20, // value to check
+      top: 100,
+      left: 120,
+      bottom: 120,
+      right: 160,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    let result = view['isThumbsCollision']();
+    expect(result).toBeTruthy();
+
+    view.to.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 150, // value 150 to return false
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 150,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    result = view['isThumbsCollision']();
+    expect(result).toBeFalsy();
+  });
+
+  test('check settings.isVertical - false', () => {
+    settings.isVertical = false;
+    const view = new View('range-slider', settings);
+
+    view.from.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120,
+      right: 120, // value to check
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view.to.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120,
+      right: 140, // value to check
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view.to.tooltip.element.getBoundingClientRect = jest.fn(() => ({
+      width: 40, // value to check
+      height: 20,
+      top: 100,
+      left: 150,
+      bottom: 120,
+      right: 160,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    let result = view['isThumbsCollision']();
+    expect(result).toBeTruthy();
+
+    view.to.element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 120,
+      bottom: 120,
+      right: 170, // value 170 to return false
+      x: 150,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    result = view['isThumbsCollision']();
+    expect(result).toBeFalsy();
+  });
+});
