@@ -46,7 +46,7 @@ export default class View extends Observer {
     this.stopSliding = this.stopSliding.bind(this);
     this.moveClosestThumb = this.moveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
-    this.isThumbsCollision = this.isThumbsCollision.bind(this);
+    this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
 
     this.changeSettingsObserver = new Observer();
@@ -90,14 +90,14 @@ export default class View extends Observer {
       this.scale.createScaleMarks(settings);
     }
 
-    this.initRangeSliderMargins(this.settings, this.slider);
+    this.initRangeSliderMargins();
     this.updateRangeSliderValues(this.settings);
     this.addListenersToThumbs();
 
     return this;
   }
 
-  public updateRangeSliderValues(settings: ISettings): void {
+  public updateRangeSliderValues(settings: ISettings): View {
     const isVertical = this.settings?.isVertical as boolean;
 
     if (settings.isTwoRunners) {
@@ -108,9 +108,11 @@ export default class View extends Observer {
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
     this.to.setMargin(this.thumbMarginTo, settings);
     this.to.tooltip.setTooltipText(this.settings!.valueTo);
+
+    return this;
   }
 
-  private addListenersToThumbs(): void {
+  private addListenersToThumbs(): View {
     if (this.settings!.isTwoRunners) {
       this.from.element.addEventListener('pointerdown', this.beginSliding);
       this.from.element.addEventListener('pointerup', this.stopSliding);
@@ -124,7 +126,7 @@ export default class View extends Observer {
     });
 
     window.addEventListener('resize', () => {
-      this.initRangeSliderMargins(this.settings!, this.slider!);
+      this.initRangeSliderMargins();
       this.updateRangeSliderValues(this.settings!);
 
       if (!this.settings?.isVertical) {
@@ -134,6 +136,7 @@ export default class View extends Observer {
 
       this.setDistanceBetweenTooltips();
     });
+    return this;
   }
 
   private beginSliding(event: PointerEvent): void {
@@ -294,29 +297,27 @@ export default class View extends Observer {
     return totalValue;
   }
 
-  private initRangeSliderMargins(settings: ISettings, slider: Slider): void {
-    if (!slider) {
-      throw new Error('\'slider\' is undefined !');
-    }
-
-    const onePointInPx = getOnePointInPx(settings, slider.element);
+  private initRangeSliderMargins(): View {
+    const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
 
     /**
      * получаем относительные значения марджинов в пикселах от начала слайдера
      * и устанавливаем марджины
      * */
-    if (settings.isTwoRunners) {
-      const marginFrom = (settings.valueFrom - settings.min) * onePointInPx;
-      this.setMargins(settings, 'from', marginFrom);
+    if (this.settings.isTwoRunners) {
+      const marginFrom = (this.settings.valueFrom - this.settings.min) * onePointInPx;
+      this.setMargins(this.settings, 'from', marginFrom);
     }
-    const marginTo = (settings.valueTo - settings.min) * onePointInPx;
-    this.setMargins(settings, 'to', marginTo);
+    const marginTo = (this.settings.valueTo - this.settings.min) * onePointInPx;
+    this.setMargins(this.settings, 'to', marginTo);
+
+    return this;
   }
 
-  private isThumbsCollision(): boolean {
+  private isTooltipsCollision(): boolean {
+    let tooltipSize: number;
     let fromEdge: number;
     let toEdge: number;
-    let tooltipSize: number;
 
     const toTooltipRect = this.to.tooltip.element.getBoundingClientRect();
     const fromRect = this.from.element.getBoundingClientRect();
@@ -334,11 +335,11 @@ export default class View extends Observer {
     return toEdge - fromEdge <= tooltipSize;
   }
 
-  private setDistanceBetweenTooltips(): void {
+  private setDistanceBetweenTooltips(): View {
     const from = this.from.tooltip.element.style;
     const to = this.to.tooltip.element.style;
 
-    if (this.isThumbsCollision()) {
+    if (this.isTooltipsCollision()) {
       if (this.settings.isVertical) {
         from.top = `${-55}%`;
         to.top = `${55}%`;
@@ -353,6 +354,7 @@ export default class View extends Observer {
       from.left = `${-50}%`;
       to.left = `${-50}%`;
     }
+    return this;
   }
 
   private setZindexTop(thumb: ThumbName) {
