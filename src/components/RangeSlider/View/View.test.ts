@@ -218,7 +218,7 @@ describe('public createRangeSlider', () => {
   });
 });
 
-describe('private isThumbsCollision', () => {
+describe('private isTooltipsCollision', () => {
   test('check settings.isVertical - true', () => {
     settings.isVertical = true;
     const view = new View('range-slider', settings);
@@ -259,7 +259,7 @@ describe('private isThumbsCollision', () => {
       toJSON: () => {},
     }));
 
-    let result = view['isThumbsCollision']();
+    let result = view['isTooltipsCollision']();
     expect(result).toBeTruthy();
 
     view.to.element.getBoundingClientRect = jest.fn(() => ({
@@ -274,7 +274,7 @@ describe('private isThumbsCollision', () => {
       toJSON: () => {},
     }));
 
-    result = view['isThumbsCollision']();
+    result = view['isTooltipsCollision']();
     expect(result).toBeFalsy();
   });
 
@@ -318,7 +318,7 @@ describe('private isThumbsCollision', () => {
       toJSON: () => {},
     }));
 
-    let result = view['isThumbsCollision']();
+    let result = view['isTooltipsCollision']();
     expect(result).toBeTruthy();
 
     view.to.element.getBoundingClientRect = jest.fn(() => ({
@@ -333,7 +333,65 @@ describe('private isThumbsCollision', () => {
       toJSON: () => {},
     }));
 
-    result = view['isThumbsCollision']();
+    result = view['isTooltipsCollision']();
     expect(result).toBeFalsy();
+  });
+});
+
+describe('private setDistanceBetweenTooltips', () => {
+  test('should move tooltips in different directions (vertical)', () => {
+    settings.isVertical = true;
+    const view = new View('range-slider', settings);
+    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(true);
+
+    const result = view['setDistanceBetweenTooltips']();
+
+    const fromTop = result.from.tooltip.element.style.top;
+    const toTop = result.to.tooltip.element.style.top;
+
+    expect(fromTop).toBe('-55%');
+    expect(toTop).toBe('55%');
+  });
+
+  test('should move tooltips close to each other (vertical)', () => {
+    settings.isVertical = true;
+    const view = new View('range-slider', settings);
+    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(false);
+
+    const result = view['setDistanceBetweenTooltips']();
+
+    const fromTop = result.from.tooltip.element.style.top;
+    const toTop = result.to.tooltip.element.style.top;
+
+    expect(fromTop).toBe('0%');
+    expect(toTop).toBe('0%');
+  });
+
+  test('should move tooltips in different directions (horizontal)', () => {
+    settings.isVertical = false;
+    const view = new View('range-slider', settings);
+    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(true);
+
+    const result = view['setDistanceBetweenTooltips']();
+
+    const fromTop = result.from.tooltip.element.style.left;
+    const toTop = result.to.tooltip.element.style.left;
+
+    expect(fromTop).toBe('-105%');
+    expect(toTop).toBe('5%');
+  });
+
+  test('should move tooltips close to each other (horizontal)', () => {
+    settings.isVertical = false;
+    const view = new View('range-slider', settings);
+    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(false);
+
+    const result = view['setDistanceBetweenTooltips']();
+
+    const fromTop = result.from.tooltip.element.style.left;
+    const toTop = result.to.tooltip.element.style.left;
+
+    expect(fromTop).toBe('-50%');
+    expect(toTop).toBe('-50%');
   });
 });
