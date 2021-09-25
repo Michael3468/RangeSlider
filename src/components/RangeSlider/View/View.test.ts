@@ -395,3 +395,24 @@ describe('private setDistanceBetweenTooltips', () => {
     expect(toTop).toBe('-50%');
   });
 });
+
+describe('private setZindexTop', () => {
+  const zIndexClass = 'range-slider__tooltip_z-index-top';
+  const view = new View('range-slider', settings);
+
+  test('should add zIndexClass to "from" element and del from "to" element', () => {
+    const result = view['setZindexTop']('from');
+    const fromContainsClass = result.from.element.classList.contains(zIndexClass);
+    const toContainsClass = result.to.element.classList.contains(zIndexClass);
+    expect(fromContainsClass).toBeTruthy();
+    expect(toContainsClass).toBeFalsy();
+  });
+
+  test('should del zIndexClass from "from" element and add to "to" element', () => {
+    const result = view['setZindexTop']('to');
+    const fromContainsClass = result.from.element.classList.contains(zIndexClass);
+    const toContainsClass = result.to.element.classList.contains(zIndexClass);
+    expect(fromContainsClass).toBeFalsy();
+    expect(toContainsClass).toBeTruthy();
+  });
+});

@@ -357,7 +357,7 @@ export default class View extends Observer {
     return this;
   }
 
-  private setZindexTop(thumb: ThumbName) {
+  private setZindexTop(thumb: ThumbName): View {
     const from = this.from.element;
     const to = this.to.element;
 
@@ -370,5 +370,6 @@ export default class View extends Observer {
       from.classList.remove(zIndexClass);
       to.classList.add(zIndexClass);
     }
+    return this;
   }
 }
