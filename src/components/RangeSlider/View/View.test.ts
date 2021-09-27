@@ -505,3 +505,21 @@ describe('private getPosOnScale', () => {
     expect(result).toBe(currentPos - leftValue);
   });
 });
+
+describe('private getDifferenceBetween', () => {
+  test('should return absolute defference between two numbers = 50', () => {
+    let currentPos = 100;
+    let thumbMargin = 150; // currentPos - thumbMargin = 50
+
+    let view = new View('range-slider', settings);
+    let result = view['getDifferenceBetween'](currentPos, thumbMargin);
+    expect(result).toBe(50);
+
+    currentPos = 200;
+    thumbMargin = 150; // currentPos - thumbMargin = -50
+
+    view = new View('range-slider', settings);
+    result = view['getDifferenceBetween'](currentPos, thumbMargin);
+    expect(result).toBe(50);
+  });
+});
