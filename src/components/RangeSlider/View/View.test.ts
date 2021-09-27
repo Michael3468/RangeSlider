@@ -468,3 +468,40 @@ describe('private currentCursorPosition', () => {
     expect(result).toBe(212);
   });
 });
+
+describe('private getPosOnScale', () => {
+  const topValue = 100;
+  const leftValue = 200;
+
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      width: 30,
+      height: 300,
+      top: topValue,
+      left: leftValue,
+      bottom: 400,
+      right: 130,
+      x: 100,
+      y: 200,
+      toJSON: () => {},
+    }));
+  });
+
+  const currentPos = 250;
+
+  test(`should return ${currentPos} - ${topValue}`, () => {
+    settings.isVertical = true;
+    const view = new View('range-slider', settings);
+    const result = view['getPosOnScale'](currentPos);
+
+    expect(result).toBe(currentPos - topValue);
+  });
+
+  test(`should return ${currentPos} - ${topValue}`, () => {
+    settings.isVertical = false;
+    const view = new View('range-slider', settings);
+    const result = view['getPosOnScale'](currentPos);
+
+    expect(result).toBe(currentPos - leftValue);
+  });
+});
