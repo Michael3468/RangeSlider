@@ -210,7 +210,7 @@ export default class View extends Observer {
       : currentPos - sliderRect.left;
   }
 
-  private currentCursorPosition(event: PointerEvent): number {
+  private currentCursorPosition(event: PointerEvent | MouseEvent): number {
     let currentPos: number = this.settings.isVertical
       ? event.clientY
       : event.clientX;

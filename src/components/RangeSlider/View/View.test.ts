@@ -7,8 +7,8 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
-import { ISettings } from '../RangeSlider/types';
 import View from './View';
+import { ISettings } from '../RangeSlider/types';
 
 let settings: ISettings;
 
@@ -414,5 +414,57 @@ describe('private setZindexTop', () => {
     const toContainsClass = result.to.element.classList.contains(zIndexClass);
     expect(fromContainsClass).toBeFalsy();
     expect(toContainsClass).toBeTruthy();
+  });
+});
+
+describe('private currentCursorPosition', () => {
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      width: 30,
+      height: 300,
+      top: 100,
+      left: 100,
+      bottom: 400,
+      right: 130,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    settings.isVertical = true;
+    settings.isTwoRunners = true;
+  });
+
+  test('should return currentPos > max', () => {
+    const downEvent = new MouseEvent('click',
+      {
+        bubbles: true,
+        cancelable: true,
+        clientX: 590,
+        clientY: 590,
+      });
+
+    const view = new View('range-slider', settings);
+    view.thumbMarginTo = 150; // +min(100) -step(2) = 248
+
+    view.from.element.dispatchEvent(downEvent);
+    const result = view['currentCursorPosition'](downEvent);
+    expect(result).toBe(248);
+  });
+
+  test('should return currentPos < min', () => {
+    const downEvent = new MouseEvent('click',
+      {
+        bubbles: true,
+        cancelable: true,
+        clientX: 150,
+        clientY: 150,
+      });
+
+    const view = new View('range-slider', settings);
+    view.thumbMarginFrom = 110; // +min(100) +step(2) = 212
+    view.to.element.dispatchEvent(downEvent);
+    const result = view['currentCursorPosition'](downEvent);
+    expect(result).toBe(212);
   });
 });
