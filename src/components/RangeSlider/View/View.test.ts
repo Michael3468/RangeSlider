@@ -2,13 +2,23 @@
  * @jest-environment jsdom
  */
 
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-unused-vars */
+/* eslint-disable lines-between-class-members */
 /* eslint-disable no-shadow */
 /* eslint-disable dot-notation */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import View from './View';
-import { ISettings } from '../RangeSlider/types';
+import { ISettings, ThumbName } from '../RangeSlider/types';
+
+declare class ViewHint {
+  getPosOnScale(currentPos: number): number;
+  setZindexTop(thumb: ThumbName): View;
+  isTooltipsCollision(): boolean;
+  setDistanceBetweenTooltips(): View;
+}
 
 let settings: ISettings;
 
@@ -342,7 +352,7 @@ describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips in different directions (vertical)', () => {
     settings.isVertical = true;
     const view = new View('range-slider', settings);
-    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(true);
+    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
     const result = view['setDistanceBetweenTooltips']();
 
@@ -356,7 +366,7 @@ describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips close to each other (vertical)', () => {
     settings.isVertical = true;
     const view = new View('range-slider', settings);
-    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(false);
+    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
     const result = view['setDistanceBetweenTooltips']();
 
@@ -370,7 +380,7 @@ describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips in different directions (horizontal)', () => {
     settings.isVertical = false;
     const view = new View('range-slider', settings);
-    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(true);
+    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
     const result = view['setDistanceBetweenTooltips']();
 
@@ -384,7 +394,7 @@ describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips close to each other (horizontal)', () => {
     settings.isVertical = false;
     const view = new View('range-slider', settings);
-    jest.spyOn(view, 'isTooltipsCollision').mockReturnValue(false);
+    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
     const result = view['setDistanceBetweenTooltips']();
 
@@ -521,5 +531,96 @@ describe('private getDifferenceBetween', () => {
     view = new View('range-slider', settings);
     result = view['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
+  });
+});
+
+describe('private moveClosestThumb', () => {
+  function testMoveClosestThumb(view: View, clickPosition: number) {
+    // 'should' return mouseEvent coords
+    jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
+
+    const updateRangeSliderValuesSpy = jest.spyOn(view, 'updateRangeSliderValues');
+    const setZindexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZindexTop');
+    const setDistanceBetweenTooltipsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
+
+    const downEvent = new MouseEvent('click',
+      {
+        bubbles: true,
+        cancelable: true,
+        clientX: clickPosition,
+        clientY: 150,
+      });
+
+    view.slider.element.dispatchEvent(downEvent);
+    const result = view['moveClosestThumb'](downEvent);
+
+    return {
+      updateRangeSliderValuesSpy,
+      setZindexTopSpy,
+      setDistanceBetweenTooltipsSpy,
+      result,
+    };
+  }
+  test('should return thumbMarginFrom = \'clickPosition\'', () => {
+    settings.isTwoRunners = true;
+    const view = new View('range-slider', settings);
+    view.thumbMarginFrom = 150;
+    view.thumbMarginTo = 250;
+
+    const clickPosition = 100;
+
+    const {
+      updateRangeSliderValuesSpy,
+      setZindexTopSpy,
+      setDistanceBetweenTooltipsSpy,
+      result,
+    } = testMoveClosestThumb(view, clickPosition);
+
+    expect(result.thumbMarginFrom).toBe(clickPosition);
+    expect(result.thumbMarginTo).not.toBe(clickPosition);
+    expect(updateRangeSliderValuesSpy).toBeCalled();
+    expect(setDistanceBetweenTooltipsSpy).toBeCalled();
+
+    if (result.settings.isTwoRunners) {
+      expect(setZindexTopSpy).toBeCalled();
+
+      const isHasThumbFromClass = result.from.element.classList.contains('range-slider__thumb_from');
+      expect(isHasThumbFromClass).toBeTruthy();
+
+      const isHasZindexTopClass = result.from.element.classList.contains('range-slider__tooltip_z-index-top');
+      expect(isHasZindexTopClass).toBeTruthy();
+    }
+  });
+
+  test('should return thumbMarginTo = \'clickPosition\'}\'', () => {
+    settings.isTwoRunners = true;
+    const view = new View('range-slider', settings);
+    view.thumbMarginFrom = 150;
+    view.thumbMarginTo = 250;
+
+    const clickPosition = 200;
+
+    const {
+      updateRangeSliderValuesSpy,
+      setZindexTopSpy,
+      setDistanceBetweenTooltipsSpy,
+      result,
+    } = testMoveClosestThumb(view, clickPosition);
+
+    expect(result.thumbMarginFrom).not.toBe(clickPosition);
+    expect(result.thumbMarginTo).toBe(clickPosition);
+    expect(updateRangeSliderValuesSpy).toBeCalled();
+    expect(setDistanceBetweenTooltipsSpy).toBeCalled();
+
+    if (result.settings.isTwoRunners) {
+      expect(setZindexTopSpy).toBeCalled();
+
+      const isHasThumbToClass = result.to.element.classList.contains('range-slider__thumb_to');
+      expect(isHasThumbToClass).toBeTruthy();
+
+      const isHasZindexTopClass = result.to.element.classList.contains('range-slider__tooltip_z-index-top');
+      expect(isHasZindexTopClass).toBeTruthy();
+    }
   });
 });
