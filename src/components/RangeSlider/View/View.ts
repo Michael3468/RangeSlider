@@ -91,22 +91,22 @@ export default class View extends Observer {
     }
 
     this.initRangeSliderMargins();
-    this.updateRangeSliderValues(this.settings);
+    this.updateRangeSliderValues();
     this.addListenersToThumbs();
 
     return this;
   }
 
-  public updateRangeSliderValues(settings: ISettings): View {
+  public updateRangeSliderValues(): View {
     const isVertical = this.settings?.isVertical as boolean;
 
-    if (settings.isTwoRunners) {
+    if (this.settings.isTwoRunners) {
       this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
-      this.from.setMargin(this.thumbMarginFrom, settings);
+      this.from.setMargin(this.thumbMarginFrom, this.settings);
       this.from.tooltip.setTooltipText(this.settings!.valueFrom);
     }
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
-    this.to.setMargin(this.thumbMarginTo, settings);
+    this.to.setMargin(this.thumbMarginTo, this.settings);
     this.to.tooltip.setTooltipText(this.settings!.valueTo);
 
     return this;
@@ -127,7 +127,7 @@ export default class View extends Observer {
 
     window.addEventListener('resize', () => {
       this.initRangeSliderMargins();
-      this.updateRangeSliderValues(this.settings!);
+      this.updateRangeSliderValues();
 
       if (!this.settings?.isVertical) {
         this.scale.element.replaceChildren();
@@ -155,8 +155,8 @@ export default class View extends Observer {
       }
 
       const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-      this.setMargins(this.settings, thumbName, currentPos);
-      this.updateRangeSliderValues(this.settings);
+      this.setMargins(thumbName, currentPos);
+      this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
     };
   }
@@ -169,7 +169,7 @@ export default class View extends Observer {
     target.releasePointerCapture(pointerId);
   }
 
-  private moveClosestThumb(e: PointerEvent): void {
+  private moveClosestThumb(e: PointerEvent | MouseEvent): View {
     const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
     const fromPos: number | undefined = this.thumbMarginFrom;
     const toPos: number | undefined = this.thumbMarginTo;
@@ -183,22 +183,23 @@ export default class View extends Observer {
       thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
 
-    this.setMargins(this.settings, thumbName, currentPos);
-    this.updateRangeSliderValues(this.settings);
+    this.setMargins(thumbName, currentPos);
+    this.updateRangeSliderValues();
 
     if (this.settings.isTwoRunners) {
       this.setZindexTop(thumbName);
     }
 
     this.setDistanceBetweenTooltips();
+
+    return this;
   }
 
   // eslint-disable-next-line class-methods-use-this
   private getDifferenceBetween(
-    currentPos: number | undefined,
-    thumbMargin: number | undefined,
+    currentPos: number,
+    thumbMargin: number,
   ): number {
-    if (currentPos === undefined || thumbMargin === undefined) return 0;
     return Math.abs(currentPos - thumbMargin);
   }
 
@@ -238,15 +239,15 @@ export default class View extends Observer {
     return currentPos;
   }
 
-  private setMargins(settings: ISettings, thumbName: ThumbName, currentPos: number): void {
-    const currentPosWithStep = this.getCurrentPosWithStep(settings, this.slider, currentPos);
+  private setMargins(thumbName: ThumbName, currentPos: number): void {
+    const currentPosWithStep = this.getCurrentPosWithStep(this.settings, this.slider, currentPos);
 
-    if (thumbName === 'from' && settings.isTwoRunners) {
+    if (thumbName === 'from' && this.settings.isTwoRunners) {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
       this.settings!.valueFrom = this.getThumbValue(thumbName);
     } else if (thumbName === 'to') {
-      const { min, max } = getMinMaxElementEdgesInPx(settings, this.slider);
+      const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max! - min!;
 
       this.thumbMarginTo = currentPosWithStep;
@@ -306,10 +307,10 @@ export default class View extends Observer {
      * */
     if (this.settings.isTwoRunners) {
       const marginFrom = (this.settings.valueFrom - this.settings.min) * onePointInPx;
-      this.setMargins(this.settings, 'from', marginFrom);
+      this.setMargins('from', marginFrom);
     }
     const marginTo = (this.settings.valueTo - this.settings.min) * onePointInPx;
-    this.setMargins(this.settings, 'to', marginTo);
+    this.setMargins('to', marginTo);
 
     return this;
   }
