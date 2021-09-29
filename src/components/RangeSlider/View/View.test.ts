@@ -562,6 +562,15 @@ describe('private moveClosestThumb', () => {
       result,
     };
   }
+
+  function isHasClasses(result: View, thumbName: ThumbName) {
+    const isHasThumbClass = result[thumbName].element.classList.contains(`range-slider__thumb_${thumbName}`);
+    expect(isHasThumbClass).toBeTruthy();
+
+    const isHasZindexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');
+    expect(isHasZindexClass).toBeTruthy();
+  }
+
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
     settings.isTwoRunners = true;
     const view = new View('range-slider', settings);
@@ -585,11 +594,7 @@ describe('private moveClosestThumb', () => {
     if (result.settings.isTwoRunners) {
       expect(setZindexTopSpy).toBeCalled();
 
-      const isHasThumbFromClass = result.from.element.classList.contains('range-slider__thumb_from');
-      expect(isHasThumbFromClass).toBeTruthy();
-
-      const isHasZindexTopClass = result.from.element.classList.contains('range-slider__tooltip_z-index-top');
-      expect(isHasZindexTopClass).toBeTruthy();
+      isHasClasses(result, 'from');
     }
   });
 
@@ -616,11 +621,7 @@ describe('private moveClosestThumb', () => {
     if (result.settings.isTwoRunners) {
       expect(setZindexTopSpy).toBeCalled();
 
-      const isHasThumbToClass = result.to.element.classList.contains('range-slider__thumb_to');
-      expect(isHasThumbToClass).toBeTruthy();
-
-      const isHasZindexTopClass = result.to.element.classList.contains('range-slider__tooltip_z-index-top');
-      expect(isHasZindexTopClass).toBeTruthy();
+      isHasClasses(result, 'to');
     }
   });
 });
