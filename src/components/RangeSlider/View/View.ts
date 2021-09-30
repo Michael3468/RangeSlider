@@ -171,12 +171,12 @@ export default class View extends Observer {
 
   private moveClosestThumb(e: PointerEvent | MouseEvent): View {
     const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
-    const fromPos: number | undefined = this.thumbMarginFrom;
-    const toPos: number | undefined = this.thumbMarginTo;
+    const fromPos: number = this.thumbMarginFrom;
+    const toPos: number = this.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
     // check which thumb is closest to the cursor position
-    if (fromPos !== undefined) {
+    if (this.settings.isTwoRunners) {
       const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
       const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
