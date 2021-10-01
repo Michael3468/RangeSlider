@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable no-unused-vars */
 export interface ISettings {
@@ -25,20 +26,6 @@ export type ThumbName = 'from' | 'to';
 
 export type INodeName = 'div' | 'span';
 
-// export interface PointerEvent<T = Element> extends MouseEvent<T, NativePointerEvent> {
-//   pointerId: number;
-//   pressure: number;
-//   tangentialPressure: number;
-//   tiltX: number;
-//   tiltY: number;
-//   twist: number;
-//   width: number;
-//   height: number;
-//   pointerType: 'mouse' | 'pen' | 'touch';
-//   isPrimary: boolean;
-// }
-
-// if (!global.PointerEvent) {
 export class PointerEvent extends MouseEvent {
   public height?: number;
   public isPrimary?: boolean;
@@ -66,4 +53,3 @@ export class PointerEvent extends MouseEvent {
   public ReleasePointerCapture(value);
 }
 global.PointerEvent = PointerEvent as any;
-// }
