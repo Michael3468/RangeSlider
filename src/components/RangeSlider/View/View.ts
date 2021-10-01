@@ -162,11 +162,11 @@ export default class View extends Observer {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private stopSliding(event: PointerEvent): void {
-    const { pointerId } = event;
+  private stopSliding(event: PointerEvent): HTMLElement {
     const target = event.target as HTMLElement;
     target.onpointermove = null;
-    target.releasePointerCapture(pointerId);
+    target.releasePointerCapture(event.pointerId);
+    return target;
   }
 
   private moveClosestThumb(e: PointerEvent | MouseEvent): View {

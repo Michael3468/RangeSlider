@@ -11,7 +11,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import View from './View';
-import { ISettings, ThumbName } from '../RangeSlider/types';
+import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types.d.ts';
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;
@@ -623,5 +623,31 @@ describe('private moveClosestThumb', () => {
 
       isHasClasses(result, 'to');
     }
+  });
+});
+
+describe('private stopSliding', () => {
+  test('event.target.onpointermove should return null', () => {
+    const downEvent = new PointerEvent('pointerup', {
+      pointerId: 1,
+      bubbles: true,
+      cancelable: true,
+      clientX: 150,
+      clientY: 150,
+      pointerType: 'touch',
+      width: 20,
+      height: 20,
+      tangentialPressure: 0,
+      tiltX: 0,
+      tiltY: 0,
+      isPrimary: true,
+    });
+
+    Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
+    const view = new View('range-slider', settings);
+    view.to.element.dispatchEvent(downEvent);
+    const result = view['stopSliding'](downEvent);
+
+    expect(result.onpointermove).toBeNull();
   });
 });
