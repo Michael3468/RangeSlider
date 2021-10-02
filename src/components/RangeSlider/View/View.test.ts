@@ -11,13 +11,15 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import View from './View';
-import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types.d.ts';
+import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types.d.ts'; // TODO ?
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;
   setZindexTop(thumb: ThumbName): View;
   isTooltipsCollision(): boolean;
   setDistanceBetweenTooltips(): View;
+  setMargins(thumbName: ThumbName, currentPos: number): void;
+  updateRangeSliderValues(): View;
 }
 
 let settings: ISettings;
@@ -626,6 +628,7 @@ describe('private moveClosestThumb', () => {
   });
 });
 
+// TODO rename downEvent to upEvent
 describe('private stopSliding', () => {
   test('event.target.onpointermove should return null', () => {
     const downEvent = new PointerEvent('pointerup', {
@@ -649,5 +652,103 @@ describe('private stopSliding', () => {
     const result = view['stopSliding'](downEvent);
 
     expect(result.onpointermove).toBeNull();
+  });
+});
+
+describe('private beginSliding', () => {
+  function getMoveEvent() {
+    const moveEvent = new PointerEvent('pointermove', {
+      pointerId: 1,
+      bubbles: true,
+      cancelable: true,
+      clientX: 150,
+      clientY: 150,
+      pointerType: 'touch',
+      width: 20,
+      height: 20,
+      tangentialPressure: 0,
+      tiltX: 0,
+      tiltY: 0,
+      isPrimary: true,
+    });
+
+    return moveEvent;
+  }
+
+  function getSpyMethods() {
+    const view = new View('range-slider', settings);
+
+    const getPosOnScaleSpy = jest
+      .spyOn(view as unknown as ViewHint, 'getPosOnScale')
+      .mockReturnValue(150); // currentPos
+    const setMarginsSpy = jest.spyOn(view as unknown as ViewHint, 'setMargins');
+    const updateRangeSliderValuesSpy = jest
+      .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
+    const setDistanceBetweenTooltipsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
+
+    return {
+      view,
+      getPosOnScaleSpy,
+      setMarginsSpy,
+      updateRangeSliderValuesSpy,
+      setDistanceBetweenTooltipsSpy,
+    };
+  }
+
+  it('should call setMarigns method with thumbName = "from"', () => {
+    const moveEvent = getMoveEvent();
+
+    Element.prototype.setPointerCapture = jest.fn().mockReturnValueOnce(undefined);
+
+    const {
+      view,
+      getPosOnScaleSpy,
+      setMarginsSpy,
+      updateRangeSliderValuesSpy,
+      setDistanceBetweenTooltipsSpy,
+    } = getSpyMethods();
+
+    view.from.element.dispatchEvent(moveEvent);
+    const result = view['beginSliding'](moveEvent);
+    expect(result.onpointermove).not.toBeNull();
+
+    result.onpointermove!(moveEvent);
+    expect(getPosOnScaleSpy).toBeCalled();
+
+    const currentPos = getPosOnScaleSpy();
+    expect(setMarginsSpy).toBeCalled();
+    expect(setMarginsSpy).toBeCalledWith('from', currentPos);
+
+    expect(updateRangeSliderValuesSpy).toBeCalled();
+    expect(setDistanceBetweenTooltipsSpy).toBeCalled();
+  });
+
+  it('should call setMarigns method with thumbName = "to"', () => {
+    const moveEvent = getMoveEvent();
+
+    Element.prototype.setPointerCapture = jest.fn().mockReturnValueOnce(undefined);
+
+    const {
+      view,
+      getPosOnScaleSpy,
+      setMarginsSpy,
+      updateRangeSliderValuesSpy,
+      setDistanceBetweenTooltipsSpy,
+    } = getSpyMethods();
+
+    view.to.element.dispatchEvent(moveEvent);
+    const result = view['beginSliding'](moveEvent);
+    expect(result.onpointermove).not.toBeNull();
+
+    result.onpointermove!(moveEvent);
+    expect(getPosOnScaleSpy).toBeCalled();
+
+    const currentPos = getPosOnScaleSpy();
+    expect(setMarginsSpy).toBeCalled();
+    expect(setMarginsSpy).toBeCalledWith('to', currentPos);
+
+    expect(updateRangeSliderValuesSpy).toBeCalled();
+    expect(setDistanceBetweenTooltipsSpy).toBeCalled();
   });
 });
