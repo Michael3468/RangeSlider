@@ -628,10 +628,9 @@ describe('private moveClosestThumb', () => {
   });
 });
 
-// TODO rename downEvent to upEvent
 describe('private stopSliding', () => {
   test('event.target.onpointermove should return null', () => {
-    const downEvent = new PointerEvent('pointerup', {
+    const upEvent = new PointerEvent('pointerup', {
       pointerId: 1,
       bubbles: true,
       cancelable: true,
@@ -648,8 +647,8 @@ describe('private stopSliding', () => {
 
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
-    view.to.element.dispatchEvent(downEvent);
-    const result = view['stopSliding'](downEvent);
+    view.to.element.dispatchEvent(upEvent);
+    const result = view['stopSliding'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
