@@ -11,7 +11,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import View from './View';
-import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types.d.ts'; // TODO ?
+import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types';
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;
@@ -648,7 +648,7 @@ describe('private stopSliding', () => {
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
     view.to.element.dispatchEvent(upEvent);
-    const result = view['stopSliding'](upEvent);
+    const result = view['stopSliding'](upEvent); // TODO ?
 
     expect(result.onpointermove).toBeNull();
   });
