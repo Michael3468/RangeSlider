@@ -139,7 +139,7 @@ export default class View extends Observer {
     return this;
   }
 
-  private beginSliding(event: PointerEvent): void {
+  private beginSliding(event: PointerEvent): HTMLElement {
     const { pointerId } = event;
     const target = event.target as HTMLElement;
     event.preventDefault();
@@ -159,6 +159,7 @@ export default class View extends Observer {
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
     };
+    return target;
   }
 
   // eslint-disable-next-line class-methods-use-this
