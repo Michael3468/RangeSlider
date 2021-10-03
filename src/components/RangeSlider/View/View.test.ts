@@ -677,9 +677,10 @@ describe('private beginSliding', () => {
   function getSpyMethods() {
     const view = new View('range-slider', settings);
 
+    const currentPos = 150;
     const getPosOnScaleSpy = jest
       .spyOn(view as unknown as ViewHint, 'getPosOnScale')
-      .mockReturnValue(150); // currentPos
+      .mockReturnValue(currentPos);
     const setMarginsSpy = jest.spyOn(view as unknown as ViewHint, 'setMargins');
     const updateRangeSliderValuesSpy = jest
       .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
@@ -688,6 +689,7 @@ describe('private beginSliding', () => {
 
     return {
       view,
+      currentPos,
       getPosOnScaleSpy,
       setMarginsSpy,
       updateRangeSliderValuesSpy,
@@ -702,6 +704,7 @@ describe('private beginSliding', () => {
 
     const {
       view,
+      currentPos,
       getPosOnScaleSpy,
       setMarginsSpy,
       updateRangeSliderValuesSpy,
@@ -715,7 +718,6 @@ describe('private beginSliding', () => {
     result.onpointermove!(moveEvent);
     expect(getPosOnScaleSpy).toBeCalled();
 
-    const currentPos = getPosOnScaleSpy();
     expect(setMarginsSpy).toBeCalled();
     expect(setMarginsSpy).toBeCalledWith('from', currentPos);
 
@@ -730,6 +732,7 @@ describe('private beginSliding', () => {
 
     const {
       view,
+      currentPos,
       getPosOnScaleSpy,
       setMarginsSpy,
       updateRangeSliderValuesSpy,
@@ -743,7 +746,6 @@ describe('private beginSliding', () => {
     result.onpointermove!(moveEvent);
     expect(getPosOnScaleSpy).toBeCalled();
 
-    const currentPos = getPosOnScaleSpy();
     expect(setMarginsSpy).toBeCalled();
     expect(setMarginsSpy).toBeCalledWith('to', currentPos);
 
@@ -751,3 +753,6 @@ describe('private beginSliding', () => {
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
   });
 });
+
+// test setMargins
+// private currentCursorPosition(event: PointerEvent | MouseEvent)
