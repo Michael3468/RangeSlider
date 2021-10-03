@@ -27,16 +27,16 @@ export type ThumbName = 'from' | 'to';
 export type INodeName = 'div' | 'span';
 
 export class PointerEvent extends MouseEvent {
-  public height?: number;
-  public isPrimary?: boolean;
-  public pointerId?: number;
-  public pointerType?: string;
-  public pressure?: number;
-  public tangentialPressure?: number;
-  public tiltX?: number;
-  public tiltY?: number;
-  public twist?: number;
-  public width?: number;
+  public height: number;
+  public isPrimary: boolean;
+  public pointerId: number;
+  public pointerType: string;
+  public pressure: number;
+  public tangentialPressure: number;
+  public tiltX: number;
+  public tiltY: number;
+  public twist: number;
+  public width: number;
 
   constructor(type: string, params: PointerEventInit = {}) {
     super(type, params);
@@ -51,5 +51,7 @@ export class PointerEvent extends MouseEvent {
     this.isPrimary = params.isPrimary;
   }
   public ReleasePointerCapture(value);
+  public getCoalescedEvents(): PointerEvent[];
+  public getPredictedEvents(): PointerEvent[];
 }
 global.PointerEvent = PointerEvent as any;
