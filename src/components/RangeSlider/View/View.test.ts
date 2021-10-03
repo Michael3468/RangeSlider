@@ -754,5 +754,5 @@ describe('private beginSliding', () => {
   });
 });
 
-// test setMargins
-// private currentCursorPosition(event: PointerEvent | MouseEvent)
+// TODO setMargins
+// TODO private currentCursorPosition(event: PointerEvent | MouseEvent)
