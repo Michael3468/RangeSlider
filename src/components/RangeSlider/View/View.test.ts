@@ -20,6 +20,7 @@ declare class ViewHint {
   setDistanceBetweenTooltips(): View;
   setMargins(thumbName: ThumbName, currentPos: number): void;
   updateRangeSliderValues(): View;
+  initRangeSliderMargins(): View;
 }
 
 let settings: ISettings;
@@ -754,5 +755,38 @@ describe('private beginSliding', () => {
   });
 });
 
-// TODO setMargins
-// TODO private currentCursorPosition(event: PointerEvent | MouseEvent)
+describe('private addListenersToThumbs', () => {
+  function testAddListenerToThumbs(settings: ISettings) {
+    const view = new View('range-slider', settings);
+    view['addListenersToThumbs']();
+
+    const initRangeSliderMarginsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'initRangeSliderMargins');
+    const updateRangeSliderValuesSpy = jest
+      .spyOn(view, 'updateRangeSliderValues');
+    const setDistanceBetweenTooltipsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
+    const createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+
+    window.dispatchEvent(new Event('resize'));
+    expect(initRangeSliderMarginsSpy).toBeCalled();
+    expect(updateRangeSliderValuesSpy).toBeCalled();
+    expect(setDistanceBetweenTooltipsSpy).toBeCalled();
+
+    return createScaleMarksSpy;
+  }
+
+  it('should NOT recreate scale marks on window resize on vertical slider', () => {
+    settings.isVertical = true;
+    const createScaleMarksSpy = testAddListenerToThumbs(settings);
+
+    expect(createScaleMarksSpy).not.toBeCalled();
+  });
+
+  it('should recreate scale marks on window resize on horizontal slider', () => {
+    settings.isVertical = false;
+    const createScaleMarksSpy = testAddListenerToThumbs(settings);
+
+    expect(createScaleMarksSpy).toBeCalled();
+  });
+});
