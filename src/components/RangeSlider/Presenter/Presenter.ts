@@ -7,8 +7,8 @@ import { Model } from '../Model/Model';
 import View from '../View/View';
 
 export default class Presenter {
-  private model: Model;
-  private view: View;
+  model: Model;
+  view: View;
 
   constructor(model: Model, view: View) {
     this.model = model;
@@ -17,11 +17,12 @@ export default class Presenter {
     this.initRangeSlider();
   }
 
-  private initRangeSlider(): void {
+  private initRangeSlider(): Presenter {
     this.view.createRangeSlider(this.model.getSettings());
 
     this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
       this.model.updateSettings(settings);
     });
+    return this;
   }
 }
