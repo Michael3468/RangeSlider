@@ -38,8 +38,23 @@ describe('removeObserver', () => {
     expect(observer.observers.length).toBe(1);
 
     expect(() => {
-      // удаляем из массива обзервер которого там нет
+      // пытаемся удалить из массива обзервер которого там нет
       observer.removeObserver(() => { console.log('another function for test'); });
     }).toThrow();
+  });
+});
+
+describe('notifyObservers', () => {
+  it('should notify observers', () => {
+    const observer = new Observer();
+
+    let observersCounter = 0;
+
+    observer.addObserver(() => { observersCounter += 1; });
+    observer.addObserver(() => { observersCounter += 2; });
+
+    observer.notifyObservers();
+
+    expect(observersCounter).toBe(3);
   });
 });
