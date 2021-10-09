@@ -28,7 +28,7 @@ export default class View extends Observer {
 
   changeSettingsObserver: Observer;
 
-  configurationPanel: ConfigurationPanel | undefined;
+  configurationPanel: ConfigurationPanel;
 
   constructor(id: string, mergedSettings: ISettings) {
     super();
@@ -39,9 +39,8 @@ export default class View extends Observer {
     this.to = new Thumb('to');
     this.range = new Range();
     this.scale = new Scale();
-    if (this.settings.isConfPanel) {
-      this.configurationPanel = new ConfigurationPanel(this.settings);
-    }
+
+    this.configurationPanel = new ConfigurationPanel(this.settings);
 
     this.rangeMarginTo = 0;
     this.rangeMarginFrom = 0;

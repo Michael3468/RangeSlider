@@ -22,6 +22,7 @@ beforeEach(() => {
     isScaleVisible: true,
     isTooltipsVisible: true,
     isVertical: true,
+    isConfPanel: true,
     valueFrom: 150,
     valueTo: 400,
     step: 10,

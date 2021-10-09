@@ -3,7 +3,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable lines-between-class-members */
 import { ISettings } from '../RangeSlider/types';
-import './ConfigurationPanel.scss';
 import { createElement } from '../lib/common';
 
 export default class ConfigurationPanel {
