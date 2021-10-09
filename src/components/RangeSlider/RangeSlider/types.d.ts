@@ -4,13 +4,14 @@
 export interface ISettings {
   min: number;
   max: number;
+  valueFrom: number;
+  valueTo: number;
+  step: number;
   isTwoRunners: boolean;
   isScaleVisible: boolean;
   isVertical: boolean;
   isTooltipsVisible: boolean;
-  valueFrom: number;
-  valueTo: number;
-  step: number;
+  isConfPanel: boolean;
 }
 
 export interface ISliderElement {

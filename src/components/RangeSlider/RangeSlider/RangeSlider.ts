@@ -14,13 +14,14 @@ import Presenter from '../Presenter/Presenter';
   const defaultSettings: ISettings = {
     min: 0,
     max: 100,
+    valueFrom: 30,
+    valueTo: 70,
+    step: 1,
     isTwoRunners: true,
     isScaleVisible: false,
     isTooltipsVisible: true,
     isVertical: false,
-    valueFrom: 30,
-    valueTo: 70,
-    step: 1,
+    isConfPanel: false,
   };
 
   // eslint-disable-next-line no-param-reassign

@@ -16,6 +16,7 @@ export class Model {
   isScaleVisible: boolean;
   isVertical: boolean;
   isTooltipsVisible: boolean;
+  isConfPanel: boolean;
   valueFrom: number;
   valueTo: number;
   step: number;
@@ -27,15 +28,15 @@ export class Model {
     // default options
     this.minValue = this.settings.min;
     this.maxValue = this.settings.max;
+    this.valueFrom = this.getThumbValue(this.settings, 'from');
+    this.valueTo = this.getThumbValue(this.settings, 'to');
+    this.step = settings.step;
+
     this.isTwoRunners = this.settings.isTwoRunners;
     this.isScaleVisible = this.settings.isScaleVisible;
     this.isVertical = this.settings.isVertical;
     this.isTooltipsVisible = this.settings.isTooltipsVisible;
-
-    this.valueFrom = this.getThumbValue(this.settings, 'from');
-    this.valueTo = this.getThumbValue(this.settings, 'to');
-
-    this.step = settings.step;
+    this.isConfPanel = this.settings.isConfPanel;
   }
 
   private static validateSettings(settings: ISettings): void {
@@ -68,13 +69,14 @@ export class Model {
       // settings
       min: this.minValue,
       max: this.maxValue,
+      valueFrom: this.valueFrom,
+      valueTo: this.valueTo,
+      step: this.step,
       isTwoRunners: this.isTwoRunners,
       isScaleVisible: this.isScaleVisible,
       isVertical: this.isVertical,
       isTooltipsVisible: this.isTooltipsVisible,
-      valueFrom: this.valueFrom,
-      valueTo: this.valueTo,
-      step: this.step,
+      isConfPanel: this.isConfPanel,
     };
   }
 
