@@ -7,11 +7,16 @@ block variables
 
 block content
 
-  .block-1
+  include ../components/RangeSlider/ConfigurationPanel/ConfigurationPanel.pug
+
+  .range-slider-block.block-1
     #range-slider
+    +configurationPanel({id: 'range-slider'})
 
-  .block-2
+  .range-slider-block.block-2
     #range-slider2
+    +configurationPanel({id: 'range-slider2'})
 
-  .block-3
+  .range-slider-block.block-3
     #range-slider3
+    +configurationPanel({id: 'range-slider3'})

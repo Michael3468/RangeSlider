@@ -1,0 +1,43 @@
+mixin configurationPanel(props)
+  .settings-panel(id=`${props.id}-conf-panel`)
+    span.settings-panel__caption Configuration Panel
+
+    .settings-panel__options
+      .settings-panel__options_inputs-block
+        .settings-panel__options_input
+          .settings-panel__options_input-text min
+          .settings-panel__options_input-value
+            input(type='number' data-input-value='min' value='0')
+        .settings-panel__options_input
+          .settings-panel__options_input-text max
+          .settings-panel__options_input-value
+            input(type='number' data-input-value='max' value='0')
+        .settings-panel__options_input
+          .settings-panel__options_input-text step
+          .settings-panel__options_input-value
+            input(type='number' data-input-value='step' value='0')
+        .settings-panel__options_input
+          .settings-panel__options_input-text from
+          .settings-panel__options_input-value
+            input(type='number' data-input-value='from' value='0')
+        .settings-panel__options_input
+          .settings-panel__options_input-text to
+          .settings-panel__options_input-value
+            input(type='number' data-input-value='to' value='0')
+
+      .settings-panel__options_toggles-block
+        .settings-panel__options_toggle
+          input(type='checkbox' name='vertical')
+          label(for='vertical' data-toggle-value='vertical') vertical
+        .settings-panel__options_toggle
+          input(type='checkbox' data-toggle-value='range' name='range')
+          label(for='range') range
+        .settings-panel__options_toggle
+          input(type='checkbox' data-toggle-value='scale' name='scale')
+          label(for='scale') scale
+        .settings-panel__options_toggle
+          input(type='checkbox' data-toggle-value='bar' name='bar')
+          label(for='bar') bar
+        .settings-panel__options_toggle
+          input(type='checkbox' data-toggle-value='tip' name='tip')
+          label(for='tip') tip
