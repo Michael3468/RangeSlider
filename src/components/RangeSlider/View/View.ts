@@ -8,6 +8,7 @@ import Slider from './Slider';
 import Thumb from './Thumb';
 import Range from './Range';
 import Scale from './Scale';
+import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
 
@@ -27,6 +28,8 @@ export default class View extends Observer {
 
   changeSettingsObserver: Observer;
 
+  configurationPanel: ConfigurationPanel | undefined;
+
   constructor(id: string, mergedSettings: ISettings) {
     super();
     this.settings = mergedSettings;
@@ -36,6 +39,9 @@ export default class View extends Observer {
     this.to = new Thumb('to');
     this.range = new Range();
     this.scale = new Scale();
+    if (this.settings.isConfPanel) {
+      this.configurationPanel = new ConfigurationPanel(this.settings);
+    }
 
     this.rangeMarginTo = 0;
     this.rangeMarginFrom = 0;
@@ -88,6 +94,10 @@ export default class View extends Observer {
     if (settings.isScaleVisible) {
       this.slider.element!.appendChild(this.scale.element);
       this.scale.createScaleMarks(settings);
+    }
+
+    if (settings.isConfPanel) {
+      this.slider.element.after(this.configurationPanel!.element);
     }
 
     this.initRangeSliderMargins();

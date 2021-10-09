@@ -11,6 +11,7 @@ $('#range-slider').RangeSlider({
   valueTo: 1492,
   isScaleVisible: true,
   step: 1,
+  isConfPanel: true,
 });
 
 $('#range-slider2').RangeSlider({
@@ -19,6 +20,7 @@ $('#range-slider2').RangeSlider({
   valueTo: 54,
   isTwoRunners: false,
   step: 7,
+  isConfPanel: true,
 });
 
 $('#range-slider3').RangeSlider({
@@ -30,4 +32,5 @@ $('#range-slider3').RangeSlider({
   isVertical: true,
   isTwoRunners: true,
   step: 1,
+  isConfPanel: true,
 });
