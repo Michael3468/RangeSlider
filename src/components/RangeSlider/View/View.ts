@@ -58,7 +58,7 @@ export default class View extends Observer {
   }
 
   public createRangeSlider(settings: ISettings): View {
-    this.settings = settings;
+    Object.assign(this.settings, settings);
 
     if (settings.isTwoRunners) {
       this.slider.element!.appendChild(this.from.element);
@@ -84,10 +84,13 @@ export default class View extends Observer {
       this.to.element.className += ` ${THUMB_VERTICAL}`;
     }
 
+    const TOOLTIP_HIDDEN = 'range-slider__tooltip_hidden';
     if (!settings.isTooltipsVisible) {
-      const TOOLTIP_HIDDEN = 'range-slider__tooltip_hidden';
       this.from.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
       this.to.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
+    } else {
+      this.from.tooltip.element.classList.remove(TOOLTIP_HIDDEN);
+      this.to.tooltip.element.classList.remove(TOOLTIP_HIDDEN);
     }
 
     if (settings.isScaleVisible) {
@@ -95,25 +98,25 @@ export default class View extends Observer {
       this.scale.createScaleMarks(settings);
     }
 
-    if (settings.isConfPanel) {
-      this.slider.element.after(this.configurationPanel!.element);
-    }
-
     this.initRangeSliderMargins();
     this.updateRangeSliderValues();
     this.addListenersToThumbs();
+    this.setDistanceBetweenTooltips();
 
+    if (settings.isConfPanel) {
+      this.slider.element.after(this.configurationPanel!.element);
+      this.configurationPanel.updateState(this.settings);
+    }
     return this;
   }
 
   public updateRangeSliderValues(): View {
     const isVertical = this.settings?.isVertical as boolean;
 
-    if (this.settings.isTwoRunners) {
-      this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
-      this.from.setMargin(this.thumbMarginFrom, this.settings);
-      this.from.tooltip.setTooltipText(this.settings!.valueFrom);
-    }
+    this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
+    this.from.setMargin(this.thumbMarginFrom, this.settings);
+    this.from.tooltip.setTooltipText(this.settings!.valueFrom);
+
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
     this.to.setMargin(this.thumbMarginTo, this.settings);
     this.to.tooltip.setTooltipText(this.settings!.valueTo);
@@ -252,10 +255,12 @@ export default class View extends Observer {
   private setMargins(thumbName: ThumbName, currentPos: number): void {
     const currentPosWithStep = this.getCurrentPosWithStep(this.settings, this.slider, currentPos);
 
-    if (thumbName === 'from' && this.settings.isTwoRunners) {
+    if (thumbName === 'from') {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      this.settings!.valueFrom = this.getThumbValue(thumbName);
+      if (this.settings.isTwoRunners) {
+        this.settings!.valueFrom = this.getThumbValue(thumbName);
+      }
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max! - min!;
@@ -317,6 +322,9 @@ export default class View extends Observer {
      * */
     if (this.settings.isTwoRunners) {
       const marginFrom = (this.settings.valueFrom - this.settings.min) * onePointInPx;
+      this.setMargins('from', marginFrom);
+    } else {
+      const marginFrom = this.settings.min * onePointInPx;
       this.setMargins('from', marginFrom);
     }
     const marginTo = (this.settings.valueTo - this.settings.min) * onePointInPx;
