@@ -334,24 +334,20 @@ export default class View extends Observer {
   }
 
   private isTooltipsCollision(): boolean {
-    let tooltipSize: number;
     let fromEdge: number;
     let toEdge: number;
 
-    const toTooltipRect = this.to.tooltip.element.getBoundingClientRect();
     const fromRect = this.from.element.getBoundingClientRect();
     const toRect = this.to.element.getBoundingClientRect();
 
     if (this.settings.isVertical) {
-      tooltipSize = toTooltipRect.height;
-      fromEdge = fromRect.top;
+      fromEdge = fromRect.bottom;
       toEdge = toRect.top;
     } else {
-      tooltipSize = toTooltipRect.width;
       fromEdge = fromRect.right;
-      toEdge = toRect.right;
+      toEdge = toRect.left;
     }
-    return toEdge - fromEdge <= tooltipSize;
+    return toEdge - fromEdge <= 5;
   }
 
   private setDistanceBetweenTooltips(): View {

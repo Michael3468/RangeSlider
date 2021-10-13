@@ -339,9 +339,9 @@ describe('private isTooltipsCollision', () => {
       width: 20,
       height: 20,
       top: 100,
-      left: 120,
+      left: 130, // value 170 to return false
       bottom: 120,
-      right: 170, // value 170 to return false
+      right: 170,
       x: 150,
       y: 100,
       toJSON: () => {},
