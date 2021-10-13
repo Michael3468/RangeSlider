@@ -10,8 +10,8 @@ import { ISettings, ThumbName } from '../RangeSlider/types';
 export class Model {
   settings: ISettings;
 
-  minValue: number;
-  maxValue: number;
+  min: number;
+  max: number;
   isTwoRunners: boolean;
   isScaleVisible: boolean;
   isVertical: boolean;
@@ -26,8 +26,8 @@ export class Model {
     this.settings = settings;
 
     // default options
-    this.minValue = this.settings.min;
-    this.maxValue = this.settings.max;
+    this.min = this.settings.min;
+    this.max = this.settings.max;
     this.valueFrom = this.getThumbValue(this.settings, 'from');
     this.valueTo = this.getThumbValue(this.settings, 'to');
     this.step = settings.step;
@@ -67,8 +67,8 @@ export class Model {
   public getSettings(): ISettings {
     return {
       // settings
-      min: this.minValue,
-      max: this.maxValue,
+      min: this.min,
+      max: this.max,
       valueFrom: this.valueFrom,
       valueTo: this.valueTo,
       step: this.step,
@@ -82,6 +82,18 @@ export class Model {
 
   public updateSettings(settings: ISettings): ISettings {
     this.settings = settings;
+
+    this.min = this.settings.min;
+    this.max = this.settings.max;
+    this.valueFrom = this.settings.valueFrom;
+    this.valueTo = this.settings.valueTo;
+    this.step = this.settings.step;
+    this.isTwoRunners = this.settings.isTwoRunners;
+    this.isScaleVisible = this.settings.isScaleVisible;
+    this.isVertical = this.settings.isVertical;
+    this.isTooltipsVisible = this.settings.isTooltipsVisible;
+    this.isConfPanel = this.settings.isConfPanel;
+
     return this.settings;
   }
 }
