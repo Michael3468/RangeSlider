@@ -360,7 +360,7 @@ export default class View extends Observer {
     if (this.isTooltipsCollision()) {
       if (this.settings.isVertical) {
         from.top = '-55%';
-        to.top = '55';
+        to.top = '55%';
       } else {
         from.left = '-105%';
         to.left = '5%';
