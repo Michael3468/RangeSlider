@@ -66,22 +66,24 @@ export default class View extends Observer {
     this.slider.element!.appendChild(this.to.element);
     this.slider.element!.appendChild(this.range.element);
 
+    const THUMB_VERTICAL = 'range-slider__thumb_vertical';
     if (settings.isVertical) {
       this.slider.element!.className += ' range-slider_vertical';
       this.scale.element.className += ' range-slider__scale_vertical';
 
-      if (settings.isTooltipsVisible) {
-        const TOOLTIP_VERTICAL = 'range-slider__tooltip_vertical';
-        this.from.tooltip.element.className += ` ${TOOLTIP_VERTICAL}`;
-        this.to.tooltip.element.className += ` ${TOOLTIP_VERTICAL}`;
-      }
-
       // add class for vertical thumbs
-      const THUMB_VERTICAL = 'range-slider__thumb_vertical';
       if (settings.isTwoRunners) {
         this.from.element.className += ` ${THUMB_VERTICAL}`;
       }
       this.to.element.className += ` ${THUMB_VERTICAL}`;
+    } else {
+      this.slider.element!.classList.remove('range-slider_vertical');
+      this.scale.element.classList.remove('range-slider__scale_vertical');
+
+      if (settings.isTwoRunners) {
+        this.from.element.classList.remove(THUMB_VERTICAL);
+      }
+      this.to.element.classList.remove(THUMB_VERTICAL);
     }
 
     const TOOLTIP_HIDDEN = 'range-slider__tooltip_hidden';
@@ -324,8 +326,7 @@ export default class View extends Observer {
       const marginFrom = (this.settings.valueFrom - this.settings.min) * onePointInPx;
       this.setMargins('from', marginFrom);
     } else {
-      const marginFrom = this.settings.min * onePointInPx;
-      this.setMargins('from', marginFrom);
+      this.setMargins('from', 0);
     }
     const marginTo = (this.settings.valueTo - this.settings.min) * onePointInPx;
     this.setMargins('to', marginTo);
@@ -356,18 +357,22 @@ export default class View extends Observer {
 
     if (this.isTooltipsCollision()) {
       if (this.settings.isVertical) {
-        from.top = `${-55}%`;
-        to.top = `${55}%`;
+        from.top = '-55%';
+        to.top = '55';
       } else {
-        from.left = `${-105}%`;
-        to.left = `${5}%`;
+        from.left = '-105%';
+        to.left = '5%';
       }
     } else if (this.settings.isVertical) {
-      from.top = `${0}%`;
-      to.top = `${0}%`;
+      from.top = '0%';
+      from.left = '50%';
+      to.top = '0%';
+      to.left = '50%';
     } else {
-      from.left = `${-50}%`;
-      to.left = `${-50}%`;
+      from.top = '-130%';
+      from.left = '-50%';
+      to.top = '-130%';
+      to.left = '-50%';
     }
     return this;
   }
