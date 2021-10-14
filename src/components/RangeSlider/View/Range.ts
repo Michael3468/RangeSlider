@@ -12,7 +12,9 @@ export default class Range {
   setMarginFromBegin(margin: number, isVertical: boolean): Range {
     if (isVertical) {
       this.element.style.marginTop = `${margin}px`;
+      this.element.style.marginLeft = '0px';
     } else {
+      this.element.style.marginTop = '0px';
       this.element.style.marginLeft = `${margin}px`;
     }
     return this;
@@ -20,9 +22,11 @@ export default class Range {
 
   setMarginFromEnd(margin: number, isVertical: boolean): Range {
     if (isVertical) {
+      this.element.style.marginRight = '0px';
       this.element.style.marginBottom = `${margin}px`;
     } else {
       this.element.style.marginRight = `${margin}px`;
+      this.element.style.marginBottom = '0px';
     }
     return this;
   }
