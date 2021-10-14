@@ -34,6 +34,7 @@ beforeEach(() => {
     isVertical: true,
     isTooltipsVisible: true,
     isConfPanel: true,
+    isBarVisible: true,
     valueFrom: 1000,
     valueTo: 1490,
     step: 10,
@@ -411,6 +412,20 @@ describe('private setDistanceBetweenTooltips', () => {
 });
 
 describe('private setZindexTop', () => {
+  const settings: ISettings = {
+    min: 0,
+    max: 1500,
+    isTwoRunners: true,
+    isScaleVisible: true,
+    isVertical: true,
+    isTooltipsVisible: true,
+    isConfPanel: true,
+    isBarVisible: true,
+    valueFrom: 1000,
+    valueTo: 1490,
+    step: 10,
+  };
+
   const zIndexClass = 'range-slider__tooltip_z-index-top';
   const view = new View('range-slider', settings);
 
