@@ -64,7 +64,9 @@ export default class View extends Observer {
       this.slider.element!.appendChild(this.from.element);
     }
     this.slider.element!.appendChild(this.to.element);
-    this.slider.element!.appendChild(this.range.element);
+    if (this.settings.isBarVisible) {
+      this.slider.element!.appendChild(this.range.element);
+    }
 
     const THUMB_VERTICAL = 'range-slider__thumb_vertical';
     if (settings.isVertical) {

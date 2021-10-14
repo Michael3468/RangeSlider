@@ -168,11 +168,10 @@ export default class ConfigurationPanel extends Observer {
       this.settings.isScaleVisible = this.cpScale?.checked as boolean;
       this.changeConfPanelSettings.notifyObservers(this.settings);
     });
-    // this.cpBar?.addEventListener('change', () => {
-    //   //  console.log('test');
-    //   this.settings.isTwoRunners = this.cpRange?.checked as boolean;
-    //   this.changeConfPanelSettings.notifyObservers(this.settings);
-    // });
+    this.cpBar?.addEventListener('change', () => {
+      this.settings.isBarVisible = this.cpBar?.checked as boolean;
+      this.changeConfPanelSettings.notifyObservers(this.settings);
+    });
     this.cpTip?.addEventListener('change', () => {
       this.settings.isTooltipsVisible = this.cpTip?.checked as boolean;
       this.changeConfPanelSettings.notifyObservers(this.settings);
@@ -180,6 +179,7 @@ export default class ConfigurationPanel extends Observer {
   }
 
   public updateState(settings: ISettings): void {
+    // console.log(settings);
     this.cpMin!.value = String(settings.min);
     this.cpMin!.max = String(settings.valueFrom);
 
@@ -202,7 +202,7 @@ export default class ConfigurationPanel extends Observer {
     this.cpVertical!.checked = settings.isVertical;
     this.cpRange!.checked = settings.isTwoRunners;
     this.cpScale!.checked = settings.isScaleVisible;
-    // this.cpBar!.checked = settings.isBarVisible;
+    this.cpBar!.checked = settings.isBarVisible;
     this.cpTip!.checked = settings.isTooltipsVisible;
   }
 }

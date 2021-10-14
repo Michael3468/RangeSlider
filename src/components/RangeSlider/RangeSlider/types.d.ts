@@ -12,6 +12,7 @@ export interface ISettings {
   isVertical: boolean;
   isTooltipsVisible: boolean;
   isConfPanel: boolean;
+  isBarVisible: boolean;
 }
 
 export interface ISliderElement {

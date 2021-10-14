@@ -17,6 +17,7 @@ export class Model {
   isVertical: boolean;
   isTooltipsVisible: boolean;
   isConfPanel: boolean;
+  isBarVisible: boolean;
   valueFrom: number;
   valueTo: number;
   step: number;
@@ -37,6 +38,7 @@ export class Model {
     this.isVertical = this.settings.isVertical;
     this.isTooltipsVisible = this.settings.isTooltipsVisible;
     this.isConfPanel = this.settings.isConfPanel;
+    this.isBarVisible = this.settings.isBarVisible;
   }
 
   private static validateSettings(settings: ISettings): void {
@@ -77,10 +79,12 @@ export class Model {
       isVertical: this.isVertical,
       isTooltipsVisible: this.isTooltipsVisible,
       isConfPanel: this.isConfPanel,
+      isBarVisible: this.isBarVisible,
     };
   }
 
   public updateSettings(settings: ISettings): ISettings {
+    Model.validateSettings(settings);
     this.settings = settings;
 
     this.min = this.settings.min;
@@ -93,6 +97,7 @@ export class Model {
     this.isVertical = this.settings.isVertical;
     this.isTooltipsVisible = this.settings.isTooltipsVisible;
     this.isConfPanel = this.settings.isConfPanel;
+    this.isBarVisible = this.settings.isBarVisible;
 
     return this.settings;
   }
