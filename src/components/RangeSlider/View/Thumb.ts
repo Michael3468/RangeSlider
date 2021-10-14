@@ -23,7 +23,9 @@ export default class Thumb {
   setMargin(margin: number, settings: ISettings): Thumb {
     if (settings.isVertical) {
       this.element.style.marginTop = `${margin}px`;
+      this.element.style.marginLeft = '0px';
     } else {
+      this.element.style.marginTop = '0px';
       this.element.style.marginLeft = `${margin}px`;
     }
     return this;
