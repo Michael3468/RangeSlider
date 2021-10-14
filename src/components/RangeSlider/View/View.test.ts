@@ -144,11 +144,6 @@ describe('public createRangeSlider', () => {
 
     // if (settings.isVertical) and if (settings.isTooltipsVisible)
     settings.isVertical = true;
-    settings.isTooltipsVisible = true;
-    expect(isTooltipFromHaveClassVertical(settings)).toBeTruthy();
-    expect(isTooltipToHaveClassVertical(settings)).toBeTruthy();
-
-    settings.isVertical = true;
     settings.isTooltipsVisible = false;
     expect(isTooltipFromHaveClassVertical(settings)).toBeFalsy();
     expect(isTooltipToHaveClassVertical(settings)).toBeFalsy();
