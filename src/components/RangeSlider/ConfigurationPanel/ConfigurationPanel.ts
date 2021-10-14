@@ -22,7 +22,7 @@ export default class ConfigurationPanel extends Observer {
   cpBar: HTMLInputElement | undefined;
   cpTip: HTMLInputElement | undefined;
 
-  changeConfPanelSettings: Observer;
+  changeConfPanelSettingsObserver: Observer;
 
   constructor(settings: ISettings) {
     super();
@@ -47,7 +47,7 @@ export default class ConfigurationPanel extends Observer {
 
     this.addListeners();
 
-    this.changeConfPanelSettings = new Observer();
+    this.changeConfPanelSettingsObserver = new Observer();
   }
 
   private createElement(): HTMLElement {
@@ -137,49 +137,48 @@ export default class ConfigurationPanel extends Observer {
   private addListeners(): void {
     this.cpMin?.addEventListener('change', () => {
       this.settings.min = Number(this.cpMin?.value);
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpMax?.addEventListener('change', () => {
       this.settings.max = Number(this.cpMax?.value);
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpStep?.addEventListener('change', () => {
       this.settings.step = Number(this.cpStep?.value);
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpFrom?.addEventListener('change', () => {
       this.settings.valueFrom = Number(this.cpFrom?.value);
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpTo?.addEventListener('change', () => {
       this.settings.valueTo = Number(this.cpTo?.value);
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
 
     this.cpVertical?.addEventListener('change', () => {
       this.settings.isVertical = this.cpVertical?.checked as boolean; // true; // TODO
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpRange?.addEventListener('change', () => {
       this.settings.isTwoRunners = this.cpRange?.checked as boolean;
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpScale?.addEventListener('change', () => {
       this.settings.isScaleVisible = this.cpScale?.checked as boolean;
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpBar?.addEventListener('change', () => {
       this.settings.isBarVisible = this.cpBar?.checked as boolean;
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
     this.cpTip?.addEventListener('change', () => {
       this.settings.isTooltipsVisible = this.cpTip?.checked as boolean;
-      this.changeConfPanelSettings.notifyObservers(this.settings);
+      this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
   }
 
   public updateState(settings: ISettings): void {
-    // console.log(settings);
     this.cpMin!.value = String(settings.min);
     this.cpMin!.max = String(settings.valueFrom);
 

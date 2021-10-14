@@ -11,7 +11,7 @@ export default class Observer {
 
   addObserver(fn: Function): void {
     this.observers.forEach((observer) => {
-      if (observer.toString() === fn.toString()) {
+      if (String(observer) === String(fn)) {
         throw new Error('Observer is already in the list');
       }
     });
@@ -22,7 +22,7 @@ export default class Observer {
     let isObserverRemoved: boolean = false;
 
     this.observers.forEach((observer, index) => {
-      if (observer.toString() === fn.toString()) {
+      if (String(observer) === String(fn)) {
         this.observers.splice(index, 1);
         isObserverRemoved = true;
       }
