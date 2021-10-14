@@ -17,7 +17,7 @@ $slider-range-border: 1;
 
   &_vertical {
     width: $slider-thickness + px;
-    height: inherit;
+    height: 300px;
     margin-right: auto;
     margin-left: auto;
   }
@@ -60,7 +60,7 @@ $slider-tooltip-width: 40;
   &_from,
   &_to {
     position: relative;
-    top: -30px;
+    top: -130%;
     left: -50%;
     display: flex;
     align-items: center;
@@ -73,11 +73,6 @@ $slider-tooltip-width: 40;
 
   &_hidden {
     display: none;
-  }
-
-  &_vertical {
-    top: -5%;
-    left: 50% !important;
   }
 
   &_z-index-top {
