@@ -22,6 +22,7 @@ import Presenter from '../Presenter/Presenter';
     isTooltipsVisible: true,
     isVertical: false,
     isConfPanel: false,
+    isBarVisible: true,
   };
 
   // eslint-disable-next-line no-param-reassign
