@@ -20,7 +20,7 @@ export default class ConfigurationPanel extends Observer {
   cpRange: HTMLInputElement | undefined;
   cpScale: HTMLInputElement | undefined;
   cpBar: HTMLInputElement | undefined;
-  cpTip: HTMLInputElement | undefined;
+  cpTips: HTMLInputElement | undefined;
 
   changeConfPanelSettingsObserver: Observer;
 
@@ -40,7 +40,7 @@ export default class ConfigurationPanel extends Observer {
     this.cpRange = undefined;
     this.cpScale = undefined;
     this.cpBar = undefined;
-    this.cpTip = undefined;
+    this.cpTips = undefined;
     this.assignElements();
 
     this.updateState(this.settings);
@@ -131,49 +131,49 @@ export default class ConfigurationPanel extends Observer {
     this.cpRange = this.element.querySelector('input[name="range"]') as HTMLInputElement;
     this.cpScale = this.element.querySelector('input[name="scale"]') as HTMLInputElement;
     this.cpBar = this.element.querySelector('input[name="bar"]') as HTMLInputElement;
-    this.cpTip = this.element.querySelector('input[name="tip"]') as HTMLInputElement;
+    this.cpTips = this.element.querySelector('input[name="tip"]') as HTMLInputElement;
   }
 
   private addListeners(): ConfigurationPanel {
-    this.cpMin?.addEventListener('change', () => {
+    this.cpMin?.addEventListener('click', () => {
       this.settings.min = Number(this.cpMin?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpMax?.addEventListener('change', () => {
+    this.cpMax?.addEventListener('click', () => {
       this.settings.max = Number(this.cpMax?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpStep?.addEventListener('change', () => {
+    this.cpStep?.addEventListener('click', () => {
       this.settings.step = Number(this.cpStep?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpFrom?.addEventListener('change', () => {
+    this.cpFrom?.addEventListener('click', () => {
       this.settings.valueFrom = Number(this.cpFrom?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpTo?.addEventListener('change', () => {
+    this.cpTo?.addEventListener('click', () => {
       this.settings.valueTo = Number(this.cpTo?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
 
-    this.cpVertical?.addEventListener('change', () => {
+    this.cpVertical?.addEventListener('click', () => {
       this.settings.isVertical = this.cpVertical?.checked as boolean; // true; // TODO
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpRange?.addEventListener('change', () => {
+    this.cpRange?.addEventListener('click', () => {
       this.settings.isTwoRunners = this.cpRange?.checked as boolean;
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpScale?.addEventListener('change', () => {
+    this.cpScale?.addEventListener('click', () => {
       this.settings.isScaleVisible = this.cpScale?.checked as boolean;
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpBar?.addEventListener('change', () => {
+    this.cpBar?.addEventListener('click', () => {
       this.settings.isBarVisible = this.cpBar?.checked as boolean;
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
-    this.cpTip?.addEventListener('change', () => {
-      this.settings.isTooltipsVisible = this.cpTip?.checked as boolean;
+    this.cpTips?.addEventListener('click', () => {
+      this.settings.isTooltipsVisible = this.cpTips?.checked as boolean;
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
 
@@ -204,6 +204,6 @@ export default class ConfigurationPanel extends Observer {
     this.cpRange!.checked = settings.isTwoRunners;
     this.cpScale!.checked = settings.isScaleVisible;
     this.cpBar!.checked = settings.isBarVisible;
-    this.cpTip!.checked = settings.isTooltipsVisible;
+    this.cpTips!.checked = settings.isTooltipsVisible;
   }
 }
