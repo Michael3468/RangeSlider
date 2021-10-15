@@ -134,7 +134,7 @@ export default class ConfigurationPanel extends Observer {
     this.cpTip = this.element.querySelector('input[name="tip"]') as HTMLInputElement;
   }
 
-  private addListeners(): void {
+  private addListeners(): ConfigurationPanel {
     this.cpMin?.addEventListener('change', () => {
       this.settings.min = Number(this.cpMin?.value);
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
@@ -176,14 +176,16 @@ export default class ConfigurationPanel extends Observer {
       this.settings.isTooltipsVisible = this.cpTip?.checked as boolean;
       this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     });
+
+    return this;
   }
 
   public updateState(settings: ISettings): void {
     this.cpMin!.value = String(settings.min);
-    this.cpMin!.max = String(settings.valueFrom);
+    this.cpMin!.max = String(Math.round(settings.valueFrom));
 
     this.cpMax!.value = String(settings.max);
-    this.cpMax!.min = String(settings.valueTo);
+    this.cpMax!.min = String(Math.round(settings.valueTo));
 
     this.cpStep!.value = String(settings.step);
     this.cpStep!.max = String(settings.max - settings.min);
