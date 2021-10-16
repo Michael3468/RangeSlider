@@ -769,7 +769,6 @@ describe('private beginSliding', () => {
 describe('private addListenersToThumbs', () => {
   function testAddListenerToThumbs(settings: ISettings) {
     const view = new View('range-slider', settings);
-    view['addListenersToThumbs']();
 
     const initRangeSliderMarginsSpy = jest
       .spyOn(view as unknown as ViewHint, 'initRangeSliderMargins');
@@ -778,6 +777,8 @@ describe('private addListenersToThumbs', () => {
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
     const createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+
+    view['addListenersToThumbs']();
 
     window.dispatchEvent(new Event('resize'));
     expect(initRangeSliderMarginsSpy).toBeCalled();
