@@ -44,6 +44,7 @@
     "cssnano": "^4.1.11",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-fsd": "^1.0.1",
     "eslint-plugin-import": "^2.24.0",
     "file-loader": "^5.1.0",
     "gh-pages": "^3.2.3",
