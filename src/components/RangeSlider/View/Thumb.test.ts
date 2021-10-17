@@ -20,6 +20,7 @@ beforeEach(() => {
     isVertical: true,
     isTooltipsVisible: true,
     isConfPanel: true,
+    isBarVisible: true,
     valueFrom: 1000,
     valueTo: 1400,
     step: 10,
@@ -27,7 +28,7 @@ beforeEach(() => {
 });
 
 describe('setMargin', () => {
-  test('should return "div" elemmt "Thumb" with margin-top and tooltip element', () => {
+  test('should return "div" element "Thumb" with margin-top and tooltip element', () => {
     const thumbName = 'from';
     const thumb = new Thumb(thumbName);
     const margin = 100;
@@ -51,7 +52,7 @@ describe('setMargin', () => {
     expect(isChildHasClass).toBeTruthy();
   });
 
-  test('should return "div" elemmt "Thumb" with margin-left and tooltip element', () => {
+  test('should return "div" element "Thumb" with margin-left and tooltip element', () => {
     const thumbName = 'from';
     const thumb = new Thumb(thumbName);
     const margin = 200;

@@ -15,7 +15,7 @@ import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types';
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;
-  setZindexTop(thumb: ThumbName): View;
+  setZIndexTop(thumb: ThumbName): View;
   isTooltipsCollision(): boolean;
   setDistanceBetweenTooltips(): View;
   setMargins(thumbName: ThumbName, currentPos: number): void;
@@ -406,7 +406,7 @@ describe('private setDistanceBetweenTooltips', () => {
   });
 });
 
-describe('private setZindexTop', () => {
+describe('private setZIndexTop', () => {
   const settings: ISettings = {
     min: 0,
     max: 1500,
@@ -425,7 +425,7 @@ describe('private setZindexTop', () => {
   const view = new View('range-slider', settings);
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
-    const result = view['setZindexTop']('from');
+    const result = view['setZIndexTop']('from');
     const fromContainsClass = result.from.element.classList.contains(zIndexClass);
     const toContainsClass = result.to.element.classList.contains(zIndexClass);
     expect(fromContainsClass).toBeTruthy();
@@ -433,7 +433,7 @@ describe('private setZindexTop', () => {
   });
 
   test('should del zIndexClass from "from" element and add to "to" element', () => {
-    const result = view['setZindexTop']('to');
+    const result = view['setZIndexTop']('to');
     const fromContainsClass = result.from.element.classList.contains(zIndexClass);
     const toContainsClass = result.to.element.classList.contains(zIndexClass);
     expect(fromContainsClass).toBeFalsy();
@@ -531,7 +531,7 @@ describe('private getPosOnScale', () => {
 });
 
 describe('private getDifferenceBetween', () => {
-  test('should return absolute defference between two numbers = 50', () => {
+  test('should return absolute difference between two numbers = 50', () => {
     let currentPos = 100;
     let thumbMargin = 150; // currentPos - thumbMargin = 50
 
@@ -554,7 +554,7 @@ describe('private moveClosestThumb', () => {
     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
 
     const updateRangeSliderValuesSpy = jest.spyOn(view, 'updateRangeSliderValues');
-    const setZindexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZindexTop');
+    const setZIndexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZIndexTop');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
 
@@ -571,7 +571,7 @@ describe('private moveClosestThumb', () => {
 
     return {
       updateRangeSliderValuesSpy,
-      setZindexTopSpy,
+      setZIndexTopSpy,
       setDistanceBetweenTooltipsSpy,
       result,
     };
@@ -581,8 +581,8 @@ describe('private moveClosestThumb', () => {
     const isHasThumbClass = result[thumbName].element.classList.contains(`range-slider__thumb_${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
-    const isHasZindexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');
-    expect(isHasZindexClass).toBeTruthy();
+    const isHasZIndexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');
+    expect(isHasZIndexClass).toBeTruthy();
   }
 
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
@@ -595,7 +595,7 @@ describe('private moveClosestThumb', () => {
 
     const {
       updateRangeSliderValuesSpy,
-      setZindexTopSpy,
+      setZIndexTopSpy,
       setDistanceBetweenTooltipsSpy,
       result,
     } = testMoveClosestThumb(view, clickPosition);
@@ -606,7 +606,7 @@ describe('private moveClosestThumb', () => {
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
     if (result.settings.isTwoRunners) {
-      expect(setZindexTopSpy).toBeCalled();
+      expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'from');
     }
@@ -622,7 +622,7 @@ describe('private moveClosestThumb', () => {
 
     const {
       updateRangeSliderValuesSpy,
-      setZindexTopSpy,
+      setZIndexTopSpy,
       setDistanceBetweenTooltipsSpy,
       result,
     } = testMoveClosestThumb(view, clickPosition);
@@ -633,7 +633,7 @@ describe('private moveClosestThumb', () => {
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
     if (result.settings.isTwoRunners) {
-      expect(setZindexTopSpy).toBeCalled();
+      expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'to');
     }
@@ -709,7 +709,7 @@ describe('private beginSliding', () => {
     };
   }
 
-  it('should call setMarigns method with thumbName = "from"', () => {
+  it('should call setMargins method with thumbName = "from"', () => {
     const moveEvent = getMoveEvent();
 
     Element.prototype.setPointerCapture = jest.fn().mockReturnValueOnce(undefined);
@@ -737,7 +737,7 @@ describe('private beginSliding', () => {
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
   });
 
-  it('should call setMarigns method with thumbName = "to"', () => {
+  it('should call setMargins method with thumbName = "to"', () => {
     const moveEvent = getMoveEvent();
 
     Element.prototype.setPointerCapture = jest.fn().mockReturnValueOnce(undefined);

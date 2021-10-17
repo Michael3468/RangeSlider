@@ -9,7 +9,7 @@
 import Range from './Range';
 
 describe('setMarginFromBegin', () => {
-  test('should return "div" element with class "range-slider__range" and marigin-top = value', () => {
+  test('should return "div" element with class "range-slider__range" and margin-top = value', () => {
     const range = new Range();
     const isVertical = true;
     const value = 50;
@@ -20,11 +20,11 @@ describe('setMarginFromBegin', () => {
     const isClassListContains = result.element.classList.contains('range-slider__range');
     expect(isClassListContains).toBeTruthy();
 
-    const isStylesConstains = result.element.style.marginTop;
-    expect(isStylesConstains).toBe(`${value}px`);
+    const isStylesContains = result.element.style.marginTop;
+    expect(isStylesContains).toBe(`${value}px`);
   });
 
-  test('should return "div" element with class "range-slider__range" and marigin-left = value', () => {
+  test('should return "div" element with class "range-slider__range" and margin-left = value', () => {
     const range = new Range();
     const isVertical = false;
     const value = 50;
@@ -35,13 +35,13 @@ describe('setMarginFromBegin', () => {
     const isClassListContains = result.element.classList.contains('range-slider__range');
     expect(isClassListContains).toBeTruthy();
 
-    const isStylesConstains = result.element.style.marginLeft;
-    expect(isStylesConstains).toBe(`${value}px`);
+    const isStylesContains = result.element.style.marginLeft;
+    expect(isStylesContains).toBe(`${value}px`);
   });
 });
 
 describe('setMarginFromEnd', () => {
-  test('should return "div" element with class "range-slider__range" and marigin-bottom = value', () => {
+  test('should return "div" element with class "range-slider__range" and margin-bottom = value', () => {
     const range = new Range();
     const isVertical = true;
     const value = 250;
@@ -52,11 +52,11 @@ describe('setMarginFromEnd', () => {
     const isClassListContains = result.element.classList.contains('range-slider__range');
     expect(isClassListContains).toBeTruthy();
 
-    const isStylesConstains = result.element.style.marginBottom;
-    expect(isStylesConstains).toBe(`${value}px`);
+    const isStylesContains = result.element.style.marginBottom;
+    expect(isStylesContains).toBe(`${value}px`);
   });
 
-  test('should return "div" element with class "range-slider__range" and marigin-right = value', () => {
+  test('should return "div" element with class "range-slider__range" and margin-right = value', () => {
     const range = new Range();
     const isVertical = false;
     const value = 250;
@@ -67,7 +67,7 @@ describe('setMarginFromEnd', () => {
     const isClassListContains = result.element.classList.contains('range-slider__range');
     expect(isClassListContains).toBeTruthy();
 
-    const isStylesConstains = result.element.style.marginRight;
-    expect(isStylesConstains).toBe(`${value}px`);
+    const isStylesContains = result.element.style.marginRight;
+    expect(isStylesContains).toBe(`${value}px`);
   });
 });

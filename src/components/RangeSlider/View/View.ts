@@ -204,7 +204,7 @@ export default class View extends Observer {
     this.updateRangeSliderValues();
 
     if (this.settings.isTwoRunners) {
-      this.setZindexTop(thumbName);
+      this.setZIndexTop(thumbName);
     }
 
     this.setDistanceBetweenTooltips();
@@ -379,7 +379,7 @@ export default class View extends Observer {
     return this;
   }
 
-  private setZindexTop(thumb: ThumbName): View {
+  private setZIndexTop(thumb: ThumbName): View {
     const from = this.from.element;
     const to = this.to.element;
 

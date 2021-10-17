@@ -36,27 +36,27 @@ describe('private initRangeSlider', () => {
 
     const model = new Model(settings);
     const view = new View('#range-slider', settings);
-    const presenter = new Presenter(model, view); // тут заполняются обсерверы
+    const presenter = new Presenter(model, view); // тут заполняются обзёрвер
 
     const createRangeSliderSpy = jest
       .spyOn(presenter.view, 'createRangeSlider');
 
-    const addchangeSettingsObserverSpy = jest
+    const addChangeSettingsObserverSpy = jest
       .spyOn(presenter.view.changeSettingsObserver, 'addObserver');
 
-    const addchangeConfPanelSettingsObserverSpy = jest
+    const addChangeConfPanelSettingsObserverSpy = jest
       .spyOn(presenter.view.configurationPanel.changeConfPanelSettingsObserver, 'addObserver');
     /**
-     * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
-     * т.к. туда добавляется обзервер при создании экземляра Presenter
+     * обнуляем массивы обзёрверов для теста метода 'initRangeSlider'
+     * т.к. туда добавляется обзервер при создании экземпляра Presenter
      */
     presenter.view.changeSettingsObserver.observers = [];
     presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers = [];
 
     presenter['initRangeSlider']();
     expect(createRangeSliderSpy).toBeCalled();
-    expect(addchangeSettingsObserverSpy).toBeCalled();
-    expect(addchangeConfPanelSettingsObserverSpy).toBeCalled();
+    expect(addChangeSettingsObserverSpy).toBeCalled();
+    expect(addChangeConfPanelSettingsObserverSpy).toBeCalled();
 
     /**
      * после выполнения presenter['initRangeSlider']();
@@ -76,11 +76,11 @@ describe('private initRangeSlider', () => {
 
     const model = new Model(settings);
     const view = new View('#range-slider', settings);
-    const presenter = new Presenter(model, view); // тут заполняются обсерверы
+    const presenter = new Presenter(model, view); // тут заполняются обзёрверы
 
     /**
      * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
-     * т.к. туда добавляется обзервер при создании экземляра Presenter
+     * т.к. туда добавляется обзервер при создании экземпляра Presenter
      */
     presenter.view.changeSettingsObserver.observers = [];
     presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers = [];
@@ -90,9 +90,9 @@ describe('private initRangeSlider', () => {
     // spy for this.view.configurationPanel.updateState(settings);
     const spyUpdateState = jest.spyOn(presenter.view.configurationPanel, 'updateState');
 
-    // вызываем метод и создаём в нём обсерверы
+    // вызываем метод и создаём в нём обзёрверы
     const result = presenter['initRangeSlider']();
-    // уведомляем обсерверы
+    // уведомляем обзёрверы
     result.view.changeSettingsObserver.notifyObservers(settings);
 
     expect(spyUpdateSettings).toBeCalledWith(settings);
@@ -104,11 +104,11 @@ describe('private initRangeSlider', () => {
 
     const model = new Model(settings);
     const view = new View('#range-slider', settings);
-    const presenter = new Presenter(model, view); // тут заполняются обсерверы
+    const presenter = new Presenter(model, view); // тут заполняются обзёрверы
 
     /**
      * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
-     * т.к. туда добавляется обзервер при создании экземляра Presenter
+     * т.к. туда добавляется обзёрвер при создании экземпляра Presenter
      */
     presenter.view.changeSettingsObserver.observers = [];
     presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers = [];
@@ -118,9 +118,9 @@ describe('private initRangeSlider', () => {
     // spy for this.view.createRangeSlider(this.model.getSettings());
     const spyCreateRangeSlider = jest.spyOn(presenter.view, 'createRangeSlider');
 
-    // вызываем метод и создаём в нём обсерверы
+    // вызываем метод и создаём в нём обзёрверы
     const result = presenter['initRangeSlider']();
-    // // уведомляем обсерверы
+    // // уведомляем обзёрверы
     result.view.configurationPanel
       .changeConfPanelSettingsObserver.notifyObservers(settings);
 

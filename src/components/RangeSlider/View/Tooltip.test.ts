@@ -10,7 +10,7 @@
 import { ThumbName } from '../RangeSlider/types';
 import Tooltip from './Tooltip';
 
-describe('construstor', () => {
+describe('constructor', () => {
   const tName: ThumbName = 'from';
   test(`should create "div" element with class "range-slider__tooltip_${tName}"`, () => {
     const tooltip = new Tooltip(tName);

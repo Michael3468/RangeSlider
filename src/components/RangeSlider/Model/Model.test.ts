@@ -91,7 +91,7 @@ describe('private static validateSettings', () => {
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 500;
-    const throwMessage = 'distanse between thumbs must be equal or greater than step';
+    const throwMessage = 'distance between thumbs must be equal or greater than step';
     expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.valueTo = 1400;

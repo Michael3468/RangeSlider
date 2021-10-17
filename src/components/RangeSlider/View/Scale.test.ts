@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+/* eslint-disable operator-linebreak */
 /* eslint-disable dot-notation */
 /* eslint-disable no-shadow */
 /* eslint-disable import/extensions */
@@ -33,6 +34,7 @@ beforeEach(() => {
     isVertical: true,
     isTooltipsVisible: true,
     isConfPanel: true,
+    isBarVisible: true,
     valueFrom: 1000,
     valueTo: 1490,
     step: 10,
@@ -205,7 +207,8 @@ describe('public createScaleMarks', () => {
     const scale = new Scale();
     const getStepBetweenMarksInPxSpy = jest.spyOn(Scale.prototype as any, 'getStepBetweenMarksInPx');
     // getStepBetweenMarksInPx returns rounded value to 10
-    getStepBetweenMarksInPxSpy.mockImplementation(() => 30);
+    const stepBetweenMarksInPx = 30;
+    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = false;
 
@@ -224,7 +227,7 @@ describe('public createScaleMarks', () => {
     const horizontalLength = result.element.getBoundingClientRect().width;
     const elementsPerStep = 2; // mark and value
     const totalSteps =
-      (horizontalLength / getStepBetweenMarksInPxSpy())
+      (horizontalLength / stepBetweenMarksInPx)
       * elementsPerStep
       + elementsPerStep; // first step group of elements
     expect(totalSteps).toBe(childrenListLength);
@@ -270,7 +273,8 @@ describe('public createScaleMarks', () => {
     const scale = new Scale();
     const getStepBetweenMarksInPxSpy = jest.spyOn(Scale.prototype as any, 'getStepBetweenMarksInPx');
     // getStepBetweenMarksInPx returns rounded value to 10
-    getStepBetweenMarksInPxSpy.mockImplementation(() => 30);
+    const stepBetweenMarksInPx = 30;
+    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = true;
 
@@ -290,7 +294,7 @@ describe('public createScaleMarks', () => {
     const horizontalLength = result.element.getBoundingClientRect().height;
     const elementsPerStep = 2; // mark and value
     const totalSteps =
-      (horizontalLength / getStepBetweenMarksInPxSpy())
+      (horizontalLength / stepBetweenMarksInPx)
       * elementsPerStep
       + elementsPerStep; // first step group of elements
     expect(totalSteps).toBe(childrenListLength);
