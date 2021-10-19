@@ -128,6 +128,22 @@ export default class View extends Observer {
     return this;
   }
 
+  private notifyChangeSettingsObserver = () => {
+    this.changeSettingsObserver.notifyObservers(this.settings);
+  }
+
+  private updateRangeSliderView = () => {
+    this.initRangeSliderMargins();
+    this.updateRangeSliderValues();
+
+    if (!this.settings?.isVertical) {
+      this.scale.element.replaceChildren();
+      this.scale.createScaleMarks(this.settings!);
+    }
+
+    this.setDistanceBetweenTooltips();
+  }
+
   private addListenersToThumbs(): View {
     if (this.settings!.isTwoRunners) {
       this.from.element.addEventListener('pointerdown', this.beginSliding);
@@ -137,21 +153,8 @@ export default class View extends Observer {
     this.to.element.addEventListener('pointerup', this.stopSliding);
 
     this.slider.element!.addEventListener('pointerdown', this.moveClosestThumb);
-    this.slider.element!.addEventListener('pointerup', () => {
-      this.changeSettingsObserver.notifyObservers(this.settings);
-    });
-
-    window.addEventListener('resize', () => {
-      this.initRangeSliderMargins();
-      this.updateRangeSliderValues();
-
-      if (!this.settings?.isVertical) {
-        this.scale.element.replaceChildren();
-        this.scale.createScaleMarks(this.settings!);
-      }
-
-      this.setDistanceBetweenTooltips();
-    });
+    this.slider.element!.addEventListener('pointerup', this.notifyChangeSettingsObserver);
+    window.addEventListener('resize', this.updateRangeSliderView);
     return this;
   }
 
