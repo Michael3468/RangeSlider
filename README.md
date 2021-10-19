@@ -13,11 +13,7 @@ $ git clone https://github.com/WhiteDevilMan/slider
 $ cd slider
 
 # Install dependencies from package.json:
-$ npm install
-
-or
-
-$ npm i
+$ npm install (or 'npm i')
 
 # Start server with hot reload
 $ npm run dev
@@ -29,7 +25,7 @@ $ npm run build
 $ npm run deploy
 
 # Run test
-$ npm run test (npm test)
+$ npm run test (or 'npm test')
 ```
 
 ## Architecture
