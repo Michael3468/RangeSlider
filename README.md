@@ -1,4 +1,4 @@
-## Slider
+## RangeSlider
 ```bash
 Slider for selecting a range of values.
 ```
