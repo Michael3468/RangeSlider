@@ -1,3 +1,8 @@
+## Slider
+```bash
+Slider for selecting a range of values.
+```
+
 ## Build Setup:
 ```bash
 # Download repository:
@@ -22,4 +27,16 @@ $ npm run build
 
 # Deploy project to gh-pages (after "npm run build")
 $ npm run deploy
+
+# Run test
+$ npm run test (npm test)
+```
+
+## Architecture
+```bash
+This Slider uses MVP architecture
+
+M - Model     | works with data, performs calculations and manages business processes
+V - View      | shows the user the interface and data from the model
+P - Presenter | serves as a layer between the model and the view
 ```
