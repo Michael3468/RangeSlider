@@ -74,19 +74,6 @@ describe('private static validateSettings', () => {
     expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
-  test('"settings.max - settings.min < settings.step" should throw Error', () => {
-    settings.max = 1500;
-    settings.min = 1000;
-    settings.step = 600;
-    const throwMessage = `'step' must be less than ${settings.max - settings.min}`;
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
-
-    settings.max = 1500;
-    settings.min = 1000;
-    settings.step = 400;
-    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
-  });
-
   test('"settings.valueTo - settings.valueFrom < settings.step" should throw Error', () => {
     settings.valueTo = 1400;
     settings.valueFrom = 1000;

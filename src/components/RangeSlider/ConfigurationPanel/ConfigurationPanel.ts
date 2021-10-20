@@ -74,7 +74,7 @@ export default class ConfigurationPanel extends Observer {
         <div class="settings-panel__options_input">
           <div class="settings-panel__options_input-text">step</div>
           <div class="settings-panel__options_input-value">
-            <input type="number" name="step" min="1" max="1">
+            <input type="number" name="step" min="1">
           </div>
         </div>
         <div class="settings-panel__options_input">
@@ -212,7 +212,6 @@ export default class ConfigurationPanel extends Observer {
     this.cpMax!.min = String(Math.round(settings.valueTo));
 
     this.cpStep!.value = String(settings.step);
-    this.cpStep!.max = String(settings.max - settings.min);
 
     this.cpFrom!.value = String(settings.valueFrom.toFixed(0));
     this.cpFrom!.min = String(settings.min);

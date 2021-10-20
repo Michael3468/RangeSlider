@@ -54,9 +54,6 @@ export class Model {
     if (settings.valueTo > settings.max) {
       throw new Error("'valueTo' must be less than 'max'");
     }
-    if (settings.max - settings.min < settings.step) {
-      throw new Error(`'step' must be less than ${settings.max - settings.min}`);
-    }
     if (settings.valueTo - settings.valueFrom < settings.step) {
       throw new Error('distance between thumbs must be equal or greater than step');
     }
