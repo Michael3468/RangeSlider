@@ -34,3 +34,16 @@ $('#range-slider3').RangeSlider({
   step: 1,
   isConfPanel: true,
 });
+
+$('#range-slider4').RangeSlider({
+  min: -100,
+  max: 100,
+  valueFrom: -20,
+  valueTo: 70,
+  isScaleVisible: true,
+  isVertical: true,
+  isTwoRunners: false,
+  step: 1,
+  isConfPanel: true,
+  isBarVisible: false,
+});
