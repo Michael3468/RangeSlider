@@ -106,7 +106,7 @@ export default class Scale implements ISliderElement {
     return firstSize > lastSize ? firstMV : lastMV;
   }
 
-  private showHideBeforeLastMarkValue = (lastMV: HTMLElement) => {
+  private showHideBeforeLastMarkValue = (lastMV: HTMLElement): Scale => {
     const beforeLastMarkValueElement = this.element.lastChild as HTMLElement;
     let beforeLastEdge: number;
     let lastEdge: number;
@@ -124,5 +124,6 @@ export default class Scale implements ISliderElement {
     } else {
       beforeLastMarkValueElement.classList.remove('hidden');
     }
+    return this;
   }
 }
