@@ -113,3 +113,19 @@ describe('private addListeners', () => {
     // cpTips listener end
   });
 });
+
+describe('private thumbFromDisabledStatus', () => {
+  it('should return false if cpRange.checked === true', () => {
+    settings.isTwoRunners = true;
+    const confPanel = new ConfigurationPanel(settings);
+    const result = confPanel['thumbFromDisabledStatus']();
+    expect(result).toBeFalsy();
+  });
+
+  it('should return true if cpRange.checked === false', () => {
+    settings.isTwoRunners = false;
+    const confPanel = new ConfigurationPanel(settings);
+    const result = confPanel['thumbFromDisabledStatus']();
+    expect(result).toBeTruthy();
+  });
+});
