@@ -70,35 +70,59 @@ export default class Scale implements ISliderElement {
 
     // add first mark
     this.element.appendChild(this.createMark(0));
-    this.element.appendChild(this.createMarkValue(settings.min, 0));
+    const firstMarkValueElement: HTMLElement =
+      this.element.appendChild(this.createMarkValue(settings.min, 0));
     // add last mark
     this.element.appendChild(this.createMark(scaleMaxPos));
     const lastMarkValueElement: HTMLElement =
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    const onePointInPx = getOnePointInPx(settings, this.element);
-    const stepBetweenMarksInPx =
-      this.getStepBetweenMarksInPx(lastMarkValueElement, onePointInPx);
+    const maxMarkValue = this.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
+    const onePointInPx: number = getOnePointInPx(settings, this.element);
+    const stepBetweenMarksInPx: number =
+      this.getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
     // create marks on scale
     let markPos: number = 0;
-    const minPosInPx = settings.min * onePointInPx;
+    const minPosInPx: number = settings.min * onePointInPx;
 
     while (markPos < scaleMaxPos) {
-      const lastMarkPos = markPos + stepBetweenMarksInPx;
-      const isMarkValueFits = Math.round(lastMarkPos) <= scaleMaxPos;
-
       if (markPos > 0) {
         this.element.appendChild(this.createMark(markPos));
 
-        if (isMarkValueFits) {
-          const currentValueInPoints = (minPosInPx + markPos) / onePointInPx;
-          const value = Math.round(currentValueInPoints);
-
-          this.element.appendChild(this.createMarkValue(value, markPos));
-        }
+        const currentValueInPoints: number = (minPosInPx + markPos) / onePointInPx;
+        const markValue: number = Math.round(currentValueInPoints);
+        this.element.appendChild(this.createMarkValue(markValue, markPos));
       }
       markPos += stepBetweenMarksInPx;
     }
+    // after mark values was created show/hide before last mark value
+    this.showHideBeforeLastMarkValue(lastMarkValueElement);
     return this;
+  }
+
+  private getMaxMarkValue(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
+    const firstSize = firstMV.getBoundingClientRect().width;
+    const lastSize = lastMV.getBoundingClientRect().width;
+    return firstSize > lastSize ? firstMV : lastMV;
+  }
+
+  private showHideBeforeLastMarkValue = (lastMV: HTMLElement) => {
+    const beforeLastMarkValueElement = this.element.lastChild as HTMLElement;
+    let beforeLastEdge: number;
+    let lastEdge: number;
+
+    if (this.settings?.isVertical === false) {
+      beforeLastEdge = beforeLastMarkValueElement.getBoundingClientRect().right;
+      lastEdge = lastMV.getBoundingClientRect().left;
+    } else {
+      beforeLastEdge = beforeLastMarkValueElement.getBoundingClientRect().bottom;
+      lastEdge = lastMV.getBoundingClientRect().top;
+    }
+
+    if (beforeLastEdge > lastEdge) {
+      beforeLastMarkValueElement.classList.add('hidden');
+    } else {
+      beforeLastMarkValueElement.classList.remove('hidden');
+    }
   }
 }
