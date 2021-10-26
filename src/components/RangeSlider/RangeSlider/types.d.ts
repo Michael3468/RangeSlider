@@ -28,6 +28,8 @@ export type ThumbName = 'from' | 'to';
 
 export type INodeName = 'div' | 'span';
 
+export type MeasureUnit = 'px' | '%';
+
 export class PointerEvent extends MouseEvent {
   public height: number;
   public isPrimary: boolean;

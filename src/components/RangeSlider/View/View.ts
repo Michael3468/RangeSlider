@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
-import { ISettings, ThumbName } from '../RangeSlider/types';
+import { ISettings, MeasureUnit, ThumbName } from '../RangeSlider/types';
 
 import Observer from '../Observer/Observer';
 import Slider from './Slider';
@@ -357,28 +357,35 @@ export default class View extends Observer {
   }
 
   private setDistanceBetweenTooltips(): View {
+    if (this.isTooltipsCollision()) {
+      if (this.settings.isVertical) {
+        this.setTopLeft('px', '-12', '15', '12', '15');
+      } else {
+        this.setTopLeft('%', '-130', '-105', '-130', '5');
+      }
+    } else if (this.settings.isVertical) {
+      this.setTopLeft('px', '0', '15', '0', '15');
+    } else {
+      this.setTopLeft('%', '-130', '-50', '-130', '-50');
+    }
+    return this;
+  }
+
+  private setTopLeft = (
+    mu: MeasureUnit,
+    fTop: string,
+    fLeft: string,
+    tTop: string,
+    tLeft: string,
+  ): View => {
     const from = this.from.tooltip.element.style;
     const to = this.to.tooltip.element.style;
 
-    if (this.isTooltipsCollision()) {
-      if (this.settings.isVertical) {
-        from.top = '-55%';
-        to.top = '55%';
-      } else {
-        from.left = '-105%';
-        to.left = '5%';
-      }
-    } else if (this.settings.isVertical) {
-      from.top = '0%';
-      from.left = '50%';
-      to.top = '0%';
-      to.left = '50%';
-    } else {
-      from.top = '-130%';
-      from.left = '-50%';
-      to.top = '-130%';
-      to.left = '-50%';
-    }
+    from.top = fTop + mu;
+    from.left = fLeft + mu;
+    to.top = tTop + mu;
+    to.left = tLeft + mu;
+
     return this;
   }
 
