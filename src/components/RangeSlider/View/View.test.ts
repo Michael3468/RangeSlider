@@ -11,7 +11,12 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import View from './View';
-import { ISettings, ThumbName, PointerEvent } from '../RangeSlider/types';
+import {
+  ISettings,
+  ThumbName,
+  PointerEvent,
+  MeasureUnit,
+} from '../RangeSlider/types';
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;
@@ -359,8 +364,8 @@ describe('private setDistanceBetweenTooltips', () => {
     const fromTop = result.from.tooltip.element.style.top;
     const toTop = result.to.tooltip.element.style.top;
 
-    expect(fromTop).toBe('-55%');
-    expect(toTop).toBe('55%');
+    expect(fromTop).toBe('-12px');
+    expect(toTop).toBe('12px');
   });
 
   test('should move tooltips close to each other (vertical)', () => {
@@ -373,8 +378,8 @@ describe('private setDistanceBetweenTooltips', () => {
     const fromTop = result.from.tooltip.element.style.top;
     const toTop = result.to.tooltip.element.style.top;
 
-    expect(fromTop).toBe('0%');
-    expect(toTop).toBe('0%');
+    expect(fromTop).toBe('0px');
+    expect(toTop).toBe('0px');
   });
 
   test('should move tooltips in different directions (horizontal)', () => {
@@ -800,5 +805,27 @@ describe('private addListenersToThumbs', () => {
     const createScaleMarksSpy = testAddListenerToThumbs(settings);
 
     expect(createScaleMarksSpy).toBeCalled();
+  });
+});
+
+describe('private setTopLeft', () => {
+  it('should return style values in form "param" + "mu" (mu === "px" | "%")', () => {
+    const view = new View('range-slider', settings);
+    const mu: MeasureUnit = 'px';
+    const fTop = '1';
+    const fLeft = '2';
+    const tTop = '3';
+    const tLeft = '4';
+    const result = view['setTopLeft'](mu, fTop, fLeft, tTop, tLeft);
+
+    const fromTop = result.from.tooltip.element.style.top;
+    const fromLeft = result.from.tooltip.element.style.left;
+    const toTop = result.to.tooltip.element.style.top;
+    const toLeft = result.to.tooltip.element.style.left;
+
+    expect(fromTop).toBe(fTop + mu);
+    expect(fromLeft).toBe(fLeft + mu);
+    expect(toTop).toBe(tTop + mu);
+    expect(toLeft).toBe(tLeft + mu);
   });
 });
