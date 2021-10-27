@@ -61,57 +61,42 @@ export default class ConfigurationPanel extends Observer {
 
       <div class="settings-panel__options_inputs-block">
         <div class="settings-panel__options_input">
-          <div class="settings-panel__options_input-text">min</div>
-          <div class="settings-panel__options_input-value">
-            <input type="number" name="min" max="0">
-          </div>
+          <label for="min" class="settings-panel__options_input-text">min</label>
+          <input class="settings-panel__options_input-value" type="number" name="min" max="0">
         </div>
         <div class="settings-panel__options_input">
-          <div class="settings-panel__options_input-text">max</div>
-          <div class="settings-panel__options_input-value">
-            <input type="number" name="max" min="0">
-          </div>
+          <label for="max" class="settings-panel__options_input-text">max</label>
+          <input class="settings-panel__options_input-value" type="number" name="max" min="0">
         </div>
         <div class="settings-panel__options_input">
-          <div class="settings-panel__options_input-text">step</div>
-          <div class="settings-panel__options_input-value">
-            <input type="number" name="step" min="1">
-          </div>
+          <label for="step" class="settings-panel__options_input-text">step</label>
+          <input class="settings-panel__options_input-value" type="number" name="step" min="1">
         </div>
         <div class="settings-panel__options_input">
-          <div class="settings-panel__options_input-text">from</div>
-          <div class="settings-panel__options_input-value">
-            <input type="number" name="from" min="0" max="0" step="0">
-          </div>
+          <label for="from" class="settings-panel__options_input-text">from</label>
+          <input class="settings-panel__options_input-value" type="number" name="from" min="0" max="0" step="0">
         </div>
         <div class="settings-panel__options_input">
-          <div class="settings-panel__options_input-text">to</div>
-          <div class="settings-panel__options_input-value">
-            <input type="number" name="to" max="0" step="0">
-          </div>
+          <label for="to" class="settings-panel__options_input-text">to</label>
+          <input class="settings-panel__options_input-value" type="number" name="to" max="0" step="0">
         </div>
       </div>
       
       <div class="settings-panel__options_toggles-block">
         <div class="settings-panel__options_toggle">
-          <input type="checkbox" name="vertical">
-          <label for="vertical">vertical</label>
+          <label><input class="settings-panel__options_toggle_input" type="checkbox" name="vertical">vertical</label>
         </div>
         <div class="settings-panel__options_toggle">
-          <input type="checkbox" name="range">
-          <label for="range">range</label>
+          <label><input class="settings-panel__options_toggle_input" type="checkbox" name="range">range</label>
         </div>
         <div class="settings-panel__options_toggle">
-          <input type="checkbox" name="scale">
-          <label for="scale">scale</label>
+          <label><input class="settings-panel__options_toggle_input" type="checkbox" name="scale">scale</label>
         </div>
         <div class="settings-panel__options_toggle">
-          <input type="checkbox" name="bar">
-          <label for="bar">bar</label>
+          <label><input class="settings-panel__options_toggle_input" type="checkbox" name="bar">bar</label>
         </div>
         <div class="settings-panel__options_toggle">
-          <input type="checkbox" name="tip">
-          <label for="tip">tip</label>
+          <label><input class="settings-panel__options_toggle_input" type="checkbox" name="tip">tip</label>
         </div>
       </div>
 
