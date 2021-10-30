@@ -36,6 +36,17 @@
 .settings-panel__options {
   &_input {
     flex-direction: column;
+
+    &-text {
+      font-weight: bold;
+      text-align: center;
+      background: $slider-between-bg-color;
+    }
+
+    &-value {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &_toggle {
@@ -43,30 +54,17 @@
   }
 }
 
-.settings-panel__options_input {
-  &-text {
-    font-weight: bold;
-    text-align: center;
-    background: $slider-between-bg-color;
-  }
-
-  &-value {
-    width: 100%;
-    text-align: center;
-  }
+.settings-panel__options_toggle_label:focus-within {
+  font-weight: bold;
 }
 
 .settings-panel__options_toggle_input {
   margin: 0 10px;
 
   &:focus {
-    content: '';
     width: 15px;
     height: 15px;
     box-shadow: 0 0 5px red;
+    content: '';
   }
-}
-
-.settings-panel__options_toggle_label:focus-within {
-  font-weight: bold;
 }
