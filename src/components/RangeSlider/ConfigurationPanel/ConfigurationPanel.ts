@@ -139,27 +139,27 @@ export default class ConfigurationPanel extends Observer {
   private handleInputCPMinClick = () => {
     this.settings.min = Number(this.cpMin?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-  };
+  }
 
   private handleInputCPMaxClick = () => {
     this.settings.max = Number(this.cpMax?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-  };
+  }
 
   private handleInputCPStepClick = () => {
     this.settings.step = Number(this.cpStep?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-  };
+  }
 
   private handleInputCPFromClick = () => {
     this.settings.valueFrom = Number(this.cpFrom?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-  };
+  }
 
   private handleInputCPToClick = () => {
     this.settings.valueTo = Number(this.cpTo?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-  };
+  }
   // Configuration panel input handlers end
 
   // Configuration panel checkbox handlers
