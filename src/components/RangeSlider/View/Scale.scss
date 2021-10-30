@@ -1,0 +1,52 @@
+@import '../../../assets/scss/vars.scss';
+
+.range-slider__scale {
+  position: relative;
+  height: 25px;
+
+  &_vertical {
+    left: -25px;
+    width: 30px;
+    height: 100%;
+  }
+
+  &-mark {
+    position: absolute;
+    top: 5px;
+    display: block;
+    width: 1px;
+    height: 10px;
+    background: $slider-border-color;
+
+    &:first-child {
+      left: -1px;
+    }
+
+    &_vertical {
+      top: 0;
+      left: 15px !important;
+      width: 10px;
+      height: 1px;
+
+      &:first-child {
+        top: -1px;
+      }
+    }
+
+    &-value {
+      position: absolute;
+      top: 12px;
+      transform: translateX(-50%);
+
+      &:hover {
+        background-color: $slider-bg-color;
+      }
+
+      &_vertical {
+        top: -10px;
+        left: 10px;
+        transform: translateX(-100%);
+      }
+    }
+  }
+}

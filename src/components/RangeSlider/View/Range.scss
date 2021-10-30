@@ -1,0 +1,13 @@
+@import '../../../assets/scss/vars.scss';
+
+.range-slider__range {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  height: auto;
+  background: $slider-between-bg-color;
+  border-radius: $slider-thickness/2 + px;
+}

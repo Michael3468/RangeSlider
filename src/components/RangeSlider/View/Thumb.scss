@@ -1,0 +1,30 @@
+@import '../../../assets/scss/vars.scss';
+
+.range-slider__thumb {
+  &_from,
+  &_to {
+    position: absolute;
+    top: -8px;
+    z-index: 5;
+    height: $slider-thumb-size + px;
+  }
+
+  &_from::before,
+  &_to::before {
+    position: absolute;
+    top: 0;
+    left: ($slider-thumb-size/2) + px;
+    width: 20px;
+    height: 20px;
+    margin-left: -20px;
+    background: $slider-thumb-color;
+    border: 1px solid $slider-border-color;
+    border-radius: 50%;
+    cursor: pointer;
+    content: '';
+  }
+
+  &_vertical {
+    left: 2px;
+  }
+}

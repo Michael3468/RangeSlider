@@ -1,0 +1,18 @@
+@import '../../../assets/scss/vars.scss';
+
+.range-slider {
+  position: relative;
+  width: auto;
+  height: $slider-thickness + px;
+  background: $slider-bg-color;
+  border: $slider-range-border + px solid $slider-border-color;
+  border-radius: calc(#{$slider-thickness} / 2) + 'px';
+  cursor: pointer;
+
+  &_vertical {
+    width: $slider-thickness + px;
+    height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
