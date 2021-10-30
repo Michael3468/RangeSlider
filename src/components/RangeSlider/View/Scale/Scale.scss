@@ -24,12 +24,13 @@
 
     &_vertical {
       top: 0;
-      left: 15px !important;
+      left: 15px;
       width: 10px;
       height: 1px;
 
       &:first-child {
         top: -1px;
+        left: 15px;
       }
     }
 
