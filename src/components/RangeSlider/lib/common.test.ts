@@ -14,8 +14,8 @@ import {
   getMinMaxElementEdgesInPx,
   getOnePointInPx,
 } from './common';
-import Tooltip from '../View/Tooltip';
-import Scale from '../View/Scale';
+import Tooltip from '../View/Tooltip/Tooltip';
+import Scale from '../View/Scale/Scale';
 
 Element.prototype.getBoundingClientRect = jest.fn(() => ({
   width: 300,

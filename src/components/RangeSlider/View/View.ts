@@ -4,11 +4,11 @@
 import { ISettings, MeasureUnit, ThumbName } from '../RangeSlider/types';
 
 import Observer from '../Observer/Observer';
-import Slider from './Slider';
-import Thumb from './Thumb';
-import Range from './Range';
-import Scale from './Scale';
-import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
+import Slider from '../View/Slider/Slider';
+import Thumb from '../View/Thumb/Thumb';
+import Range from '../View/Range/Range';
+import Scale from '../View/Scale/Scale';
+import ConfigurationPanel from '../View/ConfigurationPanel/ConfigurationPanel';
 
 import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
 

@@ -8,7 +8,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 
-import { ISettings } from '../RangeSlider/types';
+import { ISettings } from '../../RangeSlider/types';
 import ConfigurationPanel from './ConfigurationPanel';
 
 let settings: ISettings;

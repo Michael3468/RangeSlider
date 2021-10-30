@@ -4,7 +4,7 @@
 /* eslint-disable import/no-unresolved */
 import { ISettings } from './types';
 import './RangeSlider.scss';
-import '../ConfigurationPanel/ConfigurationPanel';
+import '../View/ConfigurationPanel/ConfigurationPanel';
 
 import { Model } from '../Model/Model';
 import View from '../View/View';
