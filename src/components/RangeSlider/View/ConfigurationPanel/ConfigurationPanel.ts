@@ -84,32 +84,32 @@ export default class ConfigurationPanel extends Observer {
 
         <div class="settings-panel__options_toggles-block">
           <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options_toggle_label">
-              <input class="settings-panel__options_toggle_input" type="checkbox" name="vertical">
+            <label class="settings-panel__options-toggle-label">
+              <input class="settings-panel__options-toggle-input" type="checkbox" name="vertical">
               vertical
             </label>
           </div>
           <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options_toggle_label">
-              <input class="settings-panel__options_toggle_input" type="checkbox" name="range">
+            <label class="settings-panel__options-toggle-label">
+              <input class="settings-panel__options-toggle-input" type="checkbox" name="range">
               range
             </label>
           </div>
           <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options_toggle_label">
-              <input class="settings-panel__options_toggle_input" type="checkbox" name="scale">
+            <label class="settings-panel__options-toggle-label">
+              <input class="settings-panel__options-toggle-input" type="checkbox" name="scale">
               scale
             </label>
           </div>
           <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options_toggle_label">
-              <input class="settings-panel__options_toggle_input" type="checkbox" name="bar">
+            <label class="settings-panel__options-toggle-label">
+              <input class="settings-panel__options-toggle-input" type="checkbox" name="bar">
               bar
             </label>
           </div>
           <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options_toggle_label">
-              <input class="settings-panel__options_toggle_input" type="checkbox" name="tip">
+            <label class="settings-panel__options-toggle-label">
+              <input class="settings-panel__options-toggle-input" type="checkbox" name="tip">
               tip
             </label>
           </div>
