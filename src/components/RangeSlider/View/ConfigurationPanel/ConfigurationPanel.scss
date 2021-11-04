@@ -46,6 +46,10 @@
     &-value {
       width: 100%;
       text-align: center;
+
+      &:focus {
+        box-shadow: 0 0 5px red;
+      }
     }
   }
 
@@ -54,8 +58,12 @@
   }
 }
 
-.settings-panel__options_toggle_label:focus-within {
-  font-weight: bold;
+.settings-panel__options_toggle_label {
+  cursor: pointer;
+
+  &:focus-within {
+    font-weight: bold;
+  }
 }
 
 .settings-panel__options_toggle_input {
