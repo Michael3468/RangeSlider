@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import { createElement } from '../../lib/common';
+import { createElement } from '../lib/common';
 
 export default class Range {
   element: HTMLElement;

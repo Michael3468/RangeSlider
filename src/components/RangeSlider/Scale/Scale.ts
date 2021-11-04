@@ -2,13 +2,13 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
-import { ISettings, ISliderElement } from '../../RangeSlider/types';
+import { ISettings, ISliderElement } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
-} from '../../lib/common';
+} from '../lib/common';
 
 export default class Scale implements ISliderElement {
   element: HTMLElement;

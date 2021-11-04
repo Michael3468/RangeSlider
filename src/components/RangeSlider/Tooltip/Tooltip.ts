@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { createElement } from '../../lib/common';
-import { ThumbName } from '../../RangeSlider/types';
+import { createElement } from '../lib/common';
+import { ThumbName } from '../RangeSlider/types';
 
 export default class Tooltip {
   element: HTMLElement;
