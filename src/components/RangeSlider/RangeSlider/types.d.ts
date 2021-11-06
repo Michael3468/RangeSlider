@@ -15,6 +15,20 @@ export interface ISettings {
   isBarVisible: boolean;
 }
 
+export interface IUserSettings {
+  min?: number;
+  max?: number;
+  valueFrom?: number;
+  valueTo?: number;
+  step?: number;
+  isTwoRunners?: boolean;
+  isScaleVisible?: boolean;
+  isVertical?: boolean;
+  isTooltipsVisible?: boolean;
+  isConfPanel?: boolean;
+  isBarVisible?: boolean;
+}
+
 export interface ISliderElement {
   element: HTMLElement
 }
