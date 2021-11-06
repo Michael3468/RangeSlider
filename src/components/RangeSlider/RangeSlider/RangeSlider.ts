@@ -2,6 +2,7 @@
 /* eslint-disable func-names */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
+import 'airbnb-browser-shims';
 import { ISettings } from './types';
 import './RangeSlider.scss';
 import '../ConfigurationPanel/ConfigurationPanel';
