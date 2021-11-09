@@ -74,17 +74,22 @@ describe('private static validateSettings', () => {
     expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
   });
 
-  test('"settings.valueTo - settings.valueFrom < settings.step" should throw Error', () => {
+  test('"settings.valueTo - settings.valueFrom < settings.step" should set valueFrom = valueTo - step', () => {
+    settings.min = 800;
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 500;
-    const throwMessage = 'distance between thumbs must be equal or greater than step';
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
+    const result = Model['validateSettings'](settings);
+    expect(result.valueFrom).toBe(settings.valueTo - settings.step);
+  });
 
+  test('"settings.valueTo - settings.valueFrom < settings.step" should set valueTo = valueFrom + step', () => {
+    settings.min = 1000;
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
-    settings.step = 300;
-    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
+    settings.step = 500;
+    const result = Model['validateSettings'](settings);
+    expect(result.valueTo).toBe(settings.valueFrom + settings.step);
   });
 });
 

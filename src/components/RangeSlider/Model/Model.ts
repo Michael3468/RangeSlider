@@ -41,7 +41,7 @@ export class Model {
     this.isBarVisible = this.settings.isBarVisible;
   }
 
-  private static validateSettings(settings: ISettings): void {
+  private static validateSettings(settings: ISettings): ISettings {
     if (settings.min >= settings.max) {
       throw new Error("'max' must be greater than 'min'");
     }
@@ -55,8 +55,14 @@ export class Model {
       throw new Error("'valueTo' must be less than 'max'");
     }
     if (settings.valueTo - settings.valueFrom < settings.step) {
-      throw new Error('distance between thumbs must be equal or greater than step');
+      if (settings.valueFrom >= settings.min + settings.step) {
+        settings.valueFrom = settings.valueTo - settings.step;
+      } else {
+        settings.valueTo = settings.valueFrom + settings.step;
+      }
     }
+
+    return settings;
   }
 
   private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
@@ -82,6 +88,7 @@ export class Model {
 
   public updateSettings(settings: ISettings): ISettings {
     Model.validateSettings(settings);
+
     this.settings = settings;
 
     this.min = this.settings.min;
