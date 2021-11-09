@@ -58,8 +58,6 @@ export default class View extends Observer {
   }
 
   public createRangeSlider(settings: ISettings): View {
-    Object.assign(this.settings, settings);
-
     if (settings.isTwoRunners) {
       this.slider.element!.appendChild(this.from.element);
     }
@@ -265,9 +263,7 @@ export default class View extends Observer {
     if (thumbName === 'from') {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      if (this.settings.isTwoRunners) {
-        this.settings!.valueFrom = this.getThumbValue(thumbName);
-      }
+      this.settings!.valueFrom = this.getThumbValue(thumbName);
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max! - min!;
@@ -315,7 +311,7 @@ export default class View extends Observer {
       : this.thumbMarginTo!;
 
     const valueInPoints = thumbMargin / getOnePointInPx(this.settings!, this.slider.element);
-    const totalValue = valueInPoints + this.settings!.min;
+    const totalValue = Math.round(valueInPoints) + this.settings!.min;
 
     return totalValue;
   }
