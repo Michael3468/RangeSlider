@@ -60,6 +60,8 @@
 
 .settings-panel__options-toggle-label {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   &:focus-within {
     font-weight: bold;
