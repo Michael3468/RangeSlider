@@ -126,11 +126,11 @@ export default class View extends Observer {
     return this;
   }
 
-  private notifyChangeSettingsObserver = () => {
+  private notifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   }
 
-  private updateRangeSliderView = () => {
+  private updateRangeSliderView = (): void => {
     this.initRangeSliderMargins();
     this.updateRangeSliderValues();
 
@@ -162,7 +162,7 @@ export default class View extends Observer {
     event.preventDefault();
     target.setPointerCapture(pointerId);
 
-    target.onpointermove = (e: PointerEvent) => {
+    target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
 
       if (target.classList.contains('range-slider__thumb_from')) {
