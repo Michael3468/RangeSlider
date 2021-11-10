@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable import/prefer-default-export */
@@ -29,8 +28,8 @@ export class Model {
     // default options
     this.min = this.settings.min;
     this.max = this.settings.max;
-    this.valueFrom = this.getThumbValue(this.settings, 'from');
-    this.valueTo = this.getThumbValue(this.settings, 'to');
+    this.valueFrom = Model.getThumbValue(this.settings, 'from');
+    this.valueTo = Model.getThumbValue(this.settings, 'to');
     this.step = settings.step;
 
     this.isTwoRunners = this.settings.isTwoRunners;
@@ -65,7 +64,7 @@ export class Model {
     return settings;
   }
 
-  private getThumbValue(settings: ISettings, thumbName: ThumbName): number {
+  private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
     return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
   }
 

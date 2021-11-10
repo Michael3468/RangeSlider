@@ -141,15 +141,14 @@ describe('private createMarkValue', () => {
 
 describe('private roundValueTo', () => {
   test('should return the rounded value to a number equal to the passed parameter', () => {
-    const scale = new Scale();
     const num = 12.305;
     let ceilToNumber = 1;
-    let result = scale['roundValueTo'](num, ceilToNumber);
+    let result = Scale['roundValueTo'](num, ceilToNumber);
 
     expect(result).toBe(13);
 
     ceilToNumber = 10;
-    result = scale['roundValueTo'](num, ceilToNumber);
+    result = Scale['roundValueTo'](num, ceilToNumber);
 
     expect(result).toBe(20);
   });
@@ -323,7 +322,6 @@ describe('public createScaleMarks', () => {
 
 describe('private getMaxMarkValue', () => {
   it('should return bigger (width) HTMLElement ', () => {
-    const scale = new Scale();
     const firstMV: HTMLElement = document.createElement('div') as HTMLElement;
     firstMV.innerText = 'firstMV';
     const lastMV: HTMLElement = document.createElement('div') as HTMLElement;
@@ -353,7 +351,7 @@ describe('private getMaxMarkValue', () => {
       toJSON: () => {},
     }));
 
-    const result = scale['getMaxMarkValue'](firstMV, lastMV);
+    const result = Scale['getMaxMarkValue'](firstMV, lastMV);
     expect(result.innerText).toBe('firstMV');
     expect(result.innerText).not.toBe('lastMV');
   });

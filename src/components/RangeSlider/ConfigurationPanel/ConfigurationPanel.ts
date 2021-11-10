@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable lines-between-class-members */
 import { ISettings } from '../RangeSlider/types';
 import { createElement } from '../lib/common';
@@ -28,7 +27,7 @@ export default class ConfigurationPanel extends Observer {
     super();
 
     this.settings = settings;
-    this.element = this.createElement();
+    this.element = ConfigurationPanel.createElement();
 
     this.cpMin = undefined;
     this.cpMax = undefined;
@@ -51,7 +50,7 @@ export default class ConfigurationPanel extends Observer {
     this.changeConfPanelSettingsObserver = new Observer();
   }
 
-  private createElement(): HTMLElement {
+  private static createElement(): HTMLElement {
     const element = createElement('div', 'settings-panel');
 
     element.innerHTML = `

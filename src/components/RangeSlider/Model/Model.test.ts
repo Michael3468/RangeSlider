@@ -97,15 +97,13 @@ describe('function getThumbValue:', () => {
   test('if thumbName == "from" should return settings.valueFrom', () => {
     const thumbName: ThumbName = 'from';
     const result = settings.valueFrom;
-    const model = new Model(settings);
-    expect(model['getThumbValue'](settings, thumbName)).toBe(result);
+    expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 
   test('if thumbName == "to" should return settings.valueTo', () => {
     const thumbName: ThumbName = 'to';
     const result = settings.valueTo;
-    const model = new Model(settings);
-    expect(model['getThumbValue'](settings, thumbName)).toBe(result);
+    expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 });
 

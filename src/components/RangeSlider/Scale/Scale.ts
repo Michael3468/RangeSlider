@@ -1,7 +1,7 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-/* eslint-disable class-methods-use-this */
+
 import { ISettings, ISliderElement } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,
@@ -18,7 +18,7 @@ export default class Scale implements ISliderElement {
   constructor() {
     this.element = createElement('div', 'range-slider__scale');
     this.settings = undefined;
-    this.roundValueTo = this.roundValueTo.bind(this);
+    Scale.roundValueTo = Scale.roundValueTo.bind(this);
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
@@ -48,7 +48,7 @@ export default class Scale implements ISliderElement {
     return markValue;
   }
 
-  private roundValueTo(num: number, ceilToNumber: number): number {
+  private static roundValueTo(num: number, ceilToNumber: number): number {
     return Math.ceil(num / ceilToNumber) * ceilToNumber;
   }
 
@@ -58,7 +58,7 @@ export default class Scale implements ISliderElement {
   ): number {
     const lastMarkValueSize: number = getElementLengthInPx(this.settings!, lastMarkValueElement);
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = this.roundValueTo(lastMarkValueSizeInPoints, 10);
+    const stepBetweenMarksInPoints: number = Scale.roundValueTo(lastMarkValueSizeInPoints, 10);
     return stepBetweenMarksInPoints * onePointInPx;
   }
 
@@ -77,7 +77,7 @@ export default class Scale implements ISliderElement {
     const lastMarkValueElement: HTMLElement =
       this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    const maxMarkValue = this.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
+    const maxMarkValue = Scale.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
     const onePointInPx: number = getOnePointInPx(settings, this.element);
     const stepBetweenMarksInPx: number =
       this.getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
@@ -100,7 +100,7 @@ export default class Scale implements ISliderElement {
     return this;
   }
 
-  private getMaxMarkValue(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
+  private static getMaxMarkValue(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
     const firstSize = firstMV.getBoundingClientRect().width;
     const lastSize = lastMV.getBoundingClientRect().width;
     return firstSize > lastSize ? firstMV : lastMV;
