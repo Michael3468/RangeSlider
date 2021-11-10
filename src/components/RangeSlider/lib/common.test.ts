@@ -3,7 +3,6 @@
  */
 
 /* eslint-disable dot-notation */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */

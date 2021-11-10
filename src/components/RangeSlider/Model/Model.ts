@@ -1,12 +1,10 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable lines-between-class-members */
-/* eslint-disable import/prefer-default-export */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
-export class Model {
+export default class Model {
   settings: ISettings;
 
   min: number;
