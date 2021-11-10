@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable operator-linebreak */
 /* eslint-disable dot-notation */
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
@@ -66,8 +65,8 @@ describe('private initRangeSlider', () => {
     const changeSettingsObs = presenter.view.changeSettingsObserver.observers;
     expect(changeSettingsObs.length).toBeGreaterThan(0);
 
-    const cpSettingsObs =
-      presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers;
+    const cpSettingsObs = presenter
+      .view.configurationPanel.changeConfPanelSettingsObserver.observers;
     expect(cpSettingsObs.length).toBeGreaterThan(0);
   });
 

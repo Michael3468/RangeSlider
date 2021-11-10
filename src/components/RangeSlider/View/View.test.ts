@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable operator-linebreak */
 /* eslint-disable no-unused-vars */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable no-shadow */

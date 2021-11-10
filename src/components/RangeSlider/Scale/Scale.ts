@@ -1,4 +1,3 @@
-/* eslint-disable operator-linebreak */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 
@@ -70,17 +69,17 @@ export default class Scale implements ISliderElement {
 
     // add first mark
     this.element.appendChild(this.createMark(0));
-    const firstMarkValueElement: HTMLElement =
-      this.element.appendChild(this.createMarkValue(settings.min, 0));
+    const firstMarkValueElement: HTMLElement = this
+      .element.appendChild(this.createMarkValue(settings.min, 0));
     // add last mark
     this.element.appendChild(this.createMark(scaleMaxPos));
-    const lastMarkValueElement: HTMLElement =
-      this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
+    const lastMarkValueElement: HTMLElement = this
+      .element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
     const maxMarkValue = Scale.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
     const onePointInPx: number = getOnePointInPx(settings, this.element);
-    const stepBetweenMarksInPx: number =
-      this.getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
+    const stepBetweenMarksInPx: number = this
+      .getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
     // create marks on scale
     let markPos: number = 0;
     const minPosInPx: number = settings.min * onePointInPx;

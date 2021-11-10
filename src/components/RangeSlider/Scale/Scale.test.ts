@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable operator-linebreak */
 /* eslint-disable dot-notation */
 /* eslint-disable no-shadow */
 /* eslint-disable import/extensions */
@@ -225,8 +224,7 @@ describe('public createScaleMarks', () => {
     // for settings.isVertical = false;
     const horizontalLength = result.element.getBoundingClientRect().width;
     const elementsPerStep = 2; // mark and value
-    const totalSteps =
-      (horizontalLength / stepBetweenMarksInPx)
+    const totalSteps = (horizontalLength / stepBetweenMarksInPx)
       * elementsPerStep
       + elementsPerStep; // first step group of elements
     expect(totalSteps).toBe(childrenListLength);
@@ -292,8 +290,7 @@ describe('public createScaleMarks', () => {
     // for settings.isVertical = true;
     const horizontalLength = result.element.getBoundingClientRect().height;
     const elementsPerStep = 2; // mark and value
-    const totalSteps =
-      (horizontalLength / stepBetweenMarksInPx)
+    const totalSteps = (horizontalLength / stepBetweenMarksInPx)
       * elementsPerStep
       + elementsPerStep; // first step group of elements
     expect(totalSteps).toBe(childrenListLength);
