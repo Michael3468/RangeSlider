@@ -25,6 +25,7 @@ declare class ViewHint {
   setMargins(thumbName: ThumbName, currentPos: number): void;
   updateRangeSliderValues(): View;
   initRangeSliderMargins(): View;
+  notifyChangeSettingsObserver(): void;
 }
 
 let settings: ISettings;
@@ -826,5 +827,17 @@ describe('private setTopLeft', () => {
     expect(fromLeft).toBe(fLeft + mu);
     expect(toTop).toBe(tTop + mu);
     expect(toLeft).toBe(tLeft + mu);
+  });
+});
+
+describe('private notifyChangeSettingsObserver', () => {
+  it('should be called with this.settings', () => {
+    const view = new View('range-slider', settings);
+    const spyChangeSettingsObserverNotify = jest
+      .spyOn(view.changeSettingsObserver, 'notifyObservers');
+
+    view['notifyChangeSettingsObserver']();
+
+    expect(spyChangeSettingsObserverNotify).toBeCalledWith(settings);
   });
 });
