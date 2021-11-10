@@ -8,7 +8,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import Presenter from './Presenter';
-import { Model } from '../Model/Model';
+import Model from '../Model/Model';
 import { ISettings } from '../RangeSlider/types';
 import View from '../View/View';
 
@@ -85,9 +85,7 @@ describe('private initRangeSlider', () => {
     presenter.view.changeSettingsObserver.observers = [];
     presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers = [];
 
-    // spy for this.model.updateSettings(settings);
     const spyUpdateSettings = jest.spyOn(presenter.model, 'updateSettings');
-    // spy for this.view.configurationPanel.updateState(settings);
     const spyUpdateState = jest.spyOn(presenter.view.configurationPanel, 'updateState');
 
     // вызываем метод и создаём в нём обзёрверы
@@ -113,14 +111,12 @@ describe('private initRangeSlider', () => {
     presenter.view.changeSettingsObserver.observers = [];
     presenter.view.configurationPanel.changeConfPanelSettingsObserver.observers = [];
 
-    // spy for this.model.updateSettings(settings);
     const spyUpdateSettings = jest.spyOn(presenter.model, 'updateSettings');
-    // spy for this.view.createRangeSlider(this.model.getSettings());
     const spyCreateRangeSlider = jest.spyOn(presenter.view, 'createRangeSlider');
 
     // вызываем метод и создаём в нём обзёрверы
     const result = presenter['initRangeSlider']();
-    // // уведомляем обзёрверы
+    // уведомляем обзёрверы
     result.view.configurationPanel
       .changeConfPanelSettingsObserver.notifyObservers(settings);
 

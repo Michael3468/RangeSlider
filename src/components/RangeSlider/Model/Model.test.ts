@@ -4,7 +4,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 import { ISettings, ThumbName } from '../RangeSlider/types';
-import { Model } from './Model';
+import Model from './Model';
 
 let settings: ISettings;
 
