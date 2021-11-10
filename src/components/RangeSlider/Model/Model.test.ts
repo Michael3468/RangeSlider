@@ -75,12 +75,14 @@ describe('private static validateSettings', () => {
   });
 
   test('"settings.valueTo - settings.valueFrom < settings.step" should set valueFrom = valueTo - step', () => {
-    settings.min = 800;
+    settings.min = 200;
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 500;
+    const value = settings.valueTo - settings.step;
+
     const result = Model['validateSettings'](settings);
-    expect(result.valueFrom).toBe(settings.valueTo - settings.step);
+    expect(result.valueFrom).toBe(value);
   });
 
   test('"settings.valueTo - settings.valueFrom < settings.step" should set valueTo = valueFrom + step', () => {
@@ -88,8 +90,10 @@ describe('private static validateSettings', () => {
     settings.valueTo = 1400;
     settings.valueFrom = 1000;
     settings.step = 500;
+    const value = settings.valueFrom + settings.step;
+
     const result = Model['validateSettings'](settings);
-    expect(result.valueTo).toBe(settings.valueFrom + settings.step);
+    expect(result.valueTo).toBe(value);
   });
 });
 
