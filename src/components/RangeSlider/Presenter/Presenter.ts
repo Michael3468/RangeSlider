@@ -1,4 +1,3 @@
-/* eslint-disable dot-notation */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
