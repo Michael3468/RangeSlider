@@ -110,7 +110,7 @@ export default class Scale implements ISliderElement {
     let beforeLastEdge: number;
     let lastEdge: number;
 
-    if (this.settings?.isVertical === false) {
+    if (!this.settings?.isVertical) {
       beforeLastEdge = beforeLastMarkValueElement.getBoundingClientRect().right;
       lastEdge = lastMV.getBoundingClientRect().left;
     } else {
