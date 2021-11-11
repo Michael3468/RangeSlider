@@ -236,7 +236,7 @@ export default class View extends Observer {
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.isTwoRunners) {
       const target = event.target as Element;
-      const stepInPx = this.getStepInPx(this.settings, this.slider);
+      const stepInPx = this.getStepInPx();
 
       if (target.classList.contains('range-slider__thumb_from')) {
         max = this.thumbMarginTo! - stepInPx + min;
@@ -276,7 +276,7 @@ export default class View extends Observer {
     slider: Slider,
     currentPos: number,
   ): number {
-    const stepInPx = this.getStepInPx(settings, slider);
+    const stepInPx = this.getStepInPx();
     const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
     const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
 
@@ -294,12 +294,11 @@ export default class View extends Observer {
     return currentPosWidthStep;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  public getStepInPx(settings: ISettings, slider: Slider): number {
-    const sliderLengthInPx: number = getElementLengthInPx(settings, slider.element);
-    const onePointInPx: number = sliderLengthInPx / (settings.max - settings.min);
+  private getStepInPx(): number {
+    const sliderLengthInPx: number = getElementLengthInPx(this.settings, this.slider.element);
+    const onePointInPx: number = sliderLengthInPx / (this.settings.max - this.settings.min);
 
-    return onePointInPx * settings.step;
+    return onePointInPx * this.settings.step;
   }
 
   private getThumbValue(thumbName: ThumbName): number {
