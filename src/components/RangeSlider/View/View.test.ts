@@ -465,7 +465,7 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos > max', () => {
-    const downEvent = new MouseEvent('click',
+    const downEvent = new PointerEvent('pointerdown',
       {
         bubbles: true,
         cancelable: true,
@@ -482,7 +482,7 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos < min', () => {
-    const downEvent = new MouseEvent('click',
+    const downEvent = new PointerEvent('pointerdown',
       {
         bubbles: true,
         cancelable: true,
@@ -563,7 +563,7 @@ describe('private moveClosestThumb', () => {
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
 
-    const downEvent = new MouseEvent('click',
+    const downEvent = new PointerEvent('pointerdown',
       {
         bubbles: true,
         cancelable: true,
