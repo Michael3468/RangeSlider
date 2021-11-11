@@ -6,20 +6,20 @@ import Observer from '../Observer/Observer';
 import { createElement } from '../lib/common';
 
 export default class ConfigurationPanel extends Observer {
-  settings: ISettings;
+  private settings: ISettings;
   element: HTMLElement;
 
-  cpMin: HTMLInputElement | undefined;
-  cpMax: HTMLInputElement | undefined;
-  cpStep: HTMLInputElement | undefined;
-  cpFrom: HTMLInputElement | undefined;
-  cpTo: HTMLInputElement | undefined;
+  private cpMin: HTMLInputElement | undefined;
+  private cpMax: HTMLInputElement | undefined;
+  private cpStep: HTMLInputElement | undefined;
+  private cpFrom: HTMLInputElement | undefined;
+  private cpTo: HTMLInputElement | undefined;
 
-  cpVertical: HTMLInputElement | undefined;
-  cpRange: HTMLInputElement | undefined;
-  cpScale: HTMLInputElement | undefined;
-  cpBar: HTMLInputElement | undefined;
-  cpTips: HTMLInputElement | undefined;
+  private cpVertical: HTMLInputElement | undefined;
+  private cpRange: HTMLInputElement | undefined;
+  private cpScale: HTMLInputElement | undefined;
+  private cpBar: HTMLInputElement | undefined;
+  private cpTips: HTMLInputElement | undefined;
 
   changeConfPanelSettingsObserver: Observer;
 

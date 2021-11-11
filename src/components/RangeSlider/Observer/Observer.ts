@@ -3,7 +3,7 @@
 import { ISettings } from '../RangeSlider/types';
 
 export default class Observer {
-  observers: Function[];
+  private observers: Function[];
 
   constructor() {
     this.observers = [];

@@ -7,8 +7,8 @@ import View from '../View/View';
 import Model from '../Model/Model';
 
 export default class Presenter {
-  model: Model;
-  view: View;
+  private model: Model;
+  private view: View;
 
   constructor(model: Model, view: View) {
     this.model = model;

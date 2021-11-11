@@ -12,7 +12,7 @@ import {
 export default class Scale implements ISliderElement {
   element: HTMLElement;
 
-  settings: ISettings | undefined;
+  private settings: ISettings | undefined;
 
   constructor() {
     this.element = createElement('div', 'range-slider__scale');

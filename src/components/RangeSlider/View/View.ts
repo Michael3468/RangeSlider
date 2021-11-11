@@ -11,22 +11,20 @@ import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 export default class View extends Observer {
-  slider: Slider;
+  private slider: Slider;
   from: Thumb;
   to: Thumb;
   range: Range;
   scale: Scale;
+  configurationPanel: ConfigurationPanel;
 
-  settings: ISettings;
-
-  rangeMarginTo: number;
-  rangeMarginFrom: number;
-  thumbMarginFrom: number;
-  thumbMarginTo: number;
+  private settings: ISettings;
+  private rangeMarginTo: number;
+  private rangeMarginFrom: number;
+  private thumbMarginFrom: number;
+  private thumbMarginTo: number;
 
   changeSettingsObserver: Observer;
-
-  configurationPanel: ConfigurationPanel;
 
   constructor(id: string, mergedSettings: ISettings) {
     super();

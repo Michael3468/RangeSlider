@@ -5,19 +5,19 @@
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
 export default class Model {
-  settings: ISettings;
+  private settings: ISettings;
 
-  min: number;
-  max: number;
-  isTwoRunners: boolean;
-  isScaleVisible: boolean;
-  isVertical: boolean;
-  isTooltipsVisible: boolean;
-  isConfPanel: boolean;
-  isBarVisible: boolean;
-  valueFrom: number;
-  valueTo: number;
-  step: number;
+  private min: number;
+  private max: number;
+  private isTwoRunners: boolean;
+  private isScaleVisible: boolean;
+  private isVertical: boolean;
+  private isTooltipsVisible: boolean;
+  private isConfPanel: boolean;
+  private isBarVisible: boolean;
+  private valueFrom: number;
+  private valueTo: number;
+  private step: number;
 
   constructor(settings: ISettings) {
     Model.validateSettings(settings);
