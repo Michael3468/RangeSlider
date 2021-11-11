@@ -617,7 +617,7 @@ describe('private moveClosestThumb', () => {
     }
   });
 
-  test('should return thumbMarginTo = \'clickPosition\'}\'', () => {
+  test('should return thumbMarginTo = \'clickPosition\'', () => {
     settings.isTwoRunners = true;
     const view = new View('range-slider', settings);
     view.thumbMarginFrom = 150;
@@ -665,7 +665,7 @@ describe('private stopSliding', () => {
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
     view.to.element.dispatchEvent(upEvent);
-    const result = view['stopSliding'](upEvent); // TODO ?
+    const result = view['stopSliding'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
