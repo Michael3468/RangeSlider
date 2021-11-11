@@ -172,15 +172,15 @@ describe('public createRangeSlider', () => {
 
   // if (!settings.isTooltipsVisible)
   function isTooltipFromHaveClassHidden(settings: ISettings) {
-    return createRS(settings).from.tooltip.element.classList.contains('range-slider__tooltip_hidden');
+    return createRS(settings).from.tooltip.element.classList.contains('hidden');
   }
 
   function isTooltipToHaveClassHidden(settings: ISettings) {
-    return createRS(settings).to.tooltip.element.classList.contains('range-slider__tooltip_hidden');
+    return createRS(settings).to.tooltip.element.classList.contains('hidden');
   }
 
   // if (!settings.isTooltipsVisible)
-  test('should return tooltips with class="range-slider__tooltip_hidden"', () => {
+  test('should return tooltips with class="hidden"', () => {
     settings.isTooltipsVisible = true;
     expect(isTooltipFromHaveClassHidden(settings)).toBeFalsy();
     expect(isTooltipToHaveClassHidden(settings)).toBeFalsy();

@@ -84,13 +84,12 @@ export default class View extends Observer {
       this.to.element.classList.remove(THUMB_VERTICAL);
     }
 
-    const TOOLTIP_HIDDEN = 'range-slider__tooltip_hidden';
     if (!settings.isTooltipsVisible) {
-      this.from.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
-      this.to.tooltip.element.className += ` ${TOOLTIP_HIDDEN}`;
+      this.from.tooltip.element.classList.add('hidden');
+      this.to.tooltip.element.classList.add('hidden');
     } else {
-      this.from.tooltip.element.classList.remove(TOOLTIP_HIDDEN);
-      this.to.tooltip.element.classList.remove(TOOLTIP_HIDDEN);
+      this.from.tooltip.element.classList.remove('hidden');
+      this.to.tooltip.element.classList.remove('hidden');
     }
 
     if (settings.isScaleVisible) {
@@ -185,7 +184,7 @@ export default class View extends Observer {
     return target;
   }
 
-  private moveClosestThumb(e: PointerEvent | MouseEvent): View {
+  private moveClosestThumb(e: PointerEvent): View {
     const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
     const fromPos: number = this.thumbMarginFrom;
     const toPos: number = this.thumbMarginTo;
@@ -227,7 +226,7 @@ export default class View extends Observer {
       : currentPos - sliderRect.left;
   }
 
-  private currentCursorPosition(event: PointerEvent | MouseEvent): number {
+  private currentCursorPosition(event: PointerEvent): number {
     let currentPos: number = this.settings.isVertical
       ? event.clientY
       : event.clientX;
