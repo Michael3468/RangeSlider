@@ -11,7 +11,7 @@ export default class Tooltip {
     this.element = createElement('div', `range-slider__tooltip_${this.name}`);
   }
 
-  setTooltipText(value: number): Tooltip {
+  public setTooltipText(value: number): Tooltip {
     const roundedValue = Math.round(value);
     this.element.innerText = roundedValue.toString();
     return this;

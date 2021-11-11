@@ -38,34 +38,6 @@ export default class Model {
     this.isBarVisible = this.settings.isBarVisible;
   }
 
-  private static validateSettings(settings: ISettings): ISettings {
-    if (settings.min >= settings.max) {
-      throw new Error("'max' must be greater than 'min'");
-    }
-    if (settings.valueFrom < settings.min) {
-      throw new Error("'valueFrom' must be greater than 'min'");
-    }
-    if (settings.valueFrom > settings.valueTo) {
-      throw new Error("'valueFrom' must be less than 'valueTo'");
-    }
-    if (settings.valueTo > settings.max) {
-      throw new Error("'valueTo' must be less than 'max'");
-    }
-    if (settings.valueTo - settings.valueFrom < settings.step) {
-      if (settings.valueFrom >= settings.min + settings.step) {
-        settings.valueFrom = settings.valueTo - settings.step;
-      } else {
-        settings.valueTo = settings.valueFrom + settings.step;
-      }
-    }
-
-    return settings;
-  }
-
-  private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
-  }
-
   public getSettings(): ISettings {
     return {
       // settings
@@ -101,5 +73,33 @@ export default class Model {
     this.isBarVisible = this.settings.isBarVisible;
 
     return this.settings;
+  }
+
+  private static validateSettings(settings: ISettings): ISettings {
+    if (settings.min >= settings.max) {
+      throw new Error("'max' must be greater than 'min'");
+    }
+    if (settings.valueFrom < settings.min) {
+      throw new Error("'valueFrom' must be greater than 'min'");
+    }
+    if (settings.valueFrom > settings.valueTo) {
+      throw new Error("'valueFrom' must be less than 'valueTo'");
+    }
+    if (settings.valueTo > settings.max) {
+      throw new Error("'valueTo' must be less than 'max'");
+    }
+    if (settings.valueTo - settings.valueFrom < settings.step) {
+      if (settings.valueFrom >= settings.min + settings.step) {
+        settings.valueFrom = settings.valueTo - settings.step;
+      } else {
+        settings.valueTo = settings.valueFrom + settings.step;
+      }
+    }
+
+    return settings;
+  }
+
+  private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
+    return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
   }
 }

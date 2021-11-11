@@ -50,6 +50,32 @@ export default class ConfigurationPanel extends Observer {
     this.changeConfPanelSettingsObserver = new Observer();
   }
 
+  public updateState(settings: ISettings): void {
+    this.cpMin!.value = String(settings.min);
+    this.cpMin!.max = String(Math.round(settings.valueFrom));
+
+    this.cpMax!.value = String(settings.max);
+    this.cpMax!.min = String(Math.round(settings.valueTo));
+
+    this.cpStep!.value = String(settings.step);
+
+    this.cpFrom!.value = String(settings.valueFrom.toFixed(0));
+    this.cpFrom!.min = String(settings.min);
+    this.cpFrom!.step = String(settings.step);
+    this.cpFrom!.max = String(settings.valueTo.toFixed(0));
+
+    this.cpTo!.value = String(settings.valueTo.toFixed(0));
+    this.cpTo!.min = String(settings.valueFrom.toFixed(0));
+    this.cpTo!.step = String(settings.step);
+    this.cpTo!.max = String(settings.max);
+
+    this.cpVertical!.checked = settings.isVertical;
+    this.cpRange!.checked = settings.isTwoRunners;
+    this.cpScale!.checked = settings.isScaleVisible;
+    this.cpBar!.checked = settings.isBarVisible;
+    this.cpTips!.checked = settings.isTooltipsVisible;
+  }
+
   private static createElement(): HTMLElement {
     const element = createElement('div', 'settings-panel');
 
@@ -213,32 +239,6 @@ export default class ConfigurationPanel extends Observer {
     this.cpTips?.addEventListener('change', this.handleCheckboxCPTipChange);
 
     return this;
-  }
-
-  public updateState(settings: ISettings): void {
-    this.cpMin!.value = String(settings.min);
-    this.cpMin!.max = String(Math.round(settings.valueFrom));
-
-    this.cpMax!.value = String(settings.max);
-    this.cpMax!.min = String(Math.round(settings.valueTo));
-
-    this.cpStep!.value = String(settings.step);
-
-    this.cpFrom!.value = String(settings.valueFrom.toFixed(0));
-    this.cpFrom!.min = String(settings.min);
-    this.cpFrom!.step = String(settings.step);
-    this.cpFrom!.max = String(settings.valueTo.toFixed(0));
-
-    this.cpTo!.value = String(settings.valueTo.toFixed(0));
-    this.cpTo!.min = String(settings.valueFrom.toFixed(0));
-    this.cpTo!.step = String(settings.step);
-    this.cpTo!.max = String(settings.max);
-
-    this.cpVertical!.checked = settings.isVertical;
-    this.cpRange!.checked = settings.isTwoRunners;
-    this.cpScale!.checked = settings.isScaleVisible;
-    this.cpBar!.checked = settings.isBarVisible;
-    this.cpTips!.checked = settings.isTooltipsVisible;
   }
 
   private getThumbFromDisabledStatus = (): boolean => {

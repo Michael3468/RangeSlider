@@ -20,6 +20,44 @@ export default class Scale implements ISliderElement {
     Scale.roundValueTo = Scale.roundValueTo.bind(this);
   }
 
+  public createScaleMarks(settings: ISettings): Scale {
+    this.settings = settings;
+    // add first and last marks
+    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
+    const scaleMaxPos = max - min;
+
+    // add first mark
+    this.element.appendChild(this.createMark(0));
+    const firstMarkValueElement: HTMLElement = this
+      .element.appendChild(this.createMarkValue(settings.min, 0));
+    // add last mark
+    this.element.appendChild(this.createMark(scaleMaxPos));
+    const lastMarkValueElement: HTMLElement = this
+      .element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
+
+    const maxMarkValue = Scale.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
+    const onePointInPx: number = getOnePointInPx(settings, this.element);
+    const stepBetweenMarksInPx: number = this
+      .getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
+    // create marks on scale
+    let markPos: number = 0;
+    const minPosInPx: number = settings.min * onePointInPx;
+
+    while (markPos < scaleMaxPos) {
+      if (markPos > 0) {
+        this.element.appendChild(this.createMark(markPos));
+
+        const currentValueInPoints: number = (minPosInPx + markPos) / onePointInPx;
+        const markValue: number = Math.round(currentValueInPoints);
+        this.element.appendChild(this.createMarkValue(markValue, markPos));
+      }
+      markPos += stepBetweenMarksInPx;
+    }
+    // after mark values was created show/hide before last mark value
+    this.showHideBeforeLastMarkValue(lastMarkValueElement);
+    return this;
+  }
+
   private createMark(marginFromBegin: number): HTMLElement {
     const mark = createElement('span', 'range-slider__scale-mark');
 
@@ -59,44 +97,6 @@ export default class Scale implements ISliderElement {
     const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
     const stepBetweenMarksInPoints: number = Scale.roundValueTo(lastMarkValueSizeInPoints, 10);
     return stepBetweenMarksInPoints * onePointInPx;
-  }
-
-  public createScaleMarks(settings: ISettings): Scale {
-    this.settings = settings;
-    // add first and last marks
-    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
-    const scaleMaxPos = max - min;
-
-    // add first mark
-    this.element.appendChild(this.createMark(0));
-    const firstMarkValueElement: HTMLElement = this
-      .element.appendChild(this.createMarkValue(settings.min, 0));
-    // add last mark
-    this.element.appendChild(this.createMark(scaleMaxPos));
-    const lastMarkValueElement: HTMLElement = this
-      .element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
-
-    const maxMarkValue = Scale.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
-    const onePointInPx: number = getOnePointInPx(settings, this.element);
-    const stepBetweenMarksInPx: number = this
-      .getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
-    // create marks on scale
-    let markPos: number = 0;
-    const minPosInPx: number = settings.min * onePointInPx;
-
-    while (markPos < scaleMaxPos) {
-      if (markPos > 0) {
-        this.element.appendChild(this.createMark(markPos));
-
-        const currentValueInPoints: number = (minPosInPx + markPos) / onePointInPx;
-        const markValue: number = Math.round(currentValueInPoints);
-        this.element.appendChild(this.createMarkValue(markValue, markPos));
-      }
-      markPos += stepBetweenMarksInPx;
-    }
-    // after mark values was created show/hide before last mark value
-    this.showHideBeforeLastMarkValue(lastMarkValueElement);
-    return this;
   }
 
   private static getMaxMarkValue(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {

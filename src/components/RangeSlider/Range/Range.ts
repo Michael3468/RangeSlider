@@ -9,7 +9,7 @@ export default class Range {
     this.element = createElement('div', 'range-slider__range');
   }
 
-  setMarginFromBegin(margin: number, isVertical: boolean): Range {
+  public setMarginFromBegin(margin: number, isVertical: boolean): Range {
     if (isVertical) {
       this.element.style.marginTop = `${margin}px`;
       this.element.style.marginLeft = '0px';
@@ -20,7 +20,7 @@ export default class Range {
     return this;
   }
 
-  setMarginFromEnd(margin: number, isVertical: boolean): Range {
+  public setMarginFromEnd(margin: number, isVertical: boolean): Range {
     if (isVertical) {
       this.element.style.marginRight = '0px';
       this.element.style.marginBottom = `${margin}px`;
