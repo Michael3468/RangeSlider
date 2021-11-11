@@ -45,7 +45,7 @@ export default class ConfigurationPanel extends Observer {
     this.updateState(this.settings);
 
     this.addListeners();
-    this.thumbFromDisabledStatus();
+    this.getThumbFromDisabledStatus();
 
     this.changeConfPanelSettingsObserver = new Observer();
   }
@@ -175,7 +175,7 @@ export default class ConfigurationPanel extends Observer {
 
   private handleCheckboxCPRangeClick = () => {
     this.settings.isTwoRunners = this.cpRange?.checked as boolean;
-    this.thumbFromDisabledStatus();
+    this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
   }
@@ -241,7 +241,7 @@ export default class ConfigurationPanel extends Observer {
     this.cpTips!.checked = settings.isTooltipsVisible;
   }
 
-  private thumbFromDisabledStatus = (): boolean => {
+  private getThumbFromDisabledStatus = (): boolean => {
     if (this.cpRange?.checked) {
       this.cpFrom!.disabled = false;
       return false;

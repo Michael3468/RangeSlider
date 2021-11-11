@@ -114,18 +114,18 @@ describe('private addListeners', () => {
   });
 });
 
-describe('private thumbFromDisabledStatus', () => {
+describe('private getThumbFromDisabledStatus', () => {
   it('should return false if cpRange.checked === true', () => {
     settings.isTwoRunners = true;
     const confPanel = new ConfigurationPanel(settings);
-    const result = confPanel['thumbFromDisabledStatus']();
+    const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeFalsy();
   });
 
   it('should return true if cpRange.checked === false', () => {
     settings.isTwoRunners = false;
     const confPanel = new ConfigurationPanel(settings);
-    const result = confPanel['thumbFromDisabledStatus']();
+    const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeTruthy();
   });
 });
