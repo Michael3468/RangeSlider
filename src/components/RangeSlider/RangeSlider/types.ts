@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable no-unused-vars */
@@ -69,9 +70,10 @@ class PointerEvent extends MouseEvent {
     this.pointerType = params.pointerType!;
     this.isPrimary = params.isPrimary!;
   }
-  public ReleasePointerCapture(value) {}
-  public getCoalescedEvents(): PointerEvent[] {}
-  public getPredictedEvents(): PointerEvent[] {}
+
+  public ReleasePointerCapture(value: any) {}
+  public getCoalescedEvents(): any {}
+  public getPredictedEvents(): any {}
 }
 global.PointerEvent = PointerEvent as any;
 
