@@ -4,7 +4,7 @@ import {
   ISettings, ISliderElement, INodeName, IMinMax,
 } from '../RangeSlider/types';
 
-export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMinMax {
+function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMinMax {
   const elementRect = el.element.getBoundingClientRect();
 
   if (settings.isVertical) {
@@ -19,13 +19,13 @@ export function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElemen
   };
 }
 
-export function getElementLengthInPx(settings: ISettings, el: HTMLElement): number {
+function getElementLengthInPx(settings: ISettings, el: HTMLElement): number {
   return settings.isVertical
     ? el.getBoundingClientRect().height
     : el.getBoundingClientRect().width;
 }
 
-export function createElement(
+function createElement(
   tag: INodeName,
   tagClassName: string,
   el?: HTMLElement,
@@ -39,8 +39,15 @@ export function createElement(
   return element;
 }
 
-export function getOnePointInPx(settings: ISettings, element: HTMLElement) {
+function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   const elementLengthInPx: number = getElementLengthInPx(settings, element);
   const elementLengthInPoints: number = settings.max - settings.min;
   return elementLengthInPx / elementLengthInPoints;
 }
+
+export {
+  getMinMaxElementEdgesInPx,
+  getElementLengthInPx,
+  createElement,
+  getOnePointInPx,
+};

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable no-unused-vars */
-export interface ISettings {
+interface ISettings {
   min: number;
   max: number;
   valueFrom: number;
@@ -15,7 +15,7 @@ export interface ISettings {
   isBarVisible: boolean;
 }
 
-export interface IUserSettings {
+interface IUserSettings {
   min?: number;
   max?: number;
   valueFrom?: number;
@@ -29,22 +29,22 @@ export interface IUserSettings {
   isBarVisible?: boolean;
 }
 
-export interface ISliderElement {
+interface ISliderElement {
   element: HTMLElement
 }
 
-export interface IMinMax {
+interface IMinMax {
   min: number,
   max: number,
 }
 
-export type ThumbName = 'from' | 'to';
+type ThumbName = 'from' | 'to';
 
-export type INodeName = 'div' | 'span';
+type INodeName = 'div' | 'span';
 
-export type MeasureUnit = 'px' | '%';
+type MeasureUnit = 'px' | '%';
 
-export class PointerEvent extends MouseEvent {
+class PointerEvent extends MouseEvent {
   public height: number;
   public isPrimary: boolean;
   public pointerId: number;
@@ -58,18 +58,30 @@ export class PointerEvent extends MouseEvent {
 
   constructor(type: string, params: PointerEventInit = {}) {
     super(type, params);
-    this.pointerId = params.pointerId;
-    this.width = params.width;
-    this.height = params.height;
-    this.pressure = params.pressure;
-    this.tangentialPressure = params.tangentialPressure;
-    this.tiltX = params.tiltX;
-    this.tiltY = params.tiltY;
-    this.pointerType = params.pointerType;
-    this.isPrimary = params.isPrimary;
+    this.pointerId = params.pointerId!;
+    this.width = params.width!;
+    this.height = params.height!;
+    this.pressure = params.pressure!;
+    this.tangentialPressure = params.tangentialPressure!;
+    this.tiltX = params.tiltX!;
+    this.tiltY = params.tiltY!;
+    this.twist = params.twist!;
+    this.pointerType = params.pointerType!;
+    this.isPrimary = params.isPrimary!;
   }
-  public ReleasePointerCapture(value);
-  public getCoalescedEvents(): PointerEvent[];
-  public getPredictedEvents(): PointerEvent[];
+  public ReleasePointerCapture(value) {}
+  public getCoalescedEvents(): PointerEvent[] {}
+  public getPredictedEvents(): PointerEvent[] {}
 }
 global.PointerEvent = PointerEvent as any;
+
+export {
+  ISettings,
+  IUserSettings,
+  ISliderElement,
+  IMinMax,
+  ThumbName,
+  INodeName,
+  MeasureUnit,
+  PointerEvent,
+};
