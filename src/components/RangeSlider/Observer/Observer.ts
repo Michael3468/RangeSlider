@@ -9,7 +9,7 @@ export default class Observer {
     this.observers = [];
   }
 
-  addObserver(fn: Function): void {
+  public addObserver(fn: Function): void {
     this.observers.forEach((observer) => {
       if (String(observer) === String(fn)) {
         throw new Error('Observer is already in the list');
@@ -18,7 +18,7 @@ export default class Observer {
     this.observers.push(fn);
   }
 
-  removeObserver(fn: Function): void {
+  public removeObserver(fn: Function): void {
     let isObserverRemoved: boolean = false;
 
     this.observers.forEach((observer, index) => {
@@ -33,7 +33,7 @@ export default class Observer {
     }
   }
 
-  notifyObservers(data?: ISettings): void {
+  public notifyObservers(data?: ISettings): void {
     this.observers.forEach((observer) => {
       observer(data);
     });
