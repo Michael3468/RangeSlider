@@ -25,7 +25,7 @@ declare class ViewHint {
   setMargins(thumbName: ThumbName, currentPos: number): void;
   updateRangeSliderValues(): View;
   initRangeSliderMargins(): View;
-  notifyChangeSettingsObserver(): void;
+  handleNotifyChangeSettingsObserver(): void;
 }
 
 let settings: ISettings;
@@ -553,7 +553,7 @@ describe('private getDifferenceBetween', () => {
   });
 });
 
-describe('private moveClosestThumb', () => {
+describe('private handleMoveClosestThumbPointerEvent', () => {
   function testMoveClosestThumb(view: View, clickPosition: number) {
     // 'should' return mouseEvent coords
     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
@@ -572,7 +572,7 @@ describe('private moveClosestThumb', () => {
       });
 
     view.slider.element.dispatchEvent(downEvent);
-    const result = view['moveClosestThumb'](downEvent);
+    const result = view['handleMoveClosestThumbPointerEvent'](downEvent);
 
     return {
       updateRangeSliderValuesSpy,
@@ -645,7 +645,7 @@ describe('private moveClosestThumb', () => {
   });
 });
 
-describe('private stopSliding', () => {
+describe('private handleStopSlidingPointerEvent', () => {
   test('event.target.onpointermove should return null', () => {
     const upEvent = new PointerEvent('pointerup', {
       pointerId: 1,
@@ -665,13 +665,13 @@ describe('private stopSliding', () => {
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
     view.to.element.dispatchEvent(upEvent);
-    const result = view['stopSliding'](upEvent);
+    const result = view['handleStopSlidingPointerEvent'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
 });
 
-describe('private beginSliding', () => {
+describe('private handleBeginSlidingPointerEvent', () => {
   function getMoveEvent() {
     const moveEvent = new PointerEvent('pointermove', {
       pointerId: 1,
@@ -729,7 +729,7 @@ describe('private beginSliding', () => {
     } = getSpyMethods();
 
     view.from.element.dispatchEvent(moveEvent);
-    const result = view['beginSliding'](moveEvent);
+    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);
@@ -757,7 +757,7 @@ describe('private beginSliding', () => {
     } = getSpyMethods();
 
     view.to.element.dispatchEvent(moveEvent);
-    const result = view['beginSliding'](moveEvent);
+    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);
@@ -830,13 +830,13 @@ describe('private setTopLeft', () => {
   });
 });
 
-describe('private notifyChangeSettingsObserver', () => {
+describe('private handleNotifyChangeSettingsObserver', () => {
   it('should be called with this.settings', () => {
     const view = new View('range-slider', settings);
     const spyChangeSettingsObserverNotify = jest
       .spyOn(view.changeSettingsObserver, 'notifyObservers');
 
-    view['notifyChangeSettingsObserver']();
+    view['handleNotifyChangeSettingsObserver']();
 
     expect(spyChangeSettingsObserverNotify).toBeCalledWith(settings);
   });

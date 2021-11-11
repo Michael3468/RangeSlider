@@ -45,9 +45,9 @@ export default class View extends Observer {
     this.thumbMarginFrom = 0;
     this.thumbMarginTo = 0;
 
-    this.beginSliding = this.beginSliding.bind(this);
-    this.stopSliding = this.stopSliding.bind(this);
-    this.moveClosestThumb = this.moveClosestThumb.bind(this);
+    this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
+    this.handleStopSlidingPointerEvent = this.handleStopSlidingPointerEvent.bind(this);
+    this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
     this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
@@ -123,11 +123,11 @@ export default class View extends Observer {
     return this;
   }
 
-  private notifyChangeSettingsObserver = (): void => {
+  private handleNotifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   }
 
-  private updateRangeSliderView = (): void => {
+  private handleUpdateRangeSliderView = (): void => {
     this.initRangeSliderMargins();
     this.updateRangeSliderValues();
 
@@ -141,19 +141,19 @@ export default class View extends Observer {
 
   private addListenersToThumbs(): View {
     if (this.settings!.isTwoRunners) {
-      this.from.element.addEventListener('pointerdown', this.beginSliding);
-      this.from.element.addEventListener('pointerup', this.stopSliding);
+      this.from.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
+      this.from.element.addEventListener('pointerup', this.handleStopSlidingPointerEvent);
     }
-    this.to.element.addEventListener('pointerdown', this.beginSliding);
-    this.to.element.addEventListener('pointerup', this.stopSliding);
+    this.to.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
+    this.to.element.addEventListener('pointerup', this.handleStopSlidingPointerEvent);
 
-    this.slider.element!.addEventListener('pointerdown', this.moveClosestThumb);
-    this.slider.element!.addEventListener('pointerup', this.notifyChangeSettingsObserver);
-    window.addEventListener('resize', this.updateRangeSliderView);
+    this.slider.element!.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
+    this.slider.element!.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
+    window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;
   }
 
-  private beginSliding(event: PointerEvent): HTMLElement {
+  private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
     const { pointerId } = event;
     const target = event.target as HTMLElement;
     event.preventDefault();
@@ -177,14 +177,14 @@ export default class View extends Observer {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private stopSliding(event: PointerEvent): HTMLElement {
+  private handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
     const target = event.target as HTMLElement;
     target.onpointermove = null;
     target.releasePointerCapture(event.pointerId);
     return target;
   }
 
-  private moveClosestThumb(e: PointerEvent): View {
+  private handleMoveClosestThumbPointerEvent(e: PointerEvent): View {
     const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
     const fromPos: number = this.thumbMarginFrom;
     const toPos: number = this.thumbMarginTo;

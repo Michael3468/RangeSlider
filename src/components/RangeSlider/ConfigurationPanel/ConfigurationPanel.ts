@@ -135,31 +135,31 @@ export default class ConfigurationPanel extends Observer {
   }
 
   // Configuration panel input handlers
-  private handleInputCPMinClick = () => {
+  private handleInputCPMinChange = () => {
     this.settings.min = Number(this.cpMin?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMin?.focus();
   }
 
-  private handleInputCPMaxClick = () => {
+  private handleInputCPMaxChange = () => {
     this.settings.max = Number(this.cpMax?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMax?.focus();
   }
 
-  private handleInputCPStepClick = () => {
+  private handleInputCPStepChange = () => {
     this.settings.step = Number(this.cpStep?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpStep?.focus();
   }
 
-  private handleInputCPFromClick = () => {
+  private handleInputCPFromChange = () => {
     this.settings.valueFrom = Number(this.cpFrom?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpFrom?.focus();
   }
 
-  private handleInputCPToClick = () => {
+  private handleInputCPToChange = () => {
     this.settings.valueTo = Number(this.cpTo?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTo?.focus();
@@ -167,32 +167,32 @@ export default class ConfigurationPanel extends Observer {
   // Configuration panel input handlers end
 
   // Configuration panel checkbox handlers
-  private handleCheckboxCPVerticalClick = () => {
+  private handleCheckboxCPVerticalChange = () => {
     this.settings.isVertical = this.cpVertical?.checked as boolean;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpVertical?.focus();
   }
 
-  private handleCheckboxCPRangeClick = () => {
+  private handleCheckboxCPRangeChange = () => {
     this.settings.isTwoRunners = this.cpRange?.checked as boolean;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
   }
 
-  private handleCheckboxCPScaleClick = () => {
+  private handleCheckboxCPScaleChange = () => {
     this.settings.isScaleVisible = this.cpScale?.checked as boolean;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpScale?.focus();
   }
 
-  private handleCheckboxCPBarClick = () => {
+  private handleCheckboxCPBarChange = () => {
     this.settings.isBarVisible = this.cpBar?.checked as boolean;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpBar?.focus();
   }
 
-  private handleCheckboxCPTipClick = () => {
+  private handleCheckboxCPTipChange = () => {
     this.settings.isTooltipsVisible = this.cpTips?.checked as boolean;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTips?.focus();
@@ -200,17 +200,17 @@ export default class ConfigurationPanel extends Observer {
   // Configuration panel checkbox handlers end
 
   private addListeners(): ConfigurationPanel {
-    this.cpMin?.addEventListener('change', this.handleInputCPMinClick);
-    this.cpMax?.addEventListener('change', this.handleInputCPMaxClick);
-    this.cpStep?.addEventListener('change', this.handleInputCPStepClick);
-    this.cpFrom?.addEventListener('change', this.handleInputCPFromClick);
-    this.cpTo?.addEventListener('change', this.handleInputCPToClick);
+    this.cpMin?.addEventListener('change', this.handleInputCPMinChange);
+    this.cpMax?.addEventListener('change', this.handleInputCPMaxChange);
+    this.cpStep?.addEventListener('change', this.handleInputCPStepChange);
+    this.cpFrom?.addEventListener('change', this.handleInputCPFromChange);
+    this.cpTo?.addEventListener('change', this.handleInputCPToChange);
 
-    this.cpVertical?.addEventListener('change', this.handleCheckboxCPVerticalClick);
-    this.cpRange?.addEventListener('change', this.handleCheckboxCPRangeClick);
-    this.cpScale?.addEventListener('change', this.handleCheckboxCPScaleClick);
-    this.cpBar?.addEventListener('change', this.handleCheckboxCPBarClick);
-    this.cpTips?.addEventListener('change', this.handleCheckboxCPTipClick);
+    this.cpVertical?.addEventListener('change', this.handleCheckboxCPVerticalChange);
+    this.cpRange?.addEventListener('change', this.handleCheckboxCPRangeChange);
+    this.cpScale?.addEventListener('change', this.handleCheckboxCPScaleChange);
+    this.cpBar?.addEventListener('change', this.handleCheckboxCPBarChange);
+    this.cpTips?.addEventListener('change', this.handleCheckboxCPTipChange);
 
     return this;
   }
