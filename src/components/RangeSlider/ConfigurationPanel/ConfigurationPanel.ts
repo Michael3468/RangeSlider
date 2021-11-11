@@ -2,8 +2,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
 import { ISettings } from '../RangeSlider/types';
-import { createElement } from '../lib/common';
 import Observer from '../Observer/Observer';
+import { createElement } from '../lib/common';
 
 export default class ConfigurationPanel extends Observer {
   settings: ISettings;

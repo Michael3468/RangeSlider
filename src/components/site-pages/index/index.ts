@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import './index.scss';
 import '../../RangeSlider/RangeSlider/RangeSlider';
+
+import './index.scss';
 
 $('#range-slider').RangeSlider({
   min: 0,

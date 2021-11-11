@@ -1,16 +1,14 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
-import { ISettings, MeasureUnit, ThumbName } from '../RangeSlider/types';
-
-import Observer from '../Observer/Observer';
-import Slider from '../Slider/Slider';
 import Thumb from '../Thumb/Thumb';
-import Range from '../Range/Range';
+import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';
-import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
-
+import { ISettings, MeasureUnit, ThumbName } from '../RangeSlider/types';
+import Range from '../Range/Range';
+import Observer from '../Observer/Observer';
 import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
+import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 export default class View extends Observer {
   slider: Slider;

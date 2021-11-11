@@ -3,8 +3,8 @@
 /* eslint-disable import/no-unresolved */
 import { ISettings } from '../RangeSlider/types';
 
-import Model from '../Model/Model';
 import View from '../View/View';
+import Model from '../Model/Model';
 
 export default class Presenter {
   model: Model;
