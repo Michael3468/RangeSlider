@@ -2,17 +2,36 @@ body {
   overflow-y: scroll;
 }
 
-.range-slider-block {
-  width: 100%;
-  min-width: 320px;
+.hidden {
+  display: none;
+}
+
+.wrapper {
   padding: 50px;
 }
 
-.range-slider-block_vertical {
-  width: 7px;
-  height: 300px;
+.r-slider {
+  min-width: 115px;
+  margin: 50px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
-.hidden {
-  display: none;
+.slider-1 {
+  width: 100%;
+}
+
+.slider-2 {
+  width: 50%;
+  margin-top: 75px;
+}
+
+.slider-3 {
+  height: 200px;
+}
+
+.slider-4 {
+  height: 400px;
 }

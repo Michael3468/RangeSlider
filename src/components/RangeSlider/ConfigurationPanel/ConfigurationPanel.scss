@@ -1,8 +1,9 @@
 @import '../../../assets/scss/vars.scss';
 
 .settings-panel {
-  margin-top: 50px;
-  margin-bottom: 20px;
+  display: block;
+  margin-left: 70px;
+  overflow: auto;
   background: $slider-bg-color;
   border: 1px solid $slider-border-color;
   border-radius: 4px;
@@ -59,9 +60,9 @@
 }
 
 .settings-panel__options-toggle-label {
-  cursor: pointer;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &:focus-within {
     font-weight: bold;
