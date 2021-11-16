@@ -2,6 +2,7 @@
 
 .settings-panel {
   display: block;
+  min-width: 130px;
   margin-left: 70px;
   overflow: auto;
   background: $slider-bg-color;
@@ -10,9 +11,11 @@
   user-select: auto;
 
   &__caption {
-    display: inline-block;
-    margin: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
     font-weight: bold;
+    text-align: center;
   }
 }
 
