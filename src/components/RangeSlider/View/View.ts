@@ -63,18 +63,20 @@ export default class View extends Observer {
     }
 
     const THUMB_VERTICAL = 'range-slider__thumb_vertical';
+    const RS_VERTICAL = 'range-slider_vertical';
+    const RS_SCALE_VERTICAL = 'range-slider__scale_vertical';
     if (settings.isVertical) {
-      this.slider.element!.className += ' range-slider_vertical';
-      this.scale.element.className += ' range-slider__scale_vertical';
+      this.slider.element!.classList.add(RS_VERTICAL);
+      this.scale.element.classList.add(RS_SCALE_VERTICAL);
 
       // add class for vertical thumbs
       if (settings.isTwoRunners) {
-        this.from.element.className += ` ${THUMB_VERTICAL}`;
+        this.from.element.classList.add(THUMB_VERTICAL);
       }
-      this.to.element.className += ` ${THUMB_VERTICAL}`;
+      this.to.element.classList.add(THUMB_VERTICAL);
     } else {
-      this.slider.element!.classList.remove('range-slider_vertical');
-      this.scale.element.classList.remove('range-slider__scale_vertical');
+      this.slider.element!.classList.remove(RS_VERTICAL);
+      this.scale.element.classList.remove(RS_SCALE_VERTICAL);
 
       if (settings.isTwoRunners) {
         this.from.element.classList.remove(THUMB_VERTICAL);
@@ -95,15 +97,17 @@ export default class View extends Observer {
       this.scale.createScaleMarks(settings);
     }
 
-    this.initRangeSliderMargins();
-    this.updateRangeSliderValues();
-    this.addListenersToThumbs();
-    this.setDistanceBetweenTooltips();
-
     if (settings.isConfPanel) {
       this.slider.element.after(this.configurationPanel!.element);
       this.configurationPanel.updateState(this.settings);
     }
+
+    this.initRangeSliderMargins();
+    this.updateRangeSliderValues();
+    this.addListenersToThumbs();
+    this.setDistanceBetweenTooltips();
+    this.handleUpdateRangeSliderView();
+
     return this;
   }
 
