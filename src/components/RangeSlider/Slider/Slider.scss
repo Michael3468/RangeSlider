@@ -10,7 +10,7 @@
   cursor: pointer;
 
   &_vertical {
-    width: $slider-thickness + px;
+    width: $slider-thickness + 2 + px;
     height: 100%;
     margin-right: auto;
     margin-left: auto;
