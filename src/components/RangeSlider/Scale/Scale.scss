@@ -6,8 +6,8 @@
 
   &_vertical {
     position: absolute;
-    left: -25px;
-    width: 30px;
+    left: -40px;
+    width: 47px;
     height: 100%;
   }
 
@@ -25,13 +25,13 @@
 
     &_vertical {
       top: 0;
-      left: 15px;
+      left: 30px;
       width: 10px;
       height: 1px;
 
       &:first-child {
         top: -1px;
-        left: 15px;
+        left: 30px;
       }
     }
 
@@ -46,7 +46,7 @@
 
       &_vertical {
         top: -10px;
-        left: 10px;
+        left: 27px;
         transform: translateX(-100%);
       }
     }
