@@ -53,15 +53,15 @@ function createRS(settings: ISettings) {
 
 describe('constructor', () => {
   function testConstructor(settings: ISettings) {
-    expect(createRS(settings).slider.element.nodeName).toBe('DIV');
+    expect(createRS(settings)['slider'].element.nodeName).toBe('DIV');
 
-    const isHasId = createRS(settings).slider.element.id;
+    const isHasId = createRS(settings)['slider'].element.id;
     expect(isHasId).toBe('range-slider');
 
-    const isHasClass = createRS(settings).slider.element.classList.contains('range-slider');
+    const isHasClass = createRS(settings)['slider'].element.classList.contains('range-slider');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = createRS(settings).slider.element.classList.contains('range-slider_vertical');
+    const isHasClassVertical = createRS(settings)['slider'].element.classList.contains('range-slider_vertical');
 
     return isHasClassVertical;
   }
@@ -91,7 +91,7 @@ describe('public createRangeSlider', () => {
   Object.defineProperty(global.document, 'querySelector', { value: spyFunc });
 
   function testChild(settings: ISettings, childNum: number, childClass: string) {
-    const firstChildThumb = createRS(settings).slider.element.children[childNum];
+    const firstChildThumb = createRS(settings)['slider'].element.children[childNum];
     const isHasClass = firstChildThumb?.classList.contains(childClass);
     expect(isHasClass).toBeTruthy();
   }
@@ -110,27 +110,27 @@ describe('public createRangeSlider', () => {
   });
 
   function isSliderHasClassVertical(settings: ISettings) {
-    return createRS(settings).slider.element.classList.contains('range-slider_vertical');
+    return createRS(settings)['slider'].element.classList.contains('range-slider_vertical');
   }
 
   function isScaleHasClassVertical(settings: ISettings) {
-    return createRS(settings).scale.element.classList.contains('range-slider__scale_vertical');
+    return createRS(settings)['scale'].element.classList.contains('range-slider__scale_vertical');
   }
 
   // if (settings.isVertical) and if (settings.isTooltipsVisible)
   function isTooltipFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings).from.tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['from'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
   }
   function isTooltipToHaveClassVertical(settings: ISettings) {
-    return createRS(settings).to.tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['to'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
   }
 
   // if (settings.isVertical) and if (settings.isTwoRunners)
   function isThumbFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings).from.element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['from'].element.classList.contains('range-slider__thumb_vertical');
   }
   function isThumbToHaveClassVertical(settings: ISettings) {
-    return createRS(settings).to.element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['to'].element.classList.contains('range-slider__thumb_vertical');
   }
 
   test('if settings.isVertical == true, should add vertical classes, ', () => {
@@ -172,11 +172,11 @@ describe('public createRangeSlider', () => {
 
   // if (!settings.isTooltipsVisible)
   function isTooltipFromHaveClassHidden(settings: ISettings) {
-    return createRS(settings).from.tooltip.element.classList.contains('hidden');
+    return createRS(settings)['from'].tooltip.element.classList.contains('hidden');
   }
 
   function isTooltipToHaveClassHidden(settings: ISettings) {
-    return createRS(settings).to.tooltip.element.classList.contains('hidden');
+    return createRS(settings)['to'].tooltip.element.classList.contains('hidden');
   }
 
   // if (!settings.isTooltipsVisible)
@@ -193,9 +193,9 @@ describe('public createRangeSlider', () => {
   // if (settings.isScaleVisible)
   function isHasScale(settings: ISettings) {
     if (settings.isTwoRunners) {
-      return createRS(settings).slider.element.children[3]?.classList.contains('range-slider__scale');
+      return createRS(settings)['slider'].element.children[3]?.classList.contains('range-slider__scale');
     }
-    return createRS(settings).slider.element.children[2]?.classList.contains('range-slider__scale');
+    return createRS(settings)['slider'].element.children[2]?.classList.contains('range-slider__scale');
   }
 
   test('should return slider with scale element', () => {
@@ -221,13 +221,13 @@ describe('public createRangeSlider', () => {
   test('if (settings.isScaleVisible) "createScaleMarks" should have been called ', () => {
     settings.isScaleVisible = true;
     let view = new View('range-slider', settings);
-    let createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+    let createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
     view.createRangeSlider(settings);
     expect(createScaleMarksSpy).toHaveBeenCalled();
 
     settings.isScaleVisible = false;
     view = new View('range-slider', settings);
-    createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+    createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
     view.createRangeSlider(settings);
     expect(createScaleMarksSpy).not.toHaveBeenCalled();
   });
@@ -238,7 +238,7 @@ describe('private isTooltipsCollision', () => {
     settings.isVertical = true;
     const view = new View('range-slider', settings);
 
-    view.from.element.getBoundingClientRect = jest.fn(() => ({
+    view['from'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 100, // value to check
@@ -250,7 +250,7 @@ describe('private isTooltipsCollision', () => {
       toJSON: () => {},
     }));
 
-    view.to.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 100, // value to check
@@ -262,7 +262,7 @@ describe('private isTooltipsCollision', () => {
       toJSON: () => {},
     }));
 
-    view.to.tooltip.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
       width: 40,
       height: 20, // value to check
       top: 100,
@@ -277,7 +277,7 @@ describe('private isTooltipsCollision', () => {
     let result = view['isTooltipsCollision']();
     expect(result).toBeTruthy();
 
-    view.to.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 150, // value 150 to return false
@@ -297,7 +297,7 @@ describe('private isTooltipsCollision', () => {
     settings.isVertical = false;
     const view = new View('range-slider', settings);
 
-    view.from.element.getBoundingClientRect = jest.fn(() => ({
+    view['from'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 100,
@@ -309,7 +309,7 @@ describe('private isTooltipsCollision', () => {
       toJSON: () => {},
     }));
 
-    view.to.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 100,
@@ -321,7 +321,7 @@ describe('private isTooltipsCollision', () => {
       toJSON: () => {},
     }));
 
-    view.to.tooltip.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
       width: 40, // value to check
       height: 20,
       top: 100,
@@ -336,7 +336,7 @@ describe('private isTooltipsCollision', () => {
     let result = view['isTooltipsCollision']();
     expect(result).toBeTruthy();
 
-    view.to.element.getBoundingClientRect = jest.fn(() => ({
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
       width: 20,
       height: 20,
       top: 100,
@@ -361,8 +361,8 @@ describe('private setDistanceBetweenTooltips', () => {
 
     const result = view['setDistanceBetweenTooltips']();
 
-    const fromTop = result.from.tooltip.element.style.top;
-    const toTop = result.to.tooltip.element.style.top;
+    const fromTop = result['from'].tooltip.element.style.top;
+    const toTop = result['to'].tooltip.element.style.top;
 
     expect(fromTop).toBe('-12px');
     expect(toTop).toBe('12px');
@@ -375,8 +375,8 @@ describe('private setDistanceBetweenTooltips', () => {
 
     const result = view['setDistanceBetweenTooltips']();
 
-    const fromTop = result.from.tooltip.element.style.top;
-    const toTop = result.to.tooltip.element.style.top;
+    const fromTop = result['from'].tooltip.element.style.top;
+    const toTop = result['to'].tooltip.element.style.top;
 
     expect(fromTop).toBe('0px');
     expect(toTop).toBe('0px');
@@ -389,8 +389,8 @@ describe('private setDistanceBetweenTooltips', () => {
 
     const result = view['setDistanceBetweenTooltips']();
 
-    const fromTop = result.from.tooltip.element.style.left;
-    const toTop = result.to.tooltip.element.style.left;
+    const fromTop = result['from'].tooltip.element.style.left;
+    const toTop = result['to'].tooltip.element.style.left;
 
     expect(fromTop).toBe('-105%');
     expect(toTop).toBe('5%');
@@ -403,8 +403,8 @@ describe('private setDistanceBetweenTooltips', () => {
 
     const result = view['setDistanceBetweenTooltips']();
 
-    const fromTop = result.from.tooltip.element.style.left;
-    const toTop = result.to.tooltip.element.style.left;
+    const fromTop = result['from'].tooltip.element.style.left;
+    const toTop = result['to'].tooltip.element.style.left;
 
     expect(fromTop).toBe('-50%');
     expect(toTop).toBe('-50%');
@@ -431,16 +431,16 @@ describe('private setZIndexTop', () => {
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
     const result = view['setZIndexTop']('from');
-    const fromContainsClass = result.from.element.classList.contains(zIndexClass);
-    const toContainsClass = result.to.element.classList.contains(zIndexClass);
+    const fromContainsClass = result['from'].element.classList.contains(zIndexClass);
+    const toContainsClass = result['to'].element.classList.contains(zIndexClass);
     expect(fromContainsClass).toBeTruthy();
     expect(toContainsClass).toBeFalsy();
   });
 
   test('should del zIndexClass from "from" element and add to "to" element', () => {
     const result = view['setZIndexTop']('to');
-    const fromContainsClass = result.from.element.classList.contains(zIndexClass);
-    const toContainsClass = result.to.element.classList.contains(zIndexClass);
+    const fromContainsClass = result['from'].element.classList.contains(zIndexClass);
+    const toContainsClass = result['to'].element.classList.contains(zIndexClass);
     expect(fromContainsClass).toBeFalsy();
     expect(toContainsClass).toBeTruthy();
   });
@@ -474,9 +474,9 @@ describe('private currentCursorPosition', () => {
       });
 
     const view = new View('range-slider', settings);
-    view.thumbMarginTo = 150; // +min(100) -step(2) = 248
+    view['thumbMarginTo'] = 150; // +min(100) -step(2) = 248
 
-    view.from.element.dispatchEvent(downEvent);
+    view['from'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
     expect(result).toBe(248);
   });
@@ -491,8 +491,8 @@ describe('private currentCursorPosition', () => {
       });
 
     const view = new View('range-slider', settings);
-    view.thumbMarginFrom = 110; // +min(100) +step(2) = 212
-    view.to.element.dispatchEvent(downEvent);
+    view['thumbMarginFrom'] = 110; // +min(100) +step(2) = 212
+    view['to'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
     expect(result).toBe(212);
   });
@@ -540,15 +540,13 @@ describe('private getDifferenceBetween', () => {
     let currentPos = 100;
     let thumbMargin = 150; // currentPos - thumbMargin = 50
 
-    let view = new View('range-slider', settings);
-    let result = view['getDifferenceBetween'](currentPos, thumbMargin);
+    let result = View['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
 
     currentPos = 200;
     thumbMargin = 150; // currentPos - thumbMargin = -50
 
-    view = new View('range-slider', settings);
-    result = view['getDifferenceBetween'](currentPos, thumbMargin);
+    result = View['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
   });
 });
@@ -571,7 +569,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
         clientY: 150,
       });
 
-    view.slider.element.dispatchEvent(downEvent);
+    view['slider'].element.dispatchEvent(downEvent);
     const result = view['handleMoveClosestThumbPointerEvent'](downEvent);
 
     return {
@@ -593,8 +591,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
     settings.isTwoRunners = true;
     const view = new View('range-slider', settings);
-    view.thumbMarginFrom = 150;
-    view.thumbMarginTo = 250;
+    view['thumbMarginFrom'] = 150;
+    view['thumbMarginTo'] = 250;
 
     const clickPosition = 100;
 
@@ -605,12 +603,12 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result.thumbMarginFrom).toBe(clickPosition);
-    expect(result.thumbMarginTo).not.toBe(clickPosition);
+    expect(result['thumbMarginFrom']).toBe(clickPosition);
+    expect(result['thumbMarginTo']).not.toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
-    if (result.settings.isTwoRunners) {
+    if (result['settings'].isTwoRunners) {
       expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'from');
@@ -620,8 +618,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginTo = \'clickPosition\'', () => {
     settings.isTwoRunners = true;
     const view = new View('range-slider', settings);
-    view.thumbMarginFrom = 150;
-    view.thumbMarginTo = 250;
+    view['thumbMarginFrom'] = 150;
+    view['thumbMarginTo'] = 250;
 
     const clickPosition = 200;
 
@@ -632,12 +630,12 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result.thumbMarginFrom).not.toBe(clickPosition);
-    expect(result.thumbMarginTo).toBe(clickPosition);
+    expect(result['thumbMarginFrom']).not.toBe(clickPosition);
+    expect(result['thumbMarginTo']).toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
-    if (result.settings.isTwoRunners) {
+    if (result['settings'].isTwoRunners) {
       expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'to');
@@ -664,8 +662,8 @@ describe('private handleStopSlidingPointerEvent', () => {
 
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
-    view.to.element.dispatchEvent(upEvent);
-    const result = view['handleStopSlidingPointerEvent'](upEvent);
+    view['to'].element.dispatchEvent(upEvent);
+    const result = View['handleStopSlidingPointerEvent'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
@@ -728,7 +726,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
       setDistanceBetweenTooltipsSpy,
     } = getSpyMethods();
 
-    view.from.element.dispatchEvent(moveEvent);
+    view['from'].element.dispatchEvent(moveEvent);
     const result = view['handleBeginSlidingPointerEvent'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
@@ -756,7 +754,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
       setDistanceBetweenTooltipsSpy,
     } = getSpyMethods();
 
-    view.to.element.dispatchEvent(moveEvent);
+    view['to'].element.dispatchEvent(moveEvent);
     const result = view['handleBeginSlidingPointerEvent'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
@@ -781,7 +779,7 @@ describe('private addListenersToThumbs', () => {
       .spyOn(view, 'updateRangeSliderValues');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
-    const createScaleMarksSpy = jest.spyOn(view.scale, 'createScaleMarks');
+    const createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
 
     view['addListenersToThumbs']();
 
@@ -818,10 +816,10 @@ describe('private setTopLeft', () => {
     const tLeft = '4';
     const result = view['setTopLeft'](mu, fTop, fLeft, tTop, tLeft);
 
-    const fromTop = result.from.tooltip.element.style.top;
-    const fromLeft = result.from.tooltip.element.style.left;
-    const toTop = result.to.tooltip.element.style.top;
-    const toLeft = result.to.tooltip.element.style.left;
+    const fromTop = result['from'].tooltip.element.style.top;
+    const fromLeft = result['from'].tooltip.element.style.left;
+    const toTop = result['to'].tooltip.element.style.top;
+    const toLeft = result['to'].tooltip.element.style.left;
 
     expect(fromTop).toBe(fTop + mu);
     expect(fromLeft).toBe(fLeft + mu);
