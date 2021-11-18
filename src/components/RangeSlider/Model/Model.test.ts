@@ -32,8 +32,8 @@ describe('private static validateSettings', () => {
     const throwMessage = "'max' must be greater than 'min'";
     expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
-    // eslint-disable-next-line no-multi-assign
-    settings.min = settings.max = 1000;
+    settings.min = 1000;
+    settings.max = 1000;
     expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
 
     settings.min = 1000;
