@@ -32,7 +32,7 @@ import './RangeSlider.scss';
     const elementId = `#${this[0]?.id}`;
 
     const model: Model = new Model(mergedSettings);
-    const view: View = new View(elementId, mergedSettings);
+    const view: View = new View(elementId, model.getSettings());
     // eslint-disable-next-line no-unused-vars
     const presenter: Presenter = new Presenter(model, view);
 
