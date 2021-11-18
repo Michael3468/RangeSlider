@@ -12,11 +12,11 @@ import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 export default class View extends Observer {
   private slider: Slider;
-  from: Thumb;
-  to: Thumb;
-  range: Range;
-  scale: Scale;
-  configurationPanel: ConfigurationPanel;
+  private from: Thumb;
+  private to: Thumb;
+  private range: Range;
+  private scale: Scale;
+  private configurationPanel: ConfigurationPanel;
 
   private settings: ISettings;
   private rangeMarginTo: number;
@@ -44,7 +44,7 @@ export default class View extends Observer {
     this.thumbMarginTo = 0;
 
     this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
-    this.handleStopSlidingPointerEvent = this.handleStopSlidingPointerEvent.bind(this);
+    // this.handleStopSlidingPointerEvent = this.handleStopSlidingPointerEvent.bind(this);
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
     this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
@@ -144,10 +144,10 @@ export default class View extends Observer {
   private addListenersToThumbs(): View {
     if (this.settings!.isTwoRunners) {
       this.from.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-      this.from.element.addEventListener('pointerup', this.handleStopSlidingPointerEvent);
+      this.from.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
     }
     this.to.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-    this.to.element.addEventListener('pointerup', this.handleStopSlidingPointerEvent);
+    this.to.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
 
     this.slider.element!.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
     this.slider.element!.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
@@ -178,8 +178,7 @@ export default class View extends Observer {
     return target;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
+  private static handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
     const target = event.target as HTMLElement;
     target.onpointermove = null;
     target.releasePointerCapture(event.pointerId);
@@ -194,8 +193,8 @@ export default class View extends Observer {
 
     // check which thumb is closest to the cursor position
     if (this.settings.isTwoRunners) {
-      const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
-      const toDiff = this.getDifferenceBetween(currentPos, toPos);
+      const fromDiff = View.getDifferenceBetween(currentPos, fromPos);
+      const toDiff = View.getDifferenceBetween(currentPos, toPos);
 
       thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
@@ -212,8 +211,7 @@ export default class View extends Observer {
     return this;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private getDifferenceBetween(
+  private static getDifferenceBetween(
     currentPos: number,
     thumbMargin: number,
   ): number {
