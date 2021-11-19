@@ -7,10 +7,10 @@ Slider for selecting a range of values.
 ```bash
 # Download repository:
 
-$ git clone https://github.com/WhiteDevilMan/slider
+$ git clone https://github.com/WhiteDevilMan/RangeSlider
 
 # Go to the folder:
-$ cd slider
+$ cd RangeSlider
 
 # Install dependencies from package.json:
 $ npm install (or 'npm i')
@@ -32,7 +32,7 @@ $ npm run test (or 'npm test')
 ```bash
 This Slider uses MVP architecture
 
-M - Model     | works with data, performs calculations and manages business processes
-V - View      | shows the user the interface and data from the model
-P - Presenter | serves as a layer between the model and the view
+M - Model     | Works with data, performs calculations and manages business processes
+V - View      | Shows the user the interface and data from the model
+P - Presenter | Serves as a layer between the model and the view
 ```
