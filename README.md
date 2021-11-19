@@ -36,3 +36,5 @@ M - Model     | Works with data, performs calculations and manages business proc
 V - View      | Shows the user the interface and data from the model
 P - Presenter | Serves as a layer between the model and the view
 ```
+
+![Architecture](./src/assets/img/architecture.svg)
