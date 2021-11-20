@@ -1,12 +1,14 @@
-## RangeSlider
-```bash
-Slider for selecting a range of values.
+# RangeSlider jQuery plugin
+Table of Contents:
+1. [Build Setup](#build-setup)
+2. [Plugin Configuration](#plugin-configuration)
+3. [Architecture](#architecture)
+
+</br>
+
+## Build Setup
 ```
-
-## Build Setup:
-```bash
 # Download repository:
-
 $ git clone https://github.com/WhiteDevilMan/RangeSlider
 
 # Go to the folder:
@@ -26,15 +28,50 @@ $ npm run deploy
 
 # Run test
 $ npm run test (or 'npm test')
+
+# Lint Styles
+$ npm run stylelint-fix
+```
+</br>
+
+## Plugin Configuration
+
+You need to add `<div>` block with `id` on your page.
+
+Example:
+```html
+<div id='range-slider'></div>
 ```
 
-## Architecture
-```bash
-This Slider uses MVP architecture
+</br>
+And then add to *.js file RangeSlider jQuery plugin with settings.
 
-M - Model     | Works with data, performs calculations and manages business processes
+Example:
+
+```javascript
+$('#range-slider').RangeSlider({
+  min: 0,
+  max: 100,
+  valueFrom: 20,
+  valueTo: 80,
+  step: 1,
+  isTwoRunners: true,
+  isScaleVisible: true,
+  isTooltipsVisible: true,
+  isVertical: false,
+  isConfPanel: false,
+  isBarVisible: true,
+});
+```
+</br>
+
+## Architecture
+
+RangeSlider uses MVP architecture
+```
+M - Model     | Works with data, performs validations, calculations and manages business processes
 V - View      | Shows the user the interface and data from the model
 P - Presenter | Serves as a layer between the model and the view
 ```
 
-![Architecture](./src/assets/img/architecture.svg)
+![RangeSlider architecture](./src/assets/img/architecture.svg)
