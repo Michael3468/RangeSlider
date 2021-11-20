@@ -67,11 +67,12 @@ $('#range-slider').RangeSlider({
 
 ## Architecture
 
-RangeSlider uses MVP architecture
-```
-M - Model     | Works with data, performs validations, calculations and manages business processes
-V - View      | Shows the user the interface and data from the model
-P - Presenter | Serves as a layer between the model and the view
-```
+RangeSlider uses **MVP** (Model View Presenter) architecture.
+
+**Model** - works with data, performs validations, calculations and manages business processes.
+
+**View** - shows the user the interface and data from the *model*.
+
+**Presenter** - serves as a layer between the *model* and the *view*.
 
 ![RangeSlider architecture](./src/assets/img/architecture.svg)
