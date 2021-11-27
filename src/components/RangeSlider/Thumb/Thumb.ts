@@ -2,14 +2,20 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import Tooltip from '../Tooltip/Tooltip';
-import { ThumbName, ISettings } from '../RangeSlider/types';
+import {
+  ThumbName,
+  ISettings,
+  AbstractThumb,
+  AbstractTooltip,
+} from '../RangeSlider/types';
 import { createElement } from '../lib/common';
 
-export default class Thumb {
+export default class Thumb extends AbstractThumb {
   element: HTMLElement;
-  tooltip: Tooltip;
+  tooltip: AbstractTooltip;
 
   constructor(private name: ThumbName) {
+    super();
     this.name = name;
     this.tooltip = new Tooltip(this.name);
 

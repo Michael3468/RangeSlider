@@ -1,11 +1,11 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
-import { ISettings } from '../RangeSlider/types';
+import { AbstractConfigurationPanel, AbstractObserver, ISettings } from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
 import { createElement } from '../lib/common';
 
-export default class ConfigurationPanel extends Observer {
+export default class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
   element: HTMLElement;
 
@@ -21,11 +21,10 @@ export default class ConfigurationPanel extends Observer {
   private cpBar: HTMLInputElement | undefined;
   private cpTips: HTMLInputElement | undefined;
 
-  changeConfPanelSettingsObserver: Observer;
+  changeConfPanelSettingsObserver: AbstractObserver;
 
   constructor(settings: ISettings) {
     super();
-
     this.settings = settings;
     this.element = ConfigurationPanel.createElement();
 

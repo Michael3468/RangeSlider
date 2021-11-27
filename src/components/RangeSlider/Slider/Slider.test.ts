@@ -19,7 +19,8 @@ describe('private createSlider', () => {
     Object.defineProperty(global.document, 'querySelector', { value: spyFunc });
 
     const sliderId = 'range-slider';
-    const result = Slider['createSlider'](sliderId);
+    const slider = new Slider(sliderId);
+    const result = slider['createSlider'](sliderId);
 
     expect(spyFunc).toHaveBeenCalled();
     expect(result.nodeName).toBe('DIV');

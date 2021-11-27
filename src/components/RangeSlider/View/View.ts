@@ -4,19 +4,29 @@
 import Thumb from '../Thumb/Thumb';
 import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';
-import { ISettings, MeasureUnit, ThumbName } from '../RangeSlider/types';
+import {
+  AbstractConfigurationPanel,
+  AbstractObserver,
+  AbstractRange,
+  AbstractScale,
+  AbstractSlider,
+  AbstractThumb,
+  ISettings,
+  MeasureUnit,
+  ThumbName,
+} from '../RangeSlider/types';
 import Range from '../Range/Range';
 import Observer from '../Observer/Observer';
 import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
-export default class View extends Observer {
-  private slider: Slider;
-  private from: Thumb;
-  private to: Thumb;
-  private range: Range;
-  private scale: Scale;
-  private configurationPanel: ConfigurationPanel;
+export default class View {
+  private slider: AbstractSlider;
+  private from: AbstractThumb;
+  private to: AbstractThumb;
+  private range: AbstractRange;
+  private scale: AbstractScale;
+  private configurationPanel: AbstractConfigurationPanel;
 
   private settings: ISettings;
   private rangeMarginTo: number;
@@ -24,10 +34,9 @@ export default class View extends Observer {
   private thumbMarginFrom: number;
   private thumbMarginTo: number;
 
-  changeSettingsObserver: Observer;
+  changeSettingsObserver: AbstractObserver;
 
   constructor(id: string, mergedSettings: ISettings) {
-    super();
     this.settings = mergedSettings;
 
     this.slider = new Slider(id);
@@ -44,6 +53,7 @@ export default class View extends Observer {
     this.thumbMarginTo = 0;
 
     this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
+    // TODO del comment
     // this.handleStopSlidingPointerEvent = this.handleStopSlidingPointerEvent.bind(this);
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
@@ -273,7 +283,7 @@ export default class View extends Observer {
 
   private getCurrentPosWithStep(
     settings: ISettings,
-    slider: Slider,
+    slider: AbstractSlider,
     currentPos: number,
   ): number {
     const stepInPx = this.getStepInPx();

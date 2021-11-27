@@ -1,11 +1,13 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import { createElement } from '../lib/common';
+import { AbstractRange } from '../RangeSlider/types';
 
-export default class Range {
+export default class Range extends AbstractRange {
   element: HTMLElement;
 
   constructor() {
+    super();
     this.element = createElement('div', 'range-slider__range');
   }
 

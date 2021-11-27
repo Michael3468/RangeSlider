@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+/* eslint-disable class-methods-use-this */
+/* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
 /* eslint-disable lines-between-class-members */
 /* eslint-disable no-shadow */
@@ -9,13 +11,45 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
+
 import View from './View';
 import {
   ISettings,
   ThumbName,
-  PointerEvent,
   MeasureUnit,
 } from '../RangeSlider/types';
+
+class PointerEvent extends MouseEvent {
+  public height: number;
+  public isPrimary: boolean;
+  public pointerId: number;
+  public pointerType: string;
+  public pressure: number;
+  public tangentialPressure: number;
+  public tiltX: number;
+  public tiltY: number;
+  public twist: number;
+  public width: number;
+
+  constructor(type: string, params: PointerEventInit = {}) {
+    super(type, params);
+    this.pointerId = params.pointerId!;
+    this.width = params.width!;
+    this.height = params.height!;
+    this.pressure = params.pressure!;
+    this.tangentialPressure = params.tangentialPressure!;
+    this.tiltX = params.tiltX!;
+    this.tiltY = params.tiltY!;
+    this.twist = params.twist!;
+    this.pointerType = params.pointerType!;
+    this.isPrimary = params.isPrimary!;
+  }
+
+  public ReleasePointerCapture(): any {}
+  public getCoalescedEvents(): any {}
+  public getPredictedEvents(): any {}
+}
+global.PointerEvent = PointerEvent as any;
 
 declare class ViewHint {
   getPosOnScale(currentPos: number): number;

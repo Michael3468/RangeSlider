@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
@@ -25,17 +26,17 @@ describe('removeObserver', () => {
     const observer = new Observer();
 
     observer.addObserver(testFn);
-    expect(observer.observers.length).toBe(1); // должен быть один элемент в массиве
+    expect(observer['observers'].length).toBe(1); // должен быть один элемент в массиве
 
     observer.removeObserver(testFn);
-    expect(observer.observers.length).toBe(0); // должен быть пустой массив
+    expect(observer['observers'].length).toBe(0); // должен быть пустой массив
   });
 
   it('should throw error', () => {
     const observer = new Observer();
 
     observer.addObserver(testFn); // добавляем в массив обзервер
-    expect(observer.observers.length).toBe(1);
+    expect(observer['observers'].length).toBe(1);
 
     expect(() => {
       // пытаемся удалить из массива обзервер которого там нет

@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 
-import { ISettings, ISliderElement } from '../RangeSlider/types';
+import { AbstractScale, ISettings } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,
   getElementLengthInPx,
@@ -9,12 +9,13 @@ import {
   getOnePointInPx,
 } from '../lib/common';
 
-export default class Scale implements ISliderElement {
+export default class Scale extends AbstractScale {
   element: HTMLElement;
 
   private settings: ISettings | undefined;
 
   constructor() {
+    super();
     this.element = createElement('div', 'range-slider__scale');
     this.settings = undefined;
     Scale.roundValueTo = Scale.roundValueTo.bind(this);

@@ -1,11 +1,12 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import { ISettings } from '../RangeSlider/types';
+import { AbstractObserver, ISettings } from '../RangeSlider/types';
 
-export default class Observer {
-  private observers: Function[];
+export default class Observer extends AbstractObserver {
+  protected observers: Function[];
 
   constructor() {
+    super();
     this.observers = [];
   }
 

@@ -1,12 +1,13 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { ThumbName } from '../RangeSlider/types';
+import { AbstractTooltip, ThumbName } from '../RangeSlider/types';
 import { createElement } from '../lib/common';
 
-export default class Tooltip {
+export default class Tooltip extends AbstractTooltip {
   element: HTMLElement;
 
   constructor(private name: ThumbName) {
+    super();
     this.name = name;
     this.element = createElement('div', `range-slider__tooltip_${this.name}`);
   }
