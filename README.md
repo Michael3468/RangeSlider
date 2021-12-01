@@ -76,3 +76,5 @@ RangeSlider uses **MVP** (Model View Presenter) architecture.
 **Presenter** - serves as a layer between the *model* and the *view*.
 
 ![RangeSlider architecture](./src/assets/img/architecture.svg)
+
+Layers are unlinked from external dependencies using abstract classes. Data between layers is transmitted using the observer pattern.
