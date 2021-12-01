@@ -5,7 +5,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  // target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist',
+  // target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist', // TODO
   target: 'web',
   devtool: 'eval-cheap-module-source-map',
   stats: {
@@ -13,7 +13,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
-    // hot: true,
     port: 8081,
     public: 'localhost:8081',
     overlay: {
@@ -29,7 +28,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ],
 });
 
-// eslint-disable-next-line no-unused-vars
-module.exports = new Promise((resolve, reject) => {
+module.exports = new Promise((resolve) => {
   resolve(devWebpackConfig);
 });
