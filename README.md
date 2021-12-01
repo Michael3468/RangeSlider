@@ -1,4 +1,4 @@
-# RangeSlider jQuery plugin
+# RangeSlider jQuery Plugin
 Table of Contents:
 1. [Build Setup](#build-setup)
 2. [Plugin Configuration](#plugin-configuration)
@@ -78,3 +78,9 @@ RangeSlider uses **MVP** (Model View Presenter) architecture.
 ![RangeSlider architecture](./src/assets/img/architecture.svg)
 
 Layers are unlinked from external dependencies using abstract classes. Data between layers is transmitted using the observer pattern.
+
+</br>
+
+## UML Classes Diagram
+
+![UML Classes Diagram](./src/assets/img/uml_src_diagram.png)
