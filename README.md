@@ -3,6 +3,7 @@ Table of Contents:
 1. [Build Setup](#build-setup)
 2. [Plugin Configuration](#plugin-configuration)
 3. [Architecture](#architecture)
+4. [UML Classes Diagram](#uml-classes-diagram)
 
 </br>
 
