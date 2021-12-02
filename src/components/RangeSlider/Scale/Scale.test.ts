@@ -43,8 +43,8 @@ beforeEach(() => {
 describe('private createMark', () => {
   test('should return html span with margin-left and NO class "range-slider__scale_mark_vertical"', () => {
     const scale = new Scale();
-    scale.settings = settings;
-    scale.settings.isVertical = false;
+    scale['settings'] = settings;
+    scale['settings'].isVertical = false;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -64,8 +64,8 @@ describe('private createMark', () => {
 
   test('should return html span with margin-top and class "range-slider__scale_mark_vertical"', () => {
     const scale = new Scale();
-    scale.settings = settings;
-    scale.settings.isVertical = true;
+    scale['settings'] = settings;
+    scale['settings'].isVertical = true;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -87,8 +87,8 @@ describe('private createMark', () => {
 describe('private createMarkValue', () => {
   test('should return div element with class "range-slider__scale_mark_value" and inner text = value', () => {
     const scale = new Scale();
-    scale.settings = settings;
-    scale.settings.isVertical = false;
+    scale['settings'] = settings;
+    scale['settings'].isVertical = false;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -113,8 +113,8 @@ describe('private createMarkValue', () => {
 
   test('should return div element with class "range-slider__scale_mark_value_vertical" and inner text = value', () => {
     const scale = new Scale();
-    scale.settings = settings;
-    scale.settings.isVertical = true;
+    scale['settings'] = settings;
+    scale['settings'].isVertical = true;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -156,10 +156,10 @@ describe('private roundValueTo', () => {
 describe('private getStepBetweenMarksInPx', () => {
   test('should return step between marks in px (number)', () => {
     const scale = new Scale();
-    scale.settings = settings;
-    scale.settings.isVertical = false;
+    scale['settings'] = settings;
+    scale['settings'].isVertical = false;
 
-    const lastMarkValueElement = scale.element.appendChild(scale['createMarkValue'](scale.settings.max, 500));
+    const lastMarkValueElement = scale.element.appendChild(scale['createMarkValue'](scale['settings'].max, 500));
     /**
      * lastMarkValueSize = lastMarkValueElement.getBoundingClientRect().width = 300
      * because of ...Element.prototype.getBoundingClientRect...
@@ -357,7 +357,7 @@ describe('private getMaxMarkValue', () => {
 describe('private showHideBeforeLastMarkValue', () => {
   function showHideBeforeLastMarkValueBeforeTest(isVert: boolean) {
     const scale = new Scale();
-    scale.settings = {
+    scale['settings'] = {
       min: 0,
       max: 1500,
       isTwoRunners: true,
@@ -396,14 +396,14 @@ describe('private showHideBeforeLastMarkValue', () => {
     }));
 
     // for horizontal slider
-    scale.settings!.isVertical = false;
+    scale['settings']!.isVertical = false;
     let result = scale['showHideBeforeLastMarkValue'](lastMV);
     let lastChild = result.element.lastChild as HTMLElement;
     let isClassListContainsHidden = lastChild.classList.contains('hidden');
     expect(isClassListContainsHidden).toBeTruthy();
 
     // for vertical slider
-    scale.settings!.isVertical = true;
+    scale['settings']!.isVertical = true;
     result = scale['showHideBeforeLastMarkValue'](lastMV);
     lastChild = result.element.lastChild as HTMLElement;
     isClassListContainsHidden = lastChild.classList.contains('hidden');
@@ -426,14 +426,14 @@ describe('private showHideBeforeLastMarkValue', () => {
     }));
 
     // for horizontal slider
-    scale.settings!.isVertical = false;
+    scale['settings']!.isVertical = false;
     let result = scale['showHideBeforeLastMarkValue'](lastMV);
     let lastChild = result.element.lastChild as HTMLElement;
     let isClassListContainsHidden = lastChild.classList.contains('hidden');
     expect(isClassListContainsHidden).toBeFalsy();
 
     // for vertical slider
-    scale.settings!.isVertical = true;
+    scale['settings']!.isVertical = true;
     result = scale['showHideBeforeLastMarkValue'](lastMV);
     lastChild = result.element.lastChild as HTMLElement;
     isClassListContainsHidden = lastChild.classList.contains('hidden');
