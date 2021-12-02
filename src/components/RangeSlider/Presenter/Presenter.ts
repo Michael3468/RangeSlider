@@ -3,7 +3,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 import { ISettings } from '../RangeSlider/types';
-
 import View from '../View/View';
 import Model from '../Model/Model';
 
