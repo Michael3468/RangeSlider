@@ -53,8 +53,6 @@ export default class View {
     this.thumbMarginTo = 0;
 
     this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
-    // TODO del comment
-    // this.handleStopSlidingPointerEvent = this.handleStopSlidingPointerEvent.bind(this);
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
     this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
