@@ -83,7 +83,7 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
 
     <div class="settings-panel__options">
       <form>
-        <div class="settings-panel__options_inputs-block">
+        <div class="settings-panel__options_inputs_block">
           <div class="settings-panel__options_input">
             <label for="min" class="settings-panel__options_input-text">min</label>
             <input class="settings-panel__options_input-value" type="number" name="min" max="0">
@@ -106,34 +106,34 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
           </div>
         </div>
 
-        <div class="settings-panel__options_toggles-block">
-          <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options-toggle-label">
-              <input class="settings-panel__options-toggle-input" type="checkbox" name="vertical">
+        <div class="settings-panel__options_checkbox_block">
+          <div class="settings-panel__options_checkbox">
+            <label class="settings-panel__options_checkbox_label">
+              <input class="settings-panel__options_checkbox_input" type="checkbox" name="vertical">
               vertical
             </label>
           </div>
-          <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options-toggle-label">
-              <input class="settings-panel__options-toggle-input" type="checkbox" name="range">
+          <div class="settings-panel__options_checkbox">
+            <label class="settings-panel__options_checkbox_label">
+              <input class="settings-panel__options_checkbox_input" type="checkbox" name="range">
               range
             </label>
           </div>
-          <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options-toggle-label">
-              <input class="settings-panel__options-toggle-input" type="checkbox" name="scale">
+          <div class="settings-panel__options_checkbox">
+            <label class="settings-panel__options_checkbox_label">
+              <input class="settings-panel__options_checkbox_input" type="checkbox" name="scale">
               scale
             </label>
           </div>
-          <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options-toggle-label">
-              <input class="settings-panel__options-toggle-input" type="checkbox" name="bar">
+          <div class="settings-panel__options_checkbox">
+            <label class="settings-panel__options_checkbox_label">
+              <input class="settings-panel__options_checkbox_input" type="checkbox" name="bar">
               bar
             </label>
           </div>
-          <div class="settings-panel__options_toggle">
-            <label class="settings-panel__options-toggle-label">
-              <input class="settings-panel__options-toggle-input" type="checkbox" name="tip">
+          <div class="settings-panel__options_checkbox">
+            <label class="settings-panel__options_checkbox_label">
+              <input class="settings-panel__options_checkbox_input" type="checkbox" name="tip">
               tip
             </label>
           </div>

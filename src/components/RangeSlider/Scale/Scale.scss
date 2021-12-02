@@ -11,7 +11,7 @@
     height: 100%;
   }
 
-  &-mark {
+  &_mark {
     position: absolute;
     top: 5px;
     display: block;
@@ -35,7 +35,7 @@
       }
     }
 
-    &-value {
+    &_value {
       position: absolute;
       top: 12px;
       transform: translateX(-50%);

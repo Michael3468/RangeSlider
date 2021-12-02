@@ -41,7 +41,7 @@ beforeEach(() => {
 });
 
 describe('private createMark', () => {
-  test('should return html span with margin-left and NO class "range-slider__scale-mark_vertical"', () => {
+  test('should return html span with margin-left and NO class "range-slider__scale_mark_vertical"', () => {
     const scale = new Scale();
     scale.settings = settings;
     scale.settings.isVertical = false;
@@ -52,17 +52,17 @@ describe('private createMark', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('SPAN');
 
-    const isHasClass = result.classList.contains('range-slider__scale-mark');
+    const isHasClass = result.classList.contains('range-slider__scale_mark');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('range-slider__scale-mark_vertical');
+    const isHasClassVertical = result.classList.contains('range-slider__scale_mark_vertical');
     expect(isHasClassVertical).toBeFalsy();
 
     const isElementHasMarginLeft = result.style.marginLeft;
     expect(isElementHasMarginLeft).toBe(`${marginFromBegin}px`);
   });
 
-  test('should return html span with margin-top and class "range-slider__scale-mark_vertical"', () => {
+  test('should return html span with margin-top and class "range-slider__scale_mark_vertical"', () => {
     const scale = new Scale();
     scale.settings = settings;
     scale.settings.isVertical = true;
@@ -73,10 +73,10 @@ describe('private createMark', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('SPAN');
 
-    const isHasClass = result.classList.contains('range-slider__scale-mark');
+    const isHasClass = result.classList.contains('range-slider__scale_mark');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('range-slider__scale-mark_vertical');
+    const isHasClassVertical = result.classList.contains('range-slider__scale_mark_vertical');
     expect(isHasClassVertical).toBeTruthy();
 
     const isElementHasMarginTop = result.style.marginTop;
@@ -85,7 +85,7 @@ describe('private createMark', () => {
 });
 
 describe('private createMarkValue', () => {
-  test('should return div element with class "range-slider__scale-mark-value" and inner text = value', () => {
+  test('should return div element with class "range-slider__scale_mark_value" and inner text = value', () => {
     const scale = new Scale();
     scale.settings = settings;
     scale.settings.isVertical = false;
@@ -98,10 +98,10 @@ describe('private createMarkValue', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('DIV');
 
-    const isHasClass = result.classList.contains('range-slider__scale-mark-value');
+    const isHasClass = result.classList.contains('range-slider__scale_mark_value');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('range-slider__scale-mark-value_vertical');
+    const isHasClassVertical = result.classList.contains('range-slider__scale_mark_value_vertical');
     expect(isHasClassVertical).toBeFalsy();
 
     const isHasMarginLeft = result.style.marginLeft;
@@ -111,7 +111,7 @@ describe('private createMarkValue', () => {
     expect(isHasInnerText).toBe(value.toString());
   });
 
-  test('should return div element with class "range-slider__scale-mark-value_vertical" and inner text = value', () => {
+  test('should return div element with class "range-slider__scale_mark_value_vertical" and inner text = value', () => {
     const scale = new Scale();
     scale.settings = settings;
     scale.settings.isVertical = true;
@@ -124,10 +124,10 @@ describe('private createMarkValue', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('DIV');
 
-    const isHasClass = result.classList.contains('range-slider__scale-mark-value');
+    const isHasClass = result.classList.contains('range-slider__scale_mark_value');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('range-slider__scale-mark-value_vertical');
+    const isHasClassVertical = result.classList.contains('range-slider__scale_mark_value_vertical');
     expect(isHasClassVertical).toBeTruthy();
 
     const isHasMarginTop = result.style.marginTop;
@@ -234,17 +234,17 @@ describe('public createScaleMarks', () => {
 
       if (childNodeName === 'SPAN') {
         // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale-mark');
+        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale_mark');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale-mark_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale_mark_vertical');
         expect(isClassListContainsVertical).toBeFalsy();
       } else if (childNodeName === 'DIV') {
         // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale-mark-value');
+        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale_mark_value');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale-mark-value_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale_mark_value_vertical');
         expect(isClassListContainsVertical).toBeFalsy();
       }
     }
@@ -300,17 +300,17 @@ describe('public createScaleMarks', () => {
 
       if (childNodeName === 'SPAN') {
         // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale-mark');
+        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale_mark');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale-mark_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale_mark_vertical');
         expect(isClassListContainsVertical).toBeTruthy();
       } else if (childNodeName === 'DIV') {
         // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale-mark-value');
+        const isClassListContains = result.element.children[i]?.classList.contains('range-slider__scale_mark_value');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale-mark-value_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('range-slider__scale_mark_value_vertical');
         expect(isClassListContainsVertical).toBeTruthy();
       }
     }

@@ -60,10 +60,10 @@ export default class Scale extends AbstractScale {
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
-    const mark = createElement('span', 'range-slider__scale-mark');
+    const mark = createElement('span', 'range-slider__scale_mark');
 
     if (this.settings?.isVertical) {
-      mark.className += ' range-slider__scale-mark_vertical';
+      mark.className += ' range-slider__scale_mark_vertical';
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
       mark.style.marginLeft = `${marginFromBegin}px`;
@@ -73,10 +73,10 @@ export default class Scale extends AbstractScale {
   }
 
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
-    const markValue = createElement('div', 'range-slider__scale-mark-value');
+    const markValue = createElement('div', 'range-slider__scale_mark_value');
 
     if (this.settings?.isVertical) {
-      markValue.className += ' range-slider__scale-mark-value_vertical';
+      markValue.className += ' range-slider__scale_mark_value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
       markValue.style.marginLeft = `${marginFromBegin}px`;
