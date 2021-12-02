@@ -2,10 +2,9 @@
 Table of Contents:
 1. [Build Setup](#build-setup)
 2. [Plugin Configuration](#plugin-configuration)
-3. [Architecture](#architecture)
-4. [UML Classes Diagram](#uml-classes-diagram)
-
-</br>
+3. [Slider Events](#slider-events)
+4. [Architecture](#architecture)
+5. [UML Classes Diagram](#uml-classes-diagram)
 
 ## Build Setup
 ```
@@ -33,7 +32,6 @@ $ npm run test (or 'npm test')
 # Lint Styles
 $ npm run stylelint-fix
 ```
-</br>
 
 ## Plugin Configuration
 
@@ -44,7 +42,6 @@ Example:
 <div id='range-slider'></div>
 ```
 
-</br>
 And then add to *.js file RangeSlider jQuery plugin with settings.
 
 Example:
@@ -64,7 +61,40 @@ $('#range-slider').RangeSlider({
   isBarVisible: true,
 });
 ```
-</br>
+
+## Slider Events
+
+To subscribe to slider event you need to:
+* Add Observer property to class properties and initialize it in the constructor
+
+Example:
+```javascript
+export default class View {
+  changeSettingsObserver: AbstractObserver;
+
+  constructor() {
+    this.changeSettingsObserver = new Observer();
+  }
+```
+* In the code where you want to subscribe on this observer add
+```
+yourObserver.addObserver(data? => { /* your code */ })
+```
+
+Example:
+```javascript
+this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
+  // Your code. Example:
+  this.model.updateSettings(settings);
+});
+```
+
+To unsubscribe from slider event you need to remove observer:
+```javascript
+this.view.changeSettingsObserver.removeObserver((settings: ISettings) => {
+  this.model.updateSettings(settings);
+});
+```
 
 ## Architecture
 
@@ -79,8 +109,6 @@ RangeSlider uses **MVP** (Model View Presenter) architecture.
 ![RangeSlider architecture](./src/assets/img/architecture.svg)
 
 Layers are unlinked from external dependencies using abstract classes. Data between layers is transmitted using the observer pattern.
-
-</br>
 
 ## UML Classes Diagram
 
