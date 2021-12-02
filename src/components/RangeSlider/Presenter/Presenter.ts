@@ -22,9 +22,11 @@ export default class Presenter {
 
     this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
       this.model.updateSettings(settings);
+      // TODO split
       this.view['configurationPanel'].updateState(settings);
     });
 
+    // TODO split
     this.view['configurationPanel'].changeConfPanelSettingsObserver
       .addObserver((settings: ISettings) => {
         this.model.updateSettings(settings);
