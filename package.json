@@ -1,5 +1,5 @@
 {
-  "name": "slider",
+  "name": "range-slider",
   "version": "0.1.0",
   "private": true,
   "description": "edu project",
@@ -24,7 +24,7 @@
     "jest",
     "pug"
   ],
-  "author": "",
+  "author": "WhiteDevilMan",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.15.8",
