@@ -51,15 +51,15 @@ class PointerEvent extends MouseEvent {
 }
 global.PointerEvent = PointerEvent as any;
 
-declare class ViewHint {
-  getPosOnScale(currentPos: number): number;
-  setZIndexTop(thumb: ThumbName): View;
-  isTooltipsCollision(): boolean;
-  setDistanceBetweenTooltips(): View;
-  setMargins(thumbName: ThumbName, currentPos: number): void;
-  updateRangeSliderValues(): View;
-  initRangeSliderMargins(): View;
-  handleNotifyChangeSettingsObserver(): void;
+abstract class ViewHint {
+  abstract getPosOnScale(currentPos: number): number;
+  abstract setZIndexTop(thumb: ThumbName): View;
+  abstract isTooltipsCollision(): boolean;
+  abstract setDistanceBetweenTooltips(): View;
+  abstract setMargins(thumbName: ThumbName, currentPos: number): void;
+  abstract updateRangeSliderValues(): View;
+  abstract initRangeSliderMargins(): View;
+  abstract handleNotifyChangeSettingsObserver(): void;
 }
 
 let settings: ISettings;
