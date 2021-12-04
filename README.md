@@ -7,6 +7,11 @@ Table of Contents:
 5. [UML Classes Diagram](#uml-classes-diagram)
 
 ## Build Setup
+Plugin created with:
+
+* node v14.18.2
+* jQuery 3.6.0
+
 ```
 # Download repository:
 $ git clone https://github.com/WhiteDevilMan/RangeSlider
