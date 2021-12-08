@@ -29,7 +29,7 @@ module.exports = {
     paths: PATHS,
   },
   entry: {
-    'app': `${PATHS.src}/app.ts`,
+    'range-slider': `${PATHS.src}/app.ts`,
   },
   output: {
     filename: `${PATHS.assets}js/[name].[hash].js`,
@@ -39,7 +39,7 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          name: 'vendors',
+          name: 'range-slider-vendors',
           test: /node_modules/,
           chunks: 'all',
           enforce: true,
@@ -148,7 +148,7 @@ module.exports = {
       (page) => new HtmlWebpackPlugin({
         template: `${PAGES_DIR}/${page}`, // .pug
         filename: `./${page.replace(/\.pug/, '.html')}`, // .html
-        chunks: ['app', 'vendors', path.parse(page).name],
+        chunks: ['range-slider', 'range-slider-vendors', path.parse(page).name],
       }),
     ),
   ],

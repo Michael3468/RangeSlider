@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
@@ -26,7 +27,7 @@ export default class View {
   private to: AbstractThumb;
   private range: AbstractRange;
   private scale: AbstractScale;
-  private configurationPanel: AbstractConfigurationPanel;
+  private configurationPanel?: AbstractConfigurationPanel;
 
   private settings: ISettings;
   private rangeMarginTo: number;
@@ -45,7 +46,9 @@ export default class View {
     this.range = new Range();
     this.scale = new Scale();
 
-    this.configurationPanel = new ConfigurationPanel(this.settings);
+    if (process.env['NODE_ENV'] !== 'production') {
+      this.configurationPanel = new ConfigurationPanel(this.settings);
+    }
 
     this.rangeMarginTo = 0;
     this.rangeMarginFrom = 0;
@@ -83,7 +86,7 @@ export default class View {
       }
       this.to.element.classList.add(THUMB_VERTICAL);
     } else {
-      this.slider.element!.classList.remove(RS_VERTICAL);
+      this.slider.element?.classList.remove(RS_VERTICAL);
       this.scale.element.classList.remove(RS_SCALE_VERTICAL);
 
       if (settings.isTwoRunners) {
@@ -105,9 +108,11 @@ export default class View {
       this.scale.createScaleMarks(settings);
     }
 
-    if (settings.isConfPanel) {
-      this.slider.element.after(this.configurationPanel!.element);
-      this.configurationPanel.updateState(this.settings);
+    if (process.env['NODE_ENV'] !== 'production') {
+      if (settings.isConfPanel) {
+        this.slider.element.after(this.configurationPanel!.element);
+        this.configurationPanel?.updateState(this.settings);
+      }
     }
 
     this.initRangeSliderMargins();
