@@ -4,12 +4,11 @@
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
-// const isProd = process.env.NODE_ENV === 'production',
-// const isDev = !isProd,
+
+const isProd = process.env.NODE_ENV === 'production';
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -32,7 +31,7 @@ module.exports = {
     'range-slider': `${PATHS.src}/app.ts`,
   },
   output: {
-    filename: `${PATHS.assets}js/[name].[hash].js`,
+    filename: isProd ? `${PATHS.assets}js/[name].min.js` : `${PATHS.assets}js/[name].[hash].js`,
     path: PATHS.dist,
   },
   optimization: {
@@ -94,7 +93,7 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
@@ -121,7 +120,7 @@ module.exports = {
     alias: {
       '~': 'src',
     },
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -133,16 +132,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[hash].css`,
+      filename: isProd ? `${PATHS.assets}css/[name].min.css` : `${PATHS.assets}css/[name].[hash].css`,
     }),
-    new CopyWebpackPlugin([
-      {
-        from: `${PATHS.src}/components/**/*.{jpg,jpeg,png,svg,gif}`,
-        to: `${PATHS.assets}img`,
-        flatten: true,
-      },
-      { from: `${PATHS.src}/static`, to: '' },
-    ]),
 
     ...PAGES.map(
       (page) => new HtmlWebpackPlugin({
