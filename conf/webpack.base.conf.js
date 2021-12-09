@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable key-spacing */
 /* eslint-disable quote-props */
@@ -134,7 +135,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isProd ? `${PATHS.assets}css/[name].min.css` : `${PATHS.assets}css/[name].[hash].css`,
     }),
+  ],
+};
 
+if (process.env['NODE_ENV'] !== 'production') {
+  module.exports.plugins.push(
     ...PAGES.map(
       (page) => new HtmlWebpackPlugin({
         template: `${PAGES_DIR}/${page}`, // .pug
@@ -142,5 +147,5 @@ module.exports = {
         chunks: ['range-slider', 'range-slider-vendors', path.parse(page).name],
       }),
     ),
-  ],
-};
+  );
+}
