@@ -43,14 +43,24 @@ $ npm run stylelint-fix
 
 ## Plugin Configuration
 
-You need to add `<div>` block with `id` on your page.
+First add jQuery CDN to your page, scripts and styles.
+
+Example:
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="range-slider-vendors.js"></script>
+<script defer src="range-slider.js"></script>
+<link href="range-slider.css" rel="stylesheet">
+```
+
+Then you need to add `<div>` block with `id` on your page.
 
 Example:
 ```html
 <div id='range-slider'></div>
 ```
 
-And then add to *.js file RangeSlider jQuery plugin with settings.
+And after it add RangeSlider plugin with settings to your.js file.
 
 Example:
 
@@ -100,6 +110,7 @@ this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
 To unsubscribe from slider event you need to remove observer:
 ```javascript
 this.view.changeSettingsObserver.removeObserver((settings: ISettings) => {
+  // Your code. Example:
   this.model.updateSettings(settings);
 });
 ```
