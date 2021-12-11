@@ -40,7 +40,7 @@ module.exports = {
       cacheGroups: {
         vendor: {
           name: 'range-slider-vendors',
-          test: /node_modules/,
+          test: /[\\/]node_modules[\\/](?!jquery)(.[a-zA-Z0-9.\-_]+)[\\/]/,
           chunks: 'all',
           enforce: true,
         },
