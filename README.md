@@ -28,6 +28,9 @@ $ npm run dev
 # Build project. Output will be at 'dist' folder
 $ npm run build
 
+# Build project with demo page. Output will be at 'dist' folder
+$ npm run build-demo
+
 # Deploy project to gh-pages (after "npm run build")
 $ npm run deploy
 

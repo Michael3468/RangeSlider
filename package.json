@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "edu project",
-  "main": "index.ts",
+  "main": "demo-page.ts",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --open --config ./conf/webpack.dev.conf.js",
     "build": "cross-env NODE_ENV=production webpack --config ./conf/webpack.build.conf.js",

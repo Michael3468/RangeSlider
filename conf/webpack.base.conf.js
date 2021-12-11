@@ -138,7 +138,7 @@ module.exports = {
   ],
 };
 
-if (process.env['NODE_ENV'] !== 'production') {
+if (!isProd) {
   module.exports.plugins.push(
     ...PAGES.map(
       (page) => new HtmlWebpackPlugin({
@@ -148,4 +148,6 @@ if (process.env['NODE_ENV'] !== 'production') {
       }),
     ),
   );
+
+  module.exports.entry['demo-page'] = `${PATHS.src}/demo-page.ts`;
 }
