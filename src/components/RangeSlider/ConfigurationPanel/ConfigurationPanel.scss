@@ -1,84 +1,86 @@
 @import '../../../assets/scss/vars.scss';
 
-.settings-panel {
-  display: block;
-  min-width: 130px;
-  margin-left: 70px;
-  overflow: auto;
-  background: $slider-bg-color;
-  border: 1px solid $slider-border-color;
-  border-radius: 4px;
-  user-select: auto;
-
-  &__caption {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    font-weight: bold;
-    text-align: center;
-  }
-}
-
-.settings-panel__options_inputs_block,
-.settings-panel__options_checkbox_block {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 10px 10px 0 10px;
-}
-
-.settings-panel__options_input,
-.settings-panel__options_checkbox {
-  display: flex;
-  width: 100px;
-  margin: 0 5px;
-  margin-bottom: 10px;
-  border: 1px solid $slider-border-color;
-}
-
-.settings-panel__options {
-  &_input {
-    flex-direction: column;
-
-    &-text {
+.range-slider {
+  &__configuration-panel {
+    display: block;
+    min-width: 130px;
+    margin-left: 70px;
+    overflow: auto;
+    background: $slider-bg-color;
+    border: 1px solid $slider-border-color;
+    border-radius: 4px;
+    user-select: auto;
+  
+    &__caption {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
       font-weight: bold;
       text-align: center;
-      background: $slider-between-bg-color;
+    }
+  }
+
+  &__configuration-panel__options {
+    &_inputs_block,
+    &_checkbox_block {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 10px 10px 0 10px;
     }
 
-    &-value {
-      width: 100%;
-      text-align: center;
+    &_input,
+    &_checkbox {
+      display: flex;
+      width: 100px;
+      margin: 0 5px;
+      margin-bottom: 10px;
+      border: 1px solid $slider-border-color;
+    }
 
-      &:focus {
-        box-shadow: 0 0 5px red;
+    &_input {
+      flex-direction: column;
+  
+      &-text {
+        font-weight: bold;
+        text-align: center;
+        background: $slider-between-bg-color;
+      }
+
+      &-value {
+        width: 100%;
+        text-align: center;
+  
+        &:focus {
+          box-shadow: 0 0 5px red;
+        }
       }
     }
-  }
 
-  &_toggle {
-    flex-direction: row;
-  }
-}
+    &_toggle {
+      flex-direction: row;
+    }
 
-.settings-panel__options_checkbox_label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+    &_checkbox_label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    
+      &:focus-within {
+        font-weight: bold;
+      }
+    }
 
-  &:focus-within {
-    font-weight: bold;
-  }
-}
-
-.settings-panel__options_checkbox_input {
-  margin: 0 10px;
-
-  &:focus {
-    width: 15px;
-    height: 15px;
-    box-shadow: 0 0 5px red;
-    content: '';
+    &_checkbox_input {
+      margin: 0 10px;
+    
+      &:focus {
+        width: 15px;
+        height: 15px;
+        box-shadow: 0 0 5px red;
+        content: '';
+      }
+    }
   }
 }
