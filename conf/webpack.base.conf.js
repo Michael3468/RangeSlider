@@ -149,5 +149,5 @@ if (!isProd) {
     ),
   );
 
-  module.exports.entry['demo-page'] = `${PATHS.src}/demo-page.ts`;
+  module.exports.entry['index'] = `${PATHS.src}/index.ts`;
 }
