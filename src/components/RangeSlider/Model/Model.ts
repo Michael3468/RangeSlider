@@ -40,7 +40,6 @@ export default class Model {
 
   public getSettings(): ISettings {
     return {
-      // settings
       min: this.min,
       max: this.max,
       valueFrom: this.valueFrom,

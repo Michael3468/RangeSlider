@@ -221,7 +221,7 @@ describe('public createScaleMarks', () => {
 
     // check NO vertical classes in childs classLists
     const childrenListLength = result.element.children.length;
-    // for settings.isVertical = false;
+    /* for settings.isVertical = false; */
     const horizontalLength = result.element.getBoundingClientRect().width;
     const elementsPerStep = 2; // mark and value
     const totalSteps = (horizontalLength / stepBetweenMarksInPx)
@@ -287,7 +287,7 @@ describe('public createScaleMarks', () => {
 
     // check vertical classes in childs classLists
     const childrenListLength = result.element.children.length;
-    // for settings.isVertical = true;
+    /* for settings.isVertical = true; */
     const horizontalLength = result.element.getBoundingClientRect().height;
     const elementsPerStep = 2; // mark and value
     const totalSteps = (horizontalLength / stepBetweenMarksInPx)

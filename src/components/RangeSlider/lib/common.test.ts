@@ -120,8 +120,8 @@ describe('function getOnePointInPx', () => {
     settings.min = 0;
     settings.max = 100;
     settings.isVertical = false;
-    // Element.prototype.getBoundingClientRect = width: 300
-    const result = getOnePointInPx(settings, scale.element); // width / (max - min) = 3
+    /* Element.prototype.getBoundingClientRect = width: 300 */
+    const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 3 */
 
     expect(result).toBe(3);
   });

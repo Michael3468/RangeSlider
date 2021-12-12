@@ -5,7 +5,6 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  // target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist', // TODO
   target: 'web',
   devtool: 'eval-cheap-module-source-map',
   stats: {
