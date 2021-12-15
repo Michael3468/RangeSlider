@@ -18,7 +18,6 @@ export default class Scale extends AbstractScale {
     super();
     this.element = createElement('div', 'range-slider__scale');
     this.settings = undefined;
-    Scale.roundValueTo = Scale.roundValueTo.bind(this);
   }
 
   public createScaleMarks(settings: ISettings): Scale {
@@ -86,17 +85,13 @@ export default class Scale extends AbstractScale {
     return markValue;
   }
 
-  private static roundValueTo(num: number, ceilToNumber: number): number {
-    return Math.ceil(num / ceilToNumber) * ceilToNumber;
-  }
-
   private getStepBetweenMarksInPx(
-    lastMarkValueElement: HTMLElement,
+    maxMarkValueElement: HTMLElement,
     onePointInPx: number,
   ): number {
-    const lastMarkValueSize: number = getElementLengthInPx(this.settings!, lastMarkValueElement);
-    const lastMarkValueSizeInPoints: number = lastMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = Scale.roundValueTo(lastMarkValueSizeInPoints, 10);
+    const maxMarkValueSize: number = getElementLengthInPx(this.settings!, maxMarkValueElement);
+    const maxMarkValueSizeInPoints: number = maxMarkValueSize / onePointInPx;
+    const stepBetweenMarksInPoints: number = Math.ceil(maxMarkValueSizeInPoints);
     return stepBetweenMarksInPoints * onePointInPx;
   }
 

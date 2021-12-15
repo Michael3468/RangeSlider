@@ -138,21 +138,6 @@ describe('private createMarkValue', () => {
   });
 });
 
-describe('private roundValueTo', () => {
-  test('should return the rounded value to a number equal to the passed parameter', () => {
-    const num = 12.305;
-    let ceilToNumber = 1;
-    let result = Scale['roundValueTo'](num, ceilToNumber);
-
-    expect(result).toBe(13);
-
-    ceilToNumber = 10;
-    result = Scale['roundValueTo'](num, ceilToNumber);
-
-    expect(result).toBe(20);
-  });
-});
-
 describe('private getStepBetweenMarksInPx', () => {
   test('should return step between marks in px (number)', () => {
     const scale = new Scale();
