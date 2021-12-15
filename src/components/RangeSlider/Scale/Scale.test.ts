@@ -317,7 +317,7 @@ describe('public createScaleMarks', () => {
   });
 });
 
-describe('private getMaxMarkValue', () => {
+describe('private getMaxMarkValueElement', () => {
   it('should return bigger (width) HTMLElement ', () => {
     const firstMV: HTMLElement = document.createElement('div') as HTMLElement;
     firstMV.innerText = 'firstMV';
@@ -348,7 +348,7 @@ describe('private getMaxMarkValue', () => {
       toJSON: () => {},
     }));
 
-    const result = Scale['getMaxMarkValue'](firstMV, lastMV);
+    const result = Scale['getMaxMarkValueElement'](firstMV, lastMV);
     expect(result.innerText).toBe('firstMV');
     expect(result.innerText).not.toBe('lastMV');
   });

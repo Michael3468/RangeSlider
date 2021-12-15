@@ -36,7 +36,7 @@ export default class Scale extends AbstractScale {
     const lastMarkValueElement: HTMLElement = this
       .element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
-    const maxMarkValue = Scale.getMaxMarkValue(firstMarkValueElement, lastMarkValueElement);
+    const maxMarkValue = Scale.getMaxMarkValueElement(firstMarkValueElement, lastMarkValueElement);
     const onePointInPx: number = getOnePointInPx(settings, this.element);
     const stepBetweenMarksInPx: number = this
       .getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
@@ -100,7 +100,7 @@ export default class Scale extends AbstractScale {
     return stepBetweenMarksInPoints * onePointInPx;
   }
 
-  private static getMaxMarkValue(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
+  private static getMaxMarkValueElement(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
     const firstSize = firstMV.getBoundingClientRect().width;
     const lastSize = lastMV.getBoundingClientRect().width;
     return firstSize > lastSize ? firstMV : lastMV;
