@@ -94,6 +94,9 @@ export default class Model {
         settings.valueTo = settings.valueFrom + settings.step;
       }
     }
+    if (settings.max - settings.min < settings.step) {
+      settings.step = settings.max - settings.min;
+    }
 
     return settings;
   }
