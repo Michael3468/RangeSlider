@@ -144,16 +144,13 @@ describe('private getStepBetweenMarksInPx', () => {
     scale['settings'] = settings;
     scale['settings'].isVertical = false;
 
-    const lastMarkValueElement = scale.element.appendChild(scale['createMarkValue'](scale['settings'].max, 500));
+    const maxMarkValueElement = scale.element.appendChild(scale['createMarkValue'](scale['settings'].max, 500));
     /**
-     * lastMarkValueSize = lastMarkValueElement.getBoundingClientRect().width = 300
+     * maxMarkValueSize = maxMarkValueElement.getBoundingClientRect().width = 300
      * because of ...Element.prototype.getBoundingClientRect...
      */
-    let result = scale['getStepBetweenMarksInPx'](lastMarkValueElement, 1);
+    const result = scale['getStepBetweenMarksInPx'](maxMarkValueElement, 1);
     expect(result).toBe(300);
-
-    result = scale['getStepBetweenMarksInPx'](lastMarkValueElement, 0.8);
-    expect(result).toBe(304);
   });
 });
 
