@@ -45,9 +45,26 @@ function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   return elementLengthInPx / elementLengthInPoints;
 }
 
+function getMultiplierForRounding(settings: ISettings): number {
+  const n: number = Number(settings.step);
+  if (n > 0 && n < 1) {
+    if (n.toString().includes('.')) {
+      const zeros = n.toString().split('.').pop()!.length;
+
+      let multiplier = '1';
+      for (let i = 0; i < zeros; i += 1) {
+        multiplier += '0';
+      }
+      return Number(multiplier);
+    }
+  }
+  return 1;
+}
+
 export {
   getMinMaxElementEdgesInPx,
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
+  getMultiplierForRounding,
 };

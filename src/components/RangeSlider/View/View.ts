@@ -130,11 +130,11 @@ export default class View {
 
     this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
     this.from.setMargin(this.thumbMarginFrom, this.settings);
-    this.from.tooltip.setTooltipText(this.settings!.valueFrom);
+    this.from.tooltip.setTooltipText(this.settings!.valueFrom, this.settings);
 
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
     this.to.setMargin(this.thumbMarginTo, this.settings);
-    this.to.tooltip.setTooltipText(this.settings!.valueTo);
+    this.to.tooltip.setTooltipText(this.settings!.valueTo, this.settings);
 
     return this;
   }
@@ -321,9 +321,11 @@ export default class View {
       : this.thumbMarginTo!;
 
     const valueInPoints = thumbMargin / getOnePointInPx(this.settings!, this.slider.element);
-    const totalValue = Math.round(valueInPoints) + this.settings!.min;
+    const totalValue = (this.settings.step >= 1)
+      ? Math.round(valueInPoints)
+      : valueInPoints;
 
-    return totalValue;
+    return totalValue + this.settings!.min;
   }
 
   private initRangeSliderMargins(): View {

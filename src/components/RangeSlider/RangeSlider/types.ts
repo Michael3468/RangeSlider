@@ -79,7 +79,7 @@ abstract class AbstractScale {
 abstract class AbstractTooltip {
   abstract element: HTMLElement;
 
-  public abstract setTooltipText(value: number): AbstractTooltip;
+  public abstract setTooltipText(value: number, settings: ISettings): AbstractTooltip;
 }
 
 abstract class AbstractThumb {

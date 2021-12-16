@@ -6,8 +6,26 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
-import { ThumbName } from '../RangeSlider/types';
+import { ISettings, ThumbName } from '../RangeSlider/types';
 import Tooltip from './Tooltip';
+
+let settings: ISettings;
+beforeEach(() => {
+  settings = {
+    min: 0,
+    max: 10,
+    step: 0.1,
+    valueFrom: 1.51,
+    valueTo: 3.82,
+    isVertical: true,
+    isTwoRunners: true,
+    isScaleVisible: true,
+    isBarVisible: true,
+    isTooltipsVisible: true,
+    isConfPanel: true,
+
+  };
+});
 
 describe('constructor', () => {
   const tName: ThumbName = 'from';
@@ -23,16 +41,21 @@ describe('constructor', () => {
 });
 
 describe('setTooltipText', () => {
-  let value = 123.456;
+  let value = 3.8000000000000003;
   test(`should return rounded value of ${value}`, () => {
     const tName: ThumbName = 'from';
     const tooltip = new Tooltip(tName);
 
-    let result = tooltip['setTooltipText'](value);
-    expect(result.element.innerText).toBe('123');
+    const result = tooltip['setTooltipText'](value, settings);
+    expect(result.element.innerText).toBe('3.8');
+  });
 
+  /* settings.max = 10; */
+  test('should return 10 (settings.max) as string', () => {
     value = 124;
-    result = tooltip['setTooltipText'](value);
-    expect(result.element.innerText).toBe('124');
+    const tName: ThumbName = 'from';
+    const tooltip = new Tooltip(tName);
+    const result = tooltip['setTooltipText'](value, settings);
+    expect(result.element.innerText).toBe((settings.max).toString());
   });
 });

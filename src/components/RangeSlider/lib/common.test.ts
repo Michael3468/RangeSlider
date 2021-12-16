@@ -12,6 +12,7 @@ import {
   getElementLengthInPx,
   getMinMaxElementEdgesInPx,
   getOnePointInPx,
+  getMultiplierForRounding,
 } from './common';
 import Tooltip from '../Tooltip/Tooltip';
 import Scale from '../Scale/Scale';
@@ -124,5 +125,21 @@ describe('function getOnePointInPx', () => {
     const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 3 */
 
     expect(result).toBe(3);
+  });
+});
+
+describe('function getMultiplierForRounding', () => {
+  test('if settings.step = 0.001 should return 1000', () => {
+    settings.step = 0.001;
+    const result = getMultiplierForRounding(settings);
+
+    expect(result).toBe(1000);
+  });
+
+  test('if settings.step > 1 should return 1', () => {
+    settings.step = 3.5;
+    const result = getMultiplierForRounding(settings);
+
+    expect(result).toBe(1);
   });
 });

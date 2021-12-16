@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import { AbstractTooltip, ThumbName } from '../RangeSlider/types';
-import { createElement } from '../lib/common';
+import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
+import { createElement, getMultiplierForRounding } from '../lib/common';
 
 export default class Tooltip extends AbstractTooltip {
   element: HTMLElement;
@@ -12,8 +12,15 @@ export default class Tooltip extends AbstractTooltip {
     this.element = createElement('div', `range-slider__tooltip_${this.name}`);
   }
 
-  public setTooltipText(value: number): Tooltip {
-    const roundedValue = Math.round(value);
+  public setTooltipText(value: number, settings: ISettings): Tooltip {
+    const n = (settings.step < 1)
+      ? getMultiplierForRounding(settings)
+      : 1;
+
+    const roundedValue = value < settings.max
+      ? Math.round(value * n) / n
+      : settings.max;
+
     this.element.innerText = roundedValue.toString();
     return this;
   }
