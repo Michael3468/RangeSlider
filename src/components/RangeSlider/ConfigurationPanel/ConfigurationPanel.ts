@@ -3,7 +3,7 @@
 /* eslint-disable lines-between-class-members */
 import { AbstractConfigurationPanel, AbstractObserver, ISettings } from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
-import { createElement } from '../lib/common';
+import { createElement, getFixedToNumber } from '../lib/common';
 
 export default class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
@@ -26,6 +26,8 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
+    // this.settings = {};
+    // this.settings = { ...settings };
     this.element = ConfigurationPanel.createElement();
 
     this.cpMin = undefined;
@@ -50,21 +52,25 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   public updateState(settings: ISettings): void {
+    const valueFrom = settings.valueFrom.toFixed(getFixedToNumber(settings));
+    const valueTo = settings.valueTo.toFixed(getFixedToNumber(settings));
+
+    // getFixedToNumber
     this.cpMin!.value = String(settings.min);
-    this.cpMin!.max = String(Math.round(settings.valueFrom));
+    this.cpMin!.max = String(valueFrom);
 
     this.cpMax!.value = String(settings.max);
-    this.cpMax!.min = String(Math.round(settings.valueTo));
+    this.cpMax!.min = String(valueTo);
 
     this.cpStep!.value = String(settings.step);
 
-    this.cpFrom!.value = String(settings.valueFrom.toFixed(0));
+    this.cpFrom!.value = String(valueFrom);
     this.cpFrom!.min = String(settings.min);
     this.cpFrom!.step = String(settings.step);
-    this.cpFrom!.max = String(settings.valueTo.toFixed(0));
+    this.cpFrom!.max = String(valueTo);
 
-    this.cpTo!.value = String(settings.valueTo.toFixed(0));
-    this.cpTo!.min = String(settings.valueFrom.toFixed(0));
+    this.cpTo!.value = String(valueTo);
+    this.cpTo!.min = String(valueFrom);
     this.cpTo!.step = String(settings.step);
     this.cpTo!.max = String(settings.max);
 

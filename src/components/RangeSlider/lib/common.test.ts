@@ -12,7 +12,7 @@ import {
   getElementLengthInPx,
   getMinMaxElementEdgesInPx,
   getOnePointInPx,
-  getMultiplierForRounding,
+  getFixedToNumber,
 } from './common';
 import Tooltip from '../Tooltip/Tooltip';
 import Scale from '../Scale/Scale';
@@ -128,18 +128,11 @@ describe('function getOnePointInPx', () => {
   });
 });
 
-describe('function getMultiplierForRounding', () => {
-  test('if settings.step = 0.001 should return 1000', () => {
+describe('function getFixedToNumber', () => {
+  test('should return 3 (numbers after point)', () => {
     settings.step = 0.001;
-    const result = getMultiplierForRounding(settings);
+    const result = getFixedToNumber(settings);
 
-    expect(result).toBe(1000);
-  });
-
-  test('if settings.step > 1 should return 1', () => {
-    settings.step = 3.5;
-    const result = getMultiplierForRounding(settings);
-
-    expect(result).toBe(1);
+    expect(result).toBe(3);
   });
 });

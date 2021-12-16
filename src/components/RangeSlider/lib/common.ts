@@ -45,20 +45,17 @@ function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   return elementLengthInPx / elementLengthInPoints;
 }
 
-function getMultiplierForRounding(settings: ISettings): number {
-  const n: number = Number(settings.step);
+function getFixedToNumber(settings: ISettings): number {
+  const n = settings.step;
+  let numbersAfterPoint = 0;
+
   if (n > 0 && n < 1) {
     if (n.toString().includes('.')) {
-      const zeros = n.toString().split('.').pop()!.length;
-
-      let multiplier = '1';
-      for (let i = 0; i < zeros; i += 1) {
-        multiplier += '0';
-      }
-      return Number(multiplier);
+      numbersAfterPoint = n.toString().split('.').pop()!.length;
+      return numbersAfterPoint;
     }
   }
-  return 1;
+  return numbersAfterPoint;
 }
 
 export {
@@ -66,5 +63,5 @@ export {
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
-  getMultiplierForRounding,
+  getFixedToNumber,
 };
