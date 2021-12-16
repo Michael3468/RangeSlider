@@ -75,6 +75,9 @@ export default class Model {
   }
 
   private static validateSettings(settings: ISettings): ISettings {
+    if (settings.max - settings.min < settings.step) {
+      settings.step = settings.max - settings.min;
+    }
     if (settings.min >= settings.max) {
       throw new Error("'max' must be greater than 'min'");
     }
@@ -84,9 +87,6 @@ export default class Model {
     if (settings.valueFrom > settings.valueTo) {
       throw new Error("'valueFrom' must be less than 'valueTo'");
     }
-    if (settings.valueTo > settings.max) {
-      throw new Error("'valueTo' must be less than 'max'");
-    }
     if (settings.valueTo - settings.valueFrom < settings.step) {
       if (settings.valueFrom >= settings.min + settings.step) {
         settings.valueFrom = settings.valueTo - settings.step;
@@ -94,10 +94,9 @@ export default class Model {
         settings.valueTo = settings.valueFrom + settings.step;
       }
     }
-    if (settings.max - settings.min < settings.step) {
-      settings.step = settings.max - settings.min;
+    if (settings.valueTo > settings.max) {
+      settings.valueTo = settings.max;
     }
-
     return settings;
   }
 
