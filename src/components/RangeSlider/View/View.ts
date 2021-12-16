@@ -108,6 +108,11 @@ export default class View {
       this.scale.createScaleMarks(settings);
     }
 
+    this.initRangeSliderMargins();
+    this.updateRangeSliderValues();
+    this.addListenersToThumbs();
+    this.setDistanceBetweenTooltips();
+
     if (process.env['NODE_ENV'] !== 'production') {
       if (settings.isConfPanel) {
         this.slider.element.after(this.configurationPanel!.element);
@@ -115,10 +120,6 @@ export default class View {
       }
     }
 
-    this.initRangeSliderMargins();
-    this.updateRangeSliderValues();
-    this.addListenersToThumbs();
-    this.setDistanceBetweenTooltips();
     this.handleUpdateRangeSliderView();
 
     return this;
