@@ -15,7 +15,7 @@ export default class Tooltip extends AbstractTooltip {
   public setTooltipText(value: number, settings: ISettings): Tooltip {
     const roundedValue = value < settings.max
       ? value.toFixed(getDigitsAfterPoint(settings))
-      : settings.max;
+      : (settings.max).toFixed(getDigitsAfterPoint(settings));
 
     this.element.innerText = roundedValue.toString();
     return this;

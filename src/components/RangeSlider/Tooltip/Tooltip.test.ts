@@ -50,12 +50,20 @@ describe('setTooltipText', () => {
     expect(result.element.innerText).toBe('3.8');
   });
 
-  /* settings.max = 10; */
-  test('should return 10 (settings.max) as string', () => {
-    value = 124;
+  test('should return 10.0 as string', () => {
+    value = 124; // bigger than settings.max, should return settings.max
+    settings.max = 10;
+    settings.step = 0.1;
+    /**
+     * shouldReturn = '10.0';
+     * because settings.max = 10
+     * and settings.step = 0.1 - has one digit after point
+     * then 10 + one zero after point = 10.0
+     */
+    const shouldReturn = '10.0';
     const tName: ThumbName = 'from';
     const tooltip = new Tooltip(tName);
     const result = tooltip['setTooltipText'](value, settings);
-    expect(result.element.innerText).toBe((settings.max).toString());
+    expect(result.element.innerText).toBe(shouldReturn);
   });
 });
