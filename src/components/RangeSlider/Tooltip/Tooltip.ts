@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
-import { createElement, getFixedToNumber } from '../lib/common';
+import { createElement, getDigitsAfterPoint } from '../lib/common';
 
 export default class Tooltip extends AbstractTooltip {
   element: HTMLElement;
@@ -14,7 +14,7 @@ export default class Tooltip extends AbstractTooltip {
 
   public setTooltipText(value: number, settings: ISettings): Tooltip {
     const roundedValue = value < settings.max
-      ? value.toFixed(getFixedToNumber(settings))
+      ? value.toFixed(getDigitsAfterPoint(settings))
       : settings.max;
 
     this.element.innerText = roundedValue.toString();

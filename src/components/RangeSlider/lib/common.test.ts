@@ -12,7 +12,7 @@ import {
   getElementLengthInPx,
   getMinMaxElementEdgesInPx,
   getOnePointInPx,
-  getFixedToNumber,
+  getDigitsAfterPoint,
 } from './common';
 import Tooltip from '../Tooltip/Tooltip';
 import Scale from '../Scale/Scale';
@@ -128,10 +128,10 @@ describe('function getOnePointInPx', () => {
   });
 });
 
-describe('function getFixedToNumber', () => {
+describe('function getDigitsAfterPoint', () => {
   test('should return 3 (numbers after point)', () => {
     settings.step = 0.001;
-    const result = getFixedToNumber(settings);
+    const result = getDigitsAfterPoint(settings);
 
     expect(result).toBe(3);
   });

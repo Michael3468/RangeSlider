@@ -39,23 +39,27 @@ function createElement(
   return element;
 }
 
+// TODO если делать метки через 10пх нужен ли этот метод?
 function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   const elementLengthInPx: number = getElementLengthInPx(settings, element);
   const elementLengthInPoints: number = settings.max - settings.min;
+  // TODO если elementLengthInPoints меньше единицы и больше нуля,
+  // тогда умножить его на 1 + количество цифр после запятой
+  /* а если меньше нуля и больше -1? */
   return elementLengthInPx / elementLengthInPoints;
 }
 
-function getFixedToNumber(settings: ISettings): number {
+function getDigitsAfterPoint(settings: ISettings): number {
   const n = settings.step;
-  let numbersAfterPoint = 0;
+  let digitsAfterPoint = 0;
 
   if (n > 0 && n < 1) {
     if (n.toString().includes('.')) {
-      numbersAfterPoint = n.toString().split('.').pop()!.length;
-      return numbersAfterPoint;
+      digitsAfterPoint = n.toString().split('.').pop()!.length;
+      return digitsAfterPoint;
     }
   }
-  return numbersAfterPoint;
+  return digitsAfterPoint;
 }
 
 export {
@@ -63,5 +67,5 @@ export {
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
-  getFixedToNumber,
+  getDigitsAfterPoint,
 };

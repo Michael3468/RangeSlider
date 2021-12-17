@@ -3,7 +3,7 @@
 /* eslint-disable lines-between-class-members */
 import { AbstractConfigurationPanel, AbstractObserver, ISettings } from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
-import { createElement, getFixedToNumber } from '../lib/common';
+import { createElement, getDigitsAfterPoint } from '../lib/common';
 
 export default class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
@@ -52,10 +52,9 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   public updateState(settings: ISettings): void {
-    const valueFrom = settings.valueFrom.toFixed(getFixedToNumber(settings));
-    const valueTo = settings.valueTo.toFixed(getFixedToNumber(settings));
+    const valueFrom = settings.valueFrom.toFixed(getDigitsAfterPoint(settings));
+    const valueTo = settings.valueTo.toFixed(getDigitsAfterPoint(settings));
 
-    // getFixedToNumber
     this.cpMin!.value = String(settings.min);
     this.cpMin!.max = String(valueFrom);
 
