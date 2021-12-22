@@ -9,13 +9,13 @@ function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMi
 
   if (settings.isVertical) {
     return {
-      min: elementRect!.top,
-      max: elementRect!.bottom,
+      min: elementRect.top,
+      max: elementRect.bottom,
     };
   }
   return {
-    min: elementRect!.left,
-    max: elementRect!.right,
+    min: elementRect.left,
+    max: elementRect.right,
   };
 }
 
@@ -55,8 +55,12 @@ function getDigitsAfterPoint(settings: ISettings): number {
 
   if (n > 0 && n < 1) {
     if (n.toString().includes('.')) {
-      digitsAfterPoint = n.toString().split('.').pop()!.length;
-      return digitsAfterPoint;
+      const splitDigitArr = n.toString().split('.');
+
+      if (splitDigitArr[1] !== undefined) {
+        digitsAfterPoint = splitDigitArr[1].length;
+        return digitsAfterPoint;
+      }
     }
   }
   return digitsAfterPoint;

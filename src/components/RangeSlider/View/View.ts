@@ -66,18 +66,18 @@ export default class View {
 
   public createRangeSlider(settings: ISettings): View {
     if (settings.isTwoRunners) {
-      this.slider.element!.appendChild(this.from.element);
+      this.slider.element.appendChild(this.from.element);
     }
-    this.slider.element!.appendChild(this.to.element);
+    this.slider.element.appendChild(this.to.element);
     if (this.settings.isBarVisible) {
-      this.slider.element!.appendChild(this.range.element);
+      this.slider.element.appendChild(this.range.element);
     }
 
     const THUMB_VERTICAL = 'range-slider__thumb_vertical';
     const RS_VERTICAL = 'range-slider_vertical';
     const RS_SCALE_VERTICAL = 'range-slider__scale_vertical';
     if (settings.isVertical) {
-      this.slider.element!.classList.add(RS_VERTICAL);
+      this.slider.element.classList.add(RS_VERTICAL);
       this.scale.element.classList.add(RS_SCALE_VERTICAL);
 
       // add class for vertical thumbs
@@ -104,7 +104,7 @@ export default class View {
     }
 
     if (settings.isScaleVisible) {
-      this.slider.element!.appendChild(this.scale.element);
+      this.slider.element.appendChild(this.scale.element);
       this.scale.createScaleMarks(settings);
     }
 
@@ -114,9 +114,9 @@ export default class View {
     this.setDistanceBetweenTooltips();
 
     if (process.env['NODE_ENV'] !== 'production') {
-      if (settings.isConfPanel) {
-        this.slider.element.after(this.configurationPanel!.element);
-        this.configurationPanel?.updateState(this.settings);
+      if (settings.isConfPanel && this.configurationPanel) {
+        this.slider.element.after(this.configurationPanel.element);
+        this.configurationPanel.updateState(this.settings);
       }
     }
 
@@ -130,11 +130,11 @@ export default class View {
 
     this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
     this.from.setMargin(this.thumbMarginFrom, this.settings);
-    this.from.tooltip.setTooltipText(this.settings!.valueFrom, this.settings);
+    this.from.tooltip.setTooltipText(this.settings.valueFrom, this.settings);
 
     this.range.setMarginFromEnd(this.rangeMarginTo, isVertical);
     this.to.setMargin(this.thumbMarginTo, this.settings);
-    this.to.tooltip.setTooltipText(this.settings!.valueTo, this.settings);
+    this.to.tooltip.setTooltipText(this.settings.valueTo, this.settings);
 
     return this;
   }
@@ -147,24 +147,24 @@ export default class View {
     this.initRangeSliderMargins();
     this.updateRangeSliderValues();
 
-    if (!this.settings?.isVertical) {
+    if (!this.settings.isVertical) {
       this.scale.element.replaceChildren();
-      this.scale.createScaleMarks(this.settings!);
+      this.scale.createScaleMarks(this.settings);
     }
 
     this.setDistanceBetweenTooltips();
   }
 
   private addListenersToThumbs(): View {
-    if (this.settings!.isTwoRunners) {
+    if (this.settings.isTwoRunners) {
       this.from.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
       this.from.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
     }
     this.to.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
     this.to.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
 
-    this.slider.element!.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
-    this.slider.element!.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
+    this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
+    this.slider.element.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;
   }
@@ -233,7 +233,7 @@ export default class View {
   }
 
   private getPosOnScale(currentPos: number): number {
-    const sliderRect = this.slider.element!.getBoundingClientRect();
+    const sliderRect = this.slider.element.getBoundingClientRect();
 
     return this.settings.isVertical
       ? currentPos - sliderRect.top
@@ -253,9 +253,9 @@ export default class View {
       const stepInPx = this.getStepInPx();
 
       if (target.classList.contains('range-slider__thumb_from')) {
-        max = this.thumbMarginTo! - stepInPx + min;
+        max = this.thumbMarginTo - stepInPx + min;
       } else if (target.classList.contains('range-slider__thumb_to')) {
-        min = this.thumbMarginFrom! + stepInPx + min;
+        min = this.thumbMarginFrom + stepInPx + min;
       }
     }
 
@@ -274,14 +274,14 @@ export default class View {
     if (thumbName === 'from') {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      this.settings!.valueFrom = this.getThumbValue(thumbName);
+      this.settings.valueFrom = this.getThumbValue(thumbName);
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
-      const sliderLengthInPx: number = max! - min!;
+      const sliderLengthInPx: number = max - min;
 
       this.thumbMarginTo = currentPosWithStep;
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
-      this.settings!.valueTo = this.getThumbValue(thumbName);
+      this.settings.valueTo = this.getThumbValue(thumbName);
     }
   }
 
@@ -294,13 +294,13 @@ export default class View {
     const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
     const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
 
-    const absolutePosWithStep = min! + currentPosWidthStep;
-    const absolutePos = min! + currentPos;
-    const sliderMaxPos = max! - min!;
+    const absolutePosWithStep = min + currentPosWidthStep;
+    const absolutePos = min + currentPos;
+    const sliderMaxPos = max - min;
     const sliderMinPos = 0; // min - min
 
-    const isCursorPosGreaterThanMax = absolutePosWithStep > max! || absolutePos >= max!;
-    const isCursorPosLessThanMin = absolutePosWithStep < min! || absolutePos <= min!;
+    const isCursorPosGreaterThanMax = absolutePosWithStep > max || absolutePos >= max;
+    const isCursorPosLessThanMin = absolutePosWithStep < min || absolutePos <= min;
 
     if (isCursorPosGreaterThanMax) return sliderMaxPos;
     if (isCursorPosLessThanMin) return sliderMinPos;
@@ -317,15 +317,15 @@ export default class View {
 
   private getThumbValue(thumbName: ThumbName): number {
     const thumbMargin: number = thumbName === 'from'
-      ? this.thumbMarginFrom!
-      : this.thumbMarginTo!;
+      ? this.thumbMarginFrom
+      : this.thumbMarginTo;
 
-    const valueInPoints = thumbMargin / getOnePointInPx(this.settings!, this.slider.element);
+    const valueInPoints = thumbMargin / getOnePointInPx(this.settings, this.slider.element);
     const totalValue = (this.settings.step >= 1)
       ? Math.round(valueInPoints)
       : valueInPoints;
 
-    return totalValue + this.settings!.min;
+    return totalValue + this.settings.min;
   }
 
   private initRangeSliderMargins(): View {

@@ -55,29 +55,49 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
     const valueFrom = settings.valueFrom.toFixed(getDigitsAfterPoint(settings));
     const valueTo = settings.valueTo.toFixed(getDigitsAfterPoint(settings));
 
-    this.cpMin!.value = String(settings.min);
-    this.cpMin!.max = String(valueFrom);
+    if (this.cpMin) {
+      this.cpMin.value = String(settings.min);
+      this.cpMin.max = String(valueFrom);
+    }
 
-    this.cpMax!.value = String(settings.max);
-    this.cpMax!.min = String(valueTo);
+    if (this.cpMax) {
+      this.cpMax.value = String(settings.max);
+      this.cpMax.min = String(valueTo);
+    }
 
-    this.cpStep!.value = String(settings.step);
+    if (this.cpStep) {
+      this.cpStep.value = String(settings.step);
+    }
 
-    this.cpFrom!.value = String(valueFrom);
-    this.cpFrom!.min = String(settings.min);
-    this.cpFrom!.step = String(settings.step);
-    this.cpFrom!.max = String(valueTo);
+    if (this.cpFrom) {
+      this.cpFrom.value = String(valueFrom);
+      this.cpFrom.min = String(settings.min);
+      this.cpFrom.step = String(settings.step);
+      this.cpFrom.max = String(valueTo);
+    }
 
-    this.cpTo!.value = String(valueTo);
-    this.cpTo!.min = String(valueFrom);
-    this.cpTo!.step = String(settings.step);
-    this.cpTo!.max = String(settings.max);
+    if (this.cpTo) {
+      this.cpTo.value = String(valueTo);
+      this.cpTo.min = String(valueFrom);
+      this.cpTo.step = String(settings.step);
+      this.cpTo.max = String(settings.max);
+    }
 
-    this.cpVertical!.checked = settings.isVertical;
-    this.cpRange!.checked = settings.isTwoRunners;
-    this.cpScale!.checked = settings.isScaleVisible;
-    this.cpBar!.checked = settings.isBarVisible;
-    this.cpTips!.checked = settings.isTooltipsVisible;
+    if (this.cpVertical) {
+      this.cpVertical.checked = settings.isVertical;
+    }
+    if (this.cpRange) {
+      this.cpRange.checked = settings.isTwoRunners;
+    }
+    if (this.cpScale) {
+      this.cpScale.checked = settings.isScaleVisible;
+    }
+    if (this.cpBar) {
+      this.cpBar.checked = settings.isBarVisible;
+    }
+    if (this.cpTips) {
+      this.cpTips.checked = settings.isTooltipsVisible;
+    }
   }
 
   private static createElement(): HTMLElement {
@@ -247,10 +267,14 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
 
   private getThumbFromDisabledStatus = (): boolean => {
     if (this.cpRange?.checked) {
-      this.cpFrom!.disabled = false;
+      if (this.cpFrom) {
+        this.cpFrom.disabled = false;
+      }
       return false;
     }
-    this.cpFrom!.disabled = true;
+    if (this.cpFrom) {
+      this.cpFrom.disabled = true;
+    }
     return true;
   }
 }

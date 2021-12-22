@@ -35,7 +35,7 @@ export default class Scale extends AbstractScale {
     const stepBetweenMarksInPx: number = this.getStepBetweenMarksInPx(scaleLength);
 
     let markPos: number = stepBetweenMarksInPx;
-    const onePointInPx: number = getOnePointInPx(this.settings!, this.element);
+    const onePointInPx: number = getOnePointInPx(this.settings, this.element);
     const digitsAfterPoint = getDigitsAfterPoint(this.settings);
 
     while (markPos < scaleMaxPos) {

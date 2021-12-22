@@ -13,7 +13,7 @@ export default class Slider extends AbstractSlider {
   // eslint-disable-next-line class-methods-use-this
   protected createSlider(id: string): HTMLElement {
     const slider = <HTMLElement> document.querySelector(id);
-    slider!.className = 'range-slider';
+    slider.className = 'range-slider';
 
     return slider;
   }
