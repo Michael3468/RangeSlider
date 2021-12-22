@@ -49,7 +49,7 @@ class PointerEvent extends MouseEvent {
   public getCoalescedEvents(): any {}
   public getPredictedEvents(): any {}
 }
-global.PointerEvent = PointerEvent as any;
+global.PointerEvent = <any> PointerEvent;
 
 abstract class ViewHint {
   abstract getPosOnScale(currentPos: number): number;

@@ -151,17 +151,17 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   private assignElements(): void {
-    this.cpMin = this.element.querySelector('input[name="min"]') as HTMLInputElement;
-    this.cpMax = this.element.querySelector('input[name="max"]') as HTMLInputElement;
-    this.cpStep = this.element.querySelector('input[name="step"]') as HTMLInputElement;
-    this.cpFrom = this.element.querySelector('input[name="from"]') as HTMLInputElement;
-    this.cpTo = this.element.querySelector('input[name="to"]') as HTMLInputElement;
+    this.cpMin = <HTMLInputElement> this.element.querySelector('input[name="min"]');
+    this.cpMax = <HTMLInputElement> this.element.querySelector('input[name="max"]');
+    this.cpStep = <HTMLInputElement> this.element.querySelector('input[name="step"]');
+    this.cpFrom = <HTMLInputElement> this.element.querySelector('input[name="from"]');
+    this.cpTo = <HTMLInputElement> this.element.querySelector('input[name="to"]');
 
-    this.cpVertical = this.element.querySelector('input[name="vertical"]') as HTMLInputElement;
-    this.cpRange = this.element.querySelector('input[name="range"]') as HTMLInputElement;
-    this.cpScale = this.element.querySelector('input[name="scale"]') as HTMLInputElement;
-    this.cpBar = this.element.querySelector('input[name="bar"]') as HTMLInputElement;
-    this.cpTips = this.element.querySelector('input[name="tip"]') as HTMLInputElement;
+    this.cpVertical = <HTMLInputElement> this.element.querySelector('input[name="vertical"]');
+    this.cpRange = <HTMLInputElement> this.element.querySelector('input[name="range"]');
+    this.cpScale = <HTMLInputElement> this.element.querySelector('input[name="scale"]');
+    this.cpBar = <HTMLInputElement> this.element.querySelector('input[name="bar"]');
+    this.cpTips = <HTMLInputElement> this.element.querySelector('input[name="tip"]');
   }
 
   // Configuration panel input handlers
@@ -198,32 +198,32 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
 
   // Configuration panel checkbox handlers
   private handleCheckboxCPVerticalChange = () => {
-    this.settings.isVertical = this.cpVertical?.checked as boolean;
+    this.settings.isVertical = <boolean> this.cpVertical?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpVertical?.focus();
   }
 
   private handleCheckboxCPRangeChange = () => {
-    this.settings.isTwoRunners = this.cpRange?.checked as boolean;
+    this.settings.isTwoRunners = <boolean> this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
   }
 
   private handleCheckboxCPScaleChange = () => {
-    this.settings.isScaleVisible = this.cpScale?.checked as boolean;
+    this.settings.isScaleVisible = <boolean> this.cpScale?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpScale?.focus();
   }
 
   private handleCheckboxCPBarChange = () => {
-    this.settings.isBarVisible = this.cpBar?.checked as boolean;
+    this.settings.isBarVisible = <boolean> this.cpBar?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpBar?.focus();
   }
 
   private handleCheckboxCPTipChange = () => {
-    this.settings.isTooltipsVisible = this.cpTips?.checked as boolean;
+    this.settings.isTooltipsVisible = <boolean> this.cpTips?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTips?.focus();
   }

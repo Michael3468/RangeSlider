@@ -177,7 +177,7 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(Scale.prototype as any, 'getStepBetweenMarksInPx');
+    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
     // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
     getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
@@ -242,7 +242,7 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(Scale.prototype as any, 'getStepBetweenMarksInPx');
+    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
     // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
     getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);

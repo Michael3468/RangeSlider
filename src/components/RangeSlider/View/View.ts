@@ -126,7 +126,7 @@ export default class View {
   }
 
   public updateRangeSliderValues(): View {
-    const isVertical = this.settings?.isVertical as boolean;
+    const isVertical = <boolean> this.settings?.isVertical;
 
     this.range.setMarginFromBegin(this.rangeMarginFrom, isVertical);
     this.from.setMargin(this.thumbMarginFrom, this.settings);
@@ -171,7 +171,7 @@ export default class View {
 
   private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
     const { pointerId } = event;
-    const target = event.target as HTMLElement;
+    const target = <HTMLElement> event.target;
     event.preventDefault();
     target.setPointerCapture(pointerId);
 
@@ -193,7 +193,7 @@ export default class View {
   }
 
   private static handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
-    const target = event.target as HTMLElement;
+    const target = <HTMLElement> event.target;
     target.onpointermove = null;
     target.releasePointerCapture(event.pointerId);
     return target;
@@ -249,7 +249,7 @@ export default class View {
 
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.isTwoRunners) {
-      const target = event.target as Element;
+      const target = <Element> event.target;
       const stepInPx = this.getStepInPx();
 
       if (target.classList.contains('range-slider__thumb_from')) {
