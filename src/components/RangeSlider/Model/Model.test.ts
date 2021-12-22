@@ -25,42 +25,47 @@ beforeEach(() => {
 });
 
 describe('private static validateSettings', () => {
-  test('"settings.min >= settings.max" should throw Error', () => {
-    settings.min = 2000;
-    settings.max = 1500;
+  test('"settings.min >= settings.max" should return min = max - step', () => {
+    settings.max = 100;
+    settings.min = 110;
+    settings.step = 20;
 
-    const throwMessage = "'max' must be greater than 'min'";
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
-
-    settings.min = 1000;
-    settings.max = 1000;
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
-
-    settings.min = 1000;
-    settings.max = 1500;
-    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
+    const result = Model['validateSettings'](settings);
+    /* settings.min = settings.max - settings.step; */
+    expect(result.min).toBe(settings.max - settings.step);
   });
 
-  test('"settings.valueFrom < settings.min" should throw Error', () => {
-    settings.valueFrom = 700;
-    settings.min = 1000;
-    const throwMessage = "'valueFrom' must be greater than 'min'";
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
+  describe('"settings.valueFrom < settings.min"', () => {
+    test(' should return valueFrom = min', () => {
+      settings.valueFrom = 0;
+      settings.min = 10;
+      const result = Model['validateSettings'](settings);
+      expect(result.valueFrom).toBe(settings.min);
+    });
 
-    settings.valueFrom = 1300;
-    settings.min = 1000;
-    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
+    test('should return valueFrom != min', () => {
+      settings.valueFrom = 20;
+      settings.min = 10;
+      const result = Model['validateSettings'](settings);
+      expect(result.valueFrom).not.toBe(settings.min);
+      expect(result.valueFrom).toBe(settings.valueFrom);
+    });
   });
 
-  test('"settings.valueFrom > settings.valueTo" should throw Error', () => {
-    settings.valueFrom = 1200;
-    settings.valueTo = 1100;
-    const throwMessage = "'valueFrom' must be less than 'valueTo'";
-    expect(() => Model['validateSettings'](settings)).toThrow(throwMessage);
+  describe('settings.valueTo < settings.min', () => {
+    test('should valueTo = min', () => {
+      settings.valueTo = 10;
+      settings.min = 20;
+      const result = Model['validateSettings'](settings);
+      expect(result.valueTo).toBe(settings.min);
+    });
 
-    settings.valueFrom = 1000;
-    settings.valueTo = 1100;
-    expect(() => Model['validateSettings'](settings)).not.toThrow(throwMessage);
+    test('should valueTo != min', () => {
+      settings.valueTo = 100;
+      settings.min = 20;
+      const result = Model['validateSettings'](settings);
+      expect(result.valueTo).not.toBe(settings.min);
+    });
   });
 
   test('settings.valueTo > settings.max should return valueTo = max', () => {

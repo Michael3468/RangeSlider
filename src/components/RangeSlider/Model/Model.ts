@@ -78,15 +78,27 @@ export default class Model {
     if (settings.max - settings.min < settings.step) {
       settings.step = settings.max - settings.min;
     }
+
     if (settings.min >= settings.max) {
-      throw new Error("'max' must be greater than 'min'");
+      settings.min = settings.max - settings.step;
     }
+
     if (settings.valueFrom < settings.min) {
-      throw new Error("'valueFrom' must be greater than 'min'");
+      settings.valueFrom = settings.min;
     }
-    if (settings.valueFrom > settings.valueTo) {
-      throw new Error("'valueFrom' must be less than 'valueTo'");
+
+    if (settings.valueFrom > settings.max) {
+      settings.valueFrom = settings.max;
     }
+
+    if (settings.valueTo < settings.min) {
+      settings.valueTo = settings.min;
+    }
+
+    if (settings.valueTo > settings.max) {
+      settings.valueTo = settings.max;
+    }
+
     if (settings.valueTo - settings.valueFrom < settings.step) {
       if (settings.valueFrom >= settings.min + settings.step) {
         settings.valueFrom = settings.valueTo - settings.step;
@@ -94,9 +106,7 @@ export default class Model {
         settings.valueTo = settings.valueFrom + settings.step;
       }
     }
-    if (settings.valueTo > settings.max) {
-      settings.valueTo = settings.max;
-    }
+
     return settings;
   }
 
