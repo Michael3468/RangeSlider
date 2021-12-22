@@ -1,3 +1,4 @@
+/* eslint-disable lines-between-class-members */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 
@@ -7,6 +8,7 @@ import {
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
+  getDigitsAfterPoint,
 } from '../lib/common';
 
 export default class Scale extends AbstractScale {
@@ -22,40 +24,70 @@ export default class Scale extends AbstractScale {
 
   public createScaleMarks(settings: ISettings): Scale {
     this.settings = settings;
-    // add first and last marks
     const { min, max } = getMinMaxElementEdgesInPx(settings, this);
     const scaleMaxPos = max - min;
 
     // add first mark
     this.element.appendChild(this.createMark(0));
-    const firstMarkValueElement: HTMLElement = this
-      .element.appendChild(this.createMarkValue(settings.min, 0));
-    // add last mark
-    this.element.appendChild(this.createMark(scaleMaxPos));
-    const lastMarkValueElement: HTMLElement = this
-      .element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
+    this.element.appendChild(this.createMarkValue(settings.min, 0));
 
-    const maxMarkValue = Scale.getMaxMarkValueElement(firstMarkValueElement, lastMarkValueElement);
-    const onePointInPx: number = getOnePointInPx(settings, this.element);
-    const stepBetweenMarksInPx: number = this
-      .getStepBetweenMarksInPx(maxMarkValue, onePointInPx);
-    // create marks on scale
-    let markPos: number = 0;
-    const minPosInPx: number = settings.min * onePointInPx;
+    const scaleLength: number = getElementLengthInPx(settings, this.element);
+    const stepBetweenMarksInPx: number = this.getStepBetweenMarksInPx(scaleLength);
+
+    let markPos: number = stepBetweenMarksInPx;
+    const onePointInPx: number = getOnePointInPx(this.settings!, this.element);
+    const digitsAfterPoint = getDigitsAfterPoint(this.settings);
 
     while (markPos < scaleMaxPos) {
-      if (markPos > 0) {
-        this.element.appendChild(this.createMark(markPos));
+      this.element.appendChild(this.createMark(markPos));
 
-        const currentValueInPoints: number = (minPosInPx + markPos) / onePointInPx;
-        const markValue: number = Math.round(currentValueInPoints);
-        this.element.appendChild(this.createMarkValue(markValue, markPos));
-      }
+      const currentValueInPoints: number = Number((markPos / onePointInPx)
+        .toFixed(digitsAfterPoint + 1));
+
+      this.element.appendChild(this.createMarkValue(currentValueInPoints, markPos));
       markPos += stepBetweenMarksInPx;
     }
-    // after mark values was created show/hide before last mark value
-    this.showHideBeforeLastMarkValue(lastMarkValueElement);
+
+    // add last mark
+    this.element.appendChild(this.createMark(scaleMaxPos));
+    this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
+
+    const markValuesArr = this.getElementChilds();
+
+    markValuesArr.forEach((markValue, index, arr) => {
+      let currentMark: number = 0;
+      let nextMark: number | undefined = 0;
+
+      if (!settings.isVertical) {
+        currentMark = markValue.getBoundingClientRect().right;
+      } else {
+        currentMark = markValue.getBoundingClientRect().bottom;
+      }
+
+      for (let i = index; i < arr.length - 1; i += 1) {
+        nextMark = settings.isVertical
+          ? arr[i + 1]?.getBoundingClientRect().top
+          : arr[i + 1]?.getBoundingClientRect().left;
+
+        if (nextMark && (currentMark + 10) > nextMark) {
+          if ((i + 1) < arr.length - 1) {
+            arr[i + 1]?.classList.add('hidden');
+          } else {
+            markValue.classList.add('hidden');
+          }
+        } else {
+          break;
+        }
+      }
+    });
+
     return this;
+  }
+
+  private getElementChilds(): Element[] {
+    return Array
+      .from(this.element.children)
+      .filter((child) => child.classList.contains('range-slider__scale_mark_value'));
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
@@ -85,40 +117,11 @@ export default class Scale extends AbstractScale {
     return markValue;
   }
 
-  private getStepBetweenMarksInPx(
-    maxMarkValueElement: HTMLElement,
-    onePointInPx: number,
-  ): number {
-    const maxMarkValueSize: number = getElementLengthInPx(this.settings!, maxMarkValueElement);
-    const maxMarkValueSizeInPoints: number = maxMarkValueSize / onePointInPx;
-    const stepBetweenMarksInPoints: number = Math.ceil(maxMarkValueSizeInPoints);
-    return stepBetweenMarksInPoints * onePointInPx;
-  }
+  // eslint-disable-next-line class-methods-use-this
+  private getStepBetweenMarksInPx(scaleLength: number): number {
+    const pixelsBetweenMarks = 20;
+    const marks = Math.floor(scaleLength / pixelsBetweenMarks);
 
-  private static getMaxMarkValueElement(firstMV: HTMLElement, lastMV: HTMLElement): HTMLElement {
-    const firstSize = firstMV.getBoundingClientRect().width;
-    const lastSize = lastMV.getBoundingClientRect().width;
-    return firstSize > lastSize ? firstMV : lastMV;
-  }
-
-  private showHideBeforeLastMarkValue = (lastMV: HTMLElement): Scale => {
-    const beforeLastMarkValueElement = this.element.lastChild as HTMLElement;
-    let beforeLastEdge: number;
-    let lastEdge: number;
-
-    if (!this.settings?.isVertical) {
-      beforeLastEdge = beforeLastMarkValueElement.getBoundingClientRect().right;
-      lastEdge = lastMV.getBoundingClientRect().left;
-    } else {
-      beforeLastEdge = beforeLastMarkValueElement.getBoundingClientRect().bottom;
-      lastEdge = lastMV.getBoundingClientRect().top;
-    }
-
-    if (beforeLastEdge > lastEdge) {
-      beforeLastMarkValueElement.classList.add('hidden');
-    } else {
-      beforeLastMarkValueElement.classList.remove('hidden');
-    }
-    return this;
+    return scaleLength / marks;
   }
 }

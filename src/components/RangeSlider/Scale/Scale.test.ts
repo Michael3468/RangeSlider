@@ -139,18 +139,10 @@ describe('private createMarkValue', () => {
 });
 
 describe('private getStepBetweenMarksInPx', () => {
-  test('should return step between marks in px (number)', () => {
+  test('should return 10', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].isVertical = false;
-
-    const maxMarkValueElement = scale.element.appendChild(scale['createMarkValue'](scale['settings'].max, 500));
-    /**
-     * maxMarkValueSize = maxMarkValueElement.getBoundingClientRect().width = 300
-     * because of ...Element.prototype.getBoundingClientRect...
-     */
-    const result = scale['getStepBetweenMarksInPx'](maxMarkValueElement, 1);
-    expect(result).toBe(300);
+    const result = scale['getStepBetweenMarksInPx'](215);
+    expect(result).toBe(21.5);
   });
 });
 
@@ -296,129 +288,5 @@ describe('public createScaleMarks', () => {
         expect(isClassListContainsVertical).toBeTruthy();
       }
     }
-  });
-});
-
-describe('private getMaxMarkValueElement', () => {
-  it('should return bigger (width) HTMLElement ', () => {
-    const firstMV: HTMLElement = document.createElement('div') as HTMLElement;
-    firstMV.innerText = 'firstMV';
-    const lastMV: HTMLElement = document.createElement('div') as HTMLElement;
-    lastMV.innerText = 'lastMV';
-
-    firstMV.getBoundingClientRect = jest.fn().mockImplementationOnce(() => ({
-      width: 350, // if this value bigger it should return firstMV.innerText
-      height: 10,
-      top: 100,
-      left: 100,
-      bottom: 110,
-      right: 400,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    lastMV.getBoundingClientRect = jest.fn().mockImplementationOnce(() => ({
-      width: 300, // if this value bigger it should return lastMV.innerText
-      height: 10,
-      top: 100,
-      left: 100,
-      bottom: 110,
-      right: 400,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    const result = Scale['getMaxMarkValueElement'](firstMV, lastMV);
-    expect(result.innerText).toBe('firstMV');
-    expect(result.innerText).not.toBe('lastMV');
-  });
-});
-
-describe('private showHideBeforeLastMarkValue', () => {
-  function showHideBeforeLastMarkValueBeforeTest(isVert: boolean) {
-    const scale = new Scale();
-    scale['settings'] = {
-      min: 0,
-      max: 1500,
-      isTwoRunners: true,
-      isScaleVisible: true,
-      isVertical: isVert,
-      isTooltipsVisible: true,
-      isConfPanel: true,
-      isBarVisible: true,
-      valueFrom: 1000,
-      valueTo: 1490,
-      step: 10,
-    };
-
-    const childs = document.createElement('div');
-    childs.innerHTML = '<div>Child</div><div>last-Child</div>';
-    scale.element.appendChild(childs);
-
-    const lastMV: HTMLElement = document.createElement('div') as HTMLElement;
-
-    return { scale, lastMV };
-  }
-
-  it('should add class "hidden" if beforeLastEdge > lastEdge', () => {
-    const { scale, lastMV } = showHideBeforeLastMarkValueBeforeTest(false);
-
-    Element.prototype.getBoundingClientRect = jest.fn().mockImplementation(() => ({
-      width: 350,
-      height: 10,
-      top: 100,
-      left: 100,
-      bottom: 110,
-      right: 400,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    // for horizontal slider
-    scale['settings']!.isVertical = false;
-    let result = scale['showHideBeforeLastMarkValue'](lastMV);
-    let lastChild = result.element.lastChild as HTMLElement;
-    let isClassListContainsHidden = lastChild.classList.contains('hidden');
-    expect(isClassListContainsHidden).toBeTruthy();
-
-    // for vertical slider
-    scale['settings']!.isVertical = true;
-    result = scale['showHideBeforeLastMarkValue'](lastMV);
-    lastChild = result.element.lastChild as HTMLElement;
-    isClassListContainsHidden = lastChild.classList.contains('hidden');
-    expect(isClassListContainsHidden).toBeTruthy();
-  });
-
-  it('should NOT add class "hidden" if beforeLastEdge < lastEdge', () => {
-    const { scale, lastMV } = showHideBeforeLastMarkValueBeforeTest(true);
-
-    Element.prototype.getBoundingClientRect = jest.fn().mockImplementation(() => ({
-      width: 350,
-      height: 10,
-      top: 100,
-      left: 100,
-      bottom: 90,
-      right: 90,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    // for horizontal slider
-    scale['settings']!.isVertical = false;
-    let result = scale['showHideBeforeLastMarkValue'](lastMV);
-    let lastChild = result.element.lastChild as HTMLElement;
-    let isClassListContainsHidden = lastChild.classList.contains('hidden');
-    expect(isClassListContainsHidden).toBeFalsy();
-
-    // for vertical slider
-    scale['settings']!.isVertical = true;
-    result = scale['showHideBeforeLastMarkValue'](lastMV);
-    lastChild = result.element.lastChild as HTMLElement;
-    isClassListContainsHidden = lastChild.classList.contains('hidden');
-    expect(isClassListContainsHidden).toBeFalsy();
   });
 });
