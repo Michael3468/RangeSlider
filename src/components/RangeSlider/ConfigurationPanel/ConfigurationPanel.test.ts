@@ -169,3 +169,65 @@ describe('private getThumbFromDisabledStatus', () => {
     expect(result).toBeTruthy();
   });
 });
+
+describe('public updateState', () => {
+  beforeEach(() => {
+    settings = {
+      min: 0,
+      max: 1,
+      step: 0.001,
+      valueFrom: 0.001,
+      valueTo: 0.003,
+      isVertical: false,
+      isTwoRunners: true,
+      isScaleVisible: true,
+      isBarVisible: true,
+      isTooltipsVisible: true,
+      isConfPanel: true,
+    };
+  });
+
+  test('', () => {
+    const confPanel = new ConfigurationPanel(settings);
+
+    const updatedSettings: ISettings = {
+      min: 0.001,
+      max: 0.009,
+      step: 0.002,
+      valueFrom: 0.003,
+      valueTo: 0.005,
+      isVertical: true,
+      isTwoRunners: false,
+      isScaleVisible: false,
+      isBarVisible: false,
+      isTooltipsVisible: false,
+      isConfPanel: false,
+    };
+
+    const result = confPanel['updateState'](updatedSettings);
+
+    expect(result['cpMin'].value).toBe(String(updatedSettings.min));
+    expect(result['cpMin'].max).toBe(String(updatedSettings.valueFrom));
+
+    expect(result['cpMax'].value).toBe(String(updatedSettings.max));
+    expect(result['cpMax'].min).toBe(String(updatedSettings.valueTo));
+
+    expect(result['cpStep'].value).toBe(String(updatedSettings.step));
+
+    expect(result['cpFrom'].value).toBe(String(updatedSettings.valueFrom));
+    expect(result['cpFrom'].min).toBe(String(updatedSettings.min));
+    expect(result['cpFrom'].step).toBe(String(updatedSettings.step));
+    expect(result['cpFrom'].max).toBe(String(updatedSettings.valueTo));
+
+    expect(result['cpTo'].value).toBe(String(updatedSettings.valueTo));
+    expect(result['cpTo'].min).toBe(String(updatedSettings.valueFrom));
+    expect(result['cpTo'].step).toBe(String(updatedSettings.step));
+    expect(result['cpTo'].max).toBe(String(updatedSettings.max));
+
+    expect(result['cpVertical'].checked).toBe(updatedSettings.isVertical);
+    expect(result['cpRange'].checked).toBe(updatedSettings.isTwoRunners);
+    expect(result['cpScale'].checked).toBe(updatedSettings.isScaleVisible);
+    expect(result['cpBar'].checked).toBe(updatedSettings.isBarVisible);
+    expect(result['cpTips'].checked).toBe(updatedSettings.isTooltipsVisible);
+  });
+});

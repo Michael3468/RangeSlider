@@ -51,6 +51,17 @@ type INodeName = 'div' | 'span';
 
 type MeasureUnit = 'px' | '%';
 
+type CPInputElement = 'cpMin'
+  | 'cpMax'
+  | 'cpStep'
+  | 'cpFrom'
+  | 'cpTo'
+  | 'cpVertical'
+  | 'cpRange'
+  | 'cpScale'
+  | 'cpBar'
+  | 'cpTips';
+
 abstract class AbstractObserver {
   protected abstract observers: Function[];
 
@@ -106,6 +117,7 @@ export {
   ThumbName,
   INodeName,
   MeasureUnit,
+  CPInputElement,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,

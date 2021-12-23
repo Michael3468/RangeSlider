@@ -1,7 +1,12 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable lines-between-class-members */
-import { AbstractConfigurationPanel, AbstractObserver, ISettings } from '../RangeSlider/types';
+import {
+  AbstractConfigurationPanel,
+  AbstractObserver,
+  CPInputElement,
+  ISettings,
+} from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 
@@ -9,39 +14,36 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
   element: HTMLElement;
 
-  private cpMin: HTMLInputElement | undefined;
-  private cpMax: HTMLInputElement | undefined;
-  private cpStep: HTMLInputElement | undefined;
-  private cpFrom: HTMLInputElement | undefined;
-  private cpTo: HTMLInputElement | undefined;
+  private cpMin: HTMLInputElement;
+  private cpMax: HTMLInputElement;
+  private cpStep: HTMLInputElement;
+  private cpFrom: HTMLInputElement;
+  private cpTo: HTMLInputElement;
 
-  private cpVertical: HTMLInputElement | undefined;
-  private cpRange: HTMLInputElement | undefined;
-  private cpScale: HTMLInputElement | undefined;
-  private cpBar: HTMLInputElement | undefined;
-  private cpTips: HTMLInputElement | undefined;
+  private cpVertical: HTMLInputElement;
+  private cpRange: HTMLInputElement;
+  private cpScale: HTMLInputElement;
+  private cpBar: HTMLInputElement;
+  private cpTips: HTMLInputElement;
 
   changeConfPanelSettingsObserver: AbstractObserver;
 
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
-    // this.settings = {};
-    // this.settings = { ...settings };
     this.element = ConfigurationPanel.createElement();
 
-    this.cpMin = undefined;
-    this.cpMax = undefined;
-    this.cpStep = undefined;
-    this.cpFrom = undefined;
-    this.cpTo = undefined;
+    this.cpMin = this.assignElements('cpMin');
+    this.cpMax = this.assignElements('cpMax');
+    this.cpStep = this.assignElements('cpStep');
+    this.cpFrom = this.assignElements('cpFrom');
+    this.cpTo = this.assignElements('cpTo');
 
-    this.cpVertical = undefined;
-    this.cpRange = undefined;
-    this.cpScale = undefined;
-    this.cpBar = undefined;
-    this.cpTips = undefined;
-    this.assignElements();
+    this.cpVertical = this.assignElements('cpVertical');
+    this.cpRange = this.assignElements('cpRange');
+    this.cpScale = this.assignElements('cpScale');
+    this.cpBar = this.assignElements('cpBar');
+    this.cpTips = this.assignElements('cpTips');
 
     this.updateState(this.settings);
 
@@ -51,53 +53,35 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
     this.changeConfPanelSettingsObserver = new Observer();
   }
 
-  public updateState(settings: ISettings): void {
+  public updateState(settings: ISettings): ConfigurationPanel {
     const valueFrom = settings.valueFrom.toFixed(getDigitsAfterPoint(settings));
     const valueTo = settings.valueTo.toFixed(getDigitsAfterPoint(settings));
 
-    if (this.cpMin) {
-      this.cpMin.value = String(settings.min);
-      this.cpMin.max = String(valueFrom);
-    }
+    this.cpMin.value = String(settings.min);
+    this.cpMin.max = String(valueFrom);
 
-    if (this.cpMax) {
-      this.cpMax.value = String(settings.max);
-      this.cpMax.min = String(valueTo);
-    }
+    this.cpMax.value = String(settings.max);
+    this.cpMax.min = String(valueTo);
 
-    if (this.cpStep) {
-      this.cpStep.value = String(settings.step);
-    }
+    this.cpStep.value = String(settings.step);
 
-    if (this.cpFrom) {
-      this.cpFrom.value = String(valueFrom);
-      this.cpFrom.min = String(settings.min);
-      this.cpFrom.step = String(settings.step);
-      this.cpFrom.max = String(valueTo);
-    }
+    this.cpFrom.value = String(valueFrom);
+    this.cpFrom.min = String(settings.min);
+    this.cpFrom.step = String(settings.step);
+    this.cpFrom.max = String(valueTo);
 
-    if (this.cpTo) {
-      this.cpTo.value = String(valueTo);
-      this.cpTo.min = String(valueFrom);
-      this.cpTo.step = String(settings.step);
-      this.cpTo.max = String(settings.max);
-    }
+    this.cpTo.value = String(valueTo);
+    this.cpTo.min = String(valueFrom);
+    this.cpTo.step = String(settings.step);
+    this.cpTo.max = String(settings.max);
 
-    if (this.cpVertical) {
-      this.cpVertical.checked = settings.isVertical;
-    }
-    if (this.cpRange) {
-      this.cpRange.checked = settings.isTwoRunners;
-    }
-    if (this.cpScale) {
-      this.cpScale.checked = settings.isScaleVisible;
-    }
-    if (this.cpBar) {
-      this.cpBar.checked = settings.isBarVisible;
-    }
-    if (this.cpTips) {
-      this.cpTips.checked = settings.isTooltipsVisible;
-    }
+    this.cpVertical.checked = settings.isVertical;
+    this.cpRange.checked = settings.isTwoRunners;
+    this.cpScale.checked = settings.isScaleVisible;
+    this.cpBar.checked = settings.isBarVisible;
+    this.cpTips.checked = settings.isTooltipsVisible;
+
+    return this;
   }
 
   private static createElement(): HTMLElement {
@@ -170,18 +154,31 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
     return element;
   }
 
-  private assignElements(): void {
-    this.cpMin = <HTMLInputElement> this.element.querySelector('input[name="min"]');
-    this.cpMax = <HTMLInputElement> this.element.querySelector('input[name="max"]');
-    this.cpStep = <HTMLInputElement> this.element.querySelector('input[name="step"]');
-    this.cpFrom = <HTMLInputElement> this.element.querySelector('input[name="from"]');
-    this.cpTo = <HTMLInputElement> this.element.querySelector('input[name="to"]');
-
-    this.cpVertical = <HTMLInputElement> this.element.querySelector('input[name="vertical"]');
-    this.cpRange = <HTMLInputElement> this.element.querySelector('input[name="range"]');
-    this.cpScale = <HTMLInputElement> this.element.querySelector('input[name="scale"]');
-    this.cpBar = <HTMLInputElement> this.element.querySelector('input[name="bar"]');
-    this.cpTips = <HTMLInputElement> this.element.querySelector('input[name="tip"]');
+  // eslint-disable-next-line consistent-return
+  private assignElements(inputElement: CPInputElement): HTMLInputElement {
+    // eslint-disable-next-line default-case
+    switch (inputElement) {
+      case 'cpMin':
+        return <HTMLInputElement> this.element.querySelector('input[name="min"]');
+      case 'cpMax':
+        return <HTMLInputElement> this.element.querySelector('input[name="max"]');
+      case 'cpStep':
+        return <HTMLInputElement> this.element.querySelector('input[name="step"]');
+      case 'cpFrom':
+        return <HTMLInputElement> this.element.querySelector('input[name="from"]');
+      case 'cpTo':
+        return <HTMLInputElement> this.element.querySelector('input[name="to"]');
+      case 'cpVertical':
+        return <HTMLInputElement> this.element.querySelector('input[name="vertical"]');
+      case 'cpRange':
+        return <HTMLInputElement> this.element.querySelector('input[name="range"]');
+      case 'cpScale':
+        return <HTMLInputElement> this.element.querySelector('input[name="scale"]');
+      case 'cpBar':
+        return <HTMLInputElement> this.element.querySelector('input[name="bar"]');
+      case 'cpTips':
+        return <HTMLInputElement> this.element.querySelector('input[name="tip"]');
+    }
   }
 
   // Configuration panel input handlers
@@ -265,16 +262,13 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
     return this;
   }
 
-  private getThumbFromDisabledStatus = (): boolean => {
+  private getThumbFromDisabledStatus(): boolean {
     if (this.cpRange?.checked) {
-      if (this.cpFrom) {
-        this.cpFrom.disabled = false;
-      }
+      this.cpFrom.disabled = false;
       return false;
     }
-    if (this.cpFrom) {
-      this.cpFrom.disabled = true;
-    }
+
+    this.cpFrom.disabled = true;
     return true;
   }
 }
