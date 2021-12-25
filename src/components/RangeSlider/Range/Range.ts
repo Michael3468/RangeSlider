@@ -3,7 +3,7 @@
 import { createElement } from '../lib/common';
 import { AbstractRange } from '../RangeSlider/types';
 
-export default class Range extends AbstractRange {
+class Range extends AbstractRange {
   element: HTMLElement;
 
   constructor() {
@@ -33,3 +33,5 @@ export default class Range extends AbstractRange {
     return this;
   }
 }
+
+export default Range;

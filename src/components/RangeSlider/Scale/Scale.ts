@@ -11,7 +11,7 @@ import {
   getDigitsAfterPoint,
 } from '../lib/common';
 
-export default class Scale extends AbstractScale {
+class Scale extends AbstractScale {
   element: HTMLElement;
 
   private settings: ISettings | undefined;
@@ -125,3 +125,5 @@ export default class Scale extends AbstractScale {
     return scaleLength / marks;
   }
 }
+
+export default Scale;

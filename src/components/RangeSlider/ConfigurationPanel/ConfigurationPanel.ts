@@ -10,7 +10,7 @@ import {
 import Observer from '../Observer/Observer';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 
-export default class ConfigurationPanel extends AbstractConfigurationPanel {
+class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
   element: HTMLElement;
 
@@ -272,3 +272,5 @@ export default class ConfigurationPanel extends AbstractConfigurationPanel {
     return true;
   }
 }
+
+export default ConfigurationPanel;

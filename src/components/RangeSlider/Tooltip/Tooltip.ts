@@ -3,7 +3,7 @@
 import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 
-export default class Tooltip extends AbstractTooltip {
+class Tooltip extends AbstractTooltip {
   element: HTMLElement;
 
   constructor(private name: ThumbName) {
@@ -21,3 +21,5 @@ export default class Tooltip extends AbstractTooltip {
     return this;
   }
 }
+
+export default Tooltip;

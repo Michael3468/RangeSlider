@@ -2,7 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import { AbstractSlider } from '../RangeSlider/types';
 
-export default class Slider extends AbstractSlider {
+class Slider extends AbstractSlider {
   element: HTMLElement;
 
   constructor(id: string) {
@@ -18,3 +18,5 @@ export default class Slider extends AbstractSlider {
     return slider;
   }
 }
+
+export default Slider;

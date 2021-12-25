@@ -21,7 +21,7 @@ import Observer from '../Observer/Observer';
 import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
-export default class View {
+class View {
   private slider: AbstractSlider;
   private from: AbstractThumb;
   private to: AbstractThumb;
@@ -413,3 +413,5 @@ export default class View {
     return this;
   }
 }
+
+export default View;

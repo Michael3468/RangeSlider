@@ -10,7 +10,7 @@ import {
 } from '../RangeSlider/types';
 import { createElement } from '../lib/common';
 
-export default class Thumb extends AbstractThumb {
+class Thumb extends AbstractThumb {
   element: HTMLElement;
   tooltip: AbstractTooltip;
 
@@ -37,3 +37,5 @@ export default class Thumb extends AbstractThumb {
     return this;
   }
 }
+
+export default Thumb;

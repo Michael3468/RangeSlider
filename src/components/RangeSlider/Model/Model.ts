@@ -4,7 +4,7 @@
 /* eslint-disable import/no-unresolved */
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
-export default class Model {
+class Model {
   private settings: ISettings;
 
   private min: number;
@@ -114,3 +114,5 @@ export default class Model {
     return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
   }
 }
+
+export default Model;

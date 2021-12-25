@@ -6,7 +6,7 @@ import { ISettings } from '../RangeSlider/types';
 import View from '../View/View';
 import Model from '../Model/Model';
 
-export default class Presenter {
+class Presenter {
   private model: Model;
   private view: View;
 
@@ -51,3 +51,5 @@ export default class Presenter {
     return this;
   }
 }
+
+export default Presenter;

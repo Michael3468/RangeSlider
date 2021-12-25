@@ -2,7 +2,7 @@
 /* eslint-disable import/no-unresolved */
 import { AbstractObserver, ISettings } from '../RangeSlider/types';
 
-export default class Observer extends AbstractObserver {
+class Observer extends AbstractObserver {
   protected observers: Function[];
 
   constructor() {
@@ -40,3 +40,5 @@ export default class Observer extends AbstractObserver {
     });
   }
 }
+
+export default Observer;
