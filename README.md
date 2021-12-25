@@ -131,4 +131,4 @@ Layers are unlinked from external dependencies using abstract classes. Data betw
 
 ## UML Classes Diagram
 
-![UML Classes Diagram](./src/assets/img/uml_src_diagram.png)
+![UML Classes Diagram](./src/assets/img/uml-src-diagram.png)
