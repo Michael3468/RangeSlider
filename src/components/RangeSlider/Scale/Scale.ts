@@ -41,7 +41,7 @@ export default class Scale extends AbstractScale {
     while (markPos < scaleMaxPos) {
       this.element.appendChild(this.createMark(markPos));
 
-      const currentValueInPoints: number = Number((markPos / onePointInPx)
+      const currentValueInPoints: number = Number((settings.min + markPos / onePointInPx)
         .toFixed(digitsAfterPoint + 1));
 
       this.element.appendChild(this.createMarkValue(currentValueInPoints, markPos));

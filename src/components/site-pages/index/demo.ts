@@ -5,12 +5,12 @@
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
-  min: 0,
-  max: 1502,
-  valueFrom: 1000,
-  valueTo: 1492,
+  min: 0.0001,
+  max: 0.0009,
+  valueFrom: 0.00031,
+  valueTo: 0.004,
   isScaleVisible: true,
-  step: 1,
+  step: 0.00001,
   isConfPanel: true,
 });
 
