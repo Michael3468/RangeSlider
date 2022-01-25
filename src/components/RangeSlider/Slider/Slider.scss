@@ -12,7 +12,7 @@
 
   &_vertical {
     width: $slider-thickness + px;
-    height: 100%;
+    min-height: 300px;
     margin-right: auto;
     margin-left: auto;
   }
