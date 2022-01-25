@@ -1,4 +1,8 @@
 # RangeSlider jQuery Plugin
+
+<a href="https://whitedevilman.github.io/RangeSlider/">Demo Page</a>
+
+
 Table of Contents:
 1. [Build Setup](#build-setup)
 2. [Plugin Configuration](#plugin-configuration)
