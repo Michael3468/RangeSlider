@@ -4,6 +4,12 @@
 @import '../Thumb/Thumb.scss';
 @import '../Tooltip/Tooltip.scss';
 
+* {
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
 .range-slider__block {
   display: flex;
   flex-direction: column;
