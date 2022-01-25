@@ -4,6 +4,7 @@
   position: relative;
   width: 100%;
   height: $slider-thickness + px;
+  margin-bottom: 60px;
   background: $slider-bg-color;
   border: $slider-range-border + px solid $slider-border-color;
   border-radius: calc(#{$slider-thickness} / 2) + 'px';

@@ -4,13 +4,12 @@
   &__configuration-panel {
     display: block;
     min-width: 130px;
-    margin-left: 70px;
     overflow: auto;
     background: $slider-bg-color;
     border: 1px solid $slider-border-color;
     border-radius: 4px;
     user-select: auto;
-  
+
     &__caption {
       display: flex;
       justify-content: center;
@@ -41,7 +40,7 @@
 
     &_input {
       flex-direction: column;
-  
+
       &-text {
         font-weight: bold;
         text-align: center;
@@ -51,7 +50,7 @@
       &-value {
         width: 100%;
         text-align: center;
-  
+
         &:focus {
           box-shadow: 0 0 5px red;
         }
@@ -66,7 +65,7 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-    
+
       &:focus-within {
         font-weight: bold;
       }
@@ -74,7 +73,7 @@
 
     &_checkbox_input {
       margin: 0 10px;
-    
+
       &:focus {
         width: 15px;
         height: 15px;
