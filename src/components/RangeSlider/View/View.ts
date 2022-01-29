@@ -1,7 +1,4 @@
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable lines-between-class-members */
 import Thumb from '../Thumb/Thumb';
 import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';
@@ -23,16 +20,25 @@ import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 class View {
   private slider: AbstractSlider;
+
   private from: AbstractThumb;
+
   private to: AbstractThumb;
+
   private range: AbstractRange;
+
   private scale: AbstractScale;
+
   private configurationPanel?: AbstractConfigurationPanel;
 
   private settings: ISettings;
+
   private rangeMarginTo: number;
+
   private rangeMarginFrom: number;
+
   private thumbMarginFrom: number;
+
   private thumbMarginTo: number;
 
   changeSettingsObserver: AbstractObserver;

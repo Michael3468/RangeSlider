@@ -2,10 +2,8 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+
 import { ISettings } from '../RangeSlider/types';
 import Thumb from './Thumb';
 

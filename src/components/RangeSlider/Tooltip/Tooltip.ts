@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 

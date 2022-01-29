@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable lines-between-class-members */
 import {
   AbstractConfigurationPanel,
   AbstractObserver,
@@ -12,18 +9,27 @@ import { createElement, getDigitsAfterPoint } from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
+
   element: HTMLElement;
 
   private cpMin: HTMLInputElement;
+
   private cpMax: HTMLInputElement;
+
   private cpStep: HTMLInputElement;
+
   private cpFrom: HTMLInputElement;
+
   private cpTo: HTMLInputElement;
 
   private cpVertical: HTMLInputElement;
+
   private cpRange: HTMLInputElement;
+
   private cpScale: HTMLInputElement;
+
   private cpBar: HTMLInputElement;
+
   private cpTips: HTMLInputElement;
 
   changeConfPanelSettingsObserver: AbstractObserver;

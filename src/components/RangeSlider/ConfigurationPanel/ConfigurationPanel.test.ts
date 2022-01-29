@@ -2,11 +2,7 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable lines-between-class-members */
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
 
 import { ISettings } from '../RangeSlider/types';
 import ConfigurationPanel from './ConfigurationPanel';

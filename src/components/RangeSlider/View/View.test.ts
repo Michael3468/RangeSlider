@@ -5,11 +5,8 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
-/* eslint-disable lines-between-class-members */
 /* eslint-disable no-shadow */
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 
 import View from './View';
@@ -21,14 +18,23 @@ import {
 
 class PointerEvent extends MouseEvent {
   public height: number;
+
   public isPrimary: boolean;
+
   public pointerId: number;
+
   public pointerType: string;
+
   public pressure: number;
+
   public tangentialPressure: number;
+
   public tiltX: number;
+
   public tiltY: number;
+
   public twist: number;
+
   public width: number;
 
   constructor(type: string, params: PointerEventInit = {}) {
@@ -46,19 +52,28 @@ class PointerEvent extends MouseEvent {
   }
 
   public ReleasePointerCapture(): any {}
+
   public getCoalescedEvents(): any {}
+
   public getPredictedEvents(): any {}
 }
 global.PointerEvent = <any> PointerEvent;
 
 abstract class ViewHint {
   abstract getPosOnScale(currentPos: number): number;
+
   abstract setZIndexTop(thumb: ThumbName): View;
+
   abstract isTooltipsCollision(): boolean;
+
   abstract setDistanceBetweenTooltips(): View;
+
   abstract setMargins(thumbName: ThumbName, currentPos: number): void;
+
   abstract updateRangeSliderValues(): View;
+
   abstract initRangeSliderMargins(): View;
+
   abstract handleNotifyChangeSettingsObserver(): void;
 }
 

@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import { AbstractSlider } from '../RangeSlider/types';
 
 class Slider extends AbstractSlider {

@@ -1,7 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-
 import { AbstractScale, ISettings } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,

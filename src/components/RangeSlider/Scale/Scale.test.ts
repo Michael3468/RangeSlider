@@ -4,9 +4,7 @@
 
 /* eslint-disable dot-notation */
 /* eslint-disable no-shadow */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
+
 import { ISettings } from '../RangeSlider/types';
 import Scale from './Scale';
 
