@@ -37,13 +37,9 @@ function createElement(
   return element;
 }
 
-// TODO если делать метки через 10пх нужен ли этот метод?
 function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   const elementLengthInPx: number = getElementLengthInPx(settings, element);
   const elementLengthInPoints: number = settings.max - settings.min;
-  // TODO если elementLengthInPoints меньше единицы и больше нуля,
-  // тогда умножить его на 1 + количество цифр после запятой
-  /* а если меньше нуля и больше -1? */
   return elementLengthInPx / elementLengthInPoints;
 }
 
