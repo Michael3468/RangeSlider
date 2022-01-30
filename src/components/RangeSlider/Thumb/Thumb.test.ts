@@ -33,7 +33,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb_${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginTop } = result.element.style;
@@ -57,7 +57,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb_vertical_${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginLeft } = result.element.style;

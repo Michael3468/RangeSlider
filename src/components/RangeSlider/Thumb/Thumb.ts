@@ -19,7 +19,7 @@ class Thumb extends AbstractThumb {
 
     this.element = createElement(
       'div',
-      `range-slider__thumb_${this.name}`,
+      `thumb_${this.name}`,
       this.tooltip.element,
     );
   }

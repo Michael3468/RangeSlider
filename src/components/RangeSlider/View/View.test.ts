@@ -147,14 +147,14 @@ describe('public createRangeSlider', () => {
 
   test('should return slider with one runner', () => {
     settings.isTwoRunners = false;
-    testChild(settings, 0, 'range-slider__thumb_to');
+    testChild(settings, 0, 'thumb_to');
     testChild(settings, 1, 'range-slider__range');
   });
 
   test('should return slider with two runners', () => {
     settings.isTwoRunners = true;
-    testChild(settings, 0, 'range-slider__thumb_from');
-    testChild(settings, 1, 'range-slider__thumb_to');
+    testChild(settings, 0, 'thumb_from');
+    testChild(settings, 1, 'thumb_to');
     testChild(settings, 2, 'range-slider__range');
   });
 
@@ -176,10 +176,10 @@ describe('public createRangeSlider', () => {
 
   /* if (settings.isVertical) and if (settings.isTwoRunners) */
   function isThumbFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['from'].element.classList.contains('thumb_vertical');
   }
   function isThumbToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['to'].element.classList.contains('thumb_vertical');
   }
 
   test('if settings.isVertical == true, should add vertical classes, ', () => {
@@ -630,7 +630,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   }
 
   function isHasClasses(result: View, thumbName: ThumbName) {
-    const isHasThumbClass = result[thumbName].element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_vertical_${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
     const isHasZIndexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');

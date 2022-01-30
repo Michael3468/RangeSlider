@@ -80,7 +80,7 @@ class View {
       this.slider.element.appendChild(this.range.element);
     }
 
-    const THUMB_VERTICAL = 'range-slider__thumb_vertical';
+    const THUMB_VERTICAL = 'thumb_vertical';
     const RS_VERTICAL = 'range-slider_vertical';
     const RS_SCALE_VERTICAL = 'range-slider__scale_vertical';
     if (settings.isVertical) {
@@ -185,9 +185,9 @@ class View {
     target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
 
-      if (target.classList.contains('range-slider__thumb_from')) {
+      if (target.classList.contains('thumb_from')) {
         thumbName = 'from';
-      } else if (target.classList.contains('range-slider__thumb_to')) {
+      } else if (target.classList.contains('thumb_to')) {
         thumbName = 'to';
       }
 
@@ -259,9 +259,9 @@ class View {
       const target = <Element> event.target;
       const stepInPx = this.getStepInPx();
 
-      if (target.classList.contains('range-slider__thumb_from')) {
+      if (target.classList.contains('thumb_from')) {
         max = this.thumbMarginTo - stepInPx + min;
-      } else if (target.classList.contains('range-slider__thumb_to')) {
+      } else if (target.classList.contains('thumb_to')) {
         min = this.thumbMarginFrom + stepInPx + min;
       }
     }
