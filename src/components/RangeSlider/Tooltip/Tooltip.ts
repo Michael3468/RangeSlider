@@ -7,7 +7,7 @@ class Tooltip extends AbstractTooltip {
   constructor(private name: ThumbName) {
     super();
     this.name = name;
-    this.element = createElement('div', `range-slider__tooltip_${this.name}`);
+    this.element = createElement('div', `tooltip_${this.name}`);
   }
 
   public setTooltipText(value: number, settings: ISettings): Tooltip {

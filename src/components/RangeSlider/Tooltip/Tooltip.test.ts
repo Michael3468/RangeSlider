@@ -27,13 +27,13 @@ beforeEach(() => {
 
 describe('constructor', () => {
   const tName: ThumbName = 'from';
-  test(`should create "div" element with class "range-slider__tooltip_${tName}"`, () => {
+  test(`should create "div" element with class "tooltip_${tName}"`, () => {
     const tooltip = new Tooltip(tName);
     expect(tooltip['name']).toBe(tName);
 
     expect(tooltip.element.nodeName).toBe('DIV');
 
-    const isHasClass = tooltip.element.classList.contains(`range-slider__tooltip_${tName}`);
+    const isHasClass = tooltip.element.classList.contains(`tooltip_${tName}`);
     expect(isHasClass).toBeTruthy();
   });
 });

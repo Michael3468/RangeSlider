@@ -44,7 +44,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`range-slider__tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 
@@ -68,7 +68,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`range-slider__tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 });

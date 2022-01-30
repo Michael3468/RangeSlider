@@ -408,7 +408,7 @@ class View {
     const from = this.from.element;
     const to = this.to.element;
 
-    const zIndexClass = 'range-slider__tooltip_z-index-top';
+    const zIndexClass = 'tooltip_z-index-top';
 
     if (thumb === 'from') {
       from.classList.add(zIndexClass);

@@ -168,10 +168,10 @@ describe('public createRangeSlider', () => {
 
   /* if (settings.isVertical) and if (settings.isTooltipsVisible) */
   function isTooltipFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['from'].tooltip.element.classList.contains('tooltip_vertical');
   }
   function isTooltipToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['to'].tooltip.element.classList.contains('tooltip_vertical');
   }
 
   /* if (settings.isVertical) and if (settings.isTwoRunners) */
@@ -475,7 +475,7 @@ describe('private setZIndexTop', () => {
     step: 10,
   };
 
-  const zIndexClass = 'range-slider__tooltip_z-index-top';
+  const zIndexClass = 'tooltip_z-index-top';
   const view = new View('range-slider', settings);
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
@@ -633,7 +633,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_vertical_${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
-    const isHasZIndexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');
+    const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip_z-index-top');
     expect(isHasZIndexClass).toBeTruthy();
   }
 
