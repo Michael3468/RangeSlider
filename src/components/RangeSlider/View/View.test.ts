@@ -630,7 +630,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   }
 
   function isHasClasses(result: View, thumbName: ThumbName) {
-    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_vertical_${thumbName}`);
+    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
     const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip_z-index-top');
