@@ -82,7 +82,7 @@ class View {
 
     const THUMB_VERTICAL = 'thumb_vertical';
     const RS_VERTICAL = 'range-slider_vertical';
-    const RS_SCALE_VERTICAL = 'range-slider__scale_vertical';
+    const RS_SCALE_VERTICAL = 'scale_vertical';
     if (settings.isVertical) {
       this.slider.element.classList.add(RS_VERTICAL);
       this.scale.element.classList.add(RS_SCALE_VERTICAL);

@@ -163,7 +163,7 @@ describe('public createRangeSlider', () => {
   }
 
   function isScaleHasClassVertical(settings: ISettings) {
-    return createRS(settings)['scale'].element.classList.contains('range-slider__scale_vertical');
+    return createRS(settings)['scale'].element.classList.contains('scale_vertical');
   }
 
   /* if (settings.isVertical) and if (settings.isTooltipsVisible) */
@@ -242,9 +242,9 @@ describe('public createRangeSlider', () => {
   /* if (settings.isScaleVisible) */
   function isHasScale(settings: ISettings) {
     if (settings.isTwoRunners) {
-      return createRS(settings)['slider'].element.children[3]?.classList.contains('range-slider__scale');
+      return createRS(settings)['slider'].element.children[3]?.classList.contains('scale');
     }
-    return createRS(settings)['slider'].element.children[2]?.classList.contains('range-slider__scale');
+    return createRS(settings)['slider'].element.children[2]?.classList.contains('scale');
   }
 
   test('should return slider with scale element', () => {
