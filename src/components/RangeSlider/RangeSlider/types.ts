@@ -2,7 +2,6 @@
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
-/* eslint-disable class-methods-use-this */
 
 interface ISettings {
   min: number;

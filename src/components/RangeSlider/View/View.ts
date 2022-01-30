@@ -1,4 +1,5 @@
 /* eslint-disable dot-notation */
+
 import Thumb from '../Thumb/Thumb';
 import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';

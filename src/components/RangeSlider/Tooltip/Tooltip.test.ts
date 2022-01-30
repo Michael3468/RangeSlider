@@ -3,6 +3,7 @@
  */
 
 /* eslint-disable dot-notation */
+
 import { ISettings, ThumbName } from '../RangeSlider/types';
 import Tooltip from './Tooltip';
 

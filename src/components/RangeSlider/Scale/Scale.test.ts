@@ -3,7 +3,6 @@
  */
 
 /* eslint-disable dot-notation */
-/* eslint-disable no-shadow */
 
 import { ISettings } from '../RangeSlider/types';
 import Scale from './Scale';
