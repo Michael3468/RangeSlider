@@ -1,8 +1,6 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-console */
-/* eslint-disable no-undef */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import Observer from './Observer';
 
 describe('addObserver', () => {

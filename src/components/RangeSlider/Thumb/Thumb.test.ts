@@ -2,10 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import { ISettings } from '../RangeSlider/types';
 import Thumb from './Thumb';
 
@@ -37,7 +33,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb_${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginTop } = result.element.style;
@@ -48,7 +44,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`range-slider__tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 
@@ -61,7 +57,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb_${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginLeft } = result.element.style;
@@ -72,7 +68,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`range-slider__tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 });

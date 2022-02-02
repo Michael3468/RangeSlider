@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import { AbstractObserver, ISettings } from '../RangeSlider/types';
 
 class Observer extends AbstractObserver {

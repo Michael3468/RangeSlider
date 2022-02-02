@@ -1,12 +1,7 @@
 /* istanbul ignore file */
 
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable max-classes-per-file */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-undef */
-/* eslint-disable lines-between-class-members */
 
 interface ISettings {
   min: number;
@@ -66,7 +61,9 @@ abstract class AbstractObserver {
   protected abstract observers: Function[];
 
   public abstract addObserver(fn: Function): void;
+
   public abstract removeObserver(fn: Function): void;
+
   public abstract notifyObservers(data?: ISettings): void;
 }
 
@@ -80,6 +77,7 @@ abstract class AbstractRange {
   abstract element: HTMLElement;
 
   public abstract setMarginFromBegin(margin: number, isVertical: boolean): AbstractRange;
+
   public abstract setMarginFromEnd(margin: number, isVertical: boolean): AbstractRange;
 }
 
@@ -97,6 +95,7 @@ abstract class AbstractTooltip {
 
 abstract class AbstractThumb {
   abstract element: HTMLElement;
+
   abstract tooltip: AbstractTooltip;
 
   public abstract setMargin(margin: number, settings: ISettings): AbstractThumb;
@@ -104,6 +103,7 @@ abstract class AbstractThumb {
 
 abstract class AbstractConfigurationPanel {
   abstract element: HTMLElement;
+
   abstract changeConfPanelSettingsObserver: AbstractObserver;
 
   public abstract updateState(settings: ISettings): void;

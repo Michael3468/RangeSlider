@@ -1,22 +1,30 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
 class Model {
   private settings: ISettings;
 
   private min: number;
+
   private max: number;
+
   private isTwoRunners: boolean;
+
   private isScaleVisible: boolean;
+
   private isVertical: boolean;
+
   private isTooltipsVisible: boolean;
+
   private isConfPanel: boolean;
+
   private isBarVisible: boolean;
+
   private valueFrom: number;
+
   private valueTo: number;
+
   private step: number;
 
   constructor(settings: ISettings) {

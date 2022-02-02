@@ -2,10 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable no-undef */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
 import Range from './Range';
 
 describe('setMarginFromBegin', () => {

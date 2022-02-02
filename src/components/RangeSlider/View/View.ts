@@ -1,7 +1,5 @@
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable lines-between-class-members */
+
 import Thumb from '../Thumb/Thumb';
 import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';
@@ -23,16 +21,25 @@ import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 class View {
   private slider: AbstractSlider;
+
   private from: AbstractThumb;
+
   private to: AbstractThumb;
+
   private range: AbstractRange;
+
   private scale: AbstractScale;
+
   private configurationPanel?: AbstractConfigurationPanel;
 
   private settings: ISettings;
+
   private rangeMarginTo: number;
+
   private rangeMarginFrom: number;
+
   private thumbMarginFrom: number;
+
   private thumbMarginTo: number;
 
   changeSettingsObserver: AbstractObserver;
@@ -73,9 +80,9 @@ class View {
       this.slider.element.appendChild(this.range.element);
     }
 
-    const THUMB_VERTICAL = 'range-slider__thumb_vertical';
+    const THUMB_VERTICAL = 'thumb_vertical';
     const RS_VERTICAL = 'range-slider_vertical';
-    const RS_SCALE_VERTICAL = 'range-slider__scale_vertical';
+    const RS_SCALE_VERTICAL = 'scale_vertical';
     if (settings.isVertical) {
       this.slider.element.classList.add(RS_VERTICAL);
       this.scale.element.classList.add(RS_SCALE_VERTICAL);
@@ -178,9 +185,9 @@ class View {
     target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
 
-      if (target.classList.contains('range-slider__thumb_from')) {
+      if (target.classList.contains('thumb_from')) {
         thumbName = 'from';
-      } else if (target.classList.contains('range-slider__thumb_to')) {
+      } else if (target.classList.contains('thumb_to')) {
         thumbName = 'to';
       }
 
@@ -252,9 +259,9 @@ class View {
       const target = <Element> event.target;
       const stepInPx = this.getStepInPx();
 
-      if (target.classList.contains('range-slider__thumb_from')) {
+      if (target.classList.contains('thumb_from')) {
         max = this.thumbMarginTo - stepInPx + min;
-      } else if (target.classList.contains('range-slider__thumb_to')) {
+      } else if (target.classList.contains('thumb_to')) {
         min = this.thumbMarginFrom + stepInPx + min;
       }
     }
@@ -401,7 +408,7 @@ class View {
     const from = this.from.element;
     const to = this.to.element;
 
-    const zIndexClass = 'range-slider__tooltip_z-index-top';
+    const zIndexClass = 'tooltip_z-index-top';
 
     if (thumb === 'from') {
       from.classList.add(zIndexClass);

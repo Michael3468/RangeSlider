@@ -1,13 +1,12 @@
 /* eslint-disable dot-notation */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import { ISettings } from '../RangeSlider/types';
 import View from '../View/View';
 import Model from '../Model/Model';
 
 class Presenter {
   private model: Model;
+
   private view: View;
 
   constructor(model: Model, view: View) {

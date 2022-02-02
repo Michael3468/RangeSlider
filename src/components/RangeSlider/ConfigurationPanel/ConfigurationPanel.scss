@@ -1,85 +1,83 @@
 @import '../../../assets/scss/vars.scss';
 
-.range-slider {
-  &__configuration-panel {
-    display: block;
-    min-width: 130px;
-    overflow: auto;
-    background: $slider-bg-color;
-    border: 1px solid $slider-border-color;
-    border-radius: 4px;
-    user-select: auto;
+.configuration-panel {
+  display: block;
+  min-width: 130px;
+  overflow: auto;
+  background: $slider-bg-color;
+  border: 1px solid $slider-border-color;
+  border-radius: 4px;
+  user-select: auto;
 
-    &__caption {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
+  &__caption {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.configuration-panel__options {
+  &_inputs_block,
+  &_checkbox_block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px 10px 0 10px;
+  }
+
+  &_input,
+  &_checkbox {
+    display: flex;
+    width: 100px;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    border: 1px solid $slider-border-color;
+  }
+
+  &_input {
+    flex-direction: column;
+
+    &-text {
       font-weight: bold;
       text-align: center;
+      background: $slider-between-bg-color;
+    }
+
+    &-value {
+      width: 100%;
+      text-align: center;
+
+      &:focus {
+        box-shadow: 0 0 5px red;
+      }
     }
   }
 
-  &__configuration-panel__options {
-    &_inputs_block,
-    &_checkbox_block {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 10px 10px 0 10px;
+  &_toggle {
+    flex-direction: row;
+  }
+
+  &_checkbox_label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:focus-within {
+      font-weight: bold;
     }
+  }
 
-    &_input,
-    &_checkbox {
-      display: flex;
-      width: 100px;
-      margin: 0 5px;
-      margin-bottom: 10px;
-      border: 1px solid $slider-border-color;
-    }
+  &_checkbox_input {
+    margin: 0 10px;
 
-    &_input {
-      flex-direction: column;
-
-      &-text {
-        font-weight: bold;
-        text-align: center;
-        background: $slider-between-bg-color;
-      }
-
-      &-value {
-        width: 100%;
-        text-align: center;
-
-        &:focus {
-          box-shadow: 0 0 5px red;
-        }
-      }
-    }
-
-    &_toggle {
-      flex-direction: row;
-    }
-
-    &_checkbox_label {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      &:focus-within {
-        font-weight: bold;
-      }
-    }
-
-    &_checkbox_input {
-      margin: 0 10px;
-
-      &:focus {
-        width: 15px;
-        height: 15px;
-        box-shadow: 0 0 5px red;
-        content: '';
-      }
+    &:focus {
+      width: 15px;
+      height: 15px;
+      box-shadow: 0 0 5px red;
+      content: '';
     }
   }
 }

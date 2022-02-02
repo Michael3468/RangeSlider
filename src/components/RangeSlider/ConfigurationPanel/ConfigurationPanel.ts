@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable lines-between-class-members */
 import {
   AbstractConfigurationPanel,
   AbstractObserver,
@@ -12,18 +9,27 @@ import { createElement, getDigitsAfterPoint } from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
+
   element: HTMLElement;
 
   private cpMin: HTMLInputElement;
+
   private cpMax: HTMLInputElement;
+
   private cpStep: HTMLInputElement;
+
   private cpFrom: HTMLInputElement;
+
   private cpTo: HTMLInputElement;
 
   private cpVertical: HTMLInputElement;
+
   private cpRange: HTMLInputElement;
+
   private cpScale: HTMLInputElement;
+
   private cpBar: HTMLInputElement;
+
   private cpTips: HTMLInputElement;
 
   changeConfPanelSettingsObserver: AbstractObserver;
@@ -85,64 +91,64 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   private static createElement(): HTMLElement {
-    const element = createElement('div', 'range-slider__configuration-panel');
+    const element = createElement('div', 'configuration-panel');
 
     element.innerHTML = `
-    <span class="range-slider__configuration-panel__caption">Configuration Panel</span>
+    <span class="configuration-panel__caption">Configuration Panel</span>
 
-    <div class="range-slider__configuration-panel__options">
+    <div class="configuration-panel__options">
       <form>
-        <div class="range-slider__configuration-panel__options_inputs_block">
-          <div class="range-slider__configuration-panel__options_input">
-            <label for="min" class="range-slider__configuration-panel__options_input-text">min</label>
-            <input class="range-slider__configuration-panel__options_input-value" type="number" name="min" max="0">
+        <div class="configuration-panel__options_inputs_block">
+          <div class="configuration-panel__options_input">
+            <label for="min" class="configuration-panel__options_input-text">min</label>
+            <input class="configuration-panel__options_input-value" type="number" name="min" max="0">
           </div>
-          <div class="range-slider__configuration-panel__options_input">
-            <label for="max" class="range-slider__configuration-panel__options_input-text">max</label>
-            <input class="range-slider__configuration-panel__options_input-value" type="number" name="max" min="0">
+          <div class="configuration-panel__options_input">
+            <label for="max" class="configuration-panel__options_input-text">max</label>
+            <input class="configuration-panel__options_input-value" type="number" name="max" min="0">
           </div>
-          <div class="range-slider__configuration-panel__options_input">
-            <label for="step" class="range-slider__configuration-panel__options_input-text">step</label>
-            <input class="range-slider__configuration-panel__options_input-value" type="number" name="step" min="1">
+          <div class="configuration-panel__options_input">
+            <label for="step" class="configuration-panel__options_input-text">step</label>
+            <input class="configuration-panel__options_input-value" type="number" name="step" min="1">
           </div>
-          <div class="range-slider__configuration-panel__options_input">
-            <label for="from" class="range-slider__configuration-panel__options_input-text">from</label>
-            <input class="range-slider__configuration-panel__options_input-value" type="number" name="from" min="0" max="0" step="0">
+          <div class="configuration-panel__options_input">
+            <label for="from" class="configuration-panel__options_input-text">from</label>
+            <input class="configuration-panel__options_input-value" type="number" name="from" min="0" max="0" step="0">
           </div>
-          <div class="range-slider__configuration-panel__options_input">
-            <label for="to" class="range-slider__configuration-panel__options_input-text">to</label>
-            <input class="range-slider__configuration-panel__options_input-value" type="number" name="to" max="0" step="0">
+          <div class="configuration-panel__options_input">
+            <label for="to" class="configuration-panel__options_input-text">to</label>
+            <input class="configuration-panel__options_input-value" type="number" name="to" max="0" step="0">
           </div>
         </div>
 
-        <div class="range-slider__configuration-panel__options_checkbox_block">
-          <div class="range-slider__configuration-panel__options_checkbox">
-            <label class="range-slider__configuration-panel__options_checkbox_label">
-              <input class="range-slider__configuration-panel__options_checkbox_input" type="checkbox" name="vertical">
+        <div class="configuration-panel__options_checkbox_block">
+          <div class="configuration-panel__options_checkbox">
+            <label class="configuration-panel__options_checkbox_label">
+              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="vertical">
               vertical
             </label>
           </div>
-          <div class="range-slider__configuration-panel__options_checkbox">
-            <label class="range-slider__configuration-panel__options_checkbox_label">
-              <input class="range-slider__configuration-panel__options_checkbox_input" type="checkbox" name="range">
+          <div class="configuration-panel__options_checkbox">
+            <label class="configuration-panel__options_checkbox_label">
+              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="range">
               range
             </label>
           </div>
-          <div class="range-slider__configuration-panel__options_checkbox">
-            <label class="range-slider__configuration-panel__options_checkbox_label">
-              <input class="range-slider__configuration-panel__options_checkbox_input" type="checkbox" name="scale">
+          <div class="configuration-panel__options_checkbox">
+            <label class="configuration-panel__options_checkbox_label">
+              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="scale">
               scale
             </label>
           </div>
-          <div class="range-slider__configuration-panel__options_checkbox">
-            <label class="range-slider__configuration-panel__options_checkbox_label">
-              <input class="range-slider__configuration-panel__options_checkbox_input" type="checkbox" name="bar">
+          <div class="configuration-panel__options_checkbox">
+            <label class="configuration-panel__options_checkbox_label">
+              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="bar">
               bar
             </label>
           </div>
-          <div class="range-slider__configuration-panel__options_checkbox">
-            <label class="range-slider__configuration-panel__options_checkbox_label">
-              <input class="range-slider__configuration-panel__options_checkbox_input" type="checkbox" name="tip">
+          <div class="configuration-panel__options_checkbox">
+            <label class="configuration-panel__options_checkbox_label">
+              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="tip">
               tip
             </label>
           </div>
