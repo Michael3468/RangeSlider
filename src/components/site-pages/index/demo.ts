@@ -1,5 +1,3 @@
-/* eslint-disable dot-notation */
-
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({
