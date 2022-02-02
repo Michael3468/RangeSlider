@@ -3,9 +3,7 @@
  */
 
 /* eslint-disable dot-notation */
-/* eslint-disable no-undef */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import Presenter from './Presenter';
 import Model from '../Model/Model';
 import { ISettings } from '../RangeSlider/types';

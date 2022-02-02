@@ -1,7 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-
 import { AbstractScale, ISettings } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,
@@ -18,7 +14,7 @@ class Scale extends AbstractScale {
 
   constructor() {
     super();
-    this.element = createElement('div', 'range-slider__scale');
+    this.element = createElement('div', 'scale');
     this.settings = undefined;
   }
 
@@ -87,14 +83,14 @@ class Scale extends AbstractScale {
   private getElementChilds(): Element[] {
     return Array
       .from(this.element.children)
-      .filter((child) => child.classList.contains('range-slider__scale_mark_value'));
+      .filter((child) => child.classList.contains('scale_mark_value'));
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
-    const mark = createElement('span', 'range-slider__scale_mark');
+    const mark = createElement('span', 'scale_mark');
 
     if (this.settings?.isVertical) {
-      mark.className += ' range-slider__scale_mark_vertical';
+      mark.className += ' scale_mark_vertical';
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
       mark.style.marginLeft = `${marginFromBegin}px`;
@@ -104,10 +100,10 @@ class Scale extends AbstractScale {
   }
 
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
-    const markValue = createElement('div', 'range-slider__scale_mark_value');
+    const markValue = createElement('div', 'scale_mark_value');
 
     if (this.settings?.isVertical) {
-      markValue.className += ' range-slider__scale_mark_value_vertical';
+      markValue.className += ' scale_mark_value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
       markValue.style.marginLeft = `${marginFromBegin}px`;

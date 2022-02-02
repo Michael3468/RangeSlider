@@ -1,7 +1,3 @@
-/* eslint-disable dot-notation */
-/* eslint-disable no-undef */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
 $('#range-slider').RangeSlider({

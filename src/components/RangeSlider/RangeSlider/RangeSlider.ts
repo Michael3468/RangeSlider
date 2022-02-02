@@ -1,7 +1,6 @@
-/* eslint-disable no-undef */
 /* eslint-disable func-names */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+/* eslint-disable no-undef */
+
 import 'airbnb-browser-shims';
 
 import View from '../View/View';

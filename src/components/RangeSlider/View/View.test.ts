@@ -5,11 +5,8 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
-/* eslint-disable lines-between-class-members */
 /* eslint-disable no-shadow */
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 
 import View from './View';
@@ -21,14 +18,23 @@ import {
 
 class PointerEvent extends MouseEvent {
   public height: number;
+
   public isPrimary: boolean;
+
   public pointerId: number;
+
   public pointerType: string;
+
   public pressure: number;
+
   public tangentialPressure: number;
+
   public tiltX: number;
+
   public tiltY: number;
+
   public twist: number;
+
   public width: number;
 
   constructor(type: string, params: PointerEventInit = {}) {
@@ -46,19 +52,28 @@ class PointerEvent extends MouseEvent {
   }
 
   public ReleasePointerCapture(): any {}
+
   public getCoalescedEvents(): any {}
+
   public getPredictedEvents(): any {}
 }
 global.PointerEvent = <any> PointerEvent;
 
 abstract class ViewHint {
   abstract getPosOnScale(currentPos: number): number;
+
   abstract setZIndexTop(thumb: ThumbName): View;
+
   abstract isTooltipsCollision(): boolean;
+
   abstract setDistanceBetweenTooltips(): View;
+
   abstract setMargins(thumbName: ThumbName, currentPos: number): void;
+
   abstract updateRangeSliderValues(): View;
+
   abstract initRangeSliderMargins(): View;
+
   abstract handleNotifyChangeSettingsObserver(): void;
 }
 
@@ -132,14 +147,14 @@ describe('public createRangeSlider', () => {
 
   test('should return slider with one runner', () => {
     settings.isTwoRunners = false;
-    testChild(settings, 0, 'range-slider__thumb_to');
+    testChild(settings, 0, 'thumb_to');
     testChild(settings, 1, 'range-slider__range');
   });
 
   test('should return slider with two runners', () => {
     settings.isTwoRunners = true;
-    testChild(settings, 0, 'range-slider__thumb_from');
-    testChild(settings, 1, 'range-slider__thumb_to');
+    testChild(settings, 0, 'thumb_from');
+    testChild(settings, 1, 'thumb_to');
     testChild(settings, 2, 'range-slider__range');
   });
 
@@ -148,23 +163,23 @@ describe('public createRangeSlider', () => {
   }
 
   function isScaleHasClassVertical(settings: ISettings) {
-    return createRS(settings)['scale'].element.classList.contains('range-slider__scale_vertical');
+    return createRS(settings)['scale'].element.classList.contains('scale_vertical');
   }
 
   /* if (settings.isVertical) and if (settings.isTooltipsVisible) */
   function isTooltipFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['from'].tooltip.element.classList.contains('tooltip_vertical');
   }
   function isTooltipToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].tooltip.element.classList.contains('range-slider__tooltip_vertical');
+    return createRS(settings)['to'].tooltip.element.classList.contains('tooltip_vertical');
   }
 
   /* if (settings.isVertical) and if (settings.isTwoRunners) */
   function isThumbFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['from'].element.classList.contains('thumb_vertical');
   }
   function isThumbToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].element.classList.contains('range-slider__thumb_vertical');
+    return createRS(settings)['to'].element.classList.contains('thumb_vertical');
   }
 
   test('if settings.isVertical == true, should add vertical classes, ', () => {
@@ -227,9 +242,9 @@ describe('public createRangeSlider', () => {
   /* if (settings.isScaleVisible) */
   function isHasScale(settings: ISettings) {
     if (settings.isTwoRunners) {
-      return createRS(settings)['slider'].element.children[3]?.classList.contains('range-slider__scale');
+      return createRS(settings)['slider'].element.children[3]?.classList.contains('scale');
     }
-    return createRS(settings)['slider'].element.children[2]?.classList.contains('range-slider__scale');
+    return createRS(settings)['slider'].element.children[2]?.classList.contains('scale');
   }
 
   test('should return slider with scale element', () => {
@@ -460,7 +475,7 @@ describe('private setZIndexTop', () => {
     step: 10,
   };
 
-  const zIndexClass = 'range-slider__tooltip_z-index-top';
+  const zIndexClass = 'tooltip_z-index-top';
   const view = new View('range-slider', settings);
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
@@ -615,10 +630,10 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   }
 
   function isHasClasses(result: View, thumbName: ThumbName) {
-    const isHasThumbClass = result[thumbName].element.classList.contains(`range-slider__thumb_${thumbName}`);
+    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
-    const isHasZIndexClass = result[thumbName].element.classList.contains('range-slider__tooltip_z-index-top');
+    const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip_z-index-top');
     expect(isHasZIndexClass).toBeTruthy();
   }
 

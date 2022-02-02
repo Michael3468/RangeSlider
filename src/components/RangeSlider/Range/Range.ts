@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import { createElement } from '../lib/common';
 import { AbstractRange } from '../RangeSlider/types';
 

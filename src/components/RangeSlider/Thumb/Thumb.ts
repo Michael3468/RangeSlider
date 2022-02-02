@@ -1,6 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import Tooltip from '../Tooltip/Tooltip';
 import {
   ThumbName,
@@ -12,6 +9,7 @@ import { createElement } from '../lib/common';
 
 class Thumb extends AbstractThumb {
   element: HTMLElement;
+
   tooltip: AbstractTooltip;
 
   constructor(private name: ThumbName) {
@@ -21,7 +19,7 @@ class Thumb extends AbstractThumb {
 
     this.element = createElement(
       'div',
-      `range-slider__thumb_${this.name}`,
+      `thumb_${this.name}`,
       this.tooltip.element,
     );
   }

@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 
@@ -9,7 +7,7 @@ class Tooltip extends AbstractTooltip {
   constructor(private name: ThumbName) {
     super();
     this.name = name;
-    this.element = createElement('div', `range-slider__tooltip_${this.name}`);
+    this.element = createElement('div', `tooltip_${this.name}`);
   }
 
   public setTooltipText(value: number, settings: ISettings): Tooltip {

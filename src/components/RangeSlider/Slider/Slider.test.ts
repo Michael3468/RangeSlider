@@ -3,9 +3,7 @@
  */
 
 /* eslint-disable dot-notation */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-undef */
+
 import Slider from './Slider';
 
 describe('private createSlider', () => {
