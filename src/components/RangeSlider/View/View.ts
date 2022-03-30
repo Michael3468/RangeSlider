@@ -16,7 +16,12 @@ import {
 } from '../RangeSlider/types';
 import Range from '../Range/Range';
 import Observer from '../Observer/Observer';
-import { getElementLengthInPx, getMinMaxElementEdgesInPx, getOnePointInPx } from '../lib/common';
+import {
+  getDigitsAfterPoint,
+  getElementLengthInPx,
+  getMinMaxElementEdgesInPx,
+  getOnePointInPx,
+} from '../lib/common';
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 class View {
@@ -67,6 +72,7 @@ class View {
     this.setMargins = this.setMargins.bind(this);
     this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
+    this.getMargin = this.getMargin.bind(this);
 
     this.changeSettingsObserver = new Observer();
   }
@@ -312,7 +318,7 @@ class View {
     if (isCursorPosGreaterThanMax) return sliderMaxPos;
     if (isCursorPosLessThanMin) return sliderMinPos;
 
-    return currentPosWidthStep;
+    return Number(currentPosWidthStep.toFixed(3));
   }
 
   private getStepInPx(): number {
@@ -330,28 +336,41 @@ class View {
     const valueInPoints = thumbMargin / getOnePointInPx(this.settings, this.slider.element);
     const totalValue = (this.settings.step >= 1)
       ? Math.round(valueInPoints)
-      : valueInPoints;
+      : Math.round(valueInPoints) * this.settings.step;
 
-    return totalValue + this.settings.min;
+    return Number((totalValue + this.settings.min)
+      .toFixed(getDigitsAfterPoint(this.settings)));
   }
 
   private initRangeSliderMargins(): View {
-    const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
-
-    /**
-     * получаем относительные значения марджинов в пикселах от начала слайдера
-     * и устанавливаем марджины
-     * */
     if (this.settings.isTwoRunners) {
-      const marginFrom = (this.settings.valueFrom - this.settings.min) * onePointInPx;
-      this.setMargins('from', marginFrom);
+      this.setMargins('from', this.getMargin('from'));
     } else {
       this.setMargins('from', 0);
     }
-    const marginTo = (this.settings.valueTo - this.settings.min) * onePointInPx;
-    this.setMargins('to', marginTo);
+
+    this.setMargins('to', this.getMargin('to'));
 
     return this;
+  }
+
+  private getMargin(thumbName: ThumbName): number {
+    const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
+
+    const value = thumbName === 'from'
+      ? this.settings.valueFrom
+      : this.settings.valueTo;
+
+    let margin: number;
+    if (this.settings.step >= 1) {
+      margin = (value - this.settings.min) * onePointInPx;
+    } else {
+      margin = ((value - this.settings.min)
+      / this.settings.step)
+      * onePointInPx;
+    }
+
+    return margin;
   }
 
   private isTooltipsCollision(): boolean {

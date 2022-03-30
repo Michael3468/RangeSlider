@@ -9,6 +9,10 @@
     height: $slider-thumb-size + px;
   }
 
+  &_to {
+    left: -1px;
+  }
+
   &_from::before,
   &_to::before {
     position: absolute;
@@ -26,5 +30,6 @@
 
   &_vertical {
     left: 2px;
+    top: -11px;
   }
 }
