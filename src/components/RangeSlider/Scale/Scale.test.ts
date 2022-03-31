@@ -7,6 +7,12 @@
 import { ISettings } from '../RangeSlider/types';
 import Scale from './Scale';
 
+abstract class ScaleHint {
+  abstract getCurrentStep(): number;
+
+  abstract getStepBetweenMarks(): number;
+}
+
 Element.prototype.getBoundingClientRect = jest.fn(() => ({
   width: 300,
   height: 10,
@@ -135,14 +141,6 @@ describe('private createMarkValue', () => {
   });
 });
 
-describe('private getStepBetweenMarksInPx', () => {
-  test('should return 10', () => {
-    const scale = new Scale();
-    const result = scale['getStepBetweenMarksInPx'](215);
-    expect(result).toBe(21.5);
-  });
-});
-
 describe('public createScaleMarks', () => {
   const getMinMaxElementEdgesInPx = jest.fn(() => ({
     min: 100,
@@ -174,10 +172,7 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
-    // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
-    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = false;
 
@@ -239,15 +234,11 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
-    // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
-    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = true;
 
     const result = scale.createScaleMarks(settings);
-    expect(getStepBetweenMarksInPxSpy).toHaveBeenCalled();
     expect(result.element.nodeName).toBe('DIV');
 
     const isHasClass = result.element.classList.contains('scale');
@@ -285,5 +276,92 @@ describe('public createScaleMarks', () => {
         expect(isClassListContainsVertical).toBeTruthy();
       }
     }
+  });
+});
+
+describe('private getStepBetweenMarks', () => {
+  test('if settings.step < 1, should return "onePointInPx" parametr', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 0.1;
+    const onePointInPx = 10;
+
+    const result = scale['getStepBetweenMarks'](onePointInPx);
+    expect(result).toBe(10);
+  });
+
+  test('if settings.step >= 1, should return "onePointInPx * settings.step" parametr', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 2;
+    const onePointInPx = 10;
+
+    const result = scale['getStepBetweenMarks'](onePointInPx);
+    expect(result).toBe(20);
+  });
+});
+
+describe('private getMinStep', () => {
+  test('if settings.step = 0.5 should return 0.1', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 0.5;
+
+    const result = scale['getMinStep']();
+    expect(result).toBe(0.1);
+  });
+
+  test('if settings.step = 5 should return 5', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 5;
+
+    const result = scale['getMinStep']();
+    expect(result).toBe(5);
+  });
+});
+
+describe('private getCurrentStep', () => {
+  test('if settings.step < 0.2, should return 2', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 0.2;
+
+    const result = scale['getCurrentStep']();
+    expect(result).toBe(2);
+  });
+
+  test('if settings.step < 5, should return 5', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 5;
+
+    const result = scale['getCurrentStep']();
+    expect(result).toBe(5);
+  });
+});
+
+describe('private getStep', () => {
+  test('if onePointInPx = 0.9 and MIN_STEP = 10 should return 10.8', () => {
+    const scale = new Scale();
+    const onePointInPx: number = 0.9;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+
+    jest.spyOn(scale as unknown as ScaleHint, 'getCurrentStep').mockReturnValueOnce(3);
+
+    const result = scale['getStep'](onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
+    expect(result).toBe(10.8);
+  });
+
+  test('if onePointInPx >  MIN_STEP = 10 should return "value"', () => {
+    const scale = new Scale();
+    const onePointInPx: number = 15;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+    const value = 5;
+
+    jest.spyOn(scale as unknown as ScaleHint, 'getStepBetweenMarks').mockReturnValueOnce(value);
+
+    const result = scale['getStep'](onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
+    expect(result).toBe(value);
   });
 });
