@@ -68,14 +68,14 @@ class Scale extends AbstractScale {
   private getElementChilds(): Element[] {
     return Array
       .from(this.element.children)
-      .filter((child) => child.classList.contains('scale_mark_value'));
+      .filter((child) => child.classList.contains('scale__mark-value'));
   }
 
   private createMark(marginFromBegin: number): HTMLElement {
-    const mark = createElement('span', 'scale_mark');
+    const mark = createElement('span', 'scale__mark');
 
     if (this.settings?.isVertical) {
-      mark.className += ' scale_mark_vertical';
+      mark.className += ' scale__mark_vertical';
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
       mark.style.marginLeft = `${marginFromBegin}px`;
@@ -85,10 +85,10 @@ class Scale extends AbstractScale {
   }
 
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
-    const markValue = createElement('div', 'scale_mark_value');
+    const markValue = createElement('div', 'scale__mark-value');
 
     if (this.settings?.isVertical) {
-      markValue.className += ' scale_mark_value_vertical';
+      markValue.className += ' scale__mark-value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
       markValue.style.marginLeft = `${marginFromBegin}px`;

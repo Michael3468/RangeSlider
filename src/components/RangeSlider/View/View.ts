@@ -86,7 +86,7 @@ class View {
       this.slider.element.appendChild(this.range.element);
     }
 
-    const THUMB_VERTICAL = 'thumb_vertical';
+    const THUMB_VERTICAL = 'thumb-vertical';
     const RS_VERTICAL = 'range-slider_vertical';
     const RS_SCALE_VERTICAL = 'scale_vertical';
     if (settings.isVertical) {
@@ -191,9 +191,9 @@ class View {
     target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
 
-      if (target.classList.contains('thumb_from')) {
+      if (target.classList.contains('thumb-from')) {
         thumbName = 'from';
-      } else if (target.classList.contains('thumb_to')) {
+      } else if (target.classList.contains('thumb-to')) {
         thumbName = 'to';
       }
 
@@ -265,9 +265,9 @@ class View {
       const target = <Element> event.target;
       const stepInPx = this.getStepInPx();
 
-      if (target.classList.contains('thumb_from')) {
+      if (target.classList.contains('thumb-from')) {
         max = this.thumbMarginTo - stepInPx + min;
-      } else if (target.classList.contains('thumb_to')) {
+      } else if (target.classList.contains('thumb-to')) {
         min = this.thumbMarginFrom + stepInPx + min;
       }
     }
@@ -427,7 +427,7 @@ class View {
     const from = this.from.element;
     const to = this.to.element;
 
-    const zIndexClass = 'tooltip_z-index-top';
+    const zIndexClass = 'tooltip-z-index-top';
 
     if (thumb === 'from') {
       from.classList.add(zIndexClass);

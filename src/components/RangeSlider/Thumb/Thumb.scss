@@ -1,20 +1,20 @@
 @import '../../../assets/scss/vars.scss';
 
 .thumb {
-  &_from,
-  &_to {
+  &-from,
+  &-to {
     position: absolute;
     top: -8px;
     z-index: 5;
     height: $slider-thumb-size + px;
   }
 
-  &_to {
+  &-to {
     left: -1px;
   }
 
-  &_from::before,
-  &_to::before {
+  &-from::before,
+  &-to::before {
     position: absolute;
     top: 0;
     left: ($slider-thumb-size/2) + px;
@@ -28,7 +28,7 @@
     content: '';
   }
 
-  &_vertical {
+  &-vertical {
     left: 2px;
     top: -11px;
   }

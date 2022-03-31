@@ -19,7 +19,7 @@ class Thumb extends AbstractThumb {
 
     this.element = createElement(
       'div',
-      `thumb_${this.name}`,
+      `thumb-${this.name}`,
       this.tooltip.element,
     );
   }
