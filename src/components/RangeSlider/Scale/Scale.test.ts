@@ -365,3 +365,31 @@ describe('private getStep', () => {
     expect(result).toBe(value);
   });
 });
+
+describe('private getCurrentValueInPoints', () => {
+  // this.settings.step < 1
+  const value: number = 5;
+  const markPos = 20;
+  const onePointInPx = 7;
+
+  test('should return 5.3', () => {
+    const scale = new Scale();
+    scale['settings'].min = value;
+    scale['settings'].step = 0.1;
+
+    const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
+    expect(result).toBe(5.3);
+    expect(result).not.toBeNaN();
+  });
+
+  // this.settings.step >= 1
+  test('should return 8', () => {
+    const scale = new Scale();
+    scale['settings'].min = 5;
+    scale['settings'].step = 2;
+
+    const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
+    expect(result).toBe(8);
+    expect(result).not.toBeNaN();
+  });
+});

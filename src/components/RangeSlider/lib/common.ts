@@ -51,10 +51,9 @@ function getOnePointInPx(settings: ISettings, element: HTMLElement) {
 }
 
 function getDigitsAfterPoint(settings: ISettings): number {
-  // TODO fix test
   return settings.step < 1
     ? (settings.step).toString().length - 2
-    : 0
+    : 0;
 }
 
 export {

@@ -32,8 +32,6 @@ class Scale extends AbstractScale {
 
   public createScaleMarks(settings: ISettings): Scale {
     this.settings = settings;
-    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
-    const scaleMaxPos = max - min;
 
     // add first mark
     this.element.appendChild(this.createMark(0));
@@ -43,21 +41,15 @@ class Scale extends AbstractScale {
     const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
     const stepBetweenMarks: number = this.getStep(onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
 
-    const digitsAfterPoint = getDigitsAfterPoint(this.settings);
     let markPos: number = stepBetweenMarks;
+
+    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
+    const scaleMaxPos = max - min;
 
     while (markPos < scaleMaxPos) {
       this.element.appendChild(this.createMark(markPos));
 
-      const currentValueInPoints: number = (settings.step < 1)
-        ? Number(
-          (settings.min + ((markPos / onePointInPx) * settings.step))
-            .toFixed(digitsAfterPoint),
-        )
-        : Number(
-          (settings.min + (markPos / onePointInPx))
-            .toFixed(digitsAfterPoint),
-        );
+      const currentValueInPoints: number = this.getCurrentValueInPoints(markPos, onePointInPx);
 
       this.element.appendChild(this.createMarkValue(currentValueInPoints, markPos));
       markPos += stepBetweenMarks;
@@ -68,33 +60,7 @@ class Scale extends AbstractScale {
     this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
 
     const markValuesArr = this.getElementChilds();
-
-    markValuesArr.forEach((markValue, index, arr) => {
-      let currentMark: number = 0;
-      let nextMark: number | undefined = 0;
-
-      if (!settings.isVertical) {
-        currentMark = markValue.getBoundingClientRect().right;
-      } else {
-        currentMark = markValue.getBoundingClientRect().bottom;
-      }
-
-      for (let i = index; i < arr.length - 1; i += 1) {
-        nextMark = settings.isVertical
-          ? arr[i + 1]?.getBoundingClientRect().top
-          : arr[i + 1]?.getBoundingClientRect().left;
-
-        if (nextMark && (currentMark + 10) > nextMark) {
-          if ((i + 1) < arr.length - 1) {
-            arr[i + 1]?.classList.add('hidden');
-          } else {
-            markValue.classList.add('hidden');
-          }
-        } else {
-          break;
-        }
-      }
-    });
+    this.hideOverlappedMarks(markValuesArr);
 
     return this;
   }
@@ -170,6 +136,47 @@ class Scale extends AbstractScale {
     }
 
     return stepBetweenMarks;
+  }
+
+  private getCurrentValueInPoints(markPos: number, onePointInPx: number) {
+    return (this.settings.step < 1)
+      ? Number(
+        (this.settings.min + ((markPos / onePointInPx) * this.settings.step))
+          .toFixed(getDigitsAfterPoint(this.settings)),
+      )
+      : Number(
+        (this.settings.min + (markPos / onePointInPx))
+          .toFixed(getDigitsAfterPoint(this.settings)),
+      );
+  }
+
+  private hideOverlappedMarks(markValuesArr: Element[]) {
+    markValuesArr.forEach((markValue, index, arr) => {
+      let currentMark: number = 0;
+      let nextMark: number | undefined = 0;
+
+      if (!this.settings.isVertical) {
+        currentMark = markValue.getBoundingClientRect().right;
+      } else {
+        currentMark = markValue.getBoundingClientRect().bottom;
+      }
+
+      for (let i = index; i < arr.length - 1; i += 1) {
+        nextMark = this.settings.isVertical
+          ? arr[i + 1]?.getBoundingClientRect().top
+          : arr[i + 1]?.getBoundingClientRect().left;
+
+        if (nextMark && (currentMark + 10) > nextMark) {
+          if ((i + 1) < arr.length - 1) {
+            arr[i + 1]?.classList.add('hidden');
+          } else {
+            markValue.classList.add('hidden');
+          }
+        } else {
+          break;
+        }
+      }
+    });
   }
 }
 
