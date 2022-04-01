@@ -9,6 +9,7 @@ import {
   getMinMaxElementEdgesInPx,
   getOnePointInPx,
   getDigitsAfterPoint,
+  getMinStep,
 } from './common';
 import Tooltip from '../Tooltip/Tooltip';
 import Scale from '../Scale/Scale';
@@ -130,5 +131,21 @@ describe('function getDigitsAfterPoint', () => {
     const result = getDigitsAfterPoint(settings);
 
     expect(result).toBe(3);
+  });
+});
+
+describe('function getMinStep', () => {
+  test('if settings.step = 0.5 should return 0.1', () => {
+    settings.step = 0.5;
+
+    const result = getMinStep(settings);
+    expect(result).toBe(0.1);
+  });
+
+  test('if settings.step = 5 should return 5', () => {
+    settings.step = 5;
+
+    const result = getMinStep(settings);
+    expect(result).toBe(1);
   });
 });

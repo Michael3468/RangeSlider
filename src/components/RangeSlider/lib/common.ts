@@ -56,10 +56,19 @@ function getDigitsAfterPoint(settings: ISettings): number {
     : 0;
 }
 
+function getMinStep(settings: ISettings):number {
+  const num = settings.step;
+
+  return num < 1
+    ? 1 / 10 ** (num.toString().length - 2)
+    : 1;
+}
+
 export {
   getMinMaxElementEdgesInPx,
   getElementLengthInPx,
   createElement,
   getOnePointInPx,
   getDigitsAfterPoint,
+  getMinStep,
 };

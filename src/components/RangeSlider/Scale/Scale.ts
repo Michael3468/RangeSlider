@@ -4,6 +4,7 @@ import {
   createElement,
   getOnePointInPx,
   getDigitsAfterPoint,
+  getMinStep,
 } from '../lib/common';
 
 const defaultInitSettings: ISettings = {
@@ -98,18 +99,10 @@ class Scale extends AbstractScale {
     return markValue;
   }
 
-  private getMinStep():number {
-    const num = this.settings.step;
-
-    return num < 1
-      ? 1 / 10 ** (num.toString().length - 2)
-      : num;
-  }
-
   private getCurrentStep(): number {
     let currentStep: number = 0;
     if (this.settings.step < 1) {
-      currentStep = this.settings.step / this.getMinStep();
+      currentStep = this.settings.step / getMinStep(this.settings);
     } else {
       currentStep = this.settings.step;
     }

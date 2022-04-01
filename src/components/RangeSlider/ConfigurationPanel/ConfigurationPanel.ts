@@ -5,7 +5,11 @@ import {
   ISettings,
 } from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
-import { createElement, getDigitsAfterPoint } from '../lib/common';
+import {
+  createElement,
+  getDigitsAfterPoint,
+  getMinStep,
+} from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
@@ -32,16 +36,21 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   private cpTips: HTMLInputElement;
 
+  private roundTo: number;
+
   changeConfPanelSettingsObserver: AbstractObserver;
 
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
     this.element = ConfigurationPanel.createElement();
+    this.roundTo = getDigitsAfterPoint(this.settings);
 
     this.cpMin = this.assignElements('cpMin');
     this.cpMax = this.assignElements('cpMax');
     this.cpStep = this.assignElements('cpStep');
+    this.cpStep.min = String(getMinStep(settings).toFixed(this.roundTo));
+    this.cpStep.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpFrom = this.assignElements('cpFrom');
     this.cpTo = this.assignElements('cpTo');
 
@@ -60,26 +69,26 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   public updateState(settings: ISettings): ConfigurationPanel {
-    const valueFrom = settings.valueFrom.toFixed(getDigitsAfterPoint(settings));
-    const valueTo = settings.valueTo.toFixed(getDigitsAfterPoint(settings));
+    const valueFrom = settings.valueFrom.toFixed(this.roundTo);
+    const valueTo = settings.valueTo.toFixed(this.roundTo);
 
-    this.cpMin.value = String(settings.min);
+    this.cpMin.value = String(settings.min.toFixed(this.roundTo));
     this.cpMin.max = String(valueFrom);
 
-    this.cpMax.value = String(settings.max);
+    this.cpMax.value = String(settings.max.toFixed(this.roundTo));
     this.cpMax.min = String(valueTo);
 
-    this.cpStep.value = String(settings.step);
+    this.cpStep.value = String(settings.step.toFixed(this.roundTo));
 
     this.cpFrom.value = String(valueFrom);
-    this.cpFrom.min = String(settings.min);
-    this.cpFrom.step = String(settings.step);
+    this.cpFrom.min = String(settings.min.toFixed(this.roundTo));
+    this.cpFrom.step = String(settings.step.toFixed(this.roundTo));
     this.cpFrom.max = String(valueTo);
 
     this.cpTo.value = String(valueTo);
     this.cpTo.min = String(valueFrom);
-    this.cpTo.step = String(settings.step);
-    this.cpTo.max = String(settings.max);
+    this.cpTo.step = String(settings.step.toFixed(this.roundTo));
+    this.cpTo.max = String(settings.max.toFixed(this.roundTo));
 
     this.cpVertical.checked = settings.isVertical;
     this.cpRange.checked = settings.isTwoRunners;
@@ -109,7 +118,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
           </div>
           <div class="configuration-panel__options-input">
             <label for="step" class="configuration-panel__options-input-text">step</label>
-            <input class="configuration-panel__options-input-value" type="number" name="step" min="1">
+            <input class="configuration-panel__options-input-value" type="number" name="step" min="1" step="1">
           </div>
           <div class="configuration-panel__options-input">
             <label for="from" class="configuration-panel__options-input-text">from</label>

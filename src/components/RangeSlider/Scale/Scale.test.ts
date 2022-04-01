@@ -301,26 +301,6 @@ describe('private getStepBetweenMarks', () => {
   });
 });
 
-describe('private getMinStep', () => {
-  test('if settings.step = 0.5 should return 0.1', () => {
-    const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].step = 0.5;
-
-    const result = scale['getMinStep']();
-    expect(result).toBe(0.1);
-  });
-
-  test('if settings.step = 5 should return 5', () => {
-    const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].step = 5;
-
-    const result = scale['getMinStep']();
-    expect(result).toBe(5);
-  });
-});
-
 describe('private getCurrentStep', () => {
   test('if settings.step < 0.2, should return 2', () => {
     const scale = new Scale();
