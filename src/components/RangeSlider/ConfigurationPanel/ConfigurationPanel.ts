@@ -5,7 +5,11 @@ import {
   ISettings,
 } from '../RangeSlider/types';
 import Observer from '../Observer/Observer';
-import { createElement, getDigitsAfterPoint } from '../lib/common';
+import {
+  createElement,
+  getDigitsAfterPoint,
+  getMinStep,
+} from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
@@ -32,16 +36,21 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   private cpTips: HTMLInputElement;
 
+  private roundTo: number;
+
   changeConfPanelSettingsObserver: AbstractObserver;
 
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
     this.element = ConfigurationPanel.createElement();
+    this.roundTo = getDigitsAfterPoint(this.settings);
 
     this.cpMin = this.assignElements('cpMin');
     this.cpMax = this.assignElements('cpMax');
     this.cpStep = this.assignElements('cpStep');
+    this.cpStep.min = String(getMinStep(settings).toFixed(this.roundTo));
+    this.cpStep.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpFrom = this.assignElements('cpFrom');
     this.cpTo = this.assignElements('cpTo');
 
@@ -60,26 +69,26 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   public updateState(settings: ISettings): ConfigurationPanel {
-    const valueFrom = settings.valueFrom.toFixed(getDigitsAfterPoint(settings));
-    const valueTo = settings.valueTo.toFixed(getDigitsAfterPoint(settings));
+    const valueFrom = settings.valueFrom.toFixed(this.roundTo);
+    const valueTo = settings.valueTo.toFixed(this.roundTo);
 
-    this.cpMin.value = String(settings.min);
+    this.cpMin.value = String(settings.min.toFixed(this.roundTo));
     this.cpMin.max = String(valueFrom);
 
-    this.cpMax.value = String(settings.max);
+    this.cpMax.value = String(settings.max.toFixed(this.roundTo));
     this.cpMax.min = String(valueTo);
 
-    this.cpStep.value = String(settings.step);
+    this.cpStep.value = String(settings.step.toFixed(this.roundTo));
 
     this.cpFrom.value = String(valueFrom);
-    this.cpFrom.min = String(settings.min);
-    this.cpFrom.step = String(settings.step);
+    this.cpFrom.min = String(settings.min.toFixed(this.roundTo));
+    this.cpFrom.step = String(settings.step.toFixed(this.roundTo));
     this.cpFrom.max = String(valueTo);
 
     this.cpTo.value = String(valueTo);
     this.cpTo.min = String(valueFrom);
-    this.cpTo.step = String(settings.step);
-    this.cpTo.max = String(settings.max);
+    this.cpTo.step = String(settings.step.toFixed(this.roundTo));
+    this.cpTo.max = String(settings.max.toFixed(this.roundTo));
 
     this.cpVertical.checked = settings.isVertical;
     this.cpRange.checked = settings.isTwoRunners;
@@ -98,57 +107,57 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
     <div class="configuration-panel__options">
       <form>
-        <div class="configuration-panel__options_inputs_block">
-          <div class="configuration-panel__options_input">
-            <label for="min" class="configuration-panel__options_input-text">min</label>
-            <input class="configuration-panel__options_input-value" type="number" name="min" max="0">
+        <div class="configuration-panel__options-inputs">
+          <div class="configuration-panel__options-input">
+            <label for="min" class="configuration-panel__options-input-text">min</label>
+            <input class="configuration-panel__options-input-value" type="number" name="min" max="0">
           </div>
-          <div class="configuration-panel__options_input">
-            <label for="max" class="configuration-panel__options_input-text">max</label>
-            <input class="configuration-panel__options_input-value" type="number" name="max" min="0">
+          <div class="configuration-panel__options-input">
+            <label for="max" class="configuration-panel__options-input-text">max</label>
+            <input class="configuration-panel__options-input-value" type="number" name="max" min="0">
           </div>
-          <div class="configuration-panel__options_input">
-            <label for="step" class="configuration-panel__options_input-text">step</label>
-            <input class="configuration-panel__options_input-value" type="number" name="step" min="1">
+          <div class="configuration-panel__options-input">
+            <label for="step" class="configuration-panel__options-input-text">step</label>
+            <input class="configuration-panel__options-input-value" type="number" name="step" min="1" step="1">
           </div>
-          <div class="configuration-panel__options_input">
-            <label for="from" class="configuration-panel__options_input-text">from</label>
-            <input class="configuration-panel__options_input-value" type="number" name="from" min="0" max="0" step="0">
+          <div class="configuration-panel__options-input">
+            <label for="from" class="configuration-panel__options-input-text">from</label>
+            <input class="configuration-panel__options-input-value" type="number" name="from" min="0" max="0" step="0">
           </div>
-          <div class="configuration-panel__options_input">
-            <label for="to" class="configuration-panel__options_input-text">to</label>
-            <input class="configuration-panel__options_input-value" type="number" name="to" max="0" step="0">
+          <div class="configuration-panel__options-input">
+            <label for="to" class="configuration-panel__options-input-text">to</label>
+            <input class="configuration-panel__options-input-value" type="number" name="to" max="0" step="0">
           </div>
         </div>
 
-        <div class="configuration-panel__options_checkbox_block">
-          <div class="configuration-panel__options_checkbox">
-            <label class="configuration-panel__options_checkbox_label">
-              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="vertical">
+        <div class="configuration-panel__options-checkboxes">
+          <div class="configuration-panel__options-checkbox">
+            <label class="configuration-panel__options-checkbox-label">
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="vertical">
               vertical
             </label>
           </div>
-          <div class="configuration-panel__options_checkbox">
-            <label class="configuration-panel__options_checkbox_label">
-              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="range">
+          <div class="configuration-panel__options-checkbox">
+            <label class="configuration-panel__options-checkbox-label">
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="range">
               range
             </label>
           </div>
-          <div class="configuration-panel__options_checkbox">
-            <label class="configuration-panel__options_checkbox_label">
-              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="scale">
+          <div class="configuration-panel__options-checkbox">
+            <label class="configuration-panel__options-checkbox-label">
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="scale">
               scale
             </label>
           </div>
-          <div class="configuration-panel__options_checkbox">
-            <label class="configuration-panel__options_checkbox_label">
-              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="bar">
+          <div class="configuration-panel__options-checkbox">
+            <label class="configuration-panel__options-checkbox-label">
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="bar">
               bar
             </label>
           </div>
-          <div class="configuration-panel__options_checkbox">
-            <label class="configuration-panel__options_checkbox_label">
-              <input class="configuration-panel__options_checkbox_input" type="checkbox" name="tip">
+          <div class="configuration-panel__options-checkbox">
+            <label class="configuration-panel__options-checkbox-label">
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="tip">
               tip
             </label>
           </div>

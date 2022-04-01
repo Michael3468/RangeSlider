@@ -147,14 +147,14 @@ describe('public createRangeSlider', () => {
 
   test('should return slider with one runner', () => {
     settings.isTwoRunners = false;
-    testChild(settings, 0, 'thumb_to');
+    testChild(settings, 0, 'thumb-to');
     testChild(settings, 1, 'range-slider__range');
   });
 
   test('should return slider with two runners', () => {
     settings.isTwoRunners = true;
-    testChild(settings, 0, 'thumb_from');
-    testChild(settings, 1, 'thumb_to');
+    testChild(settings, 0, 'thumb-from');
+    testChild(settings, 1, 'thumb-to');
     testChild(settings, 2, 'range-slider__range');
   });
 
@@ -176,10 +176,10 @@ describe('public createRangeSlider', () => {
 
   /* if (settings.isVertical) and if (settings.isTwoRunners) */
   function isThumbFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].element.classList.contains('thumb_vertical');
+    return createRS(settings)['from'].element.classList.contains('thumb-vertical');
   }
   function isThumbToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].element.classList.contains('thumb_vertical');
+    return createRS(settings)['to'].element.classList.contains('thumb-vertical');
   }
 
   test('if settings.isVertical == true, should add vertical classes, ', () => {
@@ -475,7 +475,7 @@ describe('private setZIndexTop', () => {
     step: 10,
   };
 
-  const zIndexClass = 'tooltip_z-index-top';
+  const zIndexClass = 'tooltip-z-index-top';
   const view = new View('range-slider', settings);
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
@@ -630,10 +630,10 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   }
 
   function isHasClasses(result: View, thumbName: ThumbName) {
-    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb_${thumbName}`);
+    const isHasThumbClass = result[thumbName].element.classList.contains(`thumb-${thumbName}`);
     expect(isHasThumbClass).toBeTruthy();
 
-    const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip_z-index-top');
+    const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip-z-index-top');
     expect(isHasZIndexClass).toBeTruthy();
   }
 

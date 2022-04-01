@@ -39,25 +39,29 @@ function createElement(
 
 function getOnePointInPx(settings: ISettings, element: HTMLElement) {
   const elementLengthInPx: number = getElementLengthInPx(settings, element);
-  const elementLengthInPoints: number = settings.max - settings.min;
-  return elementLengthInPx / elementLengthInPoints;
+
+  let elementLengthInPoints: number;
+  if (settings.step >= 1) {
+    elementLengthInPoints = settings.max - settings.min;
+  } else {
+    elementLengthInPoints = (settings.max - settings.min) / settings.step;
+  }
+
+  return Number((elementLengthInPx / elementLengthInPoints).toFixed(3));
 }
 
 function getDigitsAfterPoint(settings: ISettings): number {
-  const n = settings.step;
-  let digitsAfterPoint = 0;
+  return settings.step < 1
+    ? (settings.step).toString().length - 2
+    : 0;
+}
 
-  if (n > 0 && n < 1) {
-    if (n.toString().includes('.')) {
-      const splitDigitArr = n.toString().split('.');
+function getMinStep(settings: ISettings):number {
+  const num = settings.step;
 
-      if (splitDigitArr[1] !== undefined) {
-        digitsAfterPoint = splitDigitArr[1].length;
-        return digitsAfterPoint;
-      }
-    }
-  }
-  return digitsAfterPoint;
+  return num < 1
+    ? 1 / 10 ** (num.toString().length - 2)
+    : 1;
 }
 
 export {
@@ -66,4 +70,5 @@ export {
   createElement,
   getOnePointInPx,
   getDigitsAfterPoint,
+  getMinStep,
 };
