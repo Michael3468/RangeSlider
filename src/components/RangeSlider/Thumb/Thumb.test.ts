@@ -23,7 +23,7 @@ beforeEach(() => {
   };
 });
 
-describe('setMargin', () => {
+describe('public setMargin', () => {
   test('should return "div" element "Thumb" with margin-top and tooltip element', () => {
     const thumbName = 'from';
     const thumb = new Thumb(thumbName);
@@ -33,7 +33,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb-${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginTop } = result.element.style;
@@ -44,7 +44,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip-${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 
@@ -57,7 +57,7 @@ describe('setMargin', () => {
 
     expect(result.element.nodeName).toBe('DIV');
 
-    const isHasClass = result.element.classList.contains(`thumb_${thumbName}`);
+    const isHasClass = result.element.classList.contains(`thumb-${thumbName}`);
     expect(isHasClass).toBeTruthy();
 
     const { marginLeft } = result.element.style;
@@ -68,7 +68,7 @@ describe('setMargin', () => {
 
     expect(tooltip?.nodeName).toBe('DIV');
 
-    const isChildHasClass = tooltip?.classList.contains(`tooltip_${thumbName}`);
+    const isChildHasClass = tooltip?.classList.contains(`tooltip-${thumbName}`);
     expect(isChildHasClass).toBeTruthy();
   });
 });

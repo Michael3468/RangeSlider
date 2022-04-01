@@ -1,8 +1,8 @@
 @import '../../../assets/scss/vars.scss';
 
 .tooltip {
-  &_from,
-  &_to {
+  &-from,
+  &-to {
     position: relative;
     top: -130%;
     left: -50%;
@@ -15,7 +15,7 @@
     border-radius: 4px;
   }
 
-  &_z-index-top {
+  &-z-index-top {
     z-index: 10;
   }
 }

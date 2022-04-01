@@ -7,6 +7,12 @@
 import { ISettings } from '../RangeSlider/types';
 import Scale from './Scale';
 
+abstract class ScaleHint {
+  abstract getCurrentStep(): number;
+
+  abstract getStepBetweenMarks(): number;
+}
+
 Element.prototype.getBoundingClientRect = jest.fn(() => ({
   width: 300,
   height: 10,
@@ -38,7 +44,7 @@ beforeEach(() => {
 });
 
 describe('private createMark', () => {
-  test('should return html span with margin-left and NO class "scale_mark_vertical"', () => {
+  test('should return html span with margin-left and NO class "scale__mark_vertical"', () => {
     const scale = new Scale();
     scale['settings'] = settings;
     scale['settings'].isVertical = false;
@@ -49,17 +55,17 @@ describe('private createMark', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('SPAN');
 
-    const isHasClass = result.classList.contains('scale_mark');
+    const isHasClass = result.classList.contains('scale__mark');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('scale_mark_vertical');
+    const isHasClassVertical = result.classList.contains('scale__mark_vertical');
     expect(isHasClassVertical).toBeFalsy();
 
     const isElementHasMarginLeft = result.style.marginLeft;
     expect(isElementHasMarginLeft).toBe(`${marginFromBegin}px`);
   });
 
-  test('should return html span with margin-top and class "scale_mark_vertical"', () => {
+  test('should return html span with margin-top and class "scale__mark_vertical"', () => {
     const scale = new Scale();
     scale['settings'] = settings;
     scale['settings'].isVertical = true;
@@ -70,10 +76,10 @@ describe('private createMark', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('SPAN');
 
-    const isHasClass = result.classList.contains('scale_mark');
+    const isHasClass = result.classList.contains('scale__mark');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('scale_mark_vertical');
+    const isHasClassVertical = result.classList.contains('scale__mark_vertical');
     expect(isHasClassVertical).toBeTruthy();
 
     const isElementHasMarginTop = result.style.marginTop;
@@ -82,7 +88,7 @@ describe('private createMark', () => {
 });
 
 describe('private createMarkValue', () => {
-  test('should return div element with class "scale_mark_value" and inner text = value', () => {
+  test('should return div element with class "scale__mark-value" and inner text = value', () => {
     const scale = new Scale();
     scale['settings'] = settings;
     scale['settings'].isVertical = false;
@@ -95,10 +101,10 @@ describe('private createMarkValue', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('DIV');
 
-    const isHasClass = result.classList.contains('scale_mark_value');
+    const isHasClass = result.classList.contains('scale__mark-value');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('scale_mark_value_vertical');
+    const isHasClassVertical = result.classList.contains('scale__mark-value_vertical');
     expect(isHasClassVertical).toBeFalsy();
 
     const isHasMarginLeft = result.style.marginLeft;
@@ -108,7 +114,7 @@ describe('private createMarkValue', () => {
     expect(isHasInnerText).toBe(value.toString());
   });
 
-  test('should return div element with class "scale_mark_value_vertical" and inner text = value', () => {
+  test('should return div element with class "scale__mark-value_vertical" and inner text = value', () => {
     const scale = new Scale();
     scale['settings'] = settings;
     scale['settings'].isVertical = true;
@@ -121,10 +127,10 @@ describe('private createMarkValue', () => {
     expect(result).not.toBeNull();
     expect(result.nodeName).toBe('DIV');
 
-    const isHasClass = result.classList.contains('scale_mark_value');
+    const isHasClass = result.classList.contains('scale__mark-value');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = result.classList.contains('scale_mark_value_vertical');
+    const isHasClassVertical = result.classList.contains('scale__mark-value_vertical');
     expect(isHasClassVertical).toBeTruthy();
 
     const isHasMarginTop = result.style.marginTop;
@@ -132,14 +138,6 @@ describe('private createMarkValue', () => {
 
     const isHasInnerText = result.innerText;
     expect(isHasInnerText).toBe(value.toString());
-  });
-});
-
-describe('private getStepBetweenMarksInPx', () => {
-  test('should return 10', () => {
-    const scale = new Scale();
-    const result = scale['getStepBetweenMarksInPx'](215);
-    expect(result).toBe(21.5);
   });
 });
 
@@ -174,10 +172,7 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
-    // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
-    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = false;
 
@@ -205,17 +200,17 @@ describe('public createScaleMarks', () => {
 
       if (childNodeName === 'SPAN') {
         // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale_mark');
+        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale_mark_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark_vertical');
         expect(isClassListContainsVertical).toBeFalsy();
       } else if (childNodeName === 'DIV') {
         // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale_mark_value');
+        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark-value');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale_mark_value_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark-value_vertical');
         expect(isClassListContainsVertical).toBeFalsy();
       }
     }
@@ -239,15 +234,11 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const getStepBetweenMarksInPxSpy = jest.spyOn(<any> Scale.prototype, 'getStepBetweenMarksInPx');
-    // getStepBetweenMarksInPx returns rounded value to 10
     const stepBetweenMarksInPx = 30;
-    getStepBetweenMarksInPxSpy.mockImplementation(() => stepBetweenMarksInPx);
 
     settings.isVertical = true;
 
     const result = scale.createScaleMarks(settings);
-    expect(getStepBetweenMarksInPxSpy).toHaveBeenCalled();
     expect(result.element.nodeName).toBe('DIV');
 
     const isHasClass = result.element.classList.contains('scale');
@@ -271,19 +262,114 @@ describe('public createScaleMarks', () => {
 
       if (childNodeName === 'SPAN') {
         // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale_mark');
+        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale_mark_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark_vertical');
         expect(isClassListContainsVertical).toBeTruthy();
       } else if (childNodeName === 'DIV') {
         // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale_mark_value');
+        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark-value');
         expect(isClassListContains).toBeTruthy();
 
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale_mark_value_vertical');
+        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark-value_vertical');
         expect(isClassListContainsVertical).toBeTruthy();
       }
     }
+  });
+});
+
+describe('private getStepBetweenMarks', () => {
+  test('if settings.step < 1, should return "onePointInPx" parametr', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 0.1;
+    const onePointInPx = 10;
+
+    const result = scale['getStepBetweenMarks'](onePointInPx);
+    expect(result).toBe(10);
+  });
+
+  test('if settings.step >= 1, should return "onePointInPx * settings.step" parametr', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 2;
+    const onePointInPx = 10;
+
+    const result = scale['getStepBetweenMarks'](onePointInPx);
+    expect(result).toBe(20);
+  });
+});
+
+describe('private getCurrentStep', () => {
+  test('if settings.step < 0.2, should return 2', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 0.2;
+
+    const result = scale['getCurrentStep']();
+    expect(result).toBe(2);
+  });
+
+  test('if settings.step < 5, should return 5', () => {
+    const scale = new Scale();
+    scale['settings'] = settings;
+    scale['settings'].step = 5;
+
+    const result = scale['getCurrentStep']();
+    expect(result).toBe(5);
+  });
+});
+
+describe('private getStep', () => {
+  test('if onePointInPx = 0.9 and MIN_STEP = 10 should return 10.8', () => {
+    const scale = new Scale();
+    const onePointInPx: number = 0.9;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+
+    jest.spyOn(scale as unknown as ScaleHint, 'getCurrentStep').mockReturnValueOnce(3);
+
+    const result = scale['getStep'](onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
+    expect(result).toBe(10.8);
+  });
+
+  test('if onePointInPx >  MIN_STEP = 10 should return "value"', () => {
+    const scale = new Scale();
+    const onePointInPx: number = 15;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+    const value = 5;
+
+    jest.spyOn(scale as unknown as ScaleHint, 'getStepBetweenMarks').mockReturnValueOnce(value);
+
+    const result = scale['getStep'](onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
+    expect(result).toBe(value);
+  });
+});
+
+describe('private getCurrentValueInPoints', () => {
+  // this.settings.step < 1
+  const value: number = 5;
+  const markPos = 20;
+  const onePointInPx = 7;
+
+  test('should return 5.3', () => {
+    const scale = new Scale();
+    scale['settings'].min = value;
+    scale['settings'].step = 0.1;
+
+    const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
+    expect(result).toBe(5.3);
+    expect(result).not.toBeNaN();
+  });
+
+  // this.settings.step >= 1
+  test('should return 8', () => {
+    const scale = new Scale();
+    scale['settings'].min = 5;
+    scale['settings'].step = 2;
+
+    const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
+    expect(result).toBe(8);
+    expect(result).not.toBeNaN();
   });
 });

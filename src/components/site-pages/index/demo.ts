@@ -20,14 +20,14 @@ $('#range-slider2').RangeSlider({
 });
 
 $('#range-slider3').RangeSlider({
-  min: 100,
-  max: 550,
-  valueFrom: 120,
-  valueTo: 250,
+  min: 1,
+  max: 2,
+  valueFrom: 1.2,
+  valueTo: 1.5,
   isScaleVisible: true,
   isVertical: true,
   isTwoRunners: true,
-  step: 1,
+  step: 0.12,
   isConfPanel: true,
 });
 
