@@ -113,15 +113,25 @@ describe('function getElementLengthInPx', () => {
 });
 
 describe('function getOnePointInPx', () => {
-  test('should return one point length in px (number)', () => {
+  test('should return 3 if step > 1', () => {
     const scale = new Scale();
     settings.min = 0;
-    settings.max = 100;
+    settings.max = 98;
+    settings.step = 10;
     settings.isVertical = false;
     /* Element.prototype.getBoundingClientRect = width: 300 */
-    const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 3 */
+    const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 100 */
+    expect(result).toBe(3.061);
+  });
 
-    expect(result).toBe(3);
+  test('should first', () => {
+    const scale = new Scale();
+    settings.min = 0;
+    settings.max = 98;
+    settings.step = 0.34;
+    settings.isVertical = false;
+    const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 100 */
+    expect(result).toBe(1.041);
   });
 });
 
