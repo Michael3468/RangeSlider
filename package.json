@@ -47,11 +47,13 @@
     "browserslist": "^4.20.2",
     "caniuse-lite": "^1.0.30001323",
     "clean-webpack-plugin": "^4.0.0",
+    "commitizen": "^4.2.4",
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.1.7",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-fsd": "^1.0.1",
@@ -71,6 +73,7 @@
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "sass-loader": "^12.6.0",
+    "standard-version": "^9.3.2",
     "style-loader": "^3.3.1",
     "stylelint": "^14.6.1",
     "stylelint-config-rational-order": "^0.1.2",
@@ -89,5 +92,10 @@
   },
   "dependencies": {
     "airbnb-browser-shims": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
