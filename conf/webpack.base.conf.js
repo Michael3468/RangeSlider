@@ -94,10 +94,11 @@ module.exports = {
         },
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.s?css$/i,
         use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: true },
@@ -106,7 +107,9 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: { path: './postcss.config.js' },
+              postcssOptions: {
+                config: true,
+              },
             },
           },
           {
