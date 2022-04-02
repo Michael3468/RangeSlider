@@ -32,8 +32,11 @@ module.exports = {
     'range-slider': `${PATHS.src}/app.ts`,
   },
   output: {
-    filename: isProd ? `${PATHS.assets}js/[name].min.js` : `${PATHS.assets}js/[name].[hash].js`,
-    path: PATHS.dist,
+    filename: isProd
+      ? `${PATHS.assets}js/[name].min.js`
+      : `${PATHS.assets}js/[name].[contenthash].js`,
+
+      path: PATHS.dist,
   },
   optimization: {
     splitChunks: {
@@ -136,7 +139,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: isProd ? `${PATHS.assets}css/[name].min.css` : `${PATHS.assets}css/[name].[hash].css`,
+      filename: isProd
+        ? `${PATHS.assets}css/[name].min.css`
+        : `${PATHS.assets}css/[name].[contenthash].css`,
     }),
   ],
 };
