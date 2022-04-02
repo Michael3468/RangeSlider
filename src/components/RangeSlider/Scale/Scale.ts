@@ -20,6 +20,7 @@ const defaultInitSettings: ISettings = {
   isConfPanel: false,
   isBarVisible: true,
 };
+
 class Scale extends AbstractScale {
   element: HTMLElement;
 
