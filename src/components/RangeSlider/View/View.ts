@@ -178,6 +178,7 @@ class View {
 
     this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
     this.slider.element.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
+    window.addEventListener('DOMContentLoaded', this.handleUpdateRangeSliderView);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;
   }

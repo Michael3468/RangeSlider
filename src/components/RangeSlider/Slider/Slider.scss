@@ -1,13 +1,14 @@
-@import '../../../assets/scss/vars.scss';
+@import "../../../assets/scss/vars.scss";
 
 .range-slider {
   position: relative;
+  box-sizing: content-box;
   width: 100%;
   height: $slider-thickness + px;
   margin-bottom: 60px;
   background: $slider-bg-color;
   border: $slider-range-border + px solid $slider-border-color;
-  border-radius: calc(#{$slider-thickness} / 2) + 'px';
+  border-radius: calc(#{$slider-thickness} / 2) + "px";
   cursor: pointer;
 
   &_vertical {
