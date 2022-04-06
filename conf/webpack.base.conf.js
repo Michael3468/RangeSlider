@@ -32,8 +32,11 @@ module.exports = {
     'range-slider': `${PATHS.src}/app.ts`,
   },
   output: {
-    filename: isProd ? `${PATHS.assets}js/[name].min.js` : `${PATHS.assets}js/[name].[hash].js`,
-    path: PATHS.dist,
+    filename: isProd
+      ? `${PATHS.assets}js/[name].min.js`
+      : `${PATHS.assets}js/[name].[contenthash].js`,
+
+      path: PATHS.dist,
   },
   optimization: {
     splitChunks: {
@@ -94,10 +97,11 @@ module.exports = {
         },
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.s?css$/i,
         use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
           {
             loader: 'css-loader',
             options: { sourceMap: true },
@@ -106,7 +110,9 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              config: { path: './postcss.config.js' },
+              postcssOptions: {
+                config: true,
+              },
             },
           },
           {
@@ -133,7 +139,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: isProd ? `${PATHS.assets}css/[name].min.css` : `${PATHS.assets}css/[name].[hash].css`,
+      filename: isProd
+        ? `${PATHS.assets}css/[name].min.css`
+        : `${PATHS.assets}css/[name].[contenthash].css`,
     }),
   ],
 };

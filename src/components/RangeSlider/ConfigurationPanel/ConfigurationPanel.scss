@@ -1,4 +1,4 @@
-@import '../../../assets/scss/vars.scss';
+@import "../../../assets/scss/vars.scss";
 
 .configuration-panel {
   display: block;
@@ -25,7 +25,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 0;
   }
 
   &-input,
@@ -77,7 +77,7 @@
       width: 15px;
       height: 15px;
       box-shadow: 0 0 5px red;
-      content: '';
+      content: "";
     }
   }
 }
