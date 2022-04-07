@@ -8,4 +8,9 @@ declare global {
   interface JQuery {
     RangeSlider(settings: IUserSettings): JQuery;
   }
+
+  interface Window {
+    $: JQuery;
+    jQuery: JQuery;
+  }
 }

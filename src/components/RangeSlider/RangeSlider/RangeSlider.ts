@@ -10,6 +10,8 @@ import { ISettings } from './types';
 
 import './RangeSlider.scss';
 
+window.$ = window.jQuery = require('jquery');
+
 (function ($) {
   const defaultSettings: ISettings = {
     min: 0,
