@@ -6,7 +6,7 @@ import 'airbnb-browser-shims';
 import View from '../View/View';
 import Presenter from '../Presenter/Presenter';
 import Model from '../Model/Model';
-import { ISettings } from './types';
+import { ISettings, IUserSettings } from './types';
 
 import './RangeSlider.scss';
 
@@ -28,7 +28,7 @@ window.$ = window.jQuery = require('jquery');
   };
 
   // eslint-disable-next-line no-param-reassign
-  $.fn.RangeSlider = function (userOptions): JQuery {
+  $.fn.RangeSlider = function (userOptions: IUserSettings): JQuery {
     const mergedSettings = $.extend({}, defaultSettings, userOptions);
     const elementId = `#${this[0]?.id}`;
 
