@@ -1,6 +1,6 @@
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
-$('#range-slider').RangeSlider({
+$('#range-slider').RangeSlider('init', {
   min: 0.0001,
   max: 0.0009,
   valueFrom: 0.00031,
@@ -10,7 +10,7 @@ $('#range-slider').RangeSlider({
   isConfPanel: true,
 });
 
-$('#range-slider2').RangeSlider({
+$('#range-slider2').RangeSlider('init', {
   min: 22,
   max: 150,
   valueTo: 54,
@@ -19,7 +19,7 @@ $('#range-slider2').RangeSlider({
   isConfPanel: true,
 });
 
-$('#range-slider3').RangeSlider({
+$('#range-slider3').RangeSlider('init', {
   min: 1,
   max: 2,
   valueFrom: 1.2,
@@ -31,7 +31,7 @@ $('#range-slider3').RangeSlider({
   isConfPanel: true,
 });
 
-$('#range-slider4').RangeSlider({
+$('#range-slider4').RangeSlider('init', {
   min: -100,
   max: 100,
   valueFrom: -20,

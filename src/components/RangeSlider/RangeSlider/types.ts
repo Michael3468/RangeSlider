@@ -57,6 +57,8 @@ type CPInputElement = 'cpMin'
   | 'cpBar'
   | 'cpTips';
 
+type IMethod = 'init' | 'destroy';
+
 abstract class AbstractObserver {
   protected abstract observers: Function[];
 
@@ -118,6 +120,7 @@ export {
   INodeName,
   MeasureUnit,
   CPInputElement,
+  IMethod,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,
