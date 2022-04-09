@@ -5,7 +5,7 @@ import {
 function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMinMax {
   const elementRect = el.element.getBoundingClientRect();
 
-  if (settings.isVertical) {
+  if (settings.vertical) {
     return {
       min: elementRect.top,
       max: elementRect.bottom,
@@ -18,7 +18,7 @@ function getMinMaxElementEdgesInPx(settings: ISettings, el: ISliderElement): IMi
 }
 
 function getElementLengthInPx(settings: ISettings, el: HTMLElement): number {
-  return settings.isVertical
+  return settings.vertical
     ? el.getBoundingClientRect().height
     : el.getBoundingClientRect().width;
 }

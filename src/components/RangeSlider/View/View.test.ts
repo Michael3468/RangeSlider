@@ -83,14 +83,14 @@ beforeEach(() => {
   settings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1490,
+    range: true,
+    scale: true,
+    vertical: true,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1490,
     step: 10,
   };
 });
@@ -116,14 +116,14 @@ describe('constructor', () => {
   }
 
   test('should return "div" element with id="range-slider" and class="range-slider"', () => {
-    settings.isVertical = false;
+    settings.vertical = false;
     const isHasClassVertical = testConstructor(settings);
 
     expect(isHasClassVertical).toBeFalsy();
   });
 
   test('should return "div" with id="range-slider" and class="range-slider range-slider_vertical"', () => {
-    settings.isVertical = true;
+    settings.vertical = true;
     const isHasClassVertical = testConstructor(settings);
 
     expect(isHasClassVertical).toBeTruthy();
@@ -146,13 +146,13 @@ describe('public createRangeSlider', () => {
   }
 
   test('should return slider with one runner', () => {
-    settings.isTwoRunners = false;
+    settings.range = false;
     testChild(settings, 0, 'thumb-to');
     testChild(settings, 1, 'range-slider__range');
   });
 
   test('should return slider with two runners', () => {
-    settings.isTwoRunners = true;
+    settings.range = true;
     testChild(settings, 0, 'thumb-from');
     testChild(settings, 1, 'thumb-to');
     testChild(settings, 2, 'range-slider__range');
@@ -166,7 +166,7 @@ describe('public createRangeSlider', () => {
     return createRS(settings)['scale'].element.classList.contains('scale_vertical');
   }
 
-  /* if (settings.isVertical) and if (settings.isTooltipsVisible) */
+  /* if (settings.vertical) and if (settings.tooltips) */
   function isTooltipFromHaveClassVertical(settings: ISettings) {
     return createRS(settings)['from'].tooltip.element.classList.contains('tooltip_vertical');
   }
@@ -174,7 +174,7 @@ describe('public createRangeSlider', () => {
     return createRS(settings)['to'].tooltip.element.classList.contains('tooltip_vertical');
   }
 
-  /* if (settings.isVertical) and if (settings.isTwoRunners) */
+  /* if (settings.vertical) and if (settings.range) */
   function isThumbFromHaveClassVertical(settings: ISettings) {
     return createRS(settings)['from'].element.classList.contains('thumb-vertical');
   }
@@ -182,44 +182,44 @@ describe('public createRangeSlider', () => {
     return createRS(settings)['to'].element.classList.contains('thumb-vertical');
   }
 
-  test('if settings.isVertical == true, should add vertical classes, ', () => {
-    /* if (settings.isVertical) */
-    settings.isVertical = true;
+  test('if settings.vertical == true, should add vertical classes, ', () => {
+    /* if (settings.vertical) */
+    settings.vertical = true;
     expect(isSliderHasClassVertical(settings)).toBeTruthy();
 
-    settings.isVertical = false;
+    settings.vertical = false;
     expect(isSliderHasClassVertical(settings)).toBeFalsy();
 
-    settings.isVertical = true;
+    settings.vertical = true;
     expect(isScaleHasClassVertical(settings)).toBeTruthy();
 
-    settings.isVertical = false;
+    settings.vertical = false;
     expect(isScaleHasClassVertical(settings)).toBeFalsy();
 
-    /* if (settings.isVertical) and if (settings.isTooltipsVisible) */
-    settings.isVertical = true;
-    settings.isTooltipsVisible = false;
+    /* if (settings.vertical) and if (settings.tooltips) */
+    settings.vertical = true;
+    settings.tooltips = false;
     expect(isTooltipFromHaveClassVertical(settings)).toBeFalsy();
     expect(isTooltipToHaveClassVertical(settings)).toBeFalsy();
 
-    settings.isVertical = false;
-    settings.isTooltipsVisible = true;
+    settings.vertical = false;
+    settings.tooltips = true;
     expect(isTooltipFromHaveClassVertical(settings)).toBeFalsy();
     expect(isTooltipToHaveClassVertical(settings)).toBeFalsy();
 
-    /* if (settings.isVertical) and if (settings.isTwoRunners) */
-    settings.isVertical = true;
-    settings.isTwoRunners = true;
+    /* if (settings.vertical) and if (settings.range) */
+    settings.vertical = true;
+    settings.range = true;
     expect(isThumbFromHaveClassVertical(settings)).toBeTruthy();
     expect(isThumbToHaveClassVertical(settings)).toBeTruthy();
 
-    settings.isVertical = true;
-    settings.isTwoRunners = false;
+    settings.vertical = true;
+    settings.range = false;
     expect(isThumbFromHaveClassVertical(settings)).toBeFalsy();
     expect(isThumbToHaveClassVertical(settings)).toBeTruthy();
   });
 
-  /* if (!settings.isTooltipsVisible) */
+  /* if (!settings.tooltips) */
   function isTooltipFromHaveClassHidden(settings: ISettings) {
     return createRS(settings)['from'].tooltip.element.classList.contains('hidden');
   }
@@ -228,20 +228,20 @@ describe('public createRangeSlider', () => {
     return createRS(settings)['to'].tooltip.element.classList.contains('hidden');
   }
 
-  /* if (!settings.isTooltipsVisible) */
+  /* if (!settings.tooltips) */
   test('should return tooltips with class="hidden"', () => {
-    settings.isTooltipsVisible = true;
+    settings.tooltips = true;
     expect(isTooltipFromHaveClassHidden(settings)).toBeFalsy();
     expect(isTooltipToHaveClassHidden(settings)).toBeFalsy();
 
-    settings.isTooltipsVisible = false;
+    settings.tooltips = false;
     expect(isTooltipFromHaveClassHidden(settings)).toBeTruthy();
     expect(isTooltipToHaveClassHidden(settings)).toBeTruthy();
   });
 
-  /* if (settings.isScaleVisible) */
+  /* if (settings.scale) */
   function isHasScale(settings: ISettings) {
-    if (settings.isTwoRunners) {
+    if (settings.range) {
       return createRS(settings)['slider'].element.children[3]?.classList.contains('scale');
     }
     return createRS(settings)['slider'].element.children[2]?.classList.contains('scale');
@@ -249,32 +249,32 @@ describe('public createRangeSlider', () => {
 
   test('should return slider with scale element', () => {
     /* has child */
-    settings.isScaleVisible = true;
-    settings.isTwoRunners = true;
+    settings.scale = true;
+    settings.range = true;
     expect(isHasScale(settings)).toBeTruthy();
 
-    settings.isScaleVisible = true;
-    settings.isTwoRunners = false;
+    settings.scale = true;
+    settings.range = false;
     expect(isHasScale(settings)).toBeTruthy();
 
     /* has no child */
-    settings.isScaleVisible = false;
-    settings.isTwoRunners = true;
+    settings.scale = false;
+    settings.range = true;
     expect(isHasScale(settings)).toBeFalsy();
 
-    settings.isScaleVisible = false;
-    settings.isTwoRunners = false;
+    settings.scale = false;
+    settings.range = false;
     expect(isHasScale(settings)).toBeFalsy();
   });
 
-  test('if (settings.isScaleVisible) "createScaleMarks" should have been called ', () => {
-    settings.isScaleVisible = true;
+  test('if (settings.scale) "createScaleMarks" should have been called ', () => {
+    settings.scale = true;
     let view = new View('range-slider', settings);
     let createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
     view.createRangeSlider(settings);
     expect(createScaleMarksSpy).toHaveBeenCalled();
 
-    settings.isScaleVisible = false;
+    settings.scale = false;
     view = new View('range-slider', settings);
     createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
     view.createRangeSlider(settings);
@@ -283,8 +283,8 @@ describe('public createRangeSlider', () => {
 });
 
 describe('private isTooltipsCollision', () => {
-  test('check settings.isVertical - true', () => {
-    settings.isVertical = true;
+  test('check settings.vertical - true', () => {
+    settings.vertical = true;
     const view = new View('range-slider', settings);
 
     view['from'].element.getBoundingClientRect = jest.fn(() => ({
@@ -342,8 +342,8 @@ describe('private isTooltipsCollision', () => {
     expect(result).toBeFalsy();
   });
 
-  test('check settings.isVertical - false', () => {
-    settings.isVertical = false;
+  test('check settings.vertical - false', () => {
+    settings.vertical = false;
     const view = new View('range-slider', settings);
 
     view['from'].element.getBoundingClientRect = jest.fn(() => ({
@@ -404,7 +404,7 @@ describe('private isTooltipsCollision', () => {
 
 describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips in different directions (vertical)', () => {
-    settings.isVertical = true;
+    settings.vertical = true;
     const view = new View('range-slider', settings);
     jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
@@ -418,7 +418,7 @@ describe('private setDistanceBetweenTooltips', () => {
   });
 
   test('should move tooltips close to each other (vertical)', () => {
-    settings.isVertical = true;
+    settings.vertical = true;
     const view = new View('range-slider', settings);
     jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
@@ -432,7 +432,7 @@ describe('private setDistanceBetweenTooltips', () => {
   });
 
   test('should move tooltips in different directions (horizontal)', () => {
-    settings.isVertical = false;
+    settings.vertical = false;
     const view = new View('range-slider', settings);
     jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
@@ -446,7 +446,7 @@ describe('private setDistanceBetweenTooltips', () => {
   });
 
   test('should move tooltips close to each other (horizontal)', () => {
-    settings.isVertical = false;
+    settings.vertical = false;
     const view = new View('range-slider', settings);
     jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
@@ -464,14 +464,14 @@ describe('private setZIndexTop', () => {
   const settings: ISettings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1490,
+    range: true,
+    scale: true,
+    vertical: true,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1490,
     step: 10,
   };
 
@@ -509,8 +509,8 @@ describe('private currentCursorPosition', () => {
       toJSON: () => {},
     }));
 
-    settings.isVertical = true;
-    settings.isTwoRunners = true;
+    settings.vertical = true;
+    settings.range = true;
   });
 
   test('should return currentPos > max', () => {
@@ -568,7 +568,7 @@ describe('private getPosOnScale', () => {
   const currentPos = 250;
 
   test(`should return ${currentPos} - ${topValue}`, () => {
-    settings.isVertical = true;
+    settings.vertical = true;
     const view = new View('range-slider', settings);
     const result = view['getPosOnScale'](currentPos);
 
@@ -576,7 +576,7 @@ describe('private getPosOnScale', () => {
   });
 
   test(`should return ${currentPos} - ${topValue}`, () => {
-    settings.isVertical = false;
+    settings.vertical = false;
     const view = new View('range-slider', settings);
     const result = view['getPosOnScale'](currentPos);
 
@@ -638,7 +638,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   }
 
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
-    settings.isTwoRunners = true;
+    settings.range = true;
     const view = new View('range-slider', settings);
     view['thumbMarginFrom'] = 150;
     view['thumbMarginTo'] = 250;
@@ -657,7 +657,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
-    if (result['settings'].isTwoRunners) {
+    if (result['settings'].range) {
       expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'from');
@@ -665,7 +665,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   });
 
   test('should return thumbMarginTo = \'clickPosition\'', () => {
-    settings.isTwoRunners = true;
+    settings.range = true;
     const view = new View('range-slider', settings);
     view['thumbMarginFrom'] = 150;
     view['thumbMarginTo'] = 250;
@@ -684,7 +684,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
-    if (result['settings'].isTwoRunners) {
+    if (result['settings'].range) {
       expect(setZIndexTopSpy).toBeCalled();
 
       isHasClasses(result, 'to');
@@ -841,14 +841,14 @@ describe('private addListenersToThumbs', () => {
   }
 
   it('should NOT recreate scale marks on window resize on vertical slider', () => {
-    settings.isVertical = true;
+    settings.vertical = true;
     const createScaleMarksSpy = testAddListenerToThumbs(settings);
 
     expect(createScaleMarksSpy).not.toBeCalled();
   });
 
   it('should recreate scale marks on window resize on horizontal slider', () => {
-    settings.isVertical = false;
+    settings.vertical = false;
     const createScaleMarksSpy = testAddListenerToThumbs(settings);
 
     expect(createScaleMarksSpy).toBeCalled();

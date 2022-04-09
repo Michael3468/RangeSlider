@@ -15,14 +15,14 @@ beforeEach(() => {
   settings = {
     min: 100,
     max: 500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isTooltipsVisible: true,
-    isVertical: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 150,
-    valueTo: 400,
+    range: true,
+    scale: true,
+    tooltips: true,
+    vertical: true,
+    confpanel: true,
+    bar: true,
+    from: 150,
+    to: 400,
     step: 10,
   };
 });

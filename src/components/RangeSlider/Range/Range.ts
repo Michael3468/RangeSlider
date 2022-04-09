@@ -9,8 +9,8 @@ class Range extends AbstractRange {
     this.element = createElement('div', 'range-slider__range');
   }
 
-  public setMarginFromBegin(margin: number, isVertical: boolean): Range {
-    if (isVertical) {
+  public setMarginFromBegin(margin: number, vertical: boolean): Range {
+    if (vertical) {
       this.element.style.marginTop = `${margin}px`;
       this.element.style.marginLeft = '0px';
     } else {
@@ -20,8 +20,8 @@ class Range extends AbstractRange {
     return this;
   }
 
-  public setMarginFromEnd(margin: number, isVertical: boolean): Range {
-    if (isVertical) {
+  public setMarginFromEnd(margin: number, vertical: boolean): Range {
+    if (vertical) {
       this.element.style.marginRight = '0px';
       this.element.style.marginBottom = `${margin}px`;
     } else {

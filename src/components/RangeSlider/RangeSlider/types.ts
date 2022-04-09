@@ -6,29 +6,29 @@
 interface ISettings {
   min: number;
   max: number;
-  valueFrom: number;
-  valueTo: number;
+  from: number;
+  to: number;
   step: number;
-  isTwoRunners: boolean;
-  isScaleVisible: boolean;
-  isVertical: boolean;
-  isTooltipsVisible: boolean;
-  isConfPanel: boolean;
-  isBarVisible: boolean;
+  range: boolean;
+  scale: boolean;
+  vertical: boolean;
+  tooltips: boolean;
+  confpanel: boolean;
+  bar: boolean;
 }
 
 interface IUserSettings {
   min?: number;
   max?: number;
-  valueFrom?: number;
-  valueTo?: number;
+  from?: number;
+  to?: number;
   step?: number;
-  isTwoRunners?: boolean;
-  isScaleVisible?: boolean;
-  isVertical?: boolean;
-  isTooltipsVisible?: boolean;
-  isConfPanel?: boolean;
-  isBarVisible?: boolean;
+  range?: boolean;
+  scale?: boolean;
+  vertical?: boolean;
+  tooltips?: boolean;
+  confpanel?: boolean;
+  bar?: boolean;
 }
 
 interface ISliderElement {
@@ -55,7 +55,9 @@ type CPInputElement = 'cpMin'
   | 'cpRange'
   | 'cpScale'
   | 'cpBar'
-  | 'cpTips';
+  | 'cpTooltips';
+
+type IMethod = 'init' | 'destroy' | 'update';
 
 abstract class AbstractObserver {
   protected abstract observers: Function[];
@@ -76,9 +78,9 @@ abstract class AbstractSlider {
 abstract class AbstractRange {
   abstract element: HTMLElement;
 
-  public abstract setMarginFromBegin(margin: number, isVertical: boolean): AbstractRange;
+  public abstract setMarginFromBegin(margin: number, vertical: boolean): AbstractRange;
 
-  public abstract setMarginFromEnd(margin: number, isVertical: boolean): AbstractRange;
+  public abstract setMarginFromEnd(margin: number, vertical: boolean): AbstractRange;
 }
 
 abstract class AbstractScale {
@@ -118,6 +120,7 @@ export {
   INodeName,
   MeasureUnit,
   CPInputElement,
+  IMethod,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,

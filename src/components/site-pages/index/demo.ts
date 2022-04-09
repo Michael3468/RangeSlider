@@ -1,45 +1,45 @@
 import '../../RangeSlider/RangeSlider/RangeSlider';
 
-$('#range-slider').RangeSlider({
+$('#range-slider').RangeSlider('init', {
   min: 0.0001,
   max: 0.0009,
-  valueFrom: 0.00031,
-  valueTo: 0.004,
-  isScaleVisible: true,
+  from: 0.00031,
+  to: 0.004,
+  scale: true,
   step: 0.00001,
-  isConfPanel: true,
+  confpanel: true,
 });
 
-$('#range-slider2').RangeSlider({
+$('#range-slider2').RangeSlider('init', {
   min: 22,
   max: 150,
-  valueTo: 54,
-  isTwoRunners: false,
+  to: 54,
+  range: false,
   step: 7,
-  isConfPanel: true,
+  confpanel: true,
 });
 
-$('#range-slider3').RangeSlider({
+$('#range-slider3').RangeSlider('init', {
   min: 1,
   max: 2,
-  valueFrom: 1.2,
-  valueTo: 1.5,
-  isScaleVisible: true,
-  isVertical: true,
-  isTwoRunners: true,
+  from: 1.2,
+  to: 1.5,
+  scale: true,
+  vertical: true,
+  range: true,
   step: 0.12,
-  isConfPanel: true,
+  confpanel: true,
 });
 
-$('#range-slider4').RangeSlider({
+$('#range-slider4').RangeSlider('init', {
   min: -100,
   max: 100,
-  valueFrom: -20,
-  valueTo: 70,
-  isScaleVisible: true,
-  isVertical: true,
-  isTwoRunners: false,
+  from: -20,
+  to: 70,
+  scale: true,
+  vertical: true,
+  range: false,
   step: 1,
-  isConfPanel: true,
-  isBarVisible: false,
+  confpanel: true,
+  bar: false,
 });

@@ -11,14 +11,14 @@ beforeEach(() => {
   settings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1400,
+    range: true,
+    scale: true,
+    vertical: true,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1400,
     step: 10,
   };
 });
@@ -28,7 +28,7 @@ describe('public setMargin', () => {
     const thumbName = 'from';
     const thumb = new Thumb(thumbName);
     const margin = 100;
-    settings.isVertical = true;
+    settings.vertical = true;
     const result = thumb.setMargin(margin, settings);
 
     expect(result.element.nodeName).toBe('DIV');
@@ -52,7 +52,7 @@ describe('public setMargin', () => {
     const thumbName = 'from';
     const thumb = new Thumb(thumbName);
     const margin = 200;
-    settings.isVertical = false;
+    settings.vertical = false;
     const result = thumb.setMargin(margin, settings);
 
     expect(result.element.nodeName).toBe('DIV');

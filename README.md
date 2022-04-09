@@ -69,18 +69,44 @@ And after it add RangeSlider plugin with settings to your.js file.
 Example:
 
 ```javascript
-$('#range-slider').RangeSlider({
+$('#range-slider').RangeSlider('init', {
   min: 0,
   max: 100,
-  valueFrom: 20,
-  valueTo: 80,
+  from: 20,
+  to: 80,
   step: 1,
-  isTwoRunners: true,
-  isScaleVisible: true,
-  isTooltipsVisible: true,
-  isVertical: false,
-  isConfPanel: false,
-  isBarVisible: true,
+  range: true,
+  scale: true,
+  tooltips: true,
+  vertical: false,
+  confpanel: false,
+  bar: true,
+});
+```
+
+Also, you could use plugin from console in your browser with the same command
+```javascript
+$('#range-slider').RangeSlider('init', {
+  min: 0,
+  max: 100,
+  from: 20,
+  to: 80,
+  step: 1,
+  range: true,
+  scale: true,
+  tooltips: true,
+  vertical: false,
+  confpanel: false,
+  bar: true,
+});
+```
+
+You may pass to slider settings that you need to update its settings
+```javascript
+$('#range-slider').RangeSlider('update', {
+  min: 20,
+  max: 80,
+  confpanel: true,
 });
 ```
 

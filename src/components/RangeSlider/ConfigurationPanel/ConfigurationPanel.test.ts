@@ -14,14 +14,14 @@ beforeEach(() => {
     min: 0,
     max: 1500,
     step: 10,
-    valueFrom: 1000,
-    valueTo: 1490,
-    isVertical: true,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isBarVisible: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
+    from: 1000,
+    to: 1490,
+    vertical: true,
+    range: true,
+    scale: true,
+    bar: true,
+    tooltips: true,
+    confpanel: true,
 
   };
 });
@@ -60,8 +60,8 @@ describe('private addListeners', () => {
     if (confPanel['cpBar']) {
       confPanel['cpBar'].checked = false;
     }
-    if (confPanel['cpTips']) {
-      confPanel['cpTips'].checked = false;
+    if (confPanel['cpTooltips']) {
+      confPanel['cpTooltips'].checked = false;
     }
 
     const result = confPanel['addListeners']();
@@ -94,7 +94,7 @@ describe('private addListeners', () => {
     // cpFrom listener
     if (result['cpFrom']) {
       result['cpFrom'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].valueFrom)).toBe(result['cpFrom'].value);
+      expect(String(result['settings'].from)).toBe(result['cpFrom'].value);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpFrom listener end
@@ -102,7 +102,7 @@ describe('private addListeners', () => {
     // cpTo listener
     if (result['cpTo']) {
       result['cpTo'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].valueTo)).toBe(result['cpTo'].value);
+      expect(String(result['settings'].to)).toBe(result['cpTo'].value);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpTo listener end
@@ -111,7 +111,7 @@ describe('private addListeners', () => {
     // cpVertical listener
     if (result['cpVertical']) {
       result['cpVertical'].dispatchEvent(new Event('change'));
-      expect(result['settings'].isVertical).toBe(result['cpVertical'].checked);
+      expect(result['settings'].vertical).toBe(result['cpVertical'].checked);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpVertical listener end
@@ -119,7 +119,7 @@ describe('private addListeners', () => {
     // cpRange listener
     if (result['cpRange']) {
       result['cpRange'].dispatchEvent(new Event('change'));
-      expect(result['settings'].isTwoRunners).toBe(result['cpRange'].checked);
+      expect(result['settings'].range).toBe(result['cpRange'].checked);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpRange listener end
@@ -127,7 +127,7 @@ describe('private addListeners', () => {
     // cpScale listener
     if (result['cpScale']) {
       result['cpScale'].dispatchEvent(new Event('change'));
-      expect(result['settings'].isScaleVisible).toBe(result['cpScale'].checked);
+      expect(result['settings'].scale).toBe(result['cpScale'].checked);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpScale listener end
@@ -135,31 +135,31 @@ describe('private addListeners', () => {
     // cpBar listener
     if (result['cpBar']) {
       result['cpBar'].dispatchEvent(new Event('change'));
-      expect(result['settings'].isBarVisible).toBe(result['cpBar'].checked);
+      expect(result['settings'].bar).toBe(result['cpBar'].checked);
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpBar listener end
 
-    // cpTips listener
-    if (result['cpTips']) {
-      result['cpTips'].dispatchEvent(new Event('change'));
-      expect(result['settings'].isTooltipsVisible).toBe(result['cpTips'].checked);
+    // cpTooltips listener
+    if (result['cpTooltips']) {
+      result['cpTooltips'].dispatchEvent(new Event('change'));
+      expect(result['settings'].tooltips).toBe(result['cpTooltips'].checked);
     }
     expect(nObsSpy).toBeCalledWith(settings);
-    // cpTips listener end
+    // cpTooltips listener end
   });
 });
 
 describe('private getThumbFromDisabledStatus', () => {
   it('should return false if cpRange.checked === true', () => {
-    settings.isTwoRunners = true;
+    settings.range = true;
     const confPanel = new ConfigurationPanel(settings);
     const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeFalsy();
   });
 
   it('should return true if cpRange.checked === false', () => {
-    settings.isTwoRunners = false;
+    settings.range = false;
     const confPanel = new ConfigurationPanel(settings);
     const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeTruthy();
@@ -172,14 +172,14 @@ describe('public updateState', () => {
       min: 0,
       max: 1,
       step: 0.001,
-      valueFrom: 0.001,
-      valueTo: 0.003,
-      isVertical: false,
-      isTwoRunners: true,
-      isScaleVisible: true,
-      isBarVisible: true,
-      isTooltipsVisible: true,
-      isConfPanel: true,
+      from: 0.001,
+      to: 0.003,
+      vertical: false,
+      range: true,
+      scale: true,
+      bar: true,
+      tooltips: true,
+      confpanel: true,
     };
   });
 
@@ -190,40 +190,40 @@ describe('public updateState', () => {
       min: 0.001,
       max: 0.009,
       step: 0.002,
-      valueFrom: 0.003,
-      valueTo: 0.005,
-      isVertical: true,
-      isTwoRunners: false,
-      isScaleVisible: false,
-      isBarVisible: false,
-      isTooltipsVisible: false,
-      isConfPanel: false,
+      from: 0.003,
+      to: 0.005,
+      vertical: true,
+      range: false,
+      scale: false,
+      bar: false,
+      tooltips: false,
+      confpanel: false,
     };
 
     const result = confPanel['updateState'](updatedSettings);
 
     expect(result['cpMin'].value).toBe(String(updatedSettings.min));
-    expect(result['cpMin'].max).toBe(String(updatedSettings.valueFrom));
+    expect(result['cpMin'].max).toBe(String(updatedSettings.from));
 
     expect(result['cpMax'].value).toBe(String(updatedSettings.max));
-    expect(result['cpMax'].min).toBe(String(updatedSettings.valueTo));
+    expect(result['cpMax'].min).toBe(String(updatedSettings.to));
 
     expect(result['cpStep'].value).toBe(String(updatedSettings.step));
 
-    expect(result['cpFrom'].value).toBe(String(updatedSettings.valueFrom));
+    expect(result['cpFrom'].value).toBe(String(updatedSettings.from));
     expect(result['cpFrom'].min).toBe(String(updatedSettings.min));
     expect(result['cpFrom'].step).toBe(String(updatedSettings.step));
-    expect(result['cpFrom'].max).toBe(String(updatedSettings.valueTo));
+    expect(result['cpFrom'].max).toBe(String(updatedSettings.to));
 
-    expect(result['cpTo'].value).toBe(String(updatedSettings.valueTo));
-    expect(result['cpTo'].min).toBe(String(updatedSettings.valueFrom));
+    expect(result['cpTo'].value).toBe(String(updatedSettings.to));
+    expect(result['cpTo'].min).toBe(String(updatedSettings.from));
     expect(result['cpTo'].step).toBe(String(updatedSettings.step));
     expect(result['cpTo'].max).toBe(String(updatedSettings.max));
 
-    expect(result['cpVertical'].checked).toBe(updatedSettings.isVertical);
-    expect(result['cpRange'].checked).toBe(updatedSettings.isTwoRunners);
-    expect(result['cpScale'].checked).toBe(updatedSettings.isScaleVisible);
-    expect(result['cpBar'].checked).toBe(updatedSettings.isBarVisible);
-    expect(result['cpTips'].checked).toBe(updatedSettings.isTooltipsVisible);
+    expect(result['cpVertical'].checked).toBe(updatedSettings.vertical);
+    expect(result['cpRange'].checked).toBe(updatedSettings.range);
+    expect(result['cpScale'].checked).toBe(updatedSettings.scale);
+    expect(result['cpBar'].checked).toBe(updatedSettings.bar);
+    expect(result['cpTooltips'].checked).toBe(updatedSettings.tooltips);
   });
 });
