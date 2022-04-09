@@ -55,7 +55,9 @@ const RangeSliderInstances = new Map();
 
     destroy: function(): JQuery {
       const rangeSlider = <JQuery>this;
-      const slider = document.querySelector(`#${rangeSlider[0]?.id}`);
+      const elementId = `#${rangeSlider[0]?.id}`;
+
+      const slider = document.querySelector(elementId);
 
       if (slider) {
         slider.innerHTML = '';
@@ -64,6 +66,8 @@ const RangeSliderInstances = new Map();
         const confPanel = slider.nextSibling;
         confPanel?.remove();
       }
+
+      RangeSliderInstances.delete(elementId);
 
       return rangeSlider;
     },
