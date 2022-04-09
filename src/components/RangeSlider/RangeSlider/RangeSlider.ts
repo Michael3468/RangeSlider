@@ -6,6 +6,7 @@ import 'airbnb-browser-shims';
 import View from '../View/View';
 import Presenter from '../Presenter/Presenter';
 import Model from '../Model/Model';
+
 import { ISettings, IUserSettings, IMethod } from './types';
 
 import './RangeSlider.scss';
@@ -26,7 +27,13 @@ const defaultSettings: ISettings = {
   isBarVisible: true,
 };
 
+const RangeSliderInstances = new Map();
+
 (function ($) {
+
+  let model: Model;
+  let view: View;
+  let presenter: Presenter;
 
   const methods = {
 
@@ -37,9 +44,11 @@ const defaultSettings: ISettings = {
       const rangeSlider = <JQuery>this;
       const elementId = `#${rangeSlider[0]?.id}`;
 
-      const model: Model = new Model(mergedSettings);
-      const view: View = new View(elementId, model.getSettings());
-      new Presenter(model, view);
+      model = new Model(mergedSettings);
+      view = new View(elementId, model.getSettings());
+      presenter = new Presenter(model, view);
+
+      RangeSliderInstances.set(elementId, { presenter });
 
       return rangeSlider;
     },
@@ -57,6 +66,17 @@ const defaultSettings: ISettings = {
       }
 
       return rangeSlider;
+    },
+
+    update: function(userSettings: IUserSettings): JQuery {
+      const rangeSlider = <JQuery>this;
+      const elementId = `#${rangeSlider[0]?.id}`;
+      const RSInstance = RangeSliderInstances.get(elementId);
+
+      const currentSettings = RSInstance.presenter['model'].getSettings();
+      const mergedSettings = $.extend({}, currentSettings, userSettings);
+
+      return methods['init'].call(this, mergedSettings);
     },
   };
 

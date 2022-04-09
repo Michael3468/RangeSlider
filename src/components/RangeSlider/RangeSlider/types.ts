@@ -57,7 +57,7 @@ type CPInputElement = 'cpMin'
   | 'cpBar'
   | 'cpTips';
 
-type IMethod = 'init' | 'destroy';
+type IMethod = 'init' | 'destroy' | 'update';
 
 abstract class AbstractObserver {
   protected abstract observers: Function[];
