@@ -10,15 +10,15 @@ import {
 const defaultInitSettings: ISettings = {
   min: 0,
   max: 100,
-  valueFrom: 30,
-  valueTo: 70,
+  from: 30,
+  to: 70,
   step: 1,
-  isTwoRunners: true,
-  isScaleVisible: false,
-  isTooltipsVisible: true,
-  isVertical: false,
-  isConfPanel: false,
-  isBarVisible: true,
+  range: true,
+  scale: false,
+  tooltips: true,
+  vertical: false,
+  confpanel: false,
+  bar: true,
 };
 
 class Scale extends AbstractScale {
@@ -76,7 +76,7 @@ class Scale extends AbstractScale {
   private createMark(marginFromBegin: number): HTMLElement {
     const mark = createElement('span', 'scale__mark');
 
-    if (this.settings?.isVertical) {
+    if (this.settings?.vertical) {
       mark.className += ' scale__mark_vertical';
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
@@ -89,7 +89,7 @@ class Scale extends AbstractScale {
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
     const markValue = createElement('div', 'scale__mark-value');
 
-    if (this.settings?.isVertical) {
+    if (this.settings?.vertical) {
       markValue.className += ' scale__mark-value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
@@ -149,14 +149,14 @@ class Scale extends AbstractScale {
       let currentMark: number = 0;
       let nextMark: number | undefined = 0;
 
-      if (!this.settings.isVertical) {
+      if (!this.settings.vertical) {
         currentMark = markValue.getBoundingClientRect().right;
       } else {
         currentMark = markValue.getBoundingClientRect().bottom;
       }
 
       for (let i = index; i < arr.length - 1; i += 1) {
-        nextMark = this.settings.isVertical
+        nextMark = this.settings.vertical
           ? arr[i + 1]?.getBoundingClientRect().top
           : arr[i + 1]?.getBoundingClientRect().left;
 

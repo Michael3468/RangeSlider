@@ -9,21 +9,21 @@ class Model {
 
   private max: number;
 
-  private isTwoRunners: boolean;
+  private range: boolean;
 
-  private isScaleVisible: boolean;
+  private scale: boolean;
 
-  private isVertical: boolean;
+  private vertical: boolean;
 
-  private isTooltipsVisible: boolean;
+  private tooltips: boolean;
 
-  private isConfPanel: boolean;
+  private confpanel: boolean;
 
-  private isBarVisible: boolean;
+  private bar: boolean;
 
-  private valueFrom: number;
+  private from: number;
 
-  private valueTo: number;
+  private to: number;
 
   private step: number;
 
@@ -34,31 +34,31 @@ class Model {
     // default options
     this.min = this.settings.min;
     this.max = this.settings.max;
-    this.valueFrom = Model.getThumbValue(this.settings, 'from');
-    this.valueTo = Model.getThumbValue(this.settings, 'to');
+    this.from = Model.getThumbValue(this.settings, 'from');
+    this.to = Model.getThumbValue(this.settings, 'to');
     this.step = settings.step;
 
-    this.isTwoRunners = this.settings.isTwoRunners;
-    this.isScaleVisible = this.settings.isScaleVisible;
-    this.isVertical = this.settings.isVertical;
-    this.isTooltipsVisible = this.settings.isTooltipsVisible;
-    this.isConfPanel = this.settings.isConfPanel;
-    this.isBarVisible = this.settings.isBarVisible;
+    this.range = this.settings.range;
+    this.scale = this.settings.scale;
+    this.vertical = this.settings.vertical;
+    this.tooltips = this.settings.tooltips;
+    this.confpanel = this.settings.confpanel;
+    this.bar = this.settings.bar;
   }
 
   public getSettings(): ISettings {
     return {
       min: this.min,
       max: this.max,
-      valueFrom: this.valueFrom,
-      valueTo: this.valueTo,
+      from: this.from,
+      to: this.to,
       step: this.step,
-      isTwoRunners: this.isTwoRunners,
-      isScaleVisible: this.isScaleVisible,
-      isVertical: this.isVertical,
-      isTooltipsVisible: this.isTooltipsVisible,
-      isConfPanel: this.isConfPanel,
-      isBarVisible: this.isBarVisible,
+      range: this.range,
+      scale: this.scale,
+      vertical: this.vertical,
+      tooltips: this.tooltips,
+      confpanel: this.confpanel,
+      bar: this.bar,
     };
   }
 
@@ -69,15 +69,15 @@ class Model {
 
     this.min = this.settings.min;
     this.max = this.settings.max;
-    this.valueFrom = this.settings.valueFrom;
-    this.valueTo = this.settings.valueTo;
+    this.from = this.settings.from;
+    this.to = this.settings.to;
     this.step = this.settings.step;
-    this.isTwoRunners = this.settings.isTwoRunners;
-    this.isScaleVisible = this.settings.isScaleVisible;
-    this.isVertical = this.settings.isVertical;
-    this.isTooltipsVisible = this.settings.isTooltipsVisible;
-    this.isConfPanel = this.settings.isConfPanel;
-    this.isBarVisible = this.settings.isBarVisible;
+    this.range = this.settings.range;
+    this.scale = this.settings.scale;
+    this.vertical = this.settings.vertical;
+    this.tooltips = this.settings.tooltips;
+    this.confpanel = this.settings.confpanel;
+    this.bar = this.settings.bar;
 
     return this.settings;
   }
@@ -91,27 +91,27 @@ class Model {
       settings.min = settings.max - settings.step;
     }
 
-    if (settings.valueFrom < settings.min) {
-      settings.valueFrom = settings.min;
+    if (settings.from < settings.min) {
+      settings.from = settings.min;
     }
 
-    if (settings.valueFrom > settings.max) {
-      settings.valueFrom = settings.max;
+    if (settings.from > settings.max) {
+      settings.from = settings.max;
     }
 
-    if (settings.valueTo < settings.min) {
-      settings.valueTo = settings.min;
+    if (settings.to < settings.min) {
+      settings.to = settings.min;
     }
 
-    if (settings.valueTo > settings.max) {
-      settings.valueTo = settings.max;
+    if (settings.to > settings.max) {
+      settings.to = settings.max;
     }
 
-    if (settings.valueTo - settings.valueFrom < settings.step) {
-      if (settings.valueFrom >= settings.min + settings.step) {
-        settings.valueFrom = settings.valueTo - settings.step;
+    if (settings.to - settings.from < settings.step) {
+      if (settings.from >= settings.min + settings.step) {
+        settings.from = settings.to - settings.step;
       } else {
-        settings.valueTo = settings.valueFrom + settings.step;
+        settings.to = settings.from + settings.step;
       }
     }
 
@@ -119,7 +119,7 @@ class Model {
   }
 
   private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    return thumbName === 'from' ? settings.valueFrom : settings.valueTo;
+    return thumbName === 'from' ? settings.from : settings.to;
   }
 }
 

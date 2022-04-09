@@ -13,14 +13,14 @@ beforeEach(() => {
     min: 0,
     max: 10,
     step: 0.1,
-    valueFrom: 1.51,
-    valueTo: 3.82,
-    isVertical: true,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isBarVisible: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
+    from: 1.51,
+    to: 3.82,
+    vertical: true,
+    range: true,
+    scale: true,
+    bar: true,
+    tooltips: true,
+    confpanel: true,
 
   };
 });

@@ -16,15 +16,15 @@ window.$ = window.jQuery = require('jquery');
 const defaultSettings: ISettings = {
   min: 0,
   max: 100,
-  valueFrom: 30,
-  valueTo: 70,
+  from: 30,
+  to: 70,
   step: 1,
-  isTwoRunners: true,
-  isScaleVisible: false,
-  isTooltipsVisible: true,
-  isVertical: false,
-  isConfPanel: false,
-  isBarVisible: true,
+  range: true,
+  scale: false,
+  tooltips: true,
+  vertical: false,
+  confpanel: false,
+  bar: true,
 };
 
 const RangeSliderInstances = new Map();

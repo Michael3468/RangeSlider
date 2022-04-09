@@ -32,14 +32,14 @@ beforeEach(() => {
   settings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: false,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1490,
+    range: true,
+    scale: true,
+    vertical: false,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1490,
     step: 10,
   };
 });
@@ -70,7 +70,7 @@ describe('function createElement', () => {
 
 describe('function getMinMaxElementEdgesInPx', () => {
   test('test rect values of the horizontal element', () => {
-    settings.isVertical = false;
+    settings.vertical = false;
 
     const elementMinMaxHorizontal: IMinMax = {
       min: 100,
@@ -82,7 +82,7 @@ describe('function getMinMaxElementEdgesInPx', () => {
   });
 
   test('test rect values of the vertical element', () => {
-    settings.isVertical = true;
+    settings.vertical = true;
 
     const elementMinMaxVertical: IMinMax = {
       min: 100,
@@ -97,7 +97,7 @@ describe('function getMinMaxElementEdgesInPx', () => {
 describe('function getElementLengthInPx', () => {
   test('size for horizontal element', () => {
     const scale = new Scale();
-    settings.isVertical = false;
+    settings.vertical = false;
     const result = getElementLengthInPx(settings, scale.element);
 
     expect(result).toBe(300);
@@ -105,7 +105,7 @@ describe('function getElementLengthInPx', () => {
 
   test('size for vertical element', () => {
     const scale = new Scale();
-    settings.isVertical = true;
+    settings.vertical = true;
     const result = getElementLengthInPx(settings, scale.element);
 
     expect(result).toBe(10);
@@ -118,7 +118,7 @@ describe('function getOnePointInPx', () => {
     settings.min = 0;
     settings.max = 98;
     settings.step = 10;
-    settings.isVertical = false;
+    settings.vertical = false;
     /* Element.prototype.getBoundingClientRect = width: 300 */
     const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 100 */
     expect(result).toBe(3.061);
@@ -129,7 +129,7 @@ describe('function getOnePointInPx', () => {
     settings.min = 0;
     settings.max = 98;
     settings.step = 0.34;
-    settings.isVertical = false;
+    settings.vertical = false;
     const result = getOnePointInPx(settings, scale.element); /* width / (max - min) = 100 */
     expect(result).toBe(1.041);
   });

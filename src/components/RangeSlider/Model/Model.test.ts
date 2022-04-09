@@ -9,14 +9,14 @@ beforeEach(() => {
   settings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: false,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1490,
+    range: true,
+    scale: true,
+    vertical: false,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1490,
     step: 10,
   };
 });
@@ -32,84 +32,84 @@ describe('private static validateSettings', () => {
     expect(result.min).toBe(settings.max - settings.step);
   });
 
-  describe('"settings.valueFrom < settings.min"', () => {
-    test(' should return valueFrom = min', () => {
-      settings.valueFrom = 0;
+  describe('"settings.from < settings.min"', () => {
+    test(' should return from = min', () => {
+      settings.from = 0;
       settings.min = 10;
       const result = Model['validateSettings'](settings);
-      expect(result.valueFrom).toBe(settings.min);
+      expect(result.from).toBe(settings.min);
     });
 
-    test('should return valueFrom != min', () => {
-      settings.valueFrom = 20;
+    test('should return from != min', () => {
+      settings.from = 20;
       settings.min = 10;
       const result = Model['validateSettings'](settings);
-      expect(result.valueFrom).not.toBe(settings.min);
-      expect(result.valueFrom).toBe(settings.valueFrom);
+      expect(result.from).not.toBe(settings.min);
+      expect(result.from).toBe(settings.from);
     });
   });
 
-  describe('settings.valueTo < settings.min', () => {
-    test('should valueTo = min', () => {
-      settings.valueTo = 10;
+  describe('settings.to < settings.min', () => {
+    test('should to = min', () => {
+      settings.to = 10;
       settings.min = 20;
       const result = Model['validateSettings'](settings);
-      expect(result.valueTo).toBe(settings.min);
+      expect(result.to).toBe(settings.min);
     });
 
-    test('should valueTo != min', () => {
-      settings.valueTo = 100;
+    test('should to != min', () => {
+      settings.to = 100;
       settings.min = 20;
       const result = Model['validateSettings'](settings);
-      expect(result.valueTo).not.toBe(settings.min);
+      expect(result.to).not.toBe(settings.min);
     });
   });
 
-  test('settings.valueTo > settings.max should return valueTo = max', () => {
-    settings.valueTo = 1200;
+  test('settings.to > settings.max should return to = max', () => {
+    settings.to = 1200;
     settings.max = 1100;
     let validatedSettings = Model['validateSettings'](settings);
-    expect(validatedSettings.valueTo).toBe(settings.max);
+    expect(validatedSettings.to).toBe(settings.max);
 
-    settings.valueTo = 1200;
+    settings.to = 1200;
     settings.max = 1300;
     validatedSettings = Model['validateSettings'](settings);
-    expect(validatedSettings.valueTo).toBe(settings.valueTo);
+    expect(validatedSettings.to).toBe(settings.to);
   });
 
-  test('"settings.valueTo - settings.valueFrom < settings.step" should set valueFrom = valueTo - step', () => {
+  test('"settings.to - settings.from < settings.step" should set from = to - step', () => {
     settings.min = 200;
-    settings.valueTo = 1400;
-    settings.valueFrom = 1000;
+    settings.to = 1400;
+    settings.from = 1000;
     settings.step = 500;
-    const value = settings.valueTo - settings.step;
+    const value = settings.to - settings.step;
 
     const result = Model['validateSettings'](settings);
-    expect(result.valueFrom).toBe(value);
+    expect(result.from).toBe(value);
   });
 
-  test('"settings.valueTo - settings.valueFrom < settings.step" should set valueTo = valueFrom + step', () => {
+  test('"settings.to - settings.from < settings.step" should set to = from + step', () => {
     settings.min = 1000;
-    settings.valueTo = 1400;
-    settings.valueFrom = 1000;
+    settings.to = 1400;
+    settings.from = 1000;
     settings.step = 500;
-    const value = settings.valueFrom + settings.step;
+    const value = settings.from + settings.step;
 
     const result = Model['validateSettings'](settings);
-    expect(result.valueTo).toBe(value);
+    expect(result.to).toBe(value);
   });
 });
 
 describe('function getThumbValue:', () => {
-  test('if thumbName == "from" should return settings.valueFrom', () => {
+  test('if thumbName == "from" should return settings.from', () => {
     const thumbName: ThumbName = 'from';
-    const result = settings.valueFrom;
+    const result = settings.from;
     expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 
-  test('if thumbName == "to" should return settings.valueTo', () => {
+  test('if thumbName == "to" should return settings.to', () => {
     const thumbName: ThumbName = 'to';
-    const result = settings.valueTo;
+    const result = settings.to;
     expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 });

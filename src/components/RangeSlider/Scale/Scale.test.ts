@@ -31,14 +31,14 @@ beforeEach(() => {
   settings = {
     min: 0,
     max: 1500,
-    isTwoRunners: true,
-    isScaleVisible: true,
-    isVertical: true,
-    isTooltipsVisible: true,
-    isConfPanel: true,
-    isBarVisible: true,
-    valueFrom: 1000,
-    valueTo: 1490,
+    range: true,
+    scale: true,
+    vertical: true,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 1000,
+    to: 1490,
     step: 10,
   };
 });
@@ -47,7 +47,7 @@ describe('private createMark', () => {
   test('should return html span with margin-left and NO class "scale__mark_vertical"', () => {
     const scale = new Scale();
     scale['settings'] = settings;
-    scale['settings'].isVertical = false;
+    scale['settings'].vertical = false;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -68,7 +68,7 @@ describe('private createMark', () => {
   test('should return html span with margin-top and class "scale__mark_vertical"', () => {
     const scale = new Scale();
     scale['settings'] = settings;
-    scale['settings'].isVertical = true;
+    scale['settings'].vertical = true;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -91,7 +91,7 @@ describe('private createMarkValue', () => {
   test('should return div element with class "scale__mark-value" and inner text = value', () => {
     const scale = new Scale();
     scale['settings'] = settings;
-    scale['settings'].isVertical = false;
+    scale['settings'].vertical = false;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -117,7 +117,7 @@ describe('private createMarkValue', () => {
   test('should return div element with class "scale__mark-value_vertical" and inner text = value', () => {
     const scale = new Scale();
     scale['settings'] = settings;
-    scale['settings'].isVertical = true;
+    scale['settings'].vertical = true;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -174,7 +174,7 @@ describe('public createScaleMarks', () => {
     const scale = new Scale();
     const stepBetweenMarksInPx = 30;
 
-    settings.isVertical = false;
+    settings.vertical = false;
 
     const result = scale.createScaleMarks(settings);
     expect(result.element.nodeName).toBe('DIV');
@@ -187,7 +187,7 @@ describe('public createScaleMarks', () => {
 
     // check NO vertical classes in childs classLists
     const childrenListLength = result.element.children.length;
-    /* for settings.isVertical = false; */
+    /* for settings.vertical = false; */
     const horizontalLength = result.element.getBoundingClientRect().width;
     const elementsPerStep = 2; // mark and value
     const totalSteps = (horizontalLength / stepBetweenMarksInPx)
@@ -236,7 +236,7 @@ describe('public createScaleMarks', () => {
     const scale = new Scale();
     const stepBetweenMarksInPx = 30;
 
-    settings.isVertical = true;
+    settings.vertical = true;
 
     const result = scale.createScaleMarks(settings);
     expect(result.element.nodeName).toBe('DIV');
@@ -249,7 +249,7 @@ describe('public createScaleMarks', () => {
 
     // check vertical classes in childs classLists
     const childrenListLength = result.element.children.length;
-    /* for settings.isVertical = true; */
+    /* for settings.vertical = true; */
     const horizontalLength = result.element.getBoundingClientRect().height;
     const elementsPerStep = 2; // mark and value
     const totalSteps = (horizontalLength / stepBetweenMarksInPx)

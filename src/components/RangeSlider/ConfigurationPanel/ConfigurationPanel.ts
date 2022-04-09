@@ -34,7 +34,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   private cpBar: HTMLInputElement;
 
-  private cpTips: HTMLInputElement;
+  private cpTooltips: HTMLInputElement;
 
   private roundTo: number;
 
@@ -58,7 +58,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.cpRange = this.assignElements('cpRange');
     this.cpScale = this.assignElements('cpScale');
     this.cpBar = this.assignElements('cpBar');
-    this.cpTips = this.assignElements('cpTips');
+    this.cpTooltips = this.assignElements('cpTooltips');
 
     this.updateState(this.settings);
 
@@ -69,32 +69,32 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   public updateState(settings: ISettings): ConfigurationPanel {
-    const valueFrom = settings.valueFrom.toFixed(this.roundTo);
-    const valueTo = settings.valueTo.toFixed(this.roundTo);
+    const from = settings.from.toFixed(this.roundTo);
+    const to = settings.to.toFixed(this.roundTo);
 
     this.cpMin.value = String(settings.min.toFixed(this.roundTo));
-    this.cpMin.max = String(valueFrom);
+    this.cpMin.max = String(from);
 
     this.cpMax.value = String(settings.max.toFixed(this.roundTo));
-    this.cpMax.min = String(valueTo);
+    this.cpMax.min = String(to);
 
     this.cpStep.value = String(settings.step.toFixed(this.roundTo));
 
-    this.cpFrom.value = String(valueFrom);
+    this.cpFrom.value = String(from);
     this.cpFrom.min = String(settings.min.toFixed(this.roundTo));
     this.cpFrom.step = String(settings.step.toFixed(this.roundTo));
-    this.cpFrom.max = String(valueTo);
+    this.cpFrom.max = String(to);
 
-    this.cpTo.value = String(valueTo);
-    this.cpTo.min = String(valueFrom);
+    this.cpTo.value = String(to);
+    this.cpTo.min = String(from);
     this.cpTo.step = String(settings.step.toFixed(this.roundTo));
     this.cpTo.max = String(settings.max.toFixed(this.roundTo));
 
-    this.cpVertical.checked = settings.isVertical;
-    this.cpRange.checked = settings.isTwoRunners;
-    this.cpScale.checked = settings.isScaleVisible;
-    this.cpBar.checked = settings.isBarVisible;
-    this.cpTips.checked = settings.isTooltipsVisible;
+    this.cpVertical.checked = settings.vertical;
+    this.cpRange.checked = settings.range;
+    this.cpScale.checked = settings.scale;
+    this.cpBar.checked = settings.bar;
+    this.cpTooltips.checked = settings.tooltips;
 
     return this;
   }
@@ -157,8 +157,8 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
           </div>
           <div class="configuration-panel__options-checkbox">
             <label class="configuration-panel__options-checkbox-label">
-              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="tip">
-              tip
+              <input class="configuration-panel__options-checkbox-input" type="checkbox" name="tooltips">
+              tooltips
             </label>
           </div>
         </div>
@@ -191,8 +191,8 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
         return <HTMLInputElement> this.element.querySelector('input[name="scale"]');
       case 'cpBar':
         return <HTMLInputElement> this.element.querySelector('input[name="bar"]');
-      case 'cpTips':
-        return <HTMLInputElement> this.element.querySelector('input[name="tip"]');
+      case 'cpTooltips':
+        return <HTMLInputElement> this.element.querySelector('input[name="tooltips"]');
     }
   }
 
@@ -216,13 +216,13 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
   }
 
   private handleInputCPFromChange = () => {
-    this.settings.valueFrom = Number(this.cpFrom?.value);
+    this.settings.from = Number(this.cpFrom?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpFrom?.focus();
   }
 
   private handleInputCPToChange = () => {
-    this.settings.valueTo = Number(this.cpTo?.value);
+    this.settings.to = Number(this.cpTo?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTo?.focus();
   }
@@ -230,34 +230,34 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   // Configuration panel checkbox handlers
   private handleCheckboxCPVerticalChange = () => {
-    this.settings.isVertical = <boolean> this.cpVertical?.checked;
+    this.settings.vertical = <boolean> this.cpVertical?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpVertical?.focus();
   }
 
   private handleCheckboxCPRangeChange = () => {
-    this.settings.isTwoRunners = <boolean> this.cpRange?.checked;
+    this.settings.range = <boolean> this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
   }
 
   private handleCheckboxCPScaleChange = () => {
-    this.settings.isScaleVisible = <boolean> this.cpScale?.checked;
+    this.settings.scale = <boolean> this.cpScale?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpScale?.focus();
   }
 
   private handleCheckboxCPBarChange = () => {
-    this.settings.isBarVisible = <boolean> this.cpBar?.checked;
+    this.settings.bar = <boolean> this.cpBar?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpBar?.focus();
   }
 
   private handleCheckboxCPTipChange = () => {
-    this.settings.isTooltipsVisible = <boolean> this.cpTips?.checked;
+    this.settings.tooltips = <boolean> this.cpTooltips?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
-    this.cpTips?.focus();
+    this.cpTooltips?.focus();
   }
   // Configuration panel checkbox handlers end
 
@@ -272,7 +272,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.cpRange?.addEventListener('change', this.handleCheckboxCPRangeChange);
     this.cpScale?.addEventListener('change', this.handleCheckboxCPScaleChange);
     this.cpBar?.addEventListener('change', this.handleCheckboxCPBarChange);
-    this.cpTips?.addEventListener('change', this.handleCheckboxCPTipChange);
+    this.cpTooltips?.addEventListener('change', this.handleCheckboxCPTipChange);
 
     return this;
   }
