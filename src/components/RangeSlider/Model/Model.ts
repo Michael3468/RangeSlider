@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
 class Model {
@@ -28,15 +26,14 @@ class Model {
   private step: number;
 
   constructor(settings: ISettings) {
-    Model.validateSettings(settings);
-    this.settings = settings;
+    this.settings = Model.validateSettings(settings);
 
     // default options
     this.min = this.settings.min;
     this.max = this.settings.max;
     this.from = Model.getThumbValue(this.settings, 'from');
     this.to = Model.getThumbValue(this.settings, 'to');
-    this.step = settings.step;
+    this.step = this.settings.step;
 
     this.range = this.settings.range;
     this.scale = this.settings.scale;
@@ -63,9 +60,7 @@ class Model {
   }
 
   public updateSettings(settings: ISettings): ISettings {
-    Model.validateSettings(settings);
-
-    this.settings = settings;
+    this.settings = Model.validateSettings(settings);
 
     this.min = this.settings.min;
     this.max = this.settings.max;
@@ -83,39 +78,40 @@ class Model {
   }
 
   private static validateSettings(settings: ISettings): ISettings {
+    const validatedSettings: ISettings = settings;
     if (settings.max - settings.min < settings.step) {
-      settings.step = settings.max - settings.min;
+      validatedSettings.step = settings.max - settings.min;
     }
 
     if (settings.min >= settings.max) {
-      settings.min = settings.max - settings.step;
+      validatedSettings.min = settings.max - settings.step;
     }
 
     if (settings.from < settings.min) {
-      settings.from = settings.min;
+      validatedSettings.from = settings.min;
     }
 
     if (settings.from > settings.max) {
-      settings.from = settings.max;
+      validatedSettings.from = settings.max;
     }
 
     if (settings.to < settings.min) {
-      settings.to = settings.min;
+      validatedSettings.to = settings.min;
     }
 
     if (settings.to > settings.max) {
-      settings.to = settings.max;
+      validatedSettings.to = settings.max;
     }
 
     if (settings.to - settings.from < settings.step) {
       if (settings.from >= settings.min + settings.step) {
-        settings.from = settings.to - settings.step;
+        validatedSettings.from = settings.to - settings.step;
       } else {
-        settings.to = settings.from + settings.step;
+        validatedSettings.to = settings.from + settings.step;
       }
     }
 
-    return settings;
+    return validatedSettings;
   }
 
   private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
