@@ -46,6 +46,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions', 'methods'] }],
 
     'max-classes-per-file': 'off',
+    'class-methods-use-this': 'off',
   },
   settings: {
     'import/resolver': {
