@@ -2,12 +2,11 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
-
 import { ISettings, ThumbName } from '../RangeSlider/types';
 import Tooltip from './Tooltip';
 
 let settings: ISettings;
+
 beforeEach(() => {
   settings = {
     min: 0,

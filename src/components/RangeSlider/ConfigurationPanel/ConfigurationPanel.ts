@@ -201,31 +201,31 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.settings.min = Number(this.cpMin?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMin?.focus();
-  }
+  };
 
   private handleInputCPMaxChange = () => {
     this.settings.max = Number(this.cpMax?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMax?.focus();
-  }
+  };
 
   private handleInputCPStepChange = () => {
     this.settings.step = Number(this.cpStep?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpStep?.focus();
-  }
+  };
 
   private handleInputCPFromChange = () => {
     this.settings.from = Number(this.cpFrom?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpFrom?.focus();
-  }
+  };
 
   private handleInputCPToChange = () => {
     this.settings.to = Number(this.cpTo?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTo?.focus();
-  }
+  };
   // Configuration panel input handlers end
 
   // Configuration panel checkbox handlers
@@ -233,32 +233,32 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.settings.vertical = <boolean> this.cpVertical?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpVertical?.focus();
-  }
+  };
 
   private handleCheckboxCPRangeChange = () => {
     this.settings.range = <boolean> this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
-  }
+  };
 
   private handleCheckboxCPScaleChange = () => {
     this.settings.scale = <boolean> this.cpScale?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpScale?.focus();
-  }
+  };
 
   private handleCheckboxCPBarChange = () => {
     this.settings.bar = <boolean> this.cpBar?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpBar?.focus();
-  }
+  };
 
   private handleCheckboxCPTipChange = () => {
     this.settings.tooltips = <boolean> this.cpTooltips?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTooltips?.focus();
-  }
+  };
   // Configuration panel checkbox handlers end
 
   private addListeners(): ConfigurationPanel {

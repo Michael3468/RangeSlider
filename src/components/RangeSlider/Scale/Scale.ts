@@ -40,7 +40,7 @@ class Scale extends AbstractScale {
     this.element.appendChild(this.createMarkValue(settings.min, 0));
 
     const onePointInPx: number = getOnePointInPx(this.settings, this.element);
-    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX = 10;
     const stepBetweenMarks: number = this.getStep(onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
 
     let markPos: number = stepBetweenMarks;
@@ -101,7 +101,7 @@ class Scale extends AbstractScale {
   }
 
   private getCurrentStep(): number {
-    let currentStep: number = 0;
+    let currentStep = 0;
     if (this.settings.step < 1) {
       currentStep = this.settings.step / getMinStep(this.settings);
     } else {
@@ -117,7 +117,7 @@ class Scale extends AbstractScale {
   }
 
   private getStep(onePointInPx: number, MIN_STEP_BETWEEN_MARKS_IN_PX: number): number {
-    let stepBetweenMarks: number = 0;
+    let stepBetweenMarks = 0;
     if (onePointInPx < MIN_STEP_BETWEEN_MARKS_IN_PX) {
       // get minimum count of steps which sum in pixels bigger than MIX_STEP
       const minStepsBetweenMarksInPoints = Math.ceil(MIN_STEP_BETWEEN_MARKS_IN_PX / onePointInPx);
@@ -146,7 +146,7 @@ class Scale extends AbstractScale {
 
   private hideOverlappedMarks(markValuesArr: Element[]) {
     markValuesArr.forEach((markValue, index, arr) => {
-      let currentMark: number = 0;
+      let currentMark = 0;
       let nextMark: number | undefined = 0;
 
       if (!this.settings.vertical) {

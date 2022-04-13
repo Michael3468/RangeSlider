@@ -2,8 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
-
 import Presenter from './Presenter';
 import Model from '../Model/Model';
 import { ISettings } from '../RangeSlider/types';

@@ -6,7 +6,6 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
-/* eslint-disable dot-notation */
 /* eslint-disable no-undef */
 
 import View from './View';
@@ -514,13 +513,15 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos > max', () => {
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: 590,
         clientY: 590,
-      });
+      },
+    );
 
     const view = new View('range-slider', settings);
     view['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
@@ -531,13 +532,15 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos < min', () => {
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: 150,
         clientY: 150,
-      });
+      },
+    );
 
     const view = new View('range-slider', settings);
     view['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
@@ -610,13 +613,15 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
 
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: clickPosition,
         clientY: 150,
-      });
+      },
+    );
 
     view['slider'].element.dispatchEvent(downEvent);
     const result = view['handleMoveClosestThumbPointerEvent'](downEvent);

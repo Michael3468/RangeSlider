@@ -18,7 +18,7 @@ class Observer extends AbstractObserver {
   }
 
   public removeObserver(fn: Function): void {
-    let isObserverRemoved: boolean = false;
+    let isObserverRemoved = false;
 
     this.observers.forEach((observer, index) => {
       if (String(observer) === String(fn)) {

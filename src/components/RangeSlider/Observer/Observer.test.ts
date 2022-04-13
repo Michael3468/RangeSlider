@@ -1,4 +1,3 @@
-/* eslint-disable dot-notation */
 /* eslint-disable no-console */
 
 import Observer from './Observer';

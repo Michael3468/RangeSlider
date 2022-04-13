@@ -2,8 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
-
 import { ISettings } from '../RangeSlider/types';
 import ConfigurationPanel from './ConfigurationPanel';
 

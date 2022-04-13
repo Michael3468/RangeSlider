@@ -1,4 +1,3 @@
-/* eslint-disable dot-notation */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable key-spacing */
 /* eslint-disable quote-props */
@@ -36,7 +35,7 @@ module.exports = {
       ? `${PATHS.assets}js/[name].min.js`
       : `${PATHS.assets}js/[name].[contenthash].js`,
 
-      path: PATHS.dist,
+    path: PATHS.dist,
   },
   optimization: {
     splitChunks: {

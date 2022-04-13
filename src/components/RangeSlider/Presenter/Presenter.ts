@@ -1,5 +1,3 @@
-/* eslint-disable dot-notation */
-
 import { ISettings } from '../RangeSlider/types';
 import View from '../View/View';
 import Model from '../Model/Model';

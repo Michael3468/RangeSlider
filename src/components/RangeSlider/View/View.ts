@@ -1,5 +1,3 @@
-/* eslint-disable dot-notation */
-
 import Thumb from '../Thumb/Thumb';
 import Slider from '../Slider/Slider';
 import Scale from '../Scale/Scale';
@@ -154,7 +152,7 @@ class View {
 
   private handleNotifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
-  }
+  };
 
   private handleUpdateRangeSliderView = (): void => {
     this.initRangeSliderMargins();
@@ -166,7 +164,7 @@ class View {
     }
 
     this.setDistanceBetweenTooltips();
-  }
+  };
 
   private addListenersToThumbs(): View {
     if (this.settings.range) {
@@ -422,7 +420,7 @@ class View {
     to.left = tLeft + mu;
 
     return this;
-  }
+  };
 
   private setZIndexTop(thumb: ThumbName): View {
     const from = this.from.element;

@@ -46,7 +46,7 @@ beforeEach(() => {
 
 describe('function createElement', () => {
   const tag: INodeName = 'div';
-  const className: string = 'element-class-name';
+  const className = 'element-class-name';
   const result: HTMLElement = createElement(tag, className);
 
   test('should return html element', () => {
