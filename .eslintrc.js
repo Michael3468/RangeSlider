@@ -6,6 +6,9 @@ module.exports = {
     jquery: true,
     jest: true,
   },
+  globals: {
+    JQuery: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -35,6 +38,8 @@ module.exports = {
     'no-param-reassign': [
       'error', { props: true, ignorePropertyModificationsFor: ['$'] },
     ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
   settings: {
     'import/resolver': {

@@ -4,7 +4,6 @@
 
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 

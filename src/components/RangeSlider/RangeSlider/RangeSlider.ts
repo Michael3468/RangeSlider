@@ -11,8 +11,6 @@ import {
   IUserSettings,
 } from './types';
 
-import JQuery from './global.d';
-
 import './RangeSlider.scss';
 
 window.$ = require('jquery');

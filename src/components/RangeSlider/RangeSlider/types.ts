@@ -1,8 +1,5 @@
 /* istanbul ignore file */
-
-/* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
-import JQuery from './global.d';
 
 interface ISettings {
   min: number;

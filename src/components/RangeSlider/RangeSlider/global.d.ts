@@ -3,7 +3,6 @@ import { IMethod, IUserSettings } from './types';
 export {};
 declare global {
   interface JQuery {
-    /* eslint no-unused-vars: ["error", { "args": "none" }] */
     RangeSlider(method: IMethod, userSettings?: IUserSettings): JQuery<HTMLElement>;
   }
 
