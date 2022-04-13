@@ -31,6 +31,10 @@ module.exports = {
       },
     ],
     'dot-notation': 0,
+    'import/no-extraneous-dependencies': 0,
+    'no-param-reassign': [
+      'error', { props: true, ignorePropertyModificationsFor: ['$'] },
+    ],
   },
   settings: {
     'import/resolver': {

@@ -1,16 +1,15 @@
-import { IUserSettings, IMethod } from './types';
+import { IMethod, IUserSettings } from './types';
 
 export {};
-
 declare global {
   interface JQuery {
-    init(settings: IUserSettings): JQuery;
-    destroy(): JQuery;
-    update(userSettings: IUserSettings): JQuery;
-    RangeSlider(method: IMethod, userSettings: IUserSettings): JQuery;
+    /* eslint no-unused-vars: ["error", { "args": "none" }] */
+    RangeSlider(method: IMethod, userSettings?: IUserSettings): JQuery<HTMLElement>;
   }
 
-  // for window.$ = window.jQuery = require('jquery');
+  // For use plugin from console
+  // window.$ = require('jquery');
+  // window.jQuery = require('jquery');
   interface Window {
     $: JQuery;
     jQuery: JQuery;

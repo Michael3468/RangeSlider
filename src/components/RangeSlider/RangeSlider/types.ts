@@ -2,6 +2,7 @@
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
+import JQuery from './global.d';
 
 interface ISettings {
   min: number;
@@ -58,6 +59,12 @@ type CPInputElement = 'cpMin'
   | 'cpTooltips';
 
 type IMethod = 'init' | 'destroy' | 'update';
+
+interface IMethods {
+  init(settings: IUserSettings): JQuery<HTMLElement>;
+  destroy(): JQuery<HTMLElement>;
+  update(userSettings: IUserSettings): JQuery<HTMLElement>;
+}
 
 abstract class AbstractObserver {
   protected abstract observers: Function[];
@@ -121,6 +128,7 @@ export {
   MeasureUnit,
   CPInputElement,
   IMethod,
+  IMethods,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,
