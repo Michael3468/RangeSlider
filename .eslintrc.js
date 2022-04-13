@@ -38,8 +38,12 @@ module.exports = {
     'no-param-reassign': [
       'error', { props: true, ignorePropertyModificationsFor: ['$'] },
     ],
+    // note you must disable the base rule as it can report incorrect errors
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    // note you must disable the base rule as it can report incorrect errors
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions', 'methods'] }],
   },
   settings: {
     'import/resolver': {
