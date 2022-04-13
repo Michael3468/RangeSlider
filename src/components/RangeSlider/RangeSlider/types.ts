@@ -1,6 +1,3 @@
-/* istanbul ignore file */
-/* eslint-disable max-classes-per-file */
-
 interface ISettings {
   min: number;
   max: number;
