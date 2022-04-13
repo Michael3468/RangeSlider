@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable key-spacing */
-/* eslint-disable quote-props */
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

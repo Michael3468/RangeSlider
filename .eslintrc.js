@@ -34,19 +34,26 @@ module.exports = {
       },
     ],
     'dot-notation': 0,
+
     'import/no-extraneous-dependencies': 0,
+
     'no-param-reassign': [
       'error', { props: true, ignorePropertyModificationsFor: ['$'] },
     ],
+
     // note you must disable the base rule as it can report incorrect errors
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+
     // note you must disable the base rule as it can report incorrect errors
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions', 'methods'] }],
 
     'max-classes-per-file': 'off',
+
     'class-methods-use-this': 'off',
+
+    '@typescript-eslint/no-var-requires': 'off',
   },
   settings: {
     'import/resolver': {
