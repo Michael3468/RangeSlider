@@ -169,9 +169,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     return element;
   }
 
-  // eslint-disable-next-line consistent-return
   private assignElements(inputElement: CPInputElement): HTMLInputElement {
-    // eslint-disable-next-line default-case
     switch (inputElement) {
       case 'cpMin':
         return <HTMLInputElement> this.element.querySelector('input[name="min"]');
@@ -193,6 +191,8 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
         return <HTMLInputElement> this.element.querySelector('input[name="bar"]');
       case 'cpTooltips':
         return <HTMLInputElement> this.element.querySelector('input[name="tooltips"]');
+      default:
+        return <HTMLInputElement> this.element.querySelector('input[name="min"]');
     }
   }
 
