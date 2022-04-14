@@ -136,3 +136,19 @@ describe('private initRangeSlider', () => {
     expect(spyCreateRangeSlider).toBeCalledWith(settings);
   });
 });
+
+describe('private updateModelAndPanel', () => {
+  it('should call this.model.updateSettings(settings) method', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+
+    const model = new Model(settings);
+    const view = new View('#range-slider', settings);
+    const presenter = new Presenter(model, view);
+
+    const modelUpdateSettings = jest.spyOn(presenter['model'], 'updateSettings');
+    presenter['updateModelAndPanel'](settings);
+
+    expect(modelUpdateSettings).toBeCalled();
+    expect(modelUpdateSettings).toBeCalledWith(settings);
+  });
+});
