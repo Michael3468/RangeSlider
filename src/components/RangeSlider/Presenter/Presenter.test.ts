@@ -96,9 +96,7 @@ describe('private initRangeSlider', () => {
       spyUpdateState = jest.spyOn(presenter['view'].configurationPanel, 'updateState');
     }
 
-    // вызываем метод и создаём в нём обзёрверы
     const result = presenter['initRangeSlider']();
-    // уведомляем обзёрверы
     result['view'].changeSettingsObserver.notifyObservers(settings);
 
     expect(spyUpdateSettings).toBeCalledWith(settings);
@@ -124,9 +122,7 @@ describe('private initRangeSlider', () => {
     const spyUpdateSettings = jest.spyOn(presenter['model'], 'updateSettings');
     const spyCreateRangeSlider = jest.spyOn(presenter['view'], 'createRangeSlider');
 
-    // вызываем метод и создаём в нём обзёрверы
     const result = presenter['initRangeSlider']();
-    // уведомляем обзёрверы
     if (result['view'].configurationPanel) {
       result['view'].configurationPanel
         .changeConfPanelSettingsObserver.notifyObservers(settings);
@@ -150,5 +146,48 @@ describe('private updateModelAndPanel', () => {
 
     expect(modelUpdateSettings).toBeCalled();
     expect(modelUpdateSettings).toBeCalledWith(settings);
+  });
+});
+
+describe('private updateModelAndView', () => {
+  it('should call this.model.updateSettings(settings)', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+
+    const model = new Model(settings);
+    const view = new View('#range-slider', settings);
+    const presenter = new Presenter(model, view);
+
+    const updateSettings = jest.spyOn(presenter['model'], 'updateSettings');
+    presenter['updateModelAndView'](settings);
+
+    expect(updateSettings).toBeCalled();
+    expect(updateSettings).toBeCalledWith(settings);
+  });
+
+  it('should call this.view.destroyView()', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+
+    const model = new Model(settings);
+    const view = new View('#range-slider', settings);
+    const presenter = new Presenter(model, view);
+
+    const destroyView = jest.spyOn(presenter['view'], 'destroyView');
+    presenter['updateModelAndView'](settings);
+
+    expect(destroyView).toBeCalled();
+  });
+
+  it('should call this.view.createRangeSlider(this.model.getSettings()', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+
+    const model = new Model(settings);
+    const view = new View('#range-slider', settings);
+    const presenter = new Presenter(model, view);
+
+    const createRangeSlider = jest.spyOn(presenter['view'], 'createRangeSlider');
+    presenter['updateModelAndView'](settings);
+
+    expect(createRangeSlider).toBeCalled();
+    expect(createRangeSlider).toBeCalledWith(presenter['model'].getSettings());
   });
 });
