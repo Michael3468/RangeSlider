@@ -1,3 +1,4 @@
+import { ISettings } from '../RangeSlider/types';
 import Observer from './Observer';
 
 const testFn = jest.fn();
@@ -42,16 +43,28 @@ describe('removeObserver', () => {
 });
 
 describe('notifyObservers', () => {
+  const settings: ISettings = {
+    min: 0,
+    max: 100,
+    range: true,
+    scale: true,
+    vertical: false,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 10,
+    to: 80,
+    step: 10,
+  };
+
   it('should notify observers', () => {
     const observer = new Observer();
 
-    let observersCounter = 0;
+    let updMin = 0;
 
-    observer.addObserver(() => { observersCounter += 1; });
-    observer.addObserver(() => { observersCounter += 2; });
+    observer.addObserver(() => { updMin = settings.min + 1; });
+    observer.notifyObservers(settings);
 
-    observer.notifyObservers();
-
-    expect(observersCounter).toBe(3);
+    expect(updMin).toBe(1);
   });
 });
