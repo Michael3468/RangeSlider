@@ -2,8 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { ISettings } from '../RangeSlider/types';
 import Thumb from './Thumb';
+
+import { ISettings } from '../RangeSlider/types';
 
 let settings: ISettings;
 

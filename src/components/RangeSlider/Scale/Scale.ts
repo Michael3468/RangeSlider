@@ -1,4 +1,3 @@
-import { AbstractScale, ISettings } from '../RangeSlider/types';
 import {
   getMinMaxElementEdgesInPx,
   createElement,
@@ -6,6 +5,8 @@ import {
   getDigitsAfterPoint,
   getMinStep,
 } from '../lib/common';
+
+import { AbstractScale, ISettings } from '../RangeSlider/types';
 
 const defaultInitSettings: ISettings = {
   min: 0,

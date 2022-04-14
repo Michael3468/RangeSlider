@@ -1,5 +1,6 @@
-import { ISettings } from '../RangeSlider/types';
 import Observer from './Observer';
+
+import { ISettings } from '../RangeSlider/types';
 
 const testFn = jest.fn();
 const testFn2 = jest.fn();

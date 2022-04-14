@@ -2,8 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { ISettings } from '../RangeSlider/types';
 import Scale from './Scale';
+
+import { ISettings } from '../RangeSlider/types';
 
 abstract class ScaleHint {
   abstract getCurrentStep(): number;

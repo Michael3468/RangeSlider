@@ -1,15 +1,17 @@
 import {
+  createElement,
+  getDigitsAfterPoint,
+  getMinStep,
+} from '../lib/common';
+
+import Observer from '../Observer/Observer';
+
+import {
   AbstractConfigurationPanel,
   AbstractObserver,
   CPInputElement,
   ISettings,
 } from '../RangeSlider/types';
-import Observer from '../Observer/Observer';
-import {
-  createElement,
-  getDigitsAfterPoint,
-  getMinStep,
-} from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;

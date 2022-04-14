@@ -1,6 +1,17 @@
-import Thumb from '../Thumb/Thumb';
-import Slider from '../Slider/Slider';
+import {
+  getDigitsAfterPoint,
+  getElementLengthInPx,
+  getMinMaxElementEdgesInPx,
+  getOnePointInPx,
+} from '../lib/common';
+
+import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
+import Range from '../Range/Range';
 import Scale from '../Scale/Scale';
+import Slider from '../Slider/Slider';
+import Thumb from '../Thumb/Thumb';
+import Observer from '../Observer/Observer';
+
 import {
   AbstractConfigurationPanel,
   AbstractObserver,
@@ -12,15 +23,6 @@ import {
   MeasureUnit,
   ThumbName,
 } from '../RangeSlider/types';
-import Range from '../Range/Range';
-import Observer from '../Observer/Observer';
-import {
-  getDigitsAfterPoint,
-  getElementLengthInPx,
-  getMinMaxElementEdgesInPx,
-  getOnePointInPx,
-} from '../lib/common';
-import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 class View {
   private slider: AbstractSlider;

@@ -1,5 +1,6 @@
-import { ISettings, ThumbName } from '../RangeSlider/types';
 import Model from './Model';
+
+import { ISettings, ThumbName } from '../RangeSlider/types';
 
 let settings: ISettings;
 

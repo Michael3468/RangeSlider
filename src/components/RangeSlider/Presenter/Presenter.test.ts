@@ -2,10 +2,11 @@
  * @jest-environment jsdom
  */
 
-import Presenter from './Presenter';
 import Model from '../Model/Model';
-import { ISettings } from '../RangeSlider/types';
+import Presenter from './Presenter';
 import View from '../View/View';
+
+import { ISettings } from '../RangeSlider/types';
 
 let settings: ISettings;
 
