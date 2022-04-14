@@ -60,14 +60,18 @@ interface IMethods {
   update(userSettings: IUserSettings): JQuery<HTMLElement>;
 }
 
+interface IUpdateFn {
+  (settings: ISettings): void;
+}
+
 abstract class AbstractObserver {
-  protected abstract observers: Function[];
+  protected abstract observers: IUpdateFn[];
 
-  public abstract addObserver(fn: Function): void;
+  public abstract addObserver(fn: IUpdateFn): void;
 
-  public abstract removeObserver(fn: Function): void;
+  public abstract removeObserver(fn: IUpdateFn): void;
 
-  public abstract notifyObservers(data?: ISettings): void;
+  public abstract notifyObservers(settings: ISettings): void;
 }
 
 abstract class AbstractSlider {
@@ -123,6 +127,7 @@ export {
   CPInputElement,
   IMethod,
   IMethods,
+  IUpdateFn,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,
