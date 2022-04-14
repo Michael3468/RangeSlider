@@ -1,6 +1,7 @@
-import { ISettings } from '../RangeSlider/types';
-import View from '../View/View';
 import Model from '../Model/Model';
+import View from '../View/View';
+
+import { ISettings } from '../RangeSlider/types';
 
 class Presenter {
   private model: Model;
@@ -18,34 +19,35 @@ class Presenter {
     this.view.createRangeSlider(this.model.getSettings());
 
     this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
-      this.model.updateSettings(settings);
-      if (process.env['NODE_ENV'] !== 'production') {
-        if (this.view['configurationPanel']) {
-          this.view['configurationPanel'].updateState(settings);
-        }
-      }
+      this.updateModelAndPanel(settings);
     });
 
-    if (process.env['NODE_ENV'] !== 'production') {
-      if (this.view['configurationPanel']) {
-        this.view['configurationPanel'].changeConfPanelSettingsObserver
-          .addObserver((settings: ISettings) => {
-            this.model.updateSettings(settings);
-
-            this.view['from'].element.parentNode?.removeChild(this.view['from'].element);
-            this.view['to'].element.parentNode?.removeChild(this.view['to'].element);
-            this.view['range'].element.parentNode?.removeChild(this.view['range'].element);
-            while (this.view['scale'].element.firstChild) {
-              this.view['scale'].element.removeChild(this.view['scale'].element.firstChild);
-            }
-            this.view['scale'].element.parentNode?.removeChild(this.view['scale'].element);
-
-            this.view.createRangeSlider(this.model.getSettings());
-          });
-      }
+    if (this.isProdAndConfPanel()) {
+      this.view.configurationPanel?.changeConfPanelSettingsObserver
+        .addObserver((settings: ISettings) => {
+          this.updateModelAndView(settings);
+        });
     }
 
     return this;
+  }
+
+  private isProdAndConfPanel() {
+    return process.env['NODE_ENV'] !== 'production' && this.view.configurationPanel;
+  }
+
+  private updateModelAndPanel(settings: ISettings) {
+    this.model.updateSettings(settings);
+
+    if (this.isProdAndConfPanel()) {
+      this.view.configurationPanel?.updateState(settings);
+    }
+  }
+
+  private updateModelAndView(settings: ISettings) {
+    this.model.updateSettings(settings);
+    this.view.destroyView();
+    this.view.createRangeSlider(this.model.getSettings());
   }
 }
 

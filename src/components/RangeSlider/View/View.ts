@@ -33,8 +33,6 @@ class View {
 
   private scale: AbstractScale;
 
-  private configurationPanel?: AbstractConfigurationPanel;
-
   private settings: ISettings;
 
   private rangeMarginTo: number;
@@ -44,6 +42,8 @@ class View {
   private thumbMarginFrom: number;
 
   private thumbMarginTo: number;
+
+  configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver;
 
@@ -146,6 +146,18 @@ class View {
     this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
     this.to.setMargin(this.thumbMarginTo, this.settings);
     this.to.tooltip.setTooltipText(this.settings.to, this.settings);
+
+    return this;
+  }
+
+  public destroyView(): View {
+    this.from.element.parentNode?.removeChild(this.from.element);
+    this.to.element.parentNode?.removeChild(this.to.element);
+    this.range.element.parentNode?.removeChild(this.range.element);
+    while (this.scale.element.firstChild) {
+      this.scale.element.removeChild(this.scale.element.firstChild);
+    }
+    this.scale.element.parentNode?.removeChild(this.scale.element);
 
     return this;
   }
