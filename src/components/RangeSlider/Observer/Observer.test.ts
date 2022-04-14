@@ -1,43 +1,42 @@
-/* eslint-disable no-console */
-
 import Observer from './Observer';
+
+const testFn = jest.fn();
+const testFn2 = jest.fn();
 
 describe('addObserver', () => {
   it('should throw Error "Observer already in the list"', () => {
     const observer = new Observer();
 
     expect(() => {
-      observer.addObserver(() => { console.log('test observer'); });
+      observer.addObserver(() => testFn);
     }).not.toThrow();
 
     expect(() => {
-      observer.addObserver(() => { console.log('test observer'); });
+      observer.addObserver(() => testFn);
     }).toThrow();
   });
 });
 
 describe('removeObserver', () => {
-  const testFn = () => { console.log('test function'); };
-
   it('should remove observer from observers list', () => {
     const observer = new Observer();
 
     observer.addObserver(testFn);
-    expect(observer['observers'].length).toBe(1); // должен быть один элемент в массиве
+    expect(observer['observers'].length).toBe(1); // must be one element in array
 
     observer.removeObserver(testFn);
-    expect(observer['observers'].length).toBe(0); // должен быть пустой массив
+    expect(observer['observers'].length).toBe(0); // must be an empty array
   });
 
   it('should throw error', () => {
     const observer = new Observer();
 
-    observer.addObserver(testFn); // добавляем в массив обзервер
+    observer.addObserver(testFn); // add observer to array
     expect(observer['observers'].length).toBe(1);
 
     expect(() => {
-      // пытаемся удалить из массива обзервер которого там нет
-      observer.removeObserver(() => { console.log('another function for test'); });
+      // try to remove observer which was not added in the array
+      observer.removeObserver(() => testFn2);
     }).toThrow();
   });
 });
