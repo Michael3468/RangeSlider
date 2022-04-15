@@ -1,8 +1,3 @@
-/* istanbul ignore file */
-
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-classes-per-file */
-
 interface ISettings {
   min: number;
   max: number;
@@ -59,14 +54,24 @@ type CPInputElement = 'cpMin'
 
 type IMethod = 'init' | 'destroy' | 'update';
 
+interface IMethods {
+  init(settings: IUserSettings): JQuery<HTMLElement>;
+  destroy(): JQuery<HTMLElement>;
+  update(userSettings: IUserSettings): JQuery<HTMLElement>;
+}
+
+interface IUpdateFn {
+  (settings: ISettings): void;
+}
+
 abstract class AbstractObserver {
-  protected abstract observers: Function[];
+  protected abstract observers: IUpdateFn[];
 
-  public abstract addObserver(fn: Function): void;
+  public abstract addObserver(fn: IUpdateFn): void;
 
-  public abstract removeObserver(fn: Function): void;
+  public abstract removeObserver(fn: IUpdateFn): void;
 
-  public abstract notifyObservers(data?: ISettings): void;
+  public abstract notifyObservers(settings: ISettings): void;
 }
 
 abstract class AbstractSlider {
@@ -121,6 +126,8 @@ export {
   MeasureUnit,
   CPInputElement,
   IMethod,
+  IMethods,
+  IUpdateFn,
   AbstractThumb,
   AbstractTooltip,
   AbstractRange,

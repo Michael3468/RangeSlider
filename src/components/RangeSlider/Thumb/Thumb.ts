@@ -1,11 +1,12 @@
+import { createElement } from '../lib/common';
 import Tooltip from '../Tooltip/Tooltip';
+
 import {
   ThumbName,
   ISettings,
   AbstractThumb,
   AbstractTooltip,
 } from '../RangeSlider/types';
-import { createElement } from '../lib/common';
 
 class Thumb extends AbstractThumb {
   element: HTMLElement;

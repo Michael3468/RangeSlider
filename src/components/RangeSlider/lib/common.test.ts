@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-import { IMinMax, INodeName, ISettings } from '../RangeSlider/types';
 import {
   createElement,
   getElementLengthInPx,
@@ -11,8 +10,11 @@ import {
   getDigitsAfterPoint,
   getMinStep,
 } from './common';
-import Tooltip from '../Tooltip/Tooltip';
+
+import { IMinMax, INodeName, ISettings } from '../RangeSlider/types';
+
 import Scale from '../Scale/Scale';
+import Tooltip from '../Tooltip/Tooltip';
 
 Element.prototype.getBoundingClientRect = jest.fn(() => ({
   width: 300,
@@ -46,7 +48,7 @@ beforeEach(() => {
 
 describe('function createElement', () => {
   const tag: INodeName = 'div';
-  const className: string = 'element-class-name';
+  const className = 'element-class-name';
   const result: HTMLElement = createElement(tag, className);
 
   test('should return html element', () => {

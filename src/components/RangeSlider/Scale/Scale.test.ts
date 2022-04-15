@@ -2,10 +2,9 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
+import Scale from './Scale';
 
 import { ISettings } from '../RangeSlider/types';
-import Scale from './Scale';
 
 abstract class ScaleHint {
   abstract getCurrentStep(): number;
@@ -324,8 +323,8 @@ describe('private getCurrentStep', () => {
 describe('private getStep', () => {
   test('if onePointInPx = 0.9 and MIN_STEP = 10 should return 10.8', () => {
     const scale = new Scale();
-    const onePointInPx: number = 0.9;
-    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+    const onePointInPx = 0.9;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX = 10;
 
     jest.spyOn(scale as unknown as ScaleHint, 'getCurrentStep').mockReturnValueOnce(3);
 
@@ -335,8 +334,8 @@ describe('private getStep', () => {
 
   test('if onePointInPx >  MIN_STEP = 10 should return "value"', () => {
     const scale = new Scale();
-    const onePointInPx: number = 15;
-    const MIN_STEP_BETWEEN_MARKS_IN_PX: number = 10;
+    const onePointInPx = 15;
+    const MIN_STEP_BETWEEN_MARKS_IN_PX = 10;
     const value = 5;
 
     jest.spyOn(scale as unknown as ScaleHint, 'getStepBetweenMarks').mockReturnValueOnce(value);
@@ -348,7 +347,7 @@ describe('private getStep', () => {
 
 describe('private getCurrentValueInPoints', () => {
   // this.settings.step < 1
-  const value: number = 5;
+  const value = 5;
   const markPos = 20;
   const onePointInPx = 7;
 

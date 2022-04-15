@@ -6,18 +6,21 @@ module.exports = {
     jquery: true,
     jest: true,
   },
+  globals: {
+    JQuery: true,
+  },
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'airbnb-base',
-    'plugin:fsd/all',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: [
     '@typescript-eslint',
-    'fsd',
   ],
   rules: {
     'import/extensions': [
@@ -30,6 +33,27 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'dot-notation': 0,
+
+    'import/no-extraneous-dependencies': 0,
+
+    'no-param-reassign': [
+      'error', { props: true, ignorePropertyModificationsFor: ['$'] },
+    ],
+
+    // note you must disable the base rule as it can report incorrect errors
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+
+    // note you must disable the base rule as it can report incorrect errors
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions', 'methods'] }],
+
+    'max-classes-per-file': 'off',
+
+    'class-methods-use-this': 'off',
+
+    '@typescript-eslint/no-var-requires': 'off',
   },
   settings: {
     'import/resolver': {

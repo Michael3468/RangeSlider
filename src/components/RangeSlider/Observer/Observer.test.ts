@@ -1,59 +1,71 @@
-/* eslint-disable dot-notation */
-/* eslint-disable no-console */
-
 import Observer from './Observer';
+
+import { ISettings } from '../RangeSlider/types';
+
+const testFn = jest.fn();
+const testFn2 = jest.fn();
 
 describe('addObserver', () => {
   it('should throw Error "Observer already in the list"', () => {
     const observer = new Observer();
 
     expect(() => {
-      observer.addObserver(() => { console.log('test observer'); });
+      observer.addObserver(() => testFn);
     }).not.toThrow();
 
     expect(() => {
-      observer.addObserver(() => { console.log('test observer'); });
+      observer.addObserver(() => testFn);
     }).toThrow();
   });
 });
 
 describe('removeObserver', () => {
-  const testFn = () => { console.log('test function'); };
-
   it('should remove observer from observers list', () => {
     const observer = new Observer();
 
     observer.addObserver(testFn);
-    expect(observer['observers'].length).toBe(1); // должен быть один элемент в массиве
+    expect(observer['observers'].length).toBe(1); // must be one element in array
 
     observer.removeObserver(testFn);
-    expect(observer['observers'].length).toBe(0); // должен быть пустой массив
+    expect(observer['observers'].length).toBe(0); // must be an empty array
   });
 
   it('should throw error', () => {
     const observer = new Observer();
 
-    observer.addObserver(testFn); // добавляем в массив обзервер
+    observer.addObserver(testFn); // add observer to array
     expect(observer['observers'].length).toBe(1);
 
     expect(() => {
-      // пытаемся удалить из массива обзервер которого там нет
-      observer.removeObserver(() => { console.log('another function for test'); });
+      // try to remove observer which was not added in the array
+      observer.removeObserver(() => testFn2);
     }).toThrow();
   });
 });
 
 describe('notifyObservers', () => {
+  const settings: ISettings = {
+    min: 0,
+    max: 100,
+    range: true,
+    scale: true,
+    vertical: false,
+    tooltips: true,
+    confpanel: true,
+    bar: true,
+    from: 10,
+    to: 80,
+    step: 10,
+  };
+
   it('should notify observers', () => {
     const observer = new Observer();
 
-    let observersCounter = 0;
+    let updMin = 0;
 
-    observer.addObserver(() => { observersCounter += 1; });
-    observer.addObserver(() => { observersCounter += 2; });
+    observer.addObserver(() => { updMin = settings.min + 1; });
+    observer.notifyObservers(settings);
 
-    observer.notifyObservers();
-
-    expect(observersCounter).toBe(3);
+    expect(updMin).toBe(1);
   });
 });

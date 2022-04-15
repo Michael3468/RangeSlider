@@ -1,7 +1,6 @@
-/* eslint-disable dot-notation */
+import Model from './Model';
 
 import { ISettings, ThumbName } from '../RangeSlider/types';
-import Model from './Model';
 
 let settings: ISettings;
 

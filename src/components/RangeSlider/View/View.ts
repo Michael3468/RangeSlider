@@ -1,8 +1,17 @@
-/* eslint-disable dot-notation */
+import {
+  getDigitsAfterPoint,
+  getElementLengthInPx,
+  getMinMaxElementEdgesInPx,
+  getOnePointInPx,
+} from '../lib/common';
 
-import Thumb from '../Thumb/Thumb';
-import Slider from '../Slider/Slider';
+import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
+import Range from '../Range/Range';
 import Scale from '../Scale/Scale';
+import Slider from '../Slider/Slider';
+import Thumb from '../Thumb/Thumb';
+import Observer from '../Observer/Observer';
+
 import {
   AbstractConfigurationPanel,
   AbstractObserver,
@@ -14,15 +23,6 @@ import {
   MeasureUnit,
   ThumbName,
 } from '../RangeSlider/types';
-import Range from '../Range/Range';
-import Observer from '../Observer/Observer';
-import {
-  getDigitsAfterPoint,
-  getElementLengthInPx,
-  getMinMaxElementEdgesInPx,
-  getOnePointInPx,
-} from '../lib/common';
-import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
 
 class View {
   private slider: AbstractSlider;
@@ -35,8 +35,6 @@ class View {
 
   private scale: AbstractScale;
 
-  private configurationPanel?: AbstractConfigurationPanel;
-
   private settings: ISettings;
 
   private rangeMarginTo: number;
@@ -46,6 +44,8 @@ class View {
   private thumbMarginFrom: number;
 
   private thumbMarginTo: number;
+
+  configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver;
 
@@ -126,11 +126,13 @@ class View {
     this.addListenersToThumbs();
     this.setDistanceBetweenTooltips();
 
-    if (process.env['NODE_ENV'] !== 'production') {
-      if (settings.confpanel && this.configurationPanel) {
-        this.slider.element.after(this.configurationPanel.element);
-        this.configurationPanel.updateState(this.settings);
-      }
+    if (
+      process.env['NODE_ENV'] !== 'production'
+      && settings.confpanel
+      && this.configurationPanel
+    ) {
+      this.slider.element.after(this.configurationPanel.element);
+      this.configurationPanel.updateState(this.settings);
     }
 
     this.handleUpdateRangeSliderView();
@@ -152,9 +154,21 @@ class View {
     return this;
   }
 
+  public destroyView(): View {
+    this.from.element.parentNode?.removeChild(this.from.element);
+    this.to.element.parentNode?.removeChild(this.to.element);
+    this.range.element.parentNode?.removeChild(this.range.element);
+    while (this.scale.element.firstChild) {
+      this.scale.element.removeChild(this.scale.element.firstChild);
+    }
+    this.scale.element.parentNode?.removeChild(this.scale.element);
+
+    return this;
+  }
+
   private handleNotifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
-  }
+  };
 
   private handleUpdateRangeSliderView = (): void => {
     this.initRangeSliderMargins();
@@ -166,7 +180,7 @@ class View {
     }
 
     this.setDistanceBetweenTooltips();
-  }
+  };
 
   private addListenersToThumbs(): View {
     if (this.settings.range) {
@@ -422,7 +436,7 @@ class View {
     to.left = tLeft + mu;
 
     return this;
-  }
+  };
 
   private setZIndexTop(thumb: ThumbName): View {
     const from = this.from.element;

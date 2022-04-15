@@ -1,5 +1,6 @@
-import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
 import { createElement, getDigitsAfterPoint } from '../lib/common';
+
+import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
 
 class Tooltip extends AbstractTooltip {
   element: HTMLElement;

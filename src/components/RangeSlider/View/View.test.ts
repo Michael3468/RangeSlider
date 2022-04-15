@@ -2,14 +2,11 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable class-methods-use-this */
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-shadow */
-/* eslint-disable dot-notation */
-/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import View from './View';
+
 import {
   ISettings,
   ThumbName,
@@ -37,6 +34,7 @@ class PointerEvent extends MouseEvent {
 
   public width: number;
 
+  // eslint-disable-next-line no-undef
   constructor(type: string, params: PointerEventInit = {}) {
     super(type, params);
     this.pointerId = params.pointerId!;
@@ -95,36 +93,36 @@ beforeEach(() => {
   };
 });
 
-function createRS(settings: ISettings) {
+function createRS() {
   const view = new View('range-slider', settings);
   return view.createRangeSlider(settings);
 }
 
 describe('constructor', () => {
-  function testConstructor(settings: ISettings) {
-    expect(createRS(settings)['slider'].element.nodeName).toBe('DIV');
+  function testConstructor() {
+    expect(createRS()['slider'].element.nodeName).toBe('DIV');
 
-    const isHasId = createRS(settings)['slider'].element.id;
+    const isHasId = createRS()['slider'].element.id;
     expect(isHasId).toBe('range-slider');
 
-    const isHasClass = createRS(settings)['slider'].element.classList.contains('range-slider');
+    const isHasClass = createRS()['slider'].element.classList.contains('range-slider');
     expect(isHasClass).toBeTruthy();
 
-    const isHasClassVertical = createRS(settings)['slider'].element.classList.contains('range-slider_vertical');
+    const isHasClassVertical = createRS()['slider'].element.classList.contains('range-slider_vertical');
 
     return isHasClassVertical;
   }
 
   test('should return "div" element with id="range-slider" and class="range-slider"', () => {
     settings.vertical = false;
-    const isHasClassVertical = testConstructor(settings);
+    const isHasClassVertical = testConstructor();
 
     expect(isHasClassVertical).toBeFalsy();
   });
 
   test('should return "div" with id="range-slider" and class="range-slider range-slider_vertical"', () => {
     settings.vertical = true;
-    const isHasClassVertical = testConstructor(settings);
+    const isHasClassVertical = testConstructor();
 
     expect(isHasClassVertical).toBeTruthy();
   });
@@ -139,132 +137,132 @@ describe('public createRangeSlider', () => {
 
   Object.defineProperty(global.document, 'querySelector', { value: spyFunc });
 
-  function testChild(settings: ISettings, childNum: number, childClass: string) {
-    const firstChildThumb = createRS(settings)['slider'].element.children[childNum];
+  function testChild(childNum: number, childClass: string) {
+    const firstChildThumb = createRS()['slider'].element.children[childNum];
     const isHasClass = firstChildThumb?.classList.contains(childClass);
     expect(isHasClass).toBeTruthy();
   }
 
   test('should return slider with one runner', () => {
     settings.range = false;
-    testChild(settings, 0, 'thumb-to');
-    testChild(settings, 1, 'range-slider__range');
+    testChild(0, 'thumb-to');
+    testChild(1, 'range-slider__range');
   });
 
   test('should return slider with two runners', () => {
     settings.range = true;
-    testChild(settings, 0, 'thumb-from');
-    testChild(settings, 1, 'thumb-to');
-    testChild(settings, 2, 'range-slider__range');
+    testChild(0, 'thumb-from');
+    testChild(1, 'thumb-to');
+    testChild(2, 'range-slider__range');
   });
 
-  function isSliderHasClassVertical(settings: ISettings) {
-    return createRS(settings)['slider'].element.classList.contains('range-slider_vertical');
+  function isSliderHasClassVertical() {
+    return createRS()['slider'].element.classList.contains('range-slider_vertical');
   }
 
-  function isScaleHasClassVertical(settings: ISettings) {
-    return createRS(settings)['scale'].element.classList.contains('scale_vertical');
+  function isScaleHasClassVertical() {
+    return createRS()['scale'].element.classList.contains('scale_vertical');
   }
 
   /* if (settings.vertical) and if (settings.tooltips) */
-  function isTooltipFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].tooltip.element.classList.contains('tooltip_vertical');
+  function isTooltipFromHaveClassVertical() {
+    return createRS()['from'].tooltip.element.classList.contains('tooltip_vertical');
   }
-  function isTooltipToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].tooltip.element.classList.contains('tooltip_vertical');
+  function isTooltipToHaveClassVertical() {
+    return createRS()['to'].tooltip.element.classList.contains('tooltip_vertical');
   }
 
   /* if (settings.vertical) and if (settings.range) */
-  function isThumbFromHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['from'].element.classList.contains('thumb-vertical');
+  function isThumbFromHaveClassVertical() {
+    return createRS()['from'].element.classList.contains('thumb-vertical');
   }
-  function isThumbToHaveClassVertical(settings: ISettings) {
-    return createRS(settings)['to'].element.classList.contains('thumb-vertical');
+  function isThumbToHaveClassVertical() {
+    return createRS()['to'].element.classList.contains('thumb-vertical');
   }
 
   test('if settings.vertical == true, should add vertical classes, ', () => {
     /* if (settings.vertical) */
     settings.vertical = true;
-    expect(isSliderHasClassVertical(settings)).toBeTruthy();
+    expect(isSliderHasClassVertical()).toBeTruthy();
 
     settings.vertical = false;
-    expect(isSliderHasClassVertical(settings)).toBeFalsy();
+    expect(isSliderHasClassVertical()).toBeFalsy();
 
     settings.vertical = true;
-    expect(isScaleHasClassVertical(settings)).toBeTruthy();
+    expect(isScaleHasClassVertical()).toBeTruthy();
 
     settings.vertical = false;
-    expect(isScaleHasClassVertical(settings)).toBeFalsy();
+    expect(isScaleHasClassVertical()).toBeFalsy();
 
     /* if (settings.vertical) and if (settings.tooltips) */
     settings.vertical = true;
     settings.tooltips = false;
-    expect(isTooltipFromHaveClassVertical(settings)).toBeFalsy();
-    expect(isTooltipToHaveClassVertical(settings)).toBeFalsy();
+    expect(isTooltipFromHaveClassVertical()).toBeFalsy();
+    expect(isTooltipToHaveClassVertical()).toBeFalsy();
 
     settings.vertical = false;
     settings.tooltips = true;
-    expect(isTooltipFromHaveClassVertical(settings)).toBeFalsy();
-    expect(isTooltipToHaveClassVertical(settings)).toBeFalsy();
+    expect(isTooltipFromHaveClassVertical()).toBeFalsy();
+    expect(isTooltipToHaveClassVertical()).toBeFalsy();
 
     /* if (settings.vertical) and if (settings.range) */
     settings.vertical = true;
     settings.range = true;
-    expect(isThumbFromHaveClassVertical(settings)).toBeTruthy();
-    expect(isThumbToHaveClassVertical(settings)).toBeTruthy();
+    expect(isThumbFromHaveClassVertical()).toBeTruthy();
+    expect(isThumbToHaveClassVertical()).toBeTruthy();
 
     settings.vertical = true;
     settings.range = false;
-    expect(isThumbFromHaveClassVertical(settings)).toBeFalsy();
-    expect(isThumbToHaveClassVertical(settings)).toBeTruthy();
+    expect(isThumbFromHaveClassVertical()).toBeFalsy();
+    expect(isThumbToHaveClassVertical()).toBeTruthy();
   });
 
   /* if (!settings.tooltips) */
-  function isTooltipFromHaveClassHidden(settings: ISettings) {
-    return createRS(settings)['from'].tooltip.element.classList.contains('hidden');
+  function isTooltipFromHaveClassHidden() {
+    return createRS()['from'].tooltip.element.classList.contains('hidden');
   }
 
-  function isTooltipToHaveClassHidden(settings: ISettings) {
-    return createRS(settings)['to'].tooltip.element.classList.contains('hidden');
+  function isTooltipToHaveClassHidden() {
+    return createRS()['to'].tooltip.element.classList.contains('hidden');
   }
 
   /* if (!settings.tooltips) */
   test('should return tooltips with class="hidden"', () => {
     settings.tooltips = true;
-    expect(isTooltipFromHaveClassHidden(settings)).toBeFalsy();
-    expect(isTooltipToHaveClassHidden(settings)).toBeFalsy();
+    expect(isTooltipFromHaveClassHidden()).toBeFalsy();
+    expect(isTooltipToHaveClassHidden()).toBeFalsy();
 
     settings.tooltips = false;
-    expect(isTooltipFromHaveClassHidden(settings)).toBeTruthy();
-    expect(isTooltipToHaveClassHidden(settings)).toBeTruthy();
+    expect(isTooltipFromHaveClassHidden()).toBeTruthy();
+    expect(isTooltipToHaveClassHidden()).toBeTruthy();
   });
 
   /* if (settings.scale) */
-  function isHasScale(settings: ISettings) {
+  function isHasScale() {
     if (settings.range) {
-      return createRS(settings)['slider'].element.children[3]?.classList.contains('scale');
+      return createRS()['slider'].element.children[3]?.classList.contains('scale');
     }
-    return createRS(settings)['slider'].element.children[2]?.classList.contains('scale');
+    return createRS()['slider'].element.children[2]?.classList.contains('scale');
   }
 
   test('should return slider with scale element', () => {
     /* has child */
     settings.scale = true;
     settings.range = true;
-    expect(isHasScale(settings)).toBeTruthy();
+    expect(isHasScale()).toBeTruthy();
 
     settings.scale = true;
     settings.range = false;
-    expect(isHasScale(settings)).toBeTruthy();
+    expect(isHasScale()).toBeTruthy();
 
     /* has no child */
     settings.scale = false;
     settings.range = true;
-    expect(isHasScale(settings)).toBeFalsy();
+    expect(isHasScale()).toBeFalsy();
 
     settings.scale = false;
     settings.range = false;
-    expect(isHasScale(settings)).toBeFalsy();
+    expect(isHasScale()).toBeFalsy();
   });
 
   test('if (settings.scale) "createScaleMarks" should have been called ', () => {
@@ -461,7 +459,7 @@ describe('private setDistanceBetweenTooltips', () => {
 });
 
 describe('private setZIndexTop', () => {
-  const settings: ISettings = {
+  settings = {
     min: 0,
     max: 1500,
     range: true,
@@ -514,13 +512,15 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos > max', () => {
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: 590,
         clientY: 590,
-      });
+      },
+    );
 
     const view = new View('range-slider', settings);
     view['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
@@ -531,13 +531,15 @@ describe('private currentCursorPosition', () => {
   });
 
   test('should return currentPos < min', () => {
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: 150,
         clientY: 150,
-      });
+      },
+    );
 
     const view = new View('range-slider', settings);
     view['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
@@ -610,13 +612,15 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
 
-    const downEvent = new PointerEvent('pointerdown',
+    const downEvent = new PointerEvent(
+      'pointerdown',
       {
         bubbles: true,
         cancelable: true,
         clientX: clickPosition,
         clientY: 150,
-      });
+      },
+    );
 
     view['slider'].element.dispatchEvent(downEvent);
     const result = view['handleMoveClosestThumbPointerEvent'](downEvent);
@@ -819,7 +823,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
 });
 
 describe('private addListenersToThumbs', () => {
-  function testAddListenerToThumbs(settings: ISettings) {
+  function testAddListenerToThumbs() {
     const view = new View('range-slider', settings);
 
     const initRangeSliderMarginsSpy = jest
@@ -842,14 +846,14 @@ describe('private addListenersToThumbs', () => {
 
   it('should NOT recreate scale marks on window resize on vertical slider', () => {
     settings.vertical = true;
-    const createScaleMarksSpy = testAddListenerToThumbs(settings);
+    const createScaleMarksSpy = testAddListenerToThumbs();
 
     expect(createScaleMarksSpy).not.toBeCalled();
   });
 
   it('should recreate scale marks on window resize on horizontal slider', () => {
     settings.vertical = false;
-    const createScaleMarksSpy = testAddListenerToThumbs(settings);
+    const createScaleMarksSpy = testAddListenerToThumbs();
 
     expect(createScaleMarksSpy).toBeCalled();
   });

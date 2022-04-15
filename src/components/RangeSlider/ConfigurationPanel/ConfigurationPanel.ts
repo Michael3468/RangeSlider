@@ -1,15 +1,17 @@
 import {
+  createElement,
+  getDigitsAfterPoint,
+  getMinStep,
+} from '../lib/common';
+
+import Observer from '../Observer/Observer';
+
+import {
   AbstractConfigurationPanel,
   AbstractObserver,
   CPInputElement,
   ISettings,
 } from '../RangeSlider/types';
-import Observer from '../Observer/Observer';
-import {
-  createElement,
-  getDigitsAfterPoint,
-  getMinStep,
-} from '../lib/common';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
@@ -47,7 +49,9 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.roundTo = getDigitsAfterPoint(this.settings);
 
     this.cpMin = this.assignElements('cpMin');
+    this.cpMin.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpMax = this.assignElements('cpMax');
+    this.cpMax.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpStep = this.assignElements('cpStep');
     this.cpStep.min = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpStep.step = String(getMinStep(settings).toFixed(this.roundTo));
@@ -74,9 +78,11 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
     this.cpMin.value = String(settings.min.toFixed(this.roundTo));
     this.cpMin.max = String(from);
+    this.cpMin.step = String(getMinStep(settings).toFixed(this.roundTo));
 
     this.cpMax.value = String(settings.max.toFixed(this.roundTo));
     this.cpMax.min = String(to);
+    this.cpMax.step = String(getMinStep(settings).toFixed(this.roundTo));
 
     this.cpStep.value = String(settings.step.toFixed(this.roundTo));
 
@@ -169,9 +175,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     return element;
   }
 
-  // eslint-disable-next-line consistent-return
   private assignElements(inputElement: CPInputElement): HTMLInputElement {
-    // eslint-disable-next-line default-case
     switch (inputElement) {
       case 'cpMin':
         return <HTMLInputElement> this.element.querySelector('input[name="min"]');
@@ -193,6 +197,8 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
         return <HTMLInputElement> this.element.querySelector('input[name="bar"]');
       case 'cpTooltips':
         return <HTMLInputElement> this.element.querySelector('input[name="tooltips"]');
+      default:
+        return <HTMLInputElement> this.element.querySelector('input[name="min"]');
     }
   }
 
@@ -201,31 +207,31 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.settings.min = Number(this.cpMin?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMin?.focus();
-  }
+  };
 
   private handleInputCPMaxChange = () => {
     this.settings.max = Number(this.cpMax?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMax?.focus();
-  }
+  };
 
   private handleInputCPStepChange = () => {
     this.settings.step = Number(this.cpStep?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpStep?.focus();
-  }
+  };
 
   private handleInputCPFromChange = () => {
     this.settings.from = Number(this.cpFrom?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpFrom?.focus();
-  }
+  };
 
   private handleInputCPToChange = () => {
     this.settings.to = Number(this.cpTo?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTo?.focus();
-  }
+  };
   // Configuration panel input handlers end
 
   // Configuration panel checkbox handlers
@@ -233,32 +239,32 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.settings.vertical = <boolean> this.cpVertical?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpVertical?.focus();
-  }
+  };
 
   private handleCheckboxCPRangeChange = () => {
     this.settings.range = <boolean> this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpRange?.focus();
-  }
+  };
 
   private handleCheckboxCPScaleChange = () => {
     this.settings.scale = <boolean> this.cpScale?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpScale?.focus();
-  }
+  };
 
   private handleCheckboxCPBarChange = () => {
     this.settings.bar = <boolean> this.cpBar?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpBar?.focus();
-  }
+  };
 
   private handleCheckboxCPTipChange = () => {
     this.settings.tooltips = <boolean> this.cpTooltips?.checked;
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpTooltips?.focus();
-  }
+  };
   // Configuration panel checkbox handlers end
 
   private addListeners(): ConfigurationPanel {

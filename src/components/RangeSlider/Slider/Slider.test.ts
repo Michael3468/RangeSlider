@@ -2,8 +2,6 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
-
 import Slider from './Slider';
 
 describe('private createSlider', () => {

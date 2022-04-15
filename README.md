@@ -13,7 +13,7 @@ Table of Contents:
 ## Build Setup
 Plugin created with:
 
-* node v14.18.2
+* node v14.18.3
 * jQuery 3.6.0
 
 ```

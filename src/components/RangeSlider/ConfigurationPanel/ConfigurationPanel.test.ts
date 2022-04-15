@@ -2,10 +2,9 @@
  * @jest-environment jsdom
  */
 
-/* eslint-disable dot-notation */
+import ConfigurationPanel from './ConfigurationPanel';
 
 import { ISettings } from '../RangeSlider/types';
-import ConfigurationPanel from './ConfigurationPanel';
 
 let settings: ISettings;
 

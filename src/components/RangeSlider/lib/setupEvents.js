@@ -1,4 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable no-unused-vars */
-global.PointerEvent = function (type, eventInitDict) {};
-global.BeforeUnloadEvent = function () {};
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+global.PointerEvent = (type, eventInitDict) => {};
+global.BeforeUnloadEvent = () => {};

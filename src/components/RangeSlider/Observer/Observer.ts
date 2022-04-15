@@ -1,14 +1,14 @@
-import { AbstractObserver, ISettings } from '../RangeSlider/types';
+import { AbstractObserver, ISettings, IUpdateFn } from '../RangeSlider/types';
 
 class Observer extends AbstractObserver {
-  protected observers: Function[];
+  protected observers: IUpdateFn[];
 
   constructor() {
     super();
     this.observers = [];
   }
 
-  public addObserver(fn: Function): void {
+  public addObserver(fn: IUpdateFn): void {
     this.observers.forEach((observer) => {
       if (String(observer) === String(fn)) {
         throw new Error('Observer is already in the list');
@@ -17,8 +17,8 @@ class Observer extends AbstractObserver {
     this.observers.push(fn);
   }
 
-  public removeObserver(fn: Function): void {
-    let isObserverRemoved: boolean = false;
+  public removeObserver(fn: IUpdateFn): void {
+    let isObserverRemoved = false;
 
     this.observers.forEach((observer, index) => {
       if (String(observer) === String(fn)) {
@@ -32,9 +32,9 @@ class Observer extends AbstractObserver {
     }
   }
 
-  public notifyObservers(data?: ISettings): void {
+  public notifyObservers(settings: ISettings): void {
     this.observers.forEach((observer) => {
-      observer(data);
+      observer(settings);
     });
   }
 }
