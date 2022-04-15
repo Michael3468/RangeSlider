@@ -126,11 +126,13 @@ class View {
     this.addListenersToThumbs();
     this.setDistanceBetweenTooltips();
 
-    if (process.env['NODE_ENV'] !== 'production') {
-      if (settings.confpanel && this.configurationPanel) {
-        this.slider.element.after(this.configurationPanel.element);
-        this.configurationPanel.updateState(this.settings);
-      }
+    if (
+      process.env['NODE_ENV'] !== 'production'
+      && settings.confpanel
+      && this.configurationPanel
+    ) {
+      this.slider.element.after(this.configurationPanel.element);
+      this.configurationPanel.updateState(this.settings);
     }
 
     this.handleUpdateRangeSliderView();
