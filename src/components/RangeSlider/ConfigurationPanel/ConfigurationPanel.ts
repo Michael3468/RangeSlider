@@ -49,7 +49,9 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.roundTo = getDigitsAfterPoint(this.settings);
 
     this.cpMin = this.assignElements('cpMin');
+    this.cpMin.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpMax = this.assignElements('cpMax');
+    this.cpMax.step = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpStep = this.assignElements('cpStep');
     this.cpStep.min = String(getMinStep(settings).toFixed(this.roundTo));
     this.cpStep.step = String(getMinStep(settings).toFixed(this.roundTo));
@@ -76,9 +78,11 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
     this.cpMin.value = String(settings.min.toFixed(this.roundTo));
     this.cpMin.max = String(from);
+    this.cpMin.step = String(getMinStep(settings).toFixed(this.roundTo));
 
     this.cpMax.value = String(settings.max.toFixed(this.roundTo));
     this.cpMax.min = String(to);
+    this.cpMax.step = String(getMinStep(settings).toFixed(this.roundTo));
 
     this.cpStep.value = String(settings.step.toFixed(this.roundTo));
 
