@@ -10,7 +10,17 @@ class Slider extends AbstractSlider {
 
   protected createSlider(id: string): HTMLElement {
     const slider = <HTMLElement> document.querySelector(id);
-    slider.className = 'range-slider';
+
+    try {
+      if (!slider) {
+        throw new Error('element don\'t exist on this page');
+      }
+
+      slider.className = 'range-slider';
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e);
+    }
 
     return slider;
   }

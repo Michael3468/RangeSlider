@@ -23,6 +23,7 @@ const PAGES = fs
 module.exports = {
   externals: {
     paths: PATHS,
+    jquery: 'jQuery', // delete jquery from bundle
   },
   entry: {
     'range-slider': `${PATHS.src}/app.ts`,

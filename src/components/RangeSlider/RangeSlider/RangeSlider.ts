@@ -64,8 +64,10 @@ const RangeSliderInstances = new Map();
         slider.innerHTML = '';
         slider.classList.value = '';
 
-        const confPanel = slider.nextSibling;
-        confPanel?.remove();
+        const confPanel = <HTMLElement> slider.nextSibling;
+        if (confPanel?.classList.contains('configuration-panel')) {
+          confPanel.remove();
+        }
       }
 
       RangeSliderInstances.delete(elementId);
