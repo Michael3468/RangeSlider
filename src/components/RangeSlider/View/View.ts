@@ -78,6 +78,10 @@ class View {
   }
 
   public createRangeSlider(settings: ISettings): View {
+    if (!this.slider.element) {
+      return this;
+    }
+
     if (settings.range) {
       this.slider.element.appendChild(this.from.element);
     }
