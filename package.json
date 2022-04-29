@@ -16,7 +16,8 @@
     "test": "jest --coverage",
     "test-watch": "jest --watchAll",
     "stylelint": "stylelint **/*.scss",
-    "stylelint-fix": "stylelint **/*.scss --fix"
+    "stylelint-fix": "stylelint **/*.scss --fix",
+    "cm": "cz"
   },
   "browserslist": [
     "> 1%",
