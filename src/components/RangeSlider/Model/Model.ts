@@ -1,121 +1,70 @@
-import { ISettings, ThumbName } from '../RangeSlider/types';
+import { ISettings } from '../RangeSlider/types';
 
 class Model {
   private settings: ISettings;
 
-  private min: number;
-
-  private max: number;
-
-  private range: boolean;
-
-  private scale: boolean;
-
-  private vertical: boolean;
-
-  private tooltips: boolean;
-
-  private confpanel: boolean;
-
-  private bar: boolean;
-
-  private from: number;
-
-  private to: number;
-
-  private step: number;
-
   constructor(settings: ISettings) {
     this.settings = Model.validateSettings(settings);
-
-    // default options
-    this.min = this.settings.min;
-    this.max = this.settings.max;
-    this.from = Model.getThumbValue(this.settings, 'from');
-    this.to = Model.getThumbValue(this.settings, 'to');
-    this.step = this.settings.step;
-
-    this.range = this.settings.range;
-    this.scale = this.settings.scale;
-    this.vertical = this.settings.vertical;
-    this.tooltips = this.settings.tooltips;
-    this.confpanel = this.settings.confpanel;
-    this.bar = this.settings.bar;
   }
 
   public getSettings(): ISettings {
     return {
-      min: this.min,
-      max: this.max,
-      from: this.from,
-      to: this.to,
-      step: this.step,
-      range: this.range,
-      scale: this.scale,
-      vertical: this.vertical,
-      tooltips: this.tooltips,
-      confpanel: this.confpanel,
-      bar: this.bar,
+      min: this.settings.min,
+      max: this.settings.max,
+      from: this.settings.from,
+      to: this.settings.to,
+      step: this.settings.step,
+      range: this.settings.range,
+      scale: this.settings.scale,
+      vertical: this.settings.vertical,
+      tooltips: this.settings.tooltips,
+      confpanel: this.settings.confpanel,
+      bar: this.settings.bar,
     };
   }
 
   public updateSettings(settings: ISettings): ISettings {
-    this.settings = Model.validateSettings(settings);
-
-    this.min = this.settings.min;
-    this.max = this.settings.max;
-    this.from = this.settings.from;
-    this.to = this.settings.to;
-    this.step = this.settings.step;
-    this.range = this.settings.range;
-    this.scale = this.settings.scale;
-    this.vertical = this.settings.vertical;
-    this.tooltips = this.settings.tooltips;
-    this.confpanel = this.settings.confpanel;
-    this.bar = this.settings.bar;
-
-    return this.settings;
+    return Model.validateSettings(settings);
   }
 
   private static validateSettings(settings: ISettings): ISettings {
-    const validatedSettings: ISettings = settings;
-    if (settings.max - settings.min < settings.step) {
-      validatedSettings.step = settings.max - settings.min;
+    if (settings.step <= 0) {
+      settings.step = 1;
     }
 
     if (settings.min >= settings.max) {
-      validatedSettings.min = settings.max - settings.step;
+      settings.min = settings.max - settings.step;
+    }
+
+    if ((settings.max - settings.min) < settings.step) {
+      settings.step = settings.max - settings.min;
     }
 
     if (settings.from < settings.min) {
-      validatedSettings.from = settings.min;
+      settings.from = settings.min;
     }
 
     if (settings.from > settings.max) {
-      validatedSettings.from = settings.max;
+      settings.from = settings.max;
     }
 
-    if (settings.to < settings.min) {
-      validatedSettings.to = settings.min;
+    if (settings.to < settings.from) {
+      settings.to = settings.from;
     }
 
     if (settings.to > settings.max) {
-      validatedSettings.to = settings.max;
+      settings.to = settings.max;
     }
 
-    if (settings.to - settings.from < settings.step) {
-      if (settings.from >= settings.min + settings.step) {
-        validatedSettings.from = settings.to - settings.step;
+    if ((settings.to - settings.from) < settings.step) {
+      if (settings.from >= (settings.min + settings.step)) {
+        settings.from = settings.to - settings.step;
       } else {
-        validatedSettings.to = settings.from + settings.step;
+        settings.to = settings.from + settings.step;
       }
     }
 
-    return validatedSettings;
-  }
-
-  private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    return thumbName === 'from' ? settings.from : settings.to;
+    return settings;
   }
 }
 

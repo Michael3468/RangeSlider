@@ -1,6 +1,6 @@
 import Model from './Model';
 
-import { ISettings, ThumbName } from '../RangeSlider/types';
+import { ISettings } from '../RangeSlider/types';
 
 let settings: ISettings;
 
@@ -96,20 +96,6 @@ describe('private static validateSettings', () => {
 
     const result = Model['validateSettings'](settings);
     expect(result.to).toBe(value);
-  });
-});
-
-describe('function getThumbValue:', () => {
-  test('if thumbName == "from" should return settings.from', () => {
-    const thumbName: ThumbName = 'from';
-    const result = settings.from;
-    expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
-  });
-
-  test('if thumbName == "to" should return settings.to', () => {
-    const thumbName: ThumbName = 'to';
-    const result = settings.to;
-    expect(Model['getThumbValue'](settings, thumbName)).toBe(result);
   });
 });
 

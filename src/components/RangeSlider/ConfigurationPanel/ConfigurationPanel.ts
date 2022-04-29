@@ -204,13 +204,19 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   // Configuration panel input handlers
   private handleInputCPMinChange = () => {
-    this.settings.min = Number(this.cpMin?.value);
+    this.settings.min = Number(this.cpMin?.value) >= Number(this.cpMin.max)
+      ? Number(this.cpMin.max)
+      : Number(this.cpMin?.value);
+
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMin?.focus();
   };
 
   private handleInputCPMaxChange = () => {
-    this.settings.max = Number(this.cpMax?.value);
+    this.settings.max = Number(this.cpMax?.value) <= Number(this.cpMax.min)
+      ? Number(this.cpMax.min)
+      : Number(this.cpMax?.value);
+
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
     this.cpMax?.focus();
   };
