@@ -8,19 +8,7 @@ class Model {
   }
 
   public getSettings(): ISettings {
-    return {
-      min: this.settings.min,
-      max: this.settings.max,
-      from: this.settings.from,
-      to: this.settings.to,
-      step: this.settings.step,
-      range: this.settings.range,
-      scale: this.settings.scale,
-      vertical: this.settings.vertical,
-      tooltips: this.settings.tooltips,
-      confpanel: this.settings.confpanel,
-      bar: this.settings.bar,
-    };
+    return this.settings;
   }
 
   public updateSettings(settings: ISettings): ISettings {
