@@ -45,9 +45,13 @@ class View {
 
   private thumbMarginTo: number;
 
+  isTooltipsCollision: boolean = false;
+
   configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver;
+
+  tooltipsCollisionObserver: AbstractObserver;
 
   constructor(id: string, mergedSettings: ISettings) {
     this.settings = mergedSettings;
@@ -70,11 +74,11 @@ class View {
     this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
-    this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
     this.getMargin = this.getMargin.bind(this);
 
     this.changeSettingsObserver = new Observer();
+    this.tooltipsCollisionObserver = new Observer();
   }
 
   public createRangeSlider(settings: ISettings): View {
@@ -347,6 +351,7 @@ class View {
     return onePointInPx * this.settings.step;
   }
 
+  // TODO move to Model
   private getThumbValue(thumbName: ThumbName): number {
     const thumbMargin: number = thumbName === 'from'
       ? this.thumbMarginFrom
@@ -361,6 +366,7 @@ class View {
       .toFixed(getDigitsAfterPoint(this.settings)));
   }
 
+  // TODO rename to setRangeSliderMargins
   private initRangeSliderMargins(): View {
     if (this.settings.range) {
       this.setMargins('from', this.getMargin('from'));
@@ -373,6 +379,7 @@ class View {
     return this;
   }
 
+  // TODO move to Model
   private getMargin(thumbName: ThumbName): number {
     const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
 
@@ -392,25 +399,14 @@ class View {
     return margin;
   }
 
-  private isTooltipsCollision(): boolean {
-    let fromEdge: number;
-    let toEdge: number;
-
-    const fromRect = this.from.element.getBoundingClientRect();
-    const toRect = this.to.element.getBoundingClientRect();
-
-    if (this.settings.vertical) {
-      fromEdge = fromRect.bottom;
-      toEdge = toRect.top;
-    } else {
-      fromEdge = fromRect.right;
-      toEdge = toRect.left;
-    }
-    return toEdge - fromEdge <= 5;
-  }
-
   private setDistanceBetweenTooltips(): View {
-    if (this.isTooltipsCollision()) {
+    this.settings.rectFrom = this.from.element.getBoundingClientRect();
+    this.settings.rectTo = this.to.element.getBoundingClientRect();
+
+    this.tooltipsCollisionObserver.notifyObservers(this.settings);
+
+    // TODO move setTopLeft (setThumbPosition) parameter into the methods constants
+    if (this.isTooltipsCollision) {
       if (this.settings.vertical) {
         this.setTopLeft('px', '-12', '15', '12', '15');
       } else {
@@ -424,6 +420,8 @@ class View {
     return this;
   }
 
+  // TODO rename setTopLeft to setThumbPosition
+  // TODO rename fTop to fromTop / fLeft to fromLeft etc
   private setTopLeft = (
     mu: MeasureUnit,
     fTop: string,

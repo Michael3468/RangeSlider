@@ -280,6 +280,7 @@ describe('public createRangeSlider', () => {
   });
 });
 
+// TODO move to Model.test.ts
 describe('private isTooltipsCollision', () => {
   test('check settings.vertical - true', () => {
     settings.vertical = true;
@@ -828,6 +829,7 @@ describe('private addListenersToThumbs', () => {
 
     const initRangeSliderMarginsSpy = jest
       .spyOn(view as unknown as ViewHint, 'initRangeSliderMargins');
+    // TODO add ViewHint ?
     const updateRangeSliderValuesSpy = jest
       .spyOn(view, 'updateRangeSliderValues');
     const setDistanceBetweenTooltipsSpy = jest

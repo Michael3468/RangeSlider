@@ -10,6 +10,9 @@ interface ISettings {
   tooltips: boolean;
   confpanel: boolean;
   bar: boolean;
+
+  rectFrom?: DOMRect;
+  rectTo?: DOMRect;
 }
 
 interface IUserSettings {

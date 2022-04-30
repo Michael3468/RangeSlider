@@ -18,16 +18,20 @@ class Presenter {
   private initRangeSlider(): Presenter {
     this.view.createRangeSlider(this.model.getSettings());
 
-    this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
+    this.view.changeSettingsObserver.addObserver((settings) => {
       this.updateModelAndPanel(settings);
     });
 
     if (this.isProdAndConfPanel()) {
       this.view.configurationPanel?.changeConfPanelSettingsObserver
-        .addObserver((settings: ISettings) => {
+        .addObserver((settings) => {
           this.updateModelAndView(settings);
         });
     }
+
+    this.view.tooltipsCollisionObserver.addObserver((settings) => {
+      this.view.isTooltipsCollision = this.model.isTooltipsCollision(settings);
+    });
 
     return this;
   }
