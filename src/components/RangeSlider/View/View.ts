@@ -144,7 +144,19 @@ class View {
     return this;
   }
 
-  public updateRangeSliderValues(): View {
+  public destroyView(): View {
+    this.from.element.parentNode?.removeChild(this.from.element);
+    this.to.element.parentNode?.removeChild(this.to.element);
+    this.range.element.parentNode?.removeChild(this.range.element);
+    while (this.scale.element.firstChild) {
+      this.scale.element.removeChild(this.scale.element.firstChild);
+    }
+    this.scale.element.parentNode?.removeChild(this.scale.element);
+
+    return this;
+  }
+
+  private updateRangeSliderValues(): View {
     const vertical = <boolean> this.settings?.vertical;
 
     this.range.setMarginFromBegin(this.rangeMarginFrom, vertical);
@@ -154,18 +166,6 @@ class View {
     this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
     this.to.setMargin(this.thumbMarginTo, this.settings);
     this.to.tooltip.setTooltipText(this.settings.to, this.settings);
-
-    return this;
-  }
-
-  public destroyView(): View {
-    this.from.element.parentNode?.removeChild(this.from.element);
-    this.to.element.parentNode?.removeChild(this.to.element);
-    this.range.element.parentNode?.removeChild(this.range.element);
-    while (this.scale.element.firstChild) {
-      this.scale.element.removeChild(this.scale.element.firstChild);
-    }
-    this.scale.element.parentNode?.removeChild(this.scale.element);
 
     return this;
   }
