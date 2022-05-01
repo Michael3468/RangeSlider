@@ -1,4 +1,5 @@
 import Model from './Model';
+import View from '../View/View';
 
 import { ISettings } from '../RangeSlider/types';
 
@@ -119,5 +120,127 @@ describe('public updateSettings', () => {
 
     settings.min = 200;
     expect(model.updateSettings(settings)).not.toStrictEqual(currentSettings);
+  });
+});
+
+describe('private isTooltipsCollision', () => {
+  test('check settings.vertical - true', () => {
+    settings.vertical = true;
+    const view = new View('range-slider', settings);
+
+    view['from'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100, /* value to check */
+      left: 100,
+      bottom: 120,
+      right: 120,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100, /* value to check */
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
+      width: 40,
+      height: 20, /* value to check */
+      top: 100,
+      left: 120,
+      bottom: 120,
+      right: 160,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    const model = new Model(settings);
+    let result = model.isTooltipsCollision(settings);
+    expect(result).toBeTruthy();
+
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 150, /* value 150 to return false */
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 150,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    result = model.isTooltipsCollision(settings);
+    expect(result).toBeFalsy();
+  });
+
+  test('check settings.vertical - false', () => {
+    settings.vertical = false;
+    const view = new View('range-slider', settings);
+
+    view['from'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120,
+      right: 120, /* value to check */
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120,
+      right: 140, /* value to check */
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
+      width: 40, /* value to check */
+      height: 20,
+      top: 100,
+      left: 150,
+      bottom: 120,
+      right: 160,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    const model = new Model(settings);
+    let result = model.isTooltipsCollision(settings);
+    expect(result).toBeTruthy();
+
+    view['to'].element.getBoundingClientRect = jest.fn(() => ({
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 130, /* value 170 to return false */
+      bottom: 120,
+      right: 170,
+      x: 150,
+      y: 100,
+      toJSON: () => {},
+    }));
+
+    result = model.isTooltipsCollision(settings);
+    expect(result).toBeFalsy();
   });
 });
