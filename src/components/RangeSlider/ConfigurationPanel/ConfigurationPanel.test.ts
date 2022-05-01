@@ -21,7 +21,6 @@ beforeEach(() => {
     bar: true,
     tooltips: true,
     confpanel: true,
-
   };
 });
 
@@ -77,7 +76,12 @@ describe('private addListeners', () => {
     // cpMax listener
     if (result['cpMax']) {
       result['cpMax'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].max)).toBe(result['cpMax'].value);
+
+      if (result['cpMax'].value <= result['cpMax'].min) {
+        expect(String(result['settings'].max)).toBe(result['cpMax'].min);
+      } else {
+        expect(String(result['settings'].max)).toBe(result['cpMax'].value);
+      }
     }
     expect(nObsSpy).toBeCalledWith(settings);
     // cpMax listener end
