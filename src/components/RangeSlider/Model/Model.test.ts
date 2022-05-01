@@ -28,7 +28,6 @@ describe('private static validateSettings', () => {
     settings.step = 20;
 
     const result = Model['validateSettings'](settings);
-    /* settings.min = settings.max - settings.step; */
     expect(result.min).toBe(settings.max - settings.step);
   });
 
@@ -49,12 +48,13 @@ describe('private static validateSettings', () => {
     });
   });
 
-  describe('settings.to < settings.min', () => {
-    test('should to = min', () => {
+  describe('settings.to < settings.from', () => {
+    test('should to = from + step', () => {
       settings.to = 10;
-      settings.min = 20;
+      settings.from = 20;
+      settings.step = 1;
       const result = Model['validateSettings'](settings);
-      expect(result.to).toBe(settings.min);
+      expect(result.to).toBe(settings.from + settings.step);
     });
 
     test('should to != min', () => {
