@@ -111,18 +111,20 @@ describe('public getSettings', () => {
 });
 
 describe('public updateSettings', () => {
-  test('should return the passed values', () => {
+  test('should return passed values', () => {
     const model = new Model(settings);
     expect(model.updateSettings(settings)).toStrictEqual(settings);
   });
 
-  test('should change the settings', () => {
+  test('should change settings', () => {
     settings.min = 100;
     const model = new Model(settings);
     const currentSettings = model.getSettings();
 
-    settings.min = 200;
-    expect(model.updateSettings(settings)).not.toStrictEqual(currentSettings);
+    const settingsUpd = { ...settings };
+    settingsUpd.min = 200;
+
+    expect(model.updateSettings(settingsUpd)).not.toStrictEqual(currentSettings);
   });
 });
 
