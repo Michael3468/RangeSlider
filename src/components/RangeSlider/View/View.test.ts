@@ -739,25 +739,25 @@ describe('private addListenersToThumbs', () => {
   });
 });
 
-describe('private setTopLeft', () => {
+describe('private setThumbsPosition', () => {
   it('should return style values in form "param" + "mu" (mu === "px" | "%")', () => {
     const view = new View('range-slider', settings);
     const mu: MeasureUnit = 'px';
-    const fTop = '1';
-    const fLeft = '2';
-    const tTop = '3';
-    const tLeft = '4';
-    const result = view['setTopLeft'](mu, fTop, fLeft, tTop, tLeft);
+    let fromTop = '1';
+    let fromLeft = '2';
+    let toTop = '3';
+    let toLeft = '4';
+    const result = view['setThumbsPosition'](mu, fromTop, fromLeft, toTop, toLeft);
 
-    const fromTop = result['from'].tooltip.element.style.top;
-    const fromLeft = result['from'].tooltip.element.style.left;
-    const toTop = result['to'].tooltip.element.style.top;
-    const toLeft = result['to'].tooltip.element.style.left;
+    fromTop = result['from'].tooltip.element.style.top;
+    fromLeft = result['from'].tooltip.element.style.left;
+    toTop = result['to'].tooltip.element.style.top;
+    toLeft = result['to'].tooltip.element.style.left;
 
-    expect(fromTop).toBe(fTop + mu);
-    expect(fromLeft).toBe(fLeft + mu);
-    expect(toTop).toBe(tTop + mu);
-    expect(toLeft).toBe(tLeft + mu);
+    expect(fromTop).toBe(fromTop + mu);
+    expect(fromLeft).toBe(fromLeft + mu);
+    expect(toTop).toBe(toTop + mu);
+    expect(toLeft).toBe(toLeft + mu);
   });
 });
 

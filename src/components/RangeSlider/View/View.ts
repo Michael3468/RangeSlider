@@ -174,6 +174,7 @@ class View {
     return this;
   }
 
+  // TODO ?
   private handleNotifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   };
@@ -220,6 +221,7 @@ class View {
         thumbName = 'to';
       }
 
+      // TODO ?
       const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
       this.setMargins(thumbName, currentPos);
       this.updateRangeSliderValues();
@@ -276,6 +278,7 @@ class View {
       : currentPos - sliderRect.left;
   }
 
+  // TODO move to Model
   private currentCursorPosition(event: PointerEvent): number {
     let currentPos: number = this.settings.vertical
       ? event.clientY
@@ -304,6 +307,7 @@ class View {
     return currentPos;
   }
 
+  // TODO move to Model
   private setMargins(thumbName: ThumbName, currentPos: number): void {
     const currentPosWithStep = this.getCurrentPosWithStep(this.settings, this.slider, currentPos);
 
@@ -321,6 +325,7 @@ class View {
     }
   }
 
+  // TODO move to Model
   private getCurrentPosWithStep(
     settings: ISettings,
     slider: AbstractSlider,
@@ -344,6 +349,7 @@ class View {
     return Number(currentPosWidthStep.toFixed(3));
   }
 
+  // TODO move to Model
   private getStepInPx(): number {
     const sliderLengthInPx: number = getElementLengthInPx(this.settings, this.slider.element);
     const onePointInPx: number = sliderLengthInPx / (this.settings.max - this.settings.min);
@@ -408,34 +414,32 @@ class View {
     // TODO move setTopLeft (setThumbPosition) parameter into the methods constants
     if (this.isTooltipsCollision) {
       if (this.settings.vertical) {
-        this.setTopLeft('px', '-12', '15', '12', '15');
+        this.setThumbsPosition('px', '-12', '15', '12', '15');
       } else {
-        this.setTopLeft('%', '-130', '-105', '-130', '5');
+        this.setThumbsPosition('%', '-130', '-105', '-130', '5');
       }
     } else if (this.settings.vertical) {
-      this.setTopLeft('px', '0', '15', '0', '15');
+      this.setThumbsPosition('px', '0', '15', '0', '15');
     } else {
-      this.setTopLeft('%', '-130', '-50', '-130', '-50');
+      this.setThumbsPosition('%', '-130', '-50', '-130', '-50');
     }
     return this;
   }
 
-  // TODO rename setTopLeft to setThumbPosition
-  // TODO rename fTop to fromTop / fLeft to fromLeft etc
-  private setTopLeft = (
+  private setThumbsPosition = (
     mu: MeasureUnit,
-    fTop: string,
-    fLeft: string,
-    tTop: string,
-    tLeft: string,
+    fromTop: string,
+    fromLeft: string,
+    toTop: string,
+    toLeft: string,
   ): View => {
     const from = this.from.tooltip.element.style;
     const to = this.to.tooltip.element.style;
 
-    from.top = fTop + mu;
-    from.left = fLeft + mu;
-    to.top = tTop + mu;
-    to.left = tLeft + mu;
+    from.top = fromTop + mu;
+    from.left = fromLeft + mu;
+    to.top = toTop + mu;
+    to.left = toLeft + mu;
 
     return this;
   };
