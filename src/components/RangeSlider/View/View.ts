@@ -129,7 +129,7 @@ class View {
       this.scale.createScaleMarks(settings);
     }
 
-    this.initRangeSliderMargins();
+    this.setRangeSliderMargins();
     this.updateRangeSliderValues();
     this.addListenersToThumbs();
     this.setDistanceBetweenTooltips();
@@ -180,7 +180,7 @@ class View {
   };
 
   private handleUpdateRangeSliderView = (): void => {
-    this.initRangeSliderMargins();
+    this.setRangeSliderMargins();
     this.updateRangeSliderValues();
 
     if (!this.settings.vertical) {
@@ -372,8 +372,7 @@ class View {
       .toFixed(getDigitsAfterPoint(this.settings)));
   }
 
-  // TODO rename to setRangeSliderMargins
-  private initRangeSliderMargins(): View {
+  private setRangeSliderMargins(): View {
     if (this.settings.range) {
       this.setMargins('from', this.getMargin('from'));
     } else {

@@ -69,7 +69,7 @@ abstract class ViewHint {
 
   abstract updateRangeSliderValues(): View;
 
-  abstract initRangeSliderMargins(): View;
+  abstract setRangeSliderMargins(): View;
 
   abstract handleNotifyChangeSettingsObserver(): void;
 }
@@ -705,8 +705,8 @@ describe('private addListenersToThumbs', () => {
   function testAddListenerToThumbs() {
     const view = new View('range-slider', settings);
 
-    const initRangeSliderMarginsSpy = jest
-      .spyOn(view as unknown as ViewHint, 'initRangeSliderMargins');
+    const setRangeSliderMarginsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'setRangeSliderMargins');
     // TODO add ViewHint ?
     const updateRangeSliderValuesSpy = jest
       .spyOn(view, 'updateRangeSliderValues');
@@ -717,7 +717,7 @@ describe('private addListenersToThumbs', () => {
     view['addListenersToThumbs']();
 
     window.dispatchEvent(new Event('resize'));
-    expect(initRangeSliderMarginsSpy).toBeCalled();
+    expect(setRangeSliderMarginsSpy).toBeCalled();
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
