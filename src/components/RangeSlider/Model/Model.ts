@@ -1,3 +1,4 @@
+import { getMinStep } from '../lib/common';
 import { ISettings } from '../RangeSlider/types';
 
 class Model {
@@ -31,6 +32,42 @@ class Model {
       toEdge = <number> this.settings.rectTo?.left;
     }
     return toEdge - fromEdge <= 5;
+  }
+
+  public getPosWithStepInPercents(settings: ISettings): number {
+    const curPos = settings.currentPos;
+    const stepInPercents = this.getStepInPercents(settings);
+    let posWithStep = 0;
+
+    if (curPos && curPos < 100 && curPos > 0) {
+      const remains = curPos % stepInPercents;
+
+      if (remains >= (stepInPercents / 2)) {
+        posWithStep = curPos - remains + stepInPercents;
+      } else {
+        posWithStep = curPos - remains;
+      }
+    } else if (curPos) {
+      posWithStep = curPos;
+    }
+
+    return posWithStep;
+  }
+
+  private getOnePointInPersents(settings: ISettings): number {
+    const points = settings.max - settings.min;
+
+    return settings.step >= 1
+      ? 100 / points
+      : 100 / (points / getMinStep(settings));
+  }
+
+  private getStepInPercents(settings: ISettings): number {
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    return settings.step >= 1
+      ? onePointInPercents * settings.step
+      : onePointInPercents * (settings.step / getMinStep(settings));
   }
 
   private static validateSettings(settings: ISettings): ISettings {

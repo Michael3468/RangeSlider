@@ -11,6 +11,8 @@ interface ISettings {
   confpanel: boolean;
   bar: boolean;
 
+  currentPos?: number;
+  posWithStepInPercents?: number;
   rectFrom?: DOMRect;
   rectTo?: DOMRect;
 }

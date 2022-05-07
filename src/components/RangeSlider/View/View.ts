@@ -45,13 +45,15 @@ class View {
 
   private thumbMarginTo: number;
 
-  isTooltipsCollision: boolean = false;
+  isTooltipsCollision = false;
 
   configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver;
 
   tooltipsCollisionObserver: AbstractObserver;
+
+  changeCurrentPosObserver: AbstractObserver;
 
   constructor(id: string, mergedSettings: ISettings) {
     this.settings = mergedSettings;
@@ -79,6 +81,7 @@ class View {
 
     this.changeSettingsObserver = new Observer();
     this.tooltipsCollisionObserver = new Observer();
+    this.changeCurrentPosObserver = new Observer();
   }
 
   public createRangeSlider(settings: ISettings): View {
@@ -207,6 +210,7 @@ class View {
   }
 
   private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
+    // TODO pointerId
     const { pointerId } = event;
     const target = <HTMLElement> event.target;
     event.preventDefault();
@@ -221,9 +225,18 @@ class View {
         thumbName = 'to';
       }
 
-      // TODO ?
       const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-      this.setMargins(thumbName, currentPos);
+      this.settings.currentPos = this.getPosInPercents(currentPos);
+
+      this.changeCurrentPosObserver.notifyObservers(this.settings);
+
+      if (this.settings.posWithStepInPercents !== undefined) {
+        const currentPosWithStep = this.convertPercentsToPixels(
+          this.settings.posWithStepInPercents,
+        );
+
+        this.setMargins(thumbName, currentPosWithStep);
+      }
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
     };
@@ -270,6 +283,18 @@ class View {
     return Math.abs(currentPos - thumbMargin);
   }
 
+  private getPosInPercents(currentPos: number): number {
+    const sliderRect = this.slider.element.getBoundingClientRect();
+
+    const sliderLengthInPx = this.settings.vertical
+      ? sliderRect.height
+      : sliderRect.width;
+
+    const sliderOnePercentInPx = sliderLengthInPx / 100;
+    const currentPosInPercents = currentPos / sliderOnePercentInPx;
+    return currentPosInPercents;
+  }
+
   private getPosOnScale(currentPos: number): number {
     const sliderRect = this.slider.element.getBoundingClientRect();
 
@@ -278,7 +303,6 @@ class View {
       : currentPos - sliderRect.left;
   }
 
-  // TODO move to Model
   private currentCursorPosition(event: PointerEvent): number {
     let currentPos: number = this.settings.vertical
       ? event.clientY
@@ -289,6 +313,7 @@ class View {
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.range) {
       const target = <Element> event.target;
+      // TODO getStepInPx get from model %% and convert to px?
       const stepInPx = this.getStepInPx();
 
       if (target.classList.contains('thumb-from')) {
@@ -307,15 +332,13 @@ class View {
     return currentPos;
   }
 
-  // TODO move to Model
-  private setMargins(thumbName: ThumbName, currentPos: number): void {
-    const currentPosWithStep = this.getCurrentPosWithStep(this.settings, this.slider, currentPos);
-
+  private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
     if (thumbName === 'from') {
       this.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
       this.settings.from = this.getThumbValue(thumbName);
     } else if (thumbName === 'to') {
+      // TODO change min max to slider rect?
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max - min;
 
@@ -323,30 +346,6 @@ class View {
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
       this.settings.to = this.getThumbValue(thumbName);
     }
-  }
-
-  // TODO move to Model
-  private getCurrentPosWithStep(
-    settings: ISettings,
-    slider: AbstractSlider,
-    currentPos: number,
-  ): number {
-    const stepInPx = this.getStepInPx();
-    const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
-    const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
-
-    const absolutePosWithStep = min + currentPosWidthStep;
-    const absolutePos = min + currentPos;
-    const sliderMaxPos = max - min;
-    const sliderMinPos = 0; // min - min
-
-    const isCursorPosGreaterThanMax = absolutePosWithStep > max || absolutePos >= max;
-    const isCursorPosLessThanMin = absolutePosWithStep < min || absolutePos <= min;
-
-    if (isCursorPosGreaterThanMax) return sliderMaxPos;
-    if (isCursorPosLessThanMin) return sliderMinPos;
-
-    return Number(currentPosWidthStep.toFixed(3));
   }
 
   // TODO move to Model
@@ -382,6 +381,19 @@ class View {
     this.setMargins('to', this.getMargin('to'));
 
     return this;
+  }
+
+  private convertPercentsToPixels(valInPercents: number): number {
+    const sliderRect = this.slider.element.getBoundingClientRect();
+
+    const sliderLengthInPx = this.settings.vertical
+      ? sliderRect.height
+      : sliderRect.width;
+
+    const onePercentInPx = sliderLengthInPx / 100;
+
+    // console.log('val in % > ', valInPercents);
+    return onePercentInPx * valInPercents;
   }
 
   // TODO move to Model

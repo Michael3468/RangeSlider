@@ -33,6 +33,11 @@ class Presenter {
       this.view.isTooltipsCollision = this.model.isTooltipsCollision(settings);
     });
 
+    this.view.changeCurrentPosObserver.addObserver((settings) => {
+      this.model.updateSettings(settings);
+      this.view['settings'].posWithStepInPercents = this.model.getPosWithStepInPercents(settings);
+    });
+
     return this;
   }
 
