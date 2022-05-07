@@ -226,7 +226,7 @@ class View {
       }
 
       const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-      this.settings.currentPos = this.getPosInPercents(currentPos);
+      this.settings.currentPos = this.convertPosInPercents(currentPos);
 
       this.changeCurrentPosObserver.notifyObservers(this.settings);
 
@@ -276,6 +276,7 @@ class View {
     return this;
   }
 
+  // TODO del static
   private static getDifferenceBetween(
     currentPos: number,
     thumbMargin: number,
@@ -283,7 +284,7 @@ class View {
     return Math.abs(currentPos - thumbMargin);
   }
 
-  private getPosInPercents(currentPos: number): number {
+  private convertPosInPercents(currentPos: number): number {
     const sliderRect = this.slider.element.getBoundingClientRect();
 
     const sliderLengthInPx = this.settings.vertical
