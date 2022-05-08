@@ -1,4 +1,4 @@
-import { getMinStep } from '../lib/common';
+import { getDigitsAfterPoint, getMinStep } from '../lib/common';
 import { ISettings } from '../RangeSlider/types';
 
 class Model {
@@ -51,6 +51,7 @@ class Model {
       posWithStep = curPos;
     }
 
+    this.settings.posWithStepInPercents = posWithStep;
     return posWithStep;
   }
 
@@ -108,6 +109,15 @@ class Model {
     }
 
     return settings;
+  }
+
+  public getThumbValue(settings: ISettings): number {
+    const curPosInPercents = <number> this.settings.posWithStepInPercents;
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    const curPosInPoints = curPosInPercents / onePointInPercents;
+
+    return Number(curPosInPoints.toFixed(getDigitsAfterPoint(settings)));
   }
 }
 
