@@ -35,9 +35,8 @@ class Presenter {
 
     this.view.changeCurrentPosObserver.addObserver((settings) => {
       this.model.updateSettings(settings);
-      // TODO make settings public
-      this.view['settings'].posWithStepInPercents = this.model.getPosWithStepInPercents(settings);
-      this.view['settings'].curPosInPoints = this.model.getThumbValue(settings);
+      this.view.settings.posWithStepInPercents = this.model.getPosWithStepInPercents(settings);
+      this.view.settings.curPosInPoints = this.model.getThumbValue(settings);
     });
 
     return this;

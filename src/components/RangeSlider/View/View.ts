@@ -34,7 +34,7 @@ class View {
 
   private scale: AbstractScale;
 
-  private settings: ISettings;
+  settings: ISettings;
 
   private rangeMarginTo: number;
 
@@ -356,6 +356,7 @@ class View {
     if (thumbName === 'from') {
       this.settings.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
+      // TODO when setRangeSlederMargins first time currentPos doesn't change!
       this.changeCurrentPosObserver.notifyObservers(this.settings);
 
       if (this.settings.curPosInPoints) {
