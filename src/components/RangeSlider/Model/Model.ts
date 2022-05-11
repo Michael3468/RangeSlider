@@ -47,12 +47,26 @@ class Model {
       } else {
         posWithStep = curPos - remains;
       }
-    } else if (curPos) {
+    } else if (curPos === 100 || curPos === 0) {
       posWithStep = curPos;
     }
 
     this.settings.posWithStepInPercents = posWithStep;
     return posWithStep;
+  }
+
+  public getThumbValue(settings: ISettings): number {
+    const curPosInPercents = <number> this.settings.posWithStepInPercents;
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    const curPosInPoints = Number((curPosInPercents / onePointInPercents)
+      .toFixed(getDigitsAfterPoint(settings)));
+
+    const thumbValue = settings.step < 1
+      ? curPosInPoints * getMinStep(settings) + settings.min
+      : curPosInPoints + settings.min;
+
+    return thumbValue;
   }
 
   private getOnePointInPersents(settings: ISettings): number {
@@ -109,15 +123,6 @@ class Model {
     }
 
     return settings;
-  }
-
-  public getThumbValue(settings: ISettings): number {
-    const curPosInPercents = <number> this.settings.posWithStepInPercents;
-    const onePointInPercents = this.getOnePointInPersents(settings);
-
-    const curPosInPoints = curPosInPercents / onePointInPercents;
-
-    return Number(curPosInPoints.toFixed(getDigitsAfterPoint(settings)));
   }
 }
 

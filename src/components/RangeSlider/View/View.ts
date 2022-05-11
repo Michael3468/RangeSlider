@@ -175,7 +175,7 @@ class View {
     return this;
   }
 
-  // TODO ?
+  // TODO rename to handleChangeSettingsObserverNotify
   private handleNotifyChangeSettingsObserver = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   };
@@ -356,12 +356,11 @@ class View {
     if (thumbName === 'from') {
       this.settings.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      // TODO when setRangeSlederMargins first time currentPos doesn't change!
-      this.changeCurrentPosObserver.notifyObservers(this.settings);
 
-      if (this.settings.curPosInPoints) {
+      if (this.settings.curPosInPoints !== undefined) {
         this.settings.from = this.settings.curPosInPoints;
       }
+      this.settings.curPosInPoints = undefined;
     } else if (thumbName === 'to') {
       // TODO change min max to slider rect?
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
@@ -369,11 +368,11 @@ class View {
 
       this.settings.thumbMarginTo = currentPosWithStep;
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
-      this.changeCurrentPosObserver.notifyObservers(this.settings);
 
-      if (this.settings.curPosInPoints) {
+      if (this.settings.curPosInPoints !== undefined) {
         this.settings.to = this.settings.curPosInPoints;
       }
+      this.settings.curPosInPoints = undefined;
     }
   }
 
@@ -406,7 +405,6 @@ class View {
 
     const onePercentInPx = sliderLengthInPx / 100;
 
-    // console.log('val in % > ', valInPercents);
     return onePercentInPx * valInPercents;
   }
 
