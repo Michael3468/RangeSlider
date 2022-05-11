@@ -434,7 +434,7 @@ class View {
 
     this.tooltipsCollisionObserver.notifyObservers(this.settings);
 
-    // TODO move setTopLeft (setThumbPosition) parameter into the methods constants
+    // TODO move setThumbPosition parameter into the methods constants
     if (this.isTooltipsCollision) {
       if (this.settings.vertical) {
         this.setThumbsPosition('px', '-12', '15', '12', '15');

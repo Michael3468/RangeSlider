@@ -15,7 +15,8 @@ class Model {
   }
 
   public updateSettings(settings: ISettings): ISettings {
-    return Model.validateSettings(settings);
+    this.settings = Model.validateSettings(settings);
+    return this.settings;
   }
 
   public isTooltipsCollision(settings: ISettings): boolean {
