@@ -175,8 +175,7 @@ class View {
     return this;
   }
 
-  // TODO rename to handleChangeSettingsObserverNotify
-  private handleNotifyChangeSettingsObserver = (): void => {
+  private handleChangeSettingsObserverNotify = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   };
 
@@ -201,7 +200,7 @@ class View {
     this.to.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
 
     this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
-    this.slider.element.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
+    this.slider.element.addEventListener('pointerup', this.handleChangeSettingsObserverNotify);
     window.addEventListener('DOMContentLoaded', this.handleUpdateRangeSliderView);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;

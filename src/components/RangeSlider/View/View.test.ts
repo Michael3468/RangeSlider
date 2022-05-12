@@ -71,7 +71,7 @@ abstract class ViewHint {
 
   abstract setRangeSliderMargins(): View;
 
-  abstract handleNotifyChangeSettingsObserver(): void;
+  abstract handleChangeSettingsObserverNotify(): void;
 }
 
 let settings: ISettings;
@@ -761,13 +761,13 @@ describe('private setThumbsPosition', () => {
   });
 });
 
-describe('private handleNotifyChangeSettingsObserver', () => {
+describe('private handleChangeSettingsObserverNotify', () => {
   it('should be called with this.settings', () => {
     const view = new View('range-slider', settings);
     const spyChangeSettingsObserverNotify = jest
       .spyOn(view.changeSettingsObserver, 'notifyObservers');
 
-    view['handleNotifyChangeSettingsObserver']();
+    view['handleChangeSettingsObserverNotify']();
 
     expect(spyChangeSettingsObserverNotify).toBeCalledWith(settings);
   });
