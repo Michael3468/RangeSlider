@@ -1,7 +1,6 @@
 import {
   getElementLengthInPx,
   getMinMaxElementEdgesInPx,
-  getOnePointInPx,
 } from '../lib/common';
 
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
@@ -52,6 +51,8 @@ class View {
 
   updateThumbsValueObserver: AbstractObserver;
 
+  getMarginObserver: AbstractObserver;
+
   constructor(id: string, mergedSettings: ISettings) {
     this.settings = mergedSettings;
 
@@ -74,12 +75,12 @@ class View {
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
     this.getStepInPx = this.getStepInPx.bind(this);
-    this.getMargin = this.getMargin.bind(this);
 
     this.changeSettingsObserver = new Observer();
     this.tooltipsCollisionObserver = new Observer();
     this.changeCurrentPosObserver = new Observer();
     this.updateThumbsValueObserver = new Observer();
+    this.getMarginObserver = new Observer();
   }
 
   public createRangeSlider(settings: ISettings): View {
@@ -224,6 +225,7 @@ class View {
 
       // TODO getPos
       const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
+      // TODO repeated code
       this.settings.currentPos = this.convertPosInPercents(currentPos);
 
       this.changeCurrentPosObserver.notifyObservers(this.settings);
@@ -238,6 +240,7 @@ class View {
         this.setMargins(thumbName, currentPosWithStep);
       }
       // TODO updateMargins end
+      // TODO repeated code end
 
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
@@ -384,13 +387,21 @@ class View {
   }
 
   private setRangeSliderMargins(): View {
+    this.getMarginObserver.notifyObservers(this.settings);
+
     if (this.settings.range) {
-      this.setMargins('from', this.getMargin('from'));
+      const marginFrom = this.convertPercentsToPixels(
+        <number> this.settings.thumbMarginFrom,
+      );
+      this.setMargins('from', marginFrom);
     } else {
       this.setMargins('from', 0);
     }
 
-    this.setMargins('to', this.getMargin('to'));
+    const marginTo = this.convertPercentsToPixels(
+      <number> this.settings.thumbMarginTo,
+    );
+    this.setMargins('to', marginTo);
 
     return this;
   }
@@ -405,26 +416,6 @@ class View {
     const onePercentInPx = sliderLengthInPx / 100;
 
     return onePercentInPx * valInPercents;
-  }
-
-  // TODO move to Model
-  private getMargin(thumbName: ThumbName): number {
-    const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
-
-    const value = thumbName === 'from'
-      ? this.settings.from
-      : this.settings.to;
-
-    let margin: number;
-    if (this.settings.step >= 1) {
-      margin = (value - this.settings.min) * onePointInPx;
-    } else {
-      margin = ((value - this.settings.min)
-      / this.settings.step)
-      * onePointInPx;
-    }
-
-    return margin;
   }
 
   private setDistanceBetweenTooltips(): View {

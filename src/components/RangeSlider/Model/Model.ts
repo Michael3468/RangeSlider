@@ -1,5 +1,5 @@
 import { getDigitsAfterPoint, getMinStep } from '../lib/common';
-import { ISettings } from '../RangeSlider/types';
+import { ISettings, ThumbName } from '../RangeSlider/types';
 
 class Model {
   private settings: ISettings;
@@ -68,6 +68,26 @@ class Model {
       : curPosInPoints + settings.min;
 
     return thumbValue;
+  }
+
+  public getMargin(thumbName: ThumbName, settings: ISettings): number {
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    const value = thumbName === 'from'
+      ? settings.from
+      : settings.to;
+
+    let margin: number;
+    if (settings.step >= 1) {
+      margin = (value - settings.min) * onePointInPercents;
+    } else {
+      margin = ((value - settings.min)
+      / getMinStep(settings))
+      * onePointInPercents;
+    }
+
+    const rounderMargin = Number(margin.toFixed(getDigitsAfterPoint(settings)));
+    return rounderMargin;
   }
 
   private getOnePointInPersents(settings: ISettings): number {
