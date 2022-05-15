@@ -402,7 +402,7 @@ describe('private currentCursorPosition', () => {
     );
 
     const view = new View('range-slider', settings);
-    view['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
+    view.settings['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
 
     view['from'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
@@ -421,7 +421,7 @@ describe('private currentCursorPosition', () => {
     );
 
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
+    view.settings['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
     view['to'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
     expect(result).toBe(212);
@@ -481,7 +481,7 @@ describe('private getDifferenceBetween', () => {
   });
 });
 
-describe('private handleMoveClosestThumbPointerEvent', () => {
+describe('private handleMoveClosestThumb', () => {
   function testMoveClosestThumb(view: View, clickPosition: number) {
     /* 'should' return mouseEvent coords */
     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
@@ -502,7 +502,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     );
 
     view['slider'].element.dispatchEvent(downEvent);
-    const result = view['handleMoveClosestThumbPointerEvent'](downEvent);
+    const result = view['handleMoveClosestThumb'](downEvent);
 
     return {
       updateRangeSliderValuesSpy,
@@ -523,8 +523,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
     settings.range = true;
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 150;
-    view['thumbMarginTo'] = 250;
+    view.settings['thumbMarginFrom'] = 150;
+    view.settings['thumbMarginTo'] = 250;
 
     const clickPosition = 100;
 
@@ -535,8 +535,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result['thumbMarginFrom']).toBe(clickPosition);
-    expect(result['thumbMarginTo']).not.toBe(clickPosition);
+    expect(result.settings['thumbMarginFrom']).toBe(clickPosition);
+    expect(result.settings['thumbMarginTo']).not.toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
@@ -550,8 +550,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginTo = \'clickPosition\'', () => {
     settings.range = true;
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 150;
-    view['thumbMarginTo'] = 250;
+    view.settings['thumbMarginFrom'] = 150;
+    view.settings['thumbMarginTo'] = 250;
 
     const clickPosition = 200;
 
@@ -562,8 +562,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result['thumbMarginFrom']).not.toBe(clickPosition);
-    expect(result['thumbMarginTo']).toBe(clickPosition);
+    expect(result.settings['thumbMarginFrom']).not.toBe(clickPosition);
+    expect(result.settings['thumbMarginTo']).toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
@@ -575,7 +575,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   });
 });
 
-describe('private handleStopSlidingPointerEvent', () => {
+describe('private handleStopSliding', () => {
   test('event.target.onpointermove should return null', () => {
     const upEvent = new PointerEvent('pointerup', {
       pointerId: 1,
@@ -595,13 +595,13 @@ describe('private handleStopSlidingPointerEvent', () => {
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
     view['to'].element.dispatchEvent(upEvent);
-    const result = View['handleStopSlidingPointerEvent'](upEvent);
+    const result = View['handleStopSliding'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
 });
 
-describe('private handleBeginSlidingPointerEvent', () => {
+describe('private handleBeginSliding', () => {
   function getMoveEvent() {
     const moveEvent = new PointerEvent('pointermove', {
       pointerId: 1,
@@ -659,7 +659,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
     } = getSpyMethods();
 
     view['from'].element.dispatchEvent(moveEvent);
-    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
+    const result = view['handleBeginSliding'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);
@@ -687,7 +687,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
     } = getSpyMethods();
 
     view['to'].element.dispatchEvent(moveEvent);
-    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
+    const result = view['handleBeginSliding'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);

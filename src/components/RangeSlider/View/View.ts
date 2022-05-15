@@ -70,8 +70,8 @@ class View {
     this.settings.thumbMarginFrom = 0;
     this.settings.thumbMarginTo = 0;
 
-    this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
-    this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
+    this.handleBeginSliding = this.handleBeginSliding.bind(this);
+    this.handleMoveClosestThumb = this.handleMoveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
 
     this.changeSettingsObserver = new Observer();
@@ -192,20 +192,20 @@ class View {
 
   private addListenersToThumbs(): View {
     if (this.settings.range) {
-      this.from.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-      this.from.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
+      this.from.element.addEventListener('pointerdown', this.handleBeginSliding);
+      this.from.element.addEventListener('pointerup', View.handleStopSliding);
     }
-    this.to.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-    this.to.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
+    this.to.element.addEventListener('pointerdown', this.handleBeginSliding);
+    this.to.element.addEventListener('pointerup', View.handleStopSliding);
 
-    this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
+    this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumb);
     this.slider.element.addEventListener('pointerup', this.handleChangeSettingsObserverNotify);
     window.addEventListener('DOMContentLoaded', this.handleUpdateRangeSliderView);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;
   }
 
-  private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
+  private handleBeginSliding(event: PointerEvent): HTMLElement {
     const target = <HTMLElement> event.target;
     event.preventDefault();
     target.setPointerCapture(event.pointerId);
@@ -244,14 +244,14 @@ class View {
     return target;
   }
 
-  private static handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
+  private static handleStopSliding(event: PointerEvent): HTMLElement {
     const target = <HTMLElement> event.target;
     target.onpointermove = null;
     target.releasePointerCapture(event.pointerId);
     return target;
   }
 
-  private handleMoveClosestThumbPointerEvent(e: PointerEvent): View {
+  private handleMoveClosestThumb(e: PointerEvent): View {
     // TODO getPos
     const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
     this.settings.currentPos = this.convertPosInPercents(currentPos);
