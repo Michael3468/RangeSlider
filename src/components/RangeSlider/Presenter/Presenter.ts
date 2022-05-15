@@ -47,6 +47,13 @@ class Presenter {
       this.view.settings.curPosInPoints = this.model.getThumbValue(settings);
     });
 
+    if (process.env['NODE_ENV'] !== 'production') {
+      this.view.configurationPanel?.getStepInPercentsObserver.addObserver((settings) => {
+        settings.stepInPrecents = this.model.getStepInPercents(settings);
+        this.view.settings = this.model.updateSettings(settings);
+      });
+    }
+
     this.view.createRangeSlider(this.model.getSettings());
 
     return this;

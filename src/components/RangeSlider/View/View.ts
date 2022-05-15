@@ -1,5 +1,4 @@
 import {
-  getElementLengthInPx,
   getMinMaxElementEdgesInPx,
 } from '../lib/common';
 
@@ -74,7 +73,6 @@ class View {
     this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
     this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
     this.setMargins = this.setMargins.bind(this);
-    this.getStepInPx = this.getStepInPx.bind(this);
 
     this.changeSettingsObserver = new Observer();
     this.tooltipsCollisionObserver = new Observer();
@@ -335,8 +333,11 @@ class View {
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.range) {
       const target = <Element> event.target;
-      // TODO getStepInPx get from model %% and convert to px?
-      const stepInPx = this.getStepInPx();
+
+      let stepInPx = 0;
+      if (this.settings.stepInPrecents) {
+        stepInPx = this.convertPercentsToPixels(this.settings.stepInPrecents);
+      }
 
       if (target.classList.contains('thumb-from')) {
         max = <number> this.settings.thumbMarginTo - stepInPx + min;
@@ -376,14 +377,6 @@ class View {
       }
       this.settings.curPosInPoints = undefined;
     }
-  }
-
-  // TODO move to Model
-  private getStepInPx(): number {
-    const sliderLengthInPx: number = getElementLengthInPx(this.settings, this.slider.element);
-    const onePointInPx: number = sliderLengthInPx / (this.settings.max - this.settings.min);
-
-    return onePointInPx * this.settings.step;
   }
 
   private setRangeSliderMargins(): View {

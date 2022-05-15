@@ -6,6 +6,7 @@ class Model {
 
   constructor(settings: ISettings) {
     this.settings = Model.validateSettings(settings);
+    this.settings.stepInPrecents = this.getStepInPercents(this.settings);
 
     this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
   }
@@ -90,20 +91,20 @@ class Model {
     return rounderMargin;
   }
 
+  public getStepInPercents(settings: ISettings): number {
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    return settings.step >= 1
+      ? onePointInPercents * settings.step
+      : onePointInPercents * (settings.step / getMinStep(settings));
+  }
+
   private getOnePointInPersents(settings: ISettings): number {
     const points = settings.max - settings.min;
 
     return settings.step >= 1
       ? 100 / points
       : 100 / (points / getMinStep(settings));
-  }
-
-  private getStepInPercents(settings: ISettings): number {
-    const onePointInPercents = this.getOnePointInPersents(settings);
-
-    return settings.step >= 1
-      ? onePointInPercents * settings.step
-      : onePointInPercents * (settings.step / getMinStep(settings));
   }
 
   private static validateSettings(settings: ISettings): ISettings {

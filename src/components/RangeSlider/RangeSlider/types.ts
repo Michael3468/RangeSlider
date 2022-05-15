@@ -18,6 +18,7 @@ interface ISettings {
   rectTo?: DOMRect;
   thumbMarginFrom?: number;
   thumbMarginTo?: number;
+  stepInPrecents?: number;
 }
 
 interface IUserSettings {
@@ -120,6 +121,8 @@ abstract class AbstractConfigurationPanel {
   abstract element: HTMLElement;
 
   abstract changeConfPanelSettingsObserver: AbstractObserver;
+
+  abstract getStepInPercentsObserver: AbstractObserver;
 
   public abstract updateState(settings: ISettings): void;
 }

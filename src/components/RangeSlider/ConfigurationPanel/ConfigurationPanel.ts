@@ -42,6 +42,8 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   changeConfPanelSettingsObserver: AbstractObserver;
 
+  getStepInPercentsObserver: AbstractObserver;
+
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
@@ -70,6 +72,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.getThumbFromDisabledStatus();
 
     this.changeConfPanelSettingsObserver = new Observer();
+    this.getStepInPercentsObserver = new Observer();
   }
 
   public updateState(settings: ISettings): ConfigurationPanel {
@@ -209,6 +212,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
       : Number(this.cpMin?.value);
 
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.getStepInPercentsObserver.notifyObservers(this.settings);
     this.cpMin?.focus();
   };
 
@@ -218,12 +222,14 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
       : Number(this.cpMax?.value);
 
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.getStepInPercentsObserver.notifyObservers(this.settings);
     this.cpMax?.focus();
   };
 
   private handleInputCPStepChange = () => {
     this.settings.step = Number(this.cpStep?.value);
     this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.getStepInPercentsObserver.notifyObservers(this.settings);
     this.cpStep?.focus();
   };
 
