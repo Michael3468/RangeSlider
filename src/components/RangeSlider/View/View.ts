@@ -254,8 +254,8 @@ class View {
     let thumbName: ThumbName = 'to';
 
     if (this.settings.range) {
-      const fromDiff = View.getDifferenceBetween(currentPos, fromPos);
-      const toDiff = View.getDifferenceBetween(currentPos, toPos);
+      const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
+      const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
       thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
@@ -284,8 +284,7 @@ class View {
     return this;
   }
 
-  // TODO del static
-  private static getDifferenceBetween(
+  private getDifferenceBetween(
     currentPos: number,
     thumbMargin: number,
   ): number {
@@ -354,7 +353,6 @@ class View {
       }
       this.settings.curPosInPoints = undefined;
     } else if (thumbName === 'to') {
-      // TODO change min max to slider rect?
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max - min;
 
@@ -406,7 +404,6 @@ class View {
 
     this.tooltipsCollisionObserver.notifyObservers(this.settings);
 
-    // TODO move setThumbPosition parameter into the methods constants
     if (this.isTooltipsCollision) {
       if (this.settings.vertical) {
         this.setThumbsPosition('px', '-12', '15', '12', '15');

@@ -470,13 +470,14 @@ describe('private getDifferenceBetween', () => {
     let currentPos = 100;
     let thumbMargin = 150; /* currentPos - thumbMargin = 50 */
 
-    let result = View['getDifferenceBetween'](currentPos, thumbMargin);
+    const view = new View('range-slider', settings);
+    let result = view['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
 
     currentPos = 200;
     thumbMargin = 150; /* currentPos - thumbMargin = -50 */
 
-    result = View['getDifferenceBetween'](currentPos, thumbMargin);
+    result = view['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
   });
 });
