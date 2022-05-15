@@ -227,15 +227,7 @@ class View {
       this.changeCurrentPosObserver.notifyObservers(this.settings);
       // TODO getPos end
 
-      // TODO updateMargins
-      if (this.settings.posWithStepInPercents !== undefined) {
-        const currentPosWithStep = this.convertPercentsToPixels(
-          this.settings.posWithStepInPercents,
-        );
-
-        this.setMargins(thumbName, currentPosWithStep);
-      }
-      // TODO updateMargins end
+      this.updateMargins(this.settings, thumbName);
       // TODO repeated code end
 
       this.updateRangeSliderValues();
@@ -259,7 +251,7 @@ class View {
     this.changeCurrentPosObserver.notifyObservers(this.settings);
     // TODO getPos end
 
-    // getClosestThumbFromCursor
+    // get closest thumb from cursor
     const fromPos = <number> this.settings.thumbMarginFrom;
     const toPos = <number> this.settings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
@@ -270,17 +262,9 @@ class View {
 
       thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
-    // getClosestThumbFromCursor end
+    // get closest thumb from cursor end
 
-    // TODO updateMargins
-    if (this.settings.posWithStepInPercents !== undefined) {
-      const currentPosWithStep = this.convertPercentsToPixels(
-        this.settings.posWithStepInPercents,
-      );
-
-      this.setMargins(thumbName, currentPosWithStep);
-    }
-    // TODO updateMargins end
+    this.updateMargins(this.settings, thumbName);
 
     this.updateRangeSliderValues();
 
@@ -290,6 +274,17 @@ class View {
 
     this.setDistanceBetweenTooltips();
 
+    return this;
+  }
+
+  private updateMargins(settings: ISettings, thumbName: ThumbName): View {
+    if (settings.posWithStepInPercents !== undefined) {
+      const currentPosWithStep = this.convertPercentsToPixels(
+        settings.posWithStepInPercents,
+      );
+
+      this.setMargins(thumbName, currentPosWithStep);
+    }
     return this;
   }
 
