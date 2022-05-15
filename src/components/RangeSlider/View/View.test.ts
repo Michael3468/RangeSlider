@@ -487,7 +487,8 @@ describe('private handleMoveClosestThumb', () => {
     /* 'should' return mouseEvent coords */
     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
 
-    const updateRangeSliderValuesSpy = jest.spyOn(view, 'updateRangeSliderValues');
+    const updateRangeSliderValuesSpy = jest
+      .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
     const setZIndexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZIndexTop');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
@@ -708,9 +709,8 @@ describe('private addListenersToThumbs', () => {
 
     const setRangeSliderMarginsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setRangeSliderMargins');
-    // TODO add ViewHint ?
     const updateRangeSliderValuesSpy = jest
-      .spyOn(view, 'updateRangeSliderValues');
+      .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
     const createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
