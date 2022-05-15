@@ -73,6 +73,7 @@ class View {
     this.handleBeginSliding = this.handleBeginSliding.bind(this);
     this.handleMoveClosestThumb = this.handleMoveClosestThumb.bind(this);
     this.setMargins = this.setMargins.bind(this);
+    this.changeCurrentPos = this.changeCurrentPos.bind(this);
 
     this.changeSettingsObserver = new Observer();
     this.tooltipsCollisionObserver = new Observer();
@@ -205,6 +206,15 @@ class View {
     return this;
   }
 
+  private changeCurrentPos(e: PointerEvent): number {
+    const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
+    this.settings.currentPos = this.convertPosInPercents(currentPos);
+
+    this.changeCurrentPosObserver.notifyObservers(this.settings);
+
+    return currentPos;
+  }
+
   private handleBeginSliding(event: PointerEvent): HTMLElement {
     const target = <HTMLElement> event.target;
     event.preventDefault();
@@ -219,16 +229,8 @@ class View {
         thumbName = 'to';
       }
 
-      // TODO getPos
-      const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-      // TODO repeated code
-      this.settings.currentPos = this.convertPosInPercents(currentPos);
-
-      this.changeCurrentPosObserver.notifyObservers(this.settings);
-      // TODO getPos end
-
+      this.changeCurrentPos(e);
       this.updateMargins(this.settings, thumbName);
-      // TODO repeated code end
 
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
@@ -244,12 +246,7 @@ class View {
   }
 
   private handleMoveClosestThumb(e: PointerEvent): View {
-    // TODO getPos
-    const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-    this.settings.currentPos = this.convertPosInPercents(currentPos);
-
-    this.changeCurrentPosObserver.notifyObservers(this.settings);
-    // TODO getPos end
+    const currentPos = this.changeCurrentPos(e);
 
     // get closest thumb from cursor
     const fromPos = <number> this.settings.thumbMarginFrom;
@@ -265,7 +262,6 @@ class View {
     // get closest thumb from cursor end
 
     this.updateMargins(this.settings, thumbName);
-
     this.updateRangeSliderValues();
 
     if (this.settings.range) {
