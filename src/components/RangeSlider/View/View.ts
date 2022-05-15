@@ -206,11 +206,9 @@ class View {
   }
 
   private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
-    // TODO pointerId
-    const { pointerId } = event;
     const target = <HTMLElement> event.target;
     event.preventDefault();
-    target.setPointerCapture(pointerId);
+    target.setPointerCapture(event.pointerId);
 
     target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
