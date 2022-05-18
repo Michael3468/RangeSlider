@@ -23,15 +23,9 @@ const defaultInitSettings: ISettings = {
 };
 
 class Scale extends AbstractScale {
-  element: HTMLElement;
+  element: HTMLElement = createElement('div', 'scale');
 
-  private settings: ISettings;
-
-  constructor() {
-    super();
-    this.element = createElement('div', 'scale');
-    this.settings = defaultInitSettings;
-  }
+  private settings: ISettings = defaultInitSettings;
 
   public createScaleMarks(settings: ISettings): Scale {
     this.settings = settings;

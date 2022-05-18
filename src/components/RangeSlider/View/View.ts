@@ -1,8 +1,5 @@
 import {
-  getDigitsAfterPoint,
-  getElementLengthInPx,
   getMinMaxElementEdgesInPx,
-  getOnePointInPx,
 } from '../lib/common';
 
 import ConfigurationPanel from '../ConfigurationPanel/ConfigurationPanel';
@@ -27,54 +24,44 @@ import {
 class View {
   private slider: AbstractSlider;
 
-  private from: AbstractThumb;
+  private from: AbstractThumb = new Thumb('from');
 
-  private to: AbstractThumb;
+  private to: AbstractThumb = new Thumb('to');
 
-  private range: AbstractRange;
+  private range: AbstractRange = new Range();
 
-  private scale: AbstractScale;
+  private scale: AbstractScale = new Scale();
 
-  private settings: ISettings;
+  settings: ISettings;
 
-  private rangeMarginTo: number;
+  private rangeMarginTo = 0;
 
-  private rangeMarginFrom: number;
+  private rangeMarginFrom = 0;
 
-  private thumbMarginFrom: number;
-
-  private thumbMarginTo: number;
+  isTooltipsCollision = false;
 
   configurationPanel?: AbstractConfigurationPanel;
 
-  changeSettingsObserver: AbstractObserver;
+  changeSettingsObserver: AbstractObserver = new Observer();
+
+  tooltipsCollisionObserver: AbstractObserver = new Observer();
+
+  changeCurrentPosObserver: AbstractObserver = new Observer();
+
+  updateThumbsValueObserver: AbstractObserver = new Observer();
+
+  getMarginObserver: AbstractObserver = new Observer();
 
   constructor(id: string, mergedSettings: ISettings) {
     this.settings = mergedSettings;
 
     this.slider = new Slider(id);
-    this.from = new Thumb('from');
-    this.to = new Thumb('to');
-    this.range = new Range();
-    this.scale = new Scale();
 
     if (process.env['NODE_ENV'] !== 'production') {
       this.configurationPanel = new ConfigurationPanel(this.settings);
     }
 
-    this.rangeMarginTo = 0;
-    this.rangeMarginFrom = 0;
-    this.thumbMarginFrom = 0;
-    this.thumbMarginTo = 0;
-
-    this.handleBeginSlidingPointerEvent = this.handleBeginSlidingPointerEvent.bind(this);
-    this.handleMoveClosestThumbPointerEvent = this.handleMoveClosestThumbPointerEvent.bind(this);
-    this.setMargins = this.setMargins.bind(this);
-    this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
-    this.getStepInPx = this.getStepInPx.bind(this);
-    this.getMargin = this.getMargin.bind(this);
-
-    this.changeSettingsObserver = new Observer();
+    this.setBindings();
   }
 
   public createRangeSlider(settings: ISettings): View {
@@ -125,7 +112,7 @@ class View {
       this.scale.createScaleMarks(settings);
     }
 
-    this.initRangeSliderMargins();
+    this.setRangeSliderMargins();
     this.updateRangeSliderValues();
     this.addListenersToThumbs();
     this.setDistanceBetweenTooltips();
@@ -144,20 +131,6 @@ class View {
     return this;
   }
 
-  public updateRangeSliderValues(): View {
-    const vertical = <boolean> this.settings?.vertical;
-
-    this.range.setMarginFromBegin(this.rangeMarginFrom, vertical);
-    this.from.setMargin(this.thumbMarginFrom, this.settings);
-    this.from.tooltip.setTooltipText(this.settings.from, this.settings);
-
-    this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
-    this.to.setMargin(this.thumbMarginTo, this.settings);
-    this.to.tooltip.setTooltipText(this.settings.to, this.settings);
-
-    return this;
-  }
-
   public destroyView(): View {
     this.from.element.parentNode?.removeChild(this.from.element);
     this.to.element.parentNode?.removeChild(this.to.element);
@@ -170,12 +143,33 @@ class View {
     return this;
   }
 
-  private handleNotifyChangeSettingsObserver = (): void => {
+  private setBindings(): void {
+    this.handleBeginSliding = this.handleBeginSliding.bind(this);
+    this.handleMoveClosestThumb = this.handleMoveClosestThumb.bind(this);
+    this.setMargins = this.setMargins.bind(this);
+    this.changeCurrentPos = this.changeCurrentPos.bind(this);
+  }
+
+  private updateRangeSliderValues(): View {
+    const vertical = <boolean> this.settings?.vertical;
+
+    this.range.setMarginFromBegin(this.rangeMarginFrom, vertical);
+    this.from.setMargin(<number> this.settings.thumbMarginFrom, this.settings);
+    this.from.tooltip.setTooltipText(this.settings.from, this.settings);
+
+    this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
+    this.to.setMargin(<number> this.settings.thumbMarginTo, this.settings);
+    this.to.tooltip.setTooltipText(this.settings.to, this.settings);
+
+    return this;
+  }
+
+  private handleChangeSettingsObserverNotify = (): void => {
     this.changeSettingsObserver.notifyObservers(this.settings);
   };
 
   private handleUpdateRangeSliderView = (): void => {
-    this.initRangeSliderMargins();
+    this.setRangeSliderMargins();
     this.updateRangeSliderValues();
 
     if (!this.settings.vertical) {
@@ -188,24 +182,32 @@ class View {
 
   private addListenersToThumbs(): View {
     if (this.settings.range) {
-      this.from.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-      this.from.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
+      this.from.element.addEventListener('pointerdown', this.handleBeginSliding);
+      this.from.element.addEventListener('pointerup', View.handleStopSliding);
     }
-    this.to.element.addEventListener('pointerdown', this.handleBeginSlidingPointerEvent);
-    this.to.element.addEventListener('pointerup', View.handleStopSlidingPointerEvent);
+    this.to.element.addEventListener('pointerdown', this.handleBeginSliding);
+    this.to.element.addEventListener('pointerup', View.handleStopSliding);
 
-    this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumbPointerEvent);
-    this.slider.element.addEventListener('pointerup', this.handleNotifyChangeSettingsObserver);
+    this.slider.element.addEventListener('pointerdown', this.handleMoveClosestThumb);
+    this.slider.element.addEventListener('pointerup', this.handleChangeSettingsObserverNotify);
     window.addEventListener('DOMContentLoaded', this.handleUpdateRangeSliderView);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
     return this;
   }
 
-  private handleBeginSlidingPointerEvent(event: PointerEvent): HTMLElement {
-    const { pointerId } = event;
+  private changeCurrentPos(e: PointerEvent): number {
+    const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
+    this.settings.currentPos = this.convertPosInPercents(currentPos);
+
+    this.changeCurrentPosObserver.notifyObservers(this.settings);
+
+    return currentPos;
+  }
+
+  private handleBeginSliding(event: PointerEvent): HTMLElement {
     const target = <HTMLElement> event.target;
     event.preventDefault();
-    target.setPointerCapture(pointerId);
+    target.setPointerCapture(event.pointerId);
 
     target.onpointermove = (e: PointerEvent): void => {
       let thumbName: ThumbName = 'to';
@@ -216,36 +218,39 @@ class View {
         thumbName = 'to';
       }
 
-      const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-      this.setMargins(thumbName, currentPos);
+      this.changeCurrentPos(e);
+      this.updateMargins(this.settings, thumbName);
+
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
     };
     return target;
   }
 
-  private static handleStopSlidingPointerEvent(event: PointerEvent): HTMLElement {
+  private static handleStopSliding(event: PointerEvent): HTMLElement {
     const target = <HTMLElement> event.target;
     target.onpointermove = null;
     target.releasePointerCapture(event.pointerId);
     return target;
   }
 
-  private handleMoveClosestThumbPointerEvent(e: PointerEvent): View {
-    const currentPos: number = this.getPosOnScale(this.currentCursorPosition(e));
-    const fromPos: number = this.thumbMarginFrom;
-    const toPos: number = this.thumbMarginTo;
+  private handleMoveClosestThumb(e: PointerEvent): View {
+    const currentPos = this.changeCurrentPos(e);
+
+    // get closest thumb from cursor
+    const fromPos = <number> this.settings.thumbMarginFrom;
+    const toPos = <number> this.settings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
-    // check which thumb is closest to the cursor position
     if (this.settings.range) {
-      const fromDiff = View.getDifferenceBetween(currentPos, fromPos);
-      const toDiff = View.getDifferenceBetween(currentPos, toPos);
+      const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
+      const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
       thumbName = fromDiff < toDiff ? 'from' : 'to';
     }
+    // get closest thumb from cursor end
 
-    this.setMargins(thumbName, currentPos);
+    this.updateMargins(this.settings, thumbName);
     this.updateRangeSliderValues();
 
     if (this.settings.range) {
@@ -257,11 +262,34 @@ class View {
     return this;
   }
 
-  private static getDifferenceBetween(
+  private updateMargins(settings: ISettings, thumbName: ThumbName): View {
+    if (settings.posWithStepInPercents !== undefined) {
+      const currentPosWithStep = this.convertPercentsToPixels(
+        settings.posWithStepInPercents,
+      );
+
+      this.setMargins(thumbName, currentPosWithStep);
+    }
+    return this;
+  }
+
+  private getDifferenceBetween(
     currentPos: number,
     thumbMargin: number,
   ): number {
     return Math.abs(currentPos - thumbMargin);
+  }
+
+  private convertPosInPercents(currentPos: number): number {
+    const sliderRect = this.slider.element.getBoundingClientRect();
+
+    const sliderLengthInPx = this.settings.vertical
+      ? sliderRect.height
+      : sliderRect.width;
+
+    const sliderOnePercentInPx = sliderLengthInPx / 100;
+    const currentPosInPercents = currentPos / sliderOnePercentInPx;
+    return currentPosInPercents;
   }
 
   private getPosOnScale(currentPos: number): number {
@@ -282,12 +310,16 @@ class View {
     // set Edge values to thumbs for twoRunners slider
     if (this.settings.range) {
       const target = <Element> event.target;
-      const stepInPx = this.getStepInPx();
+
+      let stepInPx = 0;
+      if (this.settings.stepInPrecents) {
+        stepInPx = this.convertPercentsToPixels(this.settings.stepInPrecents);
+      }
 
       if (target.classList.contains('thumb-from')) {
-        max = this.thumbMarginTo - stepInPx + min;
+        max = <number> this.settings.thumbMarginTo - stepInPx + min;
       } else if (target.classList.contains('thumb-to')) {
-        min = this.thumbMarginFrom + stepInPx + min;
+        min = <number> this.settings.thumbMarginFrom + stepInPx + min;
       }
     }
 
@@ -300,144 +332,95 @@ class View {
     return currentPos;
   }
 
-  private setMargins(thumbName: ThumbName, currentPos: number): void {
-    const currentPosWithStep = this.getCurrentPosWithStep(this.settings, this.slider, currentPos);
-
+  private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
     if (thumbName === 'from') {
-      this.thumbMarginFrom = currentPosWithStep;
+      this.settings.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
-      this.settings.from = this.getThumbValue(thumbName);
+
+      if (this.settings.curPosInPoints !== undefined) {
+        this.settings.from = this.settings.curPosInPoints;
+      }
+      this.settings.curPosInPoints = undefined;
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
       const sliderLengthInPx: number = max - min;
 
-      this.thumbMarginTo = currentPosWithStep;
+      this.settings.thumbMarginTo = currentPosWithStep;
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
-      this.settings.to = this.getThumbValue(thumbName);
+
+      if (this.settings.curPosInPoints !== undefined) {
+        this.settings.to = this.settings.curPosInPoints;
+      }
+      this.settings.curPosInPoints = undefined;
     }
   }
 
-  private getCurrentPosWithStep(
-    settings: ISettings,
-    slider: AbstractSlider,
-    currentPos: number,
-  ): number {
-    const stepInPx = this.getStepInPx();
-    const currentPosWidthStep: number = Math.round(currentPos / stepInPx) * stepInPx;
-    const { min, max } = getMinMaxElementEdgesInPx(settings, slider);
+  private setRangeSliderMargins(): View {
+    this.getMarginObserver.notifyObservers(this.settings);
 
-    const absolutePosWithStep = min + currentPosWidthStep;
-    const absolutePos = min + currentPos;
-    const sliderMaxPos = max - min;
-    const sliderMinPos = 0; // min - min
-
-    const isCursorPosGreaterThanMax = absolutePosWithStep > max || absolutePos >= max;
-    const isCursorPosLessThanMin = absolutePosWithStep < min || absolutePos <= min;
-
-    if (isCursorPosGreaterThanMax) return sliderMaxPos;
-    if (isCursorPosLessThanMin) return sliderMinPos;
-
-    return Number(currentPosWidthStep.toFixed(3));
-  }
-
-  private getStepInPx(): number {
-    const sliderLengthInPx: number = getElementLengthInPx(this.settings, this.slider.element);
-    const onePointInPx: number = sliderLengthInPx / (this.settings.max - this.settings.min);
-
-    return onePointInPx * this.settings.step;
-  }
-
-  private getThumbValue(thumbName: ThumbName): number {
-    const thumbMargin: number = thumbName === 'from'
-      ? this.thumbMarginFrom
-      : this.thumbMarginTo;
-
-    const valueInPoints = thumbMargin / getOnePointInPx(this.settings, this.slider.element);
-    const totalValue = (this.settings.step >= 1)
-      ? Math.round(valueInPoints)
-      : Math.round(valueInPoints) * this.settings.step;
-
-    return Number((totalValue + this.settings.min)
-      .toFixed(getDigitsAfterPoint(this.settings)));
-  }
-
-  private initRangeSliderMargins(): View {
     if (this.settings.range) {
-      this.setMargins('from', this.getMargin('from'));
+      const marginFrom = this.convertPercentsToPixels(
+        <number> this.settings.thumbMarginFrom,
+      );
+      this.setMargins('from', marginFrom);
     } else {
       this.setMargins('from', 0);
     }
 
-    this.setMargins('to', this.getMargin('to'));
+    const marginTo = this.convertPercentsToPixels(
+      <number> this.settings.thumbMarginTo,
+    );
+    this.setMargins('to', marginTo);
 
     return this;
   }
 
-  private getMargin(thumbName: ThumbName): number {
-    const onePointInPx = getOnePointInPx(this.settings, this.slider.element);
+  private convertPercentsToPixels(valInPercents: number): number {
+    const sliderRect = this.slider.element.getBoundingClientRect();
 
-    const value = thumbName === 'from'
-      ? this.settings.from
-      : this.settings.to;
+    const sliderLengthInPx = this.settings.vertical
+      ? sliderRect.height
+      : sliderRect.width;
 
-    let margin: number;
-    if (this.settings.step >= 1) {
-      margin = (value - this.settings.min) * onePointInPx;
-    } else {
-      margin = ((value - this.settings.min)
-      / this.settings.step)
-      * onePointInPx;
-    }
+    const onePercentInPx = sliderLengthInPx / 100;
 
-    return margin;
-  }
-
-  private isTooltipsCollision(): boolean {
-    let fromEdge: number;
-    let toEdge: number;
-
-    const fromRect = this.from.element.getBoundingClientRect();
-    const toRect = this.to.element.getBoundingClientRect();
-
-    if (this.settings.vertical) {
-      fromEdge = fromRect.bottom;
-      toEdge = toRect.top;
-    } else {
-      fromEdge = fromRect.right;
-      toEdge = toRect.left;
-    }
-    return toEdge - fromEdge <= 5;
+    return onePercentInPx * valInPercents;
   }
 
   private setDistanceBetweenTooltips(): View {
-    if (this.isTooltipsCollision()) {
+    this.settings.rectFrom = this.from.element.getBoundingClientRect();
+    this.settings.rectTo = this.to.element.getBoundingClientRect();
+
+    this.tooltipsCollisionObserver.notifyObservers(this.settings);
+
+    if (this.isTooltipsCollision) {
       if (this.settings.vertical) {
-        this.setTopLeft('px', '-12', '15', '12', '15');
+        this.setThumbsPosition('px', '-12', '15', '12', '15');
       } else {
-        this.setTopLeft('%', '-130', '-105', '-130', '5');
+        this.setThumbsPosition('%', '-130', '-105', '-130', '5');
       }
     } else if (this.settings.vertical) {
-      this.setTopLeft('px', '0', '15', '0', '15');
+      this.setThumbsPosition('px', '0', '15', '0', '15');
     } else {
-      this.setTopLeft('%', '-130', '-50', '-130', '-50');
+      this.setThumbsPosition('%', '-130', '-50', '-130', '-50');
     }
     return this;
   }
 
-  private setTopLeft = (
+  private setThumbsPosition = (
     mu: MeasureUnit,
-    fTop: string,
-    fLeft: string,
-    tTop: string,
-    tLeft: string,
+    fromTop: string,
+    fromLeft: string,
+    toTop: string,
+    toLeft: string,
   ): View => {
     const from = this.from.tooltip.element.style;
     const to = this.to.tooltip.element.style;
 
-    from.top = fTop + mu;
-    from.left = fLeft + mu;
-    to.top = tTop + mu;
-    to.left = tLeft + mu;
+    from.top = fromTop + mu;
+    from.left = fromLeft + mu;
+    to.top = toTop + mu;
+    to.left = toLeft + mu;
 
     return this;
   };

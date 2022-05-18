@@ -1,121 +1,150 @@
+import { getDigitsAfterPoint, getMinStep } from '../lib/common';
 import { ISettings, ThumbName } from '../RangeSlider/types';
 
 class Model {
   private settings: ISettings;
 
-  private min: number;
-
-  private max: number;
-
-  private range: boolean;
-
-  private scale: boolean;
-
-  private vertical: boolean;
-
-  private tooltips: boolean;
-
-  private confpanel: boolean;
-
-  private bar: boolean;
-
-  private from: number;
-
-  private to: number;
-
-  private step: number;
-
   constructor(settings: ISettings) {
     this.settings = Model.validateSettings(settings);
+    this.settings.stepInPrecents = this.getStepInPercents(this.settings);
 
-    // default options
-    this.min = this.settings.min;
-    this.max = this.settings.max;
-    this.from = Model.getThumbValue(this.settings, 'from');
-    this.to = Model.getThumbValue(this.settings, 'to');
-    this.step = this.settings.step;
-
-    this.range = this.settings.range;
-    this.scale = this.settings.scale;
-    this.vertical = this.settings.vertical;
-    this.tooltips = this.settings.tooltips;
-    this.confpanel = this.settings.confpanel;
-    this.bar = this.settings.bar;
+    this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
   }
 
   public getSettings(): ISettings {
-    return {
-      min: this.min,
-      max: this.max,
-      from: this.from,
-      to: this.to,
-      step: this.step,
-      range: this.range,
-      scale: this.scale,
-      vertical: this.vertical,
-      tooltips: this.tooltips,
-      confpanel: this.confpanel,
-      bar: this.bar,
-    };
+    return this.settings;
   }
 
   public updateSettings(settings: ISettings): ISettings {
     this.settings = Model.validateSettings(settings);
-
-    this.min = this.settings.min;
-    this.max = this.settings.max;
-    this.from = this.settings.from;
-    this.to = this.settings.to;
-    this.step = this.settings.step;
-    this.range = this.settings.range;
-    this.scale = this.settings.scale;
-    this.vertical = this.settings.vertical;
-    this.tooltips = this.settings.tooltips;
-    this.confpanel = this.settings.confpanel;
-    this.bar = this.settings.bar;
-
     return this.settings;
   }
 
+  public isTooltipsCollision(settings: ISettings): boolean {
+    let fromEdge: number;
+    let toEdge: number;
+
+    this.settings = { ...settings };
+
+    if (this.settings.vertical) {
+      fromEdge = <number> this.settings.rectFrom?.bottom;
+      toEdge = <number> this.settings.rectTo?.top;
+    } else {
+      fromEdge = <number> this.settings.rectFrom?.right;
+      toEdge = <number> this.settings.rectTo?.left;
+    }
+    return toEdge - fromEdge <= 5;
+  }
+
+  public getPosWithStepInPercents(settings: ISettings): number {
+    const curPos = settings.currentPos;
+    const stepInPercents = this.getStepInPercents(settings);
+    let posWithStep = 0;
+
+    if (curPos && curPos < 100 && curPos > 0) {
+      const remains = curPos % stepInPercents;
+
+      if (remains >= (stepInPercents / 2)) {
+        posWithStep = curPos - remains + stepInPercents;
+      } else {
+        posWithStep = curPos - remains;
+      }
+    } else if (curPos === 100 || curPos === 0) {
+      posWithStep = curPos;
+    }
+
+    this.settings.posWithStepInPercents = posWithStep;
+    return posWithStep;
+  }
+
+  public getThumbValue(settings: ISettings): number {
+    const curPosInPercents = <number> this.settings.posWithStepInPercents;
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    const curPosInPoints = Number((curPosInPercents / onePointInPercents)
+      .toFixed(getDigitsAfterPoint(settings)));
+
+    const thumbValue = settings.step < 1
+      ? curPosInPoints * getMinStep(settings) + settings.min
+      : curPosInPoints + settings.min;
+
+    return thumbValue;
+  }
+
+  public getMargin(thumbName: ThumbName, settings: ISettings): number {
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    const value = thumbName === 'from'
+      ? settings.from
+      : settings.to;
+
+    let margin: number;
+    if (settings.step >= 1) {
+      margin = (value - settings.min) * onePointInPercents;
+    } else {
+      margin = ((value - settings.min)
+      / getMinStep(settings))
+      * onePointInPercents;
+    }
+
+    const rounderMargin = Number(margin.toFixed(getDigitsAfterPoint(settings)));
+    return rounderMargin;
+  }
+
+  public getStepInPercents(settings: ISettings): number {
+    const onePointInPercents = this.getOnePointInPersents(settings);
+
+    return settings.step >= 1
+      ? onePointInPercents * settings.step
+      : onePointInPercents * (settings.step / getMinStep(settings));
+  }
+
+  private getOnePointInPersents(settings: ISettings): number {
+    const points = settings.max - settings.min;
+
+    return settings.step >= 1
+      ? 100 / points
+      : 100 / (points / getMinStep(settings));
+  }
+
   private static validateSettings(settings: ISettings): ISettings {
-    const validatedSettings: ISettings = settings;
-    if (settings.max - settings.min < settings.step) {
-      validatedSettings.step = settings.max - settings.min;
+    if (settings.step <= 0) {
+      settings.step = 1;
     }
 
     if (settings.min >= settings.max) {
-      validatedSettings.min = settings.max - settings.step;
+      settings.min = settings.max - settings.step;
+    }
+
+    if ((settings.max - settings.min) < settings.step) {
+      settings.step = settings.max - settings.min;
     }
 
     if (settings.from < settings.min) {
-      validatedSettings.from = settings.min;
+      settings.from = settings.min;
     }
 
     if (settings.from > settings.max) {
-      validatedSettings.from = settings.max;
+      settings.from = settings.max;
     }
 
-    if (settings.to < settings.min) {
-      validatedSettings.to = settings.min;
+    if (settings.to < settings.from) {
+      settings.to = settings.from;
     }
 
     if (settings.to > settings.max) {
-      validatedSettings.to = settings.max;
+      settings.to = settings.max;
     }
 
-    if (settings.to - settings.from < settings.step) {
-      if (settings.from >= settings.min + settings.step) {
-        validatedSettings.from = settings.to - settings.step;
+    if ((settings.to - settings.from) < settings.step) {
+      if (settings.from >= (settings.min + settings.step)) {
+        settings.from = settings.to - settings.step;
       } else {
-        validatedSettings.to = settings.from + settings.step;
+        settings.to = settings.from + settings.step;
       }
     }
 
-    return validatedSettings;
-  }
-
-  private static getThumbValue(settings: ISettings, thumbName: ThumbName): number {
-    return thumbName === 'from' ? settings.from : settings.to;
+    return settings;
   }
 }
 

@@ -2,12 +2,7 @@ import { createElement } from '../lib/common';
 import { AbstractRange } from '../RangeSlider/types';
 
 class Range extends AbstractRange {
-  element: HTMLElement;
-
-  constructor() {
-    super();
-    this.element = createElement('div', 'range-slider__range');
-  }
+  element: HTMLElement = createElement('div', 'range-slider__range');
 
   public setMarginFromBegin(margin: number, vertical: boolean): Range {
     if (vertical) {

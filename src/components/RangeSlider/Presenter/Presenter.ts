@@ -16,18 +16,45 @@ class Presenter {
   }
 
   private initRangeSlider(): Presenter {
-    this.view.createRangeSlider(this.model.getSettings());
+    this.view.getMarginObserver.addObserver((settings) => {
+      settings.currentPos = this.model.getMargin('from', settings);
+      this.view.settings.thumbMarginFrom = this.model.getPosWithStepInPercents(settings);
+      this.view.settings.from = this.model.getThumbValue(settings);
 
-    this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
+      settings.currentPos = this.model.getMargin('to', settings);
+      this.view.settings.thumbMarginTo = this.model.getPosWithStepInPercents(settings);
+      this.view.settings.to = this.model.getThumbValue(settings);
+    });
+
+    this.view.changeSettingsObserver.addObserver((settings) => {
       this.updateModelAndPanel(settings);
     });
 
     if (this.isProdAndConfPanel()) {
       this.view.configurationPanel?.changeConfPanelSettingsObserver
-        .addObserver((settings: ISettings) => {
+        .addObserver((settings) => {
           this.updateModelAndView(settings);
         });
     }
+
+    this.view.tooltipsCollisionObserver.addObserver((settings) => {
+      this.view.isTooltipsCollision = this.model.isTooltipsCollision(settings);
+    });
+
+    this.view.changeCurrentPosObserver.addObserver((settings) => {
+      this.model.updateSettings(settings);
+      this.view.settings.posWithStepInPercents = this.model.getPosWithStepInPercents(settings);
+      this.view.settings.curPosInPoints = this.model.getThumbValue(settings);
+    });
+
+    if (process.env['NODE_ENV'] !== 'production') {
+      this.view.configurationPanel?.getStepInPercentsObserver.addObserver((settings) => {
+        settings.stepInPrecents = this.model.getStepInPercents(settings);
+        this.view.settings = this.model.updateSettings(settings);
+      });
+    }
+
+    this.view.createRangeSlider(this.model.getSettings());
 
     return this;
   }

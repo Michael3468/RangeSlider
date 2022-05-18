@@ -4,7 +4,6 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 import View from './View';
 
 import {
@@ -70,9 +69,9 @@ abstract class ViewHint {
 
   abstract updateRangeSliderValues(): View;
 
-  abstract initRangeSliderMargins(): View;
+  abstract setRangeSliderMargins(): View;
 
-  abstract handleNotifyChangeSettingsObserver(): void;
+  abstract handleChangeSettingsObserverNotify(): void;
 }
 
 let settings: ISettings;
@@ -280,132 +279,12 @@ describe('public createRangeSlider', () => {
   });
 });
 
-describe('private isTooltipsCollision', () => {
-  test('check settings.vertical - true', () => {
-    settings.vertical = true;
-    const view = new View('range-slider', settings);
-
-    view['from'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 100, /* value to check */
-      left: 100,
-      bottom: 120,
-      right: 120,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    view['to'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 100, /* value to check */
-      left: 120,
-      bottom: 120,
-      right: 140,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
-      width: 40,
-      height: 20, /* value to check */
-      top: 100,
-      left: 120,
-      bottom: 120,
-      right: 160,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    let result = view['isTooltipsCollision']();
-    expect(result).toBeTruthy();
-
-    view['to'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 150, /* value 150 to return false */
-      left: 120,
-      bottom: 120,
-      right: 140,
-      x: 150,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    result = view['isTooltipsCollision']();
-    expect(result).toBeFalsy();
-  });
-
-  test('check settings.vertical - false', () => {
-    settings.vertical = false;
-    const view = new View('range-slider', settings);
-
-    view['from'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 100,
-      left: 100,
-      bottom: 120,
-      right: 120, /* value to check */
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    view['to'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 100,
-      left: 100,
-      bottom: 120,
-      right: 140, /* value to check */
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    view['to'].tooltip.element.getBoundingClientRect = jest.fn(() => ({
-      width: 40, /* value to check */
-      height: 20,
-      top: 100,
-      left: 150,
-      bottom: 120,
-      right: 160,
-      x: 100,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    let result = view['isTooltipsCollision']();
-    expect(result).toBeTruthy();
-
-    view['to'].element.getBoundingClientRect = jest.fn(() => ({
-      width: 20,
-      height: 20,
-      top: 100,
-      left: 130, /* value 170 to return false */
-      bottom: 120,
-      right: 170,
-      x: 150,
-      y: 100,
-      toJSON: () => {},
-    }));
-
-    result = view['isTooltipsCollision']();
-    expect(result).toBeFalsy();
-  });
-});
-
 describe('private setDistanceBetweenTooltips', () => {
   test('should move tooltips in different directions (vertical)', () => {
     settings.vertical = true;
-    const view = new View('range-slider', settings);
-    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
+    const view = new View('range-slider', settings);
+    view.isTooltipsCollision = true;
     const result = view['setDistanceBetweenTooltips']();
 
     const fromTop = result['from'].tooltip.element.style.top;
@@ -417,9 +296,9 @@ describe('private setDistanceBetweenTooltips', () => {
 
   test('should move tooltips close to each other (vertical)', () => {
     settings.vertical = true;
-    const view = new View('range-slider', settings);
-    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
+    const view = new View('range-slider', settings);
+    view.isTooltipsCollision = false;
     const result = view['setDistanceBetweenTooltips']();
 
     const fromTop = result['from'].tooltip.element.style.top;
@@ -431,9 +310,9 @@ describe('private setDistanceBetweenTooltips', () => {
 
   test('should move tooltips in different directions (horizontal)', () => {
     settings.vertical = false;
-    const view = new View('range-slider', settings);
-    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(true);
 
+    const view = new View('range-slider', settings);
+    view.isTooltipsCollision = true;
     const result = view['setDistanceBetweenTooltips']();
 
     const fromTop = result['from'].tooltip.element.style.left;
@@ -445,9 +324,9 @@ describe('private setDistanceBetweenTooltips', () => {
 
   test('should move tooltips close to each other (horizontal)', () => {
     settings.vertical = false;
-    const view = new View('range-slider', settings);
-    jest.spyOn(view as unknown as ViewHint, 'isTooltipsCollision').mockReturnValue(false);
 
+    const view = new View('range-slider', settings);
+    view.isTooltipsCollision = false;
     const result = view['setDistanceBetweenTooltips']();
 
     const fromTop = result['from'].tooltip.element.style.left;
@@ -523,7 +402,7 @@ describe('private currentCursorPosition', () => {
     );
 
     const view = new View('range-slider', settings);
-    view['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
+    view.settings['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
 
     view['from'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
@@ -542,7 +421,7 @@ describe('private currentCursorPosition', () => {
     );
 
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
+    view.settings['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
     view['to'].element.dispatchEvent(downEvent);
     const result = view['currentCursorPosition'](downEvent);
     expect(result).toBe(212);
@@ -591,23 +470,25 @@ describe('private getDifferenceBetween', () => {
     let currentPos = 100;
     let thumbMargin = 150; /* currentPos - thumbMargin = 50 */
 
-    let result = View['getDifferenceBetween'](currentPos, thumbMargin);
+    const view = new View('range-slider', settings);
+    let result = view['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
 
     currentPos = 200;
     thumbMargin = 150; /* currentPos - thumbMargin = -50 */
 
-    result = View['getDifferenceBetween'](currentPos, thumbMargin);
+    result = view['getDifferenceBetween'](currentPos, thumbMargin);
     expect(result).toBe(50);
   });
 });
 
-describe('private handleMoveClosestThumbPointerEvent', () => {
+describe('private handleMoveClosestThumb', () => {
   function testMoveClosestThumb(view: View, clickPosition: number) {
     /* 'should' return mouseEvent coords */
     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
 
-    const updateRangeSliderValuesSpy = jest.spyOn(view, 'updateRangeSliderValues');
+    const updateRangeSliderValuesSpy = jest
+      .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
     const setZIndexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZIndexTop');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
@@ -623,7 +504,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
     );
 
     view['slider'].element.dispatchEvent(downEvent);
-    const result = view['handleMoveClosestThumbPointerEvent'](downEvent);
+    const result = view['handleMoveClosestThumb'](downEvent);
 
     return {
       updateRangeSliderValuesSpy,
@@ -644,8 +525,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginFrom = \'clickPosition\'', () => {
     settings.range = true;
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 150;
-    view['thumbMarginTo'] = 250;
+    view.settings['thumbMarginFrom'] = 150;
+    view.settings['thumbMarginTo'] = 250;
 
     const clickPosition = 100;
 
@@ -656,8 +537,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result['thumbMarginFrom']).toBe(clickPosition);
-    expect(result['thumbMarginTo']).not.toBe(clickPosition);
+    expect(result.settings['thumbMarginFrom']).toBe(clickPosition);
+    expect(result.settings['thumbMarginTo']).not.toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
@@ -671,8 +552,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   test('should return thumbMarginTo = \'clickPosition\'', () => {
     settings.range = true;
     const view = new View('range-slider', settings);
-    view['thumbMarginFrom'] = 150;
-    view['thumbMarginTo'] = 250;
+    view.settings['thumbMarginFrom'] = 150;
+    view.settings['thumbMarginTo'] = 250;
 
     const clickPosition = 200;
 
@@ -683,8 +564,8 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
       result,
     } = testMoveClosestThumb(view, clickPosition);
 
-    expect(result['thumbMarginFrom']).not.toBe(clickPosition);
-    expect(result['thumbMarginTo']).toBe(clickPosition);
+    expect(result.settings['thumbMarginFrom']).not.toBe(clickPosition);
+    expect(result.settings['thumbMarginTo']).toBe(clickPosition);
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
@@ -696,7 +577,7 @@ describe('private handleMoveClosestThumbPointerEvent', () => {
   });
 });
 
-describe('private handleStopSlidingPointerEvent', () => {
+describe('private handleStopSliding', () => {
   test('event.target.onpointermove should return null', () => {
     const upEvent = new PointerEvent('pointerup', {
       pointerId: 1,
@@ -716,13 +597,13 @@ describe('private handleStopSlidingPointerEvent', () => {
     Element.prototype.releasePointerCapture = jest.fn().mockReturnValue(undefined);
     const view = new View('range-slider', settings);
     view['to'].element.dispatchEvent(upEvent);
-    const result = View['handleStopSlidingPointerEvent'](upEvent);
+    const result = View['handleStopSliding'](upEvent);
 
     expect(result.onpointermove).toBeNull();
   });
 });
 
-describe('private handleBeginSlidingPointerEvent', () => {
+describe('private handleBeginSliding', () => {
   function getMoveEvent() {
     const moveEvent = new PointerEvent('pointermove', {
       pointerId: 1,
@@ -780,7 +661,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
     } = getSpyMethods();
 
     view['from'].element.dispatchEvent(moveEvent);
-    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
+    const result = view['handleBeginSliding'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);
@@ -808,7 +689,7 @@ describe('private handleBeginSlidingPointerEvent', () => {
     } = getSpyMethods();
 
     view['to'].element.dispatchEvent(moveEvent);
-    const result = view['handleBeginSlidingPointerEvent'](moveEvent);
+    const result = view['handleBeginSliding'](moveEvent);
     expect(result.onpointermove).not.toBeNull();
 
     result.onpointermove!(moveEvent);
@@ -826,10 +707,10 @@ describe('private addListenersToThumbs', () => {
   function testAddListenerToThumbs() {
     const view = new View('range-slider', settings);
 
-    const initRangeSliderMarginsSpy = jest
-      .spyOn(view as unknown as ViewHint, 'initRangeSliderMargins');
+    const setRangeSliderMarginsSpy = jest
+      .spyOn(view as unknown as ViewHint, 'setRangeSliderMargins');
     const updateRangeSliderValuesSpy = jest
-      .spyOn(view, 'updateRangeSliderValues');
+      .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
     const createScaleMarksSpy = jest.spyOn(view['scale'], 'createScaleMarks');
@@ -837,7 +718,7 @@ describe('private addListenersToThumbs', () => {
     view['addListenersToThumbs']();
 
     window.dispatchEvent(new Event('resize'));
-    expect(initRangeSliderMarginsSpy).toBeCalled();
+    expect(setRangeSliderMarginsSpy).toBeCalled();
     expect(updateRangeSliderValuesSpy).toBeCalled();
     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
 
@@ -859,35 +740,35 @@ describe('private addListenersToThumbs', () => {
   });
 });
 
-describe('private setTopLeft', () => {
+describe('private setThumbsPosition', () => {
   it('should return style values in form "param" + "mu" (mu === "px" | "%")', () => {
     const view = new View('range-slider', settings);
     const mu: MeasureUnit = 'px';
-    const fTop = '1';
-    const fLeft = '2';
-    const tTop = '3';
-    const tLeft = '4';
-    const result = view['setTopLeft'](mu, fTop, fLeft, tTop, tLeft);
+    let fromTop = '1';
+    let fromLeft = '2';
+    let toTop = '3';
+    let toLeft = '4';
+    const result = view['setThumbsPosition'](mu, fromTop, fromLeft, toTop, toLeft);
 
-    const fromTop = result['from'].tooltip.element.style.top;
-    const fromLeft = result['from'].tooltip.element.style.left;
-    const toTop = result['to'].tooltip.element.style.top;
-    const toLeft = result['to'].tooltip.element.style.left;
+    fromTop = result['from'].tooltip.element.style.top;
+    fromLeft = result['from'].tooltip.element.style.left;
+    toTop = result['to'].tooltip.element.style.top;
+    toLeft = result['to'].tooltip.element.style.left;
 
-    expect(fromTop).toBe(fTop + mu);
-    expect(fromLeft).toBe(fLeft + mu);
-    expect(toTop).toBe(tTop + mu);
-    expect(toLeft).toBe(tLeft + mu);
+    expect(fromTop).toBe(fromTop + mu);
+    expect(fromLeft).toBe(fromLeft + mu);
+    expect(toTop).toBe(toTop + mu);
+    expect(toLeft).toBe(toLeft + mu);
   });
 });
 
-describe('private handleNotifyChangeSettingsObserver', () => {
+describe('private handleChangeSettingsObserverNotify', () => {
   it('should be called with this.settings', () => {
     const view = new View('range-slider', settings);
     const spyChangeSettingsObserverNotify = jest
       .spyOn(view.changeSettingsObserver, 'notifyObservers');
 
-    view['handleNotifyChangeSettingsObserver']();
+    view['handleChangeSettingsObserverNotify']();
 
     expect(spyChangeSettingsObserverNotify).toBeCalledWith(settings);
   });
