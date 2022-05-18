@@ -38,8 +38,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
 
     'no-param-reassign': [
-      'error', { props: true, ignorePropertyModificationsFor: ['$'] },
-      'error', { props: true, ignorePropertyModificationsFor: ['settings'] },
+      'error', { props: true, ignorePropertyModificationsFor: ['$', 'settings'] },
     ],
 
     // note you must disable the base rule as it can report incorrect errors

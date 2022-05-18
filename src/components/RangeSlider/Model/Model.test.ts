@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import Model from './Model';
 
 import { ISettings } from '../RangeSlider/types';
@@ -27,7 +31,6 @@ describe('private static validateSettings', () => {
     settings.step = 20;
 
     const result = Model['validateSettings'](settings);
-    /* settings.min = settings.max - settings.step; */
     expect(result.min).toBe(settings.max - settings.step);
   });
 
@@ -48,12 +51,13 @@ describe('private static validateSettings', () => {
     });
   });
 
-  describe('settings.to < settings.min', () => {
-    test('should to = min', () => {
+  describe('settings.to < settings.from', () => {
+    test('should to = from + step', () => {
       settings.to = 10;
-      settings.min = 20;
+      settings.from = 20;
+      settings.step = 1;
       const result = Model['validateSettings'](settings);
-      expect(result.to).toBe(settings.min);
+      expect(result.to).toBe(settings.from + settings.step);
     });
 
     test('should to != min', () => {
@@ -107,17 +111,117 @@ describe('public getSettings', () => {
 });
 
 describe('public updateSettings', () => {
-  test('should return the passed values', () => {
+  test('should return passed values', () => {
     const model = new Model(settings);
     expect(model.updateSettings(settings)).toStrictEqual(settings);
   });
 
-  test('should change the settings', () => {
+  test('should change settings', () => {
     settings.min = 100;
     const model = new Model(settings);
     const currentSettings = model.getSettings();
 
-    settings.min = 200;
-    expect(model.updateSettings(settings)).not.toStrictEqual(currentSettings);
+    const settingsUpd = { ...settings };
+    settingsUpd.min = 200;
+
+    expect(model.updateSettings(settingsUpd)).not.toStrictEqual(currentSettings);
+  });
+});
+
+describe('private isTooltipsCollision', () => {
+  test('check settings.vertical - true', () => {
+    settings.vertical = true;
+
+    settings.rectFrom = {
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120, /* value to check */
+      right: 120,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    };
+
+    settings.rectTo = {
+      width: 20,
+      height: 20,
+      top: 124, /* value to check */
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }
+
+    const model = new Model(settings);
+    let result = model.isTooltipsCollision(settings);
+    expect(result).toBeTruthy();
+
+    settings.rectTo = {
+      width: 20,
+      height: 20,
+      top: 126, /* value to check */
+      left: 120,
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }
+
+    const model2 = new Model(settings);
+    let result2 = model2.isTooltipsCollision(settings);
+    expect(result2).toBeFalsy();
+  });
+
+  test('check settings.vertical - false', () => {
+    settings.vertical = false;
+
+    settings.rectFrom = {
+      width: 20,
+      height: 20,
+      top: 100,
+      left: 100,
+      bottom: 120,
+      right: 120, /* value to check */
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    };
+
+    settings.rectTo = {
+      width: 20,
+      height: 20,
+      top: 124,
+      left: 124, /* value to check */
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }
+
+    const model = new Model(settings);
+    let result = model.isTooltipsCollision(settings);
+    expect(result).toBeTruthy();
+
+    settings.rectTo = {
+      width: 20,
+      height: 20,
+      top: 124,
+      left: 127, /* value to check */
+      bottom: 120,
+      right: 140,
+      x: 100,
+      y: 100,
+      toJSON: () => {},
+    }
+
+    const model2 = new Model(settings);
+    let result2 = model2.isTooltipsCollision(settings);
+    expect(result2).toBeFalsy();
   });
 });
