@@ -24,62 +24,44 @@ import {
 class View {
   private slider: AbstractSlider;
 
-  private from: AbstractThumb;
+  private from: AbstractThumb = new Thumb('from');
 
-  private to: AbstractThumb;
+  private to: AbstractThumb = new Thumb('to');
 
-  private range: AbstractRange;
+  private range: AbstractRange = new Range();
 
-  private scale: AbstractScale;
+  private scale: AbstractScale = new Scale();
 
   settings: ISettings;
 
-  private rangeMarginTo: number;
+  private rangeMarginTo = 0;
 
-  private rangeMarginFrom: number;
+  private rangeMarginFrom = 0;
 
   isTooltipsCollision = false;
 
   configurationPanel?: AbstractConfigurationPanel;
 
-  changeSettingsObserver: AbstractObserver;
+  changeSettingsObserver: AbstractObserver = new Observer();
 
-  tooltipsCollisionObserver: AbstractObserver;
+  tooltipsCollisionObserver: AbstractObserver = new Observer();
 
-  changeCurrentPosObserver: AbstractObserver;
+  changeCurrentPosObserver: AbstractObserver = new Observer();
 
-  updateThumbsValueObserver: AbstractObserver;
+  updateThumbsValueObserver: AbstractObserver = new Observer();
 
-  getMarginObserver: AbstractObserver;
+  getMarginObserver: AbstractObserver = new Observer();
 
   constructor(id: string, mergedSettings: ISettings) {
     this.settings = mergedSettings;
 
     this.slider = new Slider(id);
-    this.from = new Thumb('from');
-    this.to = new Thumb('to');
-    this.range = new Range();
-    this.scale = new Scale();
 
     if (process.env['NODE_ENV'] !== 'production') {
       this.configurationPanel = new ConfigurationPanel(this.settings);
     }
 
-    this.rangeMarginTo = 0;
-    this.rangeMarginFrom = 0;
-    this.settings.thumbMarginFrom = 0;
-    this.settings.thumbMarginTo = 0;
-
-    this.handleBeginSliding = this.handleBeginSliding.bind(this);
-    this.handleMoveClosestThumb = this.handleMoveClosestThumb.bind(this);
-    this.setMargins = this.setMargins.bind(this);
-    this.changeCurrentPos = this.changeCurrentPos.bind(this);
-
-    this.changeSettingsObserver = new Observer();
-    this.tooltipsCollisionObserver = new Observer();
-    this.changeCurrentPosObserver = new Observer();
-    this.updateThumbsValueObserver = new Observer();
-    this.getMarginObserver = new Observer();
+    this.setBindings();
   }
 
   public createRangeSlider(settings: ISettings): View {
@@ -159,6 +141,13 @@ class View {
     this.scale.element.parentNode?.removeChild(this.scale.element);
 
     return this;
+  }
+
+  private setBindings(): void {
+    this.handleBeginSliding = this.handleBeginSliding.bind(this);
+    this.handleMoveClosestThumb = this.handleMoveClosestThumb.bind(this);
+    this.setMargins = this.setMargins.bind(this);
+    this.changeCurrentPos = this.changeCurrentPos.bind(this);
   }
 
   private updateRangeSliderValues(): View {

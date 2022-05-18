@@ -16,63 +16,45 @@ import {
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
 
-  element: HTMLElement;
+  element: HTMLElement = ConfigurationPanel.createElement();
 
-  private cpMin: HTMLInputElement;
+  private cpMin: HTMLInputElement = this.assignElements('cpMin');
 
-  private cpMax: HTMLInputElement;
+  private cpMax: HTMLInputElement = this.assignElements('cpMax');
 
-  private cpStep: HTMLInputElement;
+  private cpStep: HTMLInputElement = this.assignElements('cpStep');
 
-  private cpFrom: HTMLInputElement;
+  private cpFrom: HTMLInputElement = this.assignElements('cpFrom');
 
-  private cpTo: HTMLInputElement;
+  private cpTo: HTMLInputElement = this.assignElements('cpTo');
 
-  private cpVertical: HTMLInputElement;
+  private cpVertical: HTMLInputElement = this.assignElements('cpVertical');
 
-  private cpRange: HTMLInputElement;
+  private cpRange: HTMLInputElement = this.assignElements('cpRange');
 
-  private cpScale: HTMLInputElement;
+  private cpScale: HTMLInputElement = this.assignElements('cpScale');
 
-  private cpBar: HTMLInputElement;
+  private cpBar: HTMLInputElement = this.assignElements('cpBar');
 
-  private cpTooltips: HTMLInputElement;
+  private cpTooltips: HTMLInputElement = this.assignElements('cpTooltips');
 
   private roundTo: number;
 
-  changeConfPanelSettingsObserver: AbstractObserver;
+  changeConfPanelSettingsObserver: AbstractObserver = new Observer();
 
-  getStepInPercentsObserver: AbstractObserver;
+  getStepInPercentsObserver: AbstractObserver = new Observer();
 
   constructor(settings: ISettings) {
     super();
     this.settings = settings;
-    this.element = ConfigurationPanel.createElement();
     this.roundTo = getDigitsAfterPoint(this.settings);
 
-    this.cpMin = this.assignElements('cpMin');
-    this.cpMin.step = String(getMinStep(settings).toFixed(this.roundTo));
-    this.cpMax = this.assignElements('cpMax');
-    this.cpMax.step = String(getMinStep(settings).toFixed(this.roundTo));
-    this.cpStep = this.assignElements('cpStep');
-    this.cpStep.min = String(getMinStep(settings).toFixed(this.roundTo));
-    this.cpStep.step = String(getMinStep(settings).toFixed(this.roundTo));
-    this.cpFrom = this.assignElements('cpFrom');
-    this.cpTo = this.assignElements('cpTo');
-
-    this.cpVertical = this.assignElements('cpVertical');
-    this.cpRange = this.assignElements('cpRange');
-    this.cpScale = this.assignElements('cpScale');
-    this.cpBar = this.assignElements('cpBar');
-    this.cpTooltips = this.assignElements('cpTooltips');
+    this.setValues();
 
     this.updateState(this.settings);
 
     this.addListeners();
     this.getThumbFromDisabledStatus();
-
-    this.changeConfPanelSettingsObserver = new Observer();
-    this.getStepInPercentsObserver = new Observer();
   }
 
   public updateState(settings: ISettings): ConfigurationPanel {
@@ -104,6 +86,15 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.cpScale.checked = settings.scale;
     this.cpBar.checked = settings.bar;
     this.cpTooltips.checked = settings.tooltips;
+
+    return this;
+  }
+
+  private setValues(): ConfigurationPanel {
+    this.cpMin.step = String(getMinStep(this.settings).toFixed(this.roundTo));
+    this.cpMax.step = String(getMinStep(this.settings).toFixed(this.roundTo));
+    this.cpStep.min = String(getMinStep(this.settings).toFixed(this.roundTo));
+    this.cpStep.step = String(getMinStep(this.settings).toFixed(this.roundTo));
 
     return this;
   }
