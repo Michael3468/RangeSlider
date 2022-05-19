@@ -38,13 +38,9 @@ class View {
 
   private rangeMarginFrom = 0;
 
-  isTooltipsCollision = false;
-
   configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver = new Observer();
-
-  tooltipsCollisionObserver: AbstractObserver = new Observer();
 
   changeCurrentPosObserver: AbstractObserver = new Observer();
 
@@ -387,13 +383,25 @@ class View {
     return onePercentInPx * valInPercents;
   }
 
+  private isTooltipsCollision(): boolean {
+    let fromEdge: number;
+    let toEdge: number;
+
+    const fromRect = this.from.element.getBoundingClientRect();
+    const toRect = this.to.element.getBoundingClientRect();
+
+    if (this.settings.vertical) {
+      fromEdge = fromRect.bottom;
+      toEdge = toRect.top;
+    } else {
+      fromEdge = fromRect.right;
+      toEdge = toRect.left;
+    }
+    return toEdge - fromEdge <= 5;
+  }
+
   private setDistanceBetweenTooltips(): View {
-    this.settings.rectFrom = this.from.element.getBoundingClientRect();
-    this.settings.rectTo = this.to.element.getBoundingClientRect();
-
-    this.tooltipsCollisionObserver.notifyObservers(this.settings);
-
-    if (this.isTooltipsCollision) {
+    if (this.isTooltipsCollision()) {
       if (this.settings.vertical) {
         this.setThumbsPosition('px', '-12', '15', '12', '15');
       } else {

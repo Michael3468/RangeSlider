@@ -14,8 +14,6 @@ interface ISettings {
   currentPos?: number;
   posWithStepInPercents?: number;
   curPosInPoints?: number;
-  rectFrom?: DOMRect;
-  rectTo?: DOMRect;
   thumbMarginFrom?: number;
   thumbMarginTo?: number;
   stepInPrecents?: number;

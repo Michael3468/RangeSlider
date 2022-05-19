@@ -7,8 +7,6 @@ class Model {
   constructor(settings: ISettings) {
     this.settings = Model.validateSettings(settings);
     this.settings.stepInPrecents = this.getStepInPercents(this.settings);
-
-    this.isTooltipsCollision = this.isTooltipsCollision.bind(this);
   }
 
   public getSettings(): ISettings {
@@ -18,22 +16,6 @@ class Model {
   public updateSettings(settings: ISettings): ISettings {
     this.settings = Model.validateSettings(settings);
     return this.settings;
-  }
-
-  public isTooltipsCollision(settings: ISettings): boolean {
-    let fromEdge: number;
-    let toEdge: number;
-
-    this.settings = { ...settings };
-
-    if (this.settings.vertical) {
-      fromEdge = <number> this.settings.rectFrom?.bottom;
-      toEdge = <number> this.settings.rectTo?.top;
-    } else {
-      fromEdge = <number> this.settings.rectFrom?.right;
-      toEdge = <number> this.settings.rectTo?.left;
-    }
-    return toEdge - fromEdge <= 5;
   }
 
   public getPosWithStepInPercents(settings: ISettings): number {
