@@ -25,8 +25,8 @@ class Thumb extends AbstractThumb {
     );
   }
 
-  public setMargin(margin: number, settings: ISettings): Thumb {
-    if (settings.vertical) {
+  public setMargin(margin: number, viewSettings: ISettings): Thumb {
+    if (viewSettings.vertical) {
       this.element.style.marginTop = `${margin}px`;
       this.element.style.marginLeft = '0px';
     } else {

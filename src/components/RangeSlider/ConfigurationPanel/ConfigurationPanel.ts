@@ -16,6 +16,8 @@ import {
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: ISettings;
 
+  private viewSettings: ISettings;
+
   element: HTMLElement = ConfigurationPanel.createElement();
 
   private cpMin: HTMLInputElement = this.assignElements('cpMin');
@@ -42,22 +44,25 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   changeConfPanelSettingsObserver: AbstractObserver = new Observer();
 
+  changeConfPanelViewSettingsObserver: AbstractObserver = new Observer();
+
   getStepInPercentsObserver: AbstractObserver = new Observer();
 
-  constructor(settings: ISettings) {
+  constructor(settings: ISettings, viewSettings: ISettings) {
     super();
     this.settings = settings;
+    this.viewSettings = viewSettings;
     this.roundTo = getDigitsAfterPoint(this.settings);
 
     this.setValues();
 
-    this.updateState(this.settings);
+    this.updateState(this.settings, this.viewSettings);
 
     this.addListeners();
     this.getThumbFromDisabledStatus();
   }
 
-  public updateState(settings: ISettings): ConfigurationPanel {
+  public updateState(settings: ISettings, viewSettings: ISettings): ConfigurationPanel {
     const from = settings.from.toFixed(this.roundTo);
     const to = settings.to.toFixed(this.roundTo);
 
@@ -81,11 +86,11 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.cpTo.step = String(settings.step.toFixed(this.roundTo));
     this.cpTo.max = String(settings.max.toFixed(this.roundTo));
 
-    this.cpVertical.checked = settings.vertical;
-    this.cpRange.checked = settings.range;
-    this.cpScale.checked = settings.scale;
-    this.cpBar.checked = settings.bar;
-    this.cpTooltips.checked = settings.tooltips;
+    this.cpVertical.checked = viewSettings.vertical;
+    this.cpRange.checked = viewSettings.range;
+    this.cpScale.checked = viewSettings.scale;
+    this.cpBar.checked = viewSettings.bar;
+    this.cpTooltips.checked = viewSettings.tooltips;
 
     return this;
   }
@@ -239,33 +244,33 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   // Configuration panel checkbox handlers
   private handleCheckboxCPVerticalChange = () => {
-    this.settings.vertical = <boolean> this.cpVertical?.checked;
-    this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.viewSettings.vertical = <boolean> this.cpVertical?.checked;
+    this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpVertical?.focus();
   };
 
   private handleCheckboxCPRangeChange = () => {
-    this.settings.range = <boolean> this.cpRange?.checked;
+    this.viewSettings.range = <boolean> this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
-    this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpRange?.focus();
   };
 
   private handleCheckboxCPScaleChange = () => {
-    this.settings.scale = <boolean> this.cpScale?.checked;
-    this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.viewSettings.scale = <boolean> this.cpScale?.checked;
+    this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpScale?.focus();
   };
 
   private handleCheckboxCPBarChange = () => {
-    this.settings.bar = <boolean> this.cpBar?.checked;
-    this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.viewSettings.bar = <boolean> this.cpBar?.checked;
+    this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpBar?.focus();
   };
 
   private handleCheckboxCPTipChange = () => {
-    this.settings.tooltips = <boolean> this.cpTooltips?.checked;
-    this.changeConfPanelSettingsObserver.notifyObservers(this.settings);
+    this.viewSettings.tooltips = <boolean> this.cpTooltips?.checked;
+    this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpTooltips?.focus();
   };
   // Configuration panel checkbox handlers end

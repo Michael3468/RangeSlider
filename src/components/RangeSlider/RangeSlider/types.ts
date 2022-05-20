@@ -4,6 +4,7 @@ interface ISettings {
   from: number;
   to: number;
   step: number;
+
   range: boolean;
   scale: boolean;
   vertical: boolean;
@@ -98,7 +99,7 @@ abstract class AbstractRange {
 abstract class AbstractScale {
   abstract element: HTMLElement;
 
-  public abstract createScaleMarks(settings: ISettings): AbstractScale;
+  public abstract createScaleMarks(settings: ISettings, viewSettings: ISettings): AbstractScale;
 }
 
 abstract class AbstractTooltip {
@@ -120,9 +121,11 @@ abstract class AbstractConfigurationPanel {
 
   abstract changeConfPanelSettingsObserver: AbstractObserver;
 
+  abstract changeConfPanelViewSettingsObserver: AbstractObserver;
+
   abstract getStepInPercentsObserver: AbstractObserver;
 
-  public abstract updateState(settings: ISettings): void;
+  public abstract updateState(settings: ISettings, viewSettings: ISettings): void;
 }
 
 export {

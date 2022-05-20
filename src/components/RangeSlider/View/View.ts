@@ -34,6 +34,8 @@ class View {
 
   settings: ISettings;
 
+  viewSettings: ISettings;
+
   private rangeMarginTo = 0;
 
   private rangeMarginFrom = 0;
@@ -48,13 +50,14 @@ class View {
 
   getMarginObserver: AbstractObserver = new Observer();
 
-  constructor(id: string, mergedSettings: ISettings) {
+  constructor(id: string, mergedSettings: ISettings, viewSettings: ISettings) {
     this.settings = mergedSettings;
+    this.viewSettings = viewSettings;
 
     this.slider = new Slider(id);
 
     if (process.env['NODE_ENV'] !== 'production') {
-      this.configurationPanel = new ConfigurationPanel(this.settings);
+      this.configurationPanel = new ConfigurationPanel(this.settings, this.viewSettings);
     }
 
     this.setBindings();
@@ -65,23 +68,23 @@ class View {
       return this;
     }
 
-    if (settings.range) {
+    if (this.viewSettings.range) {
       this.slider.element.appendChild(this.from.element);
     }
     this.slider.element.appendChild(this.to.element);
-    if (this.settings.bar) {
+    if (this.viewSettings.bar) {
       this.slider.element.appendChild(this.range.element);
     }
 
     const THUMB_VERTICAL = 'thumb-vertical';
     const RS_VERTICAL = 'range-slider_vertical';
     const RS_SCALE_VERTICAL = 'scale_vertical';
-    if (settings.vertical) {
+    if (this.viewSettings.vertical) {
       this.slider.element.classList.add(RS_VERTICAL);
       this.scale.element.classList.add(RS_SCALE_VERTICAL);
 
       // add class for vertical thumbs
-      if (settings.range) {
+      if (this.viewSettings.range) {
         this.from.element.classList.add(THUMB_VERTICAL);
       }
       this.to.element.classList.add(THUMB_VERTICAL);
@@ -89,13 +92,13 @@ class View {
       this.slider.element?.classList.remove(RS_VERTICAL);
       this.scale.element.classList.remove(RS_SCALE_VERTICAL);
 
-      if (settings.range) {
+      if (this.viewSettings.range) {
         this.from.element.classList.remove(THUMB_VERTICAL);
       }
       this.to.element.classList.remove(THUMB_VERTICAL);
     }
 
-    if (!settings.tooltips) {
+    if (!this.viewSettings.tooltips) {
       this.from.tooltip.element.classList.add('hidden');
       this.to.tooltip.element.classList.add('hidden');
     } else {
@@ -103,9 +106,9 @@ class View {
       this.to.tooltip.element.classList.remove('hidden');
     }
 
-    if (settings.scale) {
+    if (this.viewSettings.scale) {
       this.slider.element.appendChild(this.scale.element);
-      this.scale.createScaleMarks(settings);
+      this.scale.createScaleMarks(settings, this.viewSettings);
     }
 
     this.setRangeSliderMargins();
@@ -115,11 +118,11 @@ class View {
 
     if (
       process.env['NODE_ENV'] !== 'production'
-      && settings.confpanel
+      && this.viewSettings.confpanel
       && this.configurationPanel
     ) {
       this.slider.element.after(this.configurationPanel.element);
-      this.configurationPanel.updateState(this.settings);
+      this.configurationPanel.updateState(this.settings, this.viewSettings);
     }
 
     this.handleUpdateRangeSliderView();
@@ -147,14 +150,14 @@ class View {
   }
 
   private updateRangeSliderValues(): View {
-    const vertical = <boolean> this.settings?.vertical;
+    const vertical = <boolean> this.viewSettings.vertical;
 
     this.range.setMarginFromBegin(this.rangeMarginFrom, vertical);
-    this.from.setMargin(<number> this.settings.thumbMarginFrom, this.settings);
+    this.from.setMargin(<number> this.viewSettings.thumbMarginFrom, this.viewSettings);
     this.from.tooltip.setTooltipText(this.settings.from, this.settings);
 
     this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
-    this.to.setMargin(<number> this.settings.thumbMarginTo, this.settings);
+    this.to.setMargin(<number> this.viewSettings.thumbMarginTo, this.viewSettings);
     this.to.tooltip.setTooltipText(this.settings.to, this.settings);
 
     return this;
@@ -168,16 +171,16 @@ class View {
     this.setRangeSliderMargins();
     this.updateRangeSliderValues();
 
-    if (!this.settings.vertical) {
+    if (!this.viewSettings.vertical) {
       this.scale.element.replaceChildren();
-      this.scale.createScaleMarks(this.settings);
+      this.scale.createScaleMarks(this.settings, this.viewSettings);
     }
 
     this.setDistanceBetweenTooltips();
   };
 
   private addListenersToThumbs(): View {
-    if (this.settings.range) {
+    if (this.viewSettings.range) {
       this.from.element.addEventListener('pointerdown', this.handleBeginSliding);
       this.from.element.addEventListener('pointerup', View.handleStopSliding);
     }
@@ -234,11 +237,11 @@ class View {
     const currentPos = this.changeCurrentPos(e);
 
     // get closest thumb from cursor
-    const fromPos = <number> this.settings.thumbMarginFrom;
-    const toPos = <number> this.settings.thumbMarginTo;
+    const fromPos = <number> this.viewSettings.thumbMarginFrom;
+    const toPos = <number> this.viewSettings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
-    if (this.settings.range) {
+    if (this.viewSettings.range) {
       const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
       const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
@@ -249,7 +252,7 @@ class View {
     this.updateMargins(this.settings, thumbName);
     this.updateRangeSliderValues();
 
-    if (this.settings.range) {
+    if (this.viewSettings.range) {
       this.setZIndexTop(thumbName);
     }
 
@@ -279,7 +282,7 @@ class View {
   private convertPosInPercents(currentPos: number): number {
     const sliderRect = this.slider.element.getBoundingClientRect();
 
-    const sliderLengthInPx = this.settings.vertical
+    const sliderLengthInPx = this.viewSettings.vertical
       ? sliderRect.height
       : sliderRect.width;
 
@@ -291,20 +294,20 @@ class View {
   private getPosOnScale(currentPos: number): number {
     const sliderRect = this.slider.element.getBoundingClientRect();
 
-    return this.settings.vertical
+    return this.viewSettings.vertical
       ? currentPos - sliderRect.top
       : currentPos - sliderRect.left;
   }
 
   private currentCursorPosition(event: PointerEvent): number {
-    let currentPos: number = this.settings.vertical
+    let currentPos: number = this.viewSettings.vertical
       ? event.clientY
       : event.clientX;
 
-    let { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
+    let { min, max } = getMinMaxElementEdgesInPx(this.viewSettings, this.slider);
 
     // set Edge values to thumbs for twoRunners slider
-    if (this.settings.range) {
+    if (this.viewSettings.range) {
       const target = <Element> event.target;
 
       let stepInPx = 0;
@@ -313,9 +316,9 @@ class View {
       }
 
       if (target.classList.contains('thumb-from')) {
-        max = <number> this.settings.thumbMarginTo - stepInPx + min;
+        max = <number> this.viewSettings.thumbMarginTo - stepInPx + min;
       } else if (target.classList.contains('thumb-to')) {
-        min = <number> this.settings.thumbMarginFrom + stepInPx + min;
+        min = <number> this.viewSettings.thumbMarginFrom + stepInPx + min;
       }
     }
 
@@ -330,7 +333,7 @@ class View {
 
   private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
     if (thumbName === 'from') {
-      this.settings.thumbMarginFrom = currentPosWithStep;
+      this.viewSettings.thumbMarginFrom = currentPosWithStep;
       this.rangeMarginFrom = currentPosWithStep;
 
       if (this.settings.curPosInPoints !== undefined) {
@@ -338,10 +341,10 @@ class View {
       }
       this.settings.curPosInPoints = undefined;
     } else if (thumbName === 'to') {
-      const { min, max } = getMinMaxElementEdgesInPx(this.settings, this.slider);
+      const { min, max } = getMinMaxElementEdgesInPx(this.viewSettings, this.slider);
       const sliderLengthInPx: number = max - min;
 
-      this.settings.thumbMarginTo = currentPosWithStep;
+      this.viewSettings.thumbMarginTo = currentPosWithStep;
       this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
 
       if (this.settings.curPosInPoints !== undefined) {
@@ -354,9 +357,9 @@ class View {
   private setRangeSliderMargins(): View {
     this.getMarginObserver.notifyObservers(this.settings);
 
-    if (this.settings.range) {
+    if (this.viewSettings.range) {
       const marginFrom = this.convertPercentsToPixels(
-        <number> this.settings.thumbMarginFrom,
+        <number> this.viewSettings.thumbMarginFrom,
       );
       this.setMargins('from', marginFrom);
     } else {
@@ -364,7 +367,7 @@ class View {
     }
 
     const marginTo = this.convertPercentsToPixels(
-      <number> this.settings.thumbMarginTo,
+      <number> this.viewSettings.thumbMarginTo,
     );
     this.setMargins('to', marginTo);
 
@@ -374,7 +377,7 @@ class View {
   private convertPercentsToPixels(valInPercents: number): number {
     const sliderRect = this.slider.element.getBoundingClientRect();
 
-    const sliderLengthInPx = this.settings.vertical
+    const sliderLengthInPx = this.viewSettings.vertical
       ? sliderRect.height
       : sliderRect.width;
 
@@ -390,7 +393,7 @@ class View {
     const fromRect = this.from.element.getBoundingClientRect();
     const toRect = this.to.element.getBoundingClientRect();
 
-    if (this.settings.vertical) {
+    if (this.viewSettings.vertical) {
       fromEdge = fromRect.bottom;
       toEdge = toRect.top;
     } else {
@@ -402,12 +405,12 @@ class View {
 
   private setDistanceBetweenTooltips(): View {
     if (this.isTooltipsCollision()) {
-      if (this.settings.vertical) {
+      if (this.viewSettings.vertical) {
         this.setThumbsPosition('px', '-12', '15', '12', '15');
       } else {
         this.setThumbsPosition('%', '-130', '-105', '-130', '5');
       }
-    } else if (this.settings.vertical) {
+    } else if (this.viewSettings.vertical) {
       this.setThumbsPosition('px', '0', '15', '0', '15');
     } else {
       this.setThumbsPosition('%', '-130', '-50', '-130', '-50');

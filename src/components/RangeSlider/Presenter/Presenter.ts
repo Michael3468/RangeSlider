@@ -18,11 +18,11 @@ class Presenter {
   private initRangeSlider(): Presenter {
     this.view.getMarginObserver.addObserver((settings) => {
       settings.currentPos = this.model.getMargin('from', settings);
-      this.view.settings.thumbMarginFrom = this.model.getPosWithStepInPercents(settings);
+      this.view.viewSettings.thumbMarginFrom = this.model.getPosWithStepInPercents(settings);
       this.view.settings.from = this.model.getThumbValue(settings);
 
       settings.currentPos = this.model.getMargin('to', settings);
-      this.view.settings.thumbMarginTo = this.model.getPosWithStepInPercents(settings);
+      this.view.viewSettings.thumbMarginTo = this.model.getPosWithStepInPercents(settings);
       this.view.settings.to = this.model.getThumbValue(settings);
     });
 
@@ -34,6 +34,13 @@ class Presenter {
       this.view.configurationPanel?.changeConfPanelSettingsObserver
         .addObserver((settings) => {
           this.updateModelAndView(settings);
+        });
+
+      this.view.configurationPanel?.changeConfPanelViewSettingsObserver
+        .addObserver((settings) => {
+          this.view.destroyView();
+          this.view.viewSettings = settings;
+          this.view.createRangeSlider(this.model.getSettings());
         });
     }
 
@@ -63,7 +70,7 @@ class Presenter {
     this.model.updateSettings(settings);
 
     if (this.isProdAndConfPanel()) {
-      this.view.configurationPanel?.updateState(settings);
+      this.view.configurationPanel?.updateState(settings, this.view.viewSettings);
     }
   }
 
