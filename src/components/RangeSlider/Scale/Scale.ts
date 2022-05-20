@@ -6,22 +6,18 @@ import {
   getMinStep,
 } from '../lib/common';
 
-import { AbstractScale, ISettings } from '../RangeSlider/types';
+import { AbstractScale, IModelSettings, ISettings } from '../RangeSlider/types';
 
-const defaultInitSettings: ISettings = {
+const defaultInitSettings: IModelSettings = {
   min: 0,
   max: 100,
   from: 30,
   to: 70,
   step: 1,
-
-  // TODO delete or move to defaultViewSettings
-  // range: true,
-  // scale: false,
-  // tooltips: true,
-  // vertical: false,
-  // confpanel: false,
-  // bar: true,
+  stepInPrecents: 0,
+  currentPos: 0,
+  curPosInPoints: 0,
+  posWithStepInPercents: 0,
 };
 
 const defaultViewSettings: ISettings = {
@@ -36,11 +32,11 @@ const defaultViewSettings: ISettings = {
 class Scale extends AbstractScale {
   element: HTMLElement = createElement('div', 'scale');
 
-  private settings: ISettings = defaultInitSettings;
+  private settings: IModelSettings = defaultInitSettings;
 
   private viewSettings: ISettings = defaultViewSettings;
 
-  public createScaleMarks(settings: ISettings, viewSettings: ISettings): Scale {
+  public createScaleMarks(settings: IModelSettings, viewSettings: ISettings): Scale {
     this.settings = settings;
     this.viewSettings = viewSettings;
 

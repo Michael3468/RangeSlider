@@ -20,6 +20,18 @@ interface ISettings {
   stepInPrecents?: number;
 }
 
+interface IModelSettings {
+  min: number;
+  max: number;
+  from: number;
+  to: number;
+  step: number;
+  stepInPrecents: number;
+  currentPos: number;
+  curPosInPoints: number | undefined;
+  posWithStepInPercents: number;
+}
+
 interface IUserSettings {
   min?: number;
   max?: number;
@@ -69,7 +81,7 @@ interface IMethods {
 }
 
 interface IUpdateFn {
-  (settings: ISettings): void;
+  (settings: ISettings | IModelSettings): void;
 }
 
 abstract class AbstractObserver {
@@ -79,7 +91,7 @@ abstract class AbstractObserver {
 
   public abstract removeObserver(fn: IUpdateFn): void;
 
-  public abstract notifyObservers(settings: ISettings): void;
+  public abstract notifyObservers(settings: ISettings | IModelSettings): void;
 }
 
 abstract class AbstractSlider {
@@ -99,13 +111,16 @@ abstract class AbstractRange {
 abstract class AbstractScale {
   abstract element: HTMLElement;
 
-  public abstract createScaleMarks(settings: ISettings, viewSettings: ISettings): AbstractScale;
+  public abstract createScaleMarks(
+    settings: IModelSettings,
+    viewSettings: ISettings
+  ): AbstractScale;
 }
 
 abstract class AbstractTooltip {
   abstract element: HTMLElement;
 
-  public abstract setTooltipText(value: number, settings: ISettings): AbstractTooltip;
+  public abstract setTooltipText(value: number, settings: IModelSettings): AbstractTooltip;
 }
 
 abstract class AbstractThumb {
@@ -125,11 +140,12 @@ abstract class AbstractConfigurationPanel {
 
   abstract getStepInPercentsObserver: AbstractObserver;
 
-  public abstract updateState(settings: ISettings, viewSettings: ISettings): void;
+  public abstract updateState(settings: IModelSettings, viewSettings: ISettings): void;
 }
 
 export {
   ISettings,
+  IModelSettings,
   IUserSettings,
   ISliderElement,
   IMinMax,

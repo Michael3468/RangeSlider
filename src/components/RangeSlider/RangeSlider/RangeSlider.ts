@@ -7,6 +7,7 @@ import View from '../View/View';
 import {
   IMethod,
   IMethods,
+  IModelSettings,
   ISettings,
   IUserSettings,
 } from './types';
@@ -17,16 +18,19 @@ import { updateObjectValues } from '../lib/common';
 window.$ = require('jquery');
 window.jQuery = require('jquery');
 
-let modelDefaultSettings: ISettings = {
+const modelDefaultSettings: IModelSettings = {
   min: 0,
   max: 100,
   from: 30,
   to: 70,
   step: 1,
   stepInPrecents: 1,
+  currentPos: 0,
+  posWithStepInPercents: 0,
+  curPosInPoints: 0,
 };
 
-let viewDefaultSettings: ISettings = {
+const viewDefaultSettings: ISettings = {
   range: true,
   scale: false,
   tooltips: true,
@@ -47,7 +51,7 @@ const RangeSliderInstances = new Map();
     init: function init(userSettings: IUserSettings): JQuery<HTMLElement> {
       methods.destroy.call(this);
 
-      const modelSettings = updateObjectValues(modelDefaultSettings, userSettings);
+      const modelSettings = <IModelSettings> updateObjectValues(modelDefaultSettings, userSettings);
       model = new Model(modelSettings);
 
       const rangeSlider = this as unknown as JQuery;

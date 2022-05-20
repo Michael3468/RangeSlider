@@ -16,6 +16,7 @@ import {
   AbstractScale,
   AbstractSlider,
   AbstractThumb,
+  IModelSettings,
   ISettings,
   MeasureUnit,
   ThumbName,
@@ -32,7 +33,7 @@ class View {
 
   private scale: AbstractScale = new Scale();
 
-  settings: ISettings;
+  settings: IModelSettings;
 
   viewSettings: ISettings;
 
@@ -50,7 +51,7 @@ class View {
 
   getMarginObserver: AbstractObserver = new Observer();
 
-  constructor(id: string, mergedSettings: ISettings, viewSettings: ISettings) {
+  constructor(id: string, mergedSettings: IModelSettings, viewSettings: ISettings) {
     this.settings = mergedSettings;
     this.viewSettings = viewSettings;
 
@@ -63,7 +64,7 @@ class View {
     this.setBindings();
   }
 
-  public createRangeSlider(settings: ISettings): View {
+  public createRangeSlider(settings: IModelSettings): View {
     if (!this.slider.element) {
       return this;
     }
@@ -261,7 +262,7 @@ class View {
     return this;
   }
 
-  private updateMargins(settings: ISettings, thumbName: ThumbName): View {
+  private updateMargins(settings: IModelSettings, thumbName: ThumbName): View {
     if (settings.posWithStepInPercents !== undefined) {
       const currentPosWithStep = this.convertPercentsToPixels(
         settings.posWithStepInPercents,

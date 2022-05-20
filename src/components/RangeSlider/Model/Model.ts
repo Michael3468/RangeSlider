@@ -1,24 +1,24 @@
 import { getDigitsAfterPoint, getMinStep } from '../lib/common';
-import { ISettings, ThumbName } from '../RangeSlider/types';
+import { IModelSettings, ThumbName } from '../RangeSlider/types';
 
 class Model {
-  private settings: ISettings;
+  private settings: IModelSettings;
 
-  constructor(settings: ISettings) {
+  constructor(settings: IModelSettings) {
     this.settings = Model.validateSettings(settings);
     this.settings.stepInPrecents = this.getStepInPercents(this.settings);
   }
 
-  public getSettings(): ISettings {
+  public getSettings(): IModelSettings {
     return this.settings;
   }
 
-  public updateSettings(settings: ISettings): ISettings {
+  public updateSettings(settings: IModelSettings): IModelSettings {
     this.settings = Model.validateSettings(settings);
     return this.settings;
   }
 
-  public getPosWithStepInPercents(settings: ISettings): number {
+  public getPosWithStepInPercents(settings: IModelSettings): number {
     const curPos = settings.currentPos;
     const stepInPercents = this.getStepInPercents(settings);
     let posWithStep = 0;
@@ -39,7 +39,7 @@ class Model {
     return posWithStep;
   }
 
-  public getThumbValue(settings: ISettings): number {
+  public getThumbValue(settings: IModelSettings): number {
     const curPosInPercents = <number> this.settings.posWithStepInPercents;
     const onePointInPercents = this.getOnePointInPersents(settings);
 
@@ -53,7 +53,7 @@ class Model {
     return thumbValue;
   }
 
-  public getMargin(thumbName: ThumbName, settings: ISettings): number {
+  public getMargin(thumbName: ThumbName, settings: IModelSettings): number {
     const onePointInPercents = this.getOnePointInPersents(settings);
 
     const value = thumbName === 'from'
@@ -73,7 +73,7 @@ class Model {
     return rounderMargin;
   }
 
-  public getStepInPercents(settings: ISettings): number {
+  public getStepInPercents(settings: IModelSettings): number {
     const onePointInPercents = this.getOnePointInPersents(settings);
 
     return settings.step >= 1
@@ -81,7 +81,7 @@ class Model {
       : onePointInPercents * (settings.step / getMinStep(settings));
   }
 
-  private getOnePointInPersents(settings: ISettings): number {
+  private getOnePointInPersents(settings: IModelSettings): number {
     const points = settings.max - settings.min;
 
     return settings.step >= 1
@@ -89,7 +89,7 @@ class Model {
       : 100 / (points / getMinStep(settings));
   }
 
-  private static validateSettings(settings: ISettings): ISettings {
+  private static validateSettings(settings: IModelSettings): IModelSettings {
     if (settings.step <= 0) {
       settings.step = 1;
     }

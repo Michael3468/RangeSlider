@@ -1,5 +1,5 @@
 import {
-  ISettings, ISliderElement, INodeName, IMinMax,
+  ISettings, ISliderElement, INodeName, IMinMax, IModelSettings, IUserSettings,
 } from '../RangeSlider/types';
 
 function getMinMaxElementEdgesInPx(viewSettings: ISettings, el: ISliderElement): IMinMax {
@@ -37,7 +37,7 @@ function createElement(
   return element;
 }
 
-function getOnePointInPx(settings: ISettings, viewSettings: ISettings, element: HTMLElement) {
+function getOnePointInPx(settings: IModelSettings, viewSettings: ISettings, element: HTMLElement) {
   const elementLengthInPx: number = getElementLengthInPx(viewSettings, element);
 
   let elementLengthInPoints: number;
@@ -50,13 +50,13 @@ function getOnePointInPx(settings: ISettings, viewSettings: ISettings, element: 
   return Number((elementLengthInPx / elementLengthInPoints).toFixed(3));
 }
 
-function getDigitsAfterPoint(settings: ISettings): number {
+function getDigitsAfterPoint(settings: IModelSettings): number {
   return settings.step < 1
     ? (settings.step).toString().length - 2
     : 0;
 }
 
-function getMinStep(settings: ISettings):number {
+function getMinStep(settings: IModelSettings):number {
   const num = settings.step;
 
   return num < 1
@@ -65,7 +65,10 @@ function getMinStep(settings: ISettings):number {
 }
 
 // TODO
-function updateObjectValues(defaultSettings: ISettings, userSettings: IUserSettings) {
+function updateObjectValues(
+  defaultSettings: ISettings | IModelSettings,
+  userSettings: IUserSettings,
+): ISettings | IModelSettings {
   const c = {};
   let key: any;
 
