@@ -245,32 +245,32 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   // Configuration panel checkbox handlers
   private handleCheckboxCPVerticalChange = () => {
-    this.viewSettings.vertical = <boolean> this.cpVertical?.checked;
+    this.viewSettings.vertical = this.cpVertical?.checked;
     this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpVertical?.focus();
   };
 
   private handleCheckboxCPRangeChange = () => {
-    this.viewSettings.range = <boolean> this.cpRange?.checked;
+    this.viewSettings.range = this.cpRange?.checked;
     this.getThumbFromDisabledStatus();
     this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpRange?.focus();
   };
 
   private handleCheckboxCPScaleChange = () => {
-    this.viewSettings.scale = <boolean> this.cpScale?.checked;
+    this.viewSettings.scale = this.cpScale?.checked;
     this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpScale?.focus();
   };
 
   private handleCheckboxCPBarChange = () => {
-    this.viewSettings.bar = <boolean> this.cpBar?.checked;
+    this.viewSettings.bar = this.cpBar?.checked;
     this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpBar?.focus();
   };
 
   private handleCheckboxCPTipChange = () => {
-    this.viewSettings.tooltips = <boolean> this.cpTooltips?.checked;
+    this.viewSettings.tooltips = this.cpTooltips?.checked;
     this.changeConfPanelViewSettingsObserver.notifyObservers(this.viewSettings);
     this.cpTooltips?.focus();
   };
