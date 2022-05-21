@@ -28,7 +28,7 @@ const modelDefaultSettings: IModelSettings = {
   stepInPrecents: 1,
   currentPos: 0,
   posWithStepInPercents: 0,
-  curPosInPoints: 0,
+  curPosInPoints: undefined,
 };
 
 const viewDefaultSettings: IViewSettings = {
