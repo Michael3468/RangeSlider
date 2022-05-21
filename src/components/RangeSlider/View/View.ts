@@ -188,13 +188,19 @@ class View {
     this.slider.element.addEventListener('pointerup', this.handleChangeSettingsObserverNotify);
     window.addEventListener('DOMContentLoaded', this.handleUpdateRangeSliderView);
     window.addEventListener('resize', this.handleUpdateRangeSliderView);
+
     return this;
   }
 
-  private changeCurrentPos(e: PointerEvent): number {
-    const currentPos = this.getPosOnScale(this.currentCursorPosition(e));
-    this.settings.currentPos = this.convertPosInPercents(currentPos);
+  private changeCurrentPos(e: PointerEvent, value?: number): number {
+    let currentPos: number;
+    if (value || value === 0) {
+      currentPos = value;
+    } else {
+      currentPos = this.getPosOnScale(this.currentCursorPosition(e));
+    }
 
+    this.settings.currentPos = this.convertPosInPercents(currentPos);
     this.changeCurrentPosObserver.notifyObservers(this.settings);
 
     return currentPos;
@@ -231,7 +237,18 @@ class View {
   }
 
   private handleMoveClosestThumb(e: PointerEvent): View {
-    const currentPos = this.changeCurrentPos(e);
+    const element = <HTMLElement> e.target;
+
+    let currentPos: number;
+    if (element.classList.contains('scale__mark-value')) {
+      const currentPosValue = this.viewSettings.vertical
+        ? Number(element.style.marginTop.slice(0, -2))
+        : Number(element.style.marginLeft.slice(0, -2));
+
+      currentPos = this.changeCurrentPos(e, currentPosValue);
+    } else {
+      currentPos = this.changeCurrentPos(e);
+    }
 
     // get closest thumb from cursor
     const fromPos = <number> this.viewSettings.thumbMarginFrom;
