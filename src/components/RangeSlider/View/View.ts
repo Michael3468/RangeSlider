@@ -128,13 +128,8 @@ class View {
   }
 
   public destroyView(): View {
-    this.from.element.parentNode?.removeChild(this.from.element);
-    this.to.element.parentNode?.removeChild(this.to.element);
-    this.range.element.parentNode?.removeChild(this.range.element);
-    while (this.scale.element.firstChild) {
-      this.scale.element.removeChild(this.scale.element.firstChild);
-    }
-    this.scale.element.parentNode?.removeChild(this.scale.element);
+    this.scale.element.replaceChildren();
+    this.slider.element.replaceChildren();
 
     return this;
   }
