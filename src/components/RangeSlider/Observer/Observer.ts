@@ -1,4 +1,9 @@
-import { AbstractObserver, ISettings, IUpdateFn } from '../RangeSlider/types';
+import {
+  AbstractObserver,
+  IModelSettings,
+  IUpdateFn,
+  IViewSettings,
+} from '../RangeSlider/types';
 
 class Observer extends AbstractObserver {
   protected observers: IUpdateFn[];
@@ -32,7 +37,7 @@ class Observer extends AbstractObserver {
     }
   }
 
-  public notifyObservers(settings: ISettings): void {
+  public notifyObservers(settings: IViewSettings | IModelSettings): void {
     this.observers.forEach((observer) => {
       observer(settings);
     });
