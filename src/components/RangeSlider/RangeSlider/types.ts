@@ -42,6 +42,8 @@ interface IViewSettings {
 
   thumbMarginFrom: number;
   thumbMarginTo: number;
+  rangeMarginFrom: number;
+  rangeMarginTo: number;
 }
 
 interface IUserSettings {

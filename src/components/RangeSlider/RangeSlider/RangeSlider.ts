@@ -41,6 +41,9 @@ const viewDefaultSettings: IViewSettings = {
 
   thumbMarginFrom: 0,
   thumbMarginTo: 0,
+  rangeMarginFrom: 0,
+  rangeMarginTo: 0,
+
 };
 
 const RangeSliderInstances = new Map();

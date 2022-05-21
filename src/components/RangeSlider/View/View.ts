@@ -37,10 +37,6 @@ class View {
 
   viewSettings: IViewSettings;
 
-  private rangeMarginTo = 0;
-
-  private rangeMarginFrom = 0;
-
   configurationPanel?: AbstractConfigurationPanel;
 
   changeSettingsObserver: AbstractObserver = new Observer();
@@ -153,11 +149,11 @@ class View {
   private updateRangeSliderValues(): View {
     const vertical = <boolean> this.viewSettings.vertical;
 
-    this.range.setMarginFromBegin(this.rangeMarginFrom, vertical);
+    this.range.setMarginFromBegin(this.viewSettings.rangeMarginFrom, vertical);
     this.from.setMargin(<number> this.viewSettings.thumbMarginFrom, this.viewSettings);
     this.from.tooltip.setTooltipText(this.settings.from, this.settings);
 
-    this.range.setMarginFromEnd(this.rangeMarginTo, vertical);
+    this.range.setMarginFromEnd(this.viewSettings.rangeMarginTo, vertical);
     this.to.setMargin(<number> this.viewSettings.thumbMarginTo, this.viewSettings);
     this.to.tooltip.setTooltipText(this.settings.to, this.settings);
 
@@ -335,7 +331,7 @@ class View {
   private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
     if (thumbName === 'from') {
       this.viewSettings.thumbMarginFrom = currentPosWithStep;
-      this.rangeMarginFrom = currentPosWithStep;
+      this.viewSettings.rangeMarginFrom = currentPosWithStep;
 
       if (this.settings.curPosInPoints !== undefined) {
         this.settings.from = this.settings.curPosInPoints;
@@ -346,7 +342,7 @@ class View {
       const sliderLengthInPx: number = max - min;
 
       this.viewSettings.thumbMarginTo = currentPosWithStep;
-      this.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
+      this.viewSettings.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
 
       if (this.settings.curPosInPoints !== undefined) {
         this.settings.to = this.settings.curPosInPoints;
