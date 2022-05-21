@@ -40,7 +40,7 @@ class Model {
   }
 
   public getThumbValue(settings: IModelSettings): number {
-    const curPosInPercents = <number> this.settings.posWithStepInPercents;
+    const curPosInPercents = this.settings.posWithStepInPercents;
     const onePointInPercents = this.getOnePointInPersents(settings);
 
     const curPosInPoints = Number((curPosInPercents / onePointInPercents)

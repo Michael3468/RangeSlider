@@ -31,6 +31,8 @@ const defaultViewSettings: IViewSettings = {
 
   thumbMarginFrom: 0,
   thumbMarginTo: 0,
+  rangeMarginFrom: 0,
+  rangeMarginTo: 0,
 };
 
 class Scale extends AbstractScale {

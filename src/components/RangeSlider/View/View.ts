@@ -142,14 +142,14 @@ class View {
   }
 
   private updateRangeSliderValues(): View {
-    const vertical = <boolean> this.viewSettings.vertical;
+    const { vertical } = this.viewSettings;
 
     this.range.setMarginFromBegin(this.viewSettings.rangeMarginFrom, vertical);
-    this.from.setMargin(<number> this.viewSettings.thumbMarginFrom, this.viewSettings);
+    this.from.setMargin(this.viewSettings.thumbMarginFrom, this.viewSettings);
     this.from.tooltip.setTooltipText(this.settings.from, this.settings);
 
     this.range.setMarginFromEnd(this.viewSettings.rangeMarginTo, vertical);
-    this.to.setMargin(<number> this.viewSettings.thumbMarginTo, this.viewSettings);
+    this.to.setMargin(this.viewSettings.thumbMarginTo, this.viewSettings);
     this.to.tooltip.setTooltipText(this.settings.to, this.settings);
 
     return this;
@@ -246,8 +246,8 @@ class View {
     }
 
     // get closest thumb from cursor
-    const fromPos = <number> this.viewSettings.thumbMarginFrom;
-    const toPos = <number> this.viewSettings.thumbMarginTo;
+    const fromPos = this.viewSettings.thumbMarginFrom;
+    const toPos = this.viewSettings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
     if (this.viewSettings.range) {
@@ -317,7 +317,7 @@ class View {
 
     // set Edge values to thumbs for twoRunners slider
     if (this.viewSettings.range) {
-      const target = <Element> event.target;
+      const target = <HTMLElement> event.target;
 
       let stepInPx = 0;
       if (this.settings.stepInPrecents) {
@@ -325,9 +325,9 @@ class View {
       }
 
       if (target.classList.contains('thumb-from')) {
-        max = <number> this.viewSettings.thumbMarginTo - stepInPx + min;
+        max = this.viewSettings.thumbMarginTo - stepInPx + min;
       } else if (target.classList.contains('thumb-to')) {
-        min = <number> this.viewSettings.thumbMarginFrom + stepInPx + min;
+        min = this.viewSettings.thumbMarginFrom + stepInPx + min;
       }
     }
 
@@ -368,7 +368,7 @@ class View {
 
     if (this.viewSettings.range) {
       const marginFrom = this.convertPercentsToPixels(
-        <number> this.viewSettings.thumbMarginFrom,
+        this.viewSettings.thumbMarginFrom,
       );
       this.setMargins('from', marginFrom);
     } else {
@@ -376,7 +376,7 @@ class View {
     }
 
     const marginTo = this.convertPercentsToPixels(
-      <number> this.viewSettings.thumbMarginTo,
+      this.viewSettings.thumbMarginTo,
     );
     this.setMargins('to', marginTo);
 
