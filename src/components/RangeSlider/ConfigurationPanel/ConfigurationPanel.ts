@@ -11,13 +11,13 @@ import {
   AbstractObserver,
   CPInputElement,
   IModelSettings,
-  ISettings,
+  IViewSettings,
 } from '../RangeSlider/types';
 
 class ConfigurationPanel extends AbstractConfigurationPanel {
   private settings: IModelSettings;
 
-  private viewSettings: ISettings;
+  private viewSettings: IViewSettings;
 
   element: HTMLElement = ConfigurationPanel.createElement();
 
@@ -49,7 +49,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
 
   getStepInPercentsObserver: AbstractObserver = new Observer();
 
-  constructor(settings: IModelSettings, viewSettings: ISettings) {
+  constructor(settings: IModelSettings, viewSettings: IViewSettings) {
     super();
     this.settings = settings;
     this.viewSettings = viewSettings;
@@ -63,7 +63,7 @@ class ConfigurationPanel extends AbstractConfigurationPanel {
     this.getThumbFromDisabledStatus();
   }
 
-  public updateState(settings: IModelSettings, viewSettings: ISettings): ConfigurationPanel {
+  public updateState(settings: IModelSettings, viewSettings: IViewSettings): ConfigurationPanel {
     const from = settings.from.toFixed(this.roundTo);
     const to = settings.to.toFixed(this.roundTo);
 

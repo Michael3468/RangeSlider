@@ -1,7 +1,7 @@
 import Model from '../Model/Model';
 import View from '../View/View';
 
-import { ISettings } from '../RangeSlider/types';
+import { IModelSettings, IViewSettings } from '../RangeSlider/types';
 
 class Presenter {
   private model: Model;
@@ -17,43 +17,52 @@ class Presenter {
 
   private initRangeSlider(): Presenter {
     this.view.getMarginObserver.addObserver((settings) => {
-      settings.currentPos = this.model.getMargin('from', settings);
-      this.view.viewSettings.thumbMarginFrom = this.model.getPosWithStepInPercents(settings);
-      this.view.settings.from = this.model.getThumbValue(settings);
+      const modelSettings = <IModelSettings>settings;
 
-      settings.currentPos = this.model.getMargin('to', settings);
-      this.view.viewSettings.thumbMarginTo = this.model.getPosWithStepInPercents(settings);
-      this.view.settings.to = this.model.getThumbValue(settings);
+      modelSettings.currentPos = this.model.getMargin('from', modelSettings);
+      this.view.viewSettings.thumbMarginFrom = this
+        .model.getPosWithStepInPercents(modelSettings);
+      this.view.settings.from = this.model.getThumbValue(modelSettings);
+
+      modelSettings.currentPos = this.model.getMargin('to', modelSettings);
+      this.view.viewSettings.thumbMarginTo = this
+        .model.getPosWithStepInPercents(modelSettings);
+      this.view.settings.to = this.model.getThumbValue(modelSettings);
     });
 
     this.view.changeSettingsObserver.addObserver((settings) => {
-      this.updateModelAndPanel(settings);
+      this.updateModelAndPanel(<IModelSettings>settings);
     });
 
     if (this.isProdAndConfPanel()) {
       this.view.configurationPanel?.changeConfPanelSettingsObserver
         .addObserver((settings) => {
-          this.updateModelAndView(settings);
+          this.updateModelAndView(<IModelSettings>settings);
         });
 
       this.view.configurationPanel?.changeConfPanelViewSettingsObserver
         .addObserver((settings) => {
           this.view.destroyView();
-          this.view.viewSettings = settings;
+          this.view.viewSettings = <IViewSettings>settings;
           this.view.createRangeSlider(this.model.getSettings());
         });
     }
 
     this.view.changeCurrentPosObserver.addObserver((settings) => {
-      this.model.updateSettings(settings);
-      this.view.settings.posWithStepInPercents = this.model.getPosWithStepInPercents(settings);
-      this.view.settings.curPosInPoints = this.model.getThumbValue(settings);
+      const modelSettings = <IModelSettings>settings;
+
+      this.model.updateSettings(modelSettings);
+      this.view.settings.posWithStepInPercents = this
+        .model.getPosWithStepInPercents(modelSettings);
+      this.view.settings.curPosInPoints = this.model.getThumbValue(modelSettings);
     });
 
     if (process.env['NODE_ENV'] !== 'production') {
       this.view.configurationPanel?.getStepInPercentsObserver.addObserver((settings) => {
-        settings.stepInPrecents = this.model.getStepInPercents(settings);
-        this.view.settings = this.model.updateSettings(settings);
+        const modelSettings = <IModelSettings>settings;
+        modelSettings.stepInPrecents = this
+          .model.getStepInPercents(modelSettings);
+        this.view.settings = this.model.updateSettings(modelSettings);
       });
     }
 
@@ -66,7 +75,7 @@ class Presenter {
     return process.env['NODE_ENV'] !== 'production' && this.view.configurationPanel;
   }
 
-  private updateModelAndPanel(settings: ISettings) {
+  private updateModelAndPanel(settings: IModelSettings) {
     this.model.updateSettings(settings);
 
     if (this.isProdAndConfPanel()) {
@@ -74,7 +83,7 @@ class Presenter {
     }
   }
 
-  private updateModelAndView(settings: ISettings) {
+  private updateModelAndView(settings: IModelSettings) {
     this.model.updateSettings(settings);
     this.view.destroyView();
     this.view.createRangeSlider(this.model.getSettings());

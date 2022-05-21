@@ -6,7 +6,7 @@ import {
   getMinStep,
 } from '../lib/common';
 
-import { AbstractScale, IModelSettings, ISettings } from '../RangeSlider/types';
+import { AbstractScale, IModelSettings, IViewSettings } from '../RangeSlider/types';
 
 const defaultInitSettings: IModelSettings = {
   min: 0,
@@ -14,19 +14,23 @@ const defaultInitSettings: IModelSettings = {
   from: 30,
   to: 70,
   step: 1,
+
   stepInPrecents: 0,
   currentPos: 0,
   curPosInPoints: 0,
   posWithStepInPercents: 0,
 };
 
-const defaultViewSettings: ISettings = {
+const defaultViewSettings: IViewSettings = {
   range: true,
   scale: false,
   tooltips: true,
   vertical: false,
   confpanel: false,
   bar: true,
+
+  thumbMarginFrom: 0,
+  thumbMarginTo: 0,
 };
 
 class Scale extends AbstractScale {
@@ -34,9 +38,9 @@ class Scale extends AbstractScale {
 
   private settings: IModelSettings = defaultInitSettings;
 
-  private viewSettings: ISettings = defaultViewSettings;
+  private viewSettings: IViewSettings = defaultViewSettings;
 
-  public createScaleMarks(settings: IModelSettings, viewSettings: ISettings): Scale {
+  public createScaleMarks(settings: IModelSettings, viewSettings: IViewSettings): Scale {
     this.settings = settings;
     this.viewSettings = viewSettings;
 

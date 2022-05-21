@@ -17,7 +17,7 @@ import {
   AbstractSlider,
   AbstractThumb,
   IModelSettings,
-  ISettings,
+  IViewSettings,
   MeasureUnit,
   ThumbName,
 } from '../RangeSlider/types';
@@ -35,7 +35,7 @@ class View {
 
   settings: IModelSettings;
 
-  viewSettings: ISettings;
+  viewSettings: IViewSettings;
 
   private rangeMarginTo = 0;
 
@@ -51,7 +51,7 @@ class View {
 
   getMarginObserver: AbstractObserver = new Observer();
 
-  constructor(id: string, mergedSettings: IModelSettings, viewSettings: ISettings) {
+  constructor(id: string, mergedSettings: IModelSettings, viewSettings: IViewSettings) {
     this.settings = mergedSettings;
     this.viewSettings = viewSettings;
 

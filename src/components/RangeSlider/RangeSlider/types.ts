@@ -32,6 +32,18 @@ interface IModelSettings {
   posWithStepInPercents: number;
 }
 
+interface IViewSettings {
+  range: boolean;
+  scale: boolean;
+  tooltips: boolean;
+  vertical: boolean;
+  confpanel: boolean;
+  bar: boolean;
+
+  thumbMarginFrom: number;
+  thumbMarginTo: number;
+}
+
 interface IUserSettings {
   min?: number;
   max?: number;
@@ -81,7 +93,7 @@ interface IMethods {
 }
 
 interface IUpdateFn {
-  (settings: ISettings | IModelSettings): void;
+  (settings: IViewSettings | IModelSettings): void;
 }
 
 abstract class AbstractObserver {
@@ -91,7 +103,7 @@ abstract class AbstractObserver {
 
   public abstract removeObserver(fn: IUpdateFn): void;
 
-  public abstract notifyObservers(settings: ISettings | IModelSettings): void;
+  public abstract notifyObservers(settings: IViewSettings | IModelSettings): void;
 }
 
 abstract class AbstractSlider {
@@ -113,7 +125,7 @@ abstract class AbstractScale {
 
   public abstract createScaleMarks(
     settings: IModelSettings,
-    viewSettings: ISettings
+    viewSettings: IViewSettings
   ): AbstractScale;
 }
 
@@ -128,7 +140,7 @@ abstract class AbstractThumb {
 
   abstract tooltip: AbstractTooltip;
 
-  public abstract setMargin(margin: number, settings: ISettings): AbstractThumb;
+  public abstract setMargin(margin: number, settings: IViewSettings): AbstractThumb;
 }
 
 abstract class AbstractConfigurationPanel {
@@ -140,12 +152,13 @@ abstract class AbstractConfigurationPanel {
 
   abstract getStepInPercentsObserver: AbstractObserver;
 
-  public abstract updateState(settings: IModelSettings, viewSettings: ISettings): void;
+  public abstract updateState(settings: IModelSettings, viewSettings: IViewSettings): void;
 }
 
 export {
   ISettings,
   IModelSettings,
+  IViewSettings,
   IUserSettings,
   ISliderElement,
   IMinMax,

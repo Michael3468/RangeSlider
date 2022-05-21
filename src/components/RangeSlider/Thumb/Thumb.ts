@@ -3,9 +3,9 @@ import Tooltip from '../Tooltip/Tooltip';
 
 import {
   ThumbName,
-  ISettings,
   AbstractThumb,
   AbstractTooltip,
+  IViewSettings,
 } from '../RangeSlider/types';
 
 class Thumb extends AbstractThumb {
@@ -25,7 +25,7 @@ class Thumb extends AbstractThumb {
     );
   }
 
-  public setMargin(margin: number, viewSettings: ISettings): Thumb {
+  public setMargin(margin: number, viewSettings: IViewSettings): Thumb {
     if (viewSettings.vertical) {
       this.element.style.marginTop = `${margin}px`;
       this.element.style.marginLeft = '0px';

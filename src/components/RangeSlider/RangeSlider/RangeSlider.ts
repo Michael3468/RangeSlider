@@ -8,8 +8,8 @@ import {
   IMethod,
   IMethods,
   IModelSettings,
-  ISettings,
   IUserSettings,
+  IViewSettings,
 } from './types';
 
 import './RangeSlider.scss';
@@ -24,19 +24,23 @@ const modelDefaultSettings: IModelSettings = {
   from: 30,
   to: 70,
   step: 1,
+
   stepInPrecents: 1,
   currentPos: 0,
   posWithStepInPercents: 0,
   curPosInPoints: 0,
 };
 
-const viewDefaultSettings: ISettings = {
+const viewDefaultSettings: IViewSettings = {
   range: true,
   scale: false,
   tooltips: true,
   vertical: false,
   confpanel: false,
   bar: true,
+
+  thumbMarginFrom: 0,
+  thumbMarginTo: 0,
 };
 
 const RangeSliderInstances = new Map();
@@ -56,7 +60,7 @@ const RangeSliderInstances = new Map();
 
       const rangeSlider = this as unknown as JQuery;
       const elementId = `#${rangeSlider[0]?.id}`;
-      const viewSettings = updateObjectValues(viewDefaultSettings, userSettings);
+      const viewSettings = <IViewSettings> updateObjectValues(viewDefaultSettings, userSettings);
       view = new View(elementId, model.getSettings(), viewSettings);
 
       presenter = new Presenter(model, view);

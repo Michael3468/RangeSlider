@@ -1,8 +1,13 @@
 import {
-  ISettings, ISliderElement, INodeName, IMinMax, IModelSettings, IUserSettings,
+  ISliderElement,
+  INodeName,
+  IMinMax,
+  IModelSettings,
+  IUserSettings,
+  IViewSettings,
 } from '../RangeSlider/types';
 
-function getMinMaxElementEdgesInPx(viewSettings: ISettings, el: ISliderElement): IMinMax {
+function getMinMaxElementEdgesInPx(viewSettings: IViewSettings, el: ISliderElement): IMinMax {
   const elementRect = el.element.getBoundingClientRect();
 
   if (viewSettings.vertical) {
@@ -17,7 +22,7 @@ function getMinMaxElementEdgesInPx(viewSettings: ISettings, el: ISliderElement):
   };
 }
 
-function getElementLengthInPx(viewSettings: ISettings, el: HTMLElement): number {
+function getElementLengthInPx(viewSettings: IViewSettings, el: HTMLElement): number {
   return viewSettings.vertical
     ? el.getBoundingClientRect().height
     : el.getBoundingClientRect().width;
@@ -37,7 +42,11 @@ function createElement(
   return element;
 }
 
-function getOnePointInPx(settings: IModelSettings, viewSettings: ISettings, element: HTMLElement) {
+function getOnePointInPx(
+  settings: IModelSettings,
+  viewSettings: IViewSettings,
+  element: HTMLElement,
+) {
   const elementLengthInPx: number = getElementLengthInPx(viewSettings, element);
 
   let elementLengthInPoints: number;
@@ -66,9 +75,9 @@ function getMinStep(settings: IModelSettings):number {
 
 // TODO
 function updateObjectValues(
-  defaultSettings: ISettings | IModelSettings,
+  defaultSettings: IViewSettings | IModelSettings,
   userSettings: IUserSettings,
-): ISettings | IModelSettings {
+): IViewSettings | IModelSettings {
   const c = {};
   let key: any;
 
