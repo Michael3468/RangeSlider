@@ -78,8 +78,8 @@ type IDefSettings = IViewSettings | IModelSettings;
 function updateObjectValues(
   defaultSettings: IDefSettings,
   userSettings: IUserSettings,
-): IViewSettings | IModelSettings {
-  const c: IViewSettings | IModelSettings = {};
+): IDefSettings {
+  const c: IDefSettings = { ...defaultSettings };
 
   const keys: string[] = Object.getOwnPropertyNames(defaultSettings);
 
