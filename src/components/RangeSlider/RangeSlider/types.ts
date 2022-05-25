@@ -30,6 +30,8 @@ interface IModelSettings {
   currentPos: number;
   curPosInPoints: number | undefined;
   posWithStepInPercents: number;
+
+  [index: string]: string | number | undefined;
 }
 
 interface IViewSettings {
@@ -44,6 +46,8 @@ interface IViewSettings {
   thumbMarginTo: number;
   rangeMarginFrom: number;
   rangeMarginTo: number;
+
+  [index: string]: string | boolean | number;
 }
 
 interface IUserSettings {

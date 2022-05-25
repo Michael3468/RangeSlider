@@ -73,19 +73,21 @@ function getMinStep(settings: IModelSettings):number {
     : 1;
 }
 
-// TODO
+type IDefSettings = IViewSettings | IModelSettings;
+
 function updateObjectValues(
-  defaultSettings: IViewSettings | IModelSettings,
+  defaultSettings: IDefSettings,
   userSettings: IUserSettings,
 ): IViewSettings | IModelSettings {
-  const c = {};
-  let key: any;
+  const c: IViewSettings | IModelSettings = {};
 
-  for (key in defaultSettings) {
-    if (defaultSettings.hasOwnProperty(key)) {
-      c[key] = key in userSettings ? userSettings[key] : defaultSettings[key];
-    }
-  }
+  const keys: string[] = Object.getOwnPropertyNames(defaultSettings);
+
+  keys.forEach((key) => {
+    c[key] = key in userSettings
+      ? userSettings[key as keyof IUserSettings]
+      : defaultSettings[key as keyof IDefSettings];
+  });
 
   return c;
 }
