@@ -7,27 +7,43 @@ import View from '../View/View';
 import {
   IMethod,
   IMethods,
-  ISettings,
+  IModelSettings,
   IUserSettings,
+  IViewSettings,
 } from './types';
 
 import './RangeSlider.scss';
+import { updateObjectValues } from '../lib/common';
 
 window.$ = require('jquery');
 window.jQuery = require('jquery');
 
-const defaultSettings: ISettings = {
+const modelDefaultSettings: IModelSettings = {
   min: 0,
   max: 100,
   from: 30,
   to: 70,
   step: 1,
+
+  stepInPrecents: 1,
+  currentPos: 0,
+  posWithStepInPercents: 0,
+  curPosInPoints: undefined,
+};
+
+const viewDefaultSettings: IViewSettings = {
   range: true,
   scale: false,
   tooltips: true,
   vertical: false,
   confpanel: false,
   bar: true,
+
+  thumbMarginFrom: 0,
+  thumbMarginTo: 0,
+  rangeMarginFrom: 0,
+  rangeMarginTo: 0,
+
 };
 
 const RangeSliderInstances = new Map();
@@ -42,12 +58,14 @@ const RangeSliderInstances = new Map();
     init: function init(userSettings: IUserSettings): JQuery<HTMLElement> {
       methods.destroy.call(this);
 
-      const mergedSettings = $.extend({}, defaultSettings, userSettings);
+      const modelSettings = <IModelSettings> updateObjectValues(modelDefaultSettings, userSettings);
+      model = new Model(modelSettings);
+
       const rangeSlider = this as unknown as JQuery;
       const elementId = `#${rangeSlider[0]?.id}`;
+      const viewSettings = <IViewSettings> updateObjectValues(viewDefaultSettings, userSettings);
+      view = new View(elementId, model.getSettings(), viewSettings);
 
-      model = new Model(mergedSettings);
-      view = new View(elementId, model.getSettings());
       presenter = new Presenter(model, view);
 
       RangeSliderInstances.set(elementId, { presenter });

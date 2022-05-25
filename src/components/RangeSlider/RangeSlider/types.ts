@@ -4,6 +4,7 @@ interface ISettings {
   from: number;
   to: number;
   step: number;
+
   range: boolean;
   scale: boolean;
   vertical: boolean;
@@ -14,11 +15,39 @@ interface ISettings {
   currentPos?: number;
   posWithStepInPercents?: number;
   curPosInPoints?: number;
-  rectFrom?: DOMRect;
-  rectTo?: DOMRect;
   thumbMarginFrom?: number;
   thumbMarginTo?: number;
   stepInPrecents?: number;
+}
+
+interface IModelSettings {
+  min: number;
+  max: number;
+  from: number;
+  to: number;
+  step: number;
+  stepInPrecents: number;
+  currentPos: number;
+  curPosInPoints: number | undefined;
+  posWithStepInPercents: number;
+
+  [index: string]: string | number | undefined;
+}
+
+interface IViewSettings {
+  range: boolean;
+  scale: boolean;
+  tooltips: boolean;
+  vertical: boolean;
+  confpanel: boolean;
+  bar: boolean;
+
+  thumbMarginFrom: number;
+  thumbMarginTo: number;
+  rangeMarginFrom: number;
+  rangeMarginTo: number;
+
+  [index: string]: string | boolean | number;
 }
 
 interface IUserSettings {
@@ -70,7 +99,7 @@ interface IMethods {
 }
 
 interface IUpdateFn {
-  (settings: ISettings): void;
+  (settings: IViewSettings | IModelSettings): void;
 }
 
 abstract class AbstractObserver {
@@ -80,7 +109,7 @@ abstract class AbstractObserver {
 
   public abstract removeObserver(fn: IUpdateFn): void;
 
-  public abstract notifyObservers(settings: ISettings): void;
+  public abstract notifyObservers(settings: IViewSettings | IModelSettings): void;
 }
 
 abstract class AbstractSlider {
@@ -100,13 +129,16 @@ abstract class AbstractRange {
 abstract class AbstractScale {
   abstract element: HTMLElement;
 
-  public abstract createScaleMarks(settings: ISettings): AbstractScale;
+  public abstract createScaleMarks(
+    settings: IModelSettings,
+    viewSettings: IViewSettings
+  ): AbstractScale;
 }
 
 abstract class AbstractTooltip {
   abstract element: HTMLElement;
 
-  public abstract setTooltipText(value: number, settings: ISettings): AbstractTooltip;
+  public abstract setTooltipText(value: number, settings: IModelSettings): AbstractTooltip;
 }
 
 abstract class AbstractThumb {
@@ -114,7 +146,7 @@ abstract class AbstractThumb {
 
   abstract tooltip: AbstractTooltip;
 
-  public abstract setMargin(margin: number, settings: ISettings): AbstractThumb;
+  public abstract setMargin(margin: number, settings: IViewSettings): AbstractThumb;
 }
 
 abstract class AbstractConfigurationPanel {
@@ -122,13 +154,17 @@ abstract class AbstractConfigurationPanel {
 
   abstract changeConfPanelSettingsObserver: AbstractObserver;
 
+  abstract changeConfPanelViewSettingsObserver: AbstractObserver;
+
   abstract getStepInPercentsObserver: AbstractObserver;
 
-  public abstract updateState(settings: ISettings): void;
+  public abstract updateState(settings: IModelSettings, viewSettings: IViewSettings): void;
 }
 
 export {
   ISettings,
+  IModelSettings,
+  IViewSettings,
   IUserSettings,
   ISliderElement,
   IMinMax,

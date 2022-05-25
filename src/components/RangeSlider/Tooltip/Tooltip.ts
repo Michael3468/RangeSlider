@@ -1,6 +1,6 @@
 import { createElement, getDigitsAfterPoint } from '../lib/common';
 
-import { AbstractTooltip, ISettings, ThumbName } from '../RangeSlider/types';
+import { AbstractTooltip, IModelSettings, ThumbName } from '../RangeSlider/types';
 
 class Tooltip extends AbstractTooltip {
   element: HTMLElement;
@@ -11,7 +11,7 @@ class Tooltip extends AbstractTooltip {
     this.element = createElement('div', `tooltip-${this.name}`);
   }
 
-  public setTooltipText(value: number, settings: ISettings): Tooltip {
+  public setTooltipText(value: number, settings: IModelSettings): Tooltip {
     const roundedValue = value < settings.max
       ? value.toFixed(getDigitsAfterPoint(settings))
       : (settings.max).toFixed(getDigitsAfterPoint(settings));

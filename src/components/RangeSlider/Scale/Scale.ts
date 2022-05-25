@@ -6,41 +6,57 @@ import {
   getMinStep,
 } from '../lib/common';
 
-import { AbstractScale, ISettings } from '../RangeSlider/types';
+import { AbstractScale, IModelSettings, IViewSettings } from '../RangeSlider/types';
 
-const defaultInitSettings: ISettings = {
+const defaultInitSettings: IModelSettings = {
   min: 0,
   max: 100,
   from: 30,
   to: 70,
   step: 1,
+
+  stepInPrecents: 0,
+  currentPos: 0,
+  curPosInPoints: 0,
+  posWithStepInPercents: 0,
+};
+
+const defaultViewSettings: IViewSettings = {
   range: true,
   scale: false,
   tooltips: true,
   vertical: false,
   confpanel: false,
   bar: true,
+
+  thumbMarginFrom: 0,
+  thumbMarginTo: 0,
+  rangeMarginFrom: 0,
+  rangeMarginTo: 0,
 };
 
 class Scale extends AbstractScale {
   element: HTMLElement = createElement('div', 'scale');
 
-  private settings: ISettings = defaultInitSettings;
+  private settings: IModelSettings = defaultInitSettings;
 
-  public createScaleMarks(settings: ISettings): Scale {
+  private viewSettings: IViewSettings = defaultViewSettings;
+
+  public createScaleMarks(settings: IModelSettings, viewSettings: IViewSettings): Scale {
     this.settings = settings;
+    this.viewSettings = viewSettings;
 
     // add first mark
     this.element.appendChild(this.createMark(0));
     this.element.appendChild(this.createMarkValue(settings.min, 0));
 
-    const onePointInPx: number = getOnePointInPx(this.settings, this.element);
+    const onePointInPx: number = getOnePointInPx(this.settings, this.viewSettings, this.element);
     const MIN_STEP_BETWEEN_MARKS_IN_PX = 10;
     const stepBetweenMarks: number = this.getStep(onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
 
     let markPos: number = stepBetweenMarks;
 
-    const { min, max } = getMinMaxElementEdgesInPx(settings, this);
+    const { min, max } = getMinMaxElementEdgesInPx(viewSettings, this);
     const scaleMaxPos = max - min;
 
     while (markPos < scaleMaxPos) {
@@ -71,7 +87,7 @@ class Scale extends AbstractScale {
   private createMark(marginFromBegin: number): HTMLElement {
     const mark = createElement('span', 'scale__mark');
 
-    if (this.settings?.vertical) {
+    if (this.viewSettings.vertical) {
       mark.className += ' scale__mark_vertical';
       mark.style.marginTop = `${marginFromBegin}px`;
     } else {
@@ -84,7 +100,7 @@ class Scale extends AbstractScale {
   private createMarkValue(value: number, marginFromBegin: number): HTMLElement {
     const markValue = createElement('div', 'scale__mark-value');
 
-    if (this.settings?.vertical) {
+    if (this.viewSettings.vertical) {
       markValue.className += ' scale__mark-value_vertical';
       markValue.style.marginTop = `${marginFromBegin}px`;
     } else {
@@ -144,14 +160,14 @@ class Scale extends AbstractScale {
       let currentMark = 0;
       let nextMark: number | undefined = 0;
 
-      if (!this.settings.vertical) {
+      if (!this.viewSettings.vertical) {
         currentMark = markValue.getBoundingClientRect().right;
       } else {
         currentMark = markValue.getBoundingClientRect().bottom;
       }
 
       for (let i = index; i < arr.length - 1; i += 1) {
-        nextMark = this.settings.vertical
+        nextMark = this.viewSettings.vertical
           ? arr[i + 1]?.getBoundingClientRect().top
           : arr[i + 1]?.getBoundingClientRect().left;
 
