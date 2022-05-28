@@ -61,10 +61,6 @@ class View {
   }
 
   public createRangeSlider(settings: IModelSettings): View {
-    if (!this.slider.element) {
-      return this;
-    }
-
     if (this.viewSettings.range) {
       this.slider.element.appendChild(this.from.element);
     }
@@ -233,6 +229,7 @@ class View {
 
   private handleMoveClosestThumb(e: PointerEvent): View {
     const element = <HTMLElement> e.target;
+    console.log('element: ', element.outerHTML);
 
     let currentPos: number;
     if (element.classList.contains('scale__mark-value')) {
