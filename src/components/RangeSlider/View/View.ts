@@ -229,7 +229,6 @@ class View {
 
   private handleMoveClosestThumb(e: PointerEvent): View {
     const element = <HTMLElement> e.target;
-    console.log('element: ', element.outerHTML);
 
     let currentPos: number;
     if (element.classList.contains('scale__mark-value')) {
@@ -337,7 +336,7 @@ class View {
     return currentPos;
   }
 
-  private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
+  private setMargins(thumbName: ThumbName, currentPosWithStep: number): View {
     if (thumbName === 'from') {
       this.viewSettings.thumbMarginFrom = currentPosWithStep;
       this.viewSettings.rangeMarginFrom = currentPosWithStep;
@@ -358,6 +357,8 @@ class View {
       }
       this.settings.curPosInPoints = undefined;
     }
+
+    return this;
   }
 
   private setRangeSliderMargins(): View {
