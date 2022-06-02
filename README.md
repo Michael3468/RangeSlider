@@ -2,8 +2,8 @@
 
 <a href="https://whitedevilman.github.io/RangeSlider/">Demo Page</a>
 
-
 Table of Contents:
+
 1. [Build Setup](#build-setup)
 2. [Plugin Configuration](#plugin-configuration)
 3. [Slider Events](#slider-events)
@@ -11,10 +11,11 @@ Table of Contents:
 5. [UML Classes Diagram](#uml-classes-diagram)
 
 ## Build Setup
+
 Plugin created with:
 
-* node v14.18.3
-* jQuery 3.6.0
+- Node.js v14.18.3
+- jQuery 3.6.0
 
 ```
 # Download repository:
@@ -50,18 +51,20 @@ $ npm run stylelint-fix
 First add jQuery CDN to your page, scripts and styles.
 
 Example:
+
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script defer src="range-slider-vendors.js"></script>
 <script defer src="range-slider.js"></script>
-<link href="range-slider.css" rel="stylesheet">
+<link href="range-slider.css" rel="stylesheet" />
 ```
 
 Then you need to add `<div>` block with `id` on your page.
 
 Example:
+
 ```html
-<div id='range-slider'></div>
+<div id="range-slider"></div>
 ```
 
 And after it add RangeSlider plugin with settings to your.js file.
@@ -85,6 +88,7 @@ $('#range-slider').RangeSlider('init', {
 ```
 
 Also, you could use plugin from console in your browser with the same command
+
 ```javascript
 $('#range-slider').RangeSlider('init', {
   min: 0,
@@ -102,6 +106,7 @@ $('#range-slider').RangeSlider('init', {
 ```
 
 You may pass to slider settings that you need to update its settings
+
 ```javascript
 $('#range-slider').RangeSlider('update', {
   min: 20,
@@ -113,9 +118,11 @@ $('#range-slider').RangeSlider('update', {
 ## Slider Events
 
 To subscribe to slider event you need to:
-* Add Observer property to class properties and initialize it in the constructor
+
+- Add Observer property to class properties and initialize it in the constructor
 
 Example:
+
 ```javascript
 export default class View {
   changeSettingsObserver: AbstractObserver;
@@ -124,24 +131,28 @@ export default class View {
     this.changeSettingsObserver = new Observer();
   }
 ```
-* In the code where you want to subscribe on this observer add
+
+- In the code where you want to subscribe on this observer add
+
 ```
 yourObserver.addObserver(data? => { /* your code */ })
 ```
 
 Example:
+
 ```javascript
-this.view.changeSettingsObserver.addObserver((settings: ISettings) => {
+this.view.changeSettingsObserver.addObserver((settings) => {
   // Your code. Example:
-  this.model.updateSettings(settings);
+  this.updateModelAndPanel(<IModelSettings>settings);
 });
 ```
 
 To unsubscribe from slider event you need to remove observer:
+
 ```javascript
-this.view.changeSettingsObserver.removeObserver((settings: ISettings) => {
+this.view.changeSettingsObserver.removeObserver((settings) => {
   // Your code. Example:
-  this.model.updateSettings(settings);
+  this.updateModelAndPanel(<IModelSettings>settings);
 });
 ```
 
@@ -151,9 +162,9 @@ RangeSlider uses **MVP** (Model View Presenter) architecture.
 
 **Model** - works with data, performs validations, calculations and manages business processes.
 
-**View** - shows the user the interface and data from the *model*.
+**View** - shows the user the interface and data from the _model_.
 
-**Presenter** - serves as a layer between the *model* and the *view*.
+**Presenter** - serves as a layer between the _model_ and the _view_.
 
 ![RangeSlider architecture](./src/assets/img/architecture.svg)
 
