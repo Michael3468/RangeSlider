@@ -28,6 +28,26 @@ beforeEach(() => {
 });
 
 describe('private static validateSettings', () => {
+  describe('test settings.step <= 0', () => {
+    test('shold return 1 if step = 0', () => {
+      modelSettings.step = 0;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
+
+    test('shold return 1 if step < 0', () => {
+      modelSettings.step = -0.8;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
+
+    test('shold return 1 if step < 0', () => {
+      modelSettings.step = -8;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
+  });
+
   test('"settings.min >= settings.max" should return min = max - step', () => {
     modelSettings.max = 100;
     modelSettings.min = 110;
@@ -35,6 +55,15 @@ describe('private static validateSettings', () => {
 
     const result = Model['validateSettings'](modelSettings);
     expect(result.min).toBe(modelSettings.max - modelSettings.step);
+  });
+
+  test('if (max - min) < step should return step = max - min', () => {
+    modelSettings.max = 100;
+    modelSettings.min = 95;
+    modelSettings.step = 10;
+
+    const result = Model['validateSettings'](modelSettings);
+    expect(result.step).toBe(result.max - result.min);
   });
 
   describe('"settings.from < settings.min"', () => {
