@@ -41,7 +41,7 @@ class Model {
 
   public getThumbValue(settings: IModelSettings): number {
     const curPosInPercents = this.settings.posWithStepInPercents;
-    const onePointInPercents = this.getOnePointInPersents(settings);
+    const onePointInPercents = this.getOnePointInPerсents(settings);
 
     const curPosInPoints = Number((curPosInPercents / onePointInPercents)
       .toFixed(getDigitsAfterPoint(settings)));
@@ -54,7 +54,7 @@ class Model {
   }
 
   public getMargin(thumbName: ThumbName, settings: IModelSettings): number {
-    const onePointInPercents = this.getOnePointInPersents(settings);
+    const onePointInPercents = this.getOnePointInPerсents(settings);
 
     const value = thumbName === 'from'
       ? settings.from
@@ -74,14 +74,14 @@ class Model {
   }
 
   public getStepInPercents(settings: IModelSettings): number {
-    const onePointInPercents = this.getOnePointInPersents(settings);
+    const onePointInPercents = this.getOnePointInPerсents(settings);
 
     return settings.step >= 1
       ? onePointInPercents * settings.step
       : onePointInPercents * (settings.step / getMinStep(settings));
   }
 
-  private getOnePointInPersents(settings: IModelSettings): number {
+  private getOnePointInPerсents(settings: IModelSettings): number {
     const points = settings.max - settings.min;
 
     return settings.step >= 1

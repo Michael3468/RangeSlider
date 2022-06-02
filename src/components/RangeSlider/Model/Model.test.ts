@@ -7,7 +7,7 @@ import Model from './Model';
 import { IModelSettings } from '../RangeSlider/types';
 
 abstract class ModelHint {
-  abstract getOnePointInPersents(settings: IModelSettings): number;
+  abstract getOnePointInPerсents(settings: IModelSettings): number;
 }
 
 let modelSettings: IModelSettings;
@@ -223,7 +223,7 @@ describe('public getThumbValue', () => {
 
   test('should return 1', () => {
     const model = new Model(modelSettings);
-    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPersents').mockReturnValueOnce(1);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
 
     const result = model.getThumbValue(modelSettings);
     expect(result).toBe(1);
@@ -232,9 +232,60 @@ describe('public getThumbValue', () => {
   test('should return 1', () => {
     modelSettings.step = 0.005;
     const model = new Model(modelSettings);
-    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPersents').mockReturnValueOnce(1);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
 
     const result = model.getThumbValue(modelSettings);
     expect(result).toBe(0.001);
+  });
+});
+
+describe('public getMargin', () => {
+  beforeEach(() => {
+    modelSettings = {
+      min: 0,
+      max: 100,
+      from: 30,
+      to: 70,
+      step: 1,
+
+      stepInPercents: 1,
+      currentPos: 4,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+  });
+
+  test('should return 30', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(30);
+  });
+
+  test('should return 60', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(2);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(60);
+  });
+
+  test('shoul return 30000', () => {
+    modelSettings.step = 0.003;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(30000);
+  });
+
+  test('shoul return 70000', () => {
+    modelSettings.step = 0.003;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('to', modelSettings);
+    expect(result).toBe(70000);
   });
 });
