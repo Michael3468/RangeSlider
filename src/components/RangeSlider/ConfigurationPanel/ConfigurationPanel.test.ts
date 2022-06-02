@@ -4,29 +4,43 @@
 
 import ConfigurationPanel from './ConfigurationPanel';
 
-import { ISettings } from '../RangeSlider/types';
+import { IModelSettings, IViewSettings } from '../RangeSlider/types';
 
-let settings: ISettings;
+let modelSettings: IModelSettings;
+let viewSettings: IViewSettings;
 
 beforeEach(() => {
-  settings = {
+  modelSettings = {
     min: 0,
-    max: 1500,
-    step: 10,
-    from: 1000,
-    to: 1490,
-    vertical: true,
+    max: 100,
+    from: 30,
+    to: 70,
+    step: 1,
+
+    stepInPrecents: 1,
+    currentPos: 0,
+    posWithStepInPercents: 0,
+    curPosInPoints: undefined,
+  };
+
+  viewSettings = {
     range: true,
-    scale: true,
-    bar: true,
+    scale: false,
     tooltips: true,
-    confpanel: true,
+    vertical: false,
+    confpanel: false,
+    bar: true,
+
+    thumbMarginFrom: 0,
+    thumbMarginTo: 0,
+    rangeMarginFrom: 0,
+    rangeMarginTo: 0,
   };
 });
 
 describe('private addListeners', () => {
   it('should change values and add listeners', () => {
-    const confPanel = new ConfigurationPanel(settings);
+    const confPanel = new ConfigurationPanel(modelSettings, viewSettings);
     const nObsSpy = jest
       .spyOn(confPanel.changeConfPanelSettingsObserver, 'notifyObservers');
 
@@ -63,27 +77,38 @@ describe('private addListeners', () => {
     }
 
     const result = confPanel['addListeners']();
-
     /* number inputs */
     // cpMin listener
     if (result['cpMin']) {
+      // 'min' could not be bigger than 'from'
+      const from = 30;
+      modelSettings.from = from;
       result['cpMin'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].min)).toBe(result['cpMin'].value);
+      expect(String(result['settings'].min)).toBe(String(from));
+
+      // settings.min === cpMin.value if cpMin.value < settings.from
+      modelSettings.from = 50;
+      const confPanel2 = new ConfigurationPanel(modelSettings, viewSettings);
+      confPanel2['cpMin'].value = String(40);
+      const result2 = confPanel2['addListeners']();
+      result2['cpMin'].dispatchEvent(new Event('change'));
+
+      expect(String(result2['settings'].min)).toBe(result2['cpMin'].value);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpMin listener end
 
     // cpMax listener
     if (result['cpMax']) {
       result['cpMax'].dispatchEvent(new Event('change'));
 
-      if (result['cpMax'].value <= result['cpMax'].min) {
+      if (Number(result['cpMax'].value) <= Number(result['cpMax'].min)) {
         expect(String(result['settings'].max)).toBe(result['cpMax'].min);
       } else {
         expect(String(result['settings'].max)).toBe(result['cpMax'].value);
       }
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpMax listener end
 
     // cpStep listener
@@ -91,7 +116,7 @@ describe('private addListeners', () => {
       result['cpStep'].dispatchEvent(new Event('change'));
       expect(String(result['settings'].step)).toBe(result['cpStep'].value);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpStep listener end
 
     // cpFrom listener
@@ -99,7 +124,7 @@ describe('private addListeners', () => {
       result['cpFrom'].dispatchEvent(new Event('change'));
       expect(String(result['settings'].from)).toBe(result['cpFrom'].value);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpFrom listener end
 
     // cpTo listener
@@ -107,63 +132,63 @@ describe('private addListeners', () => {
       result['cpTo'].dispatchEvent(new Event('change'));
       expect(String(result['settings'].to)).toBe(result['cpTo'].value);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpTo listener end
 
     /* checkbox inputs */
     // cpVertical listener
     if (result['cpVertical']) {
       result['cpVertical'].dispatchEvent(new Event('change'));
-      expect(result['settings'].vertical).toBe(result['cpVertical'].checked);
+      expect(result['viewSettings'].vertical).toBe(result['cpVertical'].checked);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpVertical listener end
 
     // cpRange listener
     if (result['cpRange']) {
       result['cpRange'].dispatchEvent(new Event('change'));
-      expect(result['settings'].range).toBe(result['cpRange'].checked);
+      expect(result['viewSettings'].range).toBe(result['cpRange'].checked);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpRange listener end
 
     // cpScale listener
     if (result['cpScale']) {
       result['cpScale'].dispatchEvent(new Event('change'));
-      expect(result['settings'].scale).toBe(result['cpScale'].checked);
+      expect(result['viewSettings'].scale).toBe(result['cpScale'].checked);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpScale listener end
 
     // cpBar listener
     if (result['cpBar']) {
       result['cpBar'].dispatchEvent(new Event('change'));
-      expect(result['settings'].bar).toBe(result['cpBar'].checked);
+      expect(result['viewSettings'].bar).toBe(result['cpBar'].checked);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpBar listener end
 
     // cpTooltips listener
     if (result['cpTooltips']) {
       result['cpTooltips'].dispatchEvent(new Event('change'));
-      expect(result['settings'].tooltips).toBe(result['cpTooltips'].checked);
+      expect(result['viewSettings'].tooltips).toBe(result['cpTooltips'].checked);
     }
-    expect(nObsSpy).toBeCalledWith(settings);
+    expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpTooltips listener end
   });
 });
 
 describe('private getThumbFromDisabledStatus', () => {
   it('should return false if cpRange.checked === true', () => {
-    settings.range = true;
-    const confPanel = new ConfigurationPanel(settings);
+    viewSettings.range = true;
+    const confPanel = new ConfigurationPanel(modelSettings, viewSettings);
     const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeFalsy();
   });
 
   it('should return true if cpRange.checked === false', () => {
-    settings.range = false;
-    const confPanel = new ConfigurationPanel(settings);
+    viewSettings.range = false;
+    const confPanel = new ConfigurationPanel(modelSettings, viewSettings);
     const result = confPanel['getThumbFromDisabledStatus']();
     expect(result).toBeTruthy();
   });
@@ -171,62 +196,86 @@ describe('private getThumbFromDisabledStatus', () => {
 
 describe('public updateState', () => {
   beforeEach(() => {
-    settings = {
+    modelSettings = {
       min: 0,
       max: 1,
       step: 0.001,
       from: 0.001,
       to: 0.003,
+      stepInPrecents: 1,
+      currentPos: 100,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+
+    viewSettings = {
       vertical: false,
       range: true,
       scale: true,
       bar: true,
       tooltips: true,
       confpanel: true,
+
+      thumbMarginFrom: 1,
+      thumbMarginTo: 2,
+      rangeMarginFrom: 1,
+      rangeMarginTo: 2,
     };
   });
 
-  test('', () => {
-    const confPanel = new ConfigurationPanel(settings);
+  test('should update confPanel with new settings', () => {
+    const confPanel = new ConfigurationPanel(modelSettings, viewSettings);
 
-    const updatedSettings: ISettings = {
+    const updatedModelSettings: IModelSettings = {
       min: 0.001,
       max: 0.009,
       step: 0.002,
       from: 0.003,
       to: 0.005,
+      stepInPrecents: 1,
+      currentPos: 100,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+
+    const updatedViewSettings: IViewSettings = {
       vertical: true,
       range: false,
       scale: false,
       bar: false,
       tooltips: false,
       confpanel: false,
+
+      thumbMarginFrom: 1,
+      thumbMarginTo: 2,
+      rangeMarginFrom: 1,
+      rangeMarginTo: 2,
     };
 
-    const result = confPanel['updateState'](updatedSettings);
+    const result = confPanel['updateState'](updatedModelSettings, updatedViewSettings);
 
-    expect(result['cpMin'].value).toBe(String(updatedSettings.min));
-    expect(result['cpMin'].max).toBe(String(updatedSettings.from));
+    expect(result['cpMin'].value).toBe(String(updatedModelSettings.min));
+    expect(result['cpMin'].max).toBe(String(updatedModelSettings.from));
 
-    expect(result['cpMax'].value).toBe(String(updatedSettings.max));
-    expect(result['cpMax'].min).toBe(String(updatedSettings.to));
+    expect(result['cpMax'].value).toBe(String(updatedModelSettings.max));
+    expect(result['cpMax'].min).toBe(String(updatedModelSettings.to));
 
-    expect(result['cpStep'].value).toBe(String(updatedSettings.step));
+    expect(result['cpStep'].value).toBe(String(updatedModelSettings.step));
 
-    expect(result['cpFrom'].value).toBe(String(updatedSettings.from));
-    expect(result['cpFrom'].min).toBe(String(updatedSettings.min));
-    expect(result['cpFrom'].step).toBe(String(updatedSettings.step));
-    expect(result['cpFrom'].max).toBe(String(updatedSettings.to));
+    expect(result['cpFrom'].value).toBe(String(updatedModelSettings.from));
+    expect(result['cpFrom'].min).toBe(String(updatedModelSettings.min));
+    expect(result['cpFrom'].step).toBe(String(updatedModelSettings.step));
+    expect(result['cpFrom'].max).toBe(String(updatedModelSettings.to));
 
-    expect(result['cpTo'].value).toBe(String(updatedSettings.to));
-    expect(result['cpTo'].min).toBe(String(updatedSettings.from));
-    expect(result['cpTo'].step).toBe(String(updatedSettings.step));
-    expect(result['cpTo'].max).toBe(String(updatedSettings.max));
+    expect(result['cpTo'].value).toBe(String(updatedModelSettings.to));
+    expect(result['cpTo'].min).toBe(String(updatedModelSettings.from));
+    expect(result['cpTo'].step).toBe(String(updatedModelSettings.step));
+    expect(result['cpTo'].max).toBe(String(updatedModelSettings.max));
 
-    expect(result['cpVertical'].checked).toBe(updatedSettings.vertical);
-    expect(result['cpRange'].checked).toBe(updatedSettings.range);
-    expect(result['cpScale'].checked).toBe(updatedSettings.scale);
-    expect(result['cpBar'].checked).toBe(updatedSettings.bar);
-    expect(result['cpTooltips'].checked).toBe(updatedSettings.tooltips);
+    expect(result['cpVertical'].checked).toBe(updatedViewSettings.vertical);
+    expect(result['cpRange'].checked).toBe(updatedViewSettings.range);
+    expect(result['cpScale'].checked).toBe(updatedViewSettings.scale);
+    expect(result['cpBar'].checked).toBe(updatedViewSettings.bar);
+    expect(result['cpTooltips'].checked).toBe(updatedViewSettings.tooltips);
   });
 });
