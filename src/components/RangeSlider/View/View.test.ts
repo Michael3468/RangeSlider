@@ -88,7 +88,7 @@ beforeEach(() => {
     to: 70,
     step: 1,
 
-    stepInPrecents: 1,
+    stepInPercents: 1,
     currentPos: 0,
     posWithStepInPercents: 0,
     curPosInPoints: undefined,

@@ -316,8 +316,8 @@ class View {
       const target = <HTMLElement> event.target;
 
       let stepInPx = 0;
-      if (this.settings.stepInPrecents) {
-        stepInPx = this.convertPercentsToPixels(this.settings.stepInPrecents);
+      if (this.settings.stepInPercents) {
+        stepInPx = this.convertPercentsToPixels(this.settings.stepInPercents);
       }
 
       if (target.classList.contains('thumb-from')) {

@@ -6,7 +6,7 @@ class Model {
 
   constructor(settings: IModelSettings) {
     this.settings = Model.validateSettings(settings);
-    this.settings.stepInPrecents = this.getStepInPercents(this.settings);
+    this.settings.stepInPercents = this.getStepInPercents(this.settings);
   }
 
   public getSettings(): IModelSettings {

@@ -60,7 +60,7 @@ class Presenter {
     if (process.env['NODE_ENV'] !== 'production') {
       this.view.configurationPanel?.getStepInPercentsObserver.addObserver((settings) => {
         const modelSettings = <IModelSettings>settings;
-        modelSettings.stepInPrecents = this
+        modelSettings.stepInPercents = this
           .model.getStepInPercents(modelSettings);
         this.view.settings = this.model.updateSettings(modelSettings);
       });
