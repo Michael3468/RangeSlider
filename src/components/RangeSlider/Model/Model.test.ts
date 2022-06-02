@@ -6,6 +6,10 @@ import Model from './Model';
 
 import { IModelSettings } from '../RangeSlider/types';
 
+abstract class ModelHint {
+  abstract getOnePointInPersents(settings: IModelSettings): number;
+}
+
 let modelSettings: IModelSettings;
 
 beforeEach(() => {
@@ -198,5 +202,39 @@ describe('public getPosWithStepInPercents', () => {
 
     expect(result).toBe(resValue);
     expect(model['settings'].posWithStepInPercents).toBe(resValue);
+  });
+});
+
+describe('public getThumbValue', () => {
+  beforeEach(() => {
+    modelSettings = {
+      min: 0,
+      max: 100,
+      from: 30,
+      to: 70,
+      step: 1,
+
+      stepInPercents: 1,
+      currentPos: 4,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+  });
+
+  test('should return 1', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPersents').mockReturnValueOnce(1);
+
+    const result = model.getThumbValue(modelSettings);
+    expect(result).toBe(1);
+  });
+
+  test('should return 1', () => {
+    modelSettings.step = 0.005;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPersents').mockReturnValueOnce(1);
+
+    const result = model.getThumbValue(modelSettings);
+    expect(result).toBe(0.001);
   });
 });
