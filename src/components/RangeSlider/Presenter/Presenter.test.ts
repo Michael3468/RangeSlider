@@ -41,6 +41,21 @@ beforeEach(() => {
 });
 
 describe('private initRangeSlider', () => {
+  function makeObserversEmpty(presenter: Presenter): Presenter {
+    const pr = presenter;
+    pr['view'].getMarginObserver['observers'] = [];
+    pr['view'].changeSettingsObserver['observers'] = [];
+
+    if (pr['view'].configurationPanel) {
+      pr['view'].configurationPanel.changeConfPanelSettingsObserver['observers'] = [];
+      pr['view'].configurationPanel.changeConfPanelViewSettingsObserver['observers'] = [];
+      pr['view'].configurationPanel.getStepInPercentsObserver['observers'] = [];
+    }
+    pr['view'].changeCurrentPosObserver['observers'] = [];
+
+    return pr;
+  }
+
   it('should call functions', () => {
     document.body.innerHTML = '<div id="range-slider"></div>';
 
@@ -64,17 +79,9 @@ describe('private initRangeSlider', () => {
      * обнуляем массивы обзёрверов для теста метода 'initRangeSlider'
      * т.к. туда добавляется обзервер при создании экземпляра Presenter
      */
-    presenter['view'].getMarginObserver['observers'] = [];
-    presenter['view'].changeSettingsObserver['observers'] = [];
+    const pr = makeObserversEmpty(presenter);
 
-    if (presenter['view'].configurationPanel) {
-      presenter['view'].configurationPanel.changeConfPanelSettingsObserver['observers'] = [];
-      presenter['view'].configurationPanel.changeConfPanelViewSettingsObserver['observers'] = [];
-      presenter['view'].configurationPanel.getStepInPercentsObserver['observers'] = [];
-    }
-    presenter['view'].changeCurrentPosObserver['observers'] = [];
-
-    presenter['initRangeSlider']();
+    pr['initRangeSlider']();
     expect(createRangeSliderSpy).toBeCalled();
     expect(addChangeSettingsObserverSpy).toBeCalled();
     expect(addChangeConfPanelSettingsObserverSpy).toBeCalled();
@@ -106,22 +113,19 @@ describe('private initRangeSlider', () => {
      * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
      * т.к. туда добавляется обзервер при создании экземпляра Presenter
      */
-    presenter['view'].changeSettingsObserver['observers'] = [];
-    if (presenter['view'].configurationPanel) {
-      presenter['view'].configurationPanel.changeConfPanelSettingsObserver['observers'] = [];
-    }
+    const pr = makeObserversEmpty(presenter);
 
-    const spyUpdateSettings = jest.spyOn(presenter['model'], 'updateSettings');
+    const spyUpdateSettings = jest.spyOn(pr['model'], 'updateSettings');
     let spyUpdateState;
-    if (presenter['view'].configurationPanel) {
-      spyUpdateState = jest.spyOn(presenter['view'].configurationPanel, 'updateState');
+    if (pr['view'].configurationPanel) {
+      spyUpdateState = jest.spyOn(pr['view'].configurationPanel, 'updateState');
     }
 
-    // const result = presenter['initRangeSlider']();
-    // result['view'].changeSettingsObserver.notifyObservers(viewSettings);
+    const result = pr['initRangeSlider']();
+    result['view'].changeSettingsObserver.notifyObservers(modelSettings);
 
-    // expect(spyUpdateSettings).toBeCalledWith(modelSettings);
-    // expect(spyUpdateState).toBeCalledWith(viewSettings);
+    expect(spyUpdateSettings).toBeCalledWith(modelSettings);
+    expect(spyUpdateState).toBeCalledWith(modelSettings, viewSettings);
   });
 
   it('changeConfPanelSettingsObserver should has observers', () => {
@@ -135,22 +139,100 @@ describe('private initRangeSlider', () => {
      * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
      * т.к. туда добавляется обзёрвер при создании экземпляра Presenter
      */
-    presenter['view'].changeSettingsObserver['observers'] = [];
-    if (presenter['view'].configurationPanel) {
-      presenter['view'].configurationPanel.changeConfPanelSettingsObserver['observers'] = [];
+    const pr = makeObserversEmpty(presenter);
+
+    const spyUpdateSettings = jest.spyOn(pr['model'], 'updateSettings');
+    const spyCreateRangeSlider = jest.spyOn(pr['view'], 'createRangeSlider');
+
+    const result = pr['initRangeSlider']();
+    if (result['view'].configurationPanel) {
+      result['view'].configurationPanel
+        .changeConfPanelSettingsObserver.notifyObservers(modelSettings);
     }
 
-    const spyUpdateSettings = jest.spyOn(presenter['model'], 'updateSettings');
-    const spyCreateRangeSlider = jest.spyOn(presenter['view'], 'createRangeSlider');
+    expect(spyUpdateSettings).toBeCalledWith(modelSettings);
+    expect(spyCreateRangeSlider).toBeCalledWith(modelSettings);
+  });
 
-    // const result = presenter['initRangeSlider']();
-    // if (result['view'].configurationPanel) {
-    //   result['view'].configurationPanel
-    //     .changeConfPanelSettingsObserver.notifyObservers(modelSettings);
-    // }
+  it('changeConfPanelViewSettingsObserver should has observers', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
 
-    // expect(spyUpdateSettings).toBeCalledWith(modelSettings);
-    // expect(spyCreateRangeSlider).toBeCalledWith(modelSettings);
+    const model = new Model(modelSettings);
+    const view = new View('#range-slider', modelSettings, viewSettings);
+    const presenter = new Presenter(model, view); // тут заполняются обзёрверы
+
+    /**
+     * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
+     * т.к. туда добавляется обзёрвер при создании экземпляра Presenter
+     */
+    const pr = makeObserversEmpty(presenter);
+
+    const spyDestroyView = jest.spyOn(pr['view'], 'destroyView');
+    const spyCreateRangeSlider = jest.spyOn(pr['view'], 'createRangeSlider');
+
+    const result = pr['initRangeSlider']();
+    if (result['view'].configurationPanel) {
+      result['view'].configurationPanel
+        .changeConfPanelViewSettingsObserver.notifyObservers(viewSettings);
+    }
+
+    expect(spyDestroyView).toBeCalled();
+    expect(result['view'].viewSettings).toEqual(viewSettings);
+    expect(spyCreateRangeSlider).toBeCalledWith(modelSettings);
+  });
+
+  it('changeCurrentPosObserver should has observers', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+
+    const model = new Model(modelSettings);
+    const view = new View('#range-slider', modelSettings, viewSettings);
+    const presenter = new Presenter(model, view); // тут заполняются обзёрверы
+
+    /**
+     * обнуляем массивы обзерверов для теста метода 'initRangeSlider'
+     * т.к. туда добавляется обзёрвер при создании экземпляра Presenter
+     */
+    const pr = makeObserversEmpty(presenter);
+
+    const spyUpdateSettings = jest.spyOn(pr['model'], 'updateSettings');
+
+    const result = pr['initRangeSlider']();
+    result['view'].changeCurrentPosObserver.notifyObservers(modelSettings);
+
+    expect(spyUpdateSettings).toBeCalled();
+    expect(spyUpdateSettings).toBeCalledWith(modelSettings);
+
+    expect(result['view'].settings.posWithStepInPercents)
+      .toBe(pr['model'].getPosWithStepInPercents(modelSettings));
+
+    expect(result['view'].settings.curPosInPoints)
+      .toBe(pr['model'].getThumbValue(modelSettings));
+  });
+
+  test('getStepInPercentsObserver should has observers', () => {
+    document.body.innerHTML = '<div id="range-slider"></div>';
+    viewSettings.confpanel = true;
+    const model = new Model(modelSettings);
+    const view = new View('#range-slider', modelSettings, viewSettings);
+    const presenter = new Presenter(model, view);
+
+    const pr = makeObserversEmpty(presenter);
+
+    const spyGetStepInPercents = jest
+      .spyOn(pr['model'], 'getStepInPercents').mockReturnValue(42);
+
+    const spyUpdateSettings = jest.spyOn(pr['model'], 'updateSettings');
+
+    const result = pr['initRangeSlider']();
+    result['view'].configurationPanel?.getStepInPercentsObserver.notifyObservers(modelSettings);
+
+    expect(spyGetStepInPercents).toBeCalled();
+    expect(spyGetStepInPercents).toBeCalledWith(modelSettings);
+
+    expect(spyUpdateSettings).toBeCalled();
+    expect(spyUpdateSettings).toBeCalledWith(modelSettings);
+
+    expect(result['view'].settings.stepInPercents).toBe(42);
   });
 });
 
