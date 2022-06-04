@@ -504,28 +504,7 @@ describe('private setDistanceBetweenTooltips', () => {
 });
 
 describe('private setZIndexTop', () => {
-  // TODO del ISettings
-  // settings = {
-  //   min: 0,
-  //   max: 1500,
-  //   range: true,
-  //   scale: true,
-  //   vertical: true,
-  //   tooltips: true,
-  //   confpanel: true,
-  //   bar: true,
-  //   from: 1000,
-  //   to: 1490,
-  //   step: 10,
-  // };
-
-  // TODO
-  // modelSettings = {
-
-  // }
-
   const zIndexClass = 'tooltip-z-index-top';
-  // const view = new View('range-slider', modelSettings, viewSettings);
 
   test('should add zIndexClass to "from" element and del from "to" element', () => {
     const view = new View('range-slider', modelSettings, viewSettings);
@@ -547,59 +526,74 @@ describe('private setZIndexTop', () => {
 });
 
 describe('private currentCursorPosition', () => {
-  // beforeEach(() => {
-  //   Element.prototype.getBoundingClientRect = jest.fn(() => ({
-  //     width: 30,
-  //     height: 300,
-  //     top: 100,
-  //     left: 100,
-  //     bottom: 400,
-  //     right: 130,
-  //     x: 100,
-  //     y: 100,
-  //     toJSON: () => {},
-  //   }));
+  const heightCoords = 300;
+  const topCoords = 100;
+  const leftCoords = 100;
+  const bottomCoords = topCoords + heightCoords;
 
-  //   viewSettings.vertical = true;
-  //   viewSettings.range = true;
-  // });
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      width: 30,
+      height: heightCoords,
+      top: topCoords,
+      left: leftCoords,
+      bottom: bottomCoords,
+      right: 130,
+      x: leftCoords,
+      y: topCoords,
+      toJSON: () => {},
+    }));
 
-  // test('should return currentPos > max', () => {
-  //   const downEvent = new PointerEvent(
-  //     'pointerdown',
-  //     {
-  //       bubbles: true,
-  //       cancelable: true,
-  //       clientX: 590,
-  //       clientY: 590,
-  //     },
-  //   );
+    viewSettings.vertical = true;
+    viewSettings.range = true;
+  });
 
-  //   const view = new View('range-slider', modelSettings, viewSettings);
-  //   view.settings['thumbMarginTo'] = 150; /* +min(100) -step(2) = 248 */
+  test('should return currentPos = max if currentPos > max', () => {
+    const anyPositiveValue = 10;
 
-  //   view['from'].element.dispatchEvent(downEvent);
-  //   const result = view['currentCursorPosition'](downEvent);
-  //   expect(result).toBe(248);
-  // });
+    if (anyPositiveValue < 0) {
+      throw new Error('variable "anyPositiveValue" must be greater than 0!');
+    }
 
-  // test('should return currentPos < min', () => {
-  //   const downEvent = new PointerEvent(
-  //     'pointerdown',
-  //     {
-  //       bubbles: true,
-  //       cancelable: true,
-  //       clientX: 150,
-  //       clientY: 150,
-  //     },
-  //   );
+    const downEvent = new PointerEvent(
+      'pointerdown',
+      {
+        bubbles: true,
+        cancelable: true,
+        clientX: 110,
+        clientY: bottomCoords + anyPositiveValue, // if viewSettings.vertical = true;
+      },
+    );
 
-  //   const view = new View('range-slider', modelSettings, viewSettings);
-  //   view.settings['thumbMarginFrom'] = 110; /* +min(100) +step(2) = 212 */
-  //   view['to'].element.dispatchEvent(downEvent);
-  //   const result = view['currentCursorPosition'](downEvent);
-  //   expect(result).toBe(212);
-  // });
+    const view = new View('range-slider', modelSettings, viewSettings);
+
+    view['slider'].element.dispatchEvent(downEvent);
+    const result = view['currentCursorPosition'](downEvent);
+    expect(result).toBe(bottomCoords);
+  });
+
+  test('should return currentPos = min if currentPos < min ', () => {
+    const anyNegativeValue = -10;
+
+    if (anyNegativeValue > 0) {
+      throw new Error('variable "anyNegativeValue" must be smaller than 0!');
+    }
+    const downEvent = new PointerEvent(
+      'pointerdown',
+      {
+        bubbles: true,
+        cancelable: true,
+        clientX: 150,
+        clientY: topCoords + anyNegativeValue, // if viewSettings.vertical = true;
+      },
+    );
+
+    const view = new View('range-slider', modelSettings, viewSettings);
+
+    view['slider'].element.dispatchEvent(downEvent);
+    const result = view['currentCursorPosition'](downEvent);
+    expect(result).toBe(topCoords);
+  });
 });
 
 describe('private getPosOnScale', () => {
@@ -802,7 +796,6 @@ describe('private handleBeginSliding', () => {
     const view = new View('range-slider', modelSettings, viewSettings);
 
     const currentPos = 150;
-    // console.log('cp: ', currentPos);
     const getPosOnScaleSpy = jest
       .spyOn(view as unknown as ViewHint, 'getPosOnScale')
       .mockReturnValue(currentPos);
@@ -812,7 +805,6 @@ describe('private handleBeginSliding', () => {
     const setDistanceBetweenTooltipsSpy = jest
       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
 
-    // console.log('cp: ', currentPos);
     return {
       view,
       currentPos,

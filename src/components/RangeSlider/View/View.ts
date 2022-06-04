@@ -314,7 +314,6 @@ class View {
     // set Edge values to thumbs for twoRunners slider
     if (this.viewSettings.range) {
       const target = <HTMLElement> event.target;
-
       let stepInPx = 0;
       if (this.modelSettings.stepInPercents) {
         stepInPx = this.convertPercentsToPixels(this.modelSettings.stepInPercents);
@@ -330,7 +329,8 @@ class View {
     // validate currentPos
     if (currentPos < min) {
       currentPos = min;
-    } else if (currentPos > max) {
+    }
+    if (currentPos > max) {
       currentPos = max;
     }
     return currentPos;
@@ -345,7 +345,9 @@ class View {
         this.modelSettings.from = this.modelSettings.curPosInPoints;
       }
       this.modelSettings.curPosInPoints = undefined;
-    } else if (thumbName === 'to') {
+    }
+
+    if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.viewSettings, this.slider);
       const sliderLengthInPx: number = max - min;
 
@@ -452,7 +454,9 @@ class View {
     if (thumb === 'from') {
       from.classList.add(zIndexClass);
       to.classList.remove(zIndexClass);
-    } else if (thumb === 'to') {
+    }
+
+    if (thumb === 'to') {
       from.classList.remove(zIndexClass);
       to.classList.add(zIndexClass);
     }
