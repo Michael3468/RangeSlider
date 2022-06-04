@@ -1060,3 +1060,35 @@ describe('private convertPosInPercents', () => {
     expect(result).toBe(currentPos / onePercent);
   });
 });
+
+describe('private convertPercentsToPixels', () => {
+  const heightCoords = 300;
+  const topCoords = 100;
+  const leftCoords = 100;
+  const bottomCoords = topCoords + heightCoords;
+
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      width: 30,
+      height: heightCoords,
+      top: topCoords,
+      left: leftCoords,
+      bottom: bottomCoords,
+      right: 130,
+      x: leftCoords,
+      y: topCoords,
+      toJSON: () => {},
+    }));
+  });
+
+  const percents = 30;
+  const percentsInPixels = (heightCoords / 100) * percents;
+
+  test(`result must be equal to ${percentsInPixels}`, () => {
+    viewSettings.vertical = true;
+    const view = new View('range-slider', modelSettings, viewSettings);
+
+    const result = view['convertPercentsToPixels'](percents);
+    expect(result).toBe(percentsInPixels);
+  });
+});

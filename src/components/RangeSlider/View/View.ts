@@ -207,7 +207,9 @@ class View {
 
       if (target.classList.contains('thumb-from')) {
         thumbName = 'from';
-      } else if (target.classList.contains('thumb-to')) {
+      }
+
+      if (target.classList.contains('thumb-to')) {
         thumbName = 'to';
       }
 
