@@ -1022,7 +1022,7 @@ describe('private setMargins', () => {
 
     const randomNumb = 20;
     const result = view['setMargins']('from', randomNumb);
-    expect(result.settings.from).toBe(curPosInPoints);
+    expect(result.modelSettings.from).toBe(curPosInPoints);
   });
 
   test('should return settings.to === settings.curPosInPoints', () => {
@@ -1032,6 +1032,6 @@ describe('private setMargins', () => {
 
     const randomNumb = 20;
     const result = view['setMargins']('to', randomNumb);
-    expect(result.settings.to).toBe(curPosInPoints);
+    expect(result.modelSettings.to).toBe(curPosInPoints);
   });
 });

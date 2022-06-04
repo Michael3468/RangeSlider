@@ -202,10 +202,10 @@ describe('private initRangeSlider', () => {
     expect(spyUpdateSettings).toBeCalled();
     expect(spyUpdateSettings).toBeCalledWith(modelSettings);
 
-    expect(result['view'].settings.posWithStepInPercents)
+    expect(result['view'].modelSettings.posWithStepInPercents)
       .toBe(pr['model'].getPosWithStepInPercents(modelSettings));
 
-    expect(result['view'].settings.curPosInPoints)
+    expect(result['view'].modelSettings.curPosInPoints)
       .toBe(pr['model'].getThumbValue(modelSettings));
   });
 
@@ -232,7 +232,7 @@ describe('private initRangeSlider', () => {
     expect(spyUpdateSettings).toBeCalled();
     expect(spyUpdateSettings).toBeCalledWith(modelSettings);
 
-    expect(result['view'].settings.stepInPercents).toBe(42);
+    expect(result['view'].modelSettings.stepInPercents).toBe(42);
   });
 });
 

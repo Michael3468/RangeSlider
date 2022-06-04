@@ -33,7 +33,7 @@ class View {
 
   private scale: AbstractScale = new Scale();
 
-  settings: IModelSettings;
+  modelSettings: IModelSettings;
 
   viewSettings: IViewSettings;
 
@@ -48,13 +48,13 @@ class View {
   getMarginObserver: AbstractObserver = new Observer();
 
   constructor(id: string, mergedSettings: IModelSettings, viewSettings: IViewSettings) {
-    this.settings = mergedSettings;
+    this.modelSettings = mergedSettings;
     this.viewSettings = viewSettings;
 
     this.slider = new Slider(id);
 
     if (process.env['NODE_ENV'] !== 'production') {
-      this.configurationPanel = new ConfigurationPanel(this.settings, this.viewSettings);
+      this.configurationPanel = new ConfigurationPanel(this.modelSettings, this.viewSettings);
     }
 
     this.setBindings();
@@ -115,7 +115,7 @@ class View {
       && this.configurationPanel
     ) {
       this.slider.element.after(this.configurationPanel.element);
-      this.configurationPanel.updateState(this.settings, this.viewSettings);
+      this.configurationPanel.updateState(this.modelSettings, this.viewSettings);
     }
 
     this.handleUpdateRangeSliderView();
@@ -142,17 +142,17 @@ class View {
 
     this.range.setMarginFromBegin(this.viewSettings.rangeMarginFrom, vertical);
     this.from.setMargin(this.viewSettings.thumbMarginFrom, this.viewSettings);
-    this.from.tooltip.setTooltipText(this.settings.from, this.settings);
+    this.from.tooltip.setTooltipText(this.modelSettings.from, this.modelSettings);
 
     this.range.setMarginFromEnd(this.viewSettings.rangeMarginTo, vertical);
     this.to.setMargin(this.viewSettings.thumbMarginTo, this.viewSettings);
-    this.to.tooltip.setTooltipText(this.settings.to, this.settings);
+    this.to.tooltip.setTooltipText(this.modelSettings.to, this.modelSettings);
 
     return this;
   }
 
   private handleChangeSettingsObserverNotify = (): void => {
-    this.changeSettingsObserver.notifyObservers(this.settings);
+    this.changeSettingsObserver.notifyObservers(this.modelSettings);
   };
 
   private handleUpdateRangeSliderView = (): void => {
@@ -161,7 +161,7 @@ class View {
 
     if (!this.viewSettings.vertical) {
       this.scale.element.replaceChildren();
-      this.scale.createScaleMarks(this.settings, this.viewSettings);
+      this.scale.createScaleMarks(this.modelSettings, this.viewSettings);
     }
 
     this.setDistanceBetweenTooltips();
@@ -191,8 +191,8 @@ class View {
       currentPos = this.getPosOnScale(this.currentCursorPosition(e));
     }
 
-    this.settings.currentPos = this.convertPosInPercents(currentPos);
-    this.changeCurrentPosObserver.notifyObservers(this.settings);
+    this.modelSettings.currentPos = this.convertPosInPercents(currentPos);
+    this.changeCurrentPosObserver.notifyObservers(this.modelSettings);
 
     return currentPos;
   }
@@ -212,7 +212,7 @@ class View {
       }
 
       this.changeCurrentPos(e);
-      this.updateMargins(this.settings, thumbName);
+      this.updateMargins(this.modelSettings, thumbName);
 
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
@@ -254,7 +254,7 @@ class View {
     }
     // get closest thumb from cursor end
 
-    this.updateMargins(this.settings, thumbName);
+    this.updateMargins(this.modelSettings, thumbName);
     this.updateRangeSliderValues();
 
     if (this.viewSettings.range) {
@@ -316,8 +316,8 @@ class View {
       const target = <HTMLElement> event.target;
 
       let stepInPx = 0;
-      if (this.settings.stepInPercents) {
-        stepInPx = this.convertPercentsToPixels(this.settings.stepInPercents);
+      if (this.modelSettings.stepInPercents) {
+        stepInPx = this.convertPercentsToPixels(this.modelSettings.stepInPercents);
       }
 
       if (target.classList.contains('thumb-from')) {
@@ -341,10 +341,10 @@ class View {
       this.viewSettings.thumbMarginFrom = currentPosWithStep;
       this.viewSettings.rangeMarginFrom = currentPosWithStep;
 
-      if (this.settings.curPosInPoints !== undefined) {
-        this.settings.from = this.settings.curPosInPoints;
+      if (this.modelSettings.curPosInPoints !== undefined) {
+        this.modelSettings.from = this.modelSettings.curPosInPoints;
       }
-      this.settings.curPosInPoints = undefined;
+      this.modelSettings.curPosInPoints = undefined;
     } else if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.viewSettings, this.slider);
       const sliderLengthInPx: number = max - min;
@@ -352,17 +352,17 @@ class View {
       this.viewSettings.thumbMarginTo = currentPosWithStep;
       this.viewSettings.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
 
-      if (this.settings.curPosInPoints !== undefined) {
-        this.settings.to = this.settings.curPosInPoints;
+      if (this.modelSettings.curPosInPoints !== undefined) {
+        this.modelSettings.to = this.modelSettings.curPosInPoints;
       }
-      this.settings.curPosInPoints = undefined;
+      this.modelSettings.curPosInPoints = undefined;
     }
 
     return this;
   }
 
   private setRangeSliderMargins(): View {
-    this.getMarginObserver.notifyObservers(this.settings);
+    this.getMarginObserver.notifyObservers(this.modelSettings);
 
     if (this.viewSettings.range) {
       const marginFrom = this.convertPercentsToPixels(
