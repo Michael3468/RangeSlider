@@ -1027,3 +1027,36 @@ describe('private setMargins', () => {
     expect(result.modelSettings.to).toBe(curPosInPoints);
   });
 });
+
+describe('private convertPosInPercents', () => {
+  const heightCoords = 300;
+  const topCoords = 100;
+  const leftCoords = 100;
+  const bottomCoords = topCoords + heightCoords;
+
+  beforeEach(() => {
+    Element.prototype.getBoundingClientRect = jest.fn(() => ({
+      width: 30,
+      height: heightCoords,
+      top: topCoords,
+      left: leftCoords,
+      bottom: bottomCoords,
+      right: 130,
+      x: leftCoords,
+      y: topCoords,
+      toJSON: () => {},
+    }));
+  });
+
+  test('viewSettings.vertical = true', () => {
+    viewSettings.vertical = true;
+    const view = new View('range-slider', modelSettings, viewSettings);
+
+    const currentPos = 30;
+    const result = view['convertPosInPercents'](currentPos);
+
+    const PERCENTS_100 = 100;
+    const onePercent = heightCoords / PERCENTS_100;
+    expect(result).toBe(currentPos / onePercent);
+  });
+});
