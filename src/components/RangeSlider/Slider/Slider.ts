@@ -13,7 +13,7 @@ class Slider extends AbstractSlider {
 
     try {
       if (!slider) {
-        throw new Error('element don\'t exist on this page');
+        throw new Error('Element don\'t exist on this page');
       }
 
       slider.className = 'range-slider';
