@@ -75,6 +75,8 @@ abstract class ViewHint {
   abstract handleChangeSettingsObserverNotify(): void;
 
   abstract changeCurrentPos(e: PointerEvent, value?: number): number;
+
+  abstract convertPercentsToPixels(valInPercents: number): number;
 }
 
 let modelSettings: IModelSettings;
@@ -1090,5 +1092,25 @@ describe('private convertPercentsToPixels', () => {
 
     const result = view['convertPercentsToPixels'](percents);
     expect(result).toBe(percentsInPixels);
+  });
+});
+
+describe('private updateMargins', () => {
+  test('', () => {
+    const valueToReturn = 42;
+    const view = new View('range-slider', modelSettings, viewSettings);
+    const spyConvertPercentsToPixels = jest
+      .spyOn(view as unknown as ViewHint, 'convertPercentsToPixels')
+      .mockReturnValue(valueToReturn);
+
+    const spySetMargins = jest
+      .spyOn(view as unknown as ViewHint, 'setMargins');
+
+    view['updateMargins'](modelSettings, 'from');
+
+    expect(spyConvertPercentsToPixels).toBeCalled();
+
+    expect(spySetMargins).toBeCalled();
+    expect(spySetMargins).toBeCalledWith('from', valueToReturn);
   });
 });
