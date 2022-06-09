@@ -33,7 +33,7 @@ class View {
 
   private scale: AbstractScale = new Scale();
 
-  settings: IModelSettings;
+  modelSettings: IModelSettings;
 
   viewSettings: IViewSettings;
 
@@ -48,23 +48,19 @@ class View {
   getMarginObserver: AbstractObserver = new Observer();
 
   constructor(id: string, mergedSettings: IModelSettings, viewSettings: IViewSettings) {
-    this.settings = mergedSettings;
+    this.modelSettings = mergedSettings;
     this.viewSettings = viewSettings;
 
     this.slider = new Slider(id);
 
     if (process.env['NODE_ENV'] !== 'production') {
-      this.configurationPanel = new ConfigurationPanel(this.settings, this.viewSettings);
+      this.configurationPanel = new ConfigurationPanel(this.modelSettings, this.viewSettings);
     }
 
     this.setBindings();
   }
 
   public createRangeSlider(settings: IModelSettings): View {
-    if (!this.slider.element) {
-      return this;
-    }
-
     if (this.viewSettings.range) {
       this.slider.element.appendChild(this.from.element);
     }
@@ -119,7 +115,7 @@ class View {
       && this.configurationPanel
     ) {
       this.slider.element.after(this.configurationPanel.element);
-      this.configurationPanel.updateState(this.settings, this.viewSettings);
+      this.configurationPanel.updateState(this.modelSettings, this.viewSettings);
     }
 
     this.handleUpdateRangeSliderView();
@@ -146,17 +142,17 @@ class View {
 
     this.range.setMarginFromBegin(this.viewSettings.rangeMarginFrom, vertical);
     this.from.setMargin(this.viewSettings.thumbMarginFrom, this.viewSettings);
-    this.from.tooltip.setTooltipText(this.settings.from, this.settings);
+    this.from.tooltip.setTooltipText(this.modelSettings.from, this.modelSettings);
 
     this.range.setMarginFromEnd(this.viewSettings.rangeMarginTo, vertical);
     this.to.setMargin(this.viewSettings.thumbMarginTo, this.viewSettings);
-    this.to.tooltip.setTooltipText(this.settings.to, this.settings);
+    this.to.tooltip.setTooltipText(this.modelSettings.to, this.modelSettings);
 
     return this;
   }
 
   private handleChangeSettingsObserverNotify = (): void => {
-    this.changeSettingsObserver.notifyObservers(this.settings);
+    this.changeSettingsObserver.notifyObservers(this.modelSettings);
   };
 
   private handleUpdateRangeSliderView = (): void => {
@@ -165,7 +161,7 @@ class View {
 
     if (!this.viewSettings.vertical) {
       this.scale.element.replaceChildren();
-      this.scale.createScaleMarks(this.settings, this.viewSettings);
+      this.scale.createScaleMarks(this.modelSettings, this.viewSettings);
     }
 
     this.setDistanceBetweenTooltips();
@@ -195,8 +191,8 @@ class View {
       currentPos = this.getPosOnScale(this.currentCursorPosition(e));
     }
 
-    this.settings.currentPos = this.convertPosInPercents(currentPos);
-    this.changeCurrentPosObserver.notifyObservers(this.settings);
+    this.modelSettings.currentPos = this.convertPosInPercents(currentPos);
+    this.changeCurrentPosObserver.notifyObservers(this.modelSettings);
 
     return currentPos;
   }
@@ -211,12 +207,14 @@ class View {
 
       if (target.classList.contains('thumb-from')) {
         thumbName = 'from';
-      } else if (target.classList.contains('thumb-to')) {
+      }
+
+      if (target.classList.contains('thumb-to')) {
         thumbName = 'to';
       }
 
       this.changeCurrentPos(e);
-      this.updateMargins(this.settings, thumbName);
+      this.updateMargins(this.modelSettings, thumbName);
 
       this.updateRangeSliderValues();
       this.setDistanceBetweenTooltips();
@@ -258,7 +256,7 @@ class View {
     }
     // get closest thumb from cursor end
 
-    this.updateMargins(this.settings, thumbName);
+    this.updateMargins(this.modelSettings, thumbName);
     this.updateRangeSliderValues();
 
     if (this.viewSettings.range) {
@@ -318,10 +316,9 @@ class View {
     // set Edge values to thumbs for twoRunners slider
     if (this.viewSettings.range) {
       const target = <HTMLElement> event.target;
-
       let stepInPx = 0;
-      if (this.settings.stepInPrecents) {
-        stepInPx = this.convertPercentsToPixels(this.settings.stepInPrecents);
+      if (this.modelSettings.stepInPercents) {
+        stepInPx = this.convertPercentsToPixels(this.modelSettings.stepInPercents);
       }
 
       if (target.classList.contains('thumb-from')) {
@@ -334,37 +331,42 @@ class View {
     // validate currentPos
     if (currentPos < min) {
       currentPos = min;
-    } else if (currentPos > max) {
+    }
+    if (currentPos > max) {
       currentPos = max;
     }
     return currentPos;
   }
 
-  private setMargins(thumbName: ThumbName, currentPosWithStep: number): void {
+  private setMargins(thumbName: ThumbName, currentPosWithStep: number): View {
     if (thumbName === 'from') {
       this.viewSettings.thumbMarginFrom = currentPosWithStep;
       this.viewSettings.rangeMarginFrom = currentPosWithStep;
 
-      if (this.settings.curPosInPoints !== undefined) {
-        this.settings.from = this.settings.curPosInPoints;
+      if (this.modelSettings.curPosInPoints !== undefined) {
+        this.modelSettings.from = this.modelSettings.curPosInPoints;
       }
-      this.settings.curPosInPoints = undefined;
-    } else if (thumbName === 'to') {
+      this.modelSettings.curPosInPoints = undefined;
+    }
+
+    if (thumbName === 'to') {
       const { min, max } = getMinMaxElementEdgesInPx(this.viewSettings, this.slider);
       const sliderLengthInPx: number = max - min;
 
       this.viewSettings.thumbMarginTo = currentPosWithStep;
       this.viewSettings.rangeMarginTo = sliderLengthInPx - currentPosWithStep;
 
-      if (this.settings.curPosInPoints !== undefined) {
-        this.settings.to = this.settings.curPosInPoints;
+      if (this.modelSettings.curPosInPoints !== undefined) {
+        this.modelSettings.to = this.modelSettings.curPosInPoints;
       }
-      this.settings.curPosInPoints = undefined;
+      this.modelSettings.curPosInPoints = undefined;
     }
+
+    return this;
   }
 
   private setRangeSliderMargins(): View {
-    this.getMarginObserver.notifyObservers(this.settings);
+    this.getMarginObserver.notifyObservers(this.modelSettings);
 
     if (this.viewSettings.range) {
       const marginFrom = this.convertPercentsToPixels(
@@ -454,7 +456,9 @@ class View {
     if (thumb === 'from') {
       from.classList.add(zIndexClass);
       to.classList.remove(zIndexClass);
-    } else if (thumb === 'to') {
+    }
+
+    if (thumb === 'to') {
       from.classList.remove(zIndexClass);
       to.classList.add(zIndexClass);
     }

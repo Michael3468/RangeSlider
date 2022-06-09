@@ -78,18 +78,18 @@ type IDefSettings = IViewSettings | IModelSettings;
 function updateObjectValues(
   defaultSettings: IDefSettings,
   userSettings: IUserSettings,
-): IViewSettings | IModelSettings {
-  const c: IViewSettings | IModelSettings = {};
+): IDefSettings {
+  const resultSettings: IDefSettings = { ...defaultSettings };
 
   const keys: string[] = Object.getOwnPropertyNames(defaultSettings);
 
   keys.forEach((key) => {
-    c[key] = key in userSettings
+    resultSettings[key] = key in userSettings
       ? userSettings[key as keyof IUserSettings]
       : defaultSettings[key as keyof IDefSettings];
   });
 
-  return c;
+  return resultSettings;
 }
 
 export {
