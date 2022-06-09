@@ -652,102 +652,6 @@ describe('private getDifferenceBetween', () => {
   });
 });
 
-// describe('private handleMoveClosestThumb', () => {
-//   function testMoveClosestThumb(view: View, clickPosition: number) {
-//     /* 'should' return mouseEvent coords */
-//     jest.spyOn(view as unknown as ViewHint, 'getPosOnScale').mockReturnValueOnce(clickPosition);
-
-//     const updateRangeSliderValuesSpy = jest
-//       .spyOn(view as unknown as ViewHint, 'updateRangeSliderValues');
-//     const setZIndexTopSpy = jest.spyOn(view as unknown as ViewHint, 'setZIndexTop');
-//     const setDistanceBetweenTooltipsSpy = jest
-//       .spyOn(view as unknown as ViewHint, 'setDistanceBetweenTooltips');
-
-//     const downEvent = new PointerEvent(
-//       'pointerdown',
-//       {
-//         bubbles: true,
-//         cancelable: true,
-//         clientX: clickPosition,
-//         clientY: 150,
-//       },
-//     );
-
-//     view['slider'].element.dispatchEvent(downEvent);
-//     const result = view['handleMoveClosestThumb'](downEvent);
-
-//     return {
-//       updateRangeSliderValuesSpy,
-//       setZIndexTopSpy,
-//       setDistanceBetweenTooltipsSpy,
-//       result,
-//     };
-//   }
-
-//   function isHasClasses(result: View, thumbName: ThumbName) {
-//     const isHasThumbClass = result[thumbName].element.classList.contains(`thumb-${thumbName}`);
-//     expect(isHasThumbClass).toBeTruthy();
-
-//     const isHasZIndexClass = result[thumbName].element.classList.contains('tooltip-z-index-top');
-//     expect(isHasZIndexClass).toBeTruthy();
-//   }
-
-//   test('should return thumbMarginFrom = \'clickPosition\'', () => {
-//     viewSettings.range = true;
-//     const view = new View('range-slider', modelSettings, viewSettings);
-//     view.settings['thumbMarginFrom'] = 150;
-//     view.settings['thumbMarginTo'] = 250;
-
-//     const clickPosition = 100;
-
-//     const {
-//       updateRangeSliderValuesSpy,
-//       setZIndexTopSpy,
-//       setDistanceBetweenTooltipsSpy,
-//       result,
-//     } = testMoveClosestThumb(view, clickPosition);
-
-//     expect(result.settings['thumbMarginFrom']).toBe(clickPosition);
-//     expect(result.settings['thumbMarginTo']).not.toBe(clickPosition);
-//     expect(updateRangeSliderValuesSpy).toBeCalled();
-//     expect(setDistanceBetweenTooltipsSpy).toBeCalled();
-
-//     if (result['viewSettings'].range) {
-//       expect(setZIndexTopSpy).toBeCalled();
-
-//       isHasClasses(result, 'from');
-//     }
-//   });
-
-//   // test('should return thumbMarginTo = \'clickPosition\'', () => {
-//   //   viewSettings.range = true;
-//   //   const view = new View('range-slider', modelSettings, viewSettings);
-//   //   view.viewSettings['thumbMarginFrom'] = 150;
-//   //   view.viewSettings['thumbMarginTo'] = 250;
-
-//   //   const clickPosition = 200;
-
-//   //   const {
-//   //     updateRangeSliderValuesSpy,
-//   //     setZIndexTopSpy,
-//   //     setDistanceBetweenTooltipsSpy,
-//   //     result,
-//   //   } = testMoveClosestThumb(view, clickPosition);
-
-//   //   expect(result.viewSettings['thumbMarginFrom']).not.toBe(clickPosition);
-//   //   console.log('viewSettings', result.viewSettings);
-//   //   expect(result.viewSettings['thumbMarginTo']).toBe(clickPosition);
-//   //   expect(updateRangeSliderValuesSpy).toBeCalled();
-//   //   expect(setDistanceBetweenTooltipsSpy).toBeCalled();
-
-//   //   if (result['viewSettings'].range) {
-//   //     expect(setZIndexTopSpy).toBeCalled();
-
-//   //     isHasClasses(result, 'to');
-//   //   }
-//   // });
-// });
-
 describe('private handleStopSliding', () => {
   test('event.target.onpointermove should return null', () => {
     const upEvent = new PointerEvent('pointerup', {
@@ -824,7 +728,6 @@ describe('private handleBeginSliding', () => {
 
     const {
       view,
-      // currentPos,
       getPosOnScaleSpy,
       setMarginsSpy,
       updateRangeSliderValuesSpy,
