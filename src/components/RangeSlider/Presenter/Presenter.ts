@@ -22,12 +22,12 @@ class Presenter {
       modelSettings.currentPos = this.model.getMargin('from', modelSettings);
       this.view.viewSettings.thumbMarginFrom = this
         .model.getPosWithStepInPercents(modelSettings);
-      this.view.settings.from = this.model.getThumbValue(modelSettings);
+      this.view.modelSettings.from = this.model.getThumbValue(modelSettings);
 
       modelSettings.currentPos = this.model.getMargin('to', modelSettings);
       this.view.viewSettings.thumbMarginTo = this
         .model.getPosWithStepInPercents(modelSettings);
-      this.view.settings.to = this.model.getThumbValue(modelSettings);
+      this.view.modelSettings.to = this.model.getThumbValue(modelSettings);
     });
 
     this.view.changeSettingsObserver.addObserver((settings) => {
@@ -52,17 +52,17 @@ class Presenter {
       const modelSettings = <IModelSettings>settings;
 
       this.model.updateSettings(modelSettings);
-      this.view.settings.posWithStepInPercents = this
+      this.view.modelSettings.posWithStepInPercents = this
         .model.getPosWithStepInPercents(modelSettings);
-      this.view.settings.curPosInPoints = this.model.getThumbValue(modelSettings);
+      this.view.modelSettings.curPosInPoints = this.model.getThumbValue(modelSettings);
     });
 
     if (process.env['NODE_ENV'] !== 'production') {
       this.view.configurationPanel?.getStepInPercentsObserver.addObserver((settings) => {
         const modelSettings = <IModelSettings>settings;
-        modelSettings.stepInPrecents = this
+        modelSettings.stepInPercents = this
           .model.getStepInPercents(modelSettings);
-        this.view.settings = this.model.updateSettings(modelSettings);
+        this.view.modelSettings = this.model.updateSettings(modelSettings);
       });
     }
 

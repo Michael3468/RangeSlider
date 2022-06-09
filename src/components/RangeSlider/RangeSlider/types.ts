@@ -1,3 +1,4 @@
+// TODO del ISettings
 interface ISettings {
   min: number;
   max: number;
@@ -17,7 +18,7 @@ interface ISettings {
   curPosInPoints?: number;
   thumbMarginFrom?: number;
   thumbMarginTo?: number;
-  stepInPrecents?: number;
+  stepInPercents?: number;
 }
 
 interface IModelSettings {
@@ -26,7 +27,7 @@ interface IModelSettings {
   from: number;
   to: number;
   step: number;
-  stepInPrecents: number;
+  stepInPercents: number;
   currentPos: number;
   curPosInPoints: number | undefined;
   posWithStepInPercents: number;

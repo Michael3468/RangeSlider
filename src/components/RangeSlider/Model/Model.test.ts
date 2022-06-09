@@ -4,126 +4,317 @@
 
 import Model from './Model';
 
-import { ISettings } from '../RangeSlider/types';
+import { IModelSettings } from '../RangeSlider/types';
 
-let settings: ISettings;
+abstract class ModelHint {
+  abstract getOnePointInPerсents(settings: IModelSettings): number;
+}
+
+let modelSettings: IModelSettings;
 
 beforeEach(() => {
-  settings = {
+  modelSettings = {
     min: 0,
     max: 1500,
-    range: true,
-    scale: true,
-    vertical: false,
-    tooltips: true,
-    confpanel: true,
-    bar: true,
     from: 1000,
     to: 1490,
     step: 10,
+
+    stepInPercents: 1,
+    currentPos: 1,
+    curPosInPoints: 1,
+    posWithStepInPercents: 1,
   };
 });
 
 describe('private static validateSettings', () => {
-  test('"settings.min >= settings.max" should return min = max - step', () => {
-    settings.max = 100;
-    settings.min = 110;
-    settings.step = 20;
+  describe('test settings.step <= 0', () => {
+    test('shold return 1 if step = 0', () => {
+      modelSettings.step = 0;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
 
-    const result = Model['validateSettings'](settings);
-    expect(result.min).toBe(settings.max - settings.step);
+    test('shold return 1 if step < 0', () => {
+      modelSettings.step = -0.8;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
+
+    test('shold return 1 if step < 0', () => {
+      modelSettings.step = -8;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.step).toBe(1);
+    });
+  });
+
+  test('"settings.min >= settings.max" should return min = max - step', () => {
+    modelSettings.max = 100;
+    modelSettings.min = 110;
+    modelSettings.step = 20;
+
+    const result = Model['validateSettings'](modelSettings);
+    expect(result.min).toBe(modelSettings.max - modelSettings.step);
+  });
+
+  test('if (max - min) < step should return step = max - min', () => {
+    modelSettings.max = 100;
+    modelSettings.min = 95;
+    modelSettings.step = 10;
+
+    const result = Model['validateSettings'](modelSettings);
+    expect(result.step).toBe(result.max - result.min);
   });
 
   describe('"settings.from < settings.min"', () => {
     test(' should return from = min', () => {
-      settings.from = 0;
-      settings.min = 10;
-      const result = Model['validateSettings'](settings);
-      expect(result.from).toBe(settings.min);
+      modelSettings.from = 0;
+      modelSettings.min = 10;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.from).toBe(modelSettings.min);
     });
 
     test('should return from != min', () => {
-      settings.from = 20;
-      settings.min = 10;
-      const result = Model['validateSettings'](settings);
-      expect(result.from).not.toBe(settings.min);
-      expect(result.from).toBe(settings.from);
+      modelSettings.from = 20;
+      modelSettings.min = 10;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.from).not.toBe(modelSettings.min);
+      expect(result.from).toBe(modelSettings.from);
     });
   });
 
   describe('settings.to < settings.from', () => {
     test('should to = from + step', () => {
-      settings.to = 10;
-      settings.from = 20;
-      settings.step = 1;
-      const result = Model['validateSettings'](settings);
-      expect(result.to).toBe(settings.from + settings.step);
+      modelSettings.to = 10;
+      modelSettings.from = 20;
+      modelSettings.step = 1;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.to).toBe(modelSettings.from + modelSettings.step);
     });
 
     test('should to != min', () => {
-      settings.to = 100;
-      settings.min = 20;
-      const result = Model['validateSettings'](settings);
-      expect(result.to).not.toBe(settings.min);
+      modelSettings.to = 100;
+      modelSettings.min = 20;
+      const result = Model['validateSettings'](modelSettings);
+      expect(result.to).not.toBe(modelSettings.min);
     });
   });
 
   test('settings.to > settings.max should return to = max', () => {
-    settings.to = 1200;
-    settings.max = 1100;
-    let validatedSettings = Model['validateSettings'](settings);
-    expect(validatedSettings.to).toBe(settings.max);
+    modelSettings.to = 1200;
+    modelSettings.max = 1100;
+    let validatedSettings = Model['validateSettings'](modelSettings);
+    expect(validatedSettings.to).toBe(modelSettings.max);
 
-    settings.to = 1200;
-    settings.max = 1300;
-    validatedSettings = Model['validateSettings'](settings);
-    expect(validatedSettings.to).toBe(settings.to);
+    modelSettings.to = 1200;
+    modelSettings.max = 1300;
+    validatedSettings = Model['validateSettings'](modelSettings);
+    expect(validatedSettings.to).toBe(modelSettings.to);
   });
 
   test('"settings.to - settings.from < settings.step" should set from = to - step', () => {
-    settings.min = 200;
-    settings.to = 1400;
-    settings.from = 1000;
-    settings.step = 500;
-    const value = settings.to - settings.step;
+    modelSettings.min = 200;
+    modelSettings.to = 1400;
+    modelSettings.from = 1000;
+    modelSettings.step = 500;
+    const value = modelSettings.to - modelSettings.step;
 
-    const result = Model['validateSettings'](settings);
+    const result = Model['validateSettings'](modelSettings);
     expect(result.from).toBe(value);
   });
 
   test('"settings.to - settings.from < settings.step" should set to = from + step', () => {
-    settings.min = 1000;
-    settings.to = 1400;
-    settings.from = 1000;
-    settings.step = 500;
-    const value = settings.from + settings.step;
+    modelSettings.min = 1000;
+    modelSettings.to = 1400;
+    modelSettings.from = 1000;
+    modelSettings.step = 500;
+    const value = modelSettings.from + modelSettings.step;
 
-    const result = Model['validateSettings'](settings);
+    const result = Model['validateSettings'](modelSettings);
     expect(result.to).toBe(value);
   });
 });
 
 describe('public getSettings', () => {
   test('check returned object', () => {
-    const model = new Model(settings);
-    expect(model.getSettings()).toStrictEqual(settings);
+    const model = new Model(modelSettings);
+    expect(model.getSettings()).toStrictEqual(modelSettings);
   });
 });
 
 describe('public updateSettings', () => {
   test('should return passed values', () => {
-    const model = new Model(settings);
-    expect(model.updateSettings(settings)).toStrictEqual(settings);
+    const model = new Model(modelSettings);
+    expect(model.updateSettings(modelSettings)).toStrictEqual(modelSettings);
   });
 
   test('should change settings', () => {
-    settings.min = 100;
-    const model = new Model(settings);
+    modelSettings.min = 100;
+    const model = new Model(modelSettings);
     const currentSettings = model.getSettings();
 
-    const settingsUpd = { ...settings };
+    const settingsUpd = { ...modelSettings };
     settingsUpd.min = 200;
 
     expect(model.updateSettings(settingsUpd)).not.toStrictEqual(currentSettings);
+  });
+});
+
+describe('public getPosWithStepInPercents', () => {
+  const posInitValue = 1;
+
+  beforeEach(() => {
+    modelSettings = {
+      min: 0,
+      max: 100,
+      from: 30,
+      to: 70,
+      step: 1,
+
+      stepInPercents: 1,
+      currentPos: 4,
+      curPosInPoints: 1,
+      posWithStepInPercents: posInitValue,
+    };
+  });
+
+  test('should return 4 (posWithStep = curPos - remains)', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model, 'getStepInPercents').mockReturnValueOnce(2);
+
+    expect(model['settings'].posWithStepInPercents).toBe(posInitValue);
+
+    const resValue = 4;
+    const result = model.getPosWithStepInPercents(modelSettings);
+
+    expect(result).toBe(resValue);
+    expect(model['settings'].posWithStepInPercents).toBe(resValue);
+  });
+
+  test('should return 9 (posWithStep = curPos - remains + stepInPercents)', () => {
+    modelSettings.stepInPercents = 3;
+    modelSettings.currentPos = 8;
+
+    const model = new Model(modelSettings);
+    jest.spyOn(model, 'getStepInPercents').mockReturnValueOnce(3);
+
+    expect(model['settings'].posWithStepInPercents).toBe(posInitValue);
+
+    const resValue = 9;
+    const result = model.getPosWithStepInPercents(modelSettings);
+
+    expect(result).toBe(resValue);
+    expect(model['settings'].posWithStepInPercents).toBe(resValue);
+  });
+
+  test('should return 0', () => {
+    modelSettings.currentPos = 0;
+
+    const model = new Model(modelSettings);
+    expect(model['settings'].posWithStepInPercents).toBe(posInitValue);
+
+    const resValue = 0;
+    const result = model.getPosWithStepInPercents(modelSettings);
+
+    expect(result).toBe(resValue);
+    expect(model['settings'].posWithStepInPercents).toBe(resValue);
+  });
+
+  test('should return 100', () => {
+    modelSettings.currentPos = 100;
+
+    const model = new Model(modelSettings);
+    expect(model['settings'].posWithStepInPercents).toBe(posInitValue);
+
+    const resValue = 100;
+    const result = model.getPosWithStepInPercents(modelSettings);
+
+    expect(result).toBe(resValue);
+    expect(model['settings'].posWithStepInPercents).toBe(resValue);
+  });
+});
+
+describe('public getThumbValue', () => {
+  beforeEach(() => {
+    modelSettings = {
+      min: 0,
+      max: 100,
+      from: 30,
+      to: 70,
+      step: 1,
+
+      stepInPercents: 1,
+      currentPos: 4,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+  });
+
+  test('should return 1', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getThumbValue(modelSettings);
+    expect(result).toBe(1);
+  });
+
+  test('should return 1', () => {
+    modelSettings.step = 0.005;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getThumbValue(modelSettings);
+    expect(result).toBe(0.001);
+  });
+});
+
+describe('public getMargin', () => {
+  beforeEach(() => {
+    modelSettings = {
+      min: 0,
+      max: 100,
+      from: 30,
+      to: 70,
+      step: 1,
+
+      stepInPercents: 1,
+      currentPos: 4,
+      curPosInPoints: 1,
+      posWithStepInPercents: 1,
+    };
+  });
+
+  test('should return 30', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(30);
+  });
+
+  test('should return 60', () => {
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(2);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(60);
+  });
+
+  test('shoul return 30000', () => {
+    modelSettings.step = 0.003;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('from', modelSettings);
+    expect(result).toBe(30000);
+  });
+
+  test('shoul return 70000', () => {
+    modelSettings.step = 0.003;
+    const model = new Model(modelSettings);
+    jest.spyOn(model as unknown as ModelHint, 'getOnePointInPerсents').mockReturnValueOnce(1);
+
+    const result = model.getMargin('to', modelSettings);
+    expect(result).toBe(70000);
   });
 });

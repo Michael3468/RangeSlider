@@ -15,7 +15,7 @@ const defaultInitSettings: IModelSettings = {
   to: 70,
   step: 1,
 
-  stepInPrecents: 0,
+  stepInPercents: 0,
   currentPos: 0,
   curPosInPoints: 0,
   posWithStepInPercents: 0,

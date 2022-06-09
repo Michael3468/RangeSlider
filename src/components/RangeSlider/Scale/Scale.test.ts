@@ -4,7 +4,7 @@
 
 import Scale from './Scale';
 
-import { ISettings } from '../RangeSlider/types';
+import { IModelSettings, IViewSettings } from '../RangeSlider/types';
 
 abstract class ScaleHint {
   abstract getCurrentStep(): number;
@@ -24,29 +24,44 @@ Element.prototype.getBoundingClientRect = jest.fn(() => ({
   toJSON: () => {},
 }));
 
-let settings: ISettings;
+let modelSettings: IModelSettings;
+let viewSettings: IViewSettings;
 
 beforeEach(() => {
-  settings = {
+  modelSettings = {
     min: 0,
     max: 1500,
+    from: 1000,
+    to: 1490,
+    step: 10,
+
+    stepInPercents: 1,
+    currentPos: 1,
+    curPosInPoints: 1,
+    posWithStepInPercents: 1,
+  };
+
+  viewSettings = {
     range: true,
     scale: true,
     vertical: true,
     tooltips: true,
     confpanel: true,
     bar: true,
-    from: 1000,
-    to: 1490,
-    step: 10,
+
+    thumbMarginFrom: 1,
+    thumbMarginTo: 1,
+    rangeMarginFrom: 1,
+    rangeMarginTo: 1,
   };
 });
 
 describe('private createMark', () => {
   test('should return html span with margin-left and NO class "scale__mark_vertical"', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].vertical = false;
+    scale['settings'] = modelSettings;
+    scale['viewSettings'] = viewSettings;
+    scale['viewSettings'].vertical = false;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -66,8 +81,9 @@ describe('private createMark', () => {
 
   test('should return html span with margin-top and class "scale__mark_vertical"', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].vertical = true;
+    scale['settings'] = modelSettings;
+    scale['viewSettings'] = viewSettings;
+    scale['viewSettings'].vertical = true;
     const marginFromBegin = 100;
 
     const result = scale['createMark'](marginFromBegin);
@@ -89,8 +105,9 @@ describe('private createMark', () => {
 describe('private createMarkValue', () => {
   test('should return div element with class "scale__mark-value" and inner text = value', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].vertical = false;
+    scale['settings'] = modelSettings;
+    scale['viewSettings'] = viewSettings;
+    scale['viewSettings'].vertical = false;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -115,8 +132,9 @@ describe('private createMarkValue', () => {
 
   test('should return div element with class "scale__mark-value_vertical" and inner text = value', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
-    scale['settings'].vertical = true;
+    scale['settings'] = modelSettings;
+    scale['viewSettings'] = viewSettings;
+    scale['viewSettings'].vertical = true;
 
     const value = 200;
     const marginFromBegin = 100;
@@ -149,8 +167,8 @@ describe('public createScaleMarks', () => {
   const getOnePointInPx = jest.fn(() => 3);
 
   beforeEach(() => {
-    settings.min = 0;
-    settings.max = 100;
+    modelSettings.min = 0;
+    modelSettings.max = 100;
   });
 
   test('should return horizontal scale with marks', () => {
@@ -171,11 +189,10 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const stepBetweenMarksInPx = 30;
 
-    settings.vertical = false;
+    viewSettings.vertical = false;
 
-    const result = scale.createScaleMarks(settings);
+    const result = scale.createScaleMarks(modelSettings, viewSettings);
     expect(result.element.nodeName).toBe('DIV');
 
     const isHasClass = result.element.classList.contains('scale');
@@ -183,36 +200,6 @@ describe('public createScaleMarks', () => {
 
     const isHasClassVertical = result.element.classList.contains('scale_vertical');
     expect(isHasClassVertical).toBeFalsy();
-
-    // check NO vertical classes in childs classLists
-    const childrenListLength = result.element.children.length;
-    /* for settings.vertical = false; */
-    const horizontalLength = result.element.getBoundingClientRect().width;
-    const elementsPerStep = 2; // mark and value
-    const totalSteps = (horizontalLength / stepBetweenMarksInPx)
-      * elementsPerStep
-      + elementsPerStep; // first step group of elements
-    expect(totalSteps).toBe(childrenListLength);
-
-    for (let i = 0; i < childrenListLength; i += 1) {
-      const childNodeName = result.element.children[i]?.nodeName;
-
-      if (childNodeName === 'SPAN') {
-        // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark');
-        expect(isClassListContains).toBeTruthy();
-
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark_vertical');
-        expect(isClassListContainsVertical).toBeFalsy();
-      } else if (childNodeName === 'DIV') {
-        // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark-value');
-        expect(isClassListContains).toBeTruthy();
-
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark-value_vertical');
-        expect(isClassListContainsVertical).toBeFalsy();
-      }
-    }
   });
 
   test('should return vertical scale with marks', () => {
@@ -233,11 +220,10 @@ describe('public createScaleMarks', () => {
     expect(getOnePointInPx()).toBe(3);
 
     const scale = new Scale();
-    const stepBetweenMarksInPx = 30;
 
-    settings.vertical = true;
+    viewSettings.vertical = true;
 
-    const result = scale.createScaleMarks(settings);
+    const result = scale.createScaleMarks(modelSettings, viewSettings);
     expect(result.element.nodeName).toBe('DIV');
 
     const isHasClass = result.element.classList.contains('scale');
@@ -245,43 +231,13 @@ describe('public createScaleMarks', () => {
 
     const isHasClassVertical = result.element.classList.contains('scale_vertical');
     expect(isHasClassVertical).toBeFalsy();
-
-    // check vertical classes in childs classLists
-    const childrenListLength = result.element.children.length;
-    /* for settings.vertical = true; */
-    const horizontalLength = result.element.getBoundingClientRect().height;
-    const elementsPerStep = 2; // mark and value
-    const totalSteps = (horizontalLength / stepBetweenMarksInPx)
-      * elementsPerStep
-      + elementsPerStep; // first step group of elements
-    expect(totalSteps).toBe(childrenListLength);
-
-    for (let i = 0; i < childrenListLength; i += 1) {
-      const childNodeName = result.element.children[i]?.nodeName;
-
-      if (childNodeName === 'SPAN') {
-        // console.log('span');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark');
-        expect(isClassListContains).toBeTruthy();
-
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark_vertical');
-        expect(isClassListContainsVertical).toBeTruthy();
-      } else if (childNodeName === 'DIV') {
-        // console.log('div');
-        const isClassListContains = result.element.children[i]?.classList.contains('scale__mark-value');
-        expect(isClassListContains).toBeTruthy();
-
-        const isClassListContainsVertical = result.element.children[i]?.classList.contains('scale__mark-value_vertical');
-        expect(isClassListContainsVertical).toBeTruthy();
-      }
-    }
   });
 });
 
 describe('private getStepBetweenMarks', () => {
   test('if settings.step < 1, should return "onePointInPx" parametr', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
+    scale['settings'] = modelSettings;
     scale['settings'].step = 0.1;
     const onePointInPx = 10;
 
@@ -291,7 +247,7 @@ describe('private getStepBetweenMarks', () => {
 
   test('if settings.step >= 1, should return "onePointInPx * settings.step" parametr', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
+    scale['settings'] = modelSettings;
     scale['settings'].step = 2;
     const onePointInPx = 10;
 
@@ -303,7 +259,7 @@ describe('private getStepBetweenMarks', () => {
 describe('private getCurrentStep', () => {
   test('if settings.step < 0.2, should return 2', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
+    scale['settings'] = modelSettings;
     scale['settings'].step = 0.2;
 
     const result = scale['getCurrentStep']();
@@ -312,7 +268,7 @@ describe('private getCurrentStep', () => {
 
   test('if settings.step < 5, should return 5', () => {
     const scale = new Scale();
-    scale['settings'] = settings;
+    scale['settings'] = modelSettings;
     scale['settings'].step = 5;
 
     const result = scale['getCurrentStep']();
