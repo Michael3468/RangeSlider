@@ -240,14 +240,13 @@ class View {
   }
 
   private handleMoveClosestThumb(e: PointerEvent): View {
-    // TODO rename element to target
-    const element = <HTMLElement> e.target;
+    const target = <HTMLElement> e.target;
 
     let currentPos: number;
-    if (element.classList.contains('scale__mark-value')) {
+    if (target.classList.contains('scale__mark-value')) {
       const currentPosValue = this.viewSettings.vertical
-        ? Number(element.style.marginTop.slice(0, -2))
-        : Number(element.style.marginLeft.slice(0, -2));
+        ? Number(target.style.marginTop.slice(0, -2))
+        : Number(target.style.marginLeft.slice(0, -2));
 
       currentPos = this.changeCurrentPos(e, currentPosValue);
     } else {
