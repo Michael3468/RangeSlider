@@ -197,9 +197,19 @@ class View {
     return currentPos;
   }
 
+  private setEventTarget(target: HTMLElement): HTMLElement {
+    if (target.classList.contains('tooltip-from')) {
+      return this.from.element;
+    }
+    if (target.classList.contains('tooltip-to')) {
+      return this.to.element;
+    }
+    return target;
+  }
+
   private handleBeginSliding(event: PointerEvent): HTMLElement {
-    const target = <HTMLElement> event.target;
     event.preventDefault();
+    const target = this.setEventTarget(<HTMLElement> event.target);
     target.setPointerCapture(event.pointerId);
 
     target.onpointermove = (e: PointerEvent): void => {
@@ -230,6 +240,7 @@ class View {
   }
 
   private handleMoveClosestThumb(e: PointerEvent): View {
+    // TODO rename element to target
     const element = <HTMLElement> e.target;
 
     let currentPos: number;
