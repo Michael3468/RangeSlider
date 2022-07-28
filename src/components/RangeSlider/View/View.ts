@@ -191,10 +191,24 @@ class View {
       currentPos = this.getPosOnScale(this.currentCursorPosition(e));
     }
 
-    this.modelSettings.currentPos = this.convertPosInPercents(currentPos);
+    this.modelSettings.currentPos = this.isLastMarkValue(e)
+      ? 100
+      : this.convertPosInPercents(currentPos);
+
     this.changeCurrentPosObserver.notifyObservers(this.modelSettings);
 
     return currentPos;
+  }
+
+  private isLastMarkValue(e: PointerEvent): boolean {
+    const target = <HTMLElement> e.target;
+    const markValue = target.classList.contains('scale__mark-value');
+
+    if (markValue) {
+      if (target.nextSibling === null) return true;
+    }
+
+    return false;
   }
 
   private setEventTarget(target: HTMLElement): HTMLElement {
@@ -240,14 +254,14 @@ class View {
   }
 
   private handleMoveClosestThumb(e: PointerEvent): View {
-    // TODO rename element to target
-    const element = <HTMLElement> e.target;
+    const target = <HTMLElement> e.target;
 
     let currentPos: number;
-    if (element.classList.contains('scale__mark-value')) {
+    if (target.classList.contains('scale__mark-value')) {
+      // TODO check vertical last mark value
       const currentPosValue = this.viewSettings.vertical
-        ? Number(element.style.marginTop.slice(0, -2))
-        : Number(element.style.marginLeft.slice(0, -2));
+        ? Number(target.style.marginTop.slice(0, -2))
+        : Number(target.style.marginLeft.slice(0, -2));
 
       currentPos = this.changeCurrentPos(e, currentPosValue);
     } else {
@@ -255,11 +269,12 @@ class View {
     }
 
     // get closest thumb from cursor
-    const fromPos = this.viewSettings.thumbMarginFrom;
-    const toPos = this.viewSettings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
     if (this.viewSettings.range) {
+      const fromPos = this.viewSettings.thumbMarginFrom;
+      const toPos = this.viewSettings.thumbMarginTo;
+
       const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
       const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
