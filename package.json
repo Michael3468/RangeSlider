@@ -1,6 +1,6 @@
 {
   "name": "range-slider",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": true,
   "description": "edu project",
   "main": "index.ts",
