@@ -244,6 +244,7 @@ class View {
 
     let currentPos: number;
     if (target.classList.contains('scale__mark-value')) {
+      // TODO check vertical last mark value
       const currentPosValue = this.viewSettings.vertical
         ? Number(target.style.marginTop.slice(0, -2))
         : Number(target.style.marginLeft.slice(0, -2));
@@ -254,11 +255,12 @@ class View {
     }
 
     // get closest thumb from cursor
-    const fromPos = this.viewSettings.thumbMarginFrom;
-    const toPos = this.viewSettings.thumbMarginTo;
     let thumbName: ThumbName = 'to';
 
     if (this.viewSettings.range) {
+      const fromPos = this.viewSettings.thumbMarginFrom;
+      const toPos = this.viewSettings.thumbMarginTo;
+
       const fromDiff = this.getDifferenceBetween(currentPos, fromPos);
       const toDiff = this.getDifferenceBetween(currentPos, toPos);
 
