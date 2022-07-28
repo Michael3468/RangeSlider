@@ -191,10 +191,24 @@ class View {
       currentPos = this.getPosOnScale(this.currentCursorPosition(e));
     }
 
-    this.modelSettings.currentPos = this.convertPosInPercents(currentPos);
+    this.modelSettings.currentPos = this.isLastMarkValue(e)
+      ? 100
+      : this.convertPosInPercents(currentPos);
+
     this.changeCurrentPosObserver.notifyObservers(this.modelSettings);
 
     return currentPos;
+  }
+
+  private isLastMarkValue(e: PointerEvent): boolean {
+    const target = <HTMLElement> e.target;
+    const markValue = target.classList.contains('scale__mark-value');
+
+    if (markValue) {
+      if (target.nextSibling === null) return true;
+    }
+
+    return false;
   }
 
   private setEventTarget(target: HTMLElement): HTMLElement {
