@@ -133,6 +133,9 @@ class Model {
     if ((settings.to - settings.from) < settings.step) {
       if (settings.from >= (settings.min + settings.step)) {
         settings.from = settings.to - settings.step;
+      } else if ((settings.from + settings.step) >= settings.max) {
+        settings.to = settings.max;
+        settings.from = settings.max - settings.step;
       } else {
         settings.to = settings.from + settings.step;
       }
