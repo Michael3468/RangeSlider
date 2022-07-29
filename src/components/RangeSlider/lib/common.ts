@@ -48,6 +48,7 @@ function getOnePointInPx(
   element: HTMLElement,
 ) {
   const elementLengthInPx: number = getElementLengthInPx(viewSettings, element);
+  const bordersWidth = 2; // 1px * 2(borders)
 
   let elementLengthInPoints: number;
   if (settings.step >= 1) {
@@ -56,7 +57,7 @@ function getOnePointInPx(
     elementLengthInPoints = (settings.max - settings.min) / settings.step;
   }
 
-  return Number((elementLengthInPx / elementLengthInPoints).toFixed(3));
+  return Number(((elementLengthInPx + bordersWidth) / elementLengthInPoints).toFixed(3));
 }
 
 function getDigitsAfterPoint(settings: IModelSettings): number {
