@@ -922,7 +922,7 @@ describe('private setMargins', () => {
     expect(result.modelSettings.from).toBe(curPosInPoints);
   });
 
-  test('should return settings.to === settings.curPosInPoints', () => {
+  test('should return modelSettings.to === modelSettings.curPosInPoints', () => {
     const curPosInPoints = 30;
     modelSettings.curPosInPoints = curPosInPoints;
     const view = new View('range-slider', modelSettings, viewSettings);

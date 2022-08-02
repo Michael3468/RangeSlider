@@ -28,7 +28,7 @@ beforeEach(() => {
 });
 
 describe('private static validateSettings', () => {
-  describe('test settings.step <= 0', () => {
+  describe('test modelSettings.step <= 0', () => {
     test('shold return 1 if step = 0', () => {
       modelSettings.step = 0;
       const result = Model['validateSettings'](modelSettings);
@@ -48,7 +48,7 @@ describe('private static validateSettings', () => {
     });
   });
 
-  test('"settings.min >= settings.max" should return min = max - step', () => {
+  test('"modelSettings.min >= modelSettings.max" should return min = max - step', () => {
     modelSettings.max = 100;
     modelSettings.min = 110;
     modelSettings.step = 20;
@@ -66,7 +66,7 @@ describe('private static validateSettings', () => {
     expect(result.step).toBe(result.max - result.min);
   });
 
-  describe('"settings.from < settings.min"', () => {
+  describe('"modelSettings.from < modelSettings.min"', () => {
     test(' should return from = min', () => {
       modelSettings.from = 0;
       modelSettings.min = 10;
@@ -83,7 +83,7 @@ describe('private static validateSettings', () => {
     });
   });
 
-  describe('settings.to < settings.from', () => {
+  describe('modelSettings.to < modelSettings.from', () => {
     test('should to = from + step', () => {
       modelSettings.to = 10;
       modelSettings.from = 20;
@@ -100,7 +100,7 @@ describe('private static validateSettings', () => {
     });
   });
 
-  test('settings.to > settings.max should return to = max', () => {
+  test('modelSettings.to > modelSettings.max should return to = max', () => {
     modelSettings.to = 1200;
     modelSettings.max = 1100;
     let validatedSettings = Model['validateSettings'](modelSettings);
@@ -112,7 +112,7 @@ describe('private static validateSettings', () => {
     expect(validatedSettings.to).toBe(modelSettings.to);
   });
 
-  test('"settings.to - settings.from < settings.step" should set from = to - step', () => {
+  test('"modelSettings.to - modelSettings.from < modelSettings.step" should set from = to - step', () => {
     modelSettings.min = 200;
     modelSettings.to = 1400;
     modelSettings.from = 1000;
@@ -123,7 +123,7 @@ describe('private static validateSettings', () => {
     expect(result.from).toBe(value);
   });
 
-  test('"settings.to - settings.from < settings.step" should set to = from + step', () => {
+  test('"modelSettings.to - modelSettings.from < modelSettings.step" should set to = from + step', () => {
     modelSettings.min = 1000;
     modelSettings.to = 1400;
     modelSettings.from = 1000;
@@ -148,7 +148,7 @@ describe('public updateSettings', () => {
     expect(model.updateSettings(modelSettings)).toStrictEqual(modelSettings);
   });
 
-  test('should change settings', () => {
+  test('should change modelSettings', () => {
     modelSettings.min = 100;
     const model = new Model(modelSettings);
     const currentSettings = model.getSettings();
