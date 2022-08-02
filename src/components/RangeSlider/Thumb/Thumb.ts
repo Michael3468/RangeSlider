@@ -9,11 +9,13 @@ import {
 } from '../RangeSlider/types';
 
 class Thumb extends AbstractThumb {
+  private name: ThumbName;
+
   element: HTMLElement;
 
   tooltip: AbstractTooltip;
 
-  constructor(private name: ThumbName) {
+  constructor(name: ThumbName) {
     super();
     this.name = name;
     this.tooltip = new Tooltip(this.name);

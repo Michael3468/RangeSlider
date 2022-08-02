@@ -20,20 +20,32 @@ class Model {
 
   public getPosWithStepInPercents(settings: IModelSettings): number {
     const curPos = settings.currentPos;
-    const stepInPercents = this.getStepInPercents(settings);
     let posWithStep = 0;
 
-    if (curPos && curPos < 100 && curPos > 0) {
+    const START_POINT_IN_PERCENTS = 0;
+    const END_POINT_IN_PERCENTS = 100;
+
+    const isCurPosInsideSlider = curPos
+      && curPos < END_POINT_IN_PERCENTS
+      && curPos > START_POINT_IN_PERCENTS;
+
+    if (isCurPosInsideSlider) {
+      const stepInPercents = this.getStepInPercents(settings);
       const remains = curPos % stepInPercents;
 
-      if (remains >= (stepInPercents / 2)) {
+      const isRemainsBiggerOrEqualThanHalfStep = remains >= (stepInPercents / 2);
+      const isRemainsBiggerThanCurPosTillEndPoint = ((END_POINT_IN_PERCENTS - curPos) < remains);
+
+      if (isRemainsBiggerOrEqualThanHalfStep || isRemainsBiggerThanCurPosTillEndPoint) {
         posWithStep = curPos - remains + stepInPercents;
       } else {
         posWithStep = curPos - remains;
       }
-    } else if (curPos === 100 || curPos === 0) {
+    } else if (curPos === END_POINT_IN_PERCENTS || curPos === START_POINT_IN_PERCENTS) {
       posWithStep = curPos;
     }
+
+    posWithStep = posWithStep > END_POINT_IN_PERCENTS ? END_POINT_IN_PERCENTS : posWithStep;
 
     this.settings.posWithStepInPercents = posWithStep;
     return posWithStep;
@@ -121,6 +133,9 @@ class Model {
     if ((settings.to - settings.from) < settings.step) {
       if (settings.from >= (settings.min + settings.step)) {
         settings.from = settings.to - settings.step;
+      } else if ((settings.from + settings.step) >= settings.max) {
+        settings.to = settings.max;
+        settings.from = settings.max - settings.step;
       } else {
         settings.to = settings.from + settings.step;
       }
