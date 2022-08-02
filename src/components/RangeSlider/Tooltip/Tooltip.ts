@@ -3,9 +3,11 @@ import { createElement, getDigitsAfterPoint } from '../lib/common';
 import { AbstractTooltip, IModelSettings, ThumbName } from '../RangeSlider/types';
 
 class Tooltip extends AbstractTooltip {
+  private name: ThumbName;
+
   element: HTMLElement;
 
-  constructor(private name: ThumbName) {
+  constructor(name: ThumbName) {
     super();
     this.name = name;
     this.element = createElement('div', `tooltip-${this.name}`);
