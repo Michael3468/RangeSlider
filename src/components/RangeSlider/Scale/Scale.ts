@@ -38,19 +38,23 @@ const defaultViewSettings: IViewSettings = {
 class Scale extends AbstractScale {
   element: HTMLElement = createElement('div', 'scale');
 
-  private settings: IModelSettings = defaultInitSettings;
+  private modelSettings: IModelSettings = defaultInitSettings;
 
   private viewSettings: IViewSettings = defaultViewSettings;
 
-  public createScaleMarks(settings: IModelSettings, viewSettings: IViewSettings): Scale {
-    this.settings = settings;
+  public createScaleMarks(modelSettings: IModelSettings, viewSettings: IViewSettings): Scale {
+    this.modelSettings = modelSettings;
     this.viewSettings = viewSettings;
 
     // add first mark
     this.element.appendChild(this.createMark(0));
-    this.element.appendChild(this.createMarkValue(settings.min, 0));
+    this.element.appendChild(this.createMarkValue(modelSettings.min, 0));
 
-    const onePointInPx: number = getOnePointInPx(this.settings, this.viewSettings, this.element);
+    const onePointInPx: number = getOnePointInPx(
+      this.modelSettings,
+      this.viewSettings,
+      this.element,
+    );
     const MIN_STEP_BETWEEN_MARKS_IN_PX = 10;
     const stepBetweenMarks: number = this.getStep(onePointInPx, MIN_STEP_BETWEEN_MARKS_IN_PX);
 
@@ -70,7 +74,7 @@ class Scale extends AbstractScale {
 
     // add last mark
     this.element.appendChild(this.createMark(scaleMaxPos));
-    this.element.appendChild(this.createMarkValue(settings.max, scaleMaxPos));
+    this.element.appendChild(this.createMarkValue(modelSettings.max, scaleMaxPos));
 
     const markValuesArr = this.getElementChilds();
     this.hideOverlappedMarks(markValuesArr);
@@ -113,18 +117,18 @@ class Scale extends AbstractScale {
 
   private getCurrentStep(): number {
     let currentStep = 0;
-    if (this.settings.step < 1) {
-      currentStep = this.settings.step / getMinStep(this.settings);
+    if (this.modelSettings.step < 1) {
+      currentStep = this.modelSettings.step / getMinStep(this.modelSettings);
     } else {
-      currentStep = this.settings.step;
+      currentStep = this.modelSettings.step;
     }
     return currentStep;
   }
 
   private getStepBetweenMarks(onePointInPx: number) {
-    return this.settings.step < 1
+    return this.modelSettings.step < 1
       ? onePointInPx
-      : onePointInPx * this.settings.step;
+      : onePointInPx * this.modelSettings.step;
   }
 
   private getStep(onePointInPx: number, MIN_STEP_BETWEEN_MARKS_IN_PX: number): number {
@@ -144,14 +148,14 @@ class Scale extends AbstractScale {
   }
 
   private getCurrentValueInPoints(markPos: number, onePointInPx: number) {
-    return (this.settings.step < 1)
+    return (this.modelSettings.step < 1)
       ? Number(
-        (this.settings.min + ((markPos / onePointInPx) * this.settings.step))
-          .toFixed(getDigitsAfterPoint(this.settings)),
+        (this.modelSettings.min + ((markPos / onePointInPx) * this.modelSettings.step))
+          .toFixed(getDigitsAfterPoint(this.modelSettings)),
       )
       : Number(
-        (this.settings.min + (markPos / onePointInPx))
-          .toFixed(getDigitsAfterPoint(this.settings)),
+        (this.modelSettings.min + (markPos / onePointInPx))
+          .toFixed(getDigitsAfterPoint(this.modelSettings)),
       );
   }
 

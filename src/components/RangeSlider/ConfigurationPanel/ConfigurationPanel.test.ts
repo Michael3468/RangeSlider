@@ -84,16 +84,16 @@ describe('private addListeners', () => {
       const from = 30;
       modelSettings.from = from;
       result['cpMin'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].min)).toBe(String(from));
+      expect(String(result['modelSettings'].min)).toBe(String(from));
 
-      // settings.min === cpMin.value if cpMin.value < settings.from
+      // modelSettings.min === cpMin.value if cpMin.value < modelSettings.from
       modelSettings.from = 50;
       const confPanel2 = new ConfigurationPanel(modelSettings, viewSettings);
       confPanel2['cpMin'].value = String(40);
       const result2 = confPanel2['addListeners']();
       result2['cpMin'].dispatchEvent(new Event('change'));
 
-      expect(String(result2['settings'].min)).toBe(result2['cpMin'].value);
+      expect(String(result2['modelSettings'].min)).toBe(result2['cpMin'].value);
     }
     expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpMin listener end
@@ -103,9 +103,9 @@ describe('private addListeners', () => {
       result['cpMax'].dispatchEvent(new Event('change'));
 
       if (Number(result['cpMax'].value) <= Number(result['cpMax'].min)) {
-        expect(String(result['settings'].max)).toBe(result['cpMax'].min);
+        expect(String(result['modelSettings'].max)).toBe(result['cpMax'].min);
       } else {
-        expect(String(result['settings'].max)).toBe(result['cpMax'].value);
+        expect(String(result['modelSettings'].max)).toBe(result['cpMax'].value);
       }
     }
     expect(nObsSpy).toBeCalledWith(modelSettings);
@@ -114,7 +114,7 @@ describe('private addListeners', () => {
     // cpStep listener
     if (result['cpStep']) {
       result['cpStep'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].step)).toBe(result['cpStep'].value);
+      expect(String(result['modelSettings'].step)).toBe(result['cpStep'].value);
     }
     expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpStep listener end
@@ -122,7 +122,7 @@ describe('private addListeners', () => {
     // cpFrom listener
     if (result['cpFrom']) {
       result['cpFrom'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].from)).toBe(result['cpFrom'].value);
+      expect(String(result['modelSettings'].from)).toBe(result['cpFrom'].value);
     }
     expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpFrom listener end
@@ -130,7 +130,7 @@ describe('private addListeners', () => {
     // cpTo listener
     if (result['cpTo']) {
       result['cpTo'].dispatchEvent(new Event('change'));
-      expect(String(result['settings'].to)).toBe(result['cpTo'].value);
+      expect(String(result['modelSettings'].to)).toBe(result['cpTo'].value);
     }
     expect(nObsSpy).toBeCalledWith(modelSettings);
     // cpTo listener end

@@ -43,7 +43,7 @@ function createElement(
 }
 
 function getOnePointInPx(
-  settings: IModelSettings,
+  modelSettings: IModelSettings,
   viewSettings: IViewSettings,
   element: HTMLElement,
 ) {
@@ -51,23 +51,23 @@ function getOnePointInPx(
   const bordersWidth = 2; // 1px * 2(borders)
 
   let elementLengthInPoints: number;
-  if (settings.step >= 1) {
-    elementLengthInPoints = settings.max - settings.min;
+  if (modelSettings.step >= 1) {
+    elementLengthInPoints = modelSettings.max - modelSettings.min;
   } else {
-    elementLengthInPoints = (settings.max - settings.min) / settings.step;
+    elementLengthInPoints = (modelSettings.max - modelSettings.min) / modelSettings.step;
   }
 
   return Number(((elementLengthInPx + bordersWidth) / elementLengthInPoints).toFixed(3));
 }
 
-function getDigitsAfterPoint(settings: IModelSettings): number {
-  return settings.step < 1
-    ? (settings.step).toString().length - 2
+function getDigitsAfterPoint(modelSettings: IModelSettings): number {
+  return modelSettings.step < 1
+    ? (modelSettings.step).toString().length - 2
     : 0;
 }
 
-function getMinStep(settings: IModelSettings):number {
-  const num = settings.step;
+function getMinStep(modelSettings: IModelSettings):number {
+  const num = modelSettings.step;
 
   return num < 1
     ? 1 / 10 ** (num.toString().length - 2)

@@ -60,7 +60,7 @@ class View {
     this.setBindings();
   }
 
-  public createRangeSlider(settings: IModelSettings): View {
+  public createRangeSlider(modelSettings: IModelSettings): View {
     if (this.viewSettings.range) {
       this.slider.element.appendChild(this.from.element);
     }
@@ -101,7 +101,7 @@ class View {
 
     if (this.viewSettings.scale) {
       this.slider.element.appendChild(this.scale.element);
-      this.scale.createScaleMarks(settings, this.viewSettings);
+      this.scale.createScaleMarks(modelSettings, this.viewSettings);
     }
 
     this.setRangeSliderMargins();
@@ -294,10 +294,10 @@ class View {
     return this;
   }
 
-  private updateMargins(settings: IModelSettings, thumbName: ThumbName): View {
-    if (settings.posWithStepInPercents !== undefined) {
+  private updateMargins(modelSettings: IModelSettings, thumbName: ThumbName): View {
+    if (modelSettings.posWithStepInPercents !== undefined) {
       const currentPosWithStep = this.convertPercentsToPixels(
-        settings.posWithStepInPercents,
+        modelSettings.posWithStepInPercents,
       );
 
       this.setMargins(thumbName, currentPosWithStep);

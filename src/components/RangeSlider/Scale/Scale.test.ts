@@ -59,7 +59,7 @@ beforeEach(() => {
 describe('private createMark', () => {
   test('should return html span with margin-left and NO class "scale__mark_vertical"', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
+    scale['modelSettings'] = modelSettings;
     scale['viewSettings'] = viewSettings;
     scale['viewSettings'].vertical = false;
     const marginFromBegin = 100;
@@ -81,7 +81,7 @@ describe('private createMark', () => {
 
   test('should return html span with margin-top and class "scale__mark_vertical"', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
+    scale['modelSettings'] = modelSettings;
     scale['viewSettings'] = viewSettings;
     scale['viewSettings'].vertical = true;
     const marginFromBegin = 100;
@@ -105,7 +105,7 @@ describe('private createMark', () => {
 describe('private createMarkValue', () => {
   test('should return div element with class "scale__mark-value" and inner text = value', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
+    scale['modelSettings'] = modelSettings;
     scale['viewSettings'] = viewSettings;
     scale['viewSettings'].vertical = false;
 
@@ -132,7 +132,7 @@ describe('private createMarkValue', () => {
 
   test('should return div element with class "scale__mark-value_vertical" and inner text = value', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
+    scale['modelSettings'] = modelSettings;
     scale['viewSettings'] = viewSettings;
     scale['viewSettings'].vertical = true;
 
@@ -237,8 +237,8 @@ describe('public createScaleMarks', () => {
 describe('private getStepBetweenMarks', () => {
   test('if settings.step < 1, should return "onePointInPx" parametr', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
-    scale['settings'].step = 0.1;
+    scale['modelSettings'] = modelSettings;
+    scale['modelSettings'].step = 0.1;
     const onePointInPx = 10;
 
     const result = scale['getStepBetweenMarks'](onePointInPx);
@@ -247,8 +247,8 @@ describe('private getStepBetweenMarks', () => {
 
   test('if settings.step >= 1, should return "onePointInPx * settings.step" parametr', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
-    scale['settings'].step = 2;
+    scale['modelSettings'] = modelSettings;
+    scale['modelSettings'].step = 2;
     const onePointInPx = 10;
 
     const result = scale['getStepBetweenMarks'](onePointInPx);
@@ -259,8 +259,8 @@ describe('private getStepBetweenMarks', () => {
 describe('private getCurrentStep', () => {
   test('if settings.step < 0.2, should return 2', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
-    scale['settings'].step = 0.2;
+    scale['modelSettings'] = modelSettings;
+    scale['modelSettings'].step = 0.2;
 
     const result = scale['getCurrentStep']();
     expect(result).toBe(2);
@@ -268,8 +268,8 @@ describe('private getCurrentStep', () => {
 
   test('if settings.step < 5, should return 5', () => {
     const scale = new Scale();
-    scale['settings'] = modelSettings;
-    scale['settings'].step = 5;
+    scale['modelSettings'] = modelSettings;
+    scale['modelSettings'].step = 5;
 
     const result = scale['getCurrentStep']();
     expect(result).toBe(5);
@@ -309,8 +309,8 @@ describe('private getCurrentValueInPoints', () => {
 
   test('should return 5.3', () => {
     const scale = new Scale();
-    scale['settings'].min = value;
-    scale['settings'].step = 0.1;
+    scale['modelSettings'].min = value;
+    scale['modelSettings'].step = 0.1;
 
     const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
     expect(result).toBe(5.3);
@@ -320,8 +320,8 @@ describe('private getCurrentValueInPoints', () => {
   // this.settings.step >= 1
   test('should return 8', () => {
     const scale = new Scale();
-    scale['settings'].min = 5;
-    scale['settings'].step = 2;
+    scale['modelSettings'].min = 5;
+    scale['modelSettings'].step = 2;
 
     const result = scale['getCurrentValueInPoints'](markPos, onePointInPx);
     expect(result).toBe(8);

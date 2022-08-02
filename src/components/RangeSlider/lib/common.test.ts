@@ -171,14 +171,14 @@ describe('function getDigitsAfterPoint', () => {
 });
 
 describe('function getMinStep', () => {
-  test('if settings.step = 0.5 should return 0.1', () => {
+  test('if modelSettings.step = 0.5 should return 0.1', () => {
     modelSettings.step = 0.5;
 
     const result = getMinStep(modelSettings);
     expect(result).toBe(0.1);
   });
 
-  test('if settings.step = 5 should return 5', () => {
+  test('if modelSettings.step = 5 should return 5', () => {
     modelSettings.step = 5;
 
     const result = getMinStep(modelSettings);
