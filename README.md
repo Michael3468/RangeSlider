@@ -14,7 +14,8 @@ Table of Contents:
 
 Plugin created with:
 
-- Node.js v14.18.3
+- Node.js 14.18.3
+- npm 6.14.15
 - jQuery 3.6.0
 
 ```
