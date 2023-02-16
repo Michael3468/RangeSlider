@@ -37,8 +37,8 @@
   "author": "WhiteDevilMan",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.18.6",
     "@types/jest": "^27.5.2",
     "@types/jquery": "^3.5.14",
