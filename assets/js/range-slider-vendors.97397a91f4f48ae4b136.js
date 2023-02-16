@@ -6,13 +6,13 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-(self["webpackChunkrange_slider"] = self["webpackChunkrange_slider"] || []).push([["range-slider-vendors"],{
+(globalThis["webpackChunkrange_slider"] = globalThis["webpackChunkrange_slider"] || []).push([["range-slider-vendors"],{
 
 /***/ "./node_modules/airbnb-browser-shims/browser-only.js":
 /*!***********************************************************!*\
   !*** ./node_modules/airbnb-browser-shims/browser-only.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n/* eslint global-require: 0 */\n\n// Fixes super-constructor calls in IE9/10\n__webpack_require__(/*! ima-babel6-polyfill */ \"./node_modules/ima-babel6-polyfill/index.js\");\n\n// document.contains polyfill\n__webpack_require__(/*! ./document-contains */ \"./node_modules/airbnb-browser-shims/document-contains.js\");\n\n// console.* polyfill for old browsers\n__webpack_require__(/*! console-polyfill */ \"./node_modules/console-polyfill/index.js\");\n\n__webpack_require__(/*! whatwg-fetch */ \"./node_modules/whatwg-fetch/fetch.js\");\n\nif (typeof window !== 'undefined') {\n  // Element.classList polyfill\n  __webpack_require__(/*! classlist-polyfill */ \"./node_modules/classlist-polyfill/src/index.js\");\n\n  // Element.closest polyfill\n  __webpack_require__(/*! element-closest */ \"./node_modules/element-closest/element-closest.js\");\n\n  // Polyfill for smooth scrolling behavior\n  (__webpack_require__(/*! smoothscroll-polyfill */ \"./node_modules/smoothscroll-polyfill/dist/smoothscroll.js\").polyfill)();\n\n  // Polyfill window.matchMedia (primarily for IE9)\n  __webpack_require__(/*! matchmedia-polyfill */ \"./node_modules/matchmedia-polyfill/matchMedia.js\");\n  __webpack_require__(/*! matchmedia-polyfill/matchMedia.addListener */ \"./node_modules/matchmedia-polyfill/matchMedia.addListener.js\");\n\n  // Polyfill window.location.origin (for IE < 11)\n  __webpack_require__(/*! window-location-origin */ \"./node_modules/window-location-origin/src/window-location-origin.js\");\n\n  // for <= IE 9, Opera mini\n  __webpack_require__(/*! input-placeholder-polyfill */ \"./node_modules/input-placeholder-polyfill/dist/main.min.js\");\n\n  __webpack_require__(/*! intersection-observer */ \"./node_modules/intersection-observer/intersection-observer.js\");\n\n  // KeyboardEvent.key shim\n  __webpack_require__(/*! shim-keyboard-event-key */ \"./node_modules/shim-keyboard-event-key/index.js\");\n}\n\n// :focus-visible shim\n__webpack_require__(/*! focus-visible */ \"./node_modules/focus-visible/dist/focus-visible.js\");\n\n__webpack_require__(/*! raf/polyfill */ \"./node_modules/raf/polyfill.js\");\n\n__webpack_require__.g.requestIdleCallback = __webpack_require__(/*! ric-shim */ \"./node_modules/ric-shim/index.js\");\n\n__webpack_require__.g.cancelIdleCallback = __webpack_require__.g.requestIdleCallback.cancelIdleCallback;\n\nvar hasSymbols = typeof Symbol === 'function' && Symbol.iterator;\n\n/* globals TouchList */\nif (hasSymbols && typeof TouchList === 'function' && typeof TouchList.prototype[Symbol.iterator] !== 'function') {\n  TouchList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-browser-shims/browser-only.js?");
@@ -23,7 +23,7 @@ eval("\n\n/* eslint global-require: 0 */\n\n// Fixes super-constructor calls in 
 /*!****************************************************************!*\
   !*** ./node_modules/airbnb-browser-shims/document-contains.js ***!
   \****************************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! document.contains/auto */ \"./node_modules/document.contains/auto.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-browser-shims/document-contains.js?");
@@ -34,7 +34,7 @@ eval("\n\n__webpack_require__(/*! document.contains/auto */ \"./node_modules/doc
 /*!****************************************************!*\
   !*** ./node_modules/airbnb-browser-shims/index.js ***!
   \****************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n/* eslint global-require: 0 */\n\n__webpack_require__(/*! airbnb-js-shims */ \"./node_modules/airbnb-js-shims/index.js\");\n\n__webpack_require__(/*! ./browser-only */ \"./node_modules/airbnb-browser-shims/browser-only.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-browser-shims/index.js?");
@@ -45,7 +45,7 @@ eval("\n\n/* eslint global-require: 0 */\n\n__webpack_require__(/*! airbnb-js-sh
 /*!***********************************************!*\
   !*** ./node_modules/airbnb-js-shims/index.js ***!
   \***********************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./target/es5 */ \"./node_modules/airbnb-js-shims/target/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/index.js?");
@@ -56,7 +56,7 @@ eval("\n\n__webpack_require__(/*! ./target/es5 */ \"./node_modules/airbnb-js-shi
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2015.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! es6-shim */ \"./node_modules/es6-shim/es6-shim.js\");\n\n__webpack_require__(/*! function.prototype.name/shim */ \"./node_modules/function.prototype.name/shim.js\")();\n\n__webpack_require__(/*! ./es2016 */ \"./node_modules/airbnb-js-shims/target/es2016.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2015.js?");
@@ -67,7 +67,7 @@ eval("\n\n__webpack_require__(/*! es6-shim */ \"./node_modules/es6-shim/es6-shim
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2016.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// Array#includes is stage 4, in ES7/ES2016\n__webpack_require__(/*! array-includes/shim */ \"./node_modules/array-includes/shim.js\")();\n\n__webpack_require__(/*! ./es2017 */ \"./node_modules/airbnb-js-shims/target/es2017.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2016.js?");
@@ -78,7 +78,7 @@ eval("\n\n// Array#includes is stage 4, in ES7/ES2016\n__webpack_require__(/*! a
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2017.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// Object.values/Object.entries are stage 4, in ES2017\n__webpack_require__(/*! object.values/shim */ \"./node_modules/object.values/shim.js\")();\n__webpack_require__(/*! object.entries/shim */ \"./node_modules/object.entries/shim.js\")();\n\n// String#padStart/String#padEnd are stage 4, in ES2017\n__webpack_require__(/*! string.prototype.padstart/shim */ \"./node_modules/string.prototype.padstart/shim.js\")();\n__webpack_require__(/*! string.prototype.padend/shim */ \"./node_modules/string.prototype.padend/shim.js\")();\n\n// Object.getOwnPropertyDescriptors is stage 4, in ES2017\n__webpack_require__(/*! object.getownpropertydescriptors/shim */ \"./node_modules/object.getownpropertydescriptors/shim.js\")();\n\n__webpack_require__(/*! ./es2018 */ \"./node_modules/airbnb-js-shims/target/es2018.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2017.js?");
@@ -89,7 +89,7 @@ eval("\n\n// Object.values/Object.entries are stage 4, in ES2017\n__webpack_requ
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2018.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nif (typeof Promise === 'function') {\n  __webpack_require__(/*! promise.prototype.finally/auto */ \"./node_modules/promise.prototype.finally/auto.js\"); // eslint-disable-line global-require\n}\n\n__webpack_require__(/*! ./es2019 */ \"./node_modules/airbnb-js-shims/target/es2019.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2018.js?");
@@ -100,7 +100,7 @@ eval("\n\nif (typeof Promise === 'function') {\n  __webpack_require__(/*! promis
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2019.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! array.prototype.flat/auto */ \"./node_modules/array.prototype.flat/auto.js\");\n__webpack_require__(/*! array.prototype.flatmap/auto */ \"./node_modules/array.prototype.flatmap/auto.js\");\n\n__webpack_require__(/*! symbol.prototype.description/auto */ \"./node_modules/symbol.prototype.description/auto.js\");\n\n__webpack_require__(/*! object.fromentries/auto */ \"./node_modules/object.fromentries/auto.js\");\n\n__webpack_require__(/*! ./es2020 */ \"./node_modules/airbnb-js-shims/target/es2020.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2019.js?");
@@ -111,7 +111,7 @@ eval("\n\n__webpack_require__(/*! array.prototype.flat/auto */ \"./node_modules/
 /*!*******************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es2020.js ***!
   \*******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! string.prototype.matchall/auto */ \"./node_modules/string.prototype.matchall/auto.js\");\n\n__webpack_require__(/*! globalthis/auto */ \"./node_modules/globalthis/auto.js\");\n\n__webpack_require__(/*! promise.allsettled/auto */ \"./node_modules/promise.allsettled/auto.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es2020.js?");
@@ -122,7 +122,7 @@ eval("\n\n__webpack_require__(/*! string.prototype.matchall/auto */ \"./node_mod
 /*!****************************************************!*\
   !*** ./node_modules/airbnb-js-shims/target/es5.js ***!
   \****************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! es5-shim */ \"./node_modules/es5-shim/es5-shim.js\");\n__webpack_require__(/*! es5-shim/es5-sham */ \"./node_modules/es5-shim/es5-sham.js\");\n\n__webpack_require__(/*! ./es2015 */ \"./node_modules/airbnb-js-shims/target/es2015.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/airbnb-js-shims/target/es5.js?");
@@ -133,7 +133,7 @@ eval("\n\n__webpack_require__(/*! es5-shim */ \"./node_modules/es5-shim/es5-shim
 /*!*******************************************************!*\
   !*** ./node_modules/array-includes/implementation.js ***!
   \*******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! es-abstract/2021/ToIntegerOrInfinity */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToLength.js\");\nvar ToObject = __webpack_require__(/*! es-abstract/2021/ToObject */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToObject.js\");\nvar SameValueZero = __webpack_require__(/*! es-abstract/2021/SameValueZero */ \"./node_modules/array-includes/node_modules/es-abstract/2021/SameValueZero.js\");\nvar $isNaN = __webpack_require__(/*! es-abstract/helpers/isNaN */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! es-abstract/helpers/isFinite */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isFinite.js\");\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar isString = __webpack_require__(/*! is-string */ \"./node_modules/array-includes/node_modules/is-string/index.js\");\n\nvar $charAt = callBound('String.prototype.charAt');\nvar $indexOf = GetIntrinsic('%Array.prototype.indexOf%'); // TODO: use callBind.apply without breaking IE 8\nvar $max = GetIntrinsic('%Math.max%');\n\nmodule.exports = function includes(searchElement) {\n\tvar fromIndex = arguments.length > 1 ? ToIntegerOrInfinity(arguments[1]) : 0;\n\tif ($indexOf && !$isNaN(searchElement) && $isFinite(fromIndex) && typeof searchElement !== 'undefined') {\n\t\treturn $indexOf.apply(this, arguments) > -1;\n\t}\n\n\tvar O = ToObject(this);\n\tvar length = ToLength(O.length);\n\tif (length === 0) {\n\t\treturn false;\n\t}\n\tvar k = fromIndex >= 0 ? fromIndex : $max(0, length + fromIndex);\n\twhile (k < length) {\n\t\tif (SameValueZero(searchElement, isString(O) ? $charAt(O, k) : O[k])) {\n\t\t\treturn true;\n\t\t}\n\t\tk += 1;\n\t}\n\treturn false;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/implementation.js?");
@@ -144,7 +144,7 @@ eval("\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! es-abstract/2021/ToI
 /*!*********************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/is-string/index.js ***!
   \*********************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = function tryStringObject(value) {\n\ttry {\n\t\tstrValue.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar strClass = '[object String]';\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\n\nmodule.exports = function isString(value) {\n\tif (typeof value === 'string') {\n\t\treturn true;\n\t}\n\tif (typeof value !== 'object') {\n\t\treturn false;\n\t}\n\treturn hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/is-string/index.js?");
@@ -155,7 +155,7 @@ eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = functi
 /*!*************************************************!*\
   !*** ./node_modules/array-includes/polyfill.js ***!
   \*************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/array-includes/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn Array.prototype.includes || implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/polyfill.js?");
@@ -166,7 +166,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*********************************************!*\
   !*** ./node_modules/array-includes/shim.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/array-includes/polyfill.js\");\n\nmodule.exports = function shimArrayPrototypeIncludes() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tArray.prototype,\n\t\t{ includes: polyfill },\n\t\t{ includes: function () { return Array.prototype.includes !== polyfill; } }\n\t);\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/shim.js?");
@@ -177,7 +177,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!***************************************************!*\
   !*** ./node_modules/array.prototype.flat/auto.js ***!
   \***************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/array.prototype.flat/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/auto.js?");
@@ -188,7 +188,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/array.prototype.fla
 /*!*************************************************************!*\
   !*** ./node_modules/array.prototype.flat/implementation.js ***!
   \*************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/ArraySpeciesCreate */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArraySpeciesCreate.js\");\nvar FlattenIntoArray = __webpack_require__(/*! es-abstract/2021/FlattenIntoArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FlattenIntoArray.js\");\nvar Get = __webpack_require__(/*! es-abstract/2021/Get */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js\");\nvar ToIntegerOrInfinity = __webpack_require__(/*! es-abstract/2021/ToIntegerOrInfinity */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToLength.js\");\nvar ToObject = __webpack_require__(/*! es-abstract/2021/ToObject */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToObject.js\");\n\nmodule.exports = function flat() {\n\tvar O = ToObject(this);\n\tvar sourceLen = ToLength(Get(O, 'length'));\n\n\tvar depthNum = 1;\n\tif (arguments.length > 0 && typeof arguments[0] !== 'undefined') {\n\t\tdepthNum = ToIntegerOrInfinity(arguments[0]);\n\t}\n\n\tvar A = ArraySpeciesCreate(O, 0);\n\tFlattenIntoArray(A, O, sourceLen, 0, depthNum);\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/implementation.js?");
@@ -199,7 +199,7 @@ eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/Arra
 /*!*****************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/is-callable/index.js ***!
   \*****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/is-callable/index.js?");
@@ -210,7 +210,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!**************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/is-regex/index.js ***!
   \**************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/is-regex/index.js?");
@@ -221,7 +221,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/object-inspect/index.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?42f1\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean' && customInspect !== 'symbol') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true`, `false`, or `\\'symbol\\'`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (customInspect !== 'symbol' && typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/object-inspect/index.js?");
 
@@ -231,7 +231,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!*******************************************************!*\
   !*** ./node_modules/array.prototype.flat/polyfill.js ***!
   \*******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/array.prototype.flat/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn Array.prototype.flat || implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/polyfill.js?");
@@ -242,7 +242,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!***************************************************!*\
   !*** ./node_modules/array.prototype.flat/shim.js ***!
   \***************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/array.prototype.flat/polyfill.js\");\n\nmodule.exports = function shimFlat() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tArray.prototype,\n\t\t{ flat: polyfill },\n\t\t{ flat: function () { return Array.prototype.flat !== polyfill; } }\n\t);\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/shim.js?");
@@ -253,7 +253,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!******************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/auto.js ***!
   \******************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/array.prototype.flatmap/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/auto.js?");
@@ -264,7 +264,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/array.prototype.fla
 /*!****************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/implementation.js ***!
   \****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/ArraySpeciesCreate */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArraySpeciesCreate.js\");\nvar FlattenIntoArray = __webpack_require__(/*! es-abstract/2021/FlattenIntoArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FlattenIntoArray.js\");\nvar Get = __webpack_require__(/*! es-abstract/2021/Get */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js\");\nvar IsCallable = __webpack_require__(/*! es-abstract/2021/IsCallable */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsCallable.js\");\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToLength.js\");\nvar ToObject = __webpack_require__(/*! es-abstract/2021/ToObject */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToObject.js\");\n\nmodule.exports = function flatMap(mapperFunction) {\n\tvar O = ToObject(this);\n\tvar sourceLen = ToLength(Get(O, 'length'));\n\n\tif (!IsCallable(mapperFunction)) {\n\t\tthrow new TypeError('mapperFunction must be a function');\n\t}\n\n\tvar T;\n\tif (arguments.length > 1) {\n\t\tT = arguments[1];\n\t}\n\n\tvar A = ArraySpeciesCreate(O, 0);\n\tFlattenIntoArray(A, O, sourceLen, 0, 1, mapperFunction, T);\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/implementation.js?");
@@ -275,7 +275,7 @@ eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/Arra
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/is-callable/index.js ***!
   \********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/is-callable/index.js?");
@@ -286,7 +286,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!*****************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/is-regex/index.js ***!
   \*****************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/is-regex/index.js?");
@@ -297,7 +297,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/object-inspect/index.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?71c5\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean' && customInspect !== 'symbol') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true`, `false`, or `\\'symbol\\'`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (customInspect !== 'symbol' && typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/object-inspect/index.js?");
 
@@ -307,7 +307,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!**********************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/polyfill.js ***!
   \**********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/array.prototype.flatmap/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn Array.prototype.flatMap || implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/polyfill.js?");
@@ -318,7 +318,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!******************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/shim.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/array.prototype.flatmap/polyfill.js\");\n\nmodule.exports = function shimFlatMap() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tArray.prototype,\n\t\t{ flatMap: polyfill },\n\t\t{ flatMap: function () { return Array.prototype.flatMap !== polyfill; } }\n\t);\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/shim.js?");
@@ -329,7 +329,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!************************************************************!*\
   !*** ./node_modules/array.prototype.map/implementation.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/ArraySpeciesCreate */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArraySpeciesCreate.js\");\nvar Call = __webpack_require__(/*! es-abstract/2021/Call */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Call.js\");\nvar CreateDataPropertyOrThrow = __webpack_require__(/*! es-abstract/2021/CreateDataPropertyOrThrow */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js\");\nvar Get = __webpack_require__(/*! es-abstract/2021/Get */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Get.js\");\nvar HasProperty = __webpack_require__(/*! es-abstract/2021/HasProperty */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/HasProperty.js\");\nvar IsCallable = __webpack_require__(/*! es-abstract/2021/IsCallable */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsCallable.js\");\nvar ToUint32 = __webpack_require__(/*! es-abstract/2021/ToUint32 */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToUint32.js\");\nvar ToObject = __webpack_require__(/*! es-abstract/2021/ToObject */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToObject.js\");\nvar ToString = __webpack_require__(/*! es-abstract/2021/ToString */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToString.js\");\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar isString = __webpack_require__(/*! is-string */ \"./node_modules/array.prototype.map/node_modules/is-string/index.js\");\n\n// Check failure of by-index access of string characters (IE < 9) and failure of `0 in boxedString` (Rhino)\nvar boxedString = Object('a');\nvar splitString = boxedString[0] !== 'a' || !(0 in boxedString);\n\nvar strSplit = callBound('String.prototype.split');\n\nmodule.exports = function map(callbackfn) {\n\tvar O = ToObject(this);\n\tvar self = splitString && isString(O) ? strSplit(O, '') : O;\n\tvar len = ToUint32(self.length);\n\n\t// If no callback function or if callback is not a callable function\n\tif (!IsCallable(callbackfn)) {\n\t\tthrow new TypeError('Array.prototype.map callback must be a function');\n\t}\n\n\tvar T;\n\tif (arguments.length > 1) {\n\t\tT = arguments[1];\n\t}\n\n\tvar A = ArraySpeciesCreate(O, len);\n\tvar k = 0;\n\twhile (k < len) {\n\t\tvar Pk = ToString(k);\n\t\tvar kPresent = HasProperty(O, Pk);\n\t\tif (kPresent) {\n\t\t\tvar kValue = Get(O, Pk);\n\t\t\tvar mappedValue = Call(callbackfn, T, [kValue, k, O]);\n\t\t\tCreateDataPropertyOrThrow(A, Pk, mappedValue);\n\t\t}\n\t\tk += 1;\n\t}\n\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/implementation.js?");
@@ -340,7 +340,7 @@ eval("\n\nvar ArraySpeciesCreate = __webpack_require__(/*! es-abstract/2021/Arra
 /*!***************************************************!*\
   !*** ./node_modules/array.prototype.map/index.js ***!
   \***************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2021/RequireObjectCoercible */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/array.prototype.map/implementation.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/array.prototype.map/polyfill.js\");\nvar polyfill = getPolyfill();\nvar shim = __webpack_require__(/*! ./shim */ \"./node_modules/array.prototype.map/shim.js\");\n\nvar $slice = callBound('Array.prototype.slice');\n\n// eslint-disable-next-line no-unused-vars\nvar boundMapShim = function map(array, callbackfn) {\n\tRequireObjectCoercible(array);\n\treturn polyfill.apply(array, $slice(arguments, 1));\n};\ndefine(boundMapShim, {\n\tgetPolyfill: getPolyfill,\n\timplementation: implementation,\n\tshim: shim\n});\n\nmodule.exports = boundMapShim;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/index.js?");
@@ -351,7 +351,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!****************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/is-callable/index.js ***!
   \****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/is-callable/index.js?");
@@ -362,7 +362,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!*************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/is-regex/index.js ***!
   \*************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/is-regex/index.js?");
@@ -373,7 +373,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!**************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/is-string/index.js ***!
   \**************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = function tryStringObject(value) {\n\ttry {\n\t\tstrValue.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar strClass = '[object String]';\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\n\nmodule.exports = function isString(value) {\n\tif (typeof value === 'string') {\n\t\treturn true;\n\t}\n\tif (typeof value !== 'object') {\n\t\treturn false;\n\t}\n\treturn hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/is-string/index.js?");
@@ -384,7 +384,7 @@ eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = functi
 /*!*******************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/object-inspect/index.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?359f\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean' && customInspect !== 'symbol') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true`, `false`, or `\\'symbol\\'`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (customInspect !== 'symbol' && typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/object-inspect/index.js?");
 
@@ -394,7 +394,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!******************************************************!*\
   !*** ./node_modules/array.prototype.map/polyfill.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar arrayMethodBoxesProperly = __webpack_require__(/*! es-array-method-boxes-properly */ \"./node_modules/es-array-method-boxes-properly/index.js\");\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/array.prototype.map/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\tvar method = Array.prototype.map;\n\treturn arrayMethodBoxesProperly(method) ? method : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/polyfill.js?");
@@ -405,7 +405,7 @@ eval("\n\nvar arrayMethodBoxesProperly = __webpack_require__(/*! es-array-method
 /*!**************************************************!*\
   !*** ./node_modules/array.prototype.map/shim.js ***!
   \**************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/array.prototype.map/polyfill.js\");\n\nmodule.exports = function shimArrayPrototypeMap() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tArray.prototype,\n\t\t{ map: polyfill },\n\t\t{ map: function () { return Array.prototype.map !== polyfill; } }\n\t);\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/shim.js?");
@@ -416,7 +416,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!*********************************************!*\
   !*** ./node_modules/call-bind/callBound.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar callBind = __webpack_require__(/*! ./ */ \"./node_modules/call-bind/index.js\");\n\nvar $indexOf = callBind(GetIntrinsic('String.prototype.indexOf'));\n\nmodule.exports = function callBoundIntrinsic(name, allowMissing) {\n\tvar intrinsic = GetIntrinsic(name, !!allowMissing);\n\tif (typeof intrinsic === 'function' && $indexOf(name, '.prototype.') > -1) {\n\t\treturn callBind(intrinsic);\n\t}\n\treturn intrinsic;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/call-bind/callBound.js?");
@@ -427,7 +427,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************!*\
   !*** ./node_modules/call-bind/index.js ***!
   \*****************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar bind = __webpack_require__(/*! function-bind */ \"./node_modules/function-bind/index.js\");\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $apply = GetIntrinsic('%Function.prototype.apply%');\nvar $call = GetIntrinsic('%Function.prototype.call%');\nvar $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\nvar $max = GetIntrinsic('%Math.max%');\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\nmodule.exports = function callBind(originalFunction) {\n\tvar func = $reflectApply(bind, $call, arguments);\n\tif ($gOPD && $defineProperty) {\n\t\tvar desc = $gOPD(func, 'length');\n\t\tif (desc.configurable) {\n\t\t\t// original length, plus the receiver, minus any additional arguments (after the receiver)\n\t\t\t$defineProperty(\n\t\t\t\tfunc,\n\t\t\t\t'length',\n\t\t\t\t{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }\n\t\t\t);\n\t\t}\n\t}\n\treturn func;\n};\n\nvar applyBind = function applyBind() {\n\treturn $reflectApply(bind, $apply, arguments);\n};\n\nif ($defineProperty) {\n\t$defineProperty(module.exports, 'apply', { value: applyBind });\n} else {\n\tmodule.exports.apply = applyBind;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/call-bind/index.js?");
@@ -438,7 +438,7 @@ eval("\n\nvar bind = __webpack_require__(/*! function-bind */ \"./node_modules/f
 /*!******************************************************!*\
   !*** ./node_modules/classlist-polyfill/src/index.js ***!
   \******************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("/*\n * classList.js: Cross-browser full element.classList implementation.\n * 1.1.20170427\n *\n * By Eli Grey, http://eligrey.com\n * License: Dedicated to the public domain.\n *   See https://github.com/eligrey/classList.js/blob/master/LICENSE.md\n */\n\n/*global self, document, DOMException */\n\n/*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */\n\nif (\"document\" in window.self) {\n\n// Full polyfill for browsers with no classList support\n// Including IE < Edge missing SVGElement.classList\nif (!(\"classList\" in document.createElement(\"_\")) \n\t|| document.createElementNS && !(\"classList\" in document.createElementNS(\"http://www.w3.org/2000/svg\",\"g\"))) {\n\n(function (view) {\n\n\"use strict\";\n\nif (!('Element' in view)) return;\n\nvar\n\t  classListProp = \"classList\"\n\t, protoProp = \"prototype\"\n\t, elemCtrProto = view.Element[protoProp]\n\t, objCtr = Object\n\t, strTrim = String[protoProp].trim || function () {\n\t\treturn this.replace(/^\\s+|\\s+$/g, \"\");\n\t}\n\t, arrIndexOf = Array[protoProp].indexOf || function (item) {\n\t\tvar\n\t\t\t  i = 0\n\t\t\t, len = this.length\n\t\t;\n\t\tfor (; i < len; i++) {\n\t\t\tif (i in this && this[i] === item) {\n\t\t\t\treturn i;\n\t\t\t}\n\t\t}\n\t\treturn -1;\n\t}\n\t// Vendors: please allow content code to instantiate DOMExceptions\n\t, DOMEx = function (type, message) {\n\t\tthis.name = type;\n\t\tthis.code = DOMException[type];\n\t\tthis.message = message;\n\t}\n\t, checkTokenAndGetIndex = function (classList, token) {\n\t\tif (token === \"\") {\n\t\t\tthrow new DOMEx(\n\t\t\t\t  \"SYNTAX_ERR\"\n\t\t\t\t, \"An invalid or illegal string was specified\"\n\t\t\t);\n\t\t}\n\t\tif (/\\s/.test(token)) {\n\t\t\tthrow new DOMEx(\n\t\t\t\t  \"INVALID_CHARACTER_ERR\"\n\t\t\t\t, \"String contains an invalid character\"\n\t\t\t);\n\t\t}\n\t\treturn arrIndexOf.call(classList, token);\n\t}\n\t, ClassList = function (elem) {\n\t\tvar\n\t\t\t  trimmedClasses = strTrim.call(elem.getAttribute(\"class\") || \"\")\n\t\t\t, classes = trimmedClasses ? trimmedClasses.split(/\\s+/) : []\n\t\t\t, i = 0\n\t\t\t, len = classes.length\n\t\t;\n\t\tfor (; i < len; i++) {\n\t\t\tthis.push(classes[i]);\n\t\t}\n\t\tthis._updateClassName = function () {\n\t\t\telem.setAttribute(\"class\", this.toString());\n\t\t};\n\t}\n\t, classListProto = ClassList[protoProp] = []\n\t, classListGetter = function () {\n\t\treturn new ClassList(this);\n\t}\n;\n// Most DOMException implementations don't allow calling DOMException's toString()\n// on non-DOMExceptions. Error's toString() is sufficient here.\nDOMEx[protoProp] = Error[protoProp];\nclassListProto.item = function (i) {\n\treturn this[i] || null;\n};\nclassListProto.contains = function (token) {\n\ttoken += \"\";\n\treturn checkTokenAndGetIndex(this, token) !== -1;\n};\nclassListProto.add = function () {\n\tvar\n\t\t  tokens = arguments\n\t\t, i = 0\n\t\t, l = tokens.length\n\t\t, token\n\t\t, updated = false\n\t;\n\tdo {\n\t\ttoken = tokens[i] + \"\";\n\t\tif (checkTokenAndGetIndex(this, token) === -1) {\n\t\t\tthis.push(token);\n\t\t\tupdated = true;\n\t\t}\n\t}\n\twhile (++i < l);\n\n\tif (updated) {\n\t\tthis._updateClassName();\n\t}\n};\nclassListProto.remove = function () {\n\tvar\n\t\t  tokens = arguments\n\t\t, i = 0\n\t\t, l = tokens.length\n\t\t, token\n\t\t, updated = false\n\t\t, index\n\t;\n\tdo {\n\t\ttoken = tokens[i] + \"\";\n\t\tindex = checkTokenAndGetIndex(this, token);\n\t\twhile (index !== -1) {\n\t\t\tthis.splice(index, 1);\n\t\t\tupdated = true;\n\t\t\tindex = checkTokenAndGetIndex(this, token);\n\t\t}\n\t}\n\twhile (++i < l);\n\n\tif (updated) {\n\t\tthis._updateClassName();\n\t}\n};\nclassListProto.toggle = function (token, force) {\n\ttoken += \"\";\n\n\tvar\n\t\t  result = this.contains(token)\n\t\t, method = result ?\n\t\t\tforce !== true && \"remove\"\n\t\t:\n\t\t\tforce !== false && \"add\"\n\t;\n\n\tif (method) {\n\t\tthis[method](token);\n\t}\n\n\tif (force === true || force === false) {\n\t\treturn force;\n\t} else {\n\t\treturn !result;\n\t}\n};\nclassListProto.toString = function () {\n\treturn this.join(\" \");\n};\n\nif (objCtr.defineProperty) {\n\tvar classListPropDesc = {\n\t\t  get: classListGetter\n\t\t, enumerable: true\n\t\t, configurable: true\n\t};\n\ttry {\n\t\tobjCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);\n\t} catch (ex) { // IE 8 doesn't support enumerable:true\n\t\t// adding undefined to fight this issue https://github.com/eligrey/classList.js/issues/36\n\t\t// modernie IE8-MSW7 machine has IE8 8.0.6001.18702 and is affected\n\t\tif (ex.number === undefined || ex.number === -0x7FF5EC54) {\n\t\t\tclassListPropDesc.enumerable = false;\n\t\t\tobjCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);\n\t\t}\n\t}\n} else if (objCtr[protoProp].__defineGetter__) {\n\telemCtrProto.__defineGetter__(classListProp, classListGetter);\n}\n\n}(window.self));\n\n}\n\n// There is full or partial native classList support, so just check if we need\n// to normalize the add/remove and toggle APIs.\n\n(function () {\n\t\"use strict\";\n\n\tvar testElement = document.createElement(\"_\");\n\n\ttestElement.classList.add(\"c1\", \"c2\");\n\n\t// Polyfill for IE 10/11 and Firefox <26, where classList.add and\n\t// classList.remove exist but support only one argument at a time.\n\tif (!testElement.classList.contains(\"c2\")) {\n\t\tvar createMethod = function(method) {\n\t\t\tvar original = DOMTokenList.prototype[method];\n\n\t\t\tDOMTokenList.prototype[method] = function(token) {\n\t\t\t\tvar i, len = arguments.length;\n\n\t\t\t\tfor (i = 0; i < len; i++) {\n\t\t\t\t\ttoken = arguments[i];\n\t\t\t\t\toriginal.call(this, token);\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t\tcreateMethod('add');\n\t\tcreateMethod('remove');\n\t}\n\n\ttestElement.classList.toggle(\"c3\", false);\n\n\t// Polyfill for IE 10 and Firefox <24, where classList.toggle does not\n\t// support the second argument.\n\tif (testElement.classList.contains(\"c3\")) {\n\t\tvar _toggle = DOMTokenList.prototype.toggle;\n\n\t\tDOMTokenList.prototype.toggle = function(token, force) {\n\t\t\tif (1 in arguments && !this.contains(token) === !force) {\n\t\t\t\treturn force;\n\t\t\t} else {\n\t\t\t\treturn _toggle.call(this, token);\n\t\t\t}\n\t\t};\n\n\t}\n\n\ttestElement = null;\n}());\n\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/classlist-polyfill/src/index.js?");
 
@@ -458,7 +458,7 @@ eval("// Console-polyfill. MIT license.\n// https://github.com/paulmillr/console
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
   \*****************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  Author Tobias Koppers @sokra\n*/\nmodule.exports = function (cssWithMappingToString) {\n  var list = []; // return the list of modules as css string\n\n  list.toString = function toString() {\n    return this.map(function (item) {\n      var content = \"\";\n      var needLayer = typeof item[5] !== \"undefined\";\n\n      if (item[4]) {\n        content += \"@supports (\".concat(item[4], \") {\");\n      }\n\n      if (item[2]) {\n        content += \"@media \".concat(item[2], \" {\");\n      }\n\n      if (needLayer) {\n        content += \"@layer\".concat(item[5].length > 0 ? \" \".concat(item[5]) : \"\", \" {\");\n      }\n\n      content += cssWithMappingToString(item);\n\n      if (needLayer) {\n        content += \"}\";\n      }\n\n      if (item[2]) {\n        content += \"}\";\n      }\n\n      if (item[4]) {\n        content += \"}\";\n      }\n\n      return content;\n    }).join(\"\");\n  }; // import a list of modules into the list\n\n\n  list.i = function i(modules, media, dedupe, supports, layer) {\n    if (typeof modules === \"string\") {\n      modules = [[null, modules, undefined]];\n    }\n\n    var alreadyImportedModules = {};\n\n    if (dedupe) {\n      for (var k = 0; k < this.length; k++) {\n        var id = this[k][0];\n\n        if (id != null) {\n          alreadyImportedModules[id] = true;\n        }\n      }\n    }\n\n    for (var _k = 0; _k < modules.length; _k++) {\n      var item = [].concat(modules[_k]);\n\n      if (dedupe && alreadyImportedModules[item[0]]) {\n        continue;\n      }\n\n      if (typeof layer !== \"undefined\") {\n        if (typeof item[5] === \"undefined\") {\n          item[5] = layer;\n        } else {\n          item[1] = \"@layer\".concat(item[5].length > 0 ? \" \".concat(item[5]) : \"\", \" {\").concat(item[1], \"}\");\n          item[5] = layer;\n        }\n      }\n\n      if (media) {\n        if (!item[2]) {\n          item[2] = media;\n        } else {\n          item[1] = \"@media \".concat(item[2], \" {\").concat(item[1], \"}\");\n          item[2] = media;\n        }\n      }\n\n      if (supports) {\n        if (!item[4]) {\n          item[4] = \"\".concat(supports);\n        } else {\n          item[1] = \"@supports (\".concat(item[4], \") {\").concat(item[1], \"}\");\n          item[4] = supports;\n        }\n      }\n\n      list.push(item);\n    }\n  };\n\n  return list;\n};\n\n//# sourceURL=webpack://range-slider/./node_modules/css-loader/dist/runtime/api.js?");
@@ -469,7 +469,7 @@ eval("\n\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n
 /*!************************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
   \************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function (item) {\n  var content = item[1];\n  var cssMapping = item[3];\n\n  if (!cssMapping) {\n    return content;\n  }\n\n  if (typeof btoa === \"function\") {\n    var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));\n    var data = \"sourceMappingURL=data:application/json;charset=utf-8;base64,\".concat(base64);\n    var sourceMapping = \"/*# \".concat(data, \" */\");\n    var sourceURLs = cssMapping.sources.map(function (source) {\n      return \"/*# sourceURL=\".concat(cssMapping.sourceRoot || \"\").concat(source, \" */\");\n    });\n    return [content].concat(sourceURLs).concat([sourceMapping]).join(\"\\n\");\n  }\n\n  return [content].join(\"\\n\");\n};\n\n//# sourceURL=webpack://range-slider/./node_modules/css-loader/dist/runtime/sourceMaps.js?");
@@ -480,7 +480,7 @@ eval("\n\nmodule.exports = function (item) {\n  var content = item[1];\n  var cs
 /*!*************************************************!*\
   !*** ./node_modules/define-properties/index.js ***!
   \*************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar keys = __webpack_require__(/*! object-keys */ \"./node_modules/object-keys/index.js\");\nvar hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';\n\nvar toStr = Object.prototype.toString;\nvar concat = Array.prototype.concat;\nvar origDefineProperty = Object.defineProperty;\n\nvar isFunction = function (fn) {\n\treturn typeof fn === 'function' && toStr.call(fn) === '[object Function]';\n};\n\nvar arePropertyDescriptorsSupported = function () {\n\tvar obj = {};\n\ttry {\n\t\torigDefineProperty(obj, 'x', { enumerable: false, value: obj });\n\t\t// eslint-disable-next-line no-unused-vars, no-restricted-syntax\n\t\tfor (var _ in obj) { // jscs:ignore disallowUnusedVariables\n\t\t\treturn false;\n\t\t}\n\t\treturn obj.x === obj;\n\t} catch (e) { /* this is IE 8. */\n\t\treturn false;\n\t}\n};\nvar supportsDescriptors = origDefineProperty && arePropertyDescriptorsSupported();\n\nvar defineProperty = function (object, name, value, predicate) {\n\tif (name in object && (!isFunction(predicate) || !predicate())) {\n\t\treturn;\n\t}\n\tif (supportsDescriptors) {\n\t\torigDefineProperty(object, name, {\n\t\t\tconfigurable: true,\n\t\t\tenumerable: false,\n\t\t\tvalue: value,\n\t\t\twritable: true\n\t\t});\n\t} else {\n\t\tobject[name] = value;\n\t}\n};\n\nvar defineProperties = function (object, map) {\n\tvar predicates = arguments.length > 2 ? arguments[2] : {};\n\tvar props = keys(map);\n\tif (hasSymbols) {\n\t\tprops = concat.call(props, Object.getOwnPropertySymbols(map));\n\t}\n\tfor (var i = 0; i < props.length; i += 1) {\n\t\tdefineProperty(object, props[i], map[props[i]], predicates[props[i]]);\n\t}\n};\n\ndefineProperties.supportsDescriptors = !!supportsDescriptors;\n\nmodule.exports = defineProperties;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/define-properties/index.js?");
@@ -491,7 +491,7 @@ eval("\n\nvar keys = __webpack_require__(/*! object-keys */ \"./node_modules/obj
 /*!************************************************!*\
   !*** ./node_modules/document.contains/auto.js ***!
   \************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/document.contains/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/document.contains/auto.js?");
@@ -502,7 +502,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/document.contains/s
 /*!**********************************************************!*\
   !*** ./node_modules/document.contains/implementation.js ***!
   \**********************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function contains(other) {\n\tif (arguments.length < 1) {\n\t\tthrow new TypeError('1 argument is required');\n\t}\n\tif (typeof other !== 'object') {\n\t\tthrow new TypeError('Argument 1 (”other“) to Node.contains must be an instance of Node');\n\t}\n\n\tvar node = other;\n\tdo {\n\t\tif (this === node) {\n\t\t\treturn true;\n\t\t}\n\t\tif (node) {\n\t\t\tnode = node.parentNode;\n\t\t}\n\t} while (node);\n\n\treturn false;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/document.contains/implementation.js?");
@@ -513,7 +513,7 @@ eval("\n\nmodule.exports = function contains(other) {\n\tif (arguments.length < 
 /*!****************************************************!*\
   !*** ./node_modules/document.contains/polyfill.js ***!
   \****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/document.contains/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\tif (typeof document !== 'undefined') {\n\t\tif (document.contains) {\n\t\t\treturn document.contains;\n\t\t}\n\t\tif (document.body && document.body.contains) {\n\t\t\ttry {\n\t\t\t\tif (typeof document.body.contains.call(document, '') === 'boolean') {\n\t\t\t\t\treturn document.body.contains;\n\t\t\t\t}\n\t\t\t} catch (e) { /**/ }\n\t\t}\n\t}\n\treturn implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/document.contains/polyfill.js?");
@@ -524,7 +524,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!************************************************!*\
   !*** ./node_modules/document.contains/shim.js ***!
   \************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/document.contains/polyfill.js\");\n\nmodule.exports = function shimContains() {\n\tvar polyfill = getPolyfill();\n\tif (typeof document !== 'undefined') {\n\t\tdefine(\n\t\t\tdocument,\n\t\t\t{ contains: polyfill },\n\t\t\t{ contains: function () { return document.contains !== polyfill; } }\n\t\t);\n\t\tif (typeof Element !== 'undefined') {\n\t\t\tdefine(\n\t\t\t\tElement.prototype,\n\t\t\t\t{ contains: polyfill },\n\t\t\t\t{ contains: function () { return Element.prototype.contains !== polyfill; } }\n\t\t\t);\n\t\t}\n\t}\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/document.contains/shim.js?");
@@ -535,7 +535,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!*********************************************************!*\
   !*** ./node_modules/element-closest/element-closest.js ***!
   \*********************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("// element-closest | CC0-1.0 | github.com/jonathantneal/closest\n\n(function (ElementProto) {\n\tif (typeof ElementProto.matches !== 'function') {\n\t\tElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {\n\t\t\tvar element = this;\n\t\t\tvar elements = (element.document || element.ownerDocument).querySelectorAll(selector);\n\t\t\tvar index = 0;\n\n\t\t\twhile (elements[index] && elements[index] !== element) {\n\t\t\t\t++index;\n\t\t\t}\n\n\t\t\treturn Boolean(elements[index]);\n\t\t};\n\t}\n\n\tif (typeof ElementProto.closest !== 'function') {\n\t\tElementProto.closest = function closest(selector) {\n\t\t\tvar element = this;\n\n\t\t\twhile (element && element.nodeType === 1) {\n\t\t\t\tif (element.matches(selector)) {\n\t\t\t\t\treturn element;\n\t\t\t\t}\n\n\t\t\t\telement = element.parentNode;\n\t\t\t}\n\n\t\t\treturn null;\n\t\t};\n\t}\n})(window.Element.prototype);\n\n\n//# sourceURL=webpack://range-slider/./node_modules/element-closest/element-closest.js?");
 
@@ -545,7 +545,7 @@ eval("// element-closest | CC0-1.0 | github.com/jonathantneal/closest\n\n(functi
 /*!*************************************************************!*\
   !*** ./node_modules/es-abstract/2020/CreateDataProperty.js ***!
   \*************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/es-abstract/2020/FromPropertyDescriptor.js\");\nvar OrdinaryGetOwnProperty = __webpack_require__(/*! ./OrdinaryGetOwnProperty */ \"./node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/es-abstract/2020/IsDataDescriptor.js\");\nvar IsExtensible = __webpack_require__(/*! ./IsExtensible */ \"./node_modules/es-abstract/2020/IsExtensible.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/es-abstract/2020/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/es-abstract/2020/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/es-abstract/2020/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createdataproperty\n\nmodule.exports = function CreateDataProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar oldDesc = OrdinaryGetOwnProperty(O, P);\n\tvar extensible = !oldDesc || IsExtensible(O);\n\tvar immutable = oldDesc && (!oldDesc['[[Writable]]'] || !oldDesc['[[Configurable]]']);\n\tif (immutable || !extensible) {\n\t\treturn false;\n\t}\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\t{\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Value]]': V,\n\t\t\t'[[Writable]]': true\n\t\t}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/CreateDataProperty.js?");
@@ -556,7 +556,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************!*\
   !*** ./node_modules/es-abstract/2020/FromPropertyDescriptor.js ***!
   \*****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/es-abstract/2020/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/FromPropertyDescriptor.js?");
@@ -567,7 +567,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!**************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsArray.js ***!
   \**************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsArray.js?");
@@ -578,7 +578,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsCallable.js ***!
   \*****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/es-abstract/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsCallable.js?");
@@ -589,7 +589,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!***********************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsDataDescriptor.js ***!
   \***********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/es-abstract/2020/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsDataDescriptor.js?");
@@ -600,7 +600,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!*******************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsExtensible.js ***!
   \*******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $preventExtensions = $Object.preventExtensions;\nvar $isExtensible = $Object.isExtensible;\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isextensible-o\n\nmodule.exports = $preventExtensions\n\t? function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj) && $isExtensible(obj);\n\t}\n\t: function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj);\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsExtensible.js?");
@@ -611,7 +611,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsPropertyKey.js ***!
   \********************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsPropertyKey.js?");
@@ -622,7 +622,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!***************************************************!*\
   !*** ./node_modules/es-abstract/2020/IsRegExp.js ***!
   \***************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/es-abstract/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/es-abstract/2020/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/IsRegExp.js?");
@@ -633,7 +633,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************!*\
   !*** ./node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js ***!
   \*****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = __webpack_require__(/*! ../helpers/getOwnPropertyDescriptor */ \"./node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/es-abstract/2020/IsArray.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/es-abstract/2020/IsPropertyKey.js\");\nvar IsRegExp = __webpack_require__(/*! ./IsRegExp */ \"./node_modules/es-abstract/2020/IsRegExp.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/es-abstract/2020/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/es-abstract/2020/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ordinarygetownproperty\n\nmodule.exports = function OrdinaryGetOwnProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: O must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tif (!has(O, P)) {\n\t\treturn void 0;\n\t}\n\tif (!$gOPD) {\n\t\t// ES3 / IE 8 fallback\n\t\tvar arrayLength = IsArray(O) && P === 'length';\n\t\tvar regexLastIndex = IsRegExp(O) && P === 'lastIndex';\n\t\treturn {\n\t\t\t'[[Configurable]]': !(arrayLength || regexLastIndex),\n\t\t\t'[[Enumerable]]': $isEnumerable(O, P),\n\t\t\t'[[Value]]': O[P],\n\t\t\t'[[Writable]]': true\n\t\t};\n\t}\n\treturn ToPropertyDescriptor($gOPD(O, P));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js?");
@@ -644,7 +644,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************!*\
   !*** ./node_modules/es-abstract/2020/RequireObjectCoercible.js ***!
   \*****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/RequireObjectCoercible.js?");
@@ -655,7 +655,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!****************************************************!*\
   !*** ./node_modules/es-abstract/2020/SameValue.js ***!
   \****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/SameValue.js?");
@@ -666,7 +666,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!****************************************************!*\
   !*** ./node_modules/es-abstract/2020/ToBoolean.js ***!
   \****************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/ToBoolean.js?");
@@ -677,7 +677,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!***************************************************!*\
   !*** ./node_modules/es-abstract/2020/ToObject.js ***!
   \***************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/es-abstract/2020/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/ToObject.js?");
@@ -688,7 +688,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************!*\
   !*** ./node_modules/es-abstract/2020/ToPropertyDescriptor.js ***!
   \***************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/es-abstract/2020/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/es-abstract/2020/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/es-abstract/2020/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/ToPropertyDescriptor.js?");
@@ -699,7 +699,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!***********************************************!*\
   !*** ./node_modules/es-abstract/2020/Type.js ***!
   \***********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/2020/Type.js?");
@@ -710,7 +710,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/es
 /*!************************************************************!*\
   !*** ./node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -721,7 +721,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************!*\
   !*** ./node_modules/es-abstract/5/Type.js ***!
   \********************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/5/Type.js?");
@@ -732,7 +732,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!***************************************************************!*\
   !*** ./node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \***************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -743,7 +743,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************!*\
   !*** ./node_modules/es-abstract/helpers/assertRecord.js ***!
   \**********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/helpers/assertRecord.js?");
@@ -754,7 +754,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************!*\
   !*** ./node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
   \**********************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%');\nif ($gOPD) {\n\ttry {\n\t\t$gOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\t$gOPD = null;\n\t}\n}\n\nmodule.exports = $gOPD;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js?");
@@ -765,7 +765,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************!*\
   !*** ./node_modules/es-abstract/helpers/isNaN.js ***!
   \***************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/helpers/isNaN.js?");
@@ -776,7 +776,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!*********************************************************!*\
   !*** ./node_modules/es-abstract/helpers/isPrimitive.js ***!
   \*********************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -787,7 +787,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!********************************************************************!*\
   !*** ./node_modules/es-abstract/node_modules/has-symbols/shams.js ***!
   \********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/node_modules/has-symbols/shams.js?");
@@ -798,7 +798,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!********************************************************************!*\
   !*** ./node_modules/es-abstract/node_modules/is-callable/index.js ***!
   \********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/node_modules/is-callable/index.js?");
@@ -809,7 +809,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!*****************************************************************!*\
   !*** ./node_modules/es-abstract/node_modules/is-regex/index.js ***!
   \*****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasSymbols = __webpack_require__(/*! has-symbols/shams */ \"./node_modules/es-abstract/node_modules/has-symbols/shams.js\")();\nvar hasToStringTag = hasSymbols && !!Symbol.toStringTag;\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-abstract/node_modules/is-regex/index.js?");
@@ -820,7 +820,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!**************************************************************!*\
   !*** ./node_modules/es-array-method-boxes-properly/index.js ***!
   \**************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 eval("module.exports = function properlyBoxed(method) {\n\t// Check node 0.6.21 bug where third parameter is not boxed\n\tvar properlyBoxesNonStrict = true;\n\tvar properlyBoxesStrict = true;\n\tvar threwException = false;\n\tif (typeof method === 'function') {\n\t\ttry {\n\t\t\t// eslint-disable-next-line max-params\n\t\t\tmethod.call('f', function (_, __, O) {\n\t\t\t\tif (typeof O !== 'object') {\n\t\t\t\t\tproperlyBoxesNonStrict = false;\n\t\t\t\t}\n\t\t\t});\n\n\t\t\tmethod.call(\n\t\t\t\t[null],\n\t\t\t\tfunction () {\n\t\t\t\t\t'use strict';\n\n\t\t\t\t\tproperlyBoxesStrict = typeof this === 'string'; // eslint-disable-line no-invalid-this\n\t\t\t\t},\n\t\t\t\t'x'\n\t\t\t);\n\t\t} catch (e) {\n\t\t\tthrewException = true;\n\t\t}\n\t\treturn !threwException && properlyBoxesNonStrict && properlyBoxesStrict;\n\t}\n\treturn false;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-array-method-boxes-properly/index.js?");
 
@@ -830,7 +830,7 @@ eval("module.exports = function properlyBoxed(method) {\n\t// Check node 0.6.21 
 /*!********************************************************************!*\
   !*** ./node_modules/es-get-iterator/node_modules/isarray/index.js ***!
   \********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 eval("var toString = {}.toString;\n\nmodule.exports = Array.isArray || function (arr) {\n  return toString.call(arr) == '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-get-iterator/node_modules/isarray/index.js?");
 
@@ -840,7 +840,7 @@ eval("var toString = {}.toString;\n\nmodule.exports = Array.isArray || function 
 /*!************************************************!*\
   !*** ./node_modules/es-to-primitive/es2015.js ***!
   \************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';\n\nvar isPrimitive = __webpack_require__(/*! ./helpers/isPrimitive */ \"./node_modules/es-to-primitive/helpers/isPrimitive.js\");\nvar isCallable = __webpack_require__(/*! is-callable */ \"./node_modules/is-callable/index.js\");\nvar isDate = __webpack_require__(/*! is-date-object */ \"./node_modules/is-date-object/index.js\");\nvar isSymbol = __webpack_require__(/*! is-symbol */ \"./node_modules/is-symbol/index.js\");\n\nvar ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {\n\tif (typeof O === 'undefined' || O === null) {\n\t\tthrow new TypeError('Cannot call method on ' + O);\n\t}\n\tif (typeof hint !== 'string' || (hint !== 'number' && hint !== 'string')) {\n\t\tthrow new TypeError('hint must be \"string\" or \"number\"');\n\t}\n\tvar methodNames = hint === 'string' ? ['toString', 'valueOf'] : ['valueOf', 'toString'];\n\tvar method, result, i;\n\tfor (i = 0; i < methodNames.length; ++i) {\n\t\tmethod = O[methodNames[i]];\n\t\tif (isCallable(method)) {\n\t\t\tresult = method.call(O);\n\t\t\tif (isPrimitive(result)) {\n\t\t\t\treturn result;\n\t\t\t}\n\t\t}\n\t}\n\tthrow new TypeError('No default value');\n};\n\nvar GetMethod = function GetMethod(O, P) {\n\tvar func = O[P];\n\tif (func !== null && typeof func !== 'undefined') {\n\t\tif (!isCallable(func)) {\n\t\t\tthrow new TypeError(func + ' returned for property ' + P + ' of object ' + O + ' is not a function');\n\t\t}\n\t\treturn func;\n\t}\n\treturn void 0;\n};\n\n// http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive\nmodule.exports = function ToPrimitive(input) {\n\tif (isPrimitive(input)) {\n\t\treturn input;\n\t}\n\tvar hint = 'default';\n\tif (arguments.length > 1) {\n\t\tif (arguments[1] === String) {\n\t\t\thint = 'string';\n\t\t} else if (arguments[1] === Number) {\n\t\t\thint = 'number';\n\t\t}\n\t}\n\n\tvar exoticToPrim;\n\tif (hasSymbols) {\n\t\tif (Symbol.toPrimitive) {\n\t\t\texoticToPrim = GetMethod(input, Symbol.toPrimitive);\n\t\t} else if (isSymbol(input)) {\n\t\t\texoticToPrim = Symbol.prototype.valueOf;\n\t\t}\n\t}\n\tif (typeof exoticToPrim !== 'undefined') {\n\t\tvar result = exoticToPrim.call(input, hint);\n\t\tif (isPrimitive(result)) {\n\t\t\treturn result;\n\t\t}\n\t\tthrow new TypeError('unable to convert exotic object to primitive');\n\t}\n\tif (hint === 'default' && (isDate(input) || isSymbol(input))) {\n\t\thint = 'string';\n\t}\n\treturn ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-to-primitive/es2015.js?");
@@ -851,7 +851,7 @@ eval("\n\nvar hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterato
 /*!*********************************************!*\
   !*** ./node_modules/es-to-primitive/es5.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toStr = Object.prototype.toString;\n\nvar isPrimitive = __webpack_require__(/*! ./helpers/isPrimitive */ \"./node_modules/es-to-primitive/helpers/isPrimitive.js\");\n\nvar isCallable = __webpack_require__(/*! is-callable */ \"./node_modules/is-callable/index.js\");\n\n// http://ecma-international.org/ecma-262/5.1/#sec-8.12.8\nvar ES5internalSlots = {\n\t'[[DefaultValue]]': function (O) {\n\t\tvar actualHint;\n\t\tif (arguments.length > 1) {\n\t\t\tactualHint = arguments[1];\n\t\t} else {\n\t\t\tactualHint = toStr.call(O) === '[object Date]' ? String : Number;\n\t\t}\n\n\t\tif (actualHint === String || actualHint === Number) {\n\t\t\tvar methods = actualHint === String ? ['toString', 'valueOf'] : ['valueOf', 'toString'];\n\t\t\tvar value, i;\n\t\t\tfor (i = 0; i < methods.length; ++i) {\n\t\t\t\tif (isCallable(O[methods[i]])) {\n\t\t\t\t\tvalue = O[methods[i]]();\n\t\t\t\t\tif (isPrimitive(value)) {\n\t\t\t\t\t\treturn value;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tthrow new TypeError('No default value');\n\t\t}\n\t\tthrow new TypeError('invalid [[DefaultValue]] hint supplied');\n\t}\n};\n\n// http://ecma-international.org/ecma-262/5.1/#sec-9.1\nmodule.exports = function ToPrimitive(input) {\n\tif (isPrimitive(input)) {\n\t\treturn input;\n\t}\n\tif (arguments.length > 1) {\n\t\treturn ES5internalSlots['[[DefaultValue]]'](input, arguments[1]);\n\t}\n\treturn ES5internalSlots['[[DefaultValue]]'](input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-to-primitive/es5.js?");
@@ -862,7 +862,7 @@ eval("\n\nvar toStr = Object.prototype.toString;\n\nvar isPrimitive = __webpack_
 /*!*************************************************************!*\
   !*** ./node_modules/es-to-primitive/helpers/isPrimitive.js ***!
   \*************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-to-primitive/helpers/isPrimitive.js?");
@@ -913,7 +913,7 @@ eval("(function (global, factory) {\n   true ? factory() :\n  0;\n}(this, (funct
 /*!******************************************************!*\
   !*** ./node_modules/function-bind/implementation.js ***!
   \******************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint no-invalid-this: 1 */\n\nvar ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';\nvar slice = Array.prototype.slice;\nvar toStr = Object.prototype.toString;\nvar funcType = '[object Function]';\n\nmodule.exports = function bind(that) {\n    var target = this;\n    if (typeof target !== 'function' || toStr.call(target) !== funcType) {\n        throw new TypeError(ERROR_MESSAGE + target);\n    }\n    var args = slice.call(arguments, 1);\n\n    var bound;\n    var binder = function () {\n        if (this instanceof bound) {\n            var result = target.apply(\n                this,\n                args.concat(slice.call(arguments))\n            );\n            if (Object(result) === result) {\n                return result;\n            }\n            return this;\n        } else {\n            return target.apply(\n                that,\n                args.concat(slice.call(arguments))\n            );\n        }\n    };\n\n    var boundLength = Math.max(0, target.length - args.length);\n    var boundArgs = [];\n    for (var i = 0; i < boundLength; i++) {\n        boundArgs.push('$' + i);\n    }\n\n    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);\n\n    if (target.prototype) {\n        var Empty = function Empty() {};\n        Empty.prototype = target.prototype;\n        bound.prototype = new Empty();\n        Empty.prototype = null;\n    }\n\n    return bound;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function-bind/implementation.js?");
@@ -924,7 +924,7 @@ eval("\n\n/* eslint no-invalid-this: 1 */\n\nvar ERROR_MESSAGE = 'Function.proto
 /*!*********************************************!*\
   !*** ./node_modules/function-bind/index.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/function-bind/implementation.js\");\n\nmodule.exports = Function.prototype.bind || implementation;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function-bind/index.js?");
@@ -935,7 +935,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!****************************************************************!*\
   !*** ./node_modules/function.prototype.name/implementation.js ***!
   \****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar IsCallable = __webpack_require__(/*! es-abstract/2021/IsCallable */ \"./node_modules/function.prototype.name/node_modules/es-abstract/2021/IsCallable.js\");\nvar functionsHaveNames = __webpack_require__(/*! functions-have-names */ \"./node_modules/functions-have-names/index.js\")();\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar $functionToString = callBound('Function.prototype.toString');\nvar $stringMatch = callBound('String.prototype.match');\n\nvar classRegex = /^class /;\n\nvar isClass = function isClassConstructor(fn) {\n\tif (IsCallable(fn)) {\n\t\treturn false;\n\t}\n\tif (typeof fn !== 'function') {\n\t\treturn false;\n\t}\n\ttry {\n\t\tvar match = $stringMatch($functionToString(fn), classRegex);\n\t\treturn !!match;\n\t} catch (e) {}\n\treturn false;\n};\n\nvar regex = /\\s*function\\s+([^(\\s]*)\\s*/;\n\nvar functionProto = Function.prototype;\n\nmodule.exports = function getName() {\n\tif (!isClass(this) && !IsCallable(this)) {\n\t\tthrow new TypeError('Function.prototype.name sham getter called on non-function');\n\t}\n\tif (functionsHaveNames) {\n\t\treturn this.name;\n\t}\n\tif (this === functionProto) {\n\t\treturn '';\n\t}\n\tvar str = $functionToString(this);\n\tvar match = $stringMatch(str, regex);\n\tvar name = match && match[1];\n\treturn name;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function.prototype.name/implementation.js?");
@@ -946,7 +946,7 @@ eval("\n\nvar IsCallable = __webpack_require__(/*! es-abstract/2021/IsCallable *
 /*!********************************************************************************!*\
   !*** ./node_modules/function.prototype.name/node_modules/is-callable/index.js ***!
   \********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function.prototype.name/node_modules/is-callable/index.js?");
@@ -957,7 +957,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!**********************************************************!*\
   !*** ./node_modules/function.prototype.name/polyfill.js ***!
   \**********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/function.prototype.name/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function.prototype.name/polyfill.js?");
@@ -968,7 +968,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!******************************************************!*\
   !*** ./node_modules/function.prototype.name/shim.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar supportsDescriptors = (__webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\").supportsDescriptors);\nvar functionsHaveNames = __webpack_require__(/*! functions-have-names */ \"./node_modules/functions-have-names/index.js\")();\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/function.prototype.name/polyfill.js\");\nvar defineProperty = Object.defineProperty;\nvar TypeErr = TypeError;\n\nmodule.exports = function shimName() {\n\tvar polyfill = getPolyfill();\n\tif (functionsHaveNames) {\n\t\treturn polyfill;\n\t}\n\tif (!supportsDescriptors) {\n\t\tthrow new TypeErr('Shimming Function.prototype.name support requires ES5 property descriptor support.');\n\t}\n\tvar functionProto = Function.prototype;\n\tdefineProperty(functionProto, 'name', {\n\t\tconfigurable: true,\n\t\tenumerable: false,\n\t\tget: function () {\n\t\t\tvar name = polyfill.call(this);\n\t\t\tif (this !== functionProto) {\n\t\t\t\tdefineProperty(this, 'name', {\n\t\t\t\t\tconfigurable: true,\n\t\t\t\t\tenumerable: false,\n\t\t\t\t\tvalue: name,\n\t\t\t\t\twritable: false\n\t\t\t\t});\n\t\t\t}\n\t\t\treturn name;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function.prototype.name/shim.js?");
@@ -979,7 +979,7 @@ eval("\n\nvar supportsDescriptors = (__webpack_require__(/*! define-properties *
 /*!****************************************************!*\
   !*** ./node_modules/functions-have-names/index.js ***!
   \****************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar functionsHaveNames = function functionsHaveNames() {\n\treturn typeof function f() {}.name === 'string';\n};\n\nvar gOPD = Object.getOwnPropertyDescriptor;\nif (gOPD) {\n\ttry {\n\t\tgOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\tgOPD = null;\n\t}\n}\n\nfunctionsHaveNames.functionsHaveConfigurableNames = function functionsHaveConfigurableNames() {\n\treturn functionsHaveNames() && gOPD && !!gOPD(function () {}, 'name').configurable;\n};\n\nvar $bind = Function.prototype.bind;\n\nfunctionsHaveNames.boundFunctionsHaveNames = function boundFunctionsHaveNames() {\n\treturn functionsHaveNames() && typeof $bind === 'function' && function f() {}.bind().name !== '';\n};\n\nmodule.exports = functionsHaveNames;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/functions-have-names/index.js?");
@@ -990,7 +990,7 @@ eval("\n\nvar functionsHaveNames = function functionsHaveNames() {\n\treturn typ
 /*!*********************************************!*\
   !*** ./node_modules/get-intrinsic/index.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar undefined;\n\nvar $SyntaxError = SyntaxError;\nvar $Function = Function;\nvar $TypeError = TypeError;\n\n// eslint-disable-next-line consistent-return\nvar getEvalledConstructor = function (expressionSyntax) {\n\ttry {\n\t\treturn $Function('\"use strict\"; return (' + expressionSyntax + ').constructor;')();\n\t} catch (e) {}\n};\n\nvar $gOPD = Object.getOwnPropertyDescriptor;\nif ($gOPD) {\n\ttry {\n\t\t$gOPD({}, '');\n\t} catch (e) {\n\t\t$gOPD = null; // this is IE 8, which has a broken gOPD\n\t}\n}\n\nvar throwTypeError = function () {\n\tthrow new $TypeError();\n};\nvar ThrowTypeError = $gOPD\n\t? (function () {\n\t\ttry {\n\t\t\t// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties\n\t\t\targuments.callee; // IE 8 does not throw here\n\t\t\treturn throwTypeError;\n\t\t} catch (calleeThrows) {\n\t\t\ttry {\n\t\t\t\t// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')\n\t\t\t\treturn $gOPD(arguments, 'callee').get;\n\t\t\t} catch (gOPDthrows) {\n\t\t\t\treturn throwTypeError;\n\t\t\t}\n\t\t}\n\t}())\n\t: throwTypeError;\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/has-symbols/index.js\")();\n\nvar getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto\n\nvar needsEval = {};\n\nvar TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);\n\nvar INTRINSICS = {\n\t'%AggregateError%': typeof AggregateError === 'undefined' ? undefined : AggregateError,\n\t'%Array%': Array,\n\t'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,\n\t'%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,\n\t'%AsyncFromSyncIteratorPrototype%': undefined,\n\t'%AsyncFunction%': needsEval,\n\t'%AsyncGenerator%': needsEval,\n\t'%AsyncGeneratorFunction%': needsEval,\n\t'%AsyncIteratorPrototype%': needsEval,\n\t'%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,\n\t'%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,\n\t'%Boolean%': Boolean,\n\t'%DataView%': typeof DataView === 'undefined' ? undefined : DataView,\n\t'%Date%': Date,\n\t'%decodeURI%': decodeURI,\n\t'%decodeURIComponent%': decodeURIComponent,\n\t'%encodeURI%': encodeURI,\n\t'%encodeURIComponent%': encodeURIComponent,\n\t'%Error%': Error,\n\t'%eval%': eval, // eslint-disable-line no-eval\n\t'%EvalError%': EvalError,\n\t'%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,\n\t'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,\n\t'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,\n\t'%Function%': $Function,\n\t'%GeneratorFunction%': needsEval,\n\t'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,\n\t'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,\n\t'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,\n\t'%isFinite%': isFinite,\n\t'%isNaN%': isNaN,\n\t'%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,\n\t'%JSON%': typeof JSON === 'object' ? JSON : undefined,\n\t'%Map%': typeof Map === 'undefined' ? undefined : Map,\n\t'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),\n\t'%Math%': Math,\n\t'%Number%': Number,\n\t'%Object%': Object,\n\t'%parseFloat%': parseFloat,\n\t'%parseInt%': parseInt,\n\t'%Promise%': typeof Promise === 'undefined' ? undefined : Promise,\n\t'%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,\n\t'%RangeError%': RangeError,\n\t'%ReferenceError%': ReferenceError,\n\t'%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,\n\t'%RegExp%': RegExp,\n\t'%Set%': typeof Set === 'undefined' ? undefined : Set,\n\t'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),\n\t'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,\n\t'%String%': String,\n\t'%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,\n\t'%Symbol%': hasSymbols ? Symbol : undefined,\n\t'%SyntaxError%': $SyntaxError,\n\t'%ThrowTypeError%': ThrowTypeError,\n\t'%TypedArray%': TypedArray,\n\t'%TypeError%': $TypeError,\n\t'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,\n\t'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,\n\t'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,\n\t'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,\n\t'%URIError%': URIError,\n\t'%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,\n\t'%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,\n\t'%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet\n};\n\nvar doEval = function doEval(name) {\n\tvar value;\n\tif (name === '%AsyncFunction%') {\n\t\tvalue = getEvalledConstructor('async function () {}');\n\t} else if (name === '%GeneratorFunction%') {\n\t\tvalue = getEvalledConstructor('function* () {}');\n\t} else if (name === '%AsyncGeneratorFunction%') {\n\t\tvalue = getEvalledConstructor('async function* () {}');\n\t} else if (name === '%AsyncGenerator%') {\n\t\tvar fn = doEval('%AsyncGeneratorFunction%');\n\t\tif (fn) {\n\t\t\tvalue = fn.prototype;\n\t\t}\n\t} else if (name === '%AsyncIteratorPrototype%') {\n\t\tvar gen = doEval('%AsyncGenerator%');\n\t\tif (gen) {\n\t\t\tvalue = getProto(gen.prototype);\n\t\t}\n\t}\n\n\tINTRINSICS[name] = value;\n\n\treturn value;\n};\n\nvar LEGACY_ALIASES = {\n\t'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],\n\t'%ArrayPrototype%': ['Array', 'prototype'],\n\t'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],\n\t'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],\n\t'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],\n\t'%ArrayProto_values%': ['Array', 'prototype', 'values'],\n\t'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],\n\t'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],\n\t'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],\n\t'%BooleanPrototype%': ['Boolean', 'prototype'],\n\t'%DataViewPrototype%': ['DataView', 'prototype'],\n\t'%DatePrototype%': ['Date', 'prototype'],\n\t'%ErrorPrototype%': ['Error', 'prototype'],\n\t'%EvalErrorPrototype%': ['EvalError', 'prototype'],\n\t'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],\n\t'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],\n\t'%FunctionPrototype%': ['Function', 'prototype'],\n\t'%Generator%': ['GeneratorFunction', 'prototype'],\n\t'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],\n\t'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],\n\t'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],\n\t'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],\n\t'%JSONParse%': ['JSON', 'parse'],\n\t'%JSONStringify%': ['JSON', 'stringify'],\n\t'%MapPrototype%': ['Map', 'prototype'],\n\t'%NumberPrototype%': ['Number', 'prototype'],\n\t'%ObjectPrototype%': ['Object', 'prototype'],\n\t'%ObjProto_toString%': ['Object', 'prototype', 'toString'],\n\t'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],\n\t'%PromisePrototype%': ['Promise', 'prototype'],\n\t'%PromiseProto_then%': ['Promise', 'prototype', 'then'],\n\t'%Promise_all%': ['Promise', 'all'],\n\t'%Promise_reject%': ['Promise', 'reject'],\n\t'%Promise_resolve%': ['Promise', 'resolve'],\n\t'%RangeErrorPrototype%': ['RangeError', 'prototype'],\n\t'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],\n\t'%RegExpPrototype%': ['RegExp', 'prototype'],\n\t'%SetPrototype%': ['Set', 'prototype'],\n\t'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],\n\t'%StringPrototype%': ['String', 'prototype'],\n\t'%SymbolPrototype%': ['Symbol', 'prototype'],\n\t'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],\n\t'%TypedArrayPrototype%': ['TypedArray', 'prototype'],\n\t'%TypeErrorPrototype%': ['TypeError', 'prototype'],\n\t'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],\n\t'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],\n\t'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],\n\t'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],\n\t'%URIErrorPrototype%': ['URIError', 'prototype'],\n\t'%WeakMapPrototype%': ['WeakMap', 'prototype'],\n\t'%WeakSetPrototype%': ['WeakSet', 'prototype']\n};\n\nvar bind = __webpack_require__(/*! function-bind */ \"./node_modules/function-bind/index.js\");\nvar hasOwn = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $concat = bind.call(Function.call, Array.prototype.concat);\nvar $spliceApply = bind.call(Function.apply, Array.prototype.splice);\nvar $replace = bind.call(Function.call, String.prototype.replace);\nvar $strSlice = bind.call(Function.call, String.prototype.slice);\n\n/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */\nvar rePropName = /[^%.[\\]]+|\\[(?:(-?\\d+(?:\\.\\d+)?)|([\"'])((?:(?!\\2)[^\\\\]|\\\\.)*?)\\2)\\]|(?=(?:\\.|\\[\\])(?:\\.|\\[\\]|%$))/g;\nvar reEscapeChar = /\\\\(\\\\)?/g; /** Used to match backslashes in property paths. */\nvar stringToPath = function stringToPath(string) {\n\tvar first = $strSlice(string, 0, 1);\n\tvar last = $strSlice(string, -1);\n\tif (first === '%' && last !== '%') {\n\t\tthrow new $SyntaxError('invalid intrinsic syntax, expected closing `%`');\n\t} else if (last === '%' && first !== '%') {\n\t\tthrow new $SyntaxError('invalid intrinsic syntax, expected opening `%`');\n\t}\n\tvar result = [];\n\t$replace(string, rePropName, function (match, number, quote, subString) {\n\t\tresult[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;\n\t});\n\treturn result;\n};\n/* end adaptation */\n\nvar getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {\n\tvar intrinsicName = name;\n\tvar alias;\n\tif (hasOwn(LEGACY_ALIASES, intrinsicName)) {\n\t\talias = LEGACY_ALIASES[intrinsicName];\n\t\tintrinsicName = '%' + alias[0] + '%';\n\t}\n\n\tif (hasOwn(INTRINSICS, intrinsicName)) {\n\t\tvar value = INTRINSICS[intrinsicName];\n\t\tif (value === needsEval) {\n\t\t\tvalue = doEval(intrinsicName);\n\t\t}\n\t\tif (typeof value === 'undefined' && !allowMissing) {\n\t\t\tthrow new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');\n\t\t}\n\n\t\treturn {\n\t\t\talias: alias,\n\t\t\tname: intrinsicName,\n\t\t\tvalue: value\n\t\t};\n\t}\n\n\tthrow new $SyntaxError('intrinsic ' + name + ' does not exist!');\n};\n\nmodule.exports = function GetIntrinsic(name, allowMissing) {\n\tif (typeof name !== 'string' || name.length === 0) {\n\t\tthrow new $TypeError('intrinsic name must be a non-empty string');\n\t}\n\tif (arguments.length > 1 && typeof allowMissing !== 'boolean') {\n\t\tthrow new $TypeError('\"allowMissing\" argument must be a boolean');\n\t}\n\n\tvar parts = stringToPath(name);\n\tvar intrinsicBaseName = parts.length > 0 ? parts[0] : '';\n\n\tvar intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);\n\tvar intrinsicRealName = intrinsic.name;\n\tvar value = intrinsic.value;\n\tvar skipFurtherCaching = false;\n\n\tvar alias = intrinsic.alias;\n\tif (alias) {\n\t\tintrinsicBaseName = alias[0];\n\t\t$spliceApply(parts, $concat([0, 1], alias));\n\t}\n\n\tfor (var i = 1, isOwn = true; i < parts.length; i += 1) {\n\t\tvar part = parts[i];\n\t\tvar first = $strSlice(part, 0, 1);\n\t\tvar last = $strSlice(part, -1);\n\t\tif (\n\t\t\t(\n\t\t\t\t(first === '\"' || first === \"'\" || first === '`')\n\t\t\t\t|| (last === '\"' || last === \"'\" || last === '`')\n\t\t\t)\n\t\t\t&& first !== last\n\t\t) {\n\t\t\tthrow new $SyntaxError('property names with quotes must have matching quotes');\n\t\t}\n\t\tif (part === 'constructor' || !isOwn) {\n\t\t\tskipFurtherCaching = true;\n\t\t}\n\n\t\tintrinsicBaseName += '.' + part;\n\t\tintrinsicRealName = '%' + intrinsicBaseName + '%';\n\n\t\tif (hasOwn(INTRINSICS, intrinsicRealName)) {\n\t\t\tvalue = INTRINSICS[intrinsicRealName];\n\t\t} else if (value != null) {\n\t\t\tif (!(part in value)) {\n\t\t\t\tif (!allowMissing) {\n\t\t\t\t\tthrow new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');\n\t\t\t\t}\n\t\t\t\treturn void undefined;\n\t\t\t}\n\t\t\tif ($gOPD && (i + 1) >= parts.length) {\n\t\t\t\tvar desc = $gOPD(value, part);\n\t\t\t\tisOwn = !!desc;\n\n\t\t\t\t// By convention, when a data property is converted to an accessor\n\t\t\t\t// property to emulate a data property that does not suffer from\n\t\t\t\t// the override mistake, that accessor's getter is marked with\n\t\t\t\t// an `originalValue` property. Here, when we detect this, we\n\t\t\t\t// uphold the illusion by pretending to see that original data\n\t\t\t\t// property, i.e., returning the value rather than the getter\n\t\t\t\t// itself.\n\t\t\t\tif (isOwn && 'get' in desc && !('originalValue' in desc.get)) {\n\t\t\t\t\tvalue = desc.get;\n\t\t\t\t} else {\n\t\t\t\t\tvalue = value[part];\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tisOwn = hasOwn(value, part);\n\t\t\t\tvalue = value[part];\n\t\t\t}\n\n\t\t\tif (isOwn && !skipFurtherCaching) {\n\t\t\t\tINTRINSICS[intrinsicRealName] = value;\n\t\t\t}\n\t\t}\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/get-intrinsic/index.js?");
@@ -1001,7 +1001,7 @@ eval("\n\nvar undefined;\n\nvar $SyntaxError = SyntaxError;\nvar $Function = Fun
 /*!****************************************************************!*\
   !*** ./node_modules/get-symbol-description/getInferredName.js ***!
   \****************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar getInferredName;\ntry {\n\t// eslint-disable-next-line no-new-func\n\tgetInferredName = Function('s', 'return { [s]() {} }[s].name;');\n} catch (e) {}\n\nvar inferred = function () {};\nmodule.exports = getInferredName && inferred.name === 'inferred' ? getInferredName : null;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/get-symbol-description/getInferredName.js?");
@@ -1012,7 +1012,7 @@ eval("\n\nvar getInferredName;\ntry {\n\t// eslint-disable-next-line no-new-func
 /*!******************************************************!*\
   !*** ./node_modules/get-symbol-description/index.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\nvar getGlobalSymbolDescription = GetIntrinsic('%Symbol.keyFor%', true);\nvar thisSymbolValue = callBound('%Symbol.prototype.valueOf%', true);\nvar symToStr = callBound('Symbol.prototype.toString', true);\n\nvar getInferredName = __webpack_require__(/*! ./getInferredName */ \"./node_modules/get-symbol-description/getInferredName.js\");\n\n/* eslint-disable consistent-return */\nmodule.exports = callBound('%Symbol.prototype.description%', true) || function getSymbolDescription(symbol) {\n\tif (!thisSymbolValue) {\n\t\tthrow new $SyntaxError('Symbols are not supported in this environment');\n\t}\n\n\t// will throw if not a symbol primitive or wrapper object\n\tvar sym = thisSymbolValue(symbol);\n\n\tif (getInferredName) {\n\t\tvar name = getInferredName(sym);\n\t\tif (name === '') {\n\t\t\treturn;\n\t\t}\n\t\treturn name.slice(1, -1); // name.slice('['.length, -']'.length);\n\t}\n\n\tvar desc;\n\tif (getGlobalSymbolDescription) {\n\t\tdesc = getGlobalSymbolDescription(sym);\n\t\tif (typeof desc === 'string') {\n\t\t\treturn desc;\n\t\t}\n\t}\n\n\tdesc = symToStr(sym).slice(7, -1); // str.slice('Symbol('.length, -')'.length);\n\tif (desc) {\n\t\treturn desc;\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/get-symbol-description/index.js?");
@@ -1023,7 +1023,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************!*\
   !*** ./node_modules/globalthis/auto.js ***!
   \*****************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/globalthis/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/globalthis/auto.js?");
@@ -1034,7 +1034,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/globalthis/shim.js\
 /*!***********************************************************!*\
   !*** ./node_modules/globalthis/implementation.browser.js ***!
   \***********************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("/* eslint no-negated-condition: 0, no-new-func: 0 */\n\n\n\nif (typeof self !== 'undefined') {\n\tmodule.exports = self;\n} else if (typeof window !== 'undefined') {\n\tmodule.exports = window;\n} else {\n\tmodule.exports = Function('return this')();\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/globalthis/implementation.browser.js?");
@@ -1045,7 +1045,7 @@ eval("/* eslint no-negated-condition: 0, no-new-func: 0 */\n\n\n\nif (typeof sel
 /*!*********************************************!*\
   !*** ./node_modules/globalthis/polyfill.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/globalthis/implementation.browser.js\");\n\nmodule.exports = function getPolyfill() {\n\tif (typeof __webpack_require__.g !== 'object' || !__webpack_require__.g || __webpack_require__.g.Math !== Math || __webpack_require__.g.Array !== Array) {\n\t\treturn implementation;\n\t}\n\treturn __webpack_require__.g;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/globalthis/polyfill.js?");
@@ -1056,7 +1056,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*****************************************!*\
   !*** ./node_modules/globalthis/shim.js ***!
   \*****************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/globalthis/polyfill.js\");\n\nmodule.exports = function shimGlobal() {\n\tvar polyfill = getPolyfill();\n\tif (define.supportsDescriptors) {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(polyfill, 'globalThis');\n\t\tif (!descriptor || (descriptor.configurable && (descriptor.enumerable || descriptor.writable || globalThis !== polyfill))) { // eslint-disable-line max-len\n\t\t\tObject.defineProperty(polyfill, 'globalThis', {\n\t\t\t\tconfigurable: true,\n\t\t\t\tenumerable: false,\n\t\t\t\tvalue: polyfill,\n\t\t\t\twritable: false\n\t\t\t});\n\t\t}\n\t} else if (typeof globalThis !== 'object' || globalThis !== polyfill) {\n\t\tpolyfill.globalThis = polyfill;\n\t}\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/globalthis/shim.js?");
@@ -1067,7 +1067,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!*******************************************!*\
   !*** ./node_modules/has-symbols/index.js ***!
   \*******************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar origSymbol = __webpack_require__.g.Symbol;\nvar hasSymbolSham = __webpack_require__(/*! ./shams */ \"./node_modules/has-symbols/shams.js\");\n\nmodule.exports = function hasNativeSymbols() {\n\tif (typeof origSymbol !== 'function') { return false; }\n\tif (typeof Symbol !== 'function') { return false; }\n\tif (typeof origSymbol('foo') !== 'symbol') { return false; }\n\tif (typeof Symbol('bar') !== 'symbol') { return false; }\n\n\treturn hasSymbolSham();\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/has-symbols/index.js?");
@@ -1078,7 +1078,7 @@ eval("\n\nvar origSymbol = __webpack_require__.g.Symbol;\nvar hasSymbolSham = __
 /*!*******************************************!*\
   !*** ./node_modules/has-symbols/shams.js ***!
   \*******************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/has-symbols/shams.js?");
@@ -1089,7 +1089,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!************************************************************************!*\
   !*** ./node_modules/has-tostringtag/node_modules/has-symbols/shams.js ***!
   \************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/has-tostringtag/node_modules/has-symbols/shams.js?");
@@ -1100,7 +1100,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!***********************************************!*\
   !*** ./node_modules/has-tostringtag/shams.js ***!
   \***********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols/shams */ \"./node_modules/has-tostringtag/node_modules/has-symbols/shams.js\");\n\nmodule.exports = function hasToStringTagShams() {\n\treturn hasSymbols() && !!Symbol.toStringTag;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/has-tostringtag/shams.js?");
@@ -1111,7 +1111,7 @@ eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols/shams */ \"./node
 /*!***************************************!*\
   !*** ./node_modules/has/src/index.js ***!
   \***************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar bind = __webpack_require__(/*! function-bind */ \"./node_modules/function-bind/index.js\");\n\nmodule.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);\n\n\n//# sourceURL=webpack://range-slider/./node_modules/has/src/index.js?");
@@ -1122,7 +1122,7 @@ eval("\n\nvar bind = __webpack_require__(/*! function-bind */ \"./node_modules/f
 /*!***************************************************!*\
   !*** ./node_modules/ima-babel6-polyfill/index.js ***!
   \***************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("(function() {\n\tvar testObject = {};\n\n\tif (!(Object.setPrototypeOf || testObject.__proto__)) {\n\t\tvar nativeGetPrototypeOf = Object.getPrototypeOf;\n\n\t\tObject.getPrototypeOf = function(object) {\n\t\t\tif (object.__proto__) {\n\t\t\t\treturn object.__proto__;\n\t\t\t} else {\n\t\t\t\treturn nativeGetPrototypeOf.call(Object, object);\n\t\t\t}\n\t\t}\n\t}\n})();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/ima-babel6-polyfill/index.js?");
 
@@ -1132,7 +1132,7 @@ eval("(function() {\n\tvar testObject = {};\n\n\tif (!(Object.setPrototypeOf || 
 /*!******************************************************************!*\
   !*** ./node_modules/input-placeholder-polyfill/dist/main.min.js ***!
   \******************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("function hidePlaceholderOnFocus(a){target=a.currentTarget?a.currentTarget:a.srcElement,target.value==target.getAttribute(\"placeholder\")&&(target.value=\"\")}function unfocusOnAnElement(a){target=a.currentTarget?a.currentTarget:a.srcElement,\"\"==target.value&&(target.value=target.getAttribute(\"placeholder\"))}if(!(\"placeholder\"in document.createElement(\"input\")))for(var inputs=document.getElementsByTagName(\"input\"),i=0;i<inputs.length;i++)inputs[i].value||(inputs[i].value=inputs[i].getAttribute(\"placeholder\")),inputs[i].addEventListener?(inputs[i].addEventListener(\"click\",hidePlaceholderOnFocus,!1),inputs[i].addEventListener(\"blur\",unfocusOnAnElement,!1)):inputs[i].attachEvent&&(inputs[i].attachEvent(\"onclick\",hidePlaceholderOnFocus),inputs[i].attachEvent(\"onblur\",unfocusOnAnElement));\n\n//# sourceURL=webpack://range-slider/./node_modules/input-placeholder-polyfill/dist/main.min.js?");
 
@@ -1142,7 +1142,7 @@ eval("function hidePlaceholderOnFocus(a){target=a.currentTarget?a.currentTarget:
 /*!*********************************************!*\
   !*** ./node_modules/internal-slot/index.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar channel = __webpack_require__(/*! side-channel */ \"./node_modules/side-channel/index.js\")();\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar SLOT = {\n\tassert: function (O, slot) {\n\t\tif (!O || (typeof O !== 'object' && typeof O !== 'function')) {\n\t\t\tthrow new $TypeError('`O` is not an object');\n\t\t}\n\t\tif (typeof slot !== 'string') {\n\t\t\tthrow new $TypeError('`slot` must be a string');\n\t\t}\n\t\tchannel.assert(O);\n\t},\n\tget: function (O, slot) {\n\t\tif (!O || (typeof O !== 'object' && typeof O !== 'function')) {\n\t\t\tthrow new $TypeError('`O` is not an object');\n\t\t}\n\t\tif (typeof slot !== 'string') {\n\t\t\tthrow new $TypeError('`slot` must be a string');\n\t\t}\n\t\tvar slots = channel.get(O);\n\t\treturn slots && slots['$' + slot];\n\t},\n\thas: function (O, slot) {\n\t\tif (!O || (typeof O !== 'object' && typeof O !== 'function')) {\n\t\t\tthrow new $TypeError('`O` is not an object');\n\t\t}\n\t\tif (typeof slot !== 'string') {\n\t\t\tthrow new $TypeError('`slot` must be a string');\n\t\t}\n\t\tvar slots = channel.get(O);\n\t\treturn !!slots && has(slots, '$' + slot);\n\t},\n\tset: function (O, slot, V) {\n\t\tif (!O || (typeof O !== 'object' && typeof O !== 'function')) {\n\t\t\tthrow new $TypeError('`O` is not an object');\n\t\t}\n\t\tif (typeof slot !== 'string') {\n\t\t\tthrow new $TypeError('`slot` must be a string');\n\t\t}\n\t\tvar slots = channel.get(O);\n\t\tif (!slots) {\n\t\t\tslots = {};\n\t\t\tchannel.set(O, slots);\n\t\t}\n\t\tslots['$' + slot] = V;\n\t}\n};\n\nif (Object.freeze) {\n\tObject.freeze(SLOT);\n}\n\nmodule.exports = SLOT;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/internal-slot/index.js?");
@@ -1153,7 +1153,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************!*\
   !*** ./node_modules/intersection-observer/intersection-observer.js ***!
   \*********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("/**\n * Copyright 2016 Google Inc. All Rights Reserved.\n *\n * Licensed under the W3C SOFTWARE AND DOCUMENT NOTICE AND LICENSE.\n *\n *  https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document\n *\n */\n\n(function(window, document) {\n'use strict';\n\n\n// Exits early if all IntersectionObserver and IntersectionObserverEntry\n// features are natively supported.\nif ('IntersectionObserver' in window &&\n    'IntersectionObserverEntry' in window &&\n    'intersectionRatio' in window.IntersectionObserverEntry.prototype) {\n\n  // Minimal polyfill for Edge 15's lack of `isIntersecting`\n  // See: https://github.com/w3c/IntersectionObserver/issues/211\n  if (!('isIntersecting' in window.IntersectionObserverEntry.prototype)) {\n    Object.defineProperty(window.IntersectionObserverEntry.prototype,\n      'isIntersecting', {\n      get: function () {\n        return this.intersectionRatio > 0;\n      }\n    });\n  }\n  return;\n}\n\n\n/**\n * An IntersectionObserver registry. This registry exists to hold a strong\n * reference to IntersectionObserver instances currently observing a target\n * element. Without this registry, instances without another reference may be\n * garbage collected.\n */\nvar registry = [];\n\n\n/**\n * Creates the global IntersectionObserverEntry constructor.\n * https://w3c.github.io/IntersectionObserver/#intersection-observer-entry\n * @param {Object} entry A dictionary of instance properties.\n * @constructor\n */\nfunction IntersectionObserverEntry(entry) {\n  this.time = entry.time;\n  this.target = entry.target;\n  this.rootBounds = entry.rootBounds;\n  this.boundingClientRect = entry.boundingClientRect;\n  this.intersectionRect = entry.intersectionRect || getEmptyRect();\n  this.isIntersecting = !!entry.intersectionRect;\n\n  // Calculates the intersection ratio.\n  var targetRect = this.boundingClientRect;\n  var targetArea = targetRect.width * targetRect.height;\n  var intersectionRect = this.intersectionRect;\n  var intersectionArea = intersectionRect.width * intersectionRect.height;\n\n  // Sets intersection ratio.\n  if (targetArea) {\n    // Round the intersection ratio to avoid floating point math issues:\n    // https://github.com/w3c/IntersectionObserver/issues/324\n    this.intersectionRatio = Number((intersectionArea / targetArea).toFixed(4));\n  } else {\n    // If area is zero and is intersecting, sets to 1, otherwise to 0\n    this.intersectionRatio = this.isIntersecting ? 1 : 0;\n  }\n}\n\n\n/**\n * Creates the global IntersectionObserver constructor.\n * https://w3c.github.io/IntersectionObserver/#intersection-observer-interface\n * @param {Function} callback The function to be invoked after intersection\n *     changes have queued. The function is not invoked if the queue has\n *     been emptied by calling the `takeRecords` method.\n * @param {Object=} opt_options Optional configuration options.\n * @constructor\n */\nfunction IntersectionObserver(callback, opt_options) {\n\n  var options = opt_options || {};\n\n  if (typeof callback != 'function') {\n    throw new Error('callback must be a function');\n  }\n\n  if (options.root && options.root.nodeType != 1) {\n    throw new Error('root must be an Element');\n  }\n\n  // Binds and throttles `this._checkForIntersections`.\n  this._checkForIntersections = throttle(\n      this._checkForIntersections.bind(this), this.THROTTLE_TIMEOUT);\n\n  // Private properties.\n  this._callback = callback;\n  this._observationTargets = [];\n  this._queuedEntries = [];\n  this._rootMarginValues = this._parseRootMargin(options.rootMargin);\n\n  // Public properties.\n  this.thresholds = this._initThresholds(options.threshold);\n  this.root = options.root || null;\n  this.rootMargin = this._rootMarginValues.map(function(margin) {\n    return margin.value + margin.unit;\n  }).join(' ');\n}\n\n\n/**\n * The minimum interval within which the document will be checked for\n * intersection changes.\n */\nIntersectionObserver.prototype.THROTTLE_TIMEOUT = 100;\n\n\n/**\n * The frequency in which the polyfill polls for intersection changes.\n * this can be updated on a per instance basis and must be set prior to\n * calling `observe` on the first target.\n */\nIntersectionObserver.prototype.POLL_INTERVAL = null;\n\n/**\n * Use a mutation observer on the root element\n * to detect intersection changes.\n */\nIntersectionObserver.prototype.USE_MUTATION_OBSERVER = true;\n\n\n/**\n * Starts observing a target element for intersection changes based on\n * the thresholds values.\n * @param {Element} target The DOM element to observe.\n */\nIntersectionObserver.prototype.observe = function(target) {\n  var isTargetAlreadyObserved = this._observationTargets.some(function(item) {\n    return item.element == target;\n  });\n\n  if (isTargetAlreadyObserved) {\n    return;\n  }\n\n  if (!(target && target.nodeType == 1)) {\n    throw new Error('target must be an Element');\n  }\n\n  this._registerInstance();\n  this._observationTargets.push({element: target, entry: null});\n  this._monitorIntersections();\n  this._checkForIntersections();\n};\n\n\n/**\n * Stops observing a target element for intersection changes.\n * @param {Element} target The DOM element to observe.\n */\nIntersectionObserver.prototype.unobserve = function(target) {\n  this._observationTargets =\n      this._observationTargets.filter(function(item) {\n\n    return item.element != target;\n  });\n  if (!this._observationTargets.length) {\n    this._unmonitorIntersections();\n    this._unregisterInstance();\n  }\n};\n\n\n/**\n * Stops observing all target elements for intersection changes.\n */\nIntersectionObserver.prototype.disconnect = function() {\n  this._observationTargets = [];\n  this._unmonitorIntersections();\n  this._unregisterInstance();\n};\n\n\n/**\n * Returns any queue entries that have not yet been reported to the\n * callback and clears the queue. This can be used in conjunction with the\n * callback to obtain the absolute most up-to-date intersection information.\n * @return {Array} The currently queued entries.\n */\nIntersectionObserver.prototype.takeRecords = function() {\n  var records = this._queuedEntries.slice();\n  this._queuedEntries = [];\n  return records;\n};\n\n\n/**\n * Accepts the threshold value from the user configuration object and\n * returns a sorted array of unique threshold values. If a value is not\n * between 0 and 1 and error is thrown.\n * @private\n * @param {Array|number=} opt_threshold An optional threshold value or\n *     a list of threshold values, defaulting to [0].\n * @return {Array} A sorted list of unique and valid threshold values.\n */\nIntersectionObserver.prototype._initThresholds = function(opt_threshold) {\n  var threshold = opt_threshold || [0];\n  if (!Array.isArray(threshold)) threshold = [threshold];\n\n  return threshold.sort().filter(function(t, i, a) {\n    if (typeof t != 'number' || isNaN(t) || t < 0 || t > 1) {\n      throw new Error('threshold must be a number between 0 and 1 inclusively');\n    }\n    return t !== a[i - 1];\n  });\n};\n\n\n/**\n * Accepts the rootMargin value from the user configuration object\n * and returns an array of the four margin values as an object containing\n * the value and unit properties. If any of the values are not properly\n * formatted or use a unit other than px or %, and error is thrown.\n * @private\n * @param {string=} opt_rootMargin An optional rootMargin value,\n *     defaulting to '0px'.\n * @return {Array<Object>} An array of margin objects with the keys\n *     value and unit.\n */\nIntersectionObserver.prototype._parseRootMargin = function(opt_rootMargin) {\n  var marginString = opt_rootMargin || '0px';\n  var margins = marginString.split(/\\s+/).map(function(margin) {\n    var parts = /^(-?\\d*\\.?\\d+)(px|%)$/.exec(margin);\n    if (!parts) {\n      throw new Error('rootMargin must be specified in pixels or percent');\n    }\n    return {value: parseFloat(parts[1]), unit: parts[2]};\n  });\n\n  // Handles shorthand.\n  margins[1] = margins[1] || margins[0];\n  margins[2] = margins[2] || margins[0];\n  margins[3] = margins[3] || margins[1];\n\n  return margins;\n};\n\n\n/**\n * Starts polling for intersection changes if the polling is not already\n * happening, and if the page's visibility state is visible.\n * @private\n */\nIntersectionObserver.prototype._monitorIntersections = function() {\n  if (!this._monitoringIntersections) {\n    this._monitoringIntersections = true;\n\n    // If a poll interval is set, use polling instead of listening to\n    // resize and scroll events or DOM mutations.\n    if (this.POLL_INTERVAL) {\n      this._monitoringInterval = setInterval(\n          this._checkForIntersections, this.POLL_INTERVAL);\n    }\n    else {\n      addEvent(window, 'resize', this._checkForIntersections, true);\n      addEvent(document, 'scroll', this._checkForIntersections, true);\n\n      if (this.USE_MUTATION_OBSERVER && 'MutationObserver' in window) {\n        this._domObserver = new MutationObserver(this._checkForIntersections);\n        this._domObserver.observe(document, {\n          attributes: true,\n          childList: true,\n          characterData: true,\n          subtree: true\n        });\n      }\n    }\n  }\n};\n\n\n/**\n * Stops polling for intersection changes.\n * @private\n */\nIntersectionObserver.prototype._unmonitorIntersections = function() {\n  if (this._monitoringIntersections) {\n    this._monitoringIntersections = false;\n\n    clearInterval(this._monitoringInterval);\n    this._monitoringInterval = null;\n\n    removeEvent(window, 'resize', this._checkForIntersections, true);\n    removeEvent(document, 'scroll', this._checkForIntersections, true);\n\n    if (this._domObserver) {\n      this._domObserver.disconnect();\n      this._domObserver = null;\n    }\n  }\n};\n\n\n/**\n * Scans each observation target for intersection changes and adds them\n * to the internal entries queue. If new entries are found, it\n * schedules the callback to be invoked.\n * @private\n */\nIntersectionObserver.prototype._checkForIntersections = function() {\n  var rootIsInDom = this._rootIsInDom();\n  var rootRect = rootIsInDom ? this._getRootRect() : getEmptyRect();\n\n  this._observationTargets.forEach(function(item) {\n    var target = item.element;\n    var targetRect = getBoundingClientRect(target);\n    var rootContainsTarget = this._rootContainsTarget(target);\n    var oldEntry = item.entry;\n    var intersectionRect = rootIsInDom && rootContainsTarget &&\n        this._computeTargetAndRootIntersection(target, rootRect);\n\n    var newEntry = item.entry = new IntersectionObserverEntry({\n      time: now(),\n      target: target,\n      boundingClientRect: targetRect,\n      rootBounds: rootRect,\n      intersectionRect: intersectionRect\n    });\n\n    if (!oldEntry) {\n      this._queuedEntries.push(newEntry);\n    } else if (rootIsInDom && rootContainsTarget) {\n      // If the new entry intersection ratio has crossed any of the\n      // thresholds, add a new entry.\n      if (this._hasCrossedThreshold(oldEntry, newEntry)) {\n        this._queuedEntries.push(newEntry);\n      }\n    } else {\n      // If the root is not in the DOM or target is not contained within\n      // root but the previous entry for this target had an intersection,\n      // add a new record indicating removal.\n      if (oldEntry && oldEntry.isIntersecting) {\n        this._queuedEntries.push(newEntry);\n      }\n    }\n  }, this);\n\n  if (this._queuedEntries.length) {\n    this._callback(this.takeRecords(), this);\n  }\n};\n\n\n/**\n * Accepts a target and root rect computes the intersection between then\n * following the algorithm in the spec.\n * TODO(philipwalton): at this time clip-path is not considered.\n * https://w3c.github.io/IntersectionObserver/#calculate-intersection-rect-algo\n * @param {Element} target The target DOM element\n * @param {Object} rootRect The bounding rect of the root after being\n *     expanded by the rootMargin value.\n * @return {?Object} The final intersection rect object or undefined if no\n *     intersection is found.\n * @private\n */\nIntersectionObserver.prototype._computeTargetAndRootIntersection =\n    function(target, rootRect) {\n\n  // If the element isn't displayed, an intersection can't happen.\n  if (window.getComputedStyle(target).display == 'none') return;\n\n  var targetRect = getBoundingClientRect(target);\n  var intersectionRect = targetRect;\n  var parent = getParentNode(target);\n  var atRoot = false;\n\n  while (!atRoot) {\n    var parentRect = null;\n    var parentComputedStyle = parent.nodeType == 1 ?\n        window.getComputedStyle(parent) : {};\n\n    // If the parent isn't displayed, an intersection can't happen.\n    if (parentComputedStyle.display == 'none') return;\n\n    if (parent == this.root || parent == document) {\n      atRoot = true;\n      parentRect = rootRect;\n    } else {\n      // If the element has a non-visible overflow, and it's not the <body>\n      // or <html> element, update the intersection rect.\n      // Note: <body> and <html> cannot be clipped to a rect that's not also\n      // the document rect, so no need to compute a new intersection.\n      if (parent != document.body &&\n          parent != document.documentElement &&\n          parentComputedStyle.overflow != 'visible') {\n        parentRect = getBoundingClientRect(parent);\n      }\n    }\n\n    // If either of the above conditionals set a new parentRect,\n    // calculate new intersection data.\n    if (parentRect) {\n      intersectionRect = computeRectIntersection(parentRect, intersectionRect);\n\n      if (!intersectionRect) break;\n    }\n    parent = getParentNode(parent);\n  }\n  return intersectionRect;\n};\n\n\n/**\n * Returns the root rect after being expanded by the rootMargin value.\n * @return {Object} The expanded root rect.\n * @private\n */\nIntersectionObserver.prototype._getRootRect = function() {\n  var rootRect;\n  if (this.root) {\n    rootRect = getBoundingClientRect(this.root);\n  } else {\n    // Use <html>/<body> instead of window since scroll bars affect size.\n    var html = document.documentElement;\n    var body = document.body;\n    rootRect = {\n      top: 0,\n      left: 0,\n      right: html.clientWidth || body.clientWidth,\n      width: html.clientWidth || body.clientWidth,\n      bottom: html.clientHeight || body.clientHeight,\n      height: html.clientHeight || body.clientHeight\n    };\n  }\n  return this._expandRectByRootMargin(rootRect);\n};\n\n\n/**\n * Accepts a rect and expands it by the rootMargin value.\n * @param {Object} rect The rect object to expand.\n * @return {Object} The expanded rect.\n * @private\n */\nIntersectionObserver.prototype._expandRectByRootMargin = function(rect) {\n  var margins = this._rootMarginValues.map(function(margin, i) {\n    return margin.unit == 'px' ? margin.value :\n        margin.value * (i % 2 ? rect.width : rect.height) / 100;\n  });\n  var newRect = {\n    top: rect.top - margins[0],\n    right: rect.right + margins[1],\n    bottom: rect.bottom + margins[2],\n    left: rect.left - margins[3]\n  };\n  newRect.width = newRect.right - newRect.left;\n  newRect.height = newRect.bottom - newRect.top;\n\n  return newRect;\n};\n\n\n/**\n * Accepts an old and new entry and returns true if at least one of the\n * threshold values has been crossed.\n * @param {?IntersectionObserverEntry} oldEntry The previous entry for a\n *    particular target element or null if no previous entry exists.\n * @param {IntersectionObserverEntry} newEntry The current entry for a\n *    particular target element.\n * @return {boolean} Returns true if a any threshold has been crossed.\n * @private\n */\nIntersectionObserver.prototype._hasCrossedThreshold =\n    function(oldEntry, newEntry) {\n\n  // To make comparing easier, an entry that has a ratio of 0\n  // but does not actually intersect is given a value of -1\n  var oldRatio = oldEntry && oldEntry.isIntersecting ?\n      oldEntry.intersectionRatio || 0 : -1;\n  var newRatio = newEntry.isIntersecting ?\n      newEntry.intersectionRatio || 0 : -1;\n\n  // Ignore unchanged ratios\n  if (oldRatio === newRatio) return;\n\n  for (var i = 0; i < this.thresholds.length; i++) {\n    var threshold = this.thresholds[i];\n\n    // Return true if an entry matches a threshold or if the new ratio\n    // and the old ratio are on the opposite sides of a threshold.\n    if (threshold == oldRatio || threshold == newRatio ||\n        threshold < oldRatio !== threshold < newRatio) {\n      return true;\n    }\n  }\n};\n\n\n/**\n * Returns whether or not the root element is an element and is in the DOM.\n * @return {boolean} True if the root element is an element and is in the DOM.\n * @private\n */\nIntersectionObserver.prototype._rootIsInDom = function() {\n  return !this.root || containsDeep(document, this.root);\n};\n\n\n/**\n * Returns whether or not the target element is a child of root.\n * @param {Element} target The target element to check.\n * @return {boolean} True if the target element is a child of root.\n * @private\n */\nIntersectionObserver.prototype._rootContainsTarget = function(target) {\n  return containsDeep(this.root || document, target);\n};\n\n\n/**\n * Adds the instance to the global IntersectionObserver registry if it isn't\n * already present.\n * @private\n */\nIntersectionObserver.prototype._registerInstance = function() {\n  if (registry.indexOf(this) < 0) {\n    registry.push(this);\n  }\n};\n\n\n/**\n * Removes the instance from the global IntersectionObserver registry.\n * @private\n */\nIntersectionObserver.prototype._unregisterInstance = function() {\n  var index = registry.indexOf(this);\n  if (index != -1) registry.splice(index, 1);\n};\n\n\n/**\n * Returns the result of the performance.now() method or null in browsers\n * that don't support the API.\n * @return {number} The elapsed time since the page was requested.\n */\nfunction now() {\n  return window.performance && performance.now && performance.now();\n}\n\n\n/**\n * Throttles a function and delays its execution, so it's only called at most\n * once within a given time period.\n * @param {Function} fn The function to throttle.\n * @param {number} timeout The amount of time that must pass before the\n *     function can be called again.\n * @return {Function} The throttled function.\n */\nfunction throttle(fn, timeout) {\n  var timer = null;\n  return function () {\n    if (!timer) {\n      timer = setTimeout(function() {\n        fn();\n        timer = null;\n      }, timeout);\n    }\n  };\n}\n\n\n/**\n * Adds an event handler to a DOM node ensuring cross-browser compatibility.\n * @param {Node} node The DOM node to add the event handler to.\n * @param {string} event The event name.\n * @param {Function} fn The event handler to add.\n * @param {boolean} opt_useCapture Optionally adds the even to the capture\n *     phase. Note: this only works in modern browsers.\n */\nfunction addEvent(node, event, fn, opt_useCapture) {\n  if (typeof node.addEventListener == 'function') {\n    node.addEventListener(event, fn, opt_useCapture || false);\n  }\n  else if (typeof node.attachEvent == 'function') {\n    node.attachEvent('on' + event, fn);\n  }\n}\n\n\n/**\n * Removes a previously added event handler from a DOM node.\n * @param {Node} node The DOM node to remove the event handler from.\n * @param {string} event The event name.\n * @param {Function} fn The event handler to remove.\n * @param {boolean} opt_useCapture If the event handler was added with this\n *     flag set to true, it should be set to true here in order to remove it.\n */\nfunction removeEvent(node, event, fn, opt_useCapture) {\n  if (typeof node.removeEventListener == 'function') {\n    node.removeEventListener(event, fn, opt_useCapture || false);\n  }\n  else if (typeof node.detatchEvent == 'function') {\n    node.detatchEvent('on' + event, fn);\n  }\n}\n\n\n/**\n * Returns the intersection between two rect objects.\n * @param {Object} rect1 The first rect.\n * @param {Object} rect2 The second rect.\n * @return {?Object} The intersection rect or undefined if no intersection\n *     is found.\n */\nfunction computeRectIntersection(rect1, rect2) {\n  var top = Math.max(rect1.top, rect2.top);\n  var bottom = Math.min(rect1.bottom, rect2.bottom);\n  var left = Math.max(rect1.left, rect2.left);\n  var right = Math.min(rect1.right, rect2.right);\n  var width = right - left;\n  var height = bottom - top;\n\n  return (width >= 0 && height >= 0) && {\n    top: top,\n    bottom: bottom,\n    left: left,\n    right: right,\n    width: width,\n    height: height\n  };\n}\n\n\n/**\n * Shims the native getBoundingClientRect for compatibility with older IE.\n * @param {Element} el The element whose bounding rect to get.\n * @return {Object} The (possibly shimmed) rect of the element.\n */\nfunction getBoundingClientRect(el) {\n  var rect;\n\n  try {\n    rect = el.getBoundingClientRect();\n  } catch (err) {\n    // Ignore Windows 7 IE11 \"Unspecified error\"\n    // https://github.com/w3c/IntersectionObserver/pull/205\n  }\n\n  if (!rect) return getEmptyRect();\n\n  // Older IE\n  if (!(rect.width && rect.height)) {\n    rect = {\n      top: rect.top,\n      right: rect.right,\n      bottom: rect.bottom,\n      left: rect.left,\n      width: rect.right - rect.left,\n      height: rect.bottom - rect.top\n    };\n  }\n  return rect;\n}\n\n\n/**\n * Returns an empty rect object. An empty rect is returned when an element\n * is not in the DOM.\n * @return {Object} The empty rect.\n */\nfunction getEmptyRect() {\n  return {\n    top: 0,\n    bottom: 0,\n    left: 0,\n    right: 0,\n    width: 0,\n    height: 0\n  };\n}\n\n/**\n * Checks to see if a parent element contains a child element (including inside\n * shadow DOM).\n * @param {Node} parent The parent element.\n * @param {Node} child The child element.\n * @return {boolean} True if the parent node contains the child node.\n */\nfunction containsDeep(parent, child) {\n  var node = child;\n  while (node) {\n    if (node == parent) return true;\n\n    node = getParentNode(node);\n  }\n  return false;\n}\n\n\n/**\n * Gets the parent node of an element or its host element if the parent node\n * is a shadow root.\n * @param {Node} node The node whose parent to get.\n * @return {Node|null} The parent node or null if no parent exists.\n */\nfunction getParentNode(node) {\n  var parent = node.parentNode;\n\n  if (parent && parent.nodeType == 11 && parent.host) {\n    // If the parent is a shadow root, return the host element.\n    return parent.host;\n  }\n  return parent;\n}\n\n\n// Exposes the constructors globally.\nwindow.IntersectionObserver = IntersectionObserver;\nwindow.IntersectionObserverEntry = IntersectionObserverEntry;\n\n}(window, document));\n\n\n//# sourceURL=webpack://range-slider/./node_modules/intersection-observer/intersection-observer.js?");
 
@@ -1163,7 +1163,7 @@ eval("/**\n * Copyright 2016 Google Inc. All Rights Reserved.\n *\n * Licensed u
 /*!********************************************!*\
   !*** ./node_modules/is-arguments/index.js ***!
   \********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $toString = callBound('Object.prototype.toString');\n\nvar isStandardArguments = function isArguments(value) {\n\tif (hasToStringTag && value && typeof value === 'object' && Symbol.toStringTag in value) {\n\t\treturn false;\n\t}\n\treturn $toString(value) === '[object Arguments]';\n};\n\nvar isLegacyArguments = function isArguments(value) {\n\tif (isStandardArguments(value)) {\n\t\treturn true;\n\t}\n\treturn value !== null &&\n\t\ttypeof value === 'object' &&\n\t\ttypeof value.length === 'number' &&\n\t\tvalue.length >= 0 &&\n\t\t$toString(value) !== '[object Array]' &&\n\t\t$toString(value.callee) === '[object Function]';\n};\n\nvar supportsStandardArguments = (function () {\n\treturn isStandardArguments(arguments);\n}());\n\nisStandardArguments.isLegacyArguments = isLegacyArguments; // for tests\n\nmodule.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-arguments/index.js?");
@@ -1174,7 +1174,7 @@ eval("\n\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toS
 /*!*******************************************!*\
   !*** ./node_modules/is-callable/index.js ***!
   \*******************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';\n\nmodule.exports = function isCallable(value) {\n\tif (!value) { return false; }\n\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\tif (typeof value === 'function' && !value.prototype) { return true; }\n\tif (hasToStringTag) { return tryFunctionObject(value); }\n\tif (isES6ClassFn(value)) { return false; }\n\tvar strClass = toStr.call(value);\n\treturn strClass === fnClass || strClass === genClass;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-callable/index.js?");
@@ -1185,7 +1185,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\n\nvar constructorRegex = /
 /*!**********************************************!*\
   !*** ./node_modules/is-date-object/index.js ***!
   \**********************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar getDay = Date.prototype.getDay;\nvar tryDateObject = function tryDateGetDayCall(value) {\n\ttry {\n\t\tgetDay.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\n\nvar toStr = Object.prototype.toString;\nvar dateClass = '[object Date]';\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';\n\nmodule.exports = function isDateObject(value) {\n\tif (typeof value !== 'object' || value === null) {\n\t\treturn false;\n\t}\n\treturn hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-date-object/index.js?");
@@ -1196,7 +1196,7 @@ eval("\n\nvar getDay = Date.prototype.getDay;\nvar tryDateObject = function tryD
 /*!**************************************!*\
   !*** ./node_modules/is-map/index.js ***!
   \**************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $Map = typeof Map === 'function' && Map.prototype ? Map : null;\nvar $Set = typeof Set === 'function' && Set.prototype ? Set : null;\n\nvar exported;\n\nif (!$Map) {\n\t// eslint-disable-next-line no-unused-vars\n\texported = function isMap(x) {\n\t\t// `Map` is not present in this environment.\n\t\treturn false;\n\t};\n}\n\nvar $mapHas = $Map ? Map.prototype.has : null;\nvar $setHas = $Set ? Set.prototype.has : null;\nif (!exported && !$mapHas) {\n\t// eslint-disable-next-line no-unused-vars\n\texported = function isMap(x) {\n\t\t// `Map` does not have a `has` method\n\t\treturn false;\n\t};\n}\n\nmodule.exports = exported || function isMap(x) {\n\tif (!x || typeof x !== 'object') {\n\t\treturn false;\n\t}\n\ttry {\n\t\t$mapHas.call(x);\n\t\tif ($setHas) {\n\t\t\ttry {\n\t\t\t\t$setHas.call(x);\n\t\t\t} catch (e) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\treturn x instanceof $Map; // core-js workaround, pre-v2.5.0\n\t} catch (e) {}\n\treturn false;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-map/index.js?");
@@ -1207,7 +1207,7 @@ eval("\n\nvar $Map = typeof Map === 'function' && Map.prototype ? Map : null;\nv
 /*!**************************************!*\
   !*** ./node_modules/is-set/index.js ***!
   \**************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $Map = typeof Map === 'function' && Map.prototype ? Map : null;\nvar $Set = typeof Set === 'function' && Set.prototype ? Set : null;\n\nvar exported;\n\nif (!$Set) {\n\t// eslint-disable-next-line no-unused-vars\n\texported = function isSet(x) {\n\t\t// `Set` is not present in this environment.\n\t\treturn false;\n\t};\n}\n\nvar $mapHas = $Map ? Map.prototype.has : null;\nvar $setHas = $Set ? Set.prototype.has : null;\nif (!exported && !$setHas) {\n\t// eslint-disable-next-line no-unused-vars\n\texported = function isSet(x) {\n\t\t// `Set` does not have a `has` method\n\t\treturn false;\n\t};\n}\n\nmodule.exports = exported || function isSet(x) {\n\tif (!x || typeof x !== 'object') {\n\t\treturn false;\n\t}\n\ttry {\n\t\t$setHas.call(x);\n\t\tif ($mapHas) {\n\t\t\ttry {\n\t\t\t\t$mapHas.call(x);\n\t\t\t} catch (e) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\treturn x instanceof $Set; // core-js workaround, pre-v2.5.0\n\t} catch (e) {}\n\treturn false;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-set/index.js?");
@@ -1218,7 +1218,7 @@ eval("\n\nvar $Map = typeof Map === 'function' && Map.prototype ? Map : null;\nv
 /*!*****************************************!*\
   !*** ./node_modules/is-string/index.js ***!
   \*****************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = function tryStringObject(value) {\n\ttry {\n\t\tstrValue.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar strClass = '[object String]';\nvar hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';\n\nmodule.exports = function isString(value) {\n\tif (typeof value === 'string') {\n\t\treturn true;\n\t}\n\tif (typeof value !== 'object') {\n\t\treturn false;\n\t}\n\treturn hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-string/index.js?");
@@ -1229,7 +1229,7 @@ eval("\n\nvar strValue = String.prototype.valueOf;\nvar tryStringObject = functi
 /*!*****************************************!*\
   !*** ./node_modules/is-symbol/index.js ***!
   \*****************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toStr = Object.prototype.toString;\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/has-symbols/index.js\")();\n\nif (hasSymbols) {\n\tvar symToStr = Symbol.prototype.toString;\n\tvar symStringRegex = /^Symbol\\(.*\\)$/;\n\tvar isSymbolObject = function isRealSymbolObject(value) {\n\t\tif (typeof value.valueOf() !== 'symbol') {\n\t\t\treturn false;\n\t\t}\n\t\treturn symStringRegex.test(symToStr.call(value));\n\t};\n\n\tmodule.exports = function isSymbol(value) {\n\t\tif (typeof value === 'symbol') {\n\t\t\treturn true;\n\t\t}\n\t\tif (toStr.call(value) !== '[object Symbol]') {\n\t\t\treturn false;\n\t\t}\n\t\ttry {\n\t\t\treturn isSymbolObject(value);\n\t\t} catch (e) {\n\t\t\treturn false;\n\t\t}\n\t};\n} else {\n\n\tmodule.exports = function isSymbol(value) {\n\t\t// this environment does not support Symbols.\n\t\treturn  false && 0;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/is-symbol/index.js?");
@@ -1240,7 +1240,7 @@ eval("\n\nvar toStr = Object.prototype.toString;\nvar hasSymbols = __webpack_req
 /*!************************************************!*\
   !*** ./node_modules/iterate-iterator/index.js ***!
   \************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $TypeError = TypeError;\n\n// eslint-disable-next-line consistent-return\nmodule.exports = function iterateIterator(iterator) {\n\tif (!iterator || typeof iterator.next !== 'function') {\n\t\tthrow new $TypeError('iterator must be an object with a `next` method');\n\t}\n\tif (arguments.length > 1) {\n\t\tvar callback = arguments[1];\n\t\tif (typeof callback !== 'function') {\n\t\t\tthrow new $TypeError('`callback`, if provided, must be a function');\n\t\t}\n\t}\n\tvar values = callback || [];\n\tvar result;\n\twhile ((result = iterator.next()) && !result.done) {\n\t\tif (callback) {\n\t\t\tcallback(result.value); // eslint-disable-line callback-return\n\t\t} else {\n\t\t\tvalues.push(result.value);\n\t\t}\n\t}\n\tif (!callback) {\n\t\treturn values;\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/iterate-iterator/index.js?");
@@ -1251,7 +1251,7 @@ eval("\n\nvar $TypeError = TypeError;\n\n// eslint-disable-next-line consistent-
 /*!********************************************************************!*\
   !*** ./node_modules/matchmedia-polyfill/matchMedia.addListener.js ***!
   \********************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("/*! matchMedia() polyfill addListener/removeListener extension. Author & copyright (c) 2012: Scott Jehl. MIT license */\n(function(){\n    // Bail out for browsers that have addListener support\n    if (window.matchMedia && window.matchMedia('all').addListener) {\n        return false;\n    }\n\n    var localMatchMedia = window.matchMedia,\n        hasMediaQueries = localMatchMedia('only all').matches,\n        isListening     = false,\n        timeoutID       = 0,    // setTimeout for debouncing 'handleChange'\n        queries         = [],   // Contains each 'mql' and associated 'listeners' if 'addListener' is used\n        handleChange    = function(evt) {\n            // Debounce\n            clearTimeout(timeoutID);\n\n            timeoutID = setTimeout(function() {\n                for (var i = 0, il = queries.length; i < il; i++) {\n                    var mql         = queries[i].mql,\n                        listeners   = queries[i].listeners || [],\n                        matches     = localMatchMedia(mql.media).matches;\n\n                    // Update mql.matches value and call listeners\n                    // Fire listeners only if transitioning to or from matched state\n                    if (matches !== mql.matches) {\n                        mql.matches = matches;\n\n                        for (var j = 0, jl = listeners.length; j < jl; j++) {\n                            listeners[j].call(window, mql);\n                        }\n                    }\n                }\n            }, 30);\n        };\n\n    window.matchMedia = function(media) {\n        var mql         = localMatchMedia(media),\n            listeners   = [],\n            index       = 0;\n\n        mql.addListener = function(listener) {\n            // Changes would not occur to css media type so return now (Affects IE <= 8)\n            if (!hasMediaQueries) {\n                return;\n            }\n\n            // Set up 'resize' listener for browsers that support CSS3 media queries (Not for IE <= 8)\n            // There should only ever be 1 resize listener running for performance\n            if (!isListening) {\n                isListening = true;\n                window.addEventListener('resize', handleChange, true);\n            }\n\n            // Push object only if it has not been pushed already\n            if (index === 0) {\n                index = queries.push({\n                    mql         : mql,\n                    listeners   : listeners\n                });\n            }\n\n            listeners.push(listener);\n        };\n\n        mql.removeListener = function(listener) {\n            for (var i = 0, il = listeners.length; i < il; i++){\n                if (listeners[i] === listener){\n                    listeners.splice(i, 1);\n                }\n            }\n        };\n\n        return mql;\n    };\n}());\n\n\n//# sourceURL=webpack://range-slider/./node_modules/matchmedia-polyfill/matchMedia.addListener.js?");
 
@@ -1261,7 +1261,7 @@ eval("/*! matchMedia() polyfill addListener/removeListener extension. Author & c
 /*!********************************************************!*\
   !*** ./node_modules/matchmedia-polyfill/matchMedia.js ***!
   \********************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("/*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. MIT license */\n\nwindow.matchMedia || (window.matchMedia = function() {\n    \"use strict\";\n\n    // For browsers that support matchMedium api such as IE 9 and webkit\n    var styleMedia = (window.styleMedia || window.media);\n\n    // For those that don't support matchMedium\n    if (!styleMedia) {\n        var style       = document.createElement('style'),\n            script      = document.getElementsByTagName('script')[0],\n            info        = null;\n\n        style.type  = 'text/css';\n        style.id    = 'matchmediajs-test';\n\n        if (!script) {\n          document.head.appendChild(style);\n        } else {\n          script.parentNode.insertBefore(style, script);\n        }\n\n        // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers\n        info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;\n\n        styleMedia = {\n            matchMedium: function(media) {\n                var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';\n\n                // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers\n                if (style.styleSheet) {\n                    style.styleSheet.cssText = text;\n                } else {\n                    style.textContent = text;\n                }\n\n                // Test if media query is true or false\n                return info.width === '1px';\n            }\n        };\n    }\n\n    return function(media) {\n        return {\n            matches: styleMedia.matchMedium(media || 'all'),\n            media: media || 'all'\n        };\n    };\n}());\n\n\n//# sourceURL=webpack://range-slider/./node_modules/matchmedia-polyfill/matchMedia.js?");
 
@@ -1271,7 +1271,7 @@ eval("/*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & c
 /*!**********************************************!*\
   !*** ./node_modules/object-inspect/index.js ***!
   \**********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?4f7e\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true` or `false`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object-inspect/index.js?");
 
@@ -1281,7 +1281,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!****************************************************!*\
   !*** ./node_modules/object-keys/implementation.js ***!
   \****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar keysShim;\nif (!Object.keys) {\n\t// modified from https://github.com/es-shims/es5-shim\n\tvar has = Object.prototype.hasOwnProperty;\n\tvar toStr = Object.prototype.toString;\n\tvar isArgs = __webpack_require__(/*! ./isArguments */ \"./node_modules/object-keys/isArguments.js\"); // eslint-disable-line global-require\n\tvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\tvar hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');\n\tvar hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');\n\tvar dontEnums = [\n\t\t'toString',\n\t\t'toLocaleString',\n\t\t'valueOf',\n\t\t'hasOwnProperty',\n\t\t'isPrototypeOf',\n\t\t'propertyIsEnumerable',\n\t\t'constructor'\n\t];\n\tvar equalsConstructorPrototype = function (o) {\n\t\tvar ctor = o.constructor;\n\t\treturn ctor && ctor.prototype === o;\n\t};\n\tvar excludedKeys = {\n\t\t$applicationCache: true,\n\t\t$console: true,\n\t\t$external: true,\n\t\t$frame: true,\n\t\t$frameElement: true,\n\t\t$frames: true,\n\t\t$innerHeight: true,\n\t\t$innerWidth: true,\n\t\t$onmozfullscreenchange: true,\n\t\t$onmozfullscreenerror: true,\n\t\t$outerHeight: true,\n\t\t$outerWidth: true,\n\t\t$pageXOffset: true,\n\t\t$pageYOffset: true,\n\t\t$parent: true,\n\t\t$scrollLeft: true,\n\t\t$scrollTop: true,\n\t\t$scrollX: true,\n\t\t$scrollY: true,\n\t\t$self: true,\n\t\t$webkitIndexedDB: true,\n\t\t$webkitStorageInfo: true,\n\t\t$window: true\n\t};\n\tvar hasAutomationEqualityBug = (function () {\n\t\t/* global window */\n\t\tif (typeof window === 'undefined') { return false; }\n\t\tfor (var k in window) {\n\t\t\ttry {\n\t\t\t\tif (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {\n\t\t\t\t\ttry {\n\t\t\t\t\t\tequalsConstructorPrototype(window[k]);\n\t\t\t\t\t} catch (e) {\n\t\t\t\t\t\treturn true;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t} catch (e) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\treturn false;\n\t}());\n\tvar equalsConstructorPrototypeIfNotBuggy = function (o) {\n\t\t/* global window */\n\t\tif (typeof window === 'undefined' || !hasAutomationEqualityBug) {\n\t\t\treturn equalsConstructorPrototype(o);\n\t\t}\n\t\ttry {\n\t\t\treturn equalsConstructorPrototype(o);\n\t\t} catch (e) {\n\t\t\treturn false;\n\t\t}\n\t};\n\n\tkeysShim = function keys(object) {\n\t\tvar isObject = object !== null && typeof object === 'object';\n\t\tvar isFunction = toStr.call(object) === '[object Function]';\n\t\tvar isArguments = isArgs(object);\n\t\tvar isString = isObject && toStr.call(object) === '[object String]';\n\t\tvar theKeys = [];\n\n\t\tif (!isObject && !isFunction && !isArguments) {\n\t\t\tthrow new TypeError('Object.keys called on a non-object');\n\t\t}\n\n\t\tvar skipProto = hasProtoEnumBug && isFunction;\n\t\tif (isString && object.length > 0 && !has.call(object, 0)) {\n\t\t\tfor (var i = 0; i < object.length; ++i) {\n\t\t\t\ttheKeys.push(String(i));\n\t\t\t}\n\t\t}\n\n\t\tif (isArguments && object.length > 0) {\n\t\t\tfor (var j = 0; j < object.length; ++j) {\n\t\t\t\ttheKeys.push(String(j));\n\t\t\t}\n\t\t} else {\n\t\t\tfor (var name in object) {\n\t\t\t\tif (!(skipProto && name === 'prototype') && has.call(object, name)) {\n\t\t\t\t\ttheKeys.push(String(name));\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif (hasDontEnumBug) {\n\t\t\tvar skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);\n\n\t\t\tfor (var k = 0; k < dontEnums.length; ++k) {\n\t\t\t\tif (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {\n\t\t\t\t\ttheKeys.push(dontEnums[k]);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn theKeys;\n\t};\n}\nmodule.exports = keysShim;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object-keys/implementation.js?");
@@ -1292,7 +1292,7 @@ eval("\n\nvar keysShim;\nif (!Object.keys) {\n\t// modified from https://github.
 /*!*******************************************!*\
   !*** ./node_modules/object-keys/index.js ***!
   \*******************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar slice = Array.prototype.slice;\nvar isArgs = __webpack_require__(/*! ./isArguments */ \"./node_modules/object-keys/isArguments.js\");\n\nvar origKeys = Object.keys;\nvar keysShim = origKeys ? function keys(o) { return origKeys(o); } : __webpack_require__(/*! ./implementation */ \"./node_modules/object-keys/implementation.js\");\n\nvar originalKeys = Object.keys;\n\nkeysShim.shim = function shimObjectKeys() {\n\tif (Object.keys) {\n\t\tvar keysWorksWithArguments = (function () {\n\t\t\t// Safari 5.0 bug\n\t\t\tvar args = Object.keys(arguments);\n\t\t\treturn args && args.length === arguments.length;\n\t\t}(1, 2));\n\t\tif (!keysWorksWithArguments) {\n\t\t\tObject.keys = function keys(object) { // eslint-disable-line func-name-matching\n\t\t\t\tif (isArgs(object)) {\n\t\t\t\t\treturn originalKeys(slice.call(object));\n\t\t\t\t}\n\t\t\t\treturn originalKeys(object);\n\t\t\t};\n\t\t}\n\t} else {\n\t\tObject.keys = keysShim;\n\t}\n\treturn Object.keys || keysShim;\n};\n\nmodule.exports = keysShim;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object-keys/index.js?");
@@ -1303,7 +1303,7 @@ eval("\n\nvar slice = Array.prototype.slice;\nvar isArgs = __webpack_require__(/
 /*!*************************************************!*\
   !*** ./node_modules/object-keys/isArguments.js ***!
   \*************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar toStr = Object.prototype.toString;\n\nmodule.exports = function isArguments(value) {\n\tvar str = toStr.call(value);\n\tvar isArgs = str === '[object Arguments]';\n\tif (!isArgs) {\n\t\tisArgs = str !== '[object Array]' &&\n\t\t\tvalue !== null &&\n\t\t\ttypeof value === 'object' &&\n\t\t\ttypeof value.length === 'number' &&\n\t\t\tvalue.length >= 0 &&\n\t\t\ttoStr.call(value.callee) === '[object Function]';\n\t}\n\treturn isArgs;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object-keys/isArguments.js?");
@@ -1314,7 +1314,7 @@ eval("\n\nvar toStr = Object.prototype.toString;\n\nmodule.exports = function is
 /*!*******************************************************!*\
   !*** ./node_modules/object.entries/implementation.js ***!
   \*******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2020/RequireObjectCoercible */ \"./node_modules/object.entries/node_modules/es-abstract/2020/RequireObjectCoercible.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nmodule.exports = function entries(O) {\n\tvar obj = RequireObjectCoercible(O);\n\tvar entrys = [];\n\tfor (var key in obj) {\n\t\tif ($isEnumerable(obj, key)) { // checks own-ness as well\n\t\t\tentrys.push([key, obj[key]]);\n\t\t}\n\t}\n\treturn entrys;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.entries/implementation.js?");
@@ -1325,7 +1325,7 @@ eval("\n\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2020/
 /*!*************************************************!*\
   !*** ./node_modules/object.entries/polyfill.js ***!
   \*************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/object.entries/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof Object.entries === 'function' ? Object.entries : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.entries/polyfill.js?");
@@ -1336,7 +1336,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*********************************************!*\
   !*** ./node_modules/object.entries/shim.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/object.entries/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimEntries() {\n\tvar polyfill = getPolyfill();\n\tdefine(Object, { entries: polyfill }, {\n\t\tentries: function testEntries() {\n\t\t\treturn Object.entries !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.entries/shim.js?");
@@ -1347,7 +1347,7 @@ eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modul
 /*!*************************************************!*\
   !*** ./node_modules/object.fromentries/auto.js ***!
   \*************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/object.fromentries/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/auto.js?");
@@ -1358,7 +1358,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/object.fromentries/
 /*!***********************************************************!*\
   !*** ./node_modules/object.fromentries/implementation.js ***!
   \***********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar AddEntriesFromIterable = __webpack_require__(/*! es-abstract/2021/AddEntriesFromIterable */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/AddEntriesFromIterable.js\");\nvar CreateDataPropertyOrThrow = __webpack_require__(/*! es-abstract/2021/CreateDataPropertyOrThrow */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2021/RequireObjectCoercible */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\nvar ToPropertyKey = __webpack_require__(/*! es-abstract/2021/ToPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyKey.js\");\n\nvar adder = function addDataProperty(key, value) {\n\tvar O = this; // eslint-disable-line no-invalid-this\n\tvar propertyKey = ToPropertyKey(key);\n\tCreateDataPropertyOrThrow(O, propertyKey, value);\n};\n\nmodule.exports = function fromEntries(iterable) {\n\tRequireObjectCoercible(iterable);\n\n\treturn AddEntriesFromIterable({}, iterable, adder);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/implementation.js?");
@@ -1369,7 +1369,7 @@ eval("\n\nvar AddEntriesFromIterable = __webpack_require__(/*! es-abstract/2021/
 /*!***************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/has-symbols/index.js ***!
   \***************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymbolSham = __webpack_require__(/*! ./shams */ \"./node_modules/object.fromentries/node_modules/has-symbols/shams.js\");\n\nmodule.exports = function hasNativeSymbols() {\n\tif (typeof origSymbol !== 'function') { return false; }\n\tif (typeof Symbol !== 'function') { return false; }\n\tif (typeof origSymbol('foo') !== 'symbol') { return false; }\n\tif (typeof Symbol('bar') !== 'symbol') { return false; }\n\n\treturn hasSymbolSham();\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/has-symbols/index.js?");
@@ -1380,7 +1380,7 @@ eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymb
 /*!***************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/has-symbols/shams.js ***!
   \***************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/has-symbols/shams.js?");
@@ -1391,7 +1391,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!***************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/is-callable/index.js ***!
   \***************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/is-callable/index.js?");
@@ -1402,7 +1402,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/is-regex/index.js ***!
   \************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/is-regex/index.js?");
@@ -1413,7 +1413,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/object-inspect/index.js ***!
   \******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?a300\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean' && customInspect !== 'symbol') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true`, `false`, or `\\'symbol\\'`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (customInspect !== 'symbol' && typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/object-inspect/index.js?");
 
@@ -1423,7 +1423,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!*****************************************************!*\
   !*** ./node_modules/object.fromentries/polyfill.js ***!
   \*****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/object.fromentries/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof Object.fromEntries === 'function' ? Object.fromEntries : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/polyfill.js?");
@@ -1434,7 +1434,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*************************************************!*\
   !*** ./node_modules/object.fromentries/shim.js ***!
   \*************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/object.fromentries/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimEntries() {\n\tvar polyfill = getPolyfill();\n\tdefine(Object, { fromEntries: polyfill }, {\n\t\tfromEntries: function testEntries() {\n\t\t\treturn Object.fromEntries !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/shim.js?");
@@ -1445,7 +1445,7 @@ eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modul
 /*!*************************************************************************!*\
   !*** ./node_modules/object.getownpropertydescriptors/implementation.js ***!
   \*************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar CreateDataProperty = __webpack_require__(/*! es-abstract/2020/CreateDataProperty */ \"./node_modules/es-abstract/2020/CreateDataProperty.js\");\nvar IsCallable = __webpack_require__(/*! es-abstract/2020/IsCallable */ \"./node_modules/es-abstract/2020/IsCallable.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2020/RequireObjectCoercible */ \"./node_modules/es-abstract/2020/RequireObjectCoercible.js\");\nvar ToObject = __webpack_require__(/*! es-abstract/2020/ToObject */ \"./node_modules/es-abstract/2020/ToObject.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $gOPD = Object.getOwnPropertyDescriptor;\nvar $getOwnNames = Object.getOwnPropertyNames;\nvar $getSymbols = Object.getOwnPropertySymbols;\nvar $concat = callBound('Array.prototype.concat');\nvar $reduce = callBound('Array.prototype.reduce');\nvar getAll = $getSymbols ? function (obj) {\n\treturn $concat($getOwnNames(obj), $getSymbols(obj));\n} : $getOwnNames;\n\nvar isES5 = IsCallable($gOPD) && IsCallable($getOwnNames);\n\nmodule.exports = function getOwnPropertyDescriptors(value) {\n\tRequireObjectCoercible(value);\n\tif (!isES5) {\n\t\tthrow new TypeError('getOwnPropertyDescriptors requires Object.getOwnPropertyDescriptor');\n\t}\n\n\tvar O = ToObject(value);\n\treturn $reduce(\n\t\tgetAll(O),\n\t\tfunction (acc, key) {\n\t\t\tvar descriptor = $gOPD(O, key);\n\t\t\tif (typeof descriptor !== 'undefined') {\n\t\t\t\tCreateDataProperty(acc, key, descriptor);\n\t\t\t}\n\t\t\treturn acc;\n\t\t},\n\t\t{}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.getownpropertydescriptors/implementation.js?");
@@ -1456,7 +1456,7 @@ eval("\n\nvar CreateDataProperty = __webpack_require__(/*! es-abstract/2020/Crea
 /*!*******************************************************************!*\
   !*** ./node_modules/object.getownpropertydescriptors/polyfill.js ***!
   \*******************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/object.getownpropertydescriptors/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof Object.getOwnPropertyDescriptors === 'function' ? Object.getOwnPropertyDescriptors : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.getownpropertydescriptors/polyfill.js?");
@@ -1467,7 +1467,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!***************************************************************!*\
   !*** ./node_modules/object.getownpropertydescriptors/shim.js ***!
   \***************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/object.getownpropertydescriptors/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimGetOwnPropertyDescriptors() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tObject,\n\t\t{ getOwnPropertyDescriptors: polyfill },\n\t\t{ getOwnPropertyDescriptors: function () { return Object.getOwnPropertyDescriptors !== polyfill; } }\n\t);\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.getownpropertydescriptors/shim.js?");
@@ -1478,7 +1478,7 @@ eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modul
 /*!******************************************************!*\
   !*** ./node_modules/object.values/implementation.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2020/RequireObjectCoercible */ \"./node_modules/es-abstract/2020/RequireObjectCoercible.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nmodule.exports = function values(O) {\n\tvar obj = RequireObjectCoercible(O);\n\tvar vals = [];\n\tfor (var key in obj) {\n\t\tif (has(obj, key) && $isEnumerable(obj, key)) {\n\t\t\tvals.push(obj[key]);\n\t\t}\n\t}\n\treturn vals;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.values/implementation.js?");
@@ -1489,7 +1489,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!************************************************!*\
   !*** ./node_modules/object.values/polyfill.js ***!
   \************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/object.values/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof Object.values === 'function' ? Object.values : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.values/polyfill.js?");
@@ -1500,7 +1500,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!********************************************!*\
   !*** ./node_modules/object.values/shim.js ***!
   \********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/object.values/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimValues() {\n\tvar polyfill = getPolyfill();\n\tdefine(Object, { values: polyfill }, {\n\t\tvalues: function testValues() {\n\t\t\treturn Object.values !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.values/shim.js?");
@@ -1521,7 +1521,7 @@ eval("// Generated by CoffeeScript 1.12.2\n(function() {\n  var getNanoSeconds, 
 /*!*************************************************!*\
   !*** ./node_modules/promise.allsettled/auto.js ***!
   \*************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/promise.allsettled/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/auto.js?");
@@ -1532,7 +1532,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/promise.allsettled/
 /*!***********************************************************!*\
   !*** ./node_modules/promise.allsettled/implementation.js ***!
   \***********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.allsettled/requirePromise.js\");\n\nrequirePromise();\n\nvar PromiseResolve = __webpack_require__(/*! es-abstract/2021/PromiseResolve */ \"./node_modules/promise.allsettled/node_modules/es-abstract/2021/PromiseResolve.js\");\nvar Type = __webpack_require__(/*! es-abstract/2021/Type */ \"./node_modules/promise.allsettled/node_modules/es-abstract/2021/Type.js\");\nvar iterate = __webpack_require__(/*! iterate-value */ \"./node_modules/iterate-value/index.js\");\nvar map = __webpack_require__(/*! array.prototype.map */ \"./node_modules/array.prototype.map/index.js\");\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nvar all = callBind(GetIntrinsic('%Promise.all%'));\nvar reject = callBind(GetIntrinsic('%Promise.reject%'));\n\nmodule.exports = function allSettled(iterable) {\n\tvar C = this;\n\tif (Type(C) !== 'Object') {\n\t\tthrow new TypeError('`this` value must be an object');\n\t}\n\tvar values = iterate(iterable);\n\treturn all(C, map(values, function (item) {\n\t\tvar onFulfill = function (value) {\n\t\t\treturn { status: 'fulfilled', value: value };\n\t\t};\n\t\tvar onReject = function (reason) {\n\t\t\treturn { status: 'rejected', reason: reason };\n\t\t};\n\t\tvar itemPromise = PromiseResolve(C, item);\n\t\ttry {\n\t\t\treturn itemPromise.then(onFulfill, onReject);\n\t\t} catch (e) {\n\t\t\treturn reject(C, e);\n\t\t}\n\t}));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/implementation.js?");
@@ -1543,7 +1543,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!*****************************************************!*\
   !*** ./node_modules/promise.allsettled/polyfill.js ***!
   \*****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.allsettled/requirePromise.js\");\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/promise.allsettled/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\trequirePromise();\n\treturn typeof Promise.allSettled === 'function' ? Promise.allSettled : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/polyfill.js?");
@@ -1554,7 +1554,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!***********************************************************!*\
   !*** ./node_modules/promise.allsettled/requirePromise.js ***!
   \***********************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function requirePromise() {\n\tif (typeof Promise !== 'function') {\n\t\tthrow new TypeError('`Promise.allSettled` requires a global `Promise` be available.');\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/requirePromise.js?");
@@ -1565,7 +1565,7 @@ eval("\n\nmodule.exports = function requirePromise() {\n\tif (typeof Promise !==
 /*!*************************************************!*\
   !*** ./node_modules/promise.allsettled/shim.js ***!
   \*************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.allsettled/requirePromise.js\");\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/promise.allsettled/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimAllSettled() {\n\trequirePromise();\n\n\tvar polyfill = getPolyfill();\n\tdefine(Promise, { allSettled: polyfill }, {\n\t\tallSettled: function testAllSettled() {\n\t\t\treturn Promise.allSettled !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/shim.js?");
@@ -1576,7 +1576,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!********************************************************!*\
   !*** ./node_modules/promise.prototype.finally/auto.js ***!
   \********************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/promise.prototype.finally/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/auto.js?");
@@ -1587,7 +1587,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/promise.prototype.f
 /*!******************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/implementation.js ***!
   \******************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.prototype.finally/requirePromise.js\");\n\nrequirePromise();\n\nvar IsCallable = __webpack_require__(/*! es-abstract/2021/IsCallable */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsCallable.js\");\nvar SpeciesConstructor = __webpack_require__(/*! es-abstract/2021/SpeciesConstructor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SpeciesConstructor.js\");\nvar Type = __webpack_require__(/*! es-abstract/2021/Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\nvar promiseResolve = function PromiseResolve(C, value) {\n\treturn new C(function (resolve) {\n\t\tresolve(value);\n\t});\n};\n\nvar OriginalPromise = Promise;\n\nvar createThenFinally = function CreateThenFinally(C, onFinally) {\n\treturn function (value) {\n\t\tvar result = onFinally();\n\t\tvar promise = promiseResolve(C, result);\n\t\tvar valueThunk = function () {\n\t\t\treturn value;\n\t\t};\n\t\treturn promise.then(valueThunk);\n\t};\n};\n\nvar createCatchFinally = function CreateCatchFinally(C, onFinally) {\n\treturn function (reason) {\n\t\tvar result = onFinally();\n\t\tvar promise = promiseResolve(C, result);\n\t\tvar thrower = function () {\n\t\t\tthrow reason;\n\t\t};\n\t\treturn promise.then(thrower);\n\t};\n};\n\nvar promiseFinally = function finally_(onFinally) {\n\t/* eslint no-invalid-this: 0 */\n\n\tvar promise = this;\n\n\tif (Type(promise) !== 'Object') {\n\t\tthrow new TypeError('receiver is not an Object');\n\t}\n\n\tvar C = SpeciesConstructor(promise, OriginalPromise); // may throw\n\n\tvar thenFinally = onFinally;\n\tvar catchFinally = onFinally;\n\tif (IsCallable(onFinally)) {\n\t\tthenFinally = createThenFinally(C, onFinally);\n\t\tcatchFinally = createCatchFinally(C, onFinally);\n\t}\n\n\treturn promise.then(thenFinally, catchFinally);\n};\n\nif (Object.getOwnPropertyDescriptor) {\n\tvar descriptor = Object.getOwnPropertyDescriptor(promiseFinally, 'name');\n\tif (descriptor && descriptor.configurable) {\n\t\tObject.defineProperty(promiseFinally, 'name', { configurable: true, value: 'finally' });\n\t}\n}\n\nmodule.exports = promiseFinally;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/implementation.js?");
@@ -1598,7 +1598,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!**********************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/is-callable/index.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/is-callable/index.js?");
@@ -1609,7 +1609,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/polyfill.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.prototype.finally/requirePromise.js\");\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/promise.prototype.finally/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\trequirePromise();\n\treturn typeof Promise.prototype['finally'] === 'function' ? Promise.prototype['finally'] : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/polyfill.js?");
@@ -1620,7 +1620,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!******************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/requirePromise.js ***!
   \******************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function requirePromise() {\n\tif (typeof Promise !== 'function') {\n\t\tthrow new TypeError('`Promise.prototype.finally` requires a global `Promise` be available.');\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/requirePromise.js?");
@@ -1631,7 +1631,7 @@ eval("\n\nmodule.exports = function requirePromise() {\n\tif (typeof Promise !==
 /*!********************************************************!*\
   !*** ./node_modules/promise.prototype.finally/shim.js ***!
   \********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./node_modules/promise.prototype.finally/requirePromise.js\");\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/promise.prototype.finally/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimPromiseFinally() {\n\trequirePromise();\n\n\tvar polyfill = getPolyfill();\n\tdefine(Promise.prototype, { 'finally': polyfill }, {\n\t\t'finally': function testFinally() {\n\t\t\treturn Promise.prototype['finally'] !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/shim.js?");
@@ -1642,7 +1642,7 @@ eval("\n\nvar requirePromise = __webpack_require__(/*! ./requirePromise */ \"./n
 /*!***********************************!*\
   !*** ./node_modules/raf/index.js ***!
   \***********************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var now = __webpack_require__(/*! performance-now */ \"./node_modules/performance-now/lib/performance-now.js\")\n  , root = typeof window === 'undefined' ? __webpack_require__.g : window\n  , vendors = ['moz', 'webkit']\n  , suffix = 'AnimationFrame'\n  , raf = root['request' + suffix]\n  , caf = root['cancel' + suffix] || root['cancelRequest' + suffix]\n\nfor(var i = 0; !raf && i < vendors.length; i++) {\n  raf = root[vendors[i] + 'Request' + suffix]\n  caf = root[vendors[i] + 'Cancel' + suffix]\n      || root[vendors[i] + 'CancelRequest' + suffix]\n}\n\n// Some versions of FF have rAF but not cAF\nif(!raf || !caf) {\n  var last = 0\n    , id = 0\n    , queue = []\n    , frameDuration = 1000 / 60\n\n  raf = function(callback) {\n    if(queue.length === 0) {\n      var _now = now()\n        , next = Math.max(0, frameDuration - (_now - last))\n      last = next + _now\n      setTimeout(function() {\n        var cp = queue.slice(0)\n        // Clear queue here to prevent\n        // callbacks from appending listeners\n        // to the current frame's queue\n        queue.length = 0\n        for(var i = 0; i < cp.length; i++) {\n          if(!cp[i].cancelled) {\n            try{\n              cp[i].callback(last)\n            } catch(e) {\n              setTimeout(function() { throw e }, 0)\n            }\n          }\n        }\n      }, Math.round(next))\n    }\n    queue.push({\n      handle: ++id,\n      callback: callback,\n      cancelled: false\n    })\n    return id\n  }\n\n  caf = function(handle) {\n    for(var i = 0; i < queue.length; i++) {\n      if(queue[i].handle === handle) {\n        queue[i].cancelled = true\n      }\n    }\n  }\n}\n\nmodule.exports = function(fn) {\n  // Wrap in a new function to prevent\n  // `cancel` potentially being assigned\n  // to the native rAF function\n  return raf.call(root, fn)\n}\nmodule.exports.cancel = function() {\n  caf.apply(root, arguments)\n}\nmodule.exports.polyfill = function(object) {\n  if (!object) {\n    object = root;\n  }\n  object.requestAnimationFrame = raf\n  object.cancelAnimationFrame = caf\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/raf/index.js?");
 
@@ -1652,7 +1652,7 @@ eval("var now = __webpack_require__(/*! performance-now */ \"./node_modules/perf
 /*!**************************************!*\
   !*** ./node_modules/raf/polyfill.js ***!
   \**************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("(__webpack_require__(/*! ./ */ \"./node_modules/raf/index.js\").polyfill)()\n\n\n//# sourceURL=webpack://range-slider/./node_modules/raf/polyfill.js?");
 
@@ -1662,7 +1662,7 @@ eval("(__webpack_require__(/*! ./ */ \"./node_modules/raf/index.js\").polyfill)(
 /*!***************************************************************!*\
   !*** ./node_modules/regexp.prototype.flags/implementation.js ***!
   \***************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $Object = Object;\nvar $TypeError = TypeError;\n\nmodule.exports = function flags() {\n\tif (this != null && this !== $Object(this)) {\n\t\tthrow new $TypeError('RegExp.prototype.flags getter called on non-object');\n\t}\n\tvar result = '';\n\tif (this.global) {\n\t\tresult += 'g';\n\t}\n\tif (this.ignoreCase) {\n\t\tresult += 'i';\n\t}\n\tif (this.multiline) {\n\t\tresult += 'm';\n\t}\n\tif (this.dotAll) {\n\t\tresult += 's';\n\t}\n\tif (this.unicode) {\n\t\tresult += 'u';\n\t}\n\tif (this.sticky) {\n\t\tresult += 'y';\n\t}\n\treturn result;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/regexp.prototype.flags/implementation.js?");
@@ -1673,7 +1673,7 @@ eval("\n\nvar $Object = Object;\nvar $TypeError = TypeError;\n\nmodule.exports =
 /*!******************************************************!*\
   !*** ./node_modules/regexp.prototype.flags/index.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/regexp.prototype.flags/implementation.js\");\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/regexp.prototype.flags/polyfill.js\");\nvar shim = __webpack_require__(/*! ./shim */ \"./node_modules/regexp.prototype.flags/shim.js\");\n\nvar flagsBound = callBind(implementation);\n\ndefine(flagsBound, {\n\tgetPolyfill: getPolyfill,\n\timplementation: implementation,\n\tshim: shim\n});\n\nmodule.exports = flagsBound;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/regexp.prototype.flags/index.js?");
@@ -1684,7 +1684,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!*********************************************************!*\
   !*** ./node_modules/regexp.prototype.flags/polyfill.js ***!
   \*********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/regexp.prototype.flags/implementation.js\");\n\nvar supportsDescriptors = (__webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\").supportsDescriptors);\nvar $gOPD = Object.getOwnPropertyDescriptor;\nvar $TypeError = TypeError;\n\nmodule.exports = function getPolyfill() {\n\tif (!supportsDescriptors) {\n\t\tthrow new $TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');\n\t}\n\tif ((/a/mig).flags === 'gim') {\n\t\tvar descriptor = $gOPD(RegExp.prototype, 'flags');\n\t\tif (descriptor && typeof descriptor.get === 'function' && typeof (/a/).dotAll === 'boolean') {\n\t\t\treturn descriptor.get;\n\t\t}\n\t}\n\treturn implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/regexp.prototype.flags/polyfill.js?");
@@ -1695,7 +1695,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*****************************************************!*\
   !*** ./node_modules/regexp.prototype.flags/shim.js ***!
   \*****************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar supportsDescriptors = (__webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\").supportsDescriptors);\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/regexp.prototype.flags/polyfill.js\");\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar defineProperty = Object.defineProperty;\nvar TypeErr = TypeError;\nvar getProto = Object.getPrototypeOf;\nvar regex = /a/;\n\nmodule.exports = function shimFlags() {\n\tif (!supportsDescriptors || !getProto) {\n\t\tthrow new TypeErr('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');\n\t}\n\tvar polyfill = getPolyfill();\n\tvar proto = getProto(regex);\n\tvar descriptor = gOPD(proto, 'flags');\n\tif (!descriptor || descriptor.get !== polyfill) {\n\t\tdefineProperty(proto, 'flags', {\n\t\t\tconfigurable: true,\n\t\t\tenumerable: false,\n\t\t\tget: polyfill\n\t\t});\n\t}\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/regexp.prototype.flags/shim.js?");
@@ -1706,7 +1706,7 @@ eval("\n\nvar supportsDescriptors = (__webpack_require__(/*! define-properties *
 /*!****************************************!*\
   !*** ./node_modules/ric-shim/index.js ***!
   \****************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 eval("/* globals requestIdleCallback, cancelIdleCallback */\nvar fallback = function (cb) {\n  return setTimeout(function () {\n    var start = Date.now()\n    cb({\n      didTimeout: false,\n      timeRemaining: function () {\n        return Math.max(0, 50 - (Date.now() - start))\n      }\n    })\n  }, 1)\n}\n\nvar isSupported = (typeof requestIdleCallback !== 'undefined')\n\nmodule.exports = isSupported ? requestIdleCallback : fallback\nmodule.exports.cancelIdleCallback = isSupported ? cancelIdleCallback : clearTimeout\n\n\n//# sourceURL=webpack://range-slider/./node_modules/ric-shim/index.js?");
 
@@ -1716,7 +1716,7 @@ eval("/* globals requestIdleCallback, cancelIdleCallback */\nvar fallback = func
 /*!*******************************************************!*\
   !*** ./node_modules/shim-keyboard-event-key/index.js ***!
   \*******************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("(function() {\n  \"use strict\"\n\n  if (!self.document) return\n\n  var event = KeyboardEvent.prototype\n  var desc = Object.getOwnPropertyDescriptor(event, \"key\")\n  if (!desc) return\n\n  var keys = {\n    Win: \"Meta\",\n    Scroll: \"ScrollLock\",\n    Spacebar: \" \",\n\n    Down: \"ArrowDown\",\n    Left: \"ArrowLeft\",\n    Right: \"ArrowRight\",\n    Up: \"ArrowUp\",\n\n    Del: \"Delete\",\n    Apps: \"ContextMenu\",\n    Esc: \"Escape\",\n\n    Multiply: \"*\",\n    Add: \"+\",\n    Subtract: \"-\",\n    Decimal: \".\",\n    Divide: \"/\",\n  }\n\n  Object.defineProperty(event, \"key\", {\n    get: function() {\n      var key = desc.get.call(this)\n\n      return keys.hasOwnProperty(key) ? keys[key] : key\n    },\n  })\n})()\n\n\n//# sourceURL=webpack://range-slider/./node_modules/shim-keyboard-event-key/index.js?");
 
@@ -1726,7 +1726,7 @@ eval("(function() {\n  \"use strict\"\n\n  if (!self.document) return\n\n  var e
 /*!********************************************!*\
   !*** ./node_modules/side-channel/index.js ***!
   \********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/object-inspect/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $WeakMap = GetIntrinsic('%WeakMap%', true);\nvar $Map = GetIntrinsic('%Map%', true);\n\nvar $weakMapGet = callBound('WeakMap.prototype.get', true);\nvar $weakMapSet = callBound('WeakMap.prototype.set', true);\nvar $weakMapHas = callBound('WeakMap.prototype.has', true);\nvar $mapGet = callBound('Map.prototype.get', true);\nvar $mapSet = callBound('Map.prototype.set', true);\nvar $mapHas = callBound('Map.prototype.has', true);\n\n/*\n * This function traverses the list returning the node corresponding to the\n * given key.\n *\n * That node is also moved to the head of the list, so that if it's accessed\n * again we don't need to traverse the whole list. By doing so, all the recently\n * used nodes can be accessed relatively quickly.\n */\nvar listGetNode = function (list, key) { // eslint-disable-line consistent-return\n\tfor (var prev = list, curr; (curr = prev.next) !== null; prev = curr) {\n\t\tif (curr.key === key) {\n\t\t\tprev.next = curr.next;\n\t\t\tcurr.next = list.next;\n\t\t\tlist.next = curr; // eslint-disable-line no-param-reassign\n\t\t\treturn curr;\n\t\t}\n\t}\n};\n\nvar listGet = function (objects, key) {\n\tvar node = listGetNode(objects, key);\n\treturn node && node.value;\n};\nvar listSet = function (objects, key, value) {\n\tvar node = listGetNode(objects, key);\n\tif (node) {\n\t\tnode.value = value;\n\t} else {\n\t\t// Prepend the new node to the beginning of the list\n\t\tobjects.next = { // eslint-disable-line no-param-reassign\n\t\t\tkey: key,\n\t\t\tnext: objects.next,\n\t\t\tvalue: value\n\t\t};\n\t}\n};\nvar listHas = function (objects, key) {\n\treturn !!listGetNode(objects, key);\n};\n\nmodule.exports = function getSideChannel() {\n\tvar $wm;\n\tvar $m;\n\tvar $o;\n\tvar channel = {\n\t\tassert: function (key) {\n\t\t\tif (!channel.has(key)) {\n\t\t\t\tthrow new $TypeError('Side channel does not contain ' + inspect(key));\n\t\t\t}\n\t\t},\n\t\tget: function (key) { // eslint-disable-line consistent-return\n\t\t\tif ($WeakMap && key && (typeof key === 'object' || typeof key === 'function')) {\n\t\t\t\tif ($wm) {\n\t\t\t\t\treturn $weakMapGet($wm, key);\n\t\t\t\t}\n\t\t\t} else if ($Map) {\n\t\t\t\tif ($m) {\n\t\t\t\t\treturn $mapGet($m, key);\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif ($o) { // eslint-disable-line no-lonely-if\n\t\t\t\t\treturn listGet($o, key);\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\thas: function (key) {\n\t\t\tif ($WeakMap && key && (typeof key === 'object' || typeof key === 'function')) {\n\t\t\t\tif ($wm) {\n\t\t\t\t\treturn $weakMapHas($wm, key);\n\t\t\t\t}\n\t\t\t} else if ($Map) {\n\t\t\t\tif ($m) {\n\t\t\t\t\treturn $mapHas($m, key);\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\tif ($o) { // eslint-disable-line no-lonely-if\n\t\t\t\t\treturn listHas($o, key);\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn false;\n\t\t},\n\t\tset: function (key, value) {\n\t\t\tif ($WeakMap && key && (typeof key === 'object' || typeof key === 'function')) {\n\t\t\t\tif (!$wm) {\n\t\t\t\t\t$wm = new $WeakMap();\n\t\t\t\t}\n\t\t\t\t$weakMapSet($wm, key, value);\n\t\t\t} else if ($Map) {\n\t\t\t\tif (!$m) {\n\t\t\t\t\t$m = new $Map();\n\t\t\t\t}\n\t\t\t\t$mapSet($m, key, value);\n\t\t\t} else {\n\t\t\t\tif (!$o) {\n\t\t\t\t\t/*\n\t\t\t\t\t * Initialize the linked list as an empty node, so that we don't have\n\t\t\t\t\t * to special-case handling of the first node: we can always refer to\n\t\t\t\t\t * it as (previous node).next, instead of something like (list).head\n\t\t\t\t\t */\n\t\t\t\t\t$o = { key: {}, next: null };\n\t\t\t\t}\n\t\t\t\tlistSet($o, key, value);\n\t\t\t}\n\t\t}\n\t};\n\treturn channel;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/side-channel/index.js?");
@@ -1737,7 +1737,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************!*\
   !*** ./node_modules/smoothscroll-polyfill/dist/smoothscroll.js ***!
   \*****************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 eval("/*\n * smoothscroll polyfill - v0.3.5\n * https://iamdustan.github.io/smoothscroll\n * 2016 (c) Dustan Kasten, Jeremias Menichelli - MIT License\n */\n\n(function(w, d, undefined) {\n  'use strict';\n\n  /*\n   * aliases\n   * w: window global object\n   * d: document\n   * undefined: undefined\n   */\n\n  // polyfill\n  function polyfill() {\n    // return when scrollBehavior interface is supported\n    if ('scrollBehavior' in d.documentElement.style) {\n      return;\n    }\n\n    /*\n     * globals\n     */\n    var Element = w.HTMLElement || w.Element;\n    var SCROLL_TIME = 468;\n\n    /*\n     * object gathering original scroll methods\n     */\n    var original = {\n      scroll: w.scroll || w.scrollTo,\n      scrollBy: w.scrollBy,\n      elScroll: Element.prototype.scroll || scrollElement,\n      scrollIntoView: Element.prototype.scrollIntoView\n    };\n\n    /*\n     * define timing method\n     */\n    var now = w.performance && w.performance.now\n      ? w.performance.now.bind(w.performance) : Date.now;\n\n    /**\n     * changes scroll position inside an element\n     * @method scrollElement\n     * @param {Number} x\n     * @param {Number} y\n     */\n    function scrollElement(x, y) {\n      this.scrollLeft = x;\n      this.scrollTop = y;\n    }\n\n    /**\n     * returns result of applying ease math function to a number\n     * @method ease\n     * @param {Number} k\n     * @returns {Number}\n     */\n    function ease(k) {\n      return 0.5 * (1 - Math.cos(Math.PI * k));\n    }\n\n    /**\n     * indicates if a smooth behavior should be applied\n     * @method shouldBailOut\n     * @param {Number|Object} x\n     * @returns {Boolean}\n     */\n    function shouldBailOut(x) {\n      if (typeof x !== 'object'\n            || x === null\n            || x.behavior === undefined\n            || x.behavior === 'auto'\n            || x.behavior === 'instant') {\n        // first arg not an object/null\n        // or behavior is auto, instant or undefined\n        return true;\n      }\n\n      if (typeof x === 'object'\n            && x.behavior === 'smooth') {\n        // first argument is an object and behavior is smooth\n        return false;\n      }\n\n      // throw error when behavior is not supported\n      throw new TypeError('behavior not valid');\n    }\n\n    /**\n     * finds scrollable parent of an element\n     * @method findScrollableParent\n     * @param {Node} el\n     * @returns {Node} el\n     */\n    function findScrollableParent(el) {\n      var isBody;\n      var hasScrollableSpace;\n      var hasVisibleOverflow;\n\n      do {\n        el = el.parentNode;\n\n        // set condition variables\n        isBody = el === d.body;\n        hasScrollableSpace =\n          el.clientHeight < el.scrollHeight ||\n          el.clientWidth < el.scrollWidth;\n        hasVisibleOverflow =\n          w.getComputedStyle(el, null).overflow === 'visible';\n      } while (!isBody && !(hasScrollableSpace && !hasVisibleOverflow));\n\n      isBody = hasScrollableSpace = hasVisibleOverflow = null;\n\n      return el;\n    }\n\n    /**\n     * self invoked function that, given a context, steps through scrolling\n     * @method step\n     * @param {Object} context\n     */\n    function step(context) {\n      var time = now();\n      var value;\n      var currentX;\n      var currentY;\n      var elapsed = (time - context.startTime) / SCROLL_TIME;\n\n      // avoid elapsed times higher than one\n      elapsed = elapsed > 1 ? 1 : elapsed;\n\n      // apply easing to elapsed time\n      value = ease(elapsed);\n\n      currentX = context.startX + (context.x - context.startX) * value;\n      currentY = context.startY + (context.y - context.startY) * value;\n\n      context.method.call(context.scrollable, currentX, currentY);\n\n      // scroll more if we have not reached our destination\n      if (currentX !== context.x || currentY !== context.y) {\n        w.requestAnimationFrame(step.bind(w, context));\n      }\n    }\n\n    /**\n     * scrolls window with a smooth behavior\n     * @method smoothScroll\n     * @param {Object|Node} el\n     * @param {Number} x\n     * @param {Number} y\n     */\n    function smoothScroll(el, x, y) {\n      var scrollable;\n      var startX;\n      var startY;\n      var method;\n      var startTime = now();\n\n      // define scroll context\n      if (el === d.body) {\n        scrollable = w;\n        startX = w.scrollX || w.pageXOffset;\n        startY = w.scrollY || w.pageYOffset;\n        method = original.scroll;\n      } else {\n        scrollable = el;\n        startX = el.scrollLeft;\n        startY = el.scrollTop;\n        method = scrollElement;\n      }\n\n      // scroll looping over a frame\n      step({\n        scrollable: scrollable,\n        method: method,\n        startTime: startTime,\n        startX: startX,\n        startY: startY,\n        x: x,\n        y: y\n      });\n    }\n\n    /*\n     * ORIGINAL METHODS OVERRIDES\n     */\n\n    // w.scroll and w.scrollTo\n    w.scroll = w.scrollTo = function() {\n      // avoid smooth behavior if not required\n      if (shouldBailOut(arguments[0])) {\n        original.scroll.call(\n          w,\n          arguments[0].left || arguments[0],\n          arguments[0].top || arguments[1]\n        );\n        return;\n      }\n\n      // LET THE SMOOTHNESS BEGIN!\n      smoothScroll.call(\n        w,\n        d.body,\n        ~~arguments[0].left,\n        ~~arguments[0].top\n      );\n    };\n\n    // w.scrollBy\n    w.scrollBy = function() {\n      // avoid smooth behavior if not required\n      if (shouldBailOut(arguments[0])) {\n        original.scrollBy.call(\n          w,\n          arguments[0].left || arguments[0],\n          arguments[0].top || arguments[1]\n        );\n        return;\n      }\n\n      // LET THE SMOOTHNESS BEGIN!\n      smoothScroll.call(\n        w,\n        d.body,\n        ~~arguments[0].left + (w.scrollX || w.pageXOffset),\n        ~~arguments[0].top + (w.scrollY || w.pageYOffset)\n      );\n    };\n\n    // Element.prototype.scroll and Element.prototype.scrollTo\n    Element.prototype.scroll = Element.prototype.scrollTo = function() {\n      // avoid smooth behavior if not required\n      if (shouldBailOut(arguments[0])) {\n        original.elScroll.call(\n            this,\n            arguments[0].left || arguments[0],\n            arguments[0].top || arguments[1]\n        );\n        return;\n      }\n\n      var left = arguments[0].left;\n      var top = arguments[0].top;\n\n      // LET THE SMOOTHNESS BEGIN!\n      smoothScroll.call(\n          this,\n          this,\n          typeof left === 'number' ? left : this.scrollLeft,\n          typeof top === 'number' ? top : this.scrollTop\n      );\n    };\n\n    // Element.prototype.scrollBy\n    Element.prototype.scrollBy = function() {\n      var arg0 = arguments[0];\n\n      if (typeof arg0 === 'object') {\n        this.scroll({\n          left: arg0.left + this.scrollLeft,\n          top: arg0.top + this.scrollTop,\n          behavior: arg0.behavior\n        });\n      } else {\n        this.scroll(\n          this.scrollLeft + arg0,\n          this.scrollTop + arguments[1]\n        );\n      }\n    };\n\n    // Element.prototype.scrollIntoView\n    Element.prototype.scrollIntoView = function() {\n      // avoid smooth behavior if not required\n      if (shouldBailOut(arguments[0])) {\n        original.scrollIntoView.call(\n          this,\n          arguments[0] === undefined ? true : arguments[0]\n        );\n        return;\n      }\n\n      // LET THE SMOOTHNESS BEGIN!\n      var scrollableParent = findScrollableParent(this);\n      var parentRects = scrollableParent.getBoundingClientRect();\n      var clientRects = this.getBoundingClientRect();\n\n      if (scrollableParent !== d.body) {\n        // reveal element inside parent\n        smoothScroll.call(\n          this,\n          scrollableParent,\n          scrollableParent.scrollLeft + clientRects.left - parentRects.left,\n          scrollableParent.scrollTop + clientRects.top - parentRects.top\n        );\n        // reveal parent in viewport\n        w.scrollBy({\n          left: parentRects.left,\n          top: parentRects.top,\n          behavior: 'smooth'\n        });\n      } else {\n        // reveal element in viewport\n        w.scrollBy({\n          left: clientRects.left,\n          top: clientRects.top,\n          behavior: 'smooth'\n        });\n      }\n    };\n  }\n\n  if (true) {\n    // commonjs\n    module.exports = { polyfill: polyfill };\n  } else {}\n})(window, document);\n\n\n//# sourceURL=webpack://range-slider/./node_modules/smoothscroll-polyfill/dist/smoothscroll.js?");
 
@@ -1747,7 +1747,7 @@ eval("/*\n * smoothscroll polyfill - v0.3.5\n * https://iamdustan.github.io/smoo
 /*!********************************************************!*\
   !*** ./node_modules/string.prototype.matchall/auto.js ***!
   \********************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/string.prototype.matchall/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/auto.js?");
@@ -1758,7 +1758,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/string.prototype.ma
 /*!******************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/implementation.js ***!
   \******************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar Call = __webpack_require__(/*! es-abstract/2021/Call */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Call.js\");\nvar Get = __webpack_require__(/*! es-abstract/2021/Get */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js\");\nvar GetMethod = __webpack_require__(/*! es-abstract/2021/GetMethod */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetMethod.js\");\nvar IsRegExp = __webpack_require__(/*! es-abstract/2021/IsRegExp */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsRegExp.js\");\nvar ToString = __webpack_require__(/*! es-abstract/2021/ToString */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToString.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2021/RequireObjectCoercible */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js\")();\nvar flagsGetter = __webpack_require__(/*! regexp.prototype.flags */ \"./node_modules/regexp.prototype.flags/index.js\");\n\nvar $indexOf = callBound('String.prototype.indexOf');\n\nvar regexpMatchAllPolyfill = __webpack_require__(/*! ./polyfill-regexp-matchall */ \"./node_modules/string.prototype.matchall/polyfill-regexp-matchall.js\");\n\nvar getMatcher = function getMatcher(regexp) { // eslint-disable-line consistent-return\n\tvar matcherPolyfill = regexpMatchAllPolyfill();\n\tif (hasSymbols && typeof Symbol.matchAll === 'symbol') {\n\t\tvar matcher = GetMethod(regexp, Symbol.matchAll);\n\t\tif (matcher === RegExp.prototype[Symbol.matchAll] && matcher !== matcherPolyfill) {\n\t\t\treturn matcherPolyfill;\n\t\t}\n\t\treturn matcher;\n\t}\n\t// fallback for pre-Symbol.matchAll environments\n\tif (IsRegExp(regexp)) {\n\t\treturn matcherPolyfill;\n\t}\n};\n\nmodule.exports = function matchAll(regexp) {\n\tvar O = RequireObjectCoercible(this);\n\n\tif (typeof regexp !== 'undefined' && regexp !== null) {\n\t\tvar isRegExp = IsRegExp(regexp);\n\t\tif (isRegExp) {\n\t\t\t// workaround for older engines that lack RegExp.prototype.flags\n\t\t\tvar flags = 'flags' in regexp ? Get(regexp, 'flags') : flagsGetter(regexp);\n\t\t\tRequireObjectCoercible(flags);\n\t\t\tif ($indexOf(ToString(flags), 'g') < 0) {\n\t\t\t\tthrow new TypeError('matchAll requires a global regular expression');\n\t\t\t}\n\t\t}\n\n\t\tvar matcher = getMatcher(regexp);\n\t\tif (typeof matcher !== 'undefined') {\n\t\t\treturn Call(matcher, regexp, [O]);\n\t\t}\n\t}\n\n\tvar S = ToString(O);\n\t// var rx = RegExpCreate(regexp, 'g');\n\tvar rx = new RegExp(regexp, 'g');\n\treturn Call(getMatcher(rx), rx, [S]);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/implementation.js?");
@@ -1769,7 +1769,7 @@ eval("\n\nvar Call = __webpack_require__(/*! es-abstract/2021/Call */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymbolSham = __webpack_require__(/*! ./shams */ \"./node_modules/string.prototype.matchall/node_modules/has-symbols/shams.js\");\n\nmodule.exports = function hasNativeSymbols() {\n\tif (typeof origSymbol !== 'function') { return false; }\n\tif (typeof Symbol !== 'function') { return false; }\n\tif (typeof origSymbol('foo') !== 'symbol') { return false; }\n\tif (typeof Symbol('bar') !== 'symbol') { return false; }\n\n\treturn hasSymbolSham();\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js?");
@@ -1780,7 +1780,7 @@ eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymb
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/has-symbols/shams.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/has-symbols/shams.js?");
@@ -1791,7 +1791,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/is-callable/index.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof Reflect === 'object' && Reflect !== null && Reflect.apply;\nvar badArrayLike;\nvar isCallableMarker;\nif (typeof reflectApply === 'function' && typeof Object.defineProperty === 'function') {\n\ttry {\n\t\tbadArrayLike = Object.defineProperty({}, 'length', {\n\t\t\tget: function () {\n\t\t\t\tthrow isCallableMarker;\n\t\t\t}\n\t\t});\n\t\tisCallableMarker = {};\n\t\t// eslint-disable-next-line no-throw-literal\n\t\treflectApply(function () { throw 42; }, null, badArrayLike);\n\t} catch (_) {\n\t\tif (_ !== isCallableMarker) {\n\t\t\treflectApply = null;\n\t\t}\n\t}\n} else {\n\treflectApply = null;\n}\n\nvar constructorRegex = /^\\s*class\\b/;\nvar isES6ClassFn = function isES6ClassFunction(value) {\n\ttry {\n\t\tvar fnStr = fnToStr.call(value);\n\t\treturn constructorRegex.test(fnStr);\n\t} catch (e) {\n\t\treturn false; // not a function\n\t}\n};\n\nvar tryFunctionObject = function tryFunctionToStr(value) {\n\ttry {\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tfnToStr.call(value);\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n};\nvar toStr = Object.prototype.toString;\nvar fnClass = '[object Function]';\nvar genClass = '[object GeneratorFunction]';\nvar hasToStringTag = typeof Symbol === 'function' && !!Symbol.toStringTag; // better: use `has-tostringtag`\n/* globals document: false */\nvar documentDotAll = typeof document === 'object' && typeof document.all === 'undefined' && document.all !== undefined ? document.all : {};\n\nmodule.exports = reflectApply\n\t? function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\ttry {\n\t\t\treflectApply(value, null, badArrayLike);\n\t\t} catch (e) {\n\t\t\tif (e !== isCallableMarker) { return false; }\n\t\t}\n\t\treturn !isES6ClassFn(value);\n\t}\n\t: function isCallable(value) {\n\t\tif (value === documentDotAll) { return true; }\n\t\tif (!value) { return false; }\n\t\tif (typeof value !== 'function' && typeof value !== 'object') { return false; }\n\t\tif (typeof value === 'function' && !value.prototype) { return true; }\n\t\tif (hasToStringTag) { return tryFunctionObject(value); }\n\t\tif (isES6ClassFn(value)) { return false; }\n\t\tvar strClass = toStr.call(value);\n\t\treturn strClass === fnClass || strClass === genClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/is-callable/index.js?");
@@ -1802,7 +1802,7 @@ eval("\n\nvar fnToStr = Function.prototype.toString;\nvar reflectApply = typeof 
 /*!*******************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/is-regex/index.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar hasToStringTag = __webpack_require__(/*! has-tostringtag/shams */ \"./node_modules/has-tostringtag/shams.js\")();\nvar has;\nvar $exec;\nvar isRegexMarker;\nvar badStringifier;\n\nif (hasToStringTag) {\n\thas = callBound('Object.prototype.hasOwnProperty');\n\t$exec = callBound('RegExp.prototype.exec');\n\tisRegexMarker = {};\n\n\tvar throwRegexMarker = function () {\n\t\tthrow isRegexMarker;\n\t};\n\tbadStringifier = {\n\t\ttoString: throwRegexMarker,\n\t\tvalueOf: throwRegexMarker\n\t};\n\n\tif (typeof Symbol.toPrimitive === 'symbol') {\n\t\tbadStringifier[Symbol.toPrimitive] = throwRegexMarker;\n\t}\n}\n\nvar $toString = callBound('Object.prototype.toString');\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar regexClass = '[object RegExp]';\n\nmodule.exports = hasToStringTag\n\t// eslint-disable-next-line consistent-return\n\t? function isRegex(value) {\n\t\tif (!value || typeof value !== 'object') {\n\t\t\treturn false;\n\t\t}\n\n\t\tvar descriptor = gOPD(value, 'lastIndex');\n\t\tvar hasLastIndexDataProperty = descriptor && has(descriptor, 'value');\n\t\tif (!hasLastIndexDataProperty) {\n\t\t\treturn false;\n\t\t}\n\n\t\ttry {\n\t\t\t$exec(value, badStringifier);\n\t\t} catch (e) {\n\t\t\treturn e === isRegexMarker;\n\t\t}\n\t}\n\t: function isRegex(value) {\n\t\t// In older browsers, typeof regex incorrectly returns 'function'\n\t\tif (!value || (typeof value !== 'object' && typeof value !== 'function')) {\n\t\t\treturn false;\n\t\t}\n\n\t\treturn $toString(value) === regexClass;\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/is-regex/index.js?");
@@ -1813,7 +1813,7 @@ eval("\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./nod
 /*!*************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/object-inspect/index.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescriptor = Object.getOwnPropertyDescriptor && hasMap ? Object.getOwnPropertyDescriptor(Map.prototype, 'size') : null;\nvar mapSize = hasMap && mapSizeDescriptor && typeof mapSizeDescriptor.get === 'function' ? mapSizeDescriptor.get : null;\nvar mapForEach = hasMap && Map.prototype.forEach;\nvar hasSet = typeof Set === 'function' && Set.prototype;\nvar setSizeDescriptor = Object.getOwnPropertyDescriptor && hasSet ? Object.getOwnPropertyDescriptor(Set.prototype, 'size') : null;\nvar setSize = hasSet && setSizeDescriptor && typeof setSizeDescriptor.get === 'function' ? setSizeDescriptor.get : null;\nvar setForEach = hasSet && Set.prototype.forEach;\nvar hasWeakMap = typeof WeakMap === 'function' && WeakMap.prototype;\nvar weakMapHas = hasWeakMap ? WeakMap.prototype.has : null;\nvar hasWeakSet = typeof WeakSet === 'function' && WeakSet.prototype;\nvar weakSetHas = hasWeakSet ? WeakSet.prototype.has : null;\nvar hasWeakRef = typeof WeakRef === 'function' && WeakRef.prototype;\nvar weakRefDeref = hasWeakRef ? WeakRef.prototype.deref : null;\nvar booleanValueOf = Boolean.prototype.valueOf;\nvar objectToString = Object.prototype.toString;\nvar functionToString = Function.prototype.toString;\nvar match = String.prototype.match;\nvar bigIntValueOf = typeof BigInt === 'function' ? BigInt.prototype.valueOf : null;\nvar gOPS = Object.getOwnPropertySymbols;\nvar symToString = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol' ? Symbol.prototype.toString : null;\nvar hasShammedSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'object';\nvar isEnumerable = Object.prototype.propertyIsEnumerable;\n\nvar gPO = (typeof Reflect === 'function' ? Reflect.getPrototypeOf : Object.getPrototypeOf) || (\n    [].__proto__ === Array.prototype // eslint-disable-line no-proto\n        ? function (O) {\n            return O.__proto__; // eslint-disable-line no-proto\n        }\n        : null\n);\n\nvar inspectCustom = (__webpack_require__(/*! ./util.inspect */ \"?f161\").custom);\nvar inspectSymbol = inspectCustom && isSymbol(inspectCustom) ? inspectCustom : null;\nvar toStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag !== 'undefined' ? Symbol.toStringTag : null;\n\nmodule.exports = function inspect_(obj, options, depth, seen) {\n    var opts = options || {};\n\n    if (has(opts, 'quoteStyle') && (opts.quoteStyle !== 'single' && opts.quoteStyle !== 'double')) {\n        throw new TypeError('option \"quoteStyle\" must be \"single\" or \"double\"');\n    }\n    if (\n        has(opts, 'maxStringLength') && (typeof opts.maxStringLength === 'number'\n            ? opts.maxStringLength < 0 && opts.maxStringLength !== Infinity\n            : opts.maxStringLength !== null\n        )\n    ) {\n        throw new TypeError('option \"maxStringLength\", if provided, must be a positive integer, Infinity, or `null`');\n    }\n    var customInspect = has(opts, 'customInspect') ? opts.customInspect : true;\n    if (typeof customInspect !== 'boolean' && customInspect !== 'symbol') {\n        throw new TypeError('option \"customInspect\", if provided, must be `true`, `false`, or `\\'symbol\\'`');\n    }\n\n    if (\n        has(opts, 'indent')\n        && opts.indent !== null\n        && opts.indent !== '\\t'\n        && !(parseInt(opts.indent, 10) === opts.indent && opts.indent > 0)\n    ) {\n        throw new TypeError('options \"indent\" must be \"\\\\t\", an integer > 0, or `null`');\n    }\n\n    if (typeof obj === 'undefined') {\n        return 'undefined';\n    }\n    if (obj === null) {\n        return 'null';\n    }\n    if (typeof obj === 'boolean') {\n        return obj ? 'true' : 'false';\n    }\n\n    if (typeof obj === 'string') {\n        return inspectString(obj, opts);\n    }\n    if (typeof obj === 'number') {\n        if (obj === 0) {\n            return Infinity / obj > 0 ? '0' : '-0';\n        }\n        return String(obj);\n    }\n    if (typeof obj === 'bigint') {\n        return String(obj) + 'n';\n    }\n\n    var maxDepth = typeof opts.depth === 'undefined' ? 5 : opts.depth;\n    if (typeof depth === 'undefined') { depth = 0; }\n    if (depth >= maxDepth && maxDepth > 0 && typeof obj === 'object') {\n        return isArray(obj) ? '[Array]' : '[Object]';\n    }\n\n    var indent = getIndent(opts, depth);\n\n    if (typeof seen === 'undefined') {\n        seen = [];\n    } else if (indexOf(seen, obj) >= 0) {\n        return '[Circular]';\n    }\n\n    function inspect(value, from, noIndent) {\n        if (from) {\n            seen = seen.slice();\n            seen.push(from);\n        }\n        if (noIndent) {\n            var newOpts = {\n                depth: opts.depth\n            };\n            if (has(opts, 'quoteStyle')) {\n                newOpts.quoteStyle = opts.quoteStyle;\n            }\n            return inspect_(value, newOpts, depth + 1, seen);\n        }\n        return inspect_(value, opts, depth + 1, seen);\n    }\n\n    if (typeof obj === 'function') {\n        var name = nameOf(obj);\n        var keys = arrObjKeys(obj, inspect);\n        return '[Function' + (name ? ': ' + name : ' (anonymous)') + ']' + (keys.length > 0 ? ' { ' + keys.join(', ') + ' }' : '');\n    }\n    if (isSymbol(obj)) {\n        var symString = hasShammedSymbols ? String(obj).replace(/^(Symbol\\(.*\\))_[^)]*$/, '$1') : symToString.call(obj);\n        return typeof obj === 'object' && !hasShammedSymbols ? markBoxed(symString) : symString;\n    }\n    if (isElement(obj)) {\n        var s = '<' + String(obj.nodeName).toLowerCase();\n        var attrs = obj.attributes || [];\n        for (var i = 0; i < attrs.length; i++) {\n            s += ' ' + attrs[i].name + '=' + wrapQuotes(quote(attrs[i].value), 'double', opts);\n        }\n        s += '>';\n        if (obj.childNodes && obj.childNodes.length) { s += '...'; }\n        s += '</' + String(obj.nodeName).toLowerCase() + '>';\n        return s;\n    }\n    if (isArray(obj)) {\n        if (obj.length === 0) { return '[]'; }\n        var xs = arrObjKeys(obj, inspect);\n        if (indent && !singleLineValues(xs)) {\n            return '[' + indentedJoin(xs, indent) + ']';\n        }\n        return '[ ' + xs.join(', ') + ' ]';\n    }\n    if (isError(obj)) {\n        var parts = arrObjKeys(obj, inspect);\n        if (parts.length === 0) { return '[' + String(obj) + ']'; }\n        return '{ [' + String(obj) + '] ' + parts.join(', ') + ' }';\n    }\n    if (typeof obj === 'object' && customInspect) {\n        if (inspectSymbol && typeof obj[inspectSymbol] === 'function') {\n            return obj[inspectSymbol]();\n        } else if (customInspect !== 'symbol' && typeof obj.inspect === 'function') {\n            return obj.inspect();\n        }\n    }\n    if (isMap(obj)) {\n        var mapParts = [];\n        mapForEach.call(obj, function (value, key) {\n            mapParts.push(inspect(key, obj, true) + ' => ' + inspect(value, obj));\n        });\n        return collectionOf('Map', mapSize.call(obj), mapParts, indent);\n    }\n    if (isSet(obj)) {\n        var setParts = [];\n        setForEach.call(obj, function (value) {\n            setParts.push(inspect(value, obj));\n        });\n        return collectionOf('Set', setSize.call(obj), setParts, indent);\n    }\n    if (isWeakMap(obj)) {\n        return weakCollectionOf('WeakMap');\n    }\n    if (isWeakSet(obj)) {\n        return weakCollectionOf('WeakSet');\n    }\n    if (isWeakRef(obj)) {\n        return weakCollectionOf('WeakRef');\n    }\n    if (isNumber(obj)) {\n        return markBoxed(inspect(Number(obj)));\n    }\n    if (isBigInt(obj)) {\n        return markBoxed(inspect(bigIntValueOf.call(obj)));\n    }\n    if (isBoolean(obj)) {\n        return markBoxed(booleanValueOf.call(obj));\n    }\n    if (isString(obj)) {\n        return markBoxed(inspect(String(obj)));\n    }\n    if (!isDate(obj) && !isRegExp(obj)) {\n        var ys = arrObjKeys(obj, inspect);\n        var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;\n        var protoTag = obj instanceof Object ? '' : 'null prototype';\n        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? toStr(obj).slice(8, -1) : protoTag ? 'Object' : '';\n        var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';\n        var tag = constructorTag + (stringTag || protoTag ? '[' + [].concat(stringTag || [], protoTag || []).join(': ') + '] ' : '');\n        if (ys.length === 0) { return tag + '{}'; }\n        if (indent) {\n            return tag + '{' + indentedJoin(ys, indent) + '}';\n        }\n        return tag + '{ ' + ys.join(', ') + ' }';\n    }\n    return String(obj);\n};\n\nfunction wrapQuotes(s, defaultStyle, opts) {\n    var quoteChar = (opts.quoteStyle || defaultStyle) === 'double' ? '\"' : \"'\";\n    return quoteChar + s + quoteChar;\n}\n\nfunction quote(s) {\n    return String(s).replace(/\"/g, '&quot;');\n}\n\nfunction isArray(obj) { return toStr(obj) === '[object Array]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isDate(obj) { return toStr(obj) === '[object Date]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isRegExp(obj) { return toStr(obj) === '[object RegExp]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isError(obj) { return toStr(obj) === '[object Error]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isString(obj) { return toStr(obj) === '[object String]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isNumber(obj) { return toStr(obj) === '[object Number]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\nfunction isBoolean(obj) { return toStr(obj) === '[object Boolean]' && (!toStringTag || !(typeof obj === 'object' && toStringTag in obj)); }\n\n// Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives\nfunction isSymbol(obj) {\n    if (hasShammedSymbols) {\n        return obj && typeof obj === 'object' && obj instanceof Symbol;\n    }\n    if (typeof obj === 'symbol') {\n        return true;\n    }\n    if (!obj || typeof obj !== 'object' || !symToString) {\n        return false;\n    }\n    try {\n        symToString.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isBigInt(obj) {\n    if (!obj || typeof obj !== 'object' || !bigIntValueOf) {\n        return false;\n    }\n    try {\n        bigIntValueOf.call(obj);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nvar hasOwn = Object.prototype.hasOwnProperty || function (key) { return key in this; };\nfunction has(obj, key) {\n    return hasOwn.call(obj, key);\n}\n\nfunction toStr(obj) {\n    return objectToString.call(obj);\n}\n\nfunction nameOf(f) {\n    if (f.name) { return f.name; }\n    var m = match.call(functionToString.call(f), /^function\\s*([\\w$]+)/);\n    if (m) { return m[1]; }\n    return null;\n}\n\nfunction indexOf(xs, x) {\n    if (xs.indexOf) { return xs.indexOf(x); }\n    for (var i = 0, l = xs.length; i < l; i++) {\n        if (xs[i] === x) { return i; }\n    }\n    return -1;\n}\n\nfunction isMap(x) {\n    if (!mapSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        mapSize.call(x);\n        try {\n            setSize.call(x);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof Map; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakMap(x) {\n    if (!weakMapHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakMapHas.call(x, weakMapHas);\n        try {\n            weakSetHas.call(x, weakSetHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakMap; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakRef(x) {\n    if (!weakRefDeref || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakRefDeref.call(x);\n        return true;\n    } catch (e) {}\n    return false;\n}\n\nfunction isSet(x) {\n    if (!setSize || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        setSize.call(x);\n        try {\n            mapSize.call(x);\n        } catch (m) {\n            return true;\n        }\n        return x instanceof Set; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isWeakSet(x) {\n    if (!weakSetHas || !x || typeof x !== 'object') {\n        return false;\n    }\n    try {\n        weakSetHas.call(x, weakSetHas);\n        try {\n            weakMapHas.call(x, weakMapHas);\n        } catch (s) {\n            return true;\n        }\n        return x instanceof WeakSet; // core-js workaround, pre-v2.5.0\n    } catch (e) {}\n    return false;\n}\n\nfunction isElement(x) {\n    if (!x || typeof x !== 'object') { return false; }\n    if (typeof HTMLElement !== 'undefined' && x instanceof HTMLElement) {\n        return true;\n    }\n    return typeof x.nodeName === 'string' && typeof x.getAttribute === 'function';\n}\n\nfunction inspectString(str, opts) {\n    if (str.length > opts.maxStringLength) {\n        var remaining = str.length - opts.maxStringLength;\n        var trailer = '... ' + remaining + ' more character' + (remaining > 1 ? 's' : '');\n        return inspectString(str.slice(0, opts.maxStringLength), opts) + trailer;\n    }\n    // eslint-disable-next-line no-control-regex\n    var s = str.replace(/(['\\\\])/g, '\\\\$1').replace(/[\\x00-\\x1f]/g, lowbyte);\n    return wrapQuotes(s, 'single', opts);\n}\n\nfunction lowbyte(c) {\n    var n = c.charCodeAt(0);\n    var x = {\n        8: 'b',\n        9: 't',\n        10: 'n',\n        12: 'f',\n        13: 'r'\n    }[n];\n    if (x) { return '\\\\' + x; }\n    return '\\\\x' + (n < 0x10 ? '0' : '') + n.toString(16).toUpperCase();\n}\n\nfunction markBoxed(str) {\n    return 'Object(' + str + ')';\n}\n\nfunction weakCollectionOf(type) {\n    return type + ' { ? }';\n}\n\nfunction collectionOf(type, size, entries, indent) {\n    var joinedEntries = indent ? indentedJoin(entries, indent) : entries.join(', ');\n    return type + ' (' + size + ') {' + joinedEntries + '}';\n}\n\nfunction singleLineValues(xs) {\n    for (var i = 0; i < xs.length; i++) {\n        if (indexOf(xs[i], '\\n') >= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction getIndent(opts, depth) {\n    var baseIndent;\n    if (opts.indent === '\\t') {\n        baseIndent = '\\t';\n    } else if (typeof opts.indent === 'number' && opts.indent > 0) {\n        baseIndent = Array(opts.indent + 1).join(' ');\n    } else {\n        return null;\n    }\n    return {\n        base: baseIndent,\n        prev: Array(depth + 1).join(baseIndent)\n    };\n}\n\nfunction indentedJoin(xs, indent) {\n    if (xs.length === 0) { return ''; }\n    var lineJoiner = '\\n' + indent.prev + indent.base;\n    return lineJoiner + xs.join(',' + lineJoiner) + '\\n' + indent.prev;\n}\n\nfunction arrObjKeys(obj, inspect) {\n    var isArr = isArray(obj);\n    var xs = [];\n    if (isArr) {\n        xs.length = obj.length;\n        for (var i = 0; i < obj.length; i++) {\n            xs[i] = has(obj, i) ? inspect(obj[i], obj) : '';\n        }\n    }\n    var syms = typeof gOPS === 'function' ? gOPS(obj) : [];\n    var symMap;\n    if (hasShammedSymbols) {\n        symMap = {};\n        for (var k = 0; k < syms.length; k++) {\n            symMap['$' + syms[k]] = syms[k];\n        }\n    }\n\n    for (var key in obj) { // eslint-disable-line no-restricted-syntax\n        if (!has(obj, key)) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (isArr && String(Number(key)) === key && key < obj.length) { continue; } // eslint-disable-line no-restricted-syntax, no-continue\n        if (hasShammedSymbols && symMap['$' + key] instanceof Symbol) {\n            // this is to prevent shammed Symbols, which are stored as strings, from being included in the string key section\n            continue; // eslint-disable-line no-restricted-syntax, no-continue\n        } else if ((/[^\\w$]/).test(key)) {\n            xs.push(inspect(key, obj) + ': ' + inspect(obj[key], obj));\n        } else {\n            xs.push(key + ': ' + inspect(obj[key], obj));\n        }\n    }\n    if (typeof gOPS === 'function') {\n        for (var j = 0; j < syms.length; j++) {\n            if (isEnumerable.call(obj, syms[j])) {\n                xs.push('[' + inspect(syms[j]) + ']: ' + inspect(obj[syms[j]], obj));\n            }\n        }\n    }\n    return xs;\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/object-inspect/index.js?");
 
@@ -1823,7 +1823,7 @@ eval("var hasMap = typeof Map === 'function' && Map.prototype;\nvar mapSizeDescr
 /*!****************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/polyfill-regexp-matchall.js ***!
   \****************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js\")();\nvar regexpMatchAll = __webpack_require__(/*! ./regexp-matchall */ \"./node_modules/string.prototype.matchall/regexp-matchall.js\");\n\nmodule.exports = function getRegExpMatchAllPolyfill() {\n\tif (!hasSymbols || typeof Symbol.matchAll !== 'symbol' || typeof RegExp.prototype[Symbol.matchAll] !== 'function') {\n\t\treturn regexpMatchAll;\n\t}\n\treturn RegExp.prototype[Symbol.matchAll];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/polyfill-regexp-matchall.js?");
@@ -1834,7 +1834,7 @@ eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modul
 /*!************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/polyfill.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/string.prototype.matchall/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\tif (String.prototype.matchAll) {\n\t\ttry {\n\t\t\t''.matchAll(RegExp.prototype);\n\t\t} catch (e) {\n\t\t\treturn String.prototype.matchAll;\n\t\t}\n\t}\n\treturn implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/polyfill.js?");
@@ -1845,7 +1845,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!*******************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/regexp-matchall.js ***!
   \*******************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// var Construct = require('es-abstract/2021/Construct');\nvar CreateRegExpStringIterator = __webpack_require__(/*! es-abstract/2021/CreateRegExpStringIterator */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateRegExpStringIterator.js\");\nvar Get = __webpack_require__(/*! es-abstract/2021/Get */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js\");\nvar Set = __webpack_require__(/*! es-abstract/2021/Set */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Set.js\");\nvar SpeciesConstructor = __webpack_require__(/*! es-abstract/2021/SpeciesConstructor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SpeciesConstructor.js\");\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToLength.js\");\nvar ToString = __webpack_require__(/*! es-abstract/2021/ToString */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToString.js\");\nvar Type = __webpack_require__(/*! es-abstract/2021/Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\nvar flagsGetter = __webpack_require__(/*! regexp.prototype.flags */ \"./node_modules/regexp.prototype.flags/index.js\");\n\nvar OrigRegExp = RegExp;\n\nvar supportsConstructingWithFlags = 'flags' in RegExp.prototype;\n\nvar constructRegexWithFlags = function constructRegex(C, R) {\n\tvar matcher;\n\t// workaround for older engines that lack RegExp.prototype.flags\n\tvar flags = 'flags' in R ? Get(R, 'flags') : ToString(flagsGetter(R));\n\tif (supportsConstructingWithFlags && typeof flags === 'string') {\n\t\tmatcher = new C(R, flags);\n\t} else if (C === OrigRegExp) {\n\t\t// workaround for older engines that can not construct a RegExp with flags\n\t\tmatcher = new C(R.source, flags);\n\t} else {\n\t\tmatcher = new C(R, flags);\n\t}\n\treturn { flags: flags, matcher: matcher };\n};\n\nvar regexMatchAll = function SymbolMatchAll(string) {\n\tvar R = this;\n\tif (Type(R) !== 'Object') {\n\t\tthrow new TypeError('\"this\" value must be an Object');\n\t}\n\tvar S = ToString(string);\n\tvar C = SpeciesConstructor(R, OrigRegExp);\n\n\tvar tmp = constructRegexWithFlags(C, R);\n\t// var flags = ToString(Get(R, 'flags'));\n\tvar flags = tmp.flags;\n\t// var matcher = Construct(C, [R, flags]);\n\tvar matcher = tmp.matcher;\n\n\tvar lastIndex = ToLength(Get(R, 'lastIndex'));\n\tSet(matcher, 'lastIndex', lastIndex, true);\n\tvar global = flags.indexOf('g') > -1;\n\tvar fullUnicode = flags.indexOf('u') > -1;\n\treturn CreateRegExpStringIterator(matcher, S, global, fullUnicode);\n};\n\nvar defineP = Object.defineProperty;\nvar gOPD = Object.getOwnPropertyDescriptor;\n\nif (defineP && gOPD) {\n\tvar desc = gOPD(regexMatchAll, 'name');\n\tif (desc && desc.configurable) {\n\t\tdefineP(regexMatchAll, 'name', { value: '[Symbol.matchAll]' });\n\t}\n}\n\nmodule.exports = regexMatchAll;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/regexp-matchall.js?");
@@ -1856,7 +1856,7 @@ eval("\n\n// var Construct = require('es-abstract/2021/Construct');\nvar CreateR
 /*!********************************************************!*\
   !*** ./node_modules/string.prototype.matchall/shim.js ***!
   \********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js\")();\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/string.prototype.matchall/polyfill.js\");\nvar regexpMatchAllPolyfill = __webpack_require__(/*! ./polyfill-regexp-matchall */ \"./node_modules/string.prototype.matchall/polyfill-regexp-matchall.js\");\n\nvar defineP = Object.defineProperty;\nvar gOPD = Object.getOwnPropertyDescriptor;\n\nmodule.exports = function shimMatchAll() {\n\tvar polyfill = getPolyfill();\n\tdefine(\n\t\tString.prototype,\n\t\t{ matchAll: polyfill },\n\t\t{ matchAll: function () { return String.prototype.matchAll !== polyfill; } }\n\t);\n\tif (hasSymbols) {\n\t\t// eslint-disable-next-line no-restricted-properties\n\t\tvar symbol = Symbol.matchAll || (Symbol['for'] ? Symbol['for']('Symbol.matchAll') : Symbol('Symbol.matchAll'));\n\t\tdefine(\n\t\t\tSymbol,\n\t\t\t{ matchAll: symbol },\n\t\t\t{ matchAll: function () { return Symbol.matchAll !== symbol; } }\n\t\t);\n\n\t\tif (defineP && gOPD) {\n\t\t\tvar desc = gOPD(Symbol, symbol);\n\t\t\tif (!desc || desc.configurable) {\n\t\t\t\tdefineP(Symbol, symbol, {\n\t\t\t\t\tconfigurable: false,\n\t\t\t\t\tenumerable: false,\n\t\t\t\t\tvalue: symbol,\n\t\t\t\t\twritable: false\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\n\t\tvar regexpMatchAll = regexpMatchAllPolyfill();\n\t\tvar func = {};\n\t\tfunc[symbol] = regexpMatchAll;\n\t\tvar predicate = {};\n\t\tpredicate[symbol] = function () {\n\t\t\treturn RegExp.prototype[symbol] !== regexpMatchAll;\n\t\t};\n\t\tdefine(RegExp.prototype, func, predicate);\n\t}\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/shim.js?");
@@ -1867,7 +1867,7 @@ eval("\n\nvar define = __webpack_require__(/*! define-properties */ \"./node_mod
 /*!****************************************************************!*\
   !*** ./node_modules/string.prototype.padend/implementation.js ***!
   \****************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToLength.js\");\nvar ToString = __webpack_require__(/*! es-abstract/2021/ToString */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToString.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2021/RequireObjectCoercible */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $slice = callBound('String.prototype.slice');\n\nmodule.exports = function padEnd(maxLength) {\n\tvar O = RequireObjectCoercible(this);\n\tvar S = ToString(O);\n\tvar stringLength = ToLength(S.length);\n\tvar fillString;\n\tif (arguments.length > 1) {\n\t\tfillString = arguments[1];\n\t}\n\tvar filler = typeof fillString === 'undefined' ? '' : ToString(fillString);\n\tif (filler === '') {\n\t\tfiller = ' ';\n\t}\n\tvar intMaxLength = ToLength(maxLength);\n\tif (intMaxLength <= stringLength) {\n\t\treturn S;\n\t}\n\tvar fillLen = intMaxLength - stringLength;\n\twhile (filler.length < fillLen) {\n\t\tvar fLen = filler.length;\n\t\tvar remainingCodeUnits = fillLen - fLen;\n\t\tfiller += fLen > remainingCodeUnits ? $slice(filler, 0, remainingCodeUnits) : filler;\n\t}\n\n\tvar truncatedStringFiller = filler.length > fillLen ? $slice(filler, 0, fillLen) : filler;\n\treturn S + truncatedStringFiller;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/implementation.js?");
@@ -1878,7 +1878,7 @@ eval("\n\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"
 /*!**********************************************************!*\
   !*** ./node_modules/string.prototype.padend/polyfill.js ***!
   \**********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/string.prototype.padend/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof String.prototype.padEnd === 'function' ? String.prototype.padEnd : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/polyfill.js?");
@@ -1889,7 +1889,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!******************************************************!*\
   !*** ./node_modules/string.prototype.padend/shim.js ***!
   \******************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/string.prototype.padend/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimPadEnd() {\n\tvar polyfill = getPolyfill();\n\tdefine(String.prototype, { padEnd: polyfill }, {\n\t\tpadEnd: function testPadEnd() {\n\t\t\treturn String.prototype.padEnd !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/shim.js?");
@@ -1900,7 +1900,7 @@ eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modul
 /*!******************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/implementation.js ***!
   \******************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToLength.js\");\nvar ToString = __webpack_require__(/*! es-abstract/2021/ToString */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToString.js\");\nvar RequireObjectCoercible = __webpack_require__(/*! es-abstract/2021/RequireObjectCoercible */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar $slice = callBound('String.prototype.slice');\n\nmodule.exports = function padStart(maxLength) {\n\tvar O = RequireObjectCoercible(this);\n\tvar S = ToString(O);\n\tvar stringLength = ToLength(S.length);\n\tvar fillString;\n\tif (arguments.length > 1) {\n\t\tfillString = arguments[1];\n\t}\n\tvar filler = typeof fillString === 'undefined' ? '' : ToString(fillString);\n\tif (filler === '') {\n\t\tfiller = ' ';\n\t}\n\tvar intMaxLength = ToLength(maxLength);\n\tif (intMaxLength <= stringLength) {\n\t\treturn S;\n\t}\n\tvar fillLen = intMaxLength - stringLength;\n\twhile (filler.length < fillLen) {\n\t\tvar fLen = filler.length;\n\t\tvar remainingCodeUnits = fillLen - fLen;\n\t\tfiller += fLen > remainingCodeUnits ? $slice(filler, 0, remainingCodeUnits) : filler;\n\t}\n\n\tvar truncatedStringFiller = filler.length > fillLen ? $slice(filler, 0, fillLen) : filler;\n\treturn truncatedStringFiller + S;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/implementation.js?");
@@ -1911,7 +1911,7 @@ eval("\n\nvar ToLength = __webpack_require__(/*! es-abstract/2021/ToLength */ \"
 /*!************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/polyfill.js ***!
   \************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/string.prototype.padstart/implementation.js\");\n\nmodule.exports = function getPolyfill() {\n\treturn typeof String.prototype.padStart === 'function' ? String.prototype.padStart : implementation;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/polyfill.js?");
@@ -1922,7 +1922,7 @@ eval("\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./n
 /*!********************************************************!*\
   !*** ./node_modules/string.prototype.padstart/shim.js ***!
   \********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/string.prototype.padstart/polyfill.js\");\nvar define = __webpack_require__(/*! define-properties */ \"./node_modules/define-properties/index.js\");\n\nmodule.exports = function shimPadStart() {\n\tvar polyfill = getPolyfill();\n\tdefine(String.prototype, { padStart: polyfill }, {\n\t\tpadStart: function testPadStart() {\n\t\t\treturn String.prototype.padStart !== polyfill;\n\t\t}\n\t});\n\treturn polyfill;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/shim.js?");
@@ -1933,7 +1933,7 @@ eval("\n\nvar getPolyfill = __webpack_require__(/*! ./polyfill */ \"./node_modul
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
   \****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar stylesInDOM = [];\n\nfunction getIndexByIdentifier(identifier) {\n  var result = -1;\n\n  for (var i = 0; i < stylesInDOM.length; i++) {\n    if (stylesInDOM[i].identifier === identifier) {\n      result = i;\n      break;\n    }\n  }\n\n  return result;\n}\n\nfunction modulesToDom(list, options) {\n  var idCountMap = {};\n  var identifiers = [];\n\n  for (var i = 0; i < list.length; i++) {\n    var item = list[i];\n    var id = options.base ? item[0] + options.base : item[0];\n    var count = idCountMap[id] || 0;\n    var identifier = \"\".concat(id, \" \").concat(count);\n    idCountMap[id] = count + 1;\n    var indexByIdentifier = getIndexByIdentifier(identifier);\n    var obj = {\n      css: item[1],\n      media: item[2],\n      sourceMap: item[3],\n      supports: item[4],\n      layer: item[5]\n    };\n\n    if (indexByIdentifier !== -1) {\n      stylesInDOM[indexByIdentifier].references++;\n      stylesInDOM[indexByIdentifier].updater(obj);\n    } else {\n      var updater = addElementStyle(obj, options);\n      options.byIndex = i;\n      stylesInDOM.splice(i, 0, {\n        identifier: identifier,\n        updater: updater,\n        references: 1\n      });\n    }\n\n    identifiers.push(identifier);\n  }\n\n  return identifiers;\n}\n\nfunction addElementStyle(obj, options) {\n  var api = options.domAPI(options);\n  api.update(obj);\n\n  var updater = function updater(newObj) {\n    if (newObj) {\n      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {\n        return;\n      }\n\n      api.update(obj = newObj);\n    } else {\n      api.remove();\n    }\n  };\n\n  return updater;\n}\n\nmodule.exports = function (list, options) {\n  options = options || {};\n  list = list || [];\n  var lastIdentifiers = modulesToDom(list, options);\n  return function update(newList) {\n    newList = newList || [];\n\n    for (var i = 0; i < lastIdentifiers.length; i++) {\n      var identifier = lastIdentifiers[i];\n      var index = getIndexByIdentifier(identifier);\n      stylesInDOM[index].references--;\n    }\n\n    var newLastIdentifiers = modulesToDom(newList, options);\n\n    for (var _i = 0; _i < lastIdentifiers.length; _i++) {\n      var _identifier = lastIdentifiers[_i];\n\n      var _index = getIndexByIdentifier(_identifier);\n\n      if (stylesInDOM[_index].references === 0) {\n        stylesInDOM[_index].updater();\n\n        stylesInDOM.splice(_index, 1);\n      }\n    }\n\n    lastIdentifiers = newLastIdentifiers;\n  };\n};\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js?");
@@ -1944,7 +1944,7 @@ eval("\n\nvar stylesInDOM = [];\n\nfunction getIndexByIdentifier(identifier) {\n
 /*!********************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
   \********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar memo = {};\n/* istanbul ignore next  */\n\nfunction getTarget(target) {\n  if (typeof memo[target] === \"undefined\") {\n    var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself\n\n    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {\n      try {\n        // This will throw an exception if access to iframe is blocked\n        // due to cross-origin restrictions\n        styleTarget = styleTarget.contentDocument.head;\n      } catch (e) {\n        // istanbul ignore next\n        styleTarget = null;\n      }\n    }\n\n    memo[target] = styleTarget;\n  }\n\n  return memo[target];\n}\n/* istanbul ignore next  */\n\n\nfunction insertBySelector(insert, style) {\n  var target = getTarget(insert);\n\n  if (!target) {\n    throw new Error(\"Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.\");\n  }\n\n  target.appendChild(style);\n}\n\nmodule.exports = insertBySelector;\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/insertBySelector.js?");
@@ -1955,7 +1955,7 @@ eval("\n\nvar memo = {};\n/* istanbul ignore next  */\n\nfunction getTarget(targ
 /*!**********************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
   \**********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* istanbul ignore next  */\nfunction insertStyleElement(options) {\n  var element = document.createElement(\"style\");\n  options.setAttributes(element, options.attributes);\n  options.insert(element, options.options);\n  return element;\n}\n\nmodule.exports = insertStyleElement;\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/insertStyleElement.js?");
@@ -1966,7 +1966,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction insertStyleElement(options) {\n 
 /*!**********************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n/* istanbul ignore next  */\nfunction setAttributesWithoutAttributes(styleElement) {\n  var nonce =  true ? __webpack_require__.nc : 0;\n\n  if (nonce) {\n    styleElement.setAttribute(\"nonce\", nonce);\n  }\n}\n\nmodule.exports = setAttributesWithoutAttributes;\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js?");
@@ -1977,7 +1977,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction setAttributesWithoutAttributes(s
 /*!***************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
   \***************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj) {\n  var css = \"\";\n\n  if (obj.supports) {\n    css += \"@supports (\".concat(obj.supports, \") {\");\n  }\n\n  if (obj.media) {\n    css += \"@media \".concat(obj.media, \" {\");\n  }\n\n  var needLayer = typeof obj.layer !== \"undefined\";\n\n  if (needLayer) {\n    css += \"@layer\".concat(obj.layer.length > 0 ? \" \".concat(obj.layer) : \"\", \" {\");\n  }\n\n  css += obj.css;\n\n  if (needLayer) {\n    css += \"}\";\n  }\n\n  if (obj.media) {\n    css += \"}\";\n  }\n\n  if (obj.supports) {\n    css += \"}\";\n  }\n\n  var sourceMap = obj.sourceMap;\n\n  if (sourceMap && typeof btoa !== \"undefined\") {\n    css += \"\\n/*# sourceMappingURL=data:application/json;base64,\".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), \" */\");\n  } // For old IE\n\n  /* istanbul ignore if  */\n\n\n  options.styleTagTransform(css, styleElement, options.options);\n}\n\nfunction removeStyleElement(styleElement) {\n  // istanbul ignore if\n  if (styleElement.parentNode === null) {\n    return false;\n  }\n\n  styleElement.parentNode.removeChild(styleElement);\n}\n/* istanbul ignore next  */\n\n\nfunction domAPI(options) {\n  var styleElement = options.insertStyleElement(options);\n  return {\n    update: function update(obj) {\n      apply(styleElement, options, obj);\n    },\n    remove: function remove() {\n      removeStyleElement(styleElement);\n    }\n  };\n}\n\nmodule.exports = domAPI;\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/styleDomAPI.js?");
@@ -1988,7 +1988,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj
 /*!*********************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
   \*********************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElement) {\n  if (styleElement.styleSheet) {\n    styleElement.styleSheet.cssText = css;\n  } else {\n    while (styleElement.firstChild) {\n      styleElement.removeChild(styleElement.firstChild);\n    }\n\n    styleElement.appendChild(document.createTextNode(css));\n  }\n}\n\nmodule.exports = styleTagTransform;\n\n//# sourceURL=webpack://range-slider/./node_modules/style-loader/dist/runtime/styleTagTransform.js?");
@@ -1999,7 +1999,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /*!***********************************************************!*\
   !*** ./node_modules/symbol.prototype.description/auto.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/symbol.prototype.description/shim.js\")();\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/auto.js?");
@@ -2010,7 +2010,7 @@ eval("\n\n__webpack_require__(/*! ./shim */ \"./node_modules/symbol.prototype.de
 /*!*********************************************************************!*\
   !*** ./node_modules/symbol.prototype.description/implementation.js ***!
   \*********************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getSymbolDescription = __webpack_require__(/*! get-symbol-description */ \"./node_modules/get-symbol-description/index.js\");\n\nmodule.exports = function description() {\n\treturn getSymbolDescription(this);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/implementation.js?");
@@ -2021,7 +2021,7 @@ eval("\n\nvar getSymbolDescription = __webpack_require__(/*! get-symbol-descript
 /*!*************************************************************************************!*\
   !*** ./node_modules/symbol.prototype.description/node_modules/has-symbols/index.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymbolSham = __webpack_require__(/*! ./shams */ \"./node_modules/symbol.prototype.description/node_modules/has-symbols/shams.js\");\n\nmodule.exports = function hasNativeSymbols() {\n\tif (typeof origSymbol !== 'function') { return false; }\n\tif (typeof Symbol !== 'function') { return false; }\n\tif (typeof origSymbol('foo') !== 'symbol') { return false; }\n\tif (typeof Symbol('bar') !== 'symbol') { return false; }\n\n\treturn hasSymbolSham();\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/node_modules/has-symbols/index.js?");
@@ -2032,7 +2032,7 @@ eval("\n\nvar origSymbol = typeof Symbol !== 'undefined' && Symbol;\nvar hasSymb
 /*!*************************************************************************************!*\
   !*** ./node_modules/symbol.prototype.description/node_modules/has-symbols/shams.js ***!
   \*************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.exports = function hasSymbols() {\n\tif (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }\n\tif (typeof Symbol.iterator === 'symbol') { return true; }\n\n\tvar obj = {};\n\tvar sym = Symbol('test');\n\tvar symObj = Object(sym);\n\tif (typeof sym === 'string') { return false; }\n\n\tif (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }\n\tif (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }\n\n\t// temp disabled per https://github.com/ljharb/object.assign/issues/17\n\t// if (sym instanceof Symbol) { return false; }\n\t// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4\n\t// if (!(symObj instanceof Symbol)) { return false; }\n\n\t// if (typeof Symbol.prototype.toString !== 'function') { return false; }\n\t// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }\n\n\tvar symVal = 42;\n\tobj[sym] = symVal;\n\tfor (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop\n\tif (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }\n\n\tif (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }\n\n\tvar syms = Object.getOwnPropertySymbols(obj);\n\tif (syms.length !== 1 || syms[0] !== sym) { return false; }\n\n\tif (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }\n\n\tif (typeof Object.getOwnPropertyDescriptor === 'function') {\n\t\tvar descriptor = Object.getOwnPropertyDescriptor(obj, sym);\n\t\tif (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/node_modules/has-symbols/shams.js?");
@@ -2043,7 +2043,7 @@ eval("\n\n/* eslint complexity: [2, 18], max-statements: [2, 33] */\nmodule.expo
 /*!***************************************************************!*\
   !*** ./node_modules/symbol.prototype.description/polyfill.js ***!
   \***************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/symbol.prototype.description/node_modules/has-symbols/index.js\")();\n\nvar implementation = __webpack_require__(/*! ./implementation */ \"./node_modules/symbol.prototype.description/implementation.js\");\nvar gOPD = Object.getOwnPropertyDescriptor;\n\nmodule.exports = function descriptionPolyfill() {\n\tif (!hasSymbols || typeof gOPD !== 'function') {\n\t\treturn null;\n\t}\n\n\tvar desc = gOPD(Symbol.prototype, 'description');\n\tif (!desc || typeof desc.get !== 'function') {\n\t\treturn implementation;\n\t}\n\n\tvar emptySymbolDesc = desc.get.call(Symbol());\n\tvar emptyDescValid = typeof emptySymbolDesc === 'undefined' || emptySymbolDesc === '';\n\tif (!emptyDescValid || desc.get.call(Symbol('a')) !== 'a') {\n\t\treturn implementation;\n\t}\n\treturn desc.get;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/polyfill.js?");
@@ -2054,7 +2054,7 @@ eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modul
 /*!***********************************************************!*\
   !*** ./node_modules/symbol.prototype.description/shim.js ***!
   \***********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/symbol.prototype.description/node_modules/has-symbols/index.js\")();\nvar polyfill = __webpack_require__(/*! ./polyfill */ \"./node_modules/symbol.prototype.description/polyfill.js\");\nvar getInferredName = __webpack_require__(/*! get-symbol-description/getInferredName */ \"./node_modules/get-symbol-description/getInferredName.js\");\n\nvar gOPD = Object.getOwnPropertyDescriptor;\nvar gOPDs = __webpack_require__(/*! object.getownpropertydescriptors/polyfill */ \"./node_modules/object.getownpropertydescriptors/polyfill.js\")();\nvar dP = Object.defineProperty;\nvar dPs = Object.defineProperties;\nvar setProto = Object.setPrototypeOf;\n\nvar define = function defineGetter(getter) {\n\tdP(Symbol.prototype, 'description', {\n\t\tconfigurable: true,\n\t\tenumerable: false,\n\t\tget: getter\n\t});\n};\n\nvar shimGlobal = function shimGlobalSymbol(getter) {\n\tvar origSym = Function.apply.bind(Symbol);\n\tvar emptyStrings = Object.create ? Object.create(null) : {};\n\tvar SymNew = function Symbol() {\n\t\tvar sym = origSym(this, arguments);\n\t\tif (arguments.length > 0 && arguments[0] === '') {\n\t\t\temptyStrings[sym] = true;\n\t\t}\n\t\treturn sym;\n\t};\n\tSymNew.prototype = Symbol.prototype;\n\tsetProto(SymNew, Symbol);\n\tvar props = gOPDs(Symbol);\n\tdelete props.length;\n\tdelete props.arguments;\n\tdelete props.caller;\n\tdPs(SymNew, props);\n\tSymbol = SymNew; // eslint-disable-line no-native-reassign, no-global-assign\n\n\tvar boundGetter = Function.call.bind(getter);\n\tvar wrappedGetter = function description() {\n\t\t/* eslint no-invalid-this: 0 */\n\t\tvar symbolDescription = boundGetter(this);\n\t\tif (emptyStrings[this]) {\n\t\t\treturn '';\n\t\t}\n\t\treturn symbolDescription;\n\t};\n\tdefine(wrappedGetter);\n\treturn wrappedGetter;\n};\n\nmodule.exports = function shimSymbolDescription() {\n\tif (!hasSymbols) {\n\t\treturn false;\n\t}\n\tvar desc = gOPD(Symbol.prototype, 'description');\n\tvar getter = polyfill();\n\tvar isMissing = !desc || typeof desc.get !== 'function';\n\tvar isBroken = !isMissing && (typeof Symbol().description !== 'undefined' || Symbol('').description !== '');\n\tif (isMissing || isBroken) {\n\t\tif (!getInferredName) {\n\t\t\treturn shimGlobal(getter);\n\t\t}\n\t\tdefine(getter);\n\t}\n\treturn getter;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/symbol.prototype.description/shim.js?");
@@ -2075,7 +2075,7 @@ eval("(function(self) {\n  'use strict';\n\n  if (self.fetch) {\n    return\n  }
 /*!***************************************************************************!*\
   !*** ./node_modules/window-location-origin/src/window-location-origin.js ***!
   \***************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 eval("/* jshint browser:true\n *\n * window-location-origin - version 0.0.1\n * Add support for browsers that don't natively support window.location.origin\n *\n * Authror: Kyle Welsby <kyle@mekyle.com>\n * License: MIT\n */\n\n(function(location){\n  'use strict';\n  if (!location.origin) {\n    var origin = location.protocol + \"//\" + location.hostname + (location.port && \":\" + location.port);\n    \n    try {\n      // Make it non editable\n      Object.defineProperty(location, \"origin\", {\n        enumerable: true,\n        value: origin\n      });\n    } catch (e){\n      // IE < 8\n      location.origin = origin;\n    }\n  }\n})(window.location);\n\n\n//# sourceURL=webpack://range-slider/./node_modules/window-location-origin/src/window-location-origin.js?");
 
@@ -2085,7 +2085,7 @@ eval("/* jshint browser:true\n *\n * window-location-origin - version 0.0.1\n * 
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/array-includes/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -2096,7 +2096,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/SameValueZero.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isNaN.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-samevaluezero\n\nmodule.exports = function SameValueZero(x, y) {\n\treturn (x === y) || ($isNaN(x) && $isNaN(y));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/SameValueZero.js?");
@@ -2107,7 +2107,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!******************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/array-includes/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -2118,7 +2118,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!*******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/ToLength.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/ToLength.js?");
@@ -2129,7 +2129,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!*******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/ToNumber.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array-includes/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/ToNumber.js?");
@@ -2140,7 +2140,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/ToObject.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/array-includes/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/ToObject.js?");
@@ -2151,7 +2151,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -2162,7 +2162,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!****************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -2173,7 +2173,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/ToInteger.js ***!
   \*****************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array-includes/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array-includes/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array-includes/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/array-includes/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/ToInteger.js?");
@@ -2184,7 +2184,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array-incl
 /*!****************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/ToNumber.js ***!
   \****************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array-includes/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/ToNumber.js?");
@@ -2195,7 +2195,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!*******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/ToPrimitive.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -2206,7 +2206,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!***********************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/abs.js ***!
   \***********************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/abs.js?");
@@ -2217,7 +2217,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/5/floor.js ***!
   \*************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/5/floor.js?");
@@ -2228,7 +2228,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!**********************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/isFinite.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/isFinite.js?");
@@ -2239,7 +2239,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!*******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/isNaN.js ***!
   \*******************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/isNaN.js?");
@@ -2250,7 +2250,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!*************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \*************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -2261,7 +2261,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!****************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -2272,7 +2272,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/regexTester.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/regexTester.js?");
@@ -2283,7 +2283,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************!*\
   !*** ./node_modules/array-includes/node_modules/es-abstract/helpers/sign.js ***!
   \******************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array-includes/node_modules/es-abstract/helpers/sign.js?");
@@ -2294,7 +2294,7 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2020/IsArray.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2020/IsArray.js?");
@@ -2305,7 +2305,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArrayCreate.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $ArrayPrototype = GetIntrinsic('%Array.prototype%');\nvar $RangeError = GetIntrinsic('%RangeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsIntegralNumber.js\");\n\nvar MAX_ARRAY_LENGTH = Math.pow(2, 32) - 1;\n\nvar $setProto = GetIntrinsic('%Object.setPrototypeOf%', true) || (\n\t// eslint-disable-next-line no-proto, no-negated-condition\n\t[].__proto__ !== $ArrayPrototype\n\t\t? null\n\t\t: function (O, proto) {\n\t\t\tO.__proto__ = proto; // eslint-disable-line no-proto, no-param-reassign\n\t\t\treturn O;\n\t\t}\n);\n\n// https://www.ecma-international.org/ecma-262/12.0/#sec-arraycreate\n\nmodule.exports = function ArrayCreate(length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: `length` must be an integer Number >= 0');\n\t}\n\tif (length > MAX_ARRAY_LENGTH) {\n\t\tthrow new $RangeError('length is greater than (2**32 - 1)');\n\t}\n\tvar proto = arguments.length > 1 ? arguments[1] : $ArrayPrototype;\n\tvar A = []; // steps 3, 5\n\tif (proto !== $ArrayPrototype) { // step 4\n\t\tif (!$setProto) {\n\t\t\tthrow new $SyntaxError('ArrayCreate: a `proto` argument that is not `Array.prototype` is not supported in an environment that does not support setting the [[Prototype]]');\n\t\t}\n\t\t$setProto(A, proto);\n\t}\n\tif (length !== 0) { // bypasses the need for step 6\n\t\tA.length = length;\n\t}\n\t/* step 6, the above as a shortcut for the below\n    OrdinaryDefineOwnProperty(A, 'length', {\n        '[[Configurable]]': false,\n        '[[Enumerable]]': false,\n        '[[Value]]': length,\n        '[[Writable]]': true\n    });\n    */\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArrayCreate.js?");
@@ -2316,7 +2316,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArraySpeciesCreate.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $species = GetIntrinsic('%Symbol.species%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar ArrayCreate = __webpack_require__(/*! ./ArrayCreate */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArrayCreate.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js\");\nvar IsConstructor = __webpack_require__(/*! ./IsConstructor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsConstructor.js\");\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsIntegralNumber.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/12.0/#sec-arrayspeciescreate\n\nmodule.exports = function ArraySpeciesCreate(originalArray, length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: length must be an integer >= 0');\n\t}\n\n\tvar isArray = IsArray(originalArray);\n\tif (!isArray) {\n\t\treturn ArrayCreate(length);\n\t}\n\n\tvar C = Get(originalArray, 'constructor');\n\t// TODO: figure out how to make a cross-realm normal Array, a same-realm Array\n\t// if (IsConstructor(C)) {\n\t// \tif C is another realm's Array, C = undefined\n\t// \tObject.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(Array))) === null ?\n\t// }\n\tif ($species && Type(C) === 'Object') {\n\t\tC = Get(C, $species);\n\t\tif (C === null) {\n\t\t\tC = void 0;\n\t\t}\n\t}\n\n\tif (typeof C === 'undefined') {\n\t\treturn ArrayCreate(length);\n\t}\n\tif (!IsConstructor(C)) {\n\t\tthrow new $TypeError('C must be a constructor');\n\t}\n\treturn new C(length); // Construct(C, length);\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ArraySpeciesCreate.js?");
@@ -2327,7 +2327,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Call.js ***!
   \*********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js\");\n\nvar $apply = GetIntrinsic('%Reflect.apply%', true) || callBound('%Function.prototype.apply%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-call\n\nmodule.exports = function Call(F, V) {\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\treturn $apply(F, V, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Call.js?");
@@ -2338,7 +2338,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataProperty.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar OrdinaryGetOwnProperty = __webpack_require__(/*! ./OrdinaryGetOwnProperty */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsExtensible = __webpack_require__(/*! ./IsExtensible */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsExtensible.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createdataproperty\n\nmodule.exports = function CreateDataProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar oldDesc = OrdinaryGetOwnProperty(O, P);\n\tvar extensible = !oldDesc || IsExtensible(O);\n\tvar immutable = oldDesc && (!oldDesc['[[Writable]]'] || !oldDesc['[[Configurable]]']);\n\tif (immutable || !extensible) {\n\t\treturn false;\n\t}\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\t{\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Value]]': V,\n\t\t\t'[[Writable]]': true\n\t\t}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataProperty.js?");
@@ -2349,7 +2349,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar CreateDataProperty = __webpack_require__(/*! ./CreateDataProperty */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataProperty.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// // https://ecma-international.org/ecma-262/6.0/#sec-createdatapropertyorthrow\n\nmodule.exports = function CreateDataPropertyOrThrow(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar success = CreateDataProperty(O, P, V);\n\tif (!success) {\n\t\tthrow new $TypeError('unable to create data property');\n\t}\n\treturn success;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js?");
@@ -2360,7 +2360,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/DefinePropertyOrThrow.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar isPropertyDescriptor = __webpack_require__(/*! ../helpers/isPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPropertyDescriptor.js\");\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsAccessorDescriptor = __webpack_require__(/*! ./IsAccessorDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsAccessorDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/SameValue.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-definepropertyorthrow\n\nmodule.exports = function DefinePropertyOrThrow(O, P, desc) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar Desc = isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, desc) ? desc : ToPropertyDescriptor(desc);\n\tif (!isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, Desc)) {\n\t\tthrow new $TypeError('Assertion failed: Desc is not a valid Property Descriptor');\n\t}\n\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/DefinePropertyOrThrow.js?");
@@ -2371,7 +2371,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FlattenIntoArray.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Call.js\");\nvar CreateDataPropertyOrThrow = __webpack_require__(/*! ./CreateDataPropertyOrThrow */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js\");\nvar HasProperty = __webpack_require__(/*! ./HasProperty */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/HasProperty.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js\");\nvar LengthOfArrayLike = __webpack_require__(/*! ./LengthOfArrayLike */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/LengthOfArrayLike.js\");\nvar ToString = __webpack_require__(/*! ./ToString */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToString.js\");\n\n// https://262.ecma-international.org/11.0/#sec-flattenintoarray\n\n// eslint-disable-next-line max-params\nmodule.exports = function FlattenIntoArray(target, source, sourceLen, start, depth) {\n\tvar mapperFunction;\n\tif (arguments.length > 5) {\n\t\tmapperFunction = arguments[5];\n\t}\n\n\tvar targetIndex = start;\n\tvar sourceIndex = 0;\n\twhile (sourceIndex < sourceLen) {\n\t\tvar P = ToString(sourceIndex);\n\t\tvar exists = HasProperty(source, P);\n\t\tif (exists === true) {\n\t\t\tvar element = Get(source, P);\n\t\t\tif (typeof mapperFunction !== 'undefined') {\n\t\t\t\tif (arguments.length <= 6) {\n\t\t\t\t\tthrow new $TypeError('Assertion failed: thisArg is required when mapperFunction is provided');\n\t\t\t\t}\n\t\t\t\telement = Call(mapperFunction, arguments[6], [element, sourceIndex, source]);\n\t\t\t}\n\t\t\tvar shouldFlatten = false;\n\t\t\tif (depth > 0) {\n\t\t\t\tshouldFlatten = IsArray(element);\n\t\t\t}\n\t\t\tif (shouldFlatten) {\n\t\t\t\tvar elementLen = LengthOfArrayLike(element);\n\t\t\t\ttargetIndex = FlattenIntoArray(target, element, elementLen, targetIndex, depth - 1);\n\t\t\t} else {\n\t\t\t\tif (targetIndex >= MAX_SAFE_INTEGER) {\n\t\t\t\t\tthrow new $TypeError('index too large');\n\t\t\t\t}\n\t\t\t\tCreateDataPropertyOrThrow(target, ToString(targetIndex), element);\n\t\t\t\ttargetIndex += 1;\n\t\t\t}\n\t\t}\n\t\tsourceIndex += 1;\n\t}\n\n\treturn targetIndex;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FlattenIntoArray.js?");
@@ -2382,7 +2382,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -2393,7 +2393,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/array.prototype.flat/node_modules/object-inspect/index.js\");\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n/**\n * 7.3.1 Get (O, P) - https://ecma-international.org/ecma-262/6.0/#sec-get-o-p\n * 1. Assert: Type(O) is Object.\n * 2. Assert: IsPropertyKey(P) is true.\n * 3. Return O.[[Get]](P, O).\n */\n\nmodule.exports = function Get(O, P) {\n\t// 7.3.1.1\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\t// 7.3.1.2\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true, got ' + inspect(P));\n\t}\n\t// 7.3.1.3\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js?");
@@ -2404,7 +2404,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/HasProperty.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-hasproperty\n\nmodule.exports = function HasProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `O` must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: `P` must be a Property Key');\n\t}\n\treturn P in O;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/HasProperty.js?");
@@ -2415,7 +2415,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsAccessorDescriptor.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isaccessordescriptor\n\nmodule.exports = function IsAccessorDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsAccessorDescriptor.js?");
@@ -2426,7 +2426,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js?");
@@ -2437,7 +2437,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsCallable.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/array.prototype.flat/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsCallable.js?");
@@ -2448,7 +2448,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsConstructor.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/GetIntrinsic.js\");\n\nvar $construct = GetIntrinsic('%Reflect.construct%', true);\n\nvar DefinePropertyOrThrow = __webpack_require__(/*! ./DefinePropertyOrThrow */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/DefinePropertyOrThrow.js\");\ntry {\n\tDefinePropertyOrThrow({}, '', { '[[Get]]': function () {} });\n} catch (e) {\n\t// Accessor properties aren't supported\n\tDefinePropertyOrThrow = null;\n}\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isconstructor\n\nif (DefinePropertyOrThrow && $construct) {\n\tvar isConstructorMarker = {};\n\tvar badArrayLike = {};\n\tDefinePropertyOrThrow(badArrayLike, 'length', {\n\t\t'[[Get]]': function () {\n\t\t\tthrow isConstructorMarker;\n\t\t},\n\t\t'[[Enumerable]]': true\n\t});\n\n\tmodule.exports = function IsConstructor(argument) {\n\t\ttry {\n\t\t\t// `Reflect.construct` invokes `IsConstructor(target)` before `Get(args, 'length')`:\n\t\t\t$construct(argument, badArrayLike);\n\t\t} catch (err) {\n\t\t\treturn err === isConstructorMarker;\n\t\t}\n\t};\n} else {\n\tmodule.exports = function IsConstructor(argument) {\n\t\t// unfortunately there's no way to truly check this without try/catch `new argument` in old environments\n\t\treturn typeof argument === 'function' && !!argument.prototype;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsConstructor.js?");
@@ -2459,7 +2459,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./n
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -2470,7 +2470,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!*****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsExtensible.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $preventExtensions = $Object.preventExtensions;\nvar $isExtensible = $Object.isExtensible;\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isextensible-o\n\nmodule.exports = $preventExtensions\n\t? function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj) && $isExtensible(obj);\n\t}\n\t: function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj);\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsExtensible.js?");
@@ -2481,7 +2481,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsIntegralNumber.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/floor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isFinite.js\");\n\n// https://tc39.es/ecma262/#sec-isintegralnumber\n\nmodule.exports = function IsIntegralNumber(argument) {\n\tif (Type(argument) !== 'Number' || $isNaN(argument) || !$isFinite(argument)) {\n\t\treturn false;\n\t}\n\tvar absValue = abs(argument);\n\treturn floor(absValue) === absValue;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsIntegralNumber.js?");
@@ -2492,7 +2492,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prot
 /*!******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -2503,7 +2503,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsRegExp.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/array.prototype.flat/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsRegExp.js?");
@@ -2514,7 +2514,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/LengthOfArrayLike.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Get.js\");\nvar ToLength = __webpack_require__(/*! ./ToLength */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToLength.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-lengthofarraylike\n\nmodule.exports = function LengthOfArrayLike(obj) {\n\tif (Type(obj) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `obj` must be an Object');\n\t}\n\treturn ToLength(Get(obj, 'length'));\n};\n\n// TODO: use this all over\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/LengthOfArrayLike.js?");
@@ -2525,7 +2525,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = __webpack_require__(/*! ../helpers/getOwnPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsArray.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar IsRegExp = __webpack_require__(/*! ./IsRegExp */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsRegExp.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ordinarygetownproperty\n\nmodule.exports = function OrdinaryGetOwnProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: O must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tif (!has(O, P)) {\n\t\treturn void 0;\n\t}\n\tif (!$gOPD) {\n\t\t// ES3 / IE 8 fallback\n\t\tvar arrayLength = IsArray(O) && P === 'length';\n\t\tvar regexLastIndex = IsRegExp(O) && P === 'lastIndex';\n\t\treturn {\n\t\t\t'[[Configurable]]': !(arrayLength || regexLastIndex),\n\t\t\t'[[Enumerable]]': $isEnumerable(O, P),\n\t\t\t'[[Value]]': O[P],\n\t\t\t'[[Writable]]': true\n\t\t};\n\t}\n\treturn ToPropertyDescriptor($gOPD(O, P));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js?");
@@ -2536,7 +2536,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -2547,7 +2547,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!**************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/SameValue.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/SameValue.js?");
@@ -2558,7 +2558,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!**************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToBoolean.js ***!
   \**************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -2569,7 +2569,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -2580,7 +2580,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToLength.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToLength.js?");
@@ -2591,7 +2591,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToNumber.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToNumber.js?");
@@ -2602,7 +2602,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToObject.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToObject.js?");
@@ -2613,7 +2613,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -2624,7 +2624,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -2635,7 +2635,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToString.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/ToString.js?");
@@ -2646,7 +2646,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js ***!
   \*********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/Type.js?");
@@ -2657,7 +2657,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/ar
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/abs.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/abs.js?");
@@ -2668,7 +2668,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/2021/floor.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/2021/floor.js?");
@@ -2679,7 +2679,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -2690,7 +2690,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToInteger.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToInteger.js?");
@@ -2701,7 +2701,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prot
 /*!**********************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToNumber.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToNumber.js?");
@@ -2712,7 +2712,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToPrimitive.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -2723,7 +2723,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!******************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/Type.js ***!
   \******************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/Type.js?");
@@ -2734,7 +2734,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!*****************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/abs.js ***!
   \*****************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/abs.js?");
@@ -2745,7 +2745,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/5/floor.js ***!
   \*******************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/5/floor.js?");
@@ -2756,7 +2756,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/GetIntrinsic.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/GetIntrinsic.js?");
@@ -2767,7 +2767,7 @@ eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/array.prototype.flat/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -2778,7 +2778,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/assertRecord.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -2789,7 +2789,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);\nif ($gOPD) {\n\ttry {\n\t\t$gOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\t$gOPD = null;\n\t}\n}\n\nmodule.exports = $gOPD;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js?");
@@ -2800,7 +2800,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isFinite.js ***!
   \****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isFinite.js?");
@@ -2811,7 +2811,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isNaN.js ***!
   \*************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isNaN.js?");
@@ -2822,7 +2822,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \*******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -2833,7 +2833,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPropertyDescriptor.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nmodule.exports = function IsPropertyDescriptor(ES, Desc) {\n\tif (ES.Type(Desc) !== 'Object') {\n\t\treturn false;\n\t}\n\tvar allowed = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': true,\n\t\t'[[Get]]': true,\n\t\t'[[Set]]': true,\n\t\t'[[Value]]': true,\n\t\t'[[Writable]]': true\n\t};\n\n\tfor (var key in Desc) { // eslint-disable-line no-restricted-syntax\n\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tif (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {\n\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t}\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/isPropertyDescriptor.js?");
@@ -2844,7 +2844,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -2855,7 +2855,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/regexTester.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/regexTester.js?");
@@ -2866,7 +2866,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/sign.js ***!
   \************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flat/node_modules/es-abstract/helpers/sign.js?");
@@ -2877,7 +2877,7 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2020/IsArray.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2020/IsArray.js?");
@@ -2888,7 +2888,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArrayCreate.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $ArrayPrototype = GetIntrinsic('%Array.prototype%');\nvar $RangeError = GetIntrinsic('%RangeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsIntegralNumber.js\");\n\nvar MAX_ARRAY_LENGTH = Math.pow(2, 32) - 1;\n\nvar $setProto = GetIntrinsic('%Object.setPrototypeOf%', true) || (\n\t// eslint-disable-next-line no-proto, no-negated-condition\n\t[].__proto__ !== $ArrayPrototype\n\t\t? null\n\t\t: function (O, proto) {\n\t\t\tO.__proto__ = proto; // eslint-disable-line no-proto, no-param-reassign\n\t\t\treturn O;\n\t\t}\n);\n\n// https://www.ecma-international.org/ecma-262/12.0/#sec-arraycreate\n\nmodule.exports = function ArrayCreate(length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: `length` must be an integer Number >= 0');\n\t}\n\tif (length > MAX_ARRAY_LENGTH) {\n\t\tthrow new $RangeError('length is greater than (2**32 - 1)');\n\t}\n\tvar proto = arguments.length > 1 ? arguments[1] : $ArrayPrototype;\n\tvar A = []; // steps 3, 5\n\tif (proto !== $ArrayPrototype) { // step 4\n\t\tif (!$setProto) {\n\t\t\tthrow new $SyntaxError('ArrayCreate: a `proto` argument that is not `Array.prototype` is not supported in an environment that does not support setting the [[Prototype]]');\n\t\t}\n\t\t$setProto(A, proto);\n\t}\n\tif (length !== 0) { // bypasses the need for step 6\n\t\tA.length = length;\n\t}\n\t/* step 6, the above as a shortcut for the below\n    OrdinaryDefineOwnProperty(A, 'length', {\n        '[[Configurable]]': false,\n        '[[Enumerable]]': false,\n        '[[Value]]': length,\n        '[[Writable]]': true\n    });\n    */\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArrayCreate.js?");
@@ -2899,7 +2899,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArraySpeciesCreate.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $species = GetIntrinsic('%Symbol.species%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar ArrayCreate = __webpack_require__(/*! ./ArrayCreate */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArrayCreate.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js\");\nvar IsConstructor = __webpack_require__(/*! ./IsConstructor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsConstructor.js\");\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsIntegralNumber.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/12.0/#sec-arrayspeciescreate\n\nmodule.exports = function ArraySpeciesCreate(originalArray, length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: length must be an integer >= 0');\n\t}\n\n\tvar isArray = IsArray(originalArray);\n\tif (!isArray) {\n\t\treturn ArrayCreate(length);\n\t}\n\n\tvar C = Get(originalArray, 'constructor');\n\t// TODO: figure out how to make a cross-realm normal Array, a same-realm Array\n\t// if (IsConstructor(C)) {\n\t// \tif C is another realm's Array, C = undefined\n\t// \tObject.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(Array))) === null ?\n\t// }\n\tif ($species && Type(C) === 'Object') {\n\t\tC = Get(C, $species);\n\t\tif (C === null) {\n\t\t\tC = void 0;\n\t\t}\n\t}\n\n\tif (typeof C === 'undefined') {\n\t\treturn ArrayCreate(length);\n\t}\n\tif (!IsConstructor(C)) {\n\t\tthrow new $TypeError('C must be a constructor');\n\t}\n\treturn new C(length); // Construct(C, length);\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ArraySpeciesCreate.js?");
@@ -2910,7 +2910,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Call.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js\");\n\nvar $apply = GetIntrinsic('%Reflect.apply%', true) || callBound('%Function.prototype.apply%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-call\n\nmodule.exports = function Call(F, V) {\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\treturn $apply(F, V, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Call.js?");
@@ -2921,7 +2921,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataProperty.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar OrdinaryGetOwnProperty = __webpack_require__(/*! ./OrdinaryGetOwnProperty */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsExtensible = __webpack_require__(/*! ./IsExtensible */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsExtensible.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createdataproperty\n\nmodule.exports = function CreateDataProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar oldDesc = OrdinaryGetOwnProperty(O, P);\n\tvar extensible = !oldDesc || IsExtensible(O);\n\tvar immutable = oldDesc && (!oldDesc['[[Writable]]'] || !oldDesc['[[Configurable]]']);\n\tif (immutable || !extensible) {\n\t\treturn false;\n\t}\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\t{\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Value]]': V,\n\t\t\t'[[Writable]]': true\n\t\t}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataProperty.js?");
@@ -2932,7 +2932,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js ***!
   \*********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar CreateDataProperty = __webpack_require__(/*! ./CreateDataProperty */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataProperty.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// // https://ecma-international.org/ecma-262/6.0/#sec-createdatapropertyorthrow\n\nmodule.exports = function CreateDataPropertyOrThrow(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar success = CreateDataProperty(O, P, V);\n\tif (!success) {\n\t\tthrow new $TypeError('unable to create data property');\n\t}\n\treturn success;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js?");
@@ -2943,7 +2943,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/DefinePropertyOrThrow.js ***!
   \*****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar isPropertyDescriptor = __webpack_require__(/*! ../helpers/isPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPropertyDescriptor.js\");\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsAccessorDescriptor = __webpack_require__(/*! ./IsAccessorDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsAccessorDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/SameValue.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-definepropertyorthrow\n\nmodule.exports = function DefinePropertyOrThrow(O, P, desc) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar Desc = isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, desc) ? desc : ToPropertyDescriptor(desc);\n\tif (!isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, Desc)) {\n\t\tthrow new $TypeError('Assertion failed: Desc is not a valid Property Descriptor');\n\t}\n\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/DefinePropertyOrThrow.js?");
@@ -2954,7 +2954,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FlattenIntoArray.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Call.js\");\nvar CreateDataPropertyOrThrow = __webpack_require__(/*! ./CreateDataPropertyOrThrow */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js\");\nvar HasProperty = __webpack_require__(/*! ./HasProperty */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/HasProperty.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js\");\nvar LengthOfArrayLike = __webpack_require__(/*! ./LengthOfArrayLike */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/LengthOfArrayLike.js\");\nvar ToString = __webpack_require__(/*! ./ToString */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToString.js\");\n\n// https://262.ecma-international.org/11.0/#sec-flattenintoarray\n\n// eslint-disable-next-line max-params\nmodule.exports = function FlattenIntoArray(target, source, sourceLen, start, depth) {\n\tvar mapperFunction;\n\tif (arguments.length > 5) {\n\t\tmapperFunction = arguments[5];\n\t}\n\n\tvar targetIndex = start;\n\tvar sourceIndex = 0;\n\twhile (sourceIndex < sourceLen) {\n\t\tvar P = ToString(sourceIndex);\n\t\tvar exists = HasProperty(source, P);\n\t\tif (exists === true) {\n\t\t\tvar element = Get(source, P);\n\t\t\tif (typeof mapperFunction !== 'undefined') {\n\t\t\t\tif (arguments.length <= 6) {\n\t\t\t\t\tthrow new $TypeError('Assertion failed: thisArg is required when mapperFunction is provided');\n\t\t\t\t}\n\t\t\t\telement = Call(mapperFunction, arguments[6], [element, sourceIndex, source]);\n\t\t\t}\n\t\t\tvar shouldFlatten = false;\n\t\t\tif (depth > 0) {\n\t\t\t\tshouldFlatten = IsArray(element);\n\t\t\t}\n\t\t\tif (shouldFlatten) {\n\t\t\t\tvar elementLen = LengthOfArrayLike(element);\n\t\t\t\ttargetIndex = FlattenIntoArray(target, element, elementLen, targetIndex, depth - 1);\n\t\t\t} else {\n\t\t\t\tif (targetIndex >= MAX_SAFE_INTEGER) {\n\t\t\t\t\tthrow new $TypeError('index too large');\n\t\t\t\t}\n\t\t\t\tCreateDataPropertyOrThrow(target, ToString(targetIndex), element);\n\t\t\t\ttargetIndex += 1;\n\t\t\t}\n\t\t}\n\t\tsourceIndex += 1;\n\t}\n\n\treturn targetIndex;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FlattenIntoArray.js?");
@@ -2965,7 +2965,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -2976,7 +2976,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/array.prototype.flatmap/node_modules/object-inspect/index.js\");\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n/**\n * 7.3.1 Get (O, P) - https://ecma-international.org/ecma-262/6.0/#sec-get-o-p\n * 1. Assert: Type(O) is Object.\n * 2. Assert: IsPropertyKey(P) is true.\n * 3. Return O.[[Get]](P, O).\n */\n\nmodule.exports = function Get(O, P) {\n\t// 7.3.1.1\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\t// 7.3.1.2\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true, got ' + inspect(P));\n\t}\n\t// 7.3.1.3\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js?");
@@ -2987,7 +2987,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/HasProperty.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-hasproperty\n\nmodule.exports = function HasProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `O` must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: `P` must be a Property Key');\n\t}\n\treturn P in O;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/HasProperty.js?");
@@ -2998,7 +2998,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsAccessorDescriptor.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isaccessordescriptor\n\nmodule.exports = function IsAccessorDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsAccessorDescriptor.js?");
@@ -3009,7 +3009,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js?");
@@ -3020,7 +3020,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsCallable.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/array.prototype.flatmap/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsCallable.js?");
@@ -3031,7 +3031,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsConstructor.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/GetIntrinsic.js\");\n\nvar $construct = GetIntrinsic('%Reflect.construct%', true);\n\nvar DefinePropertyOrThrow = __webpack_require__(/*! ./DefinePropertyOrThrow */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/DefinePropertyOrThrow.js\");\ntry {\n\tDefinePropertyOrThrow({}, '', { '[[Get]]': function () {} });\n} catch (e) {\n\t// Accessor properties aren't supported\n\tDefinePropertyOrThrow = null;\n}\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isconstructor\n\nif (DefinePropertyOrThrow && $construct) {\n\tvar isConstructorMarker = {};\n\tvar badArrayLike = {};\n\tDefinePropertyOrThrow(badArrayLike, 'length', {\n\t\t'[[Get]]': function () {\n\t\t\tthrow isConstructorMarker;\n\t\t},\n\t\t'[[Enumerable]]': true\n\t});\n\n\tmodule.exports = function IsConstructor(argument) {\n\t\ttry {\n\t\t\t// `Reflect.construct` invokes `IsConstructor(target)` before `Get(args, 'length')`:\n\t\t\t$construct(argument, badArrayLike);\n\t\t} catch (err) {\n\t\t\treturn err === isConstructorMarker;\n\t\t}\n\t};\n} else {\n\tmodule.exports = function IsConstructor(argument) {\n\t\t// unfortunately there's no way to truly check this without try/catch `new argument` in old environments\n\t\treturn typeof argument === 'function' && !!argument.prototype;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsConstructor.js?");
@@ -3042,7 +3042,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./n
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -3053,7 +3053,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsExtensible.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $preventExtensions = $Object.preventExtensions;\nvar $isExtensible = $Object.isExtensible;\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isextensible-o\n\nmodule.exports = $preventExtensions\n\t? function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj) && $isExtensible(obj);\n\t}\n\t: function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj);\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsExtensible.js?");
@@ -3064,7 +3064,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsIntegralNumber.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/floor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isFinite.js\");\n\n// https://tc39.es/ecma262/#sec-isintegralnumber\n\nmodule.exports = function IsIntegralNumber(argument) {\n\tif (Type(argument) !== 'Number' || $isNaN(argument) || !$isFinite(argument)) {\n\t\treturn false;\n\t}\n\tvar absValue = abs(argument);\n\treturn floor(absValue) === absValue;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsIntegralNumber.js?");
@@ -3075,7 +3075,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prot
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \*********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -3086,7 +3086,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsRegExp.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/array.prototype.flatmap/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsRegExp.js?");
@@ -3097,7 +3097,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/LengthOfArrayLike.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Get.js\");\nvar ToLength = __webpack_require__(/*! ./ToLength */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToLength.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-lengthofarraylike\n\nmodule.exports = function LengthOfArrayLike(obj) {\n\tif (Type(obj) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `obj` must be an Object');\n\t}\n\treturn ToLength(Get(obj, 'length'));\n};\n\n// TODO: use this all over\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/LengthOfArrayLike.js?");
@@ -3108,7 +3108,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = __webpack_require__(/*! ../helpers/getOwnPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsArray.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar IsRegExp = __webpack_require__(/*! ./IsRegExp */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsRegExp.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ordinarygetownproperty\n\nmodule.exports = function OrdinaryGetOwnProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: O must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tif (!has(O, P)) {\n\t\treturn void 0;\n\t}\n\tif (!$gOPD) {\n\t\t// ES3 / IE 8 fallback\n\t\tvar arrayLength = IsArray(O) && P === 'length';\n\t\tvar regexLastIndex = IsRegExp(O) && P === 'lastIndex';\n\t\treturn {\n\t\t\t'[[Configurable]]': !(arrayLength || regexLastIndex),\n\t\t\t'[[Enumerable]]': $isEnumerable(O, P),\n\t\t\t'[[Value]]': O[P],\n\t\t\t'[[Writable]]': true\n\t\t};\n\t}\n\treturn ToPropertyDescriptor($gOPD(O, P));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js?");
@@ -3119,7 +3119,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -3130,7 +3130,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!*****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/SameValue.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/SameValue.js?");
@@ -3141,7 +3141,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!*****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToBoolean.js ***!
   \*****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -3152,7 +3152,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!***************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -3163,7 +3163,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToLength.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToLength.js?");
@@ -3174,7 +3174,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToNumber.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToNumber.js?");
@@ -3185,7 +3185,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToObject.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToObject.js?");
@@ -3196,7 +3196,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -3207,7 +3207,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -3218,7 +3218,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToString.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/ToString.js?");
@@ -3229,7 +3229,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/Type.js?");
@@ -3240,7 +3240,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/ar
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/abs.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/abs.js?");
@@ -3251,7 +3251,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/floor.js ***!
   \*************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/2021/floor.js?");
@@ -3262,7 +3262,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -3273,7 +3273,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToInteger.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToInteger.js?");
@@ -3284,7 +3284,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prot
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToNumber.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToNumber.js?");
@@ -3295,7 +3295,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToPrimitive.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -3306,7 +3306,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!*********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/Type.js ***!
   \*********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/Type.js?");
@@ -3317,7 +3317,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/abs.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/abs.js?");
@@ -3328,7 +3328,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/floor.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/5/floor.js?");
@@ -3339,7 +3339,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/GetIntrinsic.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/GetIntrinsic.js?");
@@ -3350,7 +3350,7 @@ eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(
 /*!****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/array.prototype.flatmap/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -3361,7 +3361,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/assertRecord.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -3372,7 +3372,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
   \***********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);\nif ($gOPD) {\n\ttry {\n\t\t$gOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\t$gOPD = null;\n\t}\n}\n\nmodule.exports = $gOPD;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js?");
@@ -3383,7 +3383,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isFinite.js ***!
   \*******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isFinite.js?");
@@ -3394,7 +3394,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isNaN.js ***!
   \****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isNaN.js?");
@@ -3405,7 +3405,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \**********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -3416,7 +3416,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPropertyDescriptor.js ***!
   \*******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nmodule.exports = function IsPropertyDescriptor(ES, Desc) {\n\tif (ES.Type(Desc) !== 'Object') {\n\t\treturn false;\n\t}\n\tvar allowed = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': true,\n\t\t'[[Get]]': true,\n\t\t'[[Set]]': true,\n\t\t'[[Value]]': true,\n\t\t'[[Writable]]': true\n\t};\n\n\tfor (var key in Desc) { // eslint-disable-line no-restricted-syntax\n\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tif (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {\n\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t}\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/isPropertyDescriptor.js?");
@@ -3427,7 +3427,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -3438,7 +3438,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/regexTester.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/regexTester.js?");
@@ -3449,7 +3449,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/sign.js ***!
   \***************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.flatmap/node_modules/es-abstract/helpers/sign.js?");
@@ -3460,7 +3460,7 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2020/IsArray.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2020/IsArray.js?");
@@ -3471,7 +3471,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArrayCreate.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $ArrayPrototype = GetIntrinsic('%Array.prototype%');\nvar $RangeError = GetIntrinsic('%RangeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsIntegralNumber.js\");\n\nvar MAX_ARRAY_LENGTH = Math.pow(2, 32) - 1;\n\nvar $setProto = GetIntrinsic('%Object.setPrototypeOf%', true) || (\n\t// eslint-disable-next-line no-proto, no-negated-condition\n\t[].__proto__ !== $ArrayPrototype\n\t\t? null\n\t\t: function (O, proto) {\n\t\t\tO.__proto__ = proto; // eslint-disable-line no-proto, no-param-reassign\n\t\t\treturn O;\n\t\t}\n);\n\n// https://www.ecma-international.org/ecma-262/12.0/#sec-arraycreate\n\nmodule.exports = function ArrayCreate(length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: `length` must be an integer Number >= 0');\n\t}\n\tif (length > MAX_ARRAY_LENGTH) {\n\t\tthrow new $RangeError('length is greater than (2**32 - 1)');\n\t}\n\tvar proto = arguments.length > 1 ? arguments[1] : $ArrayPrototype;\n\tvar A = []; // steps 3, 5\n\tif (proto !== $ArrayPrototype) { // step 4\n\t\tif (!$setProto) {\n\t\t\tthrow new $SyntaxError('ArrayCreate: a `proto` argument that is not `Array.prototype` is not supported in an environment that does not support setting the [[Prototype]]');\n\t\t}\n\t\t$setProto(A, proto);\n\t}\n\tif (length !== 0) { // bypasses the need for step 6\n\t\tA.length = length;\n\t}\n\t/* step 6, the above as a shortcut for the below\n    OrdinaryDefineOwnProperty(A, 'length', {\n        '[[Configurable]]': false,\n        '[[Enumerable]]': false,\n        '[[Value]]': length,\n        '[[Writable]]': true\n    });\n    */\n\treturn A;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArrayCreate.js?");
@@ -3482,7 +3482,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArraySpeciesCreate.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $species = GetIntrinsic('%Symbol.species%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar ArrayCreate = __webpack_require__(/*! ./ArrayCreate */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArrayCreate.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Get.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsArray.js\");\nvar IsConstructor = __webpack_require__(/*! ./IsConstructor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsConstructor.js\");\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsIntegralNumber.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/12.0/#sec-arrayspeciescreate\n\nmodule.exports = function ArraySpeciesCreate(originalArray, length) {\n\tif (!IsIntegralNumber(length) || length < 0) {\n\t\tthrow new $TypeError('Assertion failed: length must be an integer >= 0');\n\t}\n\n\tvar isArray = IsArray(originalArray);\n\tif (!isArray) {\n\t\treturn ArrayCreate(length);\n\t}\n\n\tvar C = Get(originalArray, 'constructor');\n\t// TODO: figure out how to make a cross-realm normal Array, a same-realm Array\n\t// if (IsConstructor(C)) {\n\t// \tif C is another realm's Array, C = undefined\n\t// \tObject.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(Array))) === null ?\n\t// }\n\tif ($species && Type(C) === 'Object') {\n\t\tC = Get(C, $species);\n\t\tif (C === null) {\n\t\t\tC = void 0;\n\t\t}\n\t}\n\n\tif (typeof C === 'undefined') {\n\t\treturn ArrayCreate(length);\n\t}\n\tif (!IsConstructor(C)) {\n\t\tthrow new $TypeError('C must be a constructor');\n\t}\n\treturn new C(length); // Construct(C, length);\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ArraySpeciesCreate.js?");
@@ -3493,7 +3493,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/Call.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsArray.js\");\n\nvar $apply = GetIntrinsic('%Reflect.apply%', true) || callBound('%Function.prototype.apply%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-call\n\nmodule.exports = function Call(F, V) {\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\treturn $apply(F, V, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/Call.js?");
@@ -3504,7 +3504,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataProperty.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar OrdinaryGetOwnProperty = __webpack_require__(/*! ./OrdinaryGetOwnProperty */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsExtensible = __webpack_require__(/*! ./IsExtensible */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsExtensible.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createdataproperty\n\nmodule.exports = function CreateDataProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar oldDesc = OrdinaryGetOwnProperty(O, P);\n\tvar extensible = !oldDesc || IsExtensible(O);\n\tvar immutable = oldDesc && (!oldDesc['[[Writable]]'] || !oldDesc['[[Configurable]]']);\n\tif (immutable || !extensible) {\n\t\treturn false;\n\t}\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\t{\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Value]]': V,\n\t\t\t'[[Writable]]': true\n\t\t}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataProperty.js?");
@@ -3515,7 +3515,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js ***!
   \*****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar CreateDataProperty = __webpack_require__(/*! ./CreateDataProperty */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataProperty.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// // https://ecma-international.org/ecma-262/6.0/#sec-createdatapropertyorthrow\n\nmodule.exports = function CreateDataPropertyOrThrow(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar success = CreateDataProperty(O, P, V);\n\tif (!success) {\n\t\tthrow new $TypeError('unable to create data property');\n\t}\n\treturn success;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js?");
@@ -3526,7 +3526,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/DefinePropertyOrThrow.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar isPropertyDescriptor = __webpack_require__(/*! ../helpers/isPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPropertyDescriptor.js\");\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsAccessorDescriptor = __webpack_require__(/*! ./IsAccessorDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsAccessorDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/SameValue.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-definepropertyorthrow\n\nmodule.exports = function DefinePropertyOrThrow(O, P, desc) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar Desc = isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, desc) ? desc : ToPropertyDescriptor(desc);\n\tif (!isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, Desc)) {\n\t\tthrow new $TypeError('Assertion failed: Desc is not a valid Property Descriptor');\n\t}\n\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/DefinePropertyOrThrow.js?");
@@ -3537,7 +3537,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -3548,7 +3548,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!*******************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/Get.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/array.prototype.map/node_modules/object-inspect/index.js\");\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n/**\n * 7.3.1 Get (O, P) - https://ecma-international.org/ecma-262/6.0/#sec-get-o-p\n * 1. Assert: Type(O) is Object.\n * 2. Assert: IsPropertyKey(P) is true.\n * 3. Return O.[[Get]](P, O).\n */\n\nmodule.exports = function Get(O, P) {\n\t// 7.3.1.1\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\t// 7.3.1.2\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true, got ' + inspect(P));\n\t}\n\t// 7.3.1.3\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/Get.js?");
@@ -3559,7 +3559,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/HasProperty.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-hasproperty\n\nmodule.exports = function HasProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `O` must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: `P` must be a Property Key');\n\t}\n\treturn P in O;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/HasProperty.js?");
@@ -3570,7 +3570,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsAccessorDescriptor.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isaccessordescriptor\n\nmodule.exports = function IsAccessorDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsAccessorDescriptor.js?");
@@ -3581,7 +3581,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsArray.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsArray.js?");
@@ -3592,7 +3592,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsCallable.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/array.prototype.map/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsCallable.js?");
@@ -3603,7 +3603,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!*****************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsConstructor.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./node_modules/array.prototype.map/node_modules/es-abstract/GetIntrinsic.js\");\n\nvar $construct = GetIntrinsic('%Reflect.construct%', true);\n\nvar DefinePropertyOrThrow = __webpack_require__(/*! ./DefinePropertyOrThrow */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/DefinePropertyOrThrow.js\");\ntry {\n\tDefinePropertyOrThrow({}, '', { '[[Get]]': function () {} });\n} catch (e) {\n\t// Accessor properties aren't supported\n\tDefinePropertyOrThrow = null;\n}\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isconstructor\n\nif (DefinePropertyOrThrow && $construct) {\n\tvar isConstructorMarker = {};\n\tvar badArrayLike = {};\n\tDefinePropertyOrThrow(badArrayLike, 'length', {\n\t\t'[[Get]]': function () {\n\t\t\tthrow isConstructorMarker;\n\t\t},\n\t\t'[[Enumerable]]': true\n\t});\n\n\tmodule.exports = function IsConstructor(argument) {\n\t\ttry {\n\t\t\t// `Reflect.construct` invokes `IsConstructor(target)` before `Get(args, 'length')`:\n\t\t\t$construct(argument, badArrayLike);\n\t\t} catch (err) {\n\t\t\treturn err === isConstructorMarker;\n\t\t}\n\t};\n} else {\n\tmodule.exports = function IsConstructor(argument) {\n\t\t// unfortunately there's no way to truly check this without try/catch `new argument` in old environments\n\t\treturn typeof argument === 'function' && !!argument.prototype;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsConstructor.js?");
@@ -3614,7 +3614,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./n
 /*!********************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -3625,7 +3625,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!****************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsExtensible.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $preventExtensions = $Object.preventExtensions;\nvar $isExtensible = $Object.isExtensible;\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isextensible-o\n\nmodule.exports = $preventExtensions\n\t? function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj) && $isExtensible(obj);\n\t}\n\t: function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj);\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsExtensible.js?");
@@ -3636,7 +3636,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsIntegralNumber.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/floor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isFinite.js\");\n\n// https://tc39.es/ecma262/#sec-isintegralnumber\n\nmodule.exports = function IsIntegralNumber(argument) {\n\tif (Type(argument) !== 'Number' || $isNaN(argument) || !$isFinite(argument)) {\n\t\treturn false;\n\t}\n\tvar absValue = abs(argument);\n\treturn floor(absValue) === absValue;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsIntegralNumber.js?");
@@ -3647,7 +3647,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/array.prot
 /*!*****************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \*****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -3658,7 +3658,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsRegExp.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/array.prototype.map/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsRegExp.js?");
@@ -3669,7 +3669,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = __webpack_require__(/*! ../helpers/getOwnPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsArray.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar IsRegExp = __webpack_require__(/*! ./IsRegExp */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsRegExp.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ordinarygetownproperty\n\nmodule.exports = function OrdinaryGetOwnProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: O must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tif (!has(O, P)) {\n\t\treturn void 0;\n\t}\n\tif (!$gOPD) {\n\t\t// ES3 / IE 8 fallback\n\t\tvar arrayLength = IsArray(O) && P === 'length';\n\t\tvar regexLastIndex = IsRegExp(O) && P === 'lastIndex';\n\t\treturn {\n\t\t\t'[[Configurable]]': !(arrayLength || regexLastIndex),\n\t\t\t'[[Enumerable]]': $isEnumerable(O, P),\n\t\t\t'[[Value]]': O[P],\n\t\t\t'[[Writable]]': true\n\t\t};\n\t}\n\treturn ToPropertyDescriptor($gOPD(O, P));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js?");
@@ -3680,7 +3680,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/array.prototype.map/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -3691,7 +3691,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/SameValue.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/SameValue.js?");
@@ -3702,7 +3702,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!*************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToBoolean.js ***!
   \*************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -3713,7 +3713,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToNumber.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToNumber.js?");
@@ -3724,7 +3724,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToObject.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToObject.js?");
@@ -3735,7 +3735,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -3746,7 +3746,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -3757,7 +3757,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToString.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToString.js?");
@@ -3768,7 +3768,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToUint32.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToNumber.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.6\n\nmodule.exports = function ToUint32(x) {\n\treturn ToNumber(x) >>> 0;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/ToUint32.js?");
@@ -3779,7 +3779,7 @@ eval("\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/
 /*!********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/array.prototype.map/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/Type.js?");
@@ -3790,7 +3790,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/ar
 /*!*******************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/abs.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/abs.js?");
@@ -3801,7 +3801,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/2021/floor.js ***!
   \*********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/2021/floor.js?");
@@ -3812,7 +3812,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!*********************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -3823,7 +3823,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/5/Type.js ***!
   \*****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/5/Type.js?");
@@ -3834,7 +3834,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!***********************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/GetIntrinsic.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/GetIntrinsic.js?");
@@ -3845,7 +3845,7 @@ eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(
 /*!************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/array.prototype.map/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -3856,7 +3856,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/assertRecord.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -3867,7 +3867,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
   \*******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);\nif ($gOPD) {\n\ttry {\n\t\t$gOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\t$gOPD = null;\n\t}\n}\n\nmodule.exports = $gOPD;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js?");
@@ -3878,7 +3878,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isFinite.js ***!
   \***************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isFinite.js?");
@@ -3889,7 +3889,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isNaN.js ***!
   \************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isNaN.js?");
@@ -3900,7 +3900,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!******************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -3911,7 +3911,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!***************************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPropertyDescriptor.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nmodule.exports = function IsPropertyDescriptor(ES, Desc) {\n\tif (ES.Type(Desc) !== 'Object') {\n\t\treturn false;\n\t}\n\tvar allowed = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': true,\n\t\t'[[Get]]': true,\n\t\t'[[Set]]': true,\n\t\t'[[Value]]': true,\n\t\t'[[Writable]]': true\n\t};\n\n\tfor (var key in Desc) { // eslint-disable-line no-restricted-syntax\n\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tif (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {\n\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t}\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/isPropertyDescriptor.js?");
@@ -3922,7 +3922,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************!*\
   !*** ./node_modules/array.prototype.map/node_modules/es-abstract/helpers/regexTester.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/array.prototype.map/node_modules/es-abstract/helpers/regexTester.js?");
@@ -3933,7 +3933,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************!*\
   !*** ./node_modules/es-get-iterator/index.js ***!
   \***********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n/* eslint global-require: 0 */\n// the code is structured this way so that bundlers can\n// alias out `has-symbols` to `() => true` or `() => false` if your target\n// environments' Symbol capabilities are known, and then use\n// dead code elimination on the rest of this module.\n//\n// Similarly, `isarray` can be aliased to `Array.isArray` if\n// available in all target environments.\n\nvar isArguments = __webpack_require__(/*! is-arguments */ \"./node_modules/is-arguments/index.js\");\n\nif (__webpack_require__(/*! has-symbols */ \"./node_modules/has-symbols/index.js\")() || __webpack_require__(/*! has-symbols/shams */ \"./node_modules/has-symbols/shams.js\")()) {\n\tvar $iterator = Symbol.iterator;\n\t// Symbol is available natively or shammed\n\t// natively:\n\t//  - Chrome >= 38\n\t//  - Edge 12-14?, Edge >= 15 for sure\n\t//  - FF >= 36\n\t//  - Safari >= 9\n\t//  - node >= 0.12\n\tmodule.exports = function getIterator(iterable) {\n\t\t// alternatively, `iterable[$iterator]?.()`\n\t\tif (iterable != null && typeof iterable[$iterator] !== 'undefined') {\n\t\t\treturn iterable[$iterator]();\n\t\t}\n\t\tif (isArguments(iterable)) {\n\t\t\t// arguments objects lack Symbol.iterator\n\t\t\t// - node 0.12\n\t\t\treturn Array.prototype[$iterator].call(iterable);\n\t\t}\n\t};\n} else {\n\t// Symbol is not available, native or shammed\n\tvar isArray = __webpack_require__(/*! isarray */ \"./node_modules/es-get-iterator/node_modules/isarray/index.js\");\n\tvar isString = __webpack_require__(/*! is-string */ \"./node_modules/is-string/index.js\");\n\tvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\tvar $Map = GetIntrinsic('%Map%', true);\n\tvar $Set = GetIntrinsic('%Set%', true);\n\tvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\tvar $arrayPush = callBound('Array.prototype.push');\n\tvar $charCodeAt = callBound('String.prototype.charCodeAt');\n\tvar $stringSlice = callBound('String.prototype.slice');\n\n\tvar advanceStringIndex = function advanceStringIndex(S, index) {\n\t\tvar length = S.length;\n\t\tif ((index + 1) >= length) {\n\t\t\treturn index + 1;\n\t\t}\n\n\t\tvar first = $charCodeAt(S, index);\n\t\tif (first < 0xD800 || first > 0xDBFF) {\n\t\t\treturn index + 1;\n\t\t}\n\n\t\tvar second = $charCodeAt(S, index + 1);\n\t\tif (second < 0xDC00 || second > 0xDFFF) {\n\t\t\treturn index + 1;\n\t\t}\n\n\t\treturn index + 2;\n\t};\n\n\tvar getArrayIterator = function getArrayIterator(arraylike) {\n\t\tvar i = 0;\n\t\treturn {\n\t\t\tnext: function next() {\n\t\t\t\tvar done = i >= arraylike.length;\n\t\t\t\tvar value;\n\t\t\t\tif (!done) {\n\t\t\t\t\tvalue = arraylike[i];\n\t\t\t\t\ti += 1;\n\t\t\t\t}\n\t\t\t\treturn {\n\t\t\t\t\tdone: done,\n\t\t\t\t\tvalue: value\n\t\t\t\t};\n\t\t\t}\n\t\t};\n\t};\n\n\tvar getNonCollectionIterator = function getNonCollectionIterator(iterable, noPrimordialCollections) {\n\t\tif (isArray(iterable) || isArguments(iterable)) {\n\t\t\treturn getArrayIterator(iterable);\n\t\t}\n\t\tif (isString(iterable)) {\n\t\t\tvar i = 0;\n\t\t\treturn {\n\t\t\t\tnext: function next() {\n\t\t\t\t\tvar nextIndex = advanceStringIndex(iterable, i);\n\t\t\t\t\tvar value = $stringSlice(iterable, i, nextIndex);\n\t\t\t\t\ti = nextIndex;\n\t\t\t\t\treturn {\n\t\t\t\t\t\tdone: nextIndex > iterable.length,\n\t\t\t\t\t\tvalue: value\n\t\t\t\t\t};\n\t\t\t\t}\n\t\t\t};\n\t\t}\n\n\t\t// es6-shim and es-shims' es-map use a string \"_es6-shim iterator_\" property on different iterables, such as MapIterator.\n\t\tif (noPrimordialCollections && typeof iterable['_es6-shim iterator_'] !== 'undefined') {\n\t\t\treturn iterable['_es6-shim iterator_']();\n\t\t}\n\t};\n\n\tif (!$Map && !$Set) {\n\t\t// the only language iterables are Array, String, arguments\n\t\t// - Safari <= 6.0\n\t\t// - Chrome < 38\n\t\t// - node < 0.12\n\t\t// - FF < 13\n\t\t// - IE < 11\n\t\t// - Edge < 11\n\n\t\tmodule.exports = function getIterator(iterable) {\n\t\t\tif (iterable != null) {\n\t\t\t\treturn getNonCollectionIterator(iterable, true);\n\t\t\t}\n\t\t};\n\t} else {\n\t\t// either Map or Set are available, but Symbol is not\n\t\t// - es6-shim on an ES5 browser\n\t\t// - Safari 6.2 (maybe 6.1?)\n\t\t// - FF v[13, 36)\n\t\t// - IE 11\n\t\t// - Edge 11\n\t\t// - Safari v[6, 9)\n\n\t\tvar isMap = __webpack_require__(/*! is-map */ \"./node_modules/is-map/index.js\");\n\t\tvar isSet = __webpack_require__(/*! is-set */ \"./node_modules/is-set/index.js\");\n\n\t\t// Firefox >= 27, IE 11, Safari 6.2 - 9, Edge 11, es6-shim in older envs, all have forEach\n\t\tvar $mapForEach = callBound('Map.prototype.forEach', true);\n\t\tvar $setForEach = callBound('Set.prototype.forEach', true);\n\t\tif (typeof process === 'undefined' || !process.versions || !process.versions.node) { // \"if is not node\"\n\n\t\t\t// Firefox 17 - 26 has `.iterator()`, whose iterator `.next()` either\n\t\t\t// returns a value, or throws a StopIteration object. These browsers\n\t\t\t// do not have any other mechanism for iteration.\n\t\t\tvar $mapIterator = callBound('Map.prototype.iterator', true);\n\t\t\tvar $setIterator = callBound('Set.prototype.iterator', true);\n\t\t\tvar getStopIterationIterator = function (iterator) {\n\t\t\t\tvar done = false;\n\t\t\t\treturn {\n\t\t\t\t\tnext: function next() {\n\t\t\t\t\t\ttry {\n\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\tdone: done,\n\t\t\t\t\t\t\t\tvalue: done ? undefined : iterator.next()\n\t\t\t\t\t\t\t};\n\t\t\t\t\t\t} catch (e) {\n\t\t\t\t\t\t\tdone = true;\n\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\tdone: true,\n\t\t\t\t\t\t\t\tvalue: undefined\n\t\t\t\t\t\t\t};\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t};\n\t\t\t};\n\t\t}\n\t\t// Firefox 27-35, and some older es6-shim versions, use a string \"@@iterator\" property\n\t\t// this returns a proper iterator object, so we should use it instead of forEach.\n\t\t// newer es6-shim versions use a string \"_es6-shim iterator_\" property.\n\t\tvar $mapAtAtIterator = callBound('Map.prototype.@@iterator', true) || callBound('Map.prototype._es6-shim iterator_', true);\n\t\tvar $setAtAtIterator = callBound('Set.prototype.@@iterator', true) || callBound('Set.prototype._es6-shim iterator_', true);\n\n\t\tvar getCollectionIterator = function getCollectionIterator(iterable) {\n\t\t\tif (isMap(iterable)) {\n\t\t\t\tif ($mapIterator) {\n\t\t\t\t\treturn getStopIterationIterator($mapIterator(iterable));\n\t\t\t\t}\n\t\t\t\tif ($mapAtAtIterator) {\n\t\t\t\t\treturn $mapAtAtIterator(iterable);\n\t\t\t\t}\n\t\t\t\tif ($mapForEach) {\n\t\t\t\t\tvar entries = [];\n\t\t\t\t\t$mapForEach(iterable, function (v, k) {\n\t\t\t\t\t\t$arrayPush(entries, [k, v]);\n\t\t\t\t\t});\n\t\t\t\t\treturn getArrayIterator(entries);\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (isSet(iterable)) {\n\t\t\t\tif ($setIterator) {\n\t\t\t\t\treturn getStopIterationIterator($setIterator(iterable));\n\t\t\t\t}\n\t\t\t\tif ($setAtAtIterator) {\n\t\t\t\t\treturn $setAtAtIterator(iterable);\n\t\t\t\t}\n\t\t\t\tif ($setForEach) {\n\t\t\t\t\tvar values = [];\n\t\t\t\t\t$setForEach(iterable, function (v) {\n\t\t\t\t\t\t$arrayPush(values, v);\n\t\t\t\t\t});\n\t\t\t\t\treturn getArrayIterator(values);\n\t\t\t\t}\n\t\t\t}\n\t\t};\n\n\t\tmodule.exports = function getIterator(iterable) {\n\t\t\treturn getCollectionIterator(iterable) || getNonCollectionIterator(iterable);\n\t\t};\n\t}\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/es-get-iterator/index.js?");
@@ -3944,7 +3944,7 @@ eval("\n\n/* eslint global-require: 0 */\n// the code is structured this way so 
 /*!******************************************************************************************!*\
   !*** ./node_modules/function.prototype.name/node_modules/es-abstract/2021/IsCallable.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/function.prototype.name/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/function.prototype.name/node_modules/es-abstract/2021/IsCallable.js?");
@@ -3955,7 +3955,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!*********************************************!*\
   !*** ./node_modules/iterate-value/index.js ***!
   \*********************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar getIterator = __webpack_require__(/*! es-get-iterator */ \"./node_modules/es-get-iterator/index.js\");\nvar $TypeError = TypeError;\nvar iterate = __webpack_require__(/*! iterate-iterator */ \"./node_modules/iterate-iterator/index.js\");\n\nmodule.exports = function iterateValue(iterable) {\n\tvar iterator = getIterator(iterable);\n\tif (!iterator) {\n\t\tthrow new $TypeError('non-iterable value provided');\n\t}\n\tif (arguments.length > 1) {\n\t\treturn iterate(iterator, arguments[1]);\n\t}\n\treturn iterate(iterator);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/iterate-value/index.js?");
@@ -3966,7 +3966,7 @@ eval("\n\nvar getIterator = __webpack_require__(/*! es-get-iterator */ \"./node_
 /*!*********************************************************************************************!*\
   !*** ./node_modules/object.entries/node_modules/es-abstract/2020/RequireObjectCoercible.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/object.entries/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.entries/node_modules/es-abstract/2020/RequireObjectCoercible.js?");
@@ -3977,7 +3977,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!****************************************************************************************!*\
   !*** ./node_modules/object.entries/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.entries/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -3988,7 +3988,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2020/IsArray.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2020/IsArray.js?");
@@ -3999,7 +3999,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/AddEntriesFromIterable.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/object.fromentries/node_modules/object-inspect/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Get.js\");\nvar GetIterator = __webpack_require__(/*! ./GetIterator */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/GetIterator.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js\");\nvar IteratorClose = __webpack_require__(/*! ./IteratorClose */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorClose.js\");\nvar IteratorStep = __webpack_require__(/*! ./IteratorStep */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorStep.js\");\nvar IteratorValue = __webpack_require__(/*! ./IteratorValue */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://262.ecma-international.org/10.0//#sec-add-entries-from-iterable\n\nmodule.exports = function AddEntriesFromIterable(target, iterable, adder) {\n\tif (!IsCallable(adder)) {\n\t\tthrow new $TypeError('Assertion failed: `adder` is not callable');\n\t}\n\tif (iterable == null) {\n\t\tthrow new $TypeError('Assertion failed: `iterable` is present, and not nullish');\n\t}\n\tvar iteratorRecord = GetIterator(iterable);\n\twhile (true) { // eslint-disable-line no-constant-condition\n\t\tvar next = IteratorStep(iteratorRecord);\n\t\tif (!next) {\n\t\t\treturn target;\n\t\t}\n\t\tvar nextItem = IteratorValue(next);\n\t\tif (Type(nextItem) !== 'Object') {\n\t\t\tvar error = new $TypeError('iterator next must return an Object, got ' + inspect(nextItem));\n\t\t\treturn IteratorClose(\n\t\t\t\titeratorRecord,\n\t\t\t\tfunction () { throw error; } // eslint-disable-line no-loop-func\n\t\t\t);\n\t\t}\n\t\ttry {\n\t\t\tvar k = Get(nextItem, '0');\n\t\t\tvar v = Get(nextItem, '1');\n\t\t\tCall(adder, target, [k, v]);\n\t\t} catch (e) {\n\t\t\treturn IteratorClose(\n\t\t\t\titeratorRecord,\n\t\t\t\tfunction () { throw e; }\n\t\t\t);\n\t\t}\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/AddEntriesFromIterable.js?");
@@ -4010,7 +4010,7 @@ eval("\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modul
 /*!*********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/AdvanceStringIndex.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar CodePointAt = __webpack_require__(/*! ./CodePointAt */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/CodePointAt.js\");\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsIntegralNumber.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/12.0/#sec-advancestringindex\n\nmodule.exports = function AdvanceStringIndex(S, index, unicode) {\n\tif (Type(S) !== 'String') {\n\t\tthrow new $TypeError('Assertion failed: `S` must be a String');\n\t}\n\tif (!IsIntegralNumber(index) || index < 0 || index > MAX_SAFE_INTEGER) {\n\t\tthrow new $TypeError('Assertion failed: `length` must be an integer >= 0 and <= 2**53');\n\t}\n\tif (Type(unicode) !== 'Boolean') {\n\t\tthrow new $TypeError('Assertion failed: `unicode` must be a Boolean');\n\t}\n\tif (!unicode) {\n\t\treturn index + 1;\n\t}\n\tvar length = S.length;\n\tif ((index + 1) >= length) {\n\t\treturn index + 1;\n\t}\n\tvar cp = CodePointAt(S, index);\n\treturn index + cp['[[CodeUnitCount]]'];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/AdvanceStringIndex.js?");
@@ -4021,7 +4021,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js\");\n\nvar $apply = GetIntrinsic('%Reflect.apply%', true) || callBound('%Function.prototype.apply%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-call\n\nmodule.exports = function Call(F, V) {\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\treturn $apply(F, V, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js?");
@@ -4032,7 +4032,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/CodePointAt.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar isLeadingSurrogate = __webpack_require__(/*! ../helpers/isLeadingSurrogate */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isLeadingSurrogate.js\");\nvar isTrailingSurrogate = __webpack_require__(/*! ../helpers/isTrailingSurrogate */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isTrailingSurrogate.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\nvar UTF16SurrogatePairToCodePoint = __webpack_require__(/*! ./UTF16SurrogatePairToCodePoint */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js\");\n\nvar $charAt = callBound('String.prototype.charAt');\nvar $charCodeAt = callBound('String.prototype.charCodeAt');\n\n// https://ecma-international.org/ecma-262/12.0/#sec-codepointat\n\nmodule.exports = function CodePointAt(string, position) {\n\tif (Type(string) !== 'String') {\n\t\tthrow new $TypeError('Assertion failed: `string` must be a String');\n\t}\n\tvar size = string.length;\n\tif (position < 0 || position >= size) {\n\t\tthrow new $TypeError('Assertion failed: `position` must be >= 0, and < the length of `string`');\n\t}\n\tvar first = $charCodeAt(string, position);\n\tvar cp = $charAt(string, position);\n\tvar firstIsLeading = isLeadingSurrogate(first);\n\tvar firstIsTrailing = isTrailingSurrogate(first);\n\tif (!firstIsLeading && !firstIsTrailing) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': false\n\t\t};\n\t}\n\tif (firstIsTrailing || (position + 1 === size)) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': true\n\t\t};\n\t}\n\tvar second = $charCodeAt(string, position + 1);\n\tif (!isTrailingSurrogate(second)) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': true\n\t\t};\n\t}\n\n\treturn {\n\t\t'[[CodePoint]]': UTF16SurrogatePairToCodePoint(first, second),\n\t\t'[[CodeUnitCount]]': 2,\n\t\t'[[IsUnpairedSurrogate]]': false\n\t};\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/CodePointAt.js?");
@@ -4043,7 +4043,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataProperty.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar OrdinaryGetOwnProperty = __webpack_require__(/*! ./OrdinaryGetOwnProperty */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsExtensible = __webpack_require__(/*! ./IsExtensible */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsExtensible.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createdataproperty\n\nmodule.exports = function CreateDataProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar oldDesc = OrdinaryGetOwnProperty(O, P);\n\tvar extensible = !oldDesc || IsExtensible(O);\n\tvar immutable = oldDesc && (!oldDesc['[[Writable]]'] || !oldDesc['[[Configurable]]']);\n\tif (immutable || !extensible) {\n\t\treturn false;\n\t}\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\t{\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Value]]': V,\n\t\t\t'[[Writable]]': true\n\t\t}\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataProperty.js?");
@@ -4054,7 +4054,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar CreateDataProperty = __webpack_require__(/*! ./CreateDataProperty */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataProperty.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// // https://ecma-international.org/ecma-262/6.0/#sec-createdatapropertyorthrow\n\nmodule.exports = function CreateDataPropertyOrThrow(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\tvar success = CreateDataProperty(O, P, V);\n\tif (!success) {\n\t\tthrow new $TypeError('unable to create data property');\n\t}\n\treturn success;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/CreateDataPropertyOrThrow.js?");
@@ -4065,7 +4065,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -4076,7 +4076,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/Get.js ***!
   \******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/object.fromentries/node_modules/object-inspect/index.js\");\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n/**\n * 7.3.1 Get (O, P) - https://ecma-international.org/ecma-262/6.0/#sec-get-o-p\n * 1. Assert: Type(O) is Object.\n * 2. Assert: IsPropertyKey(P) is true.\n * 3. Return O.[[Get]](P, O).\n */\n\nmodule.exports = function Get(O, P) {\n\t// 7.3.1.1\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\t// 7.3.1.2\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true, got ' + inspect(P));\n\t}\n\t// 7.3.1.3\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/Get.js?");
@@ -4087,7 +4087,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/GetIterator.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $asyncIterator = GetIntrinsic('%Symbol.asyncIterator%', true);\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/object.fromentries/node_modules/object-inspect/index.js\");\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/object.fromentries/node_modules/has-symbols/index.js\")();\n\nvar getIteratorMethod = __webpack_require__(/*! ../helpers/getIteratorMethod */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/getIteratorMethod.js\");\nvar AdvanceStringIndex = __webpack_require__(/*! ./AdvanceStringIndex */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/AdvanceStringIndex.js\");\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js\");\nvar GetMethod = __webpack_require__(/*! ./GetMethod */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/GetMethod.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://262.ecma-international.org/9.0/#sec-getiterator\nmodule.exports = function GetIterator(obj, hint, method) {\n\tvar actualHint = hint;\n\tif (arguments.length < 2) {\n\t\tactualHint = 'sync';\n\t}\n\tif (actualHint !== 'sync' && actualHint !== 'async') {\n\t\tthrow new $TypeError(\"Assertion failed: `hint` must be one of 'sync' or 'async', got \" + inspect(hint));\n\t}\n\n\tvar actualMethod = method;\n\tif (arguments.length < 3) {\n\t\tif (actualHint === 'async') {\n\t\t\tif (hasSymbols && $asyncIterator) {\n\t\t\t\tactualMethod = GetMethod(obj, $asyncIterator);\n\t\t\t}\n\t\t\tif (actualMethod === undefined) {\n\t\t\t\tthrow new $TypeError(\"async from sync iterators aren't currently supported\");\n\t\t\t}\n\t\t} else {\n\t\t\tactualMethod = getIteratorMethod(\n\t\t\t\t{\n\t\t\t\t\tAdvanceStringIndex: AdvanceStringIndex,\n\t\t\t\t\tGetMethod: GetMethod,\n\t\t\t\t\tIsArray: IsArray,\n\t\t\t\t\tType: Type\n\t\t\t\t},\n\t\t\t\tobj\n\t\t\t);\n\t\t}\n\t}\n\tvar iterator = Call(actualMethod, obj);\n\tif (Type(iterator) !== 'Object') {\n\t\tthrow new $TypeError('iterator must return an object');\n\t}\n\n\treturn iterator;\n\n\t// TODO: This should return an IteratorRecord\n\t/*\n\tvar nextMethod = GetV(iterator, 'next');\n\treturn {\n\t\t'[[Iterator]]': iterator,\n\t\t'[[NextMethod]]': nextMethod,\n\t\t'[[Done]]': false\n\t};\n\t*/\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/GetIterator.js?");
@@ -4098,7 +4098,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/GetMethod.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar GetV = __webpack_require__(/*! ./GetV */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/GetV.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\n\n/**\n * 7.3.9 - https://ecma-international.org/ecma-262/6.0/#sec-getmethod\n * 1. Assert: IsPropertyKey(P) is true.\n * 2. Let func be GetV(O, P).\n * 3. ReturnIfAbrupt(func).\n * 4. If func is either undefined or null, return undefined.\n * 5. If IsCallable(func) is false, throw a TypeError exception.\n * 6. Return func.\n */\n\nmodule.exports = function GetMethod(O, P) {\n\t// 7.3.9.1\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\t// 7.3.9.2\n\tvar func = GetV(O, P);\n\n\t// 7.3.9.4\n\tif (func == null) {\n\t\treturn void 0;\n\t}\n\n\t// 7.3.9.5\n\tif (!IsCallable(func)) {\n\t\tthrow new $TypeError(P + 'is not a function');\n\t}\n\n\t// 7.3.9.6\n\treturn func;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/GetMethod.js?");
@@ -4109,7 +4109,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/GetV.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar ToObject = __webpack_require__(/*! ./ToObject */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToObject.js\");\n\n/**\n * 7.3.2 GetV (V, P)\n * 1. Assert: IsPropertyKey(P) is true.\n * 2. Let O be ToObject(V).\n * 3. ReturnIfAbrupt(O).\n * 4. Return O.[[Get]](P, V).\n */\n\nmodule.exports = function GetV(V, P) {\n\t// 7.3.2.1\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\t// 7.3.2.2-3\n\tvar O = ToObject(V);\n\n\t// 7.3.2.4\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/GetV.js?");
@@ -4120,7 +4120,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/Invoke.js ***!
   \*********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js\");\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js\");\nvar GetV = __webpack_require__(/*! ./GetV */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/GetV.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-invoke\n\nmodule.exports = function Invoke(O, P) {\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\tvar func = GetV(O, P);\n\treturn Call(func, O, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/Invoke.js?");
@@ -4131,7 +4131,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js?");
@@ -4142,7 +4142,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/object.fromentries/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js?");
@@ -4153,7 +4153,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!*******************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -4164,7 +4164,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!***************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsExtensible.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $preventExtensions = $Object.preventExtensions;\nvar $isExtensible = $Object.isExtensible;\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isextensible-o\n\nmodule.exports = $preventExtensions\n\t? function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj) && $isExtensible(obj);\n\t}\n\t: function IsExtensible(obj) {\n\t\treturn !isPrimitive(obj);\n\t};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsExtensible.js?");
@@ -4175,7 +4175,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsIntegralNumber.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/floor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isFinite.js\");\n\n// https://tc39.es/ecma262/#sec-isintegralnumber\n\nmodule.exports = function IsIntegralNumber(argument) {\n\tif (Type(argument) !== 'Number' || $isNaN(argument) || !$isFinite(argument)) {\n\t\treturn false;\n\t}\n\tvar absValue = abs(argument);\n\treturn floor(absValue) === absValue;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsIntegralNumber.js?");
@@ -4186,7 +4186,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/object.fro
 /*!****************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -4197,7 +4197,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!***********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IsRegExp.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/object.fromentries/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IsRegExp.js?");
@@ -4208,7 +4208,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorClose.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Call.js\");\nvar GetMethod = __webpack_require__(/*! ./GetMethod */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/GetMethod.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-iteratorclose\n\nmodule.exports = function IteratorClose(iterator, completion) {\n\tif (Type(iterator) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(iterator) is not Object');\n\t}\n\tif (!IsCallable(completion)) {\n\t\tthrow new $TypeError('Assertion failed: completion is not a thunk for a Completion Record');\n\t}\n\tvar completionThunk = completion;\n\n\tvar iteratorReturn = GetMethod(iterator, 'return');\n\n\tif (typeof iteratorReturn === 'undefined') {\n\t\treturn completionThunk();\n\t}\n\n\tvar completionRecord;\n\ttry {\n\t\tvar innerResult = Call(iteratorReturn, iterator, []);\n\t} catch (e) {\n\t\t// if we hit here, then \"e\" is the innerResult completion that needs re-throwing\n\n\t\t// if the completion is of type \"throw\", this will throw.\n\t\tcompletionThunk();\n\t\tcompletionThunk = null; // ensure it's not called twice.\n\n\t\t// if not, then return the innerResult completion\n\t\tthrow e;\n\t}\n\tcompletionRecord = completionThunk(); // if innerResult worked, then throw if the completion does\n\tcompletionThunk = null; // ensure it's not called twice.\n\n\tif (Type(innerResult) !== 'Object') {\n\t\tthrow new $TypeError('iterator .return must return an object');\n\t}\n\n\treturn completionRecord;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorClose.js?");
@@ -4219,7 +4219,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorComplete.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Get.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToBoolean.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-iteratorcomplete\n\nmodule.exports = function IteratorComplete(iterResult) {\n\tif (Type(iterResult) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(iterResult) is not Object');\n\t}\n\treturn ToBoolean(Get(iterResult, 'done'));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorComplete.js?");
@@ -4230,7 +4230,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorNext.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Invoke = __webpack_require__(/*! ./Invoke */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Invoke.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-iteratornext\n\nmodule.exports = function IteratorNext(iterator, value) {\n\tvar result = Invoke(iterator, 'next', arguments.length < 2 ? [] : [value]);\n\tif (Type(result) !== 'Object') {\n\t\tthrow new $TypeError('iterator next must return an object');\n\t}\n\treturn result;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorNext.js?");
@@ -4241,7 +4241,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorStep.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar IteratorComplete = __webpack_require__(/*! ./IteratorComplete */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorComplete.js\");\nvar IteratorNext = __webpack_require__(/*! ./IteratorNext */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorNext.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-iteratorstep\n\nmodule.exports = function IteratorStep(iterator) {\n\tvar result = IteratorNext(iterator);\n\tvar done = IteratorComplete(result);\n\treturn done === true ? false : result;\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorStep.js?");
@@ -4252,7 +4252,7 @@ eval("\n\nvar IteratorComplete = __webpack_require__(/*! ./IteratorComplete */ \
 /*!****************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorValue.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Get.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-iteratorvalue\n\nmodule.exports = function IteratorValue(iterResult) {\n\tif (Type(iterResult) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(iterResult) is not Object');\n\t}\n\treturn Get(iterResult, 'value');\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/IteratorValue.js?");
@@ -4263,7 +4263,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = __webpack_require__(/*! ../helpers/getOwnPropertyDescriptor */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsArray.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar IsRegExp = __webpack_require__(/*! ./IsRegExp */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsRegExp.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ordinarygetownproperty\n\nmodule.exports = function OrdinaryGetOwnProperty(O, P) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: O must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: P must be a Property Key');\n\t}\n\tif (!has(O, P)) {\n\t\treturn void 0;\n\t}\n\tif (!$gOPD) {\n\t\t// ES3 / IE 8 fallback\n\t\tvar arrayLength = IsArray(O) && P === 'length';\n\t\tvar regexLastIndex = IsRegExp(O) && P === 'lastIndex';\n\t\treturn {\n\t\t\t'[[Configurable]]': !(arrayLength || regexLastIndex),\n\t\t\t'[[Enumerable]]': $isEnumerable(O, P),\n\t\t\t'[[Value]]': O[P],\n\t\t\t'[[Writable]]': true\n\t\t};\n\t}\n\treturn ToPropertyDescriptor($gOPD(O, P));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js?");
@@ -4274,7 +4274,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/object.fromentries/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -4285,7 +4285,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/SameValue.js ***!
   \************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/SameValue.js?");
@@ -4296,7 +4296,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToBoolean.js ***!
   \************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -4307,7 +4307,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!***********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToObject.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToObject.js?");
@@ -4318,7 +4318,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -4329,7 +4329,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!***********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -4340,7 +4340,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!****************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyKey.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPrimitive.js\");\nvar ToString = __webpack_require__(/*! ./ToString */ \"./node_modules/object.fromentries/node_modules/es-abstract/2021/ToString.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-topropertykey\n\nmodule.exports = function ToPropertyKey(argument) {\n\tvar key = ToPrimitive(argument, $String);\n\treturn typeof key === 'symbol' ? key : ToString(key);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToPropertyKey.js?");
@@ -4351,7 +4351,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/ToString.js ***!
   \***********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/ToString.js?");
@@ -4362,7 +4362,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/object.fromentries/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/Type.js?");
@@ -4373,7 +4373,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/ob
 /*!********************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $fromCharCode = GetIntrinsic('%String.fromCharCode%');\n\nvar isLeadingSurrogate = __webpack_require__(/*! ../helpers/isLeadingSurrogate */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isLeadingSurrogate.js\");\nvar isTrailingSurrogate = __webpack_require__(/*! ../helpers/isTrailingSurrogate */ \"./node_modules/object.fromentries/node_modules/es-abstract/helpers/isTrailingSurrogate.js\");\n\n// https://tc39.es/ecma262/2020/#sec-utf16decodesurrogatepair\n\nmodule.exports = function UTF16DecodeSurrogatePair(lead, trail) {\n\tif (!isLeadingSurrogate(lead) || !isTrailingSurrogate(trail)) {\n\t\tthrow new $TypeError('Assertion failed: `lead` must be a leading surrogate char code, and `trail` must be a trailing surrogate char code');\n\t}\n\t// var cp = (lead - 0xD800) * 0x400 + (trail - 0xDC00) + 0x10000;\n\treturn $fromCharCode(lead) + $fromCharCode(trail);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js?");
@@ -4384,7 +4384,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/abs.js ***!
   \******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/abs.js?");
@@ -4395,7 +4395,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/2021/floor.js ***!
   \********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/2021/floor.js?");
@@ -4406,7 +4406,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -4417,7 +4417,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/5/Type.js ***!
   \****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/5/Type.js?");
@@ -4428,7 +4428,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!***********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/object.fromentries/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -4439,7 +4439,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/assertRecord.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -4450,7 +4450,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/getIteratorMethod.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/object.fromentries/node_modules/has-symbols/index.js\")();\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $iterator = GetIntrinsic('%Symbol.iterator%', true);\nvar $stringSlice = callBound('String.prototype.slice');\n\nmodule.exports = function getIteratorMethod(ES, iterable) {\n\tvar usingIterator;\n\tif (hasSymbols) {\n\t\tusingIterator = ES.GetMethod(iterable, $iterator);\n\t} else if (ES.IsArray(iterable)) {\n\t\tusingIterator = function () {\n\t\t\tvar i = -1;\n\t\t\tvar arr = this; // eslint-disable-line no-invalid-this\n\t\t\treturn {\n\t\t\t\tnext: function () {\n\t\t\t\t\ti += 1;\n\t\t\t\t\treturn {\n\t\t\t\t\t\tdone: i >= arr.length,\n\t\t\t\t\t\tvalue: arr[i]\n\t\t\t\t\t};\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t} else if (ES.Type(iterable) === 'String') {\n\t\tusingIterator = function () {\n\t\t\tvar i = 0;\n\t\t\treturn {\n\t\t\t\tnext: function () {\n\t\t\t\t\tvar nextIndex = ES.AdvanceStringIndex(iterable, i, true);\n\t\t\t\t\tvar value = $stringSlice(iterable, i, nextIndex);\n\t\t\t\t\ti = nextIndex;\n\t\t\t\t\treturn {\n\t\t\t\t\t\tdone: nextIndex > iterable.length,\n\t\t\t\t\t\tvalue: value\n\t\t\t\t\t};\n\t\t\t\t}\n\t\t\t};\n\t\t};\n\t}\n\treturn usingIterator;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/getIteratorMethod.js?");
@@ -4461,7 +4461,7 @@ eval("\n\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modul
 /*!******************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);\nif ($gOPD) {\n\ttry {\n\t\t$gOPD([], 'length');\n\t} catch (e) {\n\t\t// IE 8 has a broken gOPD\n\t\t$gOPD = null;\n\t}\n}\n\nmodule.exports = $gOPD;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js?");
@@ -4472,7 +4472,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/isFinite.js ***!
   \**************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/isFinite.js?");
@@ -4483,7 +4483,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/isLeadingSurrogate.js ***!
   \************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isLeadingSurrogate(charCode) {\n\treturn typeof charCode === 'number' && charCode >= 0xD800 && charCode <= 0xDBFF;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/isLeadingSurrogate.js?");
@@ -4494,7 +4494,7 @@ eval("\n\nmodule.exports = function isLeadingSurrogate(charCode) {\n\treturn typ
 /*!***********************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/isNaN.js ***!
   \***********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/isNaN.js?");
@@ -4505,7 +4505,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!*****************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \*****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -4516,7 +4516,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!*************************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/isTrailingSurrogate.js ***!
   \*************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isTrailingSurrogate(charCode) {\n\treturn typeof charCode === 'number' && charCode >= 0xDC00 && charCode <= 0xDFFF;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/isTrailingSurrogate.js?");
@@ -4527,7 +4527,7 @@ eval("\n\nmodule.exports = function isTrailingSurrogate(charCode) {\n\treturn ty
 /*!********************************************************************************************!*\
   !*** ./node_modules/object.fromentries/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/object.fromentries/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -4538,7 +4538,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************!*\
   !*** ./node_modules/promise.allsettled/node_modules/es-abstract/2021/PromiseResolve.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nvar $resolve = GetIntrinsic('%Promise.resolve%', true);\nvar $PromiseResolve = $resolve && callBind($resolve);\n\n// https://262.ecma-international.org/9.0/#sec-promise-resolve\n\nmodule.exports = function PromiseResolve(C, x) {\n\tif (!$PromiseResolve) {\n\t\tthrow new SyntaxError('This environment does not support Promises.');\n\t}\n\treturn $PromiseResolve(C, x);\n};\n\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/node_modules/es-abstract/2021/PromiseResolve.js?");
@@ -4549,7 +4549,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************!*\
   !*** ./node_modules/promise.allsettled/node_modules/es-abstract/2021/Type.js ***!
   \*******************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/promise.allsettled/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/node_modules/es-abstract/2021/Type.js?");
@@ -4560,7 +4560,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/pr
 /*!****************************************************************************!*\
   !*** ./node_modules/promise.allsettled/node_modules/es-abstract/5/Type.js ***!
   \****************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.allsettled/node_modules/es-abstract/5/Type.js?");
@@ -4571,7 +4571,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!*****************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2020/IsArray.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2020/IsArray.js?");
@@ -4582,7 +4582,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/DefinePropertyOrThrow.js ***!
   \*******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar isPropertyDescriptor = __webpack_require__(/*! ../helpers/isPropertyDescriptor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isPropertyDescriptor.js\");\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsAccessorDescriptor = __webpack_require__(/*! ./IsAccessorDescriptor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsAccessorDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SameValue.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-definepropertyorthrow\n\nmodule.exports = function DefinePropertyOrThrow(O, P, desc) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar Desc = isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, desc) ? desc : ToPropertyDescriptor(desc);\n\tif (!isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, Desc)) {\n\t\tthrow new $TypeError('Assertion failed: Desc is not a valid Property Descriptor');\n\t}\n\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/DefinePropertyOrThrow.js?");
@@ -4593,7 +4593,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -4604,7 +4604,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!******************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsAccessorDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isaccessordescriptor\n\nmodule.exports = function IsAccessorDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsAccessorDescriptor.js?");
@@ -4615,7 +4615,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!********************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsCallable.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/promise.prototype.finally/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsCallable.js?");
@@ -4626,7 +4626,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!***********************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsConstructor.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/GetIntrinsic.js\");\n\nvar $construct = GetIntrinsic('%Reflect.construct%', true);\n\nvar DefinePropertyOrThrow = __webpack_require__(/*! ./DefinePropertyOrThrow */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/DefinePropertyOrThrow.js\");\ntry {\n\tDefinePropertyOrThrow({}, '', { '[[Get]]': function () {} });\n} catch (e) {\n\t// Accessor properties aren't supported\n\tDefinePropertyOrThrow = null;\n}\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isconstructor\n\nif (DefinePropertyOrThrow && $construct) {\n\tvar isConstructorMarker = {};\n\tvar badArrayLike = {};\n\tDefinePropertyOrThrow(badArrayLike, 'length', {\n\t\t'[[Get]]': function () {\n\t\t\tthrow isConstructorMarker;\n\t\t},\n\t\t'[[Enumerable]]': true\n\t});\n\n\tmodule.exports = function IsConstructor(argument) {\n\t\ttry {\n\t\t\t// `Reflect.construct` invokes `IsConstructor(target)` before `Get(args, 'length')`:\n\t\t\t$construct(argument, badArrayLike);\n\t\t} catch (err) {\n\t\t\treturn err === isConstructorMarker;\n\t\t}\n\t};\n} else {\n\tmodule.exports = function IsConstructor(argument) {\n\t\t// unfortunately there's no way to truly check this without try/catch `new argument` in old environments\n\t\treturn typeof argument === 'function' && !!argument.prototype;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsConstructor.js?");
@@ -4637,7 +4637,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./n
 /*!**************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -4648,7 +4648,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!***********************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \***********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -4659,7 +4659,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!*******************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SameValue.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SameValue.js?");
@@ -4670,7 +4670,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!****************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SpeciesConstructor.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $species = GetIntrinsic('%Symbol.species%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsConstructor = __webpack_require__(/*! ./IsConstructor */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsConstructor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-speciesconstructor\n\nmodule.exports = function SpeciesConstructor(O, defaultConstructor) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tvar C = O.constructor;\n\tif (typeof C === 'undefined') {\n\t\treturn defaultConstructor;\n\t}\n\tif (Type(C) !== 'Object') {\n\t\tthrow new $TypeError('O.constructor is not an Object');\n\t}\n\tvar S = $species ? C[$species] : void 0;\n\tif (S == null) {\n\t\treturn defaultConstructor;\n\t}\n\tif (IsConstructor(S)) {\n\t\treturn S;\n\t}\n\tthrow new $TypeError('no constructor found');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/SpeciesConstructor.js?");
@@ -4681,7 +4681,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToBoolean.js ***!
   \*******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -4692,7 +4692,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!******************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -4703,7 +4703,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!**************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/2021/Type.js?");
@@ -4714,7 +4714,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/pr
 /*!***********************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/5/Type.js ***!
   \***********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/5/Type.js?");
@@ -4725,7 +4725,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!*****************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/GetIntrinsic.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/GetIntrinsic.js?");
@@ -4736,7 +4736,7 @@ eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(
 /*!******************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/promise.prototype.finally/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -4747,7 +4747,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/assertRecord.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -4758,7 +4758,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isNaN.js ***!
   \******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isNaN.js?");
@@ -4769,7 +4769,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!*********************************************************************************************************!*\
   !*** ./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isPropertyDescriptor.js ***!
   \*********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nmodule.exports = function IsPropertyDescriptor(ES, Desc) {\n\tif (ES.Type(Desc) !== 'Object') {\n\t\treturn false;\n\t}\n\tvar allowed = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': true,\n\t\t'[[Get]]': true,\n\t\t'[[Set]]': true,\n\t\t'[[Value]]': true,\n\t\t'[[Writable]]': true\n\t};\n\n\tfor (var key in Desc) { // eslint-disable-line no-restricted-syntax\n\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tif (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {\n\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t}\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/promise.prototype.finally/node_modules/es-abstract/helpers/isPropertyDescriptor.js?");
@@ -4780,7 +4780,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2020/IsArray.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2020/IsArray.js?");
@@ -4791,7 +4791,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/AdvanceStringIndex.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar CodePointAt = __webpack_require__(/*! ./CodePointAt */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CodePointAt.js\");\nvar IsIntegralNumber = __webpack_require__(/*! ./IsIntegralNumber */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsIntegralNumber.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/12.0/#sec-advancestringindex\n\nmodule.exports = function AdvanceStringIndex(S, index, unicode) {\n\tif (Type(S) !== 'String') {\n\t\tthrow new $TypeError('Assertion failed: `S` must be a String');\n\t}\n\tif (!IsIntegralNumber(index) || index < 0 || index > MAX_SAFE_INTEGER) {\n\t\tthrow new $TypeError('Assertion failed: `length` must be an integer >= 0 and <= 2**53');\n\t}\n\tif (Type(unicode) !== 'Boolean') {\n\t\tthrow new $TypeError('Assertion failed: `unicode` must be a Boolean');\n\t}\n\tif (!unicode) {\n\t\treturn index + 1;\n\t}\n\tvar length = S.length;\n\tif ((index + 1) >= length) {\n\t\treturn index + 1;\n\t}\n\tvar cp = CodePointAt(S, index);\n\treturn index + cp['[[CodeUnitCount]]'];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/AdvanceStringIndex.js?");
@@ -4802,7 +4802,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Call.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsArray.js\");\n\nvar $apply = GetIntrinsic('%Reflect.apply%', true) || callBound('%Function.prototype.apply%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-call\n\nmodule.exports = function Call(F, V) {\n\tvar argumentsList = arguments.length > 2 ? arguments[2] : [];\n\tif (!IsArray(argumentsList)) {\n\t\tthrow new $TypeError('Assertion failed: optional `argumentsList`, if provided, must be a List');\n\t}\n\treturn $apply(F, V, argumentsList);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Call.js?");
@@ -4813,7 +4813,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CodePointAt.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar isLeadingSurrogate = __webpack_require__(/*! ../helpers/isLeadingSurrogate */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isLeadingSurrogate.js\");\nvar isTrailingSurrogate = __webpack_require__(/*! ../helpers/isTrailingSurrogate */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isTrailingSurrogate.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\nvar UTF16SurrogatePairToCodePoint = __webpack_require__(/*! ./UTF16SurrogatePairToCodePoint */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js\");\n\nvar $charAt = callBound('String.prototype.charAt');\nvar $charCodeAt = callBound('String.prototype.charCodeAt');\n\n// https://ecma-international.org/ecma-262/12.0/#sec-codepointat\n\nmodule.exports = function CodePointAt(string, position) {\n\tif (Type(string) !== 'String') {\n\t\tthrow new $TypeError('Assertion failed: `string` must be a String');\n\t}\n\tvar size = string.length;\n\tif (position < 0 || position >= size) {\n\t\tthrow new $TypeError('Assertion failed: `position` must be >= 0, and < the length of `string`');\n\t}\n\tvar first = $charCodeAt(string, position);\n\tvar cp = $charAt(string, position);\n\tvar firstIsLeading = isLeadingSurrogate(first);\n\tvar firstIsTrailing = isTrailingSurrogate(first);\n\tif (!firstIsLeading && !firstIsTrailing) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': false\n\t\t};\n\t}\n\tif (firstIsTrailing || (position + 1 === size)) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': true\n\t\t};\n\t}\n\tvar second = $charCodeAt(string, position + 1);\n\tif (!isTrailingSurrogate(second)) {\n\t\treturn {\n\t\t\t'[[CodePoint]]': cp,\n\t\t\t'[[CodeUnitCount]]': 1,\n\t\t\t'[[IsUnpairedSurrogate]]': true\n\t\t};\n\t}\n\n\treturn {\n\t\t'[[CodePoint]]': UTF16SurrogatePairToCodePoint(first, second),\n\t\t'[[CodeUnitCount]]': 2,\n\t\t'[[IsUnpairedSurrogate]]': false\n\t};\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CodePointAt.js?");
@@ -4824,7 +4824,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateIterResultObject.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createiterresultobject\n\nmodule.exports = function CreateIterResultObject(value, done) {\n\tif (Type(done) !== 'Boolean') {\n\t\tthrow new $TypeError('Assertion failed: Type(done) is not Boolean');\n\t}\n\treturn {\n\t\tvalue: value,\n\t\tdone: done\n\t};\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateIterResultObject.js?");
@@ -4835,7 +4835,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateMethodProperty.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-createmethodproperty\n\nmodule.exports = function CreateMethodProperty(O, P, V) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar newDesc = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': false,\n\t\t'[[Value]]': V,\n\t\t'[[Writable]]': true\n\t};\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tnewDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateMethodProperty.js?");
@@ -4846,7 +4846,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateRegExpStringIterator.js ***!
   \************************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\nvar hasSymbols = __webpack_require__(/*! has-symbols */ \"./node_modules/string.prototype.matchall/node_modules/has-symbols/index.js\")();\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar IteratorPrototype = GetIntrinsic('%IteratorPrototype%', true);\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nvar AdvanceStringIndex = __webpack_require__(/*! ./AdvanceStringIndex */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/AdvanceStringIndex.js\");\nvar CreateIterResultObject = __webpack_require__(/*! ./CreateIterResultObject */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateIterResultObject.js\");\nvar CreateMethodProperty = __webpack_require__(/*! ./CreateMethodProperty */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateMethodProperty.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js\");\nvar OrdinaryObjectCreate = __webpack_require__(/*! ./OrdinaryObjectCreate */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/OrdinaryObjectCreate.js\");\nvar RegExpExec = __webpack_require__(/*! ./RegExpExec */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RegExpExec.js\");\nvar Set = __webpack_require__(/*! ./Set */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Set.js\");\nvar ToLength = __webpack_require__(/*! ./ToLength */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToLength.js\");\nvar ToString = __webpack_require__(/*! ./ToString */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToString.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\nvar SLOT = __webpack_require__(/*! internal-slot */ \"./node_modules/internal-slot/index.js\");\n\nvar RegExpStringIterator = function RegExpStringIterator(R, S, global, fullUnicode) {\n\tif (Type(S) !== 'String') {\n\t\tthrow new $TypeError('`S` must be a string');\n\t}\n\tif (Type(global) !== 'Boolean') {\n\t\tthrow new $TypeError('`global` must be a boolean');\n\t}\n\tif (Type(fullUnicode) !== 'Boolean') {\n\t\tthrow new $TypeError('`fullUnicode` must be a boolean');\n\t}\n\tSLOT.set(this, '[[IteratingRegExp]]', R);\n\tSLOT.set(this, '[[IteratedString]]', S);\n\tSLOT.set(this, '[[Global]]', global);\n\tSLOT.set(this, '[[Unicode]]', fullUnicode);\n\tSLOT.set(this, '[[Done]]', false);\n};\n\nif (IteratorPrototype) {\n\tRegExpStringIterator.prototype = OrdinaryObjectCreate(IteratorPrototype);\n}\n\nvar RegExpStringIteratorNext = function next() {\n\tvar O = this; // eslint-disable-line no-invalid-this\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('receiver must be an object');\n\t}\n\tif (\n\t\t!(O instanceof RegExpStringIterator)\n        || !SLOT.has(O, '[[IteratingRegExp]]')\n        || !SLOT.has(O, '[[IteratedString]]')\n        || !SLOT.has(O, '[[Global]]')\n        || !SLOT.has(O, '[[Unicode]]')\n        || !SLOT.has(O, '[[Done]]')\n\t) {\n\t\tthrow new $TypeError('\"this\" value must be a RegExpStringIterator instance');\n\t}\n\tif (SLOT.get(O, '[[Done]]')) {\n\t\treturn CreateIterResultObject(undefined, true);\n\t}\n\tvar R = SLOT.get(O, '[[IteratingRegExp]]');\n\tvar S = SLOT.get(O, '[[IteratedString]]');\n\tvar global = SLOT.get(O, '[[Global]]');\n\tvar fullUnicode = SLOT.get(O, '[[Unicode]]');\n\tvar match = RegExpExec(R, S);\n\tif (match === null) {\n\t\tSLOT.set(O, '[[Done]]', true);\n\t\treturn CreateIterResultObject(undefined, true);\n\t}\n\tif (global) {\n\t\tvar matchStr = ToString(Get(match, '0'));\n\t\tif (matchStr === '') {\n\t\t\tvar thisIndex = ToLength(Get(R, 'lastIndex'));\n\t\t\tvar nextIndex = AdvanceStringIndex(S, thisIndex, fullUnicode);\n\t\t\tSet(R, 'lastIndex', nextIndex, true);\n\t\t}\n\t\treturn CreateIterResultObject(match, false);\n\t}\n\tSLOT.set(O, '[[Done]]', true);\n\treturn CreateIterResultObject(match, false);\n};\nCreateMethodProperty(RegExpStringIterator.prototype, 'next', RegExpStringIteratorNext);\n\nif (hasSymbols) {\n\tif (Symbol.toStringTag) {\n\t\tif ($defineProperty) {\n\t\t\t$defineProperty(RegExpStringIterator.prototype, Symbol.toStringTag, {\n\t\t\t\tconfigurable: true,\n\t\t\t\tenumerable: false,\n\t\t\t\tvalue: 'RegExp String Iterator',\n\t\t\t\twritable: false\n\t\t\t});\n\t\t} else {\n\t\t\tRegExpStringIterator.prototype[Symbol.toStringTag] = 'RegExp String Iterator';\n\t\t}\n\t}\n\n\tif (Symbol.iterator && typeof RegExpStringIterator.prototype[Symbol.iterator] !== 'function') {\n\t\tvar iteratorFn = function SymbolIterator() {\n\t\t\treturn this;\n\t\t};\n\t\tCreateMethodProperty(RegExpStringIterator.prototype, Symbol.iterator, iteratorFn);\n\t}\n}\n\n// https://262.ecma-international.org/11.0/#sec-createregexpstringiterator\nmodule.exports = function CreateRegExpStringIterator(R, S, global, fullUnicode) {\n\t// assert R.global === global && R.unicode === fullUnicode?\n\treturn new RegExpStringIterator(R, S, global, fullUnicode);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/CreateRegExpStringIterator.js?");
@@ -4857,7 +4857,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/DefinePropertyOrThrow.js ***!
   \*******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar isPropertyDescriptor = __webpack_require__(/*! ../helpers/isPropertyDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPropertyDescriptor.js\");\nvar DefineOwnProperty = __webpack_require__(/*! ../helpers/DefineOwnProperty */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/DefineOwnProperty.js\");\n\nvar FromPropertyDescriptor = __webpack_require__(/*! ./FromPropertyDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/FromPropertyDescriptor.js\");\nvar IsAccessorDescriptor = __webpack_require__(/*! ./IsAccessorDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsAccessorDescriptor.js\");\nvar IsDataDescriptor = __webpack_require__(/*! ./IsDataDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsDataDescriptor.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SameValue.js\");\nvar ToPropertyDescriptor = __webpack_require__(/*! ./ToPropertyDescriptor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPropertyDescriptor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-definepropertyorthrow\n\nmodule.exports = function DefinePropertyOrThrow(O, P, desc) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\tvar Desc = isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, desc) ? desc : ToPropertyDescriptor(desc);\n\tif (!isPropertyDescriptor({\n\t\tType: Type,\n\t\tIsDataDescriptor: IsDataDescriptor,\n\t\tIsAccessorDescriptor: IsAccessorDescriptor\n\t}, Desc)) {\n\t\tthrow new $TypeError('Assertion failed: Desc is not a valid Property Descriptor');\n\t}\n\n\treturn DefineOwnProperty(\n\t\tIsDataDescriptor,\n\t\tSameValue,\n\t\tFromPropertyDescriptor,\n\t\tO,\n\t\tP,\n\t\tDesc\n\t);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/DefinePropertyOrThrow.js?");
@@ -4868,7 +4868,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/FromPropertyDescriptor.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-frompropertydescriptor\n\nmodule.exports = function FromPropertyDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn Desc;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tvar obj = {};\n\tif ('[[Value]]' in Desc) {\n\t\tobj.value = Desc['[[Value]]'];\n\t}\n\tif ('[[Writable]]' in Desc) {\n\t\tobj.writable = Desc['[[Writable]]'];\n\t}\n\tif ('[[Get]]' in Desc) {\n\t\tobj.get = Desc['[[Get]]'];\n\t}\n\tif ('[[Set]]' in Desc) {\n\t\tobj.set = Desc['[[Set]]'];\n\t}\n\tif ('[[Enumerable]]' in Desc) {\n\t\tobj.enumerable = Desc['[[Enumerable]]'];\n\t}\n\tif ('[[Configurable]]' in Desc) {\n\t\tobj.configurable = Desc['[[Configurable]]'];\n\t}\n\treturn obj;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/FromPropertyDescriptor.js?");
@@ -4879,7 +4879,7 @@ eval("\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ 
 /*!*************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar inspect = __webpack_require__(/*! object-inspect */ \"./node_modules/string.prototype.matchall/node_modules/object-inspect/index.js\");\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n/**\n * 7.3.1 Get (O, P) - https://ecma-international.org/ecma-262/6.0/#sec-get-o-p\n * 1. Assert: Type(O) is Object.\n * 2. Assert: IsPropertyKey(P) is true.\n * 3. Return O.[[Get]](P, O).\n */\n\nmodule.exports = function Get(O, P) {\n\t// 7.3.1.1\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\t// 7.3.1.2\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true, got ' + inspect(P));\n\t}\n\t// 7.3.1.3\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js?");
@@ -4890,7 +4890,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetMethod.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar GetV = __webpack_require__(/*! ./GetV */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetV.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsCallable.js\");\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\n\n/**\n * 7.3.9 - https://ecma-international.org/ecma-262/6.0/#sec-getmethod\n * 1. Assert: IsPropertyKey(P) is true.\n * 2. Let func be GetV(O, P).\n * 3. ReturnIfAbrupt(func).\n * 4. If func is either undefined or null, return undefined.\n * 5. If IsCallable(func) is false, throw a TypeError exception.\n * 6. Return func.\n */\n\nmodule.exports = function GetMethod(O, P) {\n\t// 7.3.9.1\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\t// 7.3.9.2\n\tvar func = GetV(O, P);\n\n\t// 7.3.9.4\n\tif (func == null) {\n\t\treturn void 0;\n\t}\n\n\t// 7.3.9.5\n\tif (!IsCallable(func)) {\n\t\tthrow new $TypeError(P + 'is not a function');\n\t}\n\n\t// 7.3.9.6\n\treturn func;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetMethod.js?");
@@ -4901,7 +4901,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetV.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar ToObject = __webpack_require__(/*! ./ToObject */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToObject.js\");\n\n/**\n * 7.3.2 GetV (V, P)\n * 1. Assert: IsPropertyKey(P) is true.\n * 2. Let O be ToObject(V).\n * 3. ReturnIfAbrupt(O).\n * 4. Return O.[[Get]](P, V).\n */\n\nmodule.exports = function GetV(V, P) {\n\t// 7.3.2.1\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: IsPropertyKey(P) is not true');\n\t}\n\n\t// 7.3.2.2-3\n\tvar O = ToObject(V);\n\n\t// 7.3.2.4\n\treturn O[P];\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/GetV.js?");
@@ -4912,7 +4912,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsAccessorDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isaccessordescriptor\n\nmodule.exports = function IsAccessorDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsAccessorDescriptor.js?");
@@ -4923,7 +4923,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!*****************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsArray.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Array = GetIntrinsic('%Array%');\n\n// eslint-disable-next-line global-require\nvar toStr = !$Array.isArray && __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('Object.prototype.toString');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isarray\n\nmodule.exports = $Array.isArray || function IsArray(argument) {\n\treturn toStr(argument) === '[object Array]';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsArray.js?");
@@ -4934,7 +4934,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsCallable.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports = __webpack_require__(/*! is-callable */ \"./node_modules/string.prototype.matchall/node_modules/is-callable/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsCallable.js?");
@@ -4945,7 +4945,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.11\n\nmodule.exports =
 /*!***********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsConstructor.js ***!
   \***********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/GetIntrinsic.js\");\n\nvar $construct = GetIntrinsic('%Reflect.construct%', true);\n\nvar DefinePropertyOrThrow = __webpack_require__(/*! ./DefinePropertyOrThrow */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/DefinePropertyOrThrow.js\");\ntry {\n\tDefinePropertyOrThrow({}, '', { '[[Get]]': function () {} });\n} catch (e) {\n\t// Accessor properties aren't supported\n\tDefinePropertyOrThrow = null;\n}\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isconstructor\n\nif (DefinePropertyOrThrow && $construct) {\n\tvar isConstructorMarker = {};\n\tvar badArrayLike = {};\n\tDefinePropertyOrThrow(badArrayLike, 'length', {\n\t\t'[[Get]]': function () {\n\t\t\tthrow isConstructorMarker;\n\t\t},\n\t\t'[[Enumerable]]': true\n\t});\n\n\tmodule.exports = function IsConstructor(argument) {\n\t\ttry {\n\t\t\t// `Reflect.construct` invokes `IsConstructor(target)` before `Get(args, 'length')`:\n\t\t\t$construct(argument, badArrayLike);\n\t\t} catch (err) {\n\t\t\treturn err === isConstructorMarker;\n\t\t}\n\t};\n} else {\n\tmodule.exports = function IsConstructor(argument) {\n\t\t// unfortunately there's no way to truly check this without try/catch `new argument` in old environments\n\t\treturn typeof argument === 'function' && !!argument.prototype;\n\t};\n}\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsConstructor.js?");
@@ -4956,7 +4956,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! ../GetIntrinsic.js */ \"./n
 /*!**************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsDataDescriptor.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar assertRecord = __webpack_require__(/*! ../helpers/assertRecord */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/assertRecord.js\");\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isdatadescriptor\n\nmodule.exports = function IsDataDescriptor(Desc) {\n\tif (typeof Desc === 'undefined') {\n\t\treturn false;\n\t}\n\n\tassertRecord(Type, 'Property Descriptor', 'Desc', Desc);\n\n\tif (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {\n\t\treturn false;\n\t}\n\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsDataDescriptor.js?");
@@ -4967,7 +4967,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!**************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsIntegralNumber.js ***!
   \**************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/floor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isFinite.js\");\n\n// https://tc39.es/ecma262/#sec-isintegralnumber\n\nmodule.exports = function IsIntegralNumber(argument) {\n\tif (Type(argument) !== 'Number' || $isNaN(argument) || !$isFinite(argument)) {\n\t\treturn false;\n\t}\n\tvar absValue = abs(argument);\n\treturn floor(absValue) === absValue;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsIntegralNumber.js?");
@@ -4978,7 +4978,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.pro
 /*!***********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js ***!
   \***********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nmodule.exports = function IsPropertyKey(argument) {\n\treturn typeof argument === 'string' || typeof argument === 'symbol';\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js?");
@@ -4989,7 +4989,7 @@ eval("\n\n// https://ecma-international.org/ecma-262/6.0/#sec-ispropertykey\n\nm
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsRegExp.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $match = GetIntrinsic('%Symbol.match%', true);\n\nvar hasRegExpMatcher = __webpack_require__(/*! is-regex */ \"./node_modules/string.prototype.matchall/node_modules/is-regex/index.js\");\n\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToBoolean.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-isregexp\n\nmodule.exports = function IsRegExp(argument) {\n\tif (!argument || typeof argument !== 'object') {\n\t\treturn false;\n\t}\n\tif ($match) {\n\t\tvar isRegExp = argument[$match];\n\t\tif (typeof isRegExp !== 'undefined') {\n\t\t\treturn ToBoolean(isRegExp);\n\t\t}\n\t}\n\treturn hasRegExpMatcher(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsRegExp.js?");
@@ -5000,7 +5000,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/OrdinaryObjectCreate.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $ObjectCreate = GetIntrinsic('%Object.create%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar IsArray = __webpack_require__(/*! ./IsArray */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsArray.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\nvar hasProto = !({ __proto__: null } instanceof Object);\n\n// https://262.ecma-international.org/6.0/#sec-objectcreate\n\nmodule.exports = function OrdinaryObjectCreate(proto) {\n\tif (proto !== null && Type(proto) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `proto` must be null or an object');\n\t}\n\tvar additionalInternalSlotsList = arguments.length < 2 ? [] : arguments[1];\n\tif (!IsArray(additionalInternalSlotsList)) {\n\t\tthrow new $TypeError('Assertion failed: `additionalInternalSlotsList` must be an Array');\n\t}\n\t// var internalSlotsList = ['[[Prototype]]', '[[Extensible]]'];\n\tif (additionalInternalSlotsList.length > 0) {\n\t\tthrow new $SyntaxError('es-abstract does not yet support internal slots');\n\t\t// internalSlotsList.push(...additionalInternalSlotsList);\n\t}\n\t// var O = MakeBasicObject(internalSlotsList);\n\t// setProto(O, proto);\n\t// return O;\n\n\tif ($ObjectCreate) {\n\t\treturn $ObjectCreate(proto);\n\t}\n\tif (hasProto) {\n\t\treturn { __proto__: proto };\n\t}\n\n\tif (proto === null) {\n\t\tthrow new $SyntaxError('native Object.create support is required to create null objects');\n\t}\n\tvar T = function T() {};\n\tT.prototype = proto;\n\treturn new T();\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/OrdinaryObjectCreate.js?");
@@ -5011,7 +5011,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RegExpExec.js ***!
   \********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar regexExec = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\")('RegExp.prototype.exec');\n\nvar Call = __webpack_require__(/*! ./Call */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Call.js\");\nvar Get = __webpack_require__(/*! ./Get */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Get.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsCallable.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-regexpexec\n\nmodule.exports = function RegExpExec(R, S) {\n\tif (Type(R) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `R` must be an Object');\n\t}\n\tif (Type(S) !== 'String') {\n\t\tthrow new $TypeError('Assertion failed: `S` must be a String');\n\t}\n\tvar exec = Get(R, 'exec');\n\tif (IsCallable(exec)) {\n\t\tvar result = Call(exec, R, [S]);\n\t\tif (result === null || Type(result) === 'Object') {\n\t\t\treturn result;\n\t\t}\n\t\tthrow new $TypeError('\"exec\" method must return `null` or an Object');\n\t}\n\treturn regexExec(R, S);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RegExpExec.js?");
@@ -5022,7 +5022,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -5033,7 +5033,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!*******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SameValue.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isNaN.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.12\n\nmodule.exports = function SameValue(x, y) {\n\tif (x === y) { // 0 === -0, but they are not identical.\n\t\tif (x === 0) { return 1 / x === 1 / y; }\n\t\treturn true;\n\t}\n\treturn $isNaN(x) && $isNaN(y);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SameValue.js?");
@@ -5044,7 +5044,7 @@ eval("\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modu
 /*!*************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Set.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsPropertyKey = __webpack_require__(/*! ./IsPropertyKey */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsPropertyKey.js\");\nvar SameValue = __webpack_require__(/*! ./SameValue */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SameValue.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// IE 9 does not throw in strict mode when writability/configurability/extensibility is violated\nvar noThrowOnStrictViolation = (function () {\n\ttry {\n\t\tdelete [].length;\n\t\treturn true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n}());\n\n// https://ecma-international.org/ecma-262/6.0/#sec-set-o-p-v-throw\n\nmodule.exports = function Set(O, P, V, Throw) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: `O` must be an Object');\n\t}\n\tif (!IsPropertyKey(P)) {\n\t\tthrow new $TypeError('Assertion failed: `P` must be a Property Key');\n\t}\n\tif (Type(Throw) !== 'Boolean') {\n\t\tthrow new $TypeError('Assertion failed: `Throw` must be a Boolean');\n\t}\n\tif (Throw) {\n\t\tO[P] = V; // eslint-disable-line no-param-reassign\n\t\tif (noThrowOnStrictViolation && !SameValue(O[P], V)) {\n\t\t\tthrow new $TypeError('Attempted to assign to readonly property.');\n\t\t}\n\t\treturn true;\n\t}\n\ttry {\n\t\tO[P] = V; // eslint-disable-line no-param-reassign\n\t\treturn noThrowOnStrictViolation ? SameValue(O[P], V) : true;\n\t} catch (e) {\n\t\treturn false;\n\t}\n\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Set.js?");
@@ -5055,7 +5055,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SpeciesConstructor.js ***!
   \****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $species = GetIntrinsic('%Symbol.species%', true);\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar IsConstructor = __webpack_require__(/*! ./IsConstructor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsConstructor.js\");\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-speciesconstructor\n\nmodule.exports = function SpeciesConstructor(O, defaultConstructor) {\n\tif (Type(O) !== 'Object') {\n\t\tthrow new $TypeError('Assertion failed: Type(O) is not Object');\n\t}\n\tvar C = O.constructor;\n\tif (typeof C === 'undefined') {\n\t\treturn defaultConstructor;\n\t}\n\tif (Type(C) !== 'Object') {\n\t\tthrow new $TypeError('O.constructor is not an Object');\n\t}\n\tvar S = $species ? C[$species] : void 0;\n\tif (S == null) {\n\t\treturn defaultConstructor;\n\t}\n\tif (IsConstructor(S)) {\n\t\treturn S;\n\t}\n\tthrow new $TypeError('no constructor found');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/SpeciesConstructor.js?");
@@ -5066,7 +5066,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToBoolean.js ***!
   \*******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = function ToBoolean(value) { return !!value; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToBoolean.js?");
@@ -5077,7 +5077,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.2\n\nmodule.exports = 
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \*****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -5088,7 +5088,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToLength.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToLength.js?");
@@ -5099,7 +5099,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToNumber.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToNumber.js?");
@@ -5110,7 +5110,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToObject.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Object = GetIntrinsic('%Object%');\n\nvar RequireObjectCoercible = __webpack_require__(/*! ./RequireObjectCoercible */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/RequireObjectCoercible.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toobject\n\nmodule.exports = function ToObject(value) {\n\tRequireObjectCoercible(value);\n\treturn $Object(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToObject.js?");
@@ -5121,7 +5121,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -5132,7 +5132,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPropertyDescriptor.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nvar Type = __webpack_require__(/*! ./Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js\");\nvar ToBoolean = __webpack_require__(/*! ./ToBoolean */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToBoolean.js\");\nvar IsCallable = __webpack_require__(/*! ./IsCallable */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/IsCallable.js\");\n\n// https://262.ecma-international.org/5.1/#sec-8.10.5\n\nmodule.exports = function ToPropertyDescriptor(Obj) {\n\tif (Type(Obj) !== 'Object') {\n\t\tthrow new $TypeError('ToPropertyDescriptor requires an object');\n\t}\n\n\tvar desc = {};\n\tif (has(Obj, 'enumerable')) {\n\t\tdesc['[[Enumerable]]'] = ToBoolean(Obj.enumerable);\n\t}\n\tif (has(Obj, 'configurable')) {\n\t\tdesc['[[Configurable]]'] = ToBoolean(Obj.configurable);\n\t}\n\tif (has(Obj, 'value')) {\n\t\tdesc['[[Value]]'] = Obj.value;\n\t}\n\tif (has(Obj, 'writable')) {\n\t\tdesc['[[Writable]]'] = ToBoolean(Obj.writable);\n\t}\n\tif (has(Obj, 'get')) {\n\t\tvar getter = Obj.get;\n\t\tif (typeof getter !== 'undefined' && !IsCallable(getter)) {\n\t\t\tthrow new $TypeError('getter must be a function');\n\t\t}\n\t\tdesc['[[Get]]'] = getter;\n\t}\n\tif (has(Obj, 'set')) {\n\t\tvar setter = Obj.set;\n\t\tif (typeof setter !== 'undefined' && !IsCallable(setter)) {\n\t\t\tthrow new $TypeError('setter must be a function');\n\t\t}\n\t\tdesc['[[Set]]'] = setter;\n\t}\n\n\tif ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {\n\t\tthrow new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');\n\t}\n\treturn desc;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToPropertyDescriptor.js?");
@@ -5143,7 +5143,7 @@ eval("\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/inde
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToString.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/ToString.js?");
@@ -5154,7 +5154,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/Type.js\");\n\n// https://262.ecma-international.org/11.0/#sec-ecmascript-data-types-and-values\n\nmodule.exports = function Type(x) {\n\tif (typeof x === 'symbol') {\n\t\treturn 'Symbol';\n\t}\n\tif (typeof x === 'bigint') {\n\t\treturn 'BigInt';\n\t}\n\treturn ES5Type(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/Type.js?");
@@ -5165,7 +5165,7 @@ eval("\n\nvar ES5Type = __webpack_require__(/*! ../5/Type */ \"./node_modules/st
 /*!***************************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js ***!
   \***************************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $fromCharCode = GetIntrinsic('%String.fromCharCode%');\n\nvar isLeadingSurrogate = __webpack_require__(/*! ../helpers/isLeadingSurrogate */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isLeadingSurrogate.js\");\nvar isTrailingSurrogate = __webpack_require__(/*! ../helpers/isTrailingSurrogate */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isTrailingSurrogate.js\");\n\n// https://tc39.es/ecma262/2020/#sec-utf16decodesurrogatepair\n\nmodule.exports = function UTF16DecodeSurrogatePair(lead, trail) {\n\tif (!isLeadingSurrogate(lead) || !isTrailingSurrogate(trail)) {\n\t\tthrow new $TypeError('Assertion failed: `lead` must be a leading surrogate char code, and `trail` must be a trailing surrogate char code');\n\t}\n\t// var cp = (lead - 0xD800) * 0x400 + (trail - 0xDC00) + 0x10000;\n\treturn $fromCharCode(lead) + $fromCharCode(trail);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/UTF16SurrogatePairToCodePoint.js?");
@@ -5176,7 +5176,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/abs.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/abs.js?");
@@ -5187,7 +5187,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/floor.js ***!
   \***************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/2021/floor.js?");
@@ -5198,7 +5198,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!***************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -5209,7 +5209,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToInteger.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToInteger.js?");
@@ -5220,7 +5220,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.pro
 /*!***************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToNumber.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToNumber.js?");
@@ -5231,7 +5231,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToPrimitive.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -5242,7 +5242,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!***********************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/Type.js ***!
   \***********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = function Type(x) {\n\tif (x === null) {\n\t\treturn 'Null';\n\t}\n\tif (typeof x === 'undefined') {\n\t\treturn 'Undefined';\n\t}\n\tif (typeof x === 'function' || typeof x === 'object') {\n\t\treturn 'Object';\n\t}\n\tif (typeof x === 'number') {\n\t\treturn 'Number';\n\t}\n\tif (typeof x === 'boolean') {\n\t\treturn 'Boolean';\n\t}\n\tif (typeof x === 'string') {\n\t\treturn 'String';\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/Type.js?");
@@ -5253,7 +5253,7 @@ eval("\n\n// https://262.ecma-international.org/5.1/#sec-8\n\nmodule.exports = f
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/abs.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/abs.js?");
@@ -5264,7 +5264,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/5/floor.js ***!
   \************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/5/floor.js?");
@@ -5275,7 +5275,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!*****************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/GetIntrinsic.js ***!
   \*****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/GetIntrinsic.js?");
@@ -5286,7 +5286,7 @@ eval("\n\n// TODO: remove, semver-major\n\nmodule.exports = __webpack_require__(
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/DefineOwnProperty.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $defineProperty = GetIntrinsic('%Object.defineProperty%', true);\n\nif ($defineProperty) {\n\ttry {\n\t\t$defineProperty({}, 'a', { value: 1 });\n\t} catch (e) {\n\t\t// IE 8 has a broken defineProperty\n\t\t$defineProperty = null;\n\t}\n}\n\n// node v0.6 has a bug where array lengths can be Set but not Defined\nvar hasArrayLengthDefineBug = Object.defineProperty && Object.defineProperty([], 'length', { value: 1 }).length === 0;\n\n// eslint-disable-next-line global-require\nvar isArray = hasArrayLengthDefineBug && __webpack_require__(/*! ../2020/IsArray */ \"./node_modules/string.prototype.matchall/node_modules/es-abstract/2020/IsArray.js\"); // this does not depend on any other AOs.\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\n\nvar $isEnumerable = callBound('Object.prototype.propertyIsEnumerable');\n\n// eslint-disable-next-line max-params\nmodule.exports = function DefineOwnProperty(IsDataDescriptor, SameValue, FromPropertyDescriptor, O, P, desc) {\n\tif (!$defineProperty) {\n\t\tif (!IsDataDescriptor(desc)) {\n\t\t\t// ES3 does not support getters/setters\n\t\t\treturn false;\n\t\t}\n\t\tif (!desc['[[Configurable]]'] || !desc['[[Writable]]']) {\n\t\t\treturn false;\n\t\t}\n\n\t\t// fallback for ES3\n\t\tif (P in O && $isEnumerable(O, P) !== !!desc['[[Enumerable]]']) {\n\t\t\t// a non-enumerable existing property\n\t\t\treturn false;\n\t\t}\n\n\t\t// property does not exist at all, or exists but is enumerable\n\t\tvar V = desc['[[Value]]'];\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO[P] = V; // will use [[Define]]\n\t\treturn SameValue(O[P], V);\n\t}\n\tif (\n\t\thasArrayLengthDefineBug\n\t\t&& P === 'length'\n\t\t&& '[[Value]]' in desc\n\t\t&& isArray(O)\n\t\t&& O.length !== desc['[[Value]]']\n\t) {\n\t\t// eslint-disable-next-line no-param-reassign\n\t\tO.length = desc['[[Value]]'];\n\t\treturn O.length === desc['[[Value]]'];\n\t}\n\n\t$defineProperty(O, P, FromPropertyDescriptor(desc));\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/DefineOwnProperty.js?");
@@ -5297,7 +5297,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/assertRecord.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $SyntaxError = GetIntrinsic('%SyntaxError%');\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\n\nvar predicates = {\n\t// https://262.ecma-international.org/6.0/#sec-property-descriptor-specification-type\n\t'Property Descriptor': function isPropertyDescriptor(Type, Desc) {\n\t\tif (Type(Desc) !== 'Object') {\n\t\t\treturn false;\n\t\t}\n\t\tvar allowed = {\n\t\t\t'[[Configurable]]': true,\n\t\t\t'[[Enumerable]]': true,\n\t\t\t'[[Get]]': true,\n\t\t\t'[[Set]]': true,\n\t\t\t'[[Value]]': true,\n\t\t\t'[[Writable]]': true\n\t\t};\n\n\t\tfor (var key in Desc) { // eslint-disable-line\n\t\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\n\t\tvar isData = has(Desc, '[[Value]]');\n\t\tvar IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');\n\t\tif (isData && IsAccessor) {\n\t\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t\t}\n\t\treturn true;\n\t}\n};\n\nmodule.exports = function assertRecord(Type, recordType, argumentName, value) {\n\tvar predicate = predicates[recordType];\n\tif (typeof predicate !== 'function') {\n\t\tthrow new $SyntaxError('unknown record type: ' + recordType);\n\t}\n\tif (!predicate(Type, value)) {\n\t\tthrow new $TypeError(argumentName + ' must be a ' + recordType);\n\t}\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/assertRecord.js?");
@@ -5308,7 +5308,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isFinite.js ***!
   \*********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isFinite.js?");
@@ -5319,7 +5319,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isLeadingSurrogate.js ***!
   \*******************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isLeadingSurrogate(charCode) {\n\treturn typeof charCode === 'number' && charCode >= 0xD800 && charCode <= 0xDBFF;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isLeadingSurrogate.js?");
@@ -5330,7 +5330,7 @@ eval("\n\nmodule.exports = function isLeadingSurrogate(charCode) {\n\treturn typ
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isNaN.js ***!
   \******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isNaN.js?");
@@ -5341,7 +5341,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -5352,7 +5352,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!*********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPropertyDescriptor.js ***!
   \*********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar has = __webpack_require__(/*! has */ \"./node_modules/has/src/index.js\");\nvar $TypeError = GetIntrinsic('%TypeError%');\n\nmodule.exports = function IsPropertyDescriptor(ES, Desc) {\n\tif (ES.Type(Desc) !== 'Object') {\n\t\treturn false;\n\t}\n\tvar allowed = {\n\t\t'[[Configurable]]': true,\n\t\t'[[Enumerable]]': true,\n\t\t'[[Get]]': true,\n\t\t'[[Set]]': true,\n\t\t'[[Value]]': true,\n\t\t'[[Writable]]': true\n\t};\n\n\tfor (var key in Desc) { // eslint-disable-line no-restricted-syntax\n\t\tif (has(Desc, key) && !allowed[key]) {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tif (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {\n\t\tthrow new $TypeError('Property Descriptors may not be both accessor and data descriptors');\n\t}\n\treturn true;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isPropertyDescriptor.js?");
@@ -5363,7 +5363,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isTrailingSurrogate.js ***!
   \********************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isTrailingSurrogate(charCode) {\n\treturn typeof charCode === 'number' && charCode >= 0xDC00 && charCode <= 0xDFFF;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/isTrailingSurrogate.js?");
@@ -5374,7 +5374,7 @@ eval("\n\nmodule.exports = function isTrailingSurrogate(charCode) {\n\treturn ty
 /*!***************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -5385,7 +5385,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/regexTester.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/regexTester.js?");
@@ -5396,7 +5396,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************!*\
   !*** ./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/sign.js ***!
   \*****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.matchall/node_modules/es-abstract/helpers/sign.js?");
@@ -5407,7 +5407,7 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!******************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \******************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -5418,7 +5418,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!***************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -5429,7 +5429,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToLength.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToLength.js?");
@@ -5440,7 +5440,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToNumber.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToNumber.js?");
@@ -5451,7 +5451,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \*******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -5462,7 +5462,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToString.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/2021/ToString.js?");
@@ -5473,7 +5473,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -5484,7 +5484,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToInteger.js ***!
   \**************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToInteger.js?");
@@ -5495,7 +5495,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.pro
 /*!*************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToNumber.js ***!
   \*************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToNumber.js?");
@@ -5506,7 +5506,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToPrimitive.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -5517,7 +5517,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!********************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/abs.js ***!
   \********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/abs.js?");
@@ -5528,7 +5528,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/5/floor.js ***!
   \**********************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/5/floor.js?");
@@ -5539,7 +5539,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!*******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isFinite.js ***!
   \*******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isFinite.js?");
@@ -5550,7 +5550,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isNaN.js ***!
   \****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isNaN.js?");
@@ -5561,7 +5561,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!**********************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \**********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -5572,7 +5572,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!*************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \*************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -5583,7 +5583,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!**********************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/regexTester.js ***!
   \**********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/regexTester.js?");
@@ -5594,7 +5594,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************!*\
   !*** ./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/sign.js ***!
   \***************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padend/node_modules/es-abstract/helpers/sign.js?");
@@ -5605,7 +5605,7 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!********************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/RequireObjectCoercible.js ***!
   \********************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/CheckObjectCoercible.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/RequireObjectCoercible.js?");
@@ -5616,7 +5616,7 @@ eval("\n\nmodule.exports = __webpack_require__(/*! ../5/CheckObjectCoercible */ 
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToIntegerOrInfinity.js ***!
   \*****************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToInteger.js\");\n\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToNumber.js\");\n\n// https://www.ecma-international.org/ecma-262/11.0/#sec-tointeger\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif (number !== 0) {\n\t\tnumber = ES5ToInteger(number);\n\t}\n\treturn number === 0 ? 0 : number;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToIntegerOrInfinity.js?");
@@ -5627,7 +5627,7 @@ eval("\n\nvar ES5ToInteger = __webpack_require__(/*! ../5/ToInteger */ \"./node_
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToLength.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteger */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/maxSafeInteger.js\");\n\nvar ToIntegerOrInfinity = __webpack_require__(/*! ./ToIntegerOrInfinity */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToIntegerOrInfinity.js\");\n\nmodule.exports = function ToLength(argument) {\n\tvar len = ToIntegerOrInfinity(argument);\n\tif (len <= 0) { return 0; } // includes converting -0 to +0\n\tif (len > MAX_SAFE_INTEGER) { return MAX_SAFE_INTEGER; }\n\treturn len;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToLength.js?");
@@ -5638,7 +5638,7 @@ eval("\n\nvar MAX_SAFE_INTEGER = __webpack_require__(/*! ../helpers/maxSafeInteg
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToNumber.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\nvar $Number = GetIntrinsic('%Number%');\nvar $RegExp = GetIntrinsic('%RegExp%');\nvar $parseInteger = GetIntrinsic('%parseInt%');\n\nvar callBound = __webpack_require__(/*! call-bind/callBound */ \"./node_modules/call-bind/callBound.js\");\nvar regexTester = __webpack_require__(/*! ../helpers/regexTester */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/regexTester.js\");\nvar isPrimitive = __webpack_require__(/*! ../helpers/isPrimitive */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isPrimitive.js\");\n\nvar $strSlice = callBound('String.prototype.slice');\nvar isBinary = regexTester(/^0b[01]+$/i);\nvar isOctal = regexTester(/^0o[0-7]+$/i);\nvar isInvalidHexLiteral = regexTester(/^[-+]0x[0-9a-f]+$/i);\nvar nonWS = ['\\u0085', '\\u200b', '\\ufffe'].join('');\nvar nonWSregex = new $RegExp('[' + nonWS + ']', 'g');\nvar hasNonWS = regexTester(nonWSregex);\n\n// whitespace from: https://es5.github.io/#x15.5.4.20\n// implementation from https://github.com/es-shims/es5-shim/blob/v3.4.0/es5-shim.js#L1304-L1324\nvar ws = [\n\t'\\x09\\x0A\\x0B\\x0C\\x0D\\x20\\xA0\\u1680\\u180E\\u2000\\u2001\\u2002\\u2003',\n\t'\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\u2028',\n\t'\\u2029\\uFEFF'\n].join('');\nvar trimRegex = new RegExp('(^[' + ws + ']+)|([' + ws + ']+$)', 'g');\nvar $replace = callBound('String.prototype.replace');\nvar $trim = function (value) {\n\treturn $replace(value, trimRegex, '');\n};\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToPrimitive.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tonumber\n\nmodule.exports = function ToNumber(argument) {\n\tvar value = isPrimitive(argument) ? argument : ToPrimitive(argument, $Number);\n\tif (typeof value === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a number');\n\t}\n\tif (typeof value === 'bigint') {\n\t\tthrow new $TypeError('Conversion from \\'BigInt\\' to \\'number\\' is not allowed.');\n\t}\n\tif (typeof value === 'string') {\n\t\tif (isBinary(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 2));\n\t\t} else if (isOctal(value)) {\n\t\t\treturn ToNumber($parseInteger($strSlice(value, 2), 8));\n\t\t} else if (hasNonWS(value) || isInvalidHexLiteral(value)) {\n\t\t\treturn NaN;\n\t\t}\n\t\tvar trimmed = $trim(value);\n\t\tif (trimmed !== value) {\n\t\t\treturn ToNumber(trimmed);\n\t\t}\n\n\t}\n\treturn $Number(value);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToNumber.js?");
@@ -5649,7 +5649,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*********************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToPrimitive.js ***!
   \*********************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"./node_modules/es-to-primitive/es2015.js\");\n\n// https://ecma-international.org/ecma-262/6.0/#sec-toprimitive\n\nmodule.exports = function ToPrimitive(input) {\n\tif (arguments.length > 1) {\n\t\treturn toPrimitive(input, arguments[1]);\n\t}\n\treturn toPrimitive(input);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToPrimitive.js?");
@@ -5660,7 +5660,7 @@ eval("\n\nvar toPrimitive = __webpack_require__(/*! es-to-primitive/es2015 */ \"
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToString.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $String = GetIntrinsic('%String%');\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// https://ecma-international.org/ecma-262/6.0/#sec-tostring\n\nmodule.exports = function ToString(argument) {\n\tif (typeof argument === 'symbol') {\n\t\tthrow new $TypeError('Cannot convert a Symbol value to a string');\n\t}\n\treturn $String(argument);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/2021/ToString.js?");
@@ -5671,7 +5671,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!***************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/CheckObjectCoercible.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $TypeError = GetIntrinsic('%TypeError%');\n\n// http://262.ecma-international.org/5.1/#sec-9.10\n\nmodule.exports = function CheckObjectCoercible(value, optMessage) {\n\tif (value == null) {\n\t\tthrow new $TypeError(optMessage || ('Cannot call method on ' + value));\n\t}\n\treturn value;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/CheckObjectCoercible.js?");
@@ -5682,7 +5682,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToInteger.js ***!
   \****************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/abs.js\");\nvar floor = __webpack_require__(/*! ./floor */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/floor.js\");\nvar ToNumber = __webpack_require__(/*! ./ToNumber */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToNumber.js\");\n\nvar $isNaN = __webpack_require__(/*! ../helpers/isNaN */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isNaN.js\");\nvar $isFinite = __webpack_require__(/*! ../helpers/isFinite */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isFinite.js\");\nvar $sign = __webpack_require__(/*! ../helpers/sign */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/sign.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.4\n\nmodule.exports = function ToInteger(value) {\n\tvar number = ToNumber(value);\n\tif ($isNaN(number)) { return 0; }\n\tif (number === 0 || !$isFinite(number)) { return number; }\n\treturn $sign(number) * floor(abs(number));\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToInteger.js?");
@@ -5693,7 +5693,7 @@ eval("\n\nvar abs = __webpack_require__(/*! ./abs */ \"./node_modules/string.pro
 /*!***************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToNumber.js ***!
   \***************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToPrimitive.js\");\n\n// http://262.ecma-international.org/5.1/#sec-9.3\n\nmodule.exports = function ToNumber(value) {\n\tvar prim = ToPrimitive(value, Number);\n\tif (typeof prim !== 'string') {\n\t\treturn +prim; // eslint-disable-line no-implicit-coercion\n\t}\n\n\t// eslint-disable-next-line no-control-regex\n\tvar trimmed = prim.replace(/^[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+|[ \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000\\u0085]+$/g, '');\n\tif ((/^0[ob]|^[+-]0x/).test(trimmed)) {\n\t\treturn NaN;\n\t}\n\n\treturn +trimmed; // eslint-disable-line no-implicit-coercion\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToNumber.js?");
@@ -5704,7 +5704,7 @@ eval("\n\nvar ToPrimitive = __webpack_require__(/*! ./ToPrimitive */ \"./node_mo
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToPrimitive.js ***!
   \******************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = __webpack_require__(/*! es-to-primitive/es5 */ \"./node_modules/es-to-primitive/es5.js\");\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/ToPrimitive.js?");
@@ -5715,7 +5715,7 @@ eval("\n\n// http://262.ecma-international.org/5.1/#sec-9.1\n\nmodule.exports = 
 /*!**********************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/abs.js ***!
   \**********************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $abs = GetIntrinsic('%Math.abs%');\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function abs(x) {\n\treturn $abs(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/abs.js?");
@@ -5726,7 +5726,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/5/floor.js ***!
   \************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// http://262.ecma-international.org/5.1/#sec-5.2\n\nmodule.exports = function floor(x) {\n\t// return x - modulo(x, 1);\n\treturn $floor(x);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/5/floor.js?");
@@ -5737,7 +5737,7 @@ eval("\n\n// var modulo = require('./modulo');\nvar $floor = Math.floor;\n\n// h
 /*!*********************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isFinite.js ***!
   \*********************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodule.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isFinite.js?");
@@ -5748,7 +5748,7 @@ eval("\n\nvar $isNaN = Number.isNaN || function (a) { return a !== a; };\n\nmodu
 /*!******************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isNaN.js ***!
   \******************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isNaN.js?");
@@ -5759,7 +5759,7 @@ eval("\n\nmodule.exports = Number.isNaN || function isNaN(a) {\n\treturn a !== a
 /*!************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isPrimitive.js ***!
   \************************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === null || (typeof value !== 'function' && typeof value !== 'object');\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/isPrimitive.js?");
@@ -5770,7 +5770,7 @@ eval("\n\nmodule.exports = function isPrimitive(value) {\n\treturn value === nul
 /*!***************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/maxSafeInteger.js ***!
   \***************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $Math = GetIntrinsic('%Math%');\nvar $Number = GetIntrinsic('%Number%');\n\nmodule.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/maxSafeInteger.js?");
@@ -5781,7 +5781,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!************************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/regexTester.js ***!
   \************************************************************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_modules/get-intrinsic/index.js\");\n\nvar $test = GetIntrinsic('RegExp.prototype.test');\n\nvar callBind = __webpack_require__(/*! call-bind */ \"./node_modules/call-bind/index.js\");\n\nmodule.exports = function regexTester(regex) {\n\treturn callBind($test, regex);\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/regexTester.js?");
@@ -5792,7 +5792,7 @@ eval("\n\nvar GetIntrinsic = __webpack_require__(/*! get-intrinsic */ \"./node_m
 /*!*****************************************************************************************!*\
   !*** ./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/sign.js ***!
   \*****************************************************************************************/
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -1;\n};\n\n\n//# sourceURL=webpack://range-slider/./node_modules/string.prototype.padstart/node_modules/es-abstract/helpers/sign.js?");
@@ -5803,10 +5803,10 @@ eval("\n\nmodule.exports = function sign(number) {\n\treturn number >= 0 ? 1 : -
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
   \**************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _assertThisInitialized; }\n/* harmony export */ });\nfunction _assertThisInitialized(self) {\n  if (self === void 0) {\n    throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");\n  }\n\n  return self;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _assertThisInitialized)\n/* harmony export */ });\nfunction _assertThisInitialized(self) {\n  if (self === void 0) {\n    throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");\n  }\n\n  return self;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js?");
 
 /***/ }),
 
@@ -5814,10 +5814,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _classCallCheck; }\n/* harmony export */ });\nfunction _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/classCallCheck.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _classCallCheck)\n/* harmony export */ });\nfunction _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/classCallCheck.js?");
 
 /***/ }),
 
@@ -5825,10 +5825,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/createClass.js ***!
   \****************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _createClass; }\n/* harmony export */ });\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  Object.defineProperty(Constructor, \"prototype\", {\n    writable: false\n  });\n  return Constructor;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/createClass.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _createClass)\n/* harmony export */ });\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  Object.defineProperty(Constructor, \"prototype\", {\n    writable: false\n  });\n  return Constructor;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/createClass.js?");
 
 /***/ }),
 
@@ -5836,10 +5836,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _defineProperty; }\n/* harmony export */ });\nfunction _defineProperty(obj, key, value) {\n  if (key in obj) {\n    Object.defineProperty(obj, key, {\n      value: value,\n      enumerable: true,\n      configurable: true,\n      writable: true\n    });\n  } else {\n    obj[key] = value;\n  }\n\n  return obj;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/defineProperty.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _defineProperty)\n/* harmony export */ });\nfunction _defineProperty(obj, key, value) {\n  if (key in obj) {\n    Object.defineProperty(obj, key, {\n      value: value,\n      enumerable: true,\n      configurable: true,\n      writable: true\n    });\n  } else {\n    obj[key] = value;\n  }\n\n  return obj;\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/defineProperty.js?");
 
 /***/ }),
 
@@ -5847,10 +5847,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _getPrototypeOf; }\n/* harmony export */ });\nfunction _getPrototypeOf(o) {\n  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {\n    return o.__proto__ || Object.getPrototypeOf(o);\n  };\n  return _getPrototypeOf(o);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _getPrototypeOf)\n/* harmony export */ });\nfunction _getPrototypeOf(o) {\n  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {\n    return o.__proto__ || Object.getPrototypeOf(o);\n  };\n  return _getPrototypeOf(o);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js?");
 
 /***/ }),
 
@@ -5858,10 +5858,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/inherits.js ***!
   \*************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _inherits; }\n/* harmony export */ });\n/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ \"./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js\");\n\nfunction _inherits(subClass, superClass) {\n  if (typeof superClass !== \"function\" && superClass !== null) {\n    throw new TypeError(\"Super expression must either be null or a function\");\n  }\n\n  subClass.prototype = Object.create(superClass && superClass.prototype, {\n    constructor: {\n      value: subClass,\n      writable: true,\n      configurable: true\n    }\n  });\n  Object.defineProperty(subClass, \"prototype\", {\n    writable: false\n  });\n  if (superClass) (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(subClass, superClass);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/inherits.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _inherits)\n/* harmony export */ });\n/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ \"./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js\");\n\nfunction _inherits(subClass, superClass) {\n  if (typeof superClass !== \"function\" && superClass !== null) {\n    throw new TypeError(\"Super expression must either be null or a function\");\n  }\n\n  subClass.prototype = Object.create(superClass && superClass.prototype, {\n    constructor: {\n      value: subClass,\n      writable: true,\n      configurable: true\n    }\n  });\n  Object.defineProperty(subClass, \"prototype\", {\n    writable: false\n  });\n  if (superClass) (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(subClass, superClass);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/inherits.js?");
 
 /***/ }),
 
@@ -5869,10 +5869,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!******************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js ***!
   \******************************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _possibleConstructorReturn; }\n/* harmony export */ });\n/* harmony import */ var _typeof_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typeof.js */ \"./node_modules/@babel/runtime/helpers/esm/typeof.js\");\n/* harmony import */ var _assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assertThisInitialized.js */ \"./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js\");\n\n\nfunction _possibleConstructorReturn(self, call) {\n  if (call && ((0,_typeof_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(call) === \"object\" || typeof call === \"function\")) {\n    return call;\n  } else if (call !== void 0) {\n    throw new TypeError(\"Derived constructors may only return object or undefined\");\n  }\n\n  return (0,_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(self);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _possibleConstructorReturn)\n/* harmony export */ });\n/* harmony import */ var _typeof_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./typeof.js */ \"./node_modules/@babel/runtime/helpers/esm/typeof.js\");\n/* harmony import */ var _assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assertThisInitialized.js */ \"./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js\");\n\n\nfunction _possibleConstructorReturn(self, call) {\n  if (call && ((0,_typeof_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(call) === \"object\" || typeof call === \"function\")) {\n    return call;\n  } else if (call !== void 0) {\n    throw new TypeError(\"Derived constructors may only return object or undefined\");\n  }\n\n  return (0,_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(self);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js?");
 
 /***/ }),
 
@@ -5880,10 +5880,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
   \*******************************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _setPrototypeOf; }\n/* harmony export */ });\nfunction _setPrototypeOf(o, p) {\n  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {\n    o.__proto__ = p;\n    return o;\n  };\n  return _setPrototypeOf(o, p);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _setPrototypeOf)\n/* harmony export */ });\nfunction _setPrototypeOf(o, p) {\n  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {\n    o.__proto__ = p;\n    return o;\n  };\n  return _setPrototypeOf(o, p);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js?");
 
 /***/ }),
 
@@ -5891,10 +5891,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!***********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/typeof.js ***!
   \***********************************************************/
-/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ _typeof; }\n/* harmony export */ });\nfunction _typeof(obj) {\n  \"@babel/helpers - typeof\";\n\n  return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) {\n    return typeof obj;\n  } : function (obj) {\n    return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj;\n  }, _typeof(obj);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/typeof.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ _typeof)\n/* harmony export */ });\nfunction _typeof(obj) {\n  \"@babel/helpers - typeof\";\n\n  return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) {\n    return typeof obj;\n  } : function (obj) {\n    return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj;\n  }, _typeof(obj);\n}\n\n//# sourceURL=webpack://range-slider/./node_modules/@babel/runtime/helpers/esm/typeof.js?");
 
 /***/ })
 
