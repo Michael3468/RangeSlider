@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "acorn": "^8.8.2",
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.13",
     "babel-loader": "^8.2.5",
     "babel-preset-airbnb": "^5.0.0",
     "browserslist": "^4.21.5",
